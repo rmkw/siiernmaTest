@@ -18,6 +18,7 @@ interface CheckboxesState {
   styleUrls: ['./product-page.component.css']
 })
 export class ProductPageComponent implements OnInit{
+  loading = true;
   //? fechas para referencia
   startDate: number = 0;
   endDate: number = 0;
@@ -67,6 +68,8 @@ export class ProductPageComponent implements OnInit{
 
   filteredProducts: Products[] = [];
   showFilteredProducts = false;
+
+
 
 
   constructor(
@@ -137,6 +140,7 @@ export class ProductPageComponent implements OnInit{
 
 
 
+
     this.filteredProducts$ = this.searchFormControl.valueChanges.pipe(
     debounceTime(200),
     distinctUntilChanged(),
@@ -162,6 +166,7 @@ export class ProductPageComponent implements OnInit{
     .subscribe( data => {
       this.productsById = data;
       this.applyFilters();
+      this.loading = false;
     })
 
   }
@@ -264,6 +269,7 @@ export class ProductPageComponent implements OnInit{
 
       // Combina los resultados de los filtros de tipo y cobertura
       return passTypeFilter && passCoberturaFilter && passTipoSoporteFilter;
+
     });
   }
   this.filterProductsByDateRangeReferencia();

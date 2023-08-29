@@ -16,6 +16,7 @@ import { IndicadoresPS2023, PS2023, SecuenciaPS } from '../../interfaces/ps.inte
   styleUrls: ['./byids.component.css']
 })
 export class ByidsComponent implements OnInit{
+  loading = true;
   public mdeas?: Mdea[]=[];
   public pi?: Pi[]=[];
   public dgs: UAdmin[] = [];
@@ -143,13 +144,13 @@ export class ByidsComponent implements OnInit{
 
     this._leeLink.params
     .pipe(
-
       switchMap(({ id }) =>{
         return this._direServices.getProductById(id)
       } )
     )
     .subscribe( data => {
       this.productsById = data;
+      this.loading = false;
     })
 
 

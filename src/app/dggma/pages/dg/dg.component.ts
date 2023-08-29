@@ -10,6 +10,8 @@ import { DGService } from '../../services/dg.service';
 })
 export class DgComponent implements OnInit{
 
+  loading = true;
+
 
 
   public dgs: UAdmin[] = [];
@@ -24,10 +26,15 @@ export class DgComponent implements OnInit{
     const directions = ['1','2','3','4','5']; //id de direcciones
 
     directions.forEach(direction => {
-      this._direServices.getProductCountByDirection(direction).subscribe(count => { this.productCounts.push(count) }); //me trae el numero de productos que tiene cada dirección
+      this._direServices.getProductCountByDirection(direction).subscribe(count => {
+        this.productCounts.push(count);
+      }); //me trae el numero de productos que tiene cada dirección
     });
 
-    this._direServices.getDG().subscribe(dgs => { this.dgs = dgs }); // me traigo todas las direcciones
+    this._direServices.getDG().subscribe(dgs => {
+      this.dgs = dgs;
+      this.loading = false;
+    }); // me traigo todas las direcciones
 
 
     const imgArray: any[] = [];

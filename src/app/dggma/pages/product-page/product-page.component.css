@@ -44,7 +44,7 @@
   position: absolute;
     z-index: 1000;
     /* Ajusta el valor de z-index según sea necesario para que la lista aparezca por encima de la tarjeta */
-    width: 49%;
+    width: 65%;
     /* Ajusta el ancho de la lista según sea necesario */
     background-color: white;
 
@@ -63,3 +63,6 @@
   background-color: #f0f0f0;
 }
 
+.maginTop {
+  margin-top: 200px;
+}

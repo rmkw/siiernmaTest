@@ -31,3 +31,16 @@ h4 {
     .card:hover {
       transform: scale(1.05);
     }
+
+        /* Estilos para el contenedor del spinner */
+.spinner-container {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+          /* Ajusta esto según tus necesidades */
+        }
+
+.maginTop {
+  margin-top: 300px;
+}
