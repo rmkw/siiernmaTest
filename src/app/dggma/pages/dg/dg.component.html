@@ -28,7 +28,7 @@
   <div class="container-fluid">
     <div class="container">
       <div class="row justify-content-center align-items-center">
-        <div class="col-4" *ngFor="let dg of dgs; let i = index">
+        <div class="col-md-4 col-sm-6 col-xs-12" *ngFor="let dg of dgs; let i = index">
           <div class="card shadow-sm p-2 mb-3 bg-body-tertiary rounded" style="height: 25rem;"
             [routerLink]="['/dg/content', dg.id]">
             <img [src]="imgArray[i].img" style="height: 25rem;" class="card-img-top" alt="...">
