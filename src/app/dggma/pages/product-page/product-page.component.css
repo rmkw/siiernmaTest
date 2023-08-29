@@ -66,3 +66,16 @@
 .maginTop {
   margin-top: 200px;
 }
+
+@media (max-width: 767px) {
+  .search-results {
+    width: 100%;
+    /* Ajusta el ancho para que ocupe toda la pantalla */
+    left: 0;
+    /* Alinea la lista a la izquierda */
+  }
+
+  .col-md-12.button-col {
+    margin-top: 10px;
+  }
+}

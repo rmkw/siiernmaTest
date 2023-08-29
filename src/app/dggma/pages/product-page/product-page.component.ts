@@ -2,8 +2,9 @@ import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { DGService } from '../../services/dg.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Escalas, Products } from '../../interfaces/product.interface';
-import { Observable, catchError, debounceTime, distinctUntilChanged, filter, of, startWith, switchMap, map  } from 'rxjs';
+import { Observable, catchError, debounceTime, distinctUntilChanged, filter, of, startWith, switchMap, map, EMPTY  } from 'rxjs';
 import { FormControl } from '@angular/forms';
+import { UAdmin } from '../../interfaces/u_admin.interface';
 
 
 
@@ -69,6 +70,9 @@ export class ProductPageComponent implements OnInit{
   filteredProducts: Products[] = [];
   showFilteredProducts = false;
 
+  public dgs: UAdmin[] = [];
+  currentDirection: any;
+
 
 
 
@@ -83,6 +87,28 @@ export class ProductPageComponent implements OnInit{
 
 
   ngOnInit(): void {
+
+    this._leeLink.params
+      .pipe(
+        switchMap(({ by }) => {
+          if (by === '1') {
+            this.currentDirection = 'Dirección General de Geografía y Medio Ambiente';
+          } else if (by === '2') {
+            this.currentDirection = 'Dirección General de Estadísticas Sociodemográficas';
+          } else if (by === '3') {
+            this.currentDirection = 'Dirección General de Estadísticas Económicas';
+          } else if (by === '4') {
+            this.currentDirection = 'Dirección General de Estadísticas de Gobierno, Seguridad Pública y Justicia';
+          } else if (by === '5') {
+            this.currentDirection = 'Dirección General de Integración, Análisis e Investigación';
+          }
+          return EMPTY; // O un observable según tus necesidades
+        })
+      )
+      .subscribe(() => {
+        // No se requieren más operaciones en este punto
+      });
+
 
     //! AQUÍ TODO LO DE LAS FECHAS DE REFERENCIA
     this._leeLink.params.pipe(switchMap(({ by }) =>{

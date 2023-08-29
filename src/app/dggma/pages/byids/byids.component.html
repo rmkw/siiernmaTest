@@ -43,7 +43,7 @@
 
                 <div class="row">
 
-                  <div class="col">
+                  <div class="col-md-3 col-12">
                     <span>Producto de tipo: </span>
                     <span class="badge">
                       {{ dg.tipo_prod__1 == 0 ? '' : (dg.tipo_prod__1 == 1 && dg.tipo_prod__2 == 0 ? 'Geográfico' :
@@ -54,7 +54,7 @@
                     </span>
                   </div>
 
-                  <div class="col">
+                  <div class="col-md-3 col-12">
                     <span>Cobertura del producto: </span>
                     <span class="badge me-1" *ngIf="dg.cobertura_geo__1 == 1">{{ dg.cobertura_geo__1 == 1 ? 'Nacional' : '' }}</span>
                     <span class="badge me-1" *ngIf="dg.cobertura_geo__2 == 1">{{ dg.cobertura_geo__2 == 1 ? 'Estatal' : '' }}</span>
@@ -63,12 +63,12 @@
                     <span class="badge" *ngIf="dg.cobertura_geo__5 == 1">{{ dg.cobertura_geo__5 == 1 ? 'Otra: ' + dg.o_cobertura : '' }}</span>
                   </div>
 
-                  <div class="col">
+                  <div class="col-md-3 col-12">
                       <span>Año de publicación: </span>
                       <span class="badge">{{ dg.a_publicacion}}{{dg.a_publicacion2 ? (' - ' + dg.a_publicacion2): ''}}</span>
                   </div>
 
-                  <div class="col">
+                  <div class="col-md-3 col-12">
                       <span>Año de referencia: </span>
                       <span class="badge">{{ dg.a_referencia }}{{dg.a_referencia2 ? (' - ' + dg.a_referencia2) : ''}}</span>
                   </div>
@@ -78,7 +78,7 @@
                 <div class="row mt-2">
 
 
-                  <div class="col-3">
+                  <div class="col-md-3 col-12">
 
 
                     <span>El producto se fragmenta:</span>
@@ -89,12 +89,12 @@
 
                   </div>
 
-                  <div class="col-3">
+                  <div class="col-md-3 col-12">
                     <span *ngIf="dg.fragmenta == 1">Número de fragmentos: </span>
                     <span class="badge m-1">{{ dg.n_fragmenta }}</span>
                   </div>
 
-                  <div class="col">
+                  <div class="col-md-3 col-12">
                     <span *ngIf="dg.actualizacion == 1">
                       <span>Se actualiza: </span>
                       <span class="badge">
@@ -111,7 +111,7 @@
                   </div>
 
 
-                  <div class="col">
+                  <div class="col-md-3 col-12">
                     <span *ngIf="dg.escala">Escala geográfica: </span>
                     <span *ngIf="dg.escala == 14">
                       <span class="badge">{{ dg.o_escala }}</span>
@@ -128,14 +128,14 @@
 
                 <div class="row mt-2">
 
-                  <div class="col-3">
+                  <div class="col-md-3 col-12">
                     <span *ngIf="dg.liga">
                       <span>Ligas de acceso: </span>
                       <a (click)="$event.stopPropagation()" target="_blank" [href]="dg.liga">enlace.</a>
                     </span>
                   </div>
 
-                  <div class="col-3">
+                  <div class="col-md-6 col-12">
                     <span *ngIf="dg.metodologia == 1">
                       <span *ngIf="dg.metodologia == 1">Cuenta con metodologia: </span>
                       <a (click)="$event.stopPropagation()" [href]="dg.liga_metodologia" target="_blank">enlace.</a>
@@ -278,7 +278,7 @@
                           <div class="col">
                             <div class="card card-body" (click)="$event.stopPropagation()">
                               <div class="row">
-                                <div class="col-3" *ngFor="let item of secuenciaVAR">
+                                <div class="col-md-3 col-12" *ngFor="let item of secuenciaVAR">
                                   <ul class="list-group list-group-flush">
                                     <li class="list-group-item text-primary-emphasis bg-primary-subtle p-1 m-1">
                                       {{item.nom_var}}
@@ -322,39 +322,23 @@
                         <div class="col">
                           <div class="card card-body">
                             <div class="row">
-                              <div class="col">
+                              <div class="col-md-4 col-12">
                                 <strong style="color: #113250;">Unidad Administrativa responsable del PI:</strong>
                                 <br>
                                 <span for=""> {{getDireccionGeneralText(item.dg_pi)}}</span>
                               </div>
-                              <div class="col">
+                              <div class="col-md-4 col-12">
                                 <strong style="color: #113250;">Programa de Información (PI):</strong>
                                 <br>
                                 <span for=""> {{getProgInfoText(item.nom_pi)}}</span>
                               </div>
-                              <div class="col">
+                              <div class="col-md-4 col-12">
                                 <strong style="color: #113250;">Programa de Información (PI):</strong>
                                 <br>
                                 <span for=""> {{getProgInfoText(item.nom_pi)}}</span>
                               </div>
                             </div>
-                            <div class="row">
-                              <div class="col">
-                                <strong style="color: #113250;">Programa de Información (PI):</strong>
-                                <br>
-                                <span for=""> {{getProgInfoText(item.nom_pi)}}</span>
-                              </div>
-                              <div class="col">
-                                <strong style="color: #113250;">Proceso de Producción del PI:</strong>
-                                <br>
-                                <span for=""> {{getProgInfoText(item.pp_pi)}}</span>
-                              </div>
-                              <div class="col">
-                                <strong style="color: #113250;">Dirección General Adjunta responsable del Programa de Información:</strong>
-                                <br>
-                                <span for=""> {{getDga_PprodText(item.dga_pi)}}</span>
-                              </div>
-                            </div>
+
                           </div>
                         </div>
                       </div>
@@ -389,17 +373,17 @@
                     <div class="col">
                       <div class="card card-body">
                         <div class="row">
-                          <div class="col">
+                          <div class="col-md-4 col-12">
                             <strong>Dirección General responsable de la AEG: </strong>
                             <br>
                             <span for=""> {{getDga_PprodText(item.dg_aeg)}}.</span>
                           </div>
-                          <div class="col">
+                          <div class="col-md-4 col-12">
                             <strong>Actividad Estadística o Geográfica para la UA: </strong>
                             <br>
                             <span for=""> {{getAEG_2Text(item.nom_aeg)}}.</span>
                           </div>
-                          <div class="col">
+                          <div class="col-md-4 col-12">
                             <strong>Dirección General Adjunta responsable de la AEG: </strong>
                             <br>
                             <span for=""> {{getAEG_ProdText(item.dga_aeg)}}.</span>
@@ -429,17 +413,17 @@
                     <div class="col">
                       <div class="card card-body mb-2">
                         <div class="row">
-                          <div class="col">
+                          <div class="col-md-4 col-12">
                             <strong style="color: #113250;">Componente: </strong>
                             <br>
                             <span for=""> {{getComponenteText(item.comp_mdea)}}</span>
                           </div>
-                          <div class="col">
+                          <div class="col-md-4 col-12">
                             <strong style="color: #113250;">Subcomponente: </strong>
                             <br>
                             <span for=""> {{getSubcomponenteText(item.subcomp_mdea)}}</span>
                           </div>
-                          <div class="col">
+                          <div class="col-md-4 col-12">
                             <strong style="color: #113250;">Topico: </strong>
                             <br>
                             <span for=""> {{getTopicoText(item.topico_mdea)}}</span>
@@ -470,12 +454,12 @@
                     <div class="col">
                       <div class="card card-body mb-2">
                         <div class="row">
-                          <div class="col">
+                          <div class="col-md-6 col-12">
                             <strong style="color: #113250;">Objetivo: </strong>
                             <br>
                             <span class=""> {{getObjetivODSText(item.obj_ods)}}</span>
                           </div>
-                          <div class="col">
+                          <div class="col-md-6 col-12">
                             <strong style="color: #113250;">Meta: </strong>
                             <br>
                             <span for=""> {{getMetaODSText(item.meta_ods)}}</span>
@@ -504,14 +488,14 @@
                     <div class="col">
                       <div class="card card-body mb-2">
                         <div class="row">
-                          <div class="col">
+                          <div class="col-md-6 col-12">
                             <strong style="color: #113250;">Programa Sectorial: </strong>
                             <br>
                             <span>{{getps2023Text(item.prog_ps)}}</span>
 
 
                           </div>
-                          <div class="col">
+                          <div class="col-md-6 col-12">
                             <div *ngIf="item.indicador_ps">
                               <strong style="color: #113250;">Indicador que corresponde al PS: </strong>
                               <br>
