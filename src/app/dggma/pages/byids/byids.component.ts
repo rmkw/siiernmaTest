@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Escalas, Products, SecuenciaVar } from '../../interfaces/product.interface';
 import { DGService } from '../../services/dg.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { switchMap, tap } from 'rxjs';
+import { EMPTY, switchMap, tap } from 'rxjs';
 import { DgaPprod, Pi, ProcProduccion, ProgInformacion } from '../../interfaces/pi.interface';
 import { UAdmin } from '../../interfaces/u_admin.interface';
 import { Componente, Mdea, Subcomponente, Topico } from '../../interfaces/mdea.interface';
@@ -40,6 +40,7 @@ export class ByidsComponent implements OnInit{
   public escalas: Escalas[]=[];
   public productsById: Products[] = [];
   expandedIndex: number | null = null;
+  currentDirection: any;
 
   constructor(
     private _direServices: DGService,
@@ -48,6 +49,26 @@ export class ByidsComponent implements OnInit{
   ){}
 
   ngOnInit(): void {
+    this._leeLink.params
+      .pipe(
+        switchMap(({ by }) => {
+          if (by === '1') {
+            this.currentDirection = 'Dirección General de Geografía y Medio Ambiente';
+          } else if (by === '2') {
+            this.currentDirection = 'Dirección General de Estadísticas Sociodemográficas';
+          } else if (by === '3') {
+            this.currentDirection = 'Dirección General de Estadísticas Económicas';
+          } else if (by === '4') {
+            this.currentDirection = 'Dirección General de Estadísticas de Gobierno, Seguridad Pública y Justicia';
+          } else if (by === '5') {
+            this.currentDirection = 'Dirección General de Integración, Análisis e Investigación';
+          }
+          return EMPTY; // O un observable según tus necesidades
+        })
+      )
+      .subscribe(() => {
+        // No se requieren más operaciones en este punto
+      });
 
     this._direServices.getDG()
     .subscribe( dgs => this.dgs = dgs );

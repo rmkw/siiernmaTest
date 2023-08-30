@@ -13,29 +13,28 @@
     <div class="row">
     <div class="col">
       <div class="card2 shadow-sm  bg-body-tertiary rounded m-1">
-
         <div class="d-flex">
-          <h6>Filtros o controles.</h6>
-
+          <h6>Filtros o controles. </h6>
           <button class="btn btn-outline-secondary btn-sm ms-auto mb-1" (click)="allFalse()">
             <i class="bi bi-trash"></i>
           </button>
         </div>
         <div class="card card-body">
           <div class="row mb-1">
-            <div class="col">
+
+            <div class="col-12 col-md-6 ">
               <ul class="list-group list-group-flush">
                 <li class="list-group-item text-primary-emphasis bg-primary-subtle">
                   Consultar por años de Referencia:
                 </li>
               </ul>
               <div class="row mt-1">
-                <div class="col">
+                <div class="col-md-6">
                   <div class="row g-2 align-items-center">
-                    <div class="col-auto">
+                    <div class="col-4 col-md-auto">
                       <label for="inputPassword6" class="col-form-label ms-2">Desde:</label>
                     </div>
-                    <div class="col-auto">
+                    <div class="col-8 col-md-auto">
                       <select class="form-select form-select-sm" aria-label="Small select example" id="startYear"
                         [(ngModel)]="startDate" name="startDate">
                         <option value="0">Seleccionar fecha</option>
@@ -45,20 +44,20 @@
                   </div>
                 </div>
 
-                <div class="col">
+                <div class="col-md-6 mt-2 mt-md-0 mt-2">
                   <div class="row g-2 align-items-center">
-                    <div class="col-auto">
+                    <div class="col-4 col-md-auto">
                       <label for="inputPassword6" class="col-form-label ms-2">Hasta:</label>
                     </div>
-                    <div class="col-auto">
+                    <div class="col-8 col-md-auto">
                       <select class="form-select form-select-sm" aria-label="Small select example" id="endYear"
                         [(ngModel)]="endDate" name="endDate">
                         <option value="0">Seleccionar fecha</option>
                         <option *ngFor="let date of a_referenciaHasta" [value]="date">{{ date }}</option>
                       </select>
                     </div>
-                    <div class="col-auto">
-                      <button class="btn btn-outline-secondary btn-sm ms-auto mb-0"
+                    <div class="col-12 col-md-auto mt-2">
+                      <button class="btn btn-outline-secondary btn-sm ms-auto mb-0 w-100"
                         (click)="filterProductsByDateRangeReferencia()">
                         <i class="bi bi-search"></i>
                       </button>
@@ -68,19 +67,19 @@
               </div>
             </div>
 
-            <div class="col">
+            <div class="col-12 col-md-6 mt-md-0 mt-2">
               <ul class="list-group list-group-flush">
                 <li class="list-group-item text-primary-emphasis bg-primary-subtle">
                   Consultar por años de Publicación:
                 </li>
               </ul>
               <div class="row mt-1">
-                <div class="col">
+                <div class="col-md-6">
                   <div class="row g-2 align-items-center">
-                    <div class="col-auto">
+                    <div class="col-4 col-md-auto">
                       <label for="inputPassword6" class="col-form-label ms-2">Desde:</label>
                     </div>
-                    <div class="col-auto">
+                    <div class="col-8 col-md-auto">
                       <select class="form-select form-select-sm" aria-label="Small select example" id="startYear2"
                         [(ngModel)]="startDate2" name="startDate2">
                         <option value="0">Seleccionar fecha</option>
@@ -91,20 +90,20 @@
                   </div>
                 </div>
 
-                <div class="col">
+                <div class="col-md-6 mt-2 mt-md-0">
                   <div class="row g-2 align-items-center">
-                    <div class="col-auto">
+                    <div class="col-4 col-md-auto">
                       <label for="inputPassword6" class="col-form-label ms-2">Hasta:</label>
                     </div>
-                    <div class="col-auto">
+                    <div class="col-8 col-md-auto">
                       <select class="form-select form-select-sm" aria-label="Small select example" id="endYear2"
                         [(ngModel)]="endDate2" name="endDate2">
                         <option value="0">Seleccionar fecha</option>
                         <option *ngFor="let date of a_publicacionHasta" [value]="date">{{ date }}</option>
                       </select>
                     </div>
-                    <div class="col-auto">
-                      <button class="btn btn-outline-secondary btn-sm ms-auto mb-0"
+                    <div class="col-12 col-md-auto mt-2 ">
+                      <button class="btn btn-outline-secondary btn-sm ms-auto mb-0 w-100"
                         (click)="filterProductsByDateRangePublicacion()">
                         <i class="bi bi-search"></i>
                       </button>
@@ -116,8 +115,11 @@
             </div>
           </div>
 
-          <div class="row mb-1">
-            <div class="col-4">
+
+          <!-- TODO: 3 filtros  -->
+          <div class="row mb-1 d-none d-md-flex">
+
+            <div class="col-md-4">
               <ul class="list-group list-group-flush">
                 <li class="list-group-item text-primary-emphasis bg-primary-subtle">
                   Producto de tipo:
@@ -140,9 +142,7 @@
 
             </div>
 
-
-
-            <div class="col-4">
+            <div class="col-md-4">
               <ul class="list-group list-group-flush">
                 <li class="list-group-item text-primary-emphasis bg-primary-subtle">
                   Coberturas:
@@ -188,8 +188,7 @@
               </div>
             </div>
 
-            <!-- TODO: Tipo de soporte -->
-            <div class="col-4">
+            <div class="col-md-4">
               <ul class="list-group list-group-flush">
                 <li class="list-group-item text-primary-emphasis bg-primary-subtle">
                   Tipos de soporte:
@@ -229,7 +228,126 @@
 
           </div>
 
-          <div class="row">
+          <!-- TODO: VERSION MOVIL -->
+          <div class="row mb-1 d-flex d-md-none">
+            <div class="col-12">
+              <!-- Contenido de la columna 1 para móvil -->
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item text-primary-emphasis bg-primary-subtle">
+                  Producto de tipo:
+                </li>
+              </ul>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="prodgeografico"
+                  [checked]="checkboxesState['prodgeografico']" (change)="handleCheckboxChange($event)">
+                <label class="form-check-label" for="prodgeografico">
+                  Geográfico
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="prodestadistico"
+                  [checked]="checkboxesState['prodestadistico']" (change)="handleCheckboxChange($event)">
+                <label class="form-check-label" for="prodestadistico">
+                  Estadístico
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="row mb-1 d-flex d-md-none">
+            <div class="col-12">
+              <!-- Contenido de la columna 2 para móvil -->
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item text-primary-emphasis bg-primary-subtle">
+                  Coberturas:
+                </li>
+              </ul>
+
+              <div class="row">
+                <div class="col">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="cobeNacional"
+                      [checked]="checkboxesState['cobeNacional']" (change)="handleCheckboxChange($event)">
+                    <label class="form-check-label" for="cobeNacional">
+                      Nacional
+                    </label>
+                  </div>
+
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="cobeEstatal"
+                      [checked]="checkboxesState['cobeEstatal']" (change)="handleCheckboxChange($event)">
+                    <label class="form-check-label" for="cobeEstatal">
+                      Estatal
+                    </label>
+                  </div>
+                </div>
+
+                <div class="col">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="cobeMunicipal"
+                      [checked]="checkboxesState['cobeMunicipal']" (change)="handleCheckboxChange($event)">
+                    <label class="form-check-label" for="cobeMunicipal">
+                      Municipal
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="cobRegional"
+                      [checked]="checkboxesState['cobRegional']" (change)="handleCheckboxChange($event)">
+                    <label class="form-check-label" for="cobRegional">
+                      Regional
+                    </label>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row mb-1 d-flex d-md-none">
+            <div class="col-12">
+              <!-- Contenido de la columna 3 para móvil -->
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item text-primary-emphasis bg-primary-subtle">
+                  Tipos de soporte:
+                </li>
+              </ul>
+              <div class="row">
+                <div class="col">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="typeDatoGeo"
+                      [checked]="checkboxesState['typeDatoGeo']" (change)="handleCheckboxChange($event)">
+                    <label class="form-check-label" for="typeDatoGeo">
+                      Datos Geográficos
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="typeTabulado"
+                      [checked]="checkboxesState['typeTabulado']" (change)="handleCheckboxChange($event)">
+                    <label class="form-check-label" for="typeTabulado">
+                      Tabulado
+                    </label>
+                  </div>
+                </div>
+
+                <div class="col">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="typePublicacion"
+                      [checked]="checkboxesState['typePublicacion']" (change)="handleCheckboxChange($event)">
+                    <label class="form-check-label" for="typePublicacion">
+                      Publicaciones
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+
+
+
+
+          <!-- TODO: el buscados -->
+          <div class="row d-none d-md-flex">
             <div class="col-2"></div>
 
             <div class="col-8">
@@ -244,7 +362,6 @@
                   <div class="form-group">
                     <input type="text" class="form-control mt-2" [formControl]="searchFormControl"
                       placeholder="Buscar productos en todas las direcciones..." />
-
                     <div *ngIf="filteredProducts$ | async as filteredProducts">
                       <ul class="search-results" *ngIf="filteredProducts.length > 0">
                         <li *ngFor="let product of filteredProducts" class="search-result-item">
@@ -259,10 +376,49 @@
 
                 </div>
 
+
+
+
+
               </div>
             </div>
 
             <div class="col-2"></div>
+          </div>
+
+          <div class="row d-flex d-md-none">
+            <div class="col-12">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item text-primary-emphasis bg-primary-subtle">
+                  Buscar:
+                </li>
+              </ul>
+              <div class="row">
+                <div class="col">
+
+                  <div class="form-group">
+                    <input type="text" class="form-control mt-2" [formControl]="searchFormControl"
+                      placeholder="Buscar productos en todas las direcciones..." />
+                    <div *ngIf="filteredProducts$ | async as filteredProducts">
+                      <ul class="search-results" *ngIf="filteredProducts.length > 0">
+                        <li *ngFor="let product of filteredProducts" class="search-result-item">
+                          <div [routerLink]="['/dg/by', product.interview__id]">{{ product.nom_producto }}</div>
+                        </li>
+                      </ul>
+                      <p *ngIf="filteredProducts.length === 0 && searchFormControl.value !== ''">No se encontraron
+                        resultados.</p>
+                    </div>
+
+                  </div>
+
+                </div>
+
+
+
+
+
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -1395,5 +1551,28 @@
 
   </div>
 </ng-template>
+
+
+<div class="container-fluid">
+  <div class="row mt-2">
+    <div class="col-2"></div>
+    <div *ngIf="noProductsFound" class="col-8">
+      <div class="alert alert-primary text-center mt-2">
+        No se encontraron productos con esas características.
+      </div>
+      <div class="text-center mb-4">
+        <div class="d-none d-md-block">
+          <img src="./assets/nodata.svg" alt="" class="img-fluid img-desktop">
+        </div>
+        <div class="d-md-none">
+          <img src="./assets/nodata.svg" alt="" class="img-fluid img-mobile">
+        </div>
+      </div>
+    </div>
+    <div class="col-2"></div>
+  </div>
+</div>
+
+
 
 

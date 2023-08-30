@@ -24,3 +24,10 @@
   margin-top: 400px;
 }
 
+.card2 {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+  /* cursor: pointer; */
+  transition: transform 0.2s;
+}

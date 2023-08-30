@@ -25,17 +25,23 @@
 <ng-template #content>
 
   <div class="container-fluid">
+
   <div class="row">
     <div class="col">
       <div *ngFor="let dg of productsById; let i = index">
 
         <div class="row">
           <div class="col">
-            <div class="card1 shadow-sm  bg-body-tertiary rounded">
+            <div class="card2 shadow-sm  bg-body-tertiary rounded m-0 mt-2">
               <h3 style="color: #113250;">{{ dg.dg_prod == 1 ? 'Dirección General de Geografía y Medio Ambiente': (dg.dg_prod == 2 ? 'Dirección General de Estadísticas Sociodemográficas': (
               dg.dg_prod == 3 ? 'Dirección General de Estadísticas Económicas': (dg.dg_prod == 4 ? 'Dirección General de Estadísticas de Gobierno, Seguridad Pública y Justicia':(
               dg.dg_prod == 5 ? 'Dirección General de Integración, Análisis e Investigación':''))))}}.
               </h3>
+            </div>
+
+            <div class="card1 shadow-sm  bg-body-tertiary rounded">
+
+
               <h4>{{ dg.nom_producto }}.</h4>
               <!-- TODO: <h6 class="ms-0">{{ dg.nom_prod }}.</h6> -->
 

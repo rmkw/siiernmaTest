@@ -73,6 +73,9 @@ export class ProductPageComponent implements OnInit{
   public dgs: UAdmin[] = [];
   currentDirection: any;
 
+  noProductsFound: boolean = false;
+
+
 
 
 
@@ -225,6 +228,12 @@ export class ProductPageComponent implements OnInit{
     const checkboxId = target.id;
     this.checkboxesState[checkboxId] = target.checked;
     this.applyFilters(); // Si es otro checkbox, aplicar los filtros según los checkboxes seleccionados
+
+    if (this.filteredProducts.length === 0) {
+      this.noProductsFound = true;
+    } else {
+      this.noProductsFound = false;
+    }
   }
 
   allFalse(): void {
@@ -253,8 +262,6 @@ export class ProductPageComponent implements OnInit{
 }
 
   applyFilters(): void {
-
-
   this.showFilteredProducts = false; // Inicialmente, asumimos que no se muestran productos filtrados
   this.filteredProducts = this.productsById; // Establecemos los productos filtrados como todos los productos disponibles
 
@@ -297,6 +304,11 @@ export class ProductPageComponent implements OnInit{
       return passTypeFilter && passCoberturaFilter && passTipoSoporteFilter;
 
     });
+  }
+  if (this.filteredProducts.length === 0) {
+    this.noProductsFound = true;
+  } else {
+    this.noProductsFound = false;
   }
   this.filterProductsByDateRangeReferencia();
   this.filterProductsByDateRangePublicacion();
