@@ -978,18 +978,18 @@
                       </div>
                       <div class="col-md-3 col-12">
                         <span *ngIf="dg.escala">Escala geográfica: </span>
-                        <span *ngIf="dg.escala == 14">
+                        <div *ngIf="dg.escala == 14">
                           <span class="badge">
                             {{ dg.o_escala }}
                           </span>
-                        </span>
+                        </div>
                         <span *ngIf="dg.escala">
                           <span class="badge">
                             {{ dg.escala == 14 ? '' : getEscalasText(dg.escala) }}
                           </span>
                         </span>
                         <span *ngIf="!dg.escala">
-                          <strong> Ninguna escala geográfica. </strong>
+                          <span> Ninguna escala geográfica. </span>
                         </span>
                       </div>
                     </div>
@@ -1136,7 +1136,7 @@
                             {{dg.num_aeg}}
                           </span>
                         </span>
-                        <span *ngIf="dg.act_aeg == 2">
+                        <span *ngIf="dg.act_aeg != 1">
                           <strong> No cuenta con Actividad Estadística o Geográfica.</strong>
                         </span>
                         <br>
@@ -1146,7 +1146,7 @@
                             {{dg.num_ods}}
                           </span>
                         </span>
-                        <span *ngIf="dg.relacion_ods == 2">
+                        <span *ngIf="dg.relacion_ods != 1">
                           <strong> No cuenta con relaciones con los Objetivos del Desarrollo Sostenible (ODS).</strong>
                         </span>
                       </div>
@@ -1158,7 +1158,7 @@
                             {{dg.num_pi}}
                           </span>
                         </span>
-                        <span *ngIf="dg.pi == 2">
+                        <span *ngIf="dg.pi != 1">
                           <strong> Ningún Producto de Información detectado.</strong>
                         </span>
                         <br>
@@ -1168,7 +1168,7 @@
                             {{dg.num_mdea}}
                           </span>
                         </span>
-                        <span *ngIf="dg.relacion_mdea == 2">
+                        <span *ngIf="dg.relacion_mdea != 1">
                           <strong> No cuenta con relaciones con el Marco para el Desarrollo de las Estadísticas
                             Ambientales.</strong>
                         </span>
@@ -1179,7 +1179,7 @@
                             {{dg.num_ods}}
                           </span>
                         </span>
-                        <span *ngIf="dg.relacion_ods == 2">
+                        <span *ngIf="dg.relacion_ods != 1">
                           <strong> No cuenta con relaciones con algún Programa Sectorial (PS).</strong>
                         </span>
                       </div>
@@ -1280,8 +1280,8 @@
                           }}
                         </span>
                       </div>
-                      <div class="col-md-3 col-12">
-                        <span *ngIf="dg.fragmenta == 1">
+                      <div class="col-md-3 col-12" *ngIf="dg.fragmenta == 1">
+                        <span >
                           Número de fragmentos:
                         </span>
                         <span class="badge m-1">
@@ -1312,18 +1312,18 @@
                       </div>
                       <div class="col-md-3 col-12">
                         <span *ngIf="dg.escala">Escala geográfica: </span>
-                        <span *ngIf="dg.escala == 14">
+                        <div *ngIf="dg.escala == 14">
                           <span class="badge">
                             {{ dg.o_escala }}
                           </span>
-                        </span>
+                        </div>
                         <span *ngIf="dg.escala">
                           <span class="badge">
                             {{ dg.escala == 14 ? '' : getEscalasText(dg.escala) }}
                           </span>
                         </span>
                         <span *ngIf="!dg.escala">
-                          <strong> Ninguna escala geográfica. </strong>
+                          <span> Ninguna escala geográfica. </span>
                         </span>
                       </div>
                     </div>
@@ -1470,7 +1470,7 @@
                             {{dg.num_aeg}}
                           </span>
                         </span>
-                        <span *ngIf="dg.act_aeg == 2">
+                        <span *ngIf="dg.act_aeg != 1">
                           <strong> No cuenta con Actividad Estadística o Geográfica.</strong>
                         </span>
                         <br>
@@ -1480,7 +1480,7 @@
                             {{dg.num_ods}}
                           </span>
                         </span>
-                        <span *ngIf="dg.relacion_ods == 2">
+                        <span *ngIf="dg.relacion_ods != 1">
                           <strong> No cuenta con relaciones con los Objetivos del Desarrollo Sostenible (ODS).</strong>
                         </span>
                       </div>

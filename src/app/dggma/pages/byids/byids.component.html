@@ -119,14 +119,14 @@
 
                   <div class="col-md-3 col-12">
                     <span *ngIf="dg.escala">Escala geográfica: </span>
-                    <span *ngIf="dg.escala == 14">
+                    <div *ngIf="dg.escala == 14">
                       <span class="badge">{{ dg.o_escala }}</span>
-                    </span>
+                    </div>
                     <span *ngIf="dg.escala">
                       <span class="badge">{{ dg.escala == 14 ? '' : getEscalasText(dg.escala) }}</span>
                     </span>
                     <span *ngIf="!dg.escala">
-                      <strong> Ninguna escala geográfica. </strong>
+                      <span> Ninguna escala geográfica. </span>
                     </span>
                   </div>
 
