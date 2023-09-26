@@ -16,6 +16,8 @@ import { UAdmin } from '../../interfaces/u_admin.interface';
 })
 
 export class MdeaPageComponent  implements OnInit, AfterViewInit{
+  subcomponentes: Subcomponente[] =[];
+  topicos: Topico[] = [];
 
   
 
@@ -101,113 +103,69 @@ export class MdeaPageComponent  implements OnInit, AfterViewInit{
       this.selectorCHabilitado = false;
     }
   
-  
-    funcionselectora(event: any)  {
-      const selectedValue = event.target.value;
-      console.log(selectedValue);
-  
-      this._direServices.getMDEASCompByProduct(selectedValue)
-      .subscribe( data => {
-        this.produtosIDS = data; console.log('ProductosComponente', data);
+    mdeasByComponente(){
+        this.filteredProducts=this.products.filter(data => this.mdeas?.some(mdea => mdea.interview__id === data.interview__id))
+         console.log(this.filteredProducts)
+    }
 
-        if (selectedValue === '0') { 
-          this.subComponentesFiltrados;
-        }else if (selectedValue === '1') { 
-          this.subComponentesFiltrados = this.subComponentesMDEA.slice(0, 3);
-        } else if(selectedValue === '2'){
-          this.subComponentesFiltrados = this.subComponentesMDEA.slice(3, 9);
-        } else if(selectedValue === '3'){
-          this.subComponentesFiltrados = this.subComponentesMDEA.slice(9, 13);
-        } else if(selectedValue === '4'){
-          this.subComponentesFiltrados = this.subComponentesMDEA.slice(13, 15);
-        } else if(selectedValue === '5'){
-          this.subComponentesFiltrados = this.subComponentesMDEA.slice(15, 17);
-        } else if(selectedValue === '6'){
-          this.subComponentesFiltrados = this.subComponentesMDEA.slice(17, 21);
-        } else {
-          
-          this.subComponentesFiltrados;
-        }
+    
+  
+
+    SelectorComponente(event: any)  {
+      const id = event.target.value;
+      console.log(id);
+  
+      this._direServices.getMDEASSubCompByComp(id)
+      .subscribe( data => {
+        this.subcomponentes = data; console.log('SubComponente', data);
+        
       })
-      const idsUnicos = Array.from(new Set(this.produtosIDS.map(producto => producto.interview__id)));
-      console.log('ProductosUnicos',idsUnicos);
-      
+
+      this._direServices.getMDEASCompByProduct(id)
+      .subscribe( data => {
+        this.mdeas = data;
+        this.mdeasByComponente()
+      })
       
     }
 
-    funcionselectorb(event: any)  {
-      const selectedValue = event.target.value;
-      console.log(selectedValue);
+    SelectorSubcomponente(event: any)  {
+      const id = event.target.value;
+      console.log(id);
   
-      this._direServices.getMDEASSubCompByComp(selectedValue)
+      this._direServices.getMDEASTopicoBySubcomp(id)
       .subscribe( data => {
-        this.produtosIDS = data; console.log('ProductosSubComponente', data);
-        if (selectedValue === '0') { 
-          this.TopicosFiltrados;
-        }else if (selectedValue === '1') { 
-          this.TopicosFiltrados = this.topicoMDEA.slice(0, 4);
-        } else if(selectedValue === '2'){
-          this.TopicosFiltrados = this.topicoMDEA.slice(4, 7);
-        } else if(selectedValue === '3'){
-          this.TopicosFiltrados = this.topicoMDEA.slice(7, 12);
-        } else if(selectedValue === '4'){
-          this.TopicosFiltrados = this.topicoMDEA.slice(12, 14);
-        } else if(selectedValue === '5'){
-          this.TopicosFiltrados = this.topicoMDEA.slice(14, 16);
-        } else if(selectedValue === '6'){
-          this.TopicosFiltrados = this.topicoMDEA.slice(16, 18);
-        } else if(selectedValue === '7'){
-          this.TopicosFiltrados = this.topicoMDEA.slice(18, 19);
-        } else if(selectedValue === '8'){
-          this.TopicosFiltrados = this.topicoMDEA.slice(19, 24);
-        } else if(selectedValue === '9'){
-          this.TopicosFiltrados = this.topicoMDEA.slice(24, 26);
-        } else if(selectedValue === '10'){
-          this.TopicosFiltrados = this.topicoMDEA.slice(26, 29);
-        } else if(selectedValue === '11'){
-          this.TopicosFiltrados = this.topicoMDEA.slice(29, 32);
-        } else if(selectedValue === '12'){
-          this.TopicosFiltrados = this.topicoMDEA.slice(32, 34);
-        } else if(selectedValue === '13'){
-          this.TopicosFiltrados = this.topicoMDEA.slice(34, 35);
-        } else if(selectedValue === '14'){
-          this.TopicosFiltrados = this.topicoMDEA.slice(35, 37);
-        } else if(selectedValue === '15'){
-          this.TopicosFiltrados = this.topicoMDEA.slice(37, 39);
-        } else if(selectedValue === '16'){
-          this.TopicosFiltrados = this.topicoMDEA.slice(39, 44);
-        } else if(selectedValue === '17'){
-          this.TopicosFiltrados = this.topicoMDEA.slice(44, 49);
-        } else if(selectedValue === '18'){
-          this.TopicosFiltrados = this.topicoMDEA.slice(49, 51);
-        } else if(selectedValue === '19'){
-          this.TopicosFiltrados = this.topicoMDEA.slice(51, 54);
-        } else if(selectedValue === '20'){
-          this.TopicosFiltrados = this.topicoMDEA.slice(54, 56);
-        } else if(selectedValue === '21'){
-          this.TopicosFiltrados = this.topicoMDEA.slice(56, 60);
-        } else {
-          // Restablecer las opciones de selector2 a todas las disponibles
-          this.TopicosFiltrados;
-        }
+        this.topicos = data; console.log('Topico', data);
       })
-      const idsUnicos = Array.from(new Set(this.produtosIDS.map(producto => producto.interview__id)));
-      console.log('ProductosUnicos',idsUnicos);
-      
+      this._direServices.getMDEASSubCompByProduct(id)
+      .subscribe( data => {
+        this.mdeas = data;
+        this.mdeasByComponente()
+      })
+    }
+
+
+    SelectorTopico(event: any)  {
+      const id = event.target.value;
+      console.log(id);
+  
+      this._direServices.getMDEASTopico(id)
+      .subscribe( data => {
+        this.mdeas = data;
+        this.mdeasByComponente()
+      })
     }
 
     funcionselectorc(event: any)  {
       const selectedValue = event.target.value;
       console.log(selectedValue);
-  
       this._direServices.getMDEASTopicoBySubcomp(selectedValue)
       .subscribe( data => {
         this.produtosIDS = data; console.log('ProductosTopico', data);
-        
       })
       const idsUnicos = Array.from(new Set(this.produtosIDS.map(producto => producto.interview__id)));
       console.log('ProductosUnicos',idsUnicos);
-    
+      
     }
 
 
@@ -228,7 +186,6 @@ export class MdeaPageComponent  implements OnInit, AfterViewInit{
 
   }
 
- 
  
   
 
@@ -255,36 +212,11 @@ export class MdeaPageComponent  implements OnInit, AfterViewInit{
       this.mdeas = data;
     });
     
-    this._leeLink.params
-    .pipe(
-      switchMap(({ id }) => this._direServices.getMDEASCompByProduct(id))
-    )
-    .subscribe(data => {
-      this.componentesMDEA = data;
-    });
-
-    this._leeLink.params
-    .pipe(
-      switchMap(({ id }) => this._direServices.getMDEASById(id))
-    )
-    .subscribe(data => {
-      this.mdeas = data;
-    });
+   
 
 
    //Para leer las subdirecciones
-   this._leeLink.params
-   .pipe(
-     switchMap(({ by }) =>{
-       return this._direServices.getSecuenciaProductBy(by)
-     } )
-   )
-   .subscribe( data => {
-     this.productsById = data;
-     this.applyFilters();
-   })
   }
-
 
   //función que detecta los cambios en los checks box
 
@@ -295,19 +227,7 @@ export class MdeaPageComponent  implements OnInit, AfterViewInit{
   this.ngOnInit();
 }
 
-  applyFilters(): void {
-  this.showFilteredProducts = false; // Inicialmente, asumimos que no se muestran productos filtrados
-  this.filteredProducts = this.productsById; // Establecemos los productos filtrados como todos los productos disponibles
-
-  
-
-  if (this.filteredProducts.length === 0) {
-    this.noProductsFound = true;
-  } else {
-    this.noProductsFound = false;
-  }
-}
-
+ 
 
 
 loadComponentesByID (){
@@ -330,9 +250,6 @@ filterProductsByMdeaComponente(): void {
 }
 
 
-get obtnenerComponente(): Componente[]{
-    return this._direServices.obtnenerComponente; //
-  }
 }
 
 

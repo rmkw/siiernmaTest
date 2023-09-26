@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, catchError, map, of, tap } from 'rxjs';
+import { Observable, map, of, tap } from 'rxjs';
 import { environments } from 'src/app/environments/environments';
 import { Escalas, Products, SecuenciaVar } from "../interfaces/product.interface";
 import { Componente, Mdea, Subcomponente, Topico } from '../interfaces/mdea.interface';
@@ -13,14 +13,12 @@ import { IndicadoresPS2023, PS2023, SecuenciaPS } from '../interfaces/ps.interfa
 @Injectable({providedIn: 'root'})
 export class DGService {
 
-  private _Componente: Componente[] = [];
+ 
   private baseUrl: string = environments.baseUrl;
 
   constructor(private _http: HttpClient) { }
 
-  get obtnenerComponente(): Componente[] {
-    return[...this._Componente];   //Se delcara un metodo para conseguir las regiones
-  }  
+   
 
   getDG(){
     return this._http.get<UAdmin[]>(`${ this.baseUrl}/u_admin`)
@@ -60,25 +58,45 @@ export class DGService {
   } 
 
 // Con este servicio traeremos el id de los componentes que se relacionara con el producto servicios MDEA
-  getMDEASCompByProduct( idcomponente: number ): Observable<Componente[]> {
-    const url = `${ this.baseUrl}/mdea?comp_mdea=${ idcomponente }`; 
+  getMDEASCompByProduct( id: number ): Observable<Mdea[]> {
+    const url = `${ this.baseUrl}/mdea?comp_mdea=${ id }`; 
      console.log(url);
-     return this._http.get<Componente[]>(url)
+     return this._http.get<Mdea[]>(url)
+     
+   } 
+
+
+   getMDEASSubCompByProduct( id: number ): Observable<Mdea[]> {
+    const url = `${ this.baseUrl}/mdea?subcomp_mdea=${ id }`; 
+     console.log(url);
+     return this._http.get<Mdea[]>(url)
      .pipe(
       tap(data => data)
      );
    } 
 
+
+   getMDEASTopico( id: number ): Observable<Mdea[]> {
+    const url = `${ this.baseUrl}/mdea?topico_mdea=${ id }`; 
+     console.log(url);
+     return this._http.get<Mdea[]>(url)
+     .pipe(
+      tap(data => data)
+     );
+   } 
+
+// 
    getMDEASSubCompByComp( idsubcomponente: number ): Observable<Subcomponente[]> {
-    const url = `${ this.baseUrl}/mdea?subcomp_mdea=${ idsubcomponente }`; 
+    const url = `${ this.baseUrl}/subcomponentes?parentid=${ idsubcomponente }`; 
      console.log(url);
      return this._http.get<Subcomponente[]>(url)
      .pipe(
        tap(data => data)
      );
    } 
+
    getMDEASTopicoBySubcomp( idtopico: number ): Observable<Topico[]> {
-    const url = `${ this.baseUrl}/mdea?topico_mdea=${ idtopico }`; 
+    const url = `${ this.baseUrl}/topicos?parentid=${ idtopico }`; 
      console.log(url);
      console.log(idtopico)
      return this._http.get<Topico[]>(url)
@@ -110,6 +128,7 @@ export class DGService {
   }
 
 // Servicios para filtrar por ODS <--inicio-->
+
   getODSById( id: string ): Observable<SecuenciaOds[]> {
     const url = `${ this.baseUrl}/secuencia_ods?interview__id=${ id }`;
     console.log(url);
@@ -120,6 +139,28 @@ export class DGService {
     );
   }
 
+  getODSObjetivo( id: string ): Observable<SecuenciaOds[]> {
+    const url = `${ this.baseUrl}/secuencia_ods?obj_ods=${ id }`;
+    console.log(url);
+    console.log(id)
+    return this._http.get<SecuenciaOds[]>(url)
+    .pipe(
+      tap(data => console.log(data))
+    );
+  }
+ 
+
+  getODSMeta( id: string ): Observable<SecuenciaOds[]> {
+    const url = `${ this.baseUrl}/secuencia_ods?meta_ods=${ id }`;
+    console.log(url);
+    console.log(id)
+    return this._http.get<SecuenciaOds[]>(url)
+    .pipe(
+      tap(data => console.log(data))
+    );
+  }
+
+
   getODSbyObjetivo( idobjetivo: number ): Observable<Ods[]> {
     const url = `${ this.baseUrl}/ods?id=${ idobjetivo }`; 
      console.log(url);
@@ -129,8 +170,8 @@ export class DGService {
      );
    } 
 
-   getMetabyObjetivo( idmeta: number ): Observable<MetaODS[]> {
-    const url = `${ this.baseUrl}/metaods?id=${ idmeta }`; 
+   getMetabyObjetivo( id: number ): Observable<MetaODS[]> {
+    const url = `${ this.baseUrl}/metaods?parentid=${ id }`; 
      console.log(url);
      return this._http.get<MetaODS[]>(url)
      .pipe(
@@ -138,6 +179,15 @@ export class DGService {
      );
    } 
 
+   getODSObj(  ): Observable<SecuenciaOds[]> {
+    const url = `${ this.baseUrl}/secuencia_ods`;
+    console.log(url);
+    
+    return this._http.get<SecuenciaOds[]>(url)
+    .pipe(
+      tap(data => console.log(data))
+    );
+  }
 
   // <--FIN ODS-->
 

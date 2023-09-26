@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./indicadores-page.component.css']
 })
 export class IndicadoresPageComponent {
+  
+
+  underconstruction: boolean = true
 
 }

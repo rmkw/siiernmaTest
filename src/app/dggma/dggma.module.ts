@@ -8,11 +8,9 @@ import { ProductPageComponent } from './pages/product-page/product-page.componen
 import { MdeaPageComponent } from './pages/mdea-page/mdea-page.component';
 import { SearchPageComponent } from './pages/search-page/search-page.component';
 import { ByidsComponent } from './pages/byids/byids.component';
-import { NgbModalModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OdsPageComponent } from './pages/ods-page/ods-page.component';
 import { IndicadoresPageComponent } from './pages/indicadores-page/indicadores-page.component';
-import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
   declarations: [
@@ -28,10 +26,8 @@ import { BrowserModule } from '@angular/platform-browser';
   imports: [
     CommonModule,
     DggmaRoutingModule,
-    NgbModule,
     FormsModule,
     ReactiveFormsModule,
-    NgbModalModule,
   ]
 })
 export class DggmaModule { }
