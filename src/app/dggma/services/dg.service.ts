@@ -13,9 +13,14 @@ import { IndicadoresPS2023, PS2023, SecuenciaPS } from '../interfaces/ps.interfa
 @Injectable({providedIn: 'root'})
 export class DGService {
 
+  private _Componente: Componente[] = [];
   private baseUrl: string = environments.baseUrl;
 
   constructor(private _http: HttpClient) { }
+
+  get obtnenerComponente(): Componente[] {
+    return[...this._Componente];   //Se delcara un metodo para conseguir las regiones
+  }  
 
   getDG(){
     return this._http.get<UAdmin[]>(`${ this.baseUrl}/u_admin`)
@@ -25,6 +30,7 @@ export class DGService {
     return this._http.get<Products[]>(`${ this.baseUrl}/products`)
   }
 
+  
   getMdea(){
     return this._http.get<Mdea[]>(`${ this.baseUrl}/mdea`)
   }
@@ -32,21 +38,58 @@ export class DGService {
   getComponentes(){
     return this._http.get<Componente[]>(`${ this.baseUrl}/componentes`)
   }
+
   getSubcomponentes(){
     return this._http.get<Subcomponente[]>(`${ this.baseUrl}/subcomponentes`)
   }
   getTopicos(){
     return this._http.get<Topico[]>(`${ this.baseUrl}/topicos`)
   }
+
+
+
+//Servicios para mandar a llamar los ID necesarios para el MDEA
   getMDEASById( id: string ): Observable<Mdea[]> {
-    const url = `${ this.baseUrl}/mdea?interview__id=${ id }`;
+   const url = `${ this.baseUrl}/mdea?interview__id=${ id }`; 
     console.log(url);
     console.log(id)
     return this._http.get<Mdea[]>(url)
     .pipe(
       tap(data => console.log(data))
     );
-  }
+  } 
+
+// Con este servicio traeremos el id de los componentes que se relacionara con el producto servicios MDEA
+  getMDEASCompByProduct( idcomponente: number ): Observable<Componente[]> {
+    const url = `${ this.baseUrl}/mdea?comp_mdea=${ idcomponente }`; 
+     console.log(url);
+     return this._http.get<Componente[]>(url)
+     .pipe(
+      tap(data => data)
+     );
+   } 
+
+   getMDEASSubCompByComp( idsubcomponente: number ): Observable<Subcomponente[]> {
+    const url = `${ this.baseUrl}/mdea?subcomp_mdea=${ idsubcomponente }`; 
+     console.log(url);
+     return this._http.get<Subcomponente[]>(url)
+     .pipe(
+       tap(data => data)
+     );
+   } 
+   getMDEASTopicoBySubcomp( idtopico: number ): Observable<Topico[]> {
+    const url = `${ this.baseUrl}/mdea?topico_mdea=${ idtopico }`; 
+     console.log(url);
+     console.log(idtopico)
+     return this._http.get<Topico[]>(url)
+     .pipe(
+       tap(data => data)
+     );
+   } 
+// <-- Fin MDEA -->
+
+
+//Servicio para mandar a llamar los id que se van a ocupar en otros servicios. 
   getPIById( id: string ): Observable<Pi[]> {
     const url = `${ this.baseUrl}/pi?interview__id=${ id }`;
     console.log(url);
@@ -65,6 +108,8 @@ export class DGService {
       tap(data => console.log(data))
     );
   }
+
+// Servicios para filtrar por ODS <--inicio-->
   getODSById( id: string ): Observable<SecuenciaOds[]> {
     const url = `${ this.baseUrl}/secuencia_ods?interview__id=${ id }`;
     console.log(url);
@@ -74,6 +119,29 @@ export class DGService {
       tap(data => console.log(data))
     );
   }
+
+  getODSbyObjetivo( idobjetivo: number ): Observable<Ods[]> {
+    const url = `${ this.baseUrl}/ods?id=${ idobjetivo }`; 
+     console.log(url);
+     return this._http.get<Ods[]>(url)
+     .pipe(
+      tap(data => data)
+     );
+   } 
+
+   getMetabyObjetivo( idmeta: number ): Observable<MetaODS[]> {
+    const url = `${ this.baseUrl}/metaods?id=${ idmeta }`; 
+     console.log(url);
+     return this._http.get<MetaODS[]>(url)
+     .pipe(
+      tap(data => data)
+     );
+   } 
+
+
+  // <--FIN ODS-->
+
+
   getSecuenciaPSBy( id: string ): Observable<SecuenciaPS[]> {
     const url = `${ this.baseUrl}/secuencia_ps?interview__id=${ id }`;
     console.log(url);
@@ -83,6 +151,7 @@ export class DGService {
       tap(data => console.log('DATA by Service',data))
     );
   }
+
   getSecuenciaVARBy( id: string ): Observable<SecuenciaVar[]> {
     const url = `${ this.baseUrl}/secuencia_var?interview__id=${ id }`;
     console.log(url);
@@ -112,7 +181,7 @@ export class DGService {
 
       );
   }
-
+//Desde Aqui se añaden las funciones para mandar a llamar el servicio y obtener las fechas. 
   getProductArrayDateREFERENCIA(id: string): Observable<string[]> {
   const url = `${this.baseUrl}/products?dg_prod=${id}`;
   return this._http.get<Products[]>(url)
@@ -142,6 +211,27 @@ export class DGService {
       map(products => products.map(product => (product.a_publicacion2 !== undefined) ? product.a_publicacion2.toString() : '')),
     );
   }
+
+  //Aqui creaeremos los arreglos para que estos puedan traer el id del mdea que se obtiene desde el producto y obtener la secuencia
+
+  getProductArrayMDEA(id: string): Observable<string[]> {
+    const url = `${this.baseUrl}/products?relacion_mdea=${id}`;
+    return this._http.get<Products[]>(url)
+      .pipe(
+        map(products => products.map(product => product.relacion_mdea.toString())),
+      );
+    }
+
+    getProductArray(id: string): Observable<string[]> {
+      const url = `${this.baseUrl}/products?dg_prod=${id}`;
+      return this._http.get<Products[]>(url)
+        .pipe(
+          map(products => products.map(product => (product.num_mdea !== undefined) ? product.num_mdea.toString() : '')),
+        );
+      }
+    
+
+    // Aqui filtramos por productos
 
   getProductById( id: string ): Observable<Products[]> {
     const url = `${ this.baseUrl}/products?interview__id=${ id }`;

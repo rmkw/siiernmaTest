@@ -9,3 +9,14 @@
   width: 8%;
   /* Tamaño original del logo en la versión de escritorio */
 }
+
+.selected:hover {
+  background-color: #c6d0e0; /* Cambia el color de fondo al pasar el mouse */
+  border-radius: 5px;
+  padding-right: 20px;
+}
+
+li {
+  cursor: pointer;
+  transition: 0.2s all;
+}

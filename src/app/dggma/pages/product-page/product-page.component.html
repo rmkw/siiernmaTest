@@ -1,5 +1,3 @@
-
-
 <ng-container *ngIf="loading; else content">
   <div class="container-fluid">
     <div class="row">
@@ -346,7 +344,7 @@
 
 
 
-          <!-- TODO: el buscados -->
+          <!-- TODO: el buscador en la version movil -->
           <div class="row d-none d-md-flex">
             <div class="col-2"></div>
 
@@ -383,7 +381,7 @@
               </div>
             </div>
 
-            <div class="col-2"></div>
+        <div class="col-2"></div>
           </div>
 
           <div class="row d-flex d-md-none">
@@ -918,7 +916,7 @@
                         </span>
                         <span class="badge" *ngIf="dg.cobertura_geo__5 == 1">
 
-                          {{ dg.cobertura_geo__5 == 1 ? 'Otra: '+dg.o_cobertura : '' }}
+                          {{ dg.cobertura_geo__5 == 1 ? 'Otra: ' + dg.o_cobertura : '' }}
                         </span>
                       </div>
                       <div class="col-md-3 col-12">

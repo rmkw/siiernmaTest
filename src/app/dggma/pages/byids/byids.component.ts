@@ -241,6 +241,7 @@ getComponenteText(comp_mdea: number): string {
   }
   return componentesMDEAText;
 }
+
 getSubcomponenteText(subcomp_mdea: number): string {
   let subComponentesMDEAText = '';
   for (let subComponentesMDEA of this.subComponentesMDEA) {
@@ -251,6 +252,7 @@ getSubcomponenteText(subcomp_mdea: number): string {
   }
   return subComponentesMDEAText;
 }
+
 getTopicoText(topico_mdea: number): string {
   let topicoMDEAText = '';
   for (let topicoMDEA of this.topicoMDEA) {
@@ -261,6 +263,7 @@ getTopicoText(topico_mdea: number): string {
   }
   return topicoMDEAText;
 }
+
 getAEG_2Text(nom_aeg: number): string {
   let aeg_2Text = '';
   for (let aeg_2 of this.aeg_2) {
@@ -339,14 +342,17 @@ getEscalasText(indicador_ps: number): string {
 
 }
 
-
-
-  toggleCollapse(index: number): void {
-    if (this.expandedIndex === index) {
-      this.expandedIndex = null;
-    } else {
-      this.expandedIndex = index;
-    }
+toggleCollapse(index: number): void {
+  if (this.expandedIndex === index) {
+    this.expandedIndex = null;
+  } else {
+    this.expandedIndex = index;
   }
+}
+allFalse(): void {
+ 
+
+  this.ngOnInit();
+}
 
 }

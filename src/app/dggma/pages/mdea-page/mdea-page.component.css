@@ -1,0 +1,125 @@
+.card1 {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-top: 10px;
+  /* cursor: pointer; */
+  transition: transform 0.2s;
+}
+
+.card2 {
+  border: 2px solid #6b7d91;
+  padding: 10px;
+  margin: 10px;  
+}
+
+@media (max-width: 767px) {
+  .search-results {
+    width: 100%;
+    /* Ajusta el ancho para que ocupe toda la pantalla */
+    left: 0;
+    /* Alinea la lista a la izquierda */
+  }
+
+  .col-md-12.button-col {
+    margin-top: 10px;
+  }
+}
+
+/* Estilos para la versión de escritorio */
+@media (min-width: 992px) {
+  .img-desktop {
+    max-width: 35%;
+  }
+}
+
+/* Estilos para la versión móvil */
+@media (max-width: 991px) {
+  .img-mobile {
+    max-width: 75%;
+    /* Ajusta este valor según tus necesidades */
+  
+  }
+
+}
+
+
+
+/* Estilos para el sidebar */
+.sidebar {
+  
+  width: 250px;
+  color: white;
+  padding: 5px;
+  position: fixed;
+  top: 130px;
+  left: 30px; /* Ajusta la distancia desde la izquierda según tus necesidades */
+  z-index: 500;
+} 
+@media (max-width: 768px) {
+.sidebar {
+  left: 10px; /* Ajusta la distancia desde la izquierda para dispositivos móviles */
+}
+}
+
+
+
+/* Estilo para el botón */
+.scroll-to-top-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #5EAAA6; /* Color de fondo del botón */
+  color: #fff; /* Color del texto del botón */
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Transición suave del color de fondo */
+}
+
+
+.scroll-to-top-button:hover {
+  background-color: #73C3BF; /* Cambia el color de fondo al pasar el mouse */
+  
+}
+
+
+.subtlepersonalized {
+  background-color: #8acdca;
+}
+
+.btn-mdea {
+  background-color: #5EAAA6;
+}
+.btn-mdea:hover {
+  background-color: #abc6c4;
+}
+
+
+.btn-primary {
+  background-color: #113250;
+  margin-top: 2;
+}
+
+#fondo{
+  background-color: #113250;
+}
+
+p{
+  color: aliceblue;
+}
+
+.btn-fixed-size {
+  min-width: 100px; /* Define el ancho mínimo deseado para el botón */
+}
+
+
+#filtroSeccion {
+  height: 400px; /* Establece la altura deseada cuando la tarjeta está expandida */
+  transition: height 0.5s;
+  width: 16rem;
+}
+
+.bi-funnel {
+color: white;
+}
