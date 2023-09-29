@@ -62,7 +62,6 @@ export class DGService {
     const url = `${ this.baseUrl}/mdea?comp_mdea=${ id }`; 
      console.log(url);
      return this._http.get<Mdea[]>(url)
-     
    } 
 
 
@@ -139,7 +138,7 @@ export class DGService {
     );
   }
 
-  getODSObjetivo( id: string ): Observable<SecuenciaOds[]> {
+  getODSObjetivo( id: number ): Observable<SecuenciaOds[]> {
     const url = `${ this.baseUrl}/secuencia_ods?obj_ods=${ id }`;
     console.log(url);
     console.log(id)

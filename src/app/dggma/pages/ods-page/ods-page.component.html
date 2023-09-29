@@ -1,90 +1,77 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-12">
-      <div class="card shadow-sm  subtlepersonalized m-1" >
-        <h5 style="color: #113250; text-align: center; margin-top: 5px;">Relación con los Objetivos del Desarrollo Sostenible (ODS)</h5>
-      </div>
-    </div>
-  </div>
-
-
- 
-  <div class="row " id="fondo">
-    <div class="col-2">
-    <div class="sidebar d-none d-md-flex"  style="width: 300px; height: 300x;">
-    <div class="row">
-    <div class="col-12">
+   <div class="col">
     <div class="card2 shadow-sm  bg-body-tertiary rounded m-1">
+
       <div class="d-flex">
-      <div>
-        <h6 style="color:#113250; ">
-          Filtrar<button class="btn" style="background-color: #113250; margin-left: 10px;" (click)="expanded = !expanded">
-            <i class="bi bi-funnel"></i>
-          </button>
-        </h6>
-        <div class="card card-body" id="filtroSeccion" *ngIf="expanded">
-          <div class="col-12">
-            <ul class="list-group list-group-flush"  >
+        <div class="col">
+          <h5 class="mt-2" style="color: #1f5a91; text-align: center;">Relación con los Objetivos del Desarrollo Sostenible (ODS)</h5>
+        </div>
+      </div>
+
+
+
+      <!-- Selectores -->
+          <div class="row m-1" id="filtroSeccion" >
+
+            <div class="col-md-6">
+              <ul class="list-group list-group-flush"  >
+                <li class="list-group-item text-primary-emphasis subtlepersonalized">
+                  Consultar por Objetivo:
+                </li>
+              </ul>
+              <div class="row mt-1">
+                <div class="col-md-12">
+                   <div class="row g-2 align-items-center">
+                    <div class="col-4 col-md-auto">
+
+                      <div class="row mb-3">
+                        <div class="col mt-3">
+                          <select class="form-select form-select-sm" (change)="SelectorODS($event)"  >
+                            <option selected> -- Objetivo -- </option>
+                            <option *ngFor="let obj of objetivods" [value]="obj.id">{{ obj.text | slice:3 }}</option>
+                          </select>
+                        </div>
+                      </div>
+                     </div>
+                   </div>
+                </div>
+              </div>
+            </div>
+                   <div class="col-md-6">
+                        <ul class="list-group list-group-flush" >
                           <li class="list-group-item text-primary-emphasis subtlepersonalized">
-                            Consultar por Objetivo:
+                            Consultar por Meta:
                           </li>
                         </ul>
                         <div class="row mt-1">
-                          <div class="col-md-12">
-                            <div class="row g-2 align-items-center">
-                              <div class="col-4 col-md-auto">
-                      
-                          <div class="row mb-3">
-                      <div class="col mt-3">
-                        <select class="form-select form-select-sm" (change)="SelectorODS($event)"  >
-                          <option value=""> -- Objetivo -- </option>
-                          <option *ngFor="let obj of objetivods" name="selector1" [value]="obj.id">{{ obj.text | slice:3 }}</option>
-                        </select>
-                      </div>
-                    </div>
-                   </div>
-                 </div>
-              </div>
-           </div>
-        
-                  <div class="col-12">
-                                <ul class="list-group list-group-flush" >
-                                  <li class="list-group-item text-primary-emphasis subtlepersonalized">
-                                    Consultar por Meta:
-                                  </li>
-                                </ul>
-                          <div class="row mt-1">
-                              <div class="col-md-12">
-                                <div class="row g-2 align-items-center">
-                                   <div class="col-4 col-md-auto">
-                            
-                                <div class="row mb-2">
+                            <div class="col-md-12">
+                              <div class="row g-2 align-items-center">
+                                <div class="col-4 col-md-auto">
+                                
+                                  <div class="row mb-2">
                                     <div class="col mt-3">
-                                      <select class="form-select form-select-sm"   (change)="SelectorMetas($event)">
-                                        <option value=""> -- Meta ODS -- </option>
-                                        <option *ngFor="let meta of metaods" name="selector2" [value]="meta.id">{{ meta.text }}</option>
+                                      <select class="form-select form-select-sm" (change)="SelectorMetas($event)">
+                                        <option selected> -- Meta ODS -- </option>
+                                        <option *ngFor="let meta of meta" [value]="meta.id">{{ meta.text }}</option>
                                       </select>
                                     </div>
-                                 </div>
+                                  </div>
+                                </div>
                              </div>
-                          </div>
+                            </div>
                         </div>
                     </div>
-                  </div>
-              </div>
            </div>
-        </div>
       </div>
     </div>
-     
-   <!-- Select par el Componente -->    
   </div>
-</div>
-</div>
-</div>
+   
+  <!-- Arreglo de productos -->
     
-<!-- Aqui van los productos que se estaran mostrando si es que no se ha aplicado ningun filtro. -->   
-<div class="col-md-9 ">   
+  <div class="row" id="fondo">
+   <div class="col">   
+    <div class="container">
       <br>
       <div class="mb-2" style="margin-left: 10px;">
       <p >
@@ -98,12 +85,25 @@
           las Naciones Unidas para adoptar el Programa de Desarrollo para el período posterior a 2015 
           (25-2de 2015), que se convocará como reunión plenaria de alto nivel de la Asamblea General.
         </p>
-        <p >A continnuación encontramos los productos que se proporcionan desde la base de datos del Siiernma donde se hara la relación con los ODS:</p>
-        </div>
-        <br>
+          <div [hidden]="odsImg">
+                <div class="alert bg-primary-subtle text-center mt-3">
+                    Inicia la consulta por Objetivos.
+                </div>
+                <div class="text-center mb-4">
+                  <div class="d-none d-md-block">
+                    <img src="./assets/logoODS_es.png" class="img-fluid img-desktop" style="width: 800px; height: max-content;" >
+                  </div>
+                  <div class="d-md-none">
+                    <img src="./assets/logoODS_es.png" class="img-fluid img-mobile">
+                  </div>
+                </div>
+           </div>
+      </div>
+     
           
             
-        <div class="card2 shadow-md bg-body-tertiary rounded" *ngFor="let dg of filteredProducts">
+        <div *ngFor="let dg of filteredProducts">
+          <div class="card2 shadow-md bg-body-tertiary rounded" >
           <div class="card-body d-md-flex justify-content-between align-items-center">
             <div style="margin-right: 10px; font-weight: bolder;" >{{ dg.nom_producto }}</div>
             <div class="btn-group">
@@ -111,16 +111,34 @@
             </div>
           </div>
         </div>
-          
       </div>
     </div>
+    </div>
   </div>
+</div>
+
+  <div class="container-fluid" style="background-color: #113250;" *ngIf="noProductsFound">
+    <div class="alert alert-primary text-center">
+      No se encontraron productos con esas características.
+    </div>
+    <div class="text-center mt-2">
+      <div class="d-none d-md-block">
+        <img src="./assets/nodata.svg" alt="" class="img-fluid img-desktop">
+      </div>
+      <div class="d-md-none">
+        <img src="./assets/nodata.svg" alt="" class="img-fluid img-mobile">
+      </div>
+    </div>
+
+</div>
+
+
 
 
 <button class="scroll-to-top-button" (click)="scrollToTop()" style="border-radius: 20px;"><i class="bi bi-arrow-up-circle " ></i></button> 
 
 
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+<!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
   <div class="modal-dialog modal-xl" style="overflow-y: auto;">
     <div class="modal-content ">
       <div class="modal-header ">
@@ -146,4 +164,4 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->

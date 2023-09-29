@@ -1,7 +1,6 @@
 import { MetaODS, SecuenciaOds, Ods } from './../../interfaces/ods.interface';
 import { DGService } from './../../services/dg.service';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
 import { Products } from '../../interfaces/product.interface';
 
 @Component({
@@ -11,77 +10,65 @@ import { Products } from '../../interfaces/product.interface';
 })
 export class OdsPageComponent implements OnInit{
 
-  
-  scrollToTop() {
-    window.scrollTo({ top: 0, behavior: 'smooth' }); // Esto desplaza suavemente hacia arriba
-  }
-  
-  expanded = false;
   public products: Products[] = [];
-  public selectedOptionA: any;
-  public selectedOptionB: any;
-  public selectedOptionC: any;
-  public ods: SecuenciaOds[]=[];
+  public ods?: SecuenciaOds[]=[];
   public objetivods: Ods[]=[];
   public metaods: MetaODS[]=[];
-  public productsById: Products[] = [];
-  selectorBHabilitado: boolean = false;
-  selectorCHabilitado: boolean = false;
-  public produtosIDS: any[] = [];
-  producto: any[] = [];
-  componente: any[] = [];
-  objetivosfiltrados: any[] = [];
-  metasfiltradas: any[]=[];
+  objetivo: Ods[] = [];
+  meta: MetaODS []= [];
+
   filteredProducts: Products[] = [];
+  noProductsFound: boolean = false;
+  odsImg: boolean = false;
+  showFilteredProducts = false;
+
 
 
   constructor(
-    private fb: FormBuilder, 
     private _direServices: DGService
     ) 
     {}
- 
 
-    habilitarSelectorB() {
-    
-      if (this.selectedOptionA =! null ) {
-        this.selectorBHabilitado = true;
-      } else if (this.selectedOptionA === null){
-        this.selectorBHabilitado = false;
-        this.selectorCHabilitado = false;
-      }
+
+    scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' }); // Esto desplaza suavemente hacia arriba
     }
-  
-    habilitarSelectorC() {
-     if (this.selectedOptionB != null) {
-      this.selectorCHabilitado = true;
-    }else if( this.selectedOptionB === 0)
-      this.selectorCHabilitado = false;
-    }
-    
+
+   
     odsByProducts(){
     
-      this.filteredProducts = this.products.filter(data => this.ods.some(ods => ods.interview__id === data.interview__id))
+      this.filteredProducts = this.products.filter(data => this.ods?.some(ods => ods.interview__id === data.interview__id))
        console.log(this.filteredProducts)
-  }
+
+       if (this.filteredProducts.length === 0) {
+        this.noProductsFound = true;
+      } else {
+        this.noProductsFound = false;
+      }
+   }
     
 
     SelectorODS(event: any)  {
+      
       const id = event.target.value;
-      console.log(id);
-  
       this._direServices.getMetabyObjetivo(id)
       .subscribe( data => {
-        this.metaods = data; console.log('Metas', data);
-
+        this.meta = data;
         
+
+        if (id >= 1) {
+          this.odsImg = true;
+        } else {
+          this.odsImg = true;
+        }
+
+
       })
       this._direServices.getODSObjetivo(id)
       .subscribe(data => {
         this.ods = data;
         this.odsByProducts()
       })
-  
       
     }
 
@@ -98,27 +85,11 @@ export class OdsPageComponent implements OnInit{
       
     }
 
-  
-
-
-  isModalOpen = false;
-
-    openModal() {
-      this.isModalOpen = true;
-    }
-  
-    closeModal() {
-      this.isModalOpen = false;
-    }
-
-
-
     
   ngOnInit(): void{
-    this._direServices.getProducts().subscribe(producto => {
-      this.products = producto;
-      console.log(producto)
-    });
+
+    this._direServices.getProducts()
+    .subscribe(data => this.products = data )
 
     this._direServices.getObjetivos()
   .subscribe( objetivoOds => this.objetivods = objetivoOds)
@@ -126,13 +97,11 @@ export class OdsPageComponent implements OnInit{
   this._direServices.getMetas()
   .subscribe( metaOds => this.metaods = metaOds)
 
-  this._direServices.getODSObj()
-  .subscribe( data => this.ods = data)
-
-  
   }
- 
+  allFalse(): void {
 
-  
+    this.showFilteredProducts = false;
 
+    this.ngOnInit();
+  }
 }

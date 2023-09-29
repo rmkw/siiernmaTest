@@ -1,28 +1,7 @@
-.card1 {
-  border: 1px solid #ccc;
-  padding: 10px;
-  margin-top: 10px;
-  /* cursor: pointer; */
-  transition: transform 0.2s;
-}
-
 .card2 {
   border: 2px solid #6b7d91;
   padding: 10px;
   margin: 10px;  
-}
-
-@media (max-width: 767px) {
-  .search-results {
-    width: 100%;
-    /* Ajusta el ancho para que ocupe toda la pantalla */
-    left: 0;
-    /* Alinea la lista a la izquierda */
-  }
-
-  .col-md-12.button-col {
-    margin-top: 10px;
-  }
 }
 
 /* Estilos para la versión de escritorio */
@@ -44,48 +23,28 @@
 
 
 
-/* Estilos para el sidebar */
-.sidebar {
-  
-  width: 250px;
-  color: white;
-  padding: 5px;
-  position: fixed;
-  top: 130px;
-  left: 30px; /* Ajusta la distancia desde la izquierda según tus necesidades */
-  z-index: 500;
-} 
-@media (max-width: 768px) {
-.sidebar {
-  left: 10px; /* Ajusta la distancia desde la izquierda para dispositivos móviles */
-}
-}
-
-
-
-/* Estilo para el botón */
 .scroll-to-top-button {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background-color: #5EAAA6; /* Color de fondo del botón */
-  color: #fff; /* Color del texto del botón */
+  background-color: #5EAAA6; 
+  color: #fff; 
   border: none;
   padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease; /* Transición suave del color de fondo */
+  transition: background-color 0.3s ease; 
 }
 
 
 .scroll-to-top-button:hover {
-  background-color: #73C3BF; /* Cambia el color de fondo al pasar el mouse */
+  background-color: #73C3BF; 
   
 }
 
 
 .subtlepersonalized {
-  background-color: #8acdca;
+  background-color: #9ccfcc;
 }
 
 .btn-mdea {
@@ -110,16 +69,16 @@ p{
 }
 
 .btn-fixed-size {
-  min-width: 100px; /* Define el ancho mínimo deseado para el botón */
+  min-width: 100px;
 }
 
-
-#filtroSeccion {
-  height: 400px; /* Establece la altura deseada cuando la tarjeta está expandida */
-  transition: height 0.5s;
-  width: 16rem;
+select{
+  width: 600px;
+ 
 }
 
-.bi-funnel {
-color: white;
+@media (min-width: 250px) {
+  select {
+    width: 280px;
+  }
 }
