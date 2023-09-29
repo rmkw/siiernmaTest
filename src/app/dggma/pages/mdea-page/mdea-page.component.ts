@@ -60,9 +60,7 @@ export class MdeaPageComponent  implements OnInit{
        
         if (id >= 1) {
           this.CompMdeaimg = true;
-        } else {
-          this.CompMdeaimg = true;
-        }
+        } 
       
       })
 

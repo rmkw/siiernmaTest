@@ -58,8 +58,6 @@ export class OdsPageComponent implements OnInit{
 
         if (id >= 1) {
           this.odsImg = true;
-        } else {
-          this.odsImg = true;
         }
 
 
