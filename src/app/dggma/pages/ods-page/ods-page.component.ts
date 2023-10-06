@@ -11,22 +11,16 @@ import { TreeNode } from 'primeng/api';
 })
 export class OdsPageComponent implements OnInit{
 
-  treeData: TreeNode[] = [];
-  selectedNodes: any;
-  selectedProductIds: string[] = [];
+  treeDataOds: TreeNode[] = [];
+  selectedNodesOds: any;
   public products: Products[] = [];
-  public ods: SecuenciaOds[]=[];
-  public objetivods: Ods[]=[];
-  public metaods: MetaODS[]=[];
+  public ODSes: SecuenciaOds[]=[];
+  public objetivODS: Ods[]=[];
+  public metasODS: MetaODS[]=[];
   objetivo: Ods[] = [];
   meta: MetaODS []= [];
 
   filteredProducts: Products[] = [];
-  noProductsFound: boolean = false;
-  odsImg: boolean = false;
-  showFilteredProducts = false;
-
-
 
   constructor(
     private _direServices: DGService
@@ -39,29 +33,29 @@ export class OdsPageComponent implements OnInit{
     }
 
 
-    odsByProducts(){
+  odsByProducts(){
 
-      this.filteredProducts = this.products.filter(data => this.ods.some(ods => ods.interview__id === data.interview__id))
+      this.filteredProducts = this.products.filter(data => this.ODSes.some(ODSes => ODSes.interview__id === data.interview__id))
        console.log(this.filteredProducts)
    }
 
 
   //  Función para mandar a llamar el filtrado y seleccion de los checkboxes dentro del HTML
 
-  onNodeSelect(event: { originalEvent: Event, node: TreeNode }, nodeType: string): void {
+  onNodeSelectOds(event: { originalEvent: Event, node: TreeNode }, nodeType: string): void {
     const id = event.node.data.id; // Obtén el id del nodo seleccionado
   
     switch (nodeType) {
       case 'objetivo':
         this._direServices.odsByObjetivo(id).subscribe(data => {
-          this.ods = data;
+          this.ODSes = data;
           this.odsByProducts()
           console.log(id); 
         });
         break;
       case 'meta':
         this._direServices.odsByMeta(id).subscribe(data => {
-          this.ods = data;
+          this.ODSes = data;
           this.odsByProducts()
           console.log(id);
         });
@@ -69,7 +63,7 @@ export class OdsPageComponent implements OnInit{
     }
   }
 
-  onNodeUnselect(event: { originalEvent: Event, node: TreeNode }, nodeType: string): void {
+  onNodeUnselectOds(event: { originalEvent: Event, node: TreeNode }, nodeType: string): void {
     const id = event.node.data.id; 
     this.filteredProducts = [];
 
@@ -79,25 +73,19 @@ export class OdsPageComponent implements OnInit{
   ngOnInit(): void{
 
 
-    this._direServices.objetivos().subscribe(objetivoOds => {
-      this._direServices.metas().subscribe(metaOds =>  {
-          this.treeData = this.transformDataToTreeNode(objetivoOds, metaOds);
-        });
+  this._direServices.objetivos().subscribe(objetivoOds => {
+    this._direServices.metas().subscribe(metasODS =>  {
+        this.treeDataOds = this.transformDataToTreeNodeOds(objetivoOds, metasODS);
       });
+    });
     
 
-    this._direServices.productos()
-    .subscribe(data => this.products = data )
-
-    this._direServices.objetivos()
-  .subscribe( objetivoOds => this.objetivods = objetivoOds)
-
-  this._direServices.metas()
-  .subscribe( metaOds => this.metaods = metaOds)
+  this._direServices.productos()
+  .subscribe(data => this.products = data )
 
   }
 
-  transformDataToTreeNode(objetivoOds: Ods[], metaOds: MetaODS[]): TreeNode[] {
+  transformDataToTreeNodeOds(objetivoOds: Ods[], metaOds: MetaODS[]): TreeNode[] {
     return objetivoOds.map(objetivo => {
       const objetivosNodes: TreeNode[] = metaOds
         .filter(metas => metas.parentid === objetivo.id)
@@ -117,7 +105,6 @@ export class OdsPageComponent implements OnInit{
         selected: false
       };
     });
-}
-
+ } 
 
 }

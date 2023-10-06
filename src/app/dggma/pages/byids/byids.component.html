@@ -6,16 +6,16 @@
             <div class="mt-1">
                 <p-tree
                 class="w-full md:w-30rem"
-                [(selection)]="selectedNodes"
-                [value]="treeData"
+                [(selection)]="selectedNodesMdea"
+                [value]="treeDataMdea"
                 selectionMode="checkbox"
                 [metaKeySelection]="false"
-                (onNodeSelect)="onNodeSelect($event, 'componente')"
-                (onNodeSelect)="onNodeSelect($event, 'subcomponente')"
-                (onNodeSelect)="onNodeSelect($event, 'topico')"
-                (onNodeUnselect)="onNodeUnselect($event, 'componente')"
-                (onNodeUnselect)="onNodeUnselect($event, 'subcomponente')"
-                (onNodeUnselect)="onNodeUnselect($event, 'topico')"
+                (onNodeSelect)="onNodeSelectMdea($event, 'componente')"
+                (onNodeSelect)="onNodeSelectMdea($event, 'subcomponente')"
+                (onNodeSelect)="onNodeSelectMdea($event, 'topico')"
+                (onNodeUnselect)="onNodeUnselectMdea($event, 'componente')"
+                (onNodeUnselect)="onNodeUnselectMdea($event, 'subcomponente')"
+                (onNodeUnselect)="onNodeUnselectMdea($event, 'topico')"
               ></p-tree>
             </div>
     

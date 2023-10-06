@@ -6,14 +6,14 @@
           <div class="mt-1">
               <p-tree
               class="w-full md:w-30rem"
-              [(selection)]="selectedNodes"
-              [value]="treeData"
+              [(selection)]="selectedNodesOds"
+              [value]="treeDataOds"
               selectionMode="checkbox"
               [metaKeySelection]="false"
-              (onNodeSelect)="onNodeSelect($event, 'objetivo')"
-              (onNodeSelect)="onNodeSelect($event, 'meta')"
-              (onNodeUnselect)="onNodeUnselect($event, 'objetivo')"
-              (onNodeUnselect)="onNodeUnselect($event, 'meta')"
+              (onNodeSelect)="onNodeSelectOds($event, 'objetivo')"
+              (onNodeSelect)="onNodeSelectOds($event, 'meta')"
+              (onNodeUnselect)="onNodeUnselectOds($event, 'objetivo')"
+              (onNodeUnselect)="onNodeUnselectOds($event, 'meta')"
             ></p-tree>
           </div>
   

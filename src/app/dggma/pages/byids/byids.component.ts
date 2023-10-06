@@ -13,9 +13,8 @@ import { TreeNode } from 'primeng/api';
 export class ByidsComponent implements OnInit{
   
     
-    treeData: TreeNode[] = [];
-    selectedNodes: any;
-    selectedProductIds: string[] = [];
+    treeDataMdea: TreeNode[] = [];
+    selectedNodesMdea: any;
   
     public products: Products[] = []; 
     public componentesMDEA: Componente[]=[];
@@ -35,11 +34,11 @@ export class ByidsComponent implements OnInit{
   
   
     filterProductsByMdeas(): void {
-      this.filteredProducts = this.products.filter(product => this.selectedProductIds.includes(product.interview__id));
+      this.filteredProducts = this.products.filter(data => this.mdeas.some(mdeas => mdeas.interview__id === data.interview__id));
       console.log(this.filteredProducts);
     }
   
-        onNodeSelect(event: { originalEvent: Event, node: TreeNode }, nodeType: string): void {
+    onNodeSelectMdea(event: { originalEvent: Event, node: TreeNode }, nodeType: string): void {
           const id = event.node.data.id; // Obtén el id del nodo seleccionado
         
           switch (nodeType) {
@@ -47,39 +46,34 @@ export class ByidsComponent implements OnInit{
               this._direServices.mdeaByComponenteId(id).subscribe(data => {
                 this.mdeas = data;
                 
-                this.updateSelectedProductIds();
+                this.filterProductsByMdeas();
                 console.log(id); 
               });
               break;
             case 'subcomponente':
               this._direServices.mdeaBySubcomponenteId(id).subscribe(data => {
                 this.mdeas = data;
-                this.updateSelectedProductIds();
+                this.filterProductsByMdeas();
                 console.log(id);
               });
               break;
             case 'topico':
               this._direServices.mdeaByTopicoId(id).subscribe(data => {
                 this.mdeas = data;
-                this.updateSelectedProductIds();
+                this.filterProductsByMdeas();
                 console.log(id);
               });
               break;
           }
         }
   
-      onNodeUnselect(event: { originalEvent: Event, node: TreeNode }, nodeType: string): void {
+      onNodeUnselectMdea(event: { originalEvent: Event, node: TreeNode }, nodeType: string): void {
         const id = event.node.data.id; 
         this.filteredProducts = [];
   
       }
       
-      updateSelectedProductIds(): void {
-        // Actualiza selectedProductIds con los identificadores de los productos seleccionados
-        this.selectedProductIds = this.mdeas.map(mdea => mdea.interview__id);
-        this.filterProductsByMdeas();
-      }
-      
+ 
      
     ngOnInit(): void {
   
@@ -87,7 +81,7 @@ export class ByidsComponent implements OnInit{
       this._direServices.componentes().subscribe(componentes => {
         this._direServices.subcomponentes().subscribe(subcomponentes => {
           this._direServices.topicos().subscribe(topicos => {
-            this.treeData = this.transformDataToTreeNode(componentes, subcomponentes, topicos);
+            this.treeDataMdea = this.transformDataToTreeNodeMdea(componentes, subcomponentes, topicos);
           });
         });
       });
@@ -96,18 +90,10 @@ export class ByidsComponent implements OnInit{
       this._direServices.productos()
       .subscribe(data => this.products = data )  
   
-      this._direServices.componentes()
-      .subscribe( componentes => this.componentesMDEA = componentes)
-  
-      this._direServices.subcomponentes()
-      .subscribe( subcomponente => this.subComponentesMDEA = subcomponente)
-  
-      this._direServices.topicos()
-      .subscribe( topicomdea => this.topicoMDEA = topicomdea)
     }
   
     //Funcion que ayuda a transformar los arreglos de objetos de componentes, subcomponentes y topicos para que este pueda ser compatible con la estructura treenode
-    transformDataToTreeNode(componentes: Componente[], subcomponentes: Subcomponente[], topicos: Topico[]): TreeNode[] {
+    transformDataToTreeNodeMdea(componentes: Componente[], subcomponentes: Subcomponente[], topicos: Topico[]): TreeNode[] {
       return componentes.map(componente => {
         const subcomponenteNodes: TreeNode[] = subcomponentes
           .filter(subcomponente => subcomponente.parentid === componente.id)
