@@ -9,7 +9,6 @@ import { Products } from '../../interfaces/product.interface';
   styleUrls: ['./ods-page.component.css']
 })
 export class OdsPageComponent implements OnInit{
-
   public products: Products[] = [];
   public ods?: SecuenciaOds[]=[];
   public objetivods: Ods[]=[];
@@ -26,17 +25,17 @@ export class OdsPageComponent implements OnInit{
 
   constructor(
     private _direServices: DGService
-    ) 
+    )
     {}
 
 
     scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' }); // Esto desplaza suavemente hacia arriba
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-   
+
     odsByProducts(){
-    
+
       this.filteredProducts = this.products.filter(data => this.ods?.some(ods => ods.interview__id === data.interview__id))
        console.log(this.filteredProducts)
 
@@ -46,15 +45,15 @@ export class OdsPageComponent implements OnInit{
         this.noProductsFound = false;
       }
    }
-    
+
 
     SelectorODS(event: any)  {
-      
+
       const id = event.target.value;
-      this._direServices.getMetabyObjetivo(id)
+      this._direServices.metasByparentid(id)
       .subscribe( data => {
         this.meta = data;
-        
+
 
         if (id >= 1) {
           this.odsImg = true;
@@ -62,37 +61,37 @@ export class OdsPageComponent implements OnInit{
 
 
       })
-      this._direServices.getODSObjetivo(id)
+      this._direServices.odsByObjetivo(id)
       .subscribe(data => {
         this.ods = data;
         this.odsByProducts()
       })
-      
+
     }
 
     SelectorMetas(event: any)  {
       const id = event.target.value;
       console.log(id);
 
-      this._direServices.getODSMeta(id)
+      this._direServices.odsByMeta(id)
       .subscribe(data => {
         this.ods = data;
         this.odsByProducts()
       })
-  
-      
+
+
     }
 
-    
+
   ngOnInit(): void{
 
-    this._direServices.getProducts()
+    this._direServices.productos()
     .subscribe(data => this.products = data )
 
-    this._direServices.getObjetivos()
+    this._direServices.objetivos()
   .subscribe( objetivoOds => this.objetivods = objetivoOds)
 
-  this._direServices.getMetas()
+  this._direServices.metas()
   .subscribe( metaOds => this.metaods = metaOds)
 
   }

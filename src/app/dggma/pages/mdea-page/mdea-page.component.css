@@ -1,7 +1,7 @@
 .card2 {
   border: 2px solid #6b7d91;
   padding: 10px;
-  margin: 10px;  
+  margin: 10px;
 }
 
 /* Estilos para la versión de escritorio */
@@ -16,7 +16,7 @@
   .img-mobile {
     max-width: 75%;
     /* Ajusta este valor según tus necesidades */
-  
+
   }
 
 }
@@ -27,19 +27,19 @@
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background-color: #5EAAA6; 
-  color: #fff; 
+  background-color: #5EAAA6;
+  color: #fff;
   border: none;
   padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease; 
+  transition: background-color 0.3s ease;
 }
 
 
 .scroll-to-top-button:hover {
-  background-color: #73C3BF; 
-  
+  background-color: #73C3BF;
+
 }
 
 
@@ -50,6 +50,7 @@
 .btn-mdea {
   background-color: #5EAAA6;
 }
+
 .btn-mdea:hover {
   background-color: #abc6c4;
 }
@@ -60,11 +61,11 @@
   margin-top: 2;
 }
 
-#fondo{
+#fondo {
   background-color: #113250;
 }
 
-p{
+p {
   color: aliceblue;
 }
 
@@ -72,9 +73,9 @@ p{
   min-width: 100px;
 }
 
-select{
+select {
   width: 600px;
- 
+
 }
 
 @media (min-width: 250px) {

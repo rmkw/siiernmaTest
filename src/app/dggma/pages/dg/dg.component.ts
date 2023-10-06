@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { UAdmin } from '../../interfaces/u_admin.interface';
-import { DGService } from '../../services/dg.service';
 
+import { Router } from '@angular/router';
 
+interface CheckboxesState {
+  [key: string]: boolean;
+}
 @Component({
   selector: 'app-dg',
   templateUrl: './dg.component.html',
@@ -10,42 +12,53 @@ import { DGService } from '../../services/dg.service';
 })
 export class DgComponent implements OnInit{
 
-  loading = true;
-
-
-
-  public dgs: UAdmin[] = [];
-  productCounts: number[] = [];
-  public imgArray: any[] = [];
+  public isINEGISelected : boolean = true
+  public isMDEASelected : boolean = true
+  public isODSSelected : boolean = true
+  public isINDSelected : boolean = true
 
   constructor(
-    private _direServices: DGService,
+    private router: Router
   ){}
 
-  ngOnInit(): void {
-    const directions = ['1','2','3','4','5']; //id de direcciones
-
-    directions.forEach(direction => {
-      this._direServices.getProductCountByDirection(direction).subscribe(count => {
-        this.productCounts.push(count);
-      }); //me trae el numero de productos que tiene cada dirección
-    });
-
-    this._direServices.getDG().subscribe(dgs => {
-      this.dgs = dgs;
-      this.loading = false;
-    }); // me traigo todas las direcciones
-
-
-    const imgArray: any[] = [];
-    const extensions = ['jpg', 'jpg', 'jpg', 'png', 'png']; // Cambia según tus necesidades
-    for (let i = 0; i < extensions.length; i++) {
-      const imgExtension = extensions[i];
-      imgArray.push({ img: `./assets/img${i + 1}.${imgExtension}` });
-      this.imgArray = imgArray;
-    }
-    console.log(imgArray);
+  //!Definimos los checkbox
+  checkboxesState: CheckboxesState = {
+    direGeogrAmbiente: false,
+    direEstaSocio: false,
+    direEstaEconomicas: false,
+    direEstaGobSegPubJus: false,
+    direInteAnaInv: false,
   }
+
+  ngOnInit(): void {
+    this.isINEGISelected = false;
+
+
+
+  }
+  hiddenTheOtherContents_INEGI(){
+    this.isINEGISelected = false;
+    this.isMDEASelected = true;
+    this.isODSSelected = true;
+  }
+  hiddenTheOtherContents_MDEA(){
+    this.isINEGISelected = true;
+    this.isMDEASelected = false;
+    this.isODSSelected = true;
+  }
+  hiddenTheOtherContents_ODS(){
+    this.isINEGISelected = true;
+    this.isMDEASelected = true;
+    this.isODSSelected = false;
+
+  }
+  navigateWithParam() {
+
+    this.checkboxesState['direGeogrAmbiente'] = true;
+
+  this.router.navigate(['/dg/products']);
+}
+
 
 
 }

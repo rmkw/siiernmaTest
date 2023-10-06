@@ -1,46 +1,60 @@
-/* .card1 {
 
-
-  transition: .3s transform cubic-bezier(.155, 1.105, .295, 1.12), .3s box-shadow, .3s -webkit-transform cubic-bezier(.155, 1.105, .295, 1.12);
-
-  cursor: pointer;
+.carousel {
+  margin-bottom: 4rem;
 }
 
-.card1:hover {
-  transform: scale(1.05);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, .12), 0 4px 8px rgba(0, 0, 0, .06);
+.carousel-caption {
+  bottom: 3rem;
+  z-index: 10;
 }
 
-.h666 {
-  color: #706F6F;
-  height: 10px;
+.carousel-item {
+  height: 32rem;
 }
 
-h4 {
-  height: 50px;
-} */
 
-    .card {
-      border: 1px solid #ccc;
-      padding: 10px;
-      margin: 10px;
-      cursor: pointer;
-      transition: transform 0.2s;
-    }
+.marketing .col-lg-4 {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
 
-    .card:hover {
-      transform: scale(1.05);
-    }
 
-        /* Estilos para el contenedor del spinner */
-.spinner-container {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          height: 100vh;
-          /* Ajusta esto según tus necesidades */
-        }
+.marketing .col-lg-4 p {
+  margin-right: .75rem;
+  margin-left: .75rem;
+}
 
-.maginTop {
-  margin-top: 300px;
+
+.featurette-divider {
+  margin: 5rem 0;
+
+}
+
+.featurette-heading {
+  letter-spacing: -.05rem;
+}
+
+/*! botones modificados */
+.custom-btn-color {
+  background-color: #007a98;
+  color: #fff;
+}
+.custom-btn-color:hover {
+  background-color: #005f75;
+}
+.custom-btn-color2 {
+  background-color: #009edb;
+  color: #fff;
+}
+.custom-btn-color2:hover {
+  background-color: #007bb2;
+}
+
+p{
+ font-family: Arial, Helvetica, sans-serif;
+}
+
+.selected {
+  color: #ffffff;
+  background-color: #00528a;
 }

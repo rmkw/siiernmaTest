@@ -13,10 +13,10 @@ import {  Products } from '../../interfaces/product.interface';
 
 export class MdeaPageComponent  implements OnInit{
 
-   
- 
- 
-  public products: Products[] = []; 
+
+
+
+  public products: Products[] = [];
   public componentesMDEA: Componente[]=[];
   public SubcomponentesPorComponente: Mdea[]=[];
   public subComponentesMDEA: Subcomponente[]=[];
@@ -29,18 +29,18 @@ export class MdeaPageComponent  implements OnInit{
   showFilteredProducts = false;
   noProductsFound: boolean = false;
   CompMdeaimg: boolean = false;
- 
-  
+
+
   constructor(
     private _direServices: DGService,
   ){}
-    
+
 
 
     scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' }); 
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
-  
+
     mdeasByComponente(){
         this.filteredProducts=this.products.filter(data => this.mdeas?.some(mdea => mdea.interview__id === data.interview__id))
          console.log(this.filteredProducts)
@@ -51,77 +51,78 @@ export class MdeaPageComponent  implements OnInit{
           this.noProductsFound = false;
         }
     }
-   
+
     SelectorComponente(event: any)  {
       const id = event.target.value;
-      this._direServices.getMDEASSubCompByComp(id)
+      this._direServices.subcomponenteByParentid(id)
       .subscribe( data => {
         this.subcomponentes = data;
-       
+
         if (id >= 1) {
           this.CompMdeaimg = true;
-        } 
-      
+        }
+
       })
 
-      this._direServices.getMDEASCompByProduct(id)
+      this._direServices.mdeaByComponenteId(id)
       .subscribe( data => {
         this.mdeas = data;
         this.mdeasByComponente()
       })
-      
+
     }
 
     SelectorSubcomponente(event: any)  {
       const id = event.target.value;
       console.log(id);
-  
-      this._direServices.getMDEASTopicoBySubcomp(id)
+
+      this._direServices.topicoByParentid(id)
       .subscribe( data => {
         this.topicos = data; console.log('Topico', data);
 
 
 
       })
-      this._direServices.getMDEASSubCompByProduct(id)
+      this._direServices.mdeaBySubcomponenteId(id)
       .subscribe( data => {
         this.mdeas = data;
         this.mdeasByComponente()
       })
     }
 
-    
+
 
     SelectorTopico(event: any)  {
       const id = event.target.value;
       console.log(id);
 
-      this._direServices.getMDEASTopico(id)
+      this._direServices.mdeaByTopicoId(id)
       .subscribe( data => {
         this.mdeas = data;
         this.mdeasByComponente()
       })
 
-      
+
     }
 
 
 
+
   ngOnInit(): void {
-   
-    this._direServices.getProducts()
+
+    this._direServices.productos()
     .subscribe(data => this.products = data )
 
-    this._direServices.getComponentes()
+    this._direServices.componentes()
     .subscribe( componentes => this.componentesMDEA = componentes)
 
-    this._direServices.getSubcomponentes()
+    this._direServices.subcomponentes()
     .subscribe( subcomponente => this.subComponentesMDEA = subcomponente)
 
-    this._direServices.getTopicos()
+    this._direServices.topicos()
     .subscribe( topicomdea => this.topicoMDEA = topicomdea)
-  
-   
+
+
   }
 
   allFalse(): void {
@@ -132,6 +133,3 @@ export class MdeaPageComponent  implements OnInit{
 }
 
 }
-
-
-
