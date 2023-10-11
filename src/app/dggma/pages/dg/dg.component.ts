@@ -115,7 +115,7 @@ DireccionCountstop: any  = setInterval(() => {
       clearInterval(this.DireccionCountstop)
     }
 
-  },50)
+  },55)
 
   DireccionCountstop2: any  = setInterval(() => {
 
@@ -124,7 +124,7 @@ DireccionCountstop: any  = setInterval(() => {
       clearInterval(this.DireccionCountstop2)
     }
 
-  },50)
+  },30)
 
   DireccionCountstop3: any  = setInterval(() => {
 
@@ -134,7 +134,7 @@ DireccionCountstop: any  = setInterval(() => {
         } 
         
 
-  },50)
+  },30)
 
   DireccionCountstop4: any  = setInterval(() => {
   
@@ -142,7 +142,7 @@ DireccionCountstop: any  = setInterval(() => {
         if(this.cuartaDir === this.cuartaDireccion.length){
           clearInterval(this.DireccionCountstop4)
         }
-  },50)
+  },45)
 
   DireccionCountstop5: any  = setInterval(() => {
 
@@ -151,6 +151,6 @@ DireccionCountstop: any  = setInterval(() => {
           clearInterval(this.DireccionCountstop5)
         }
    
-  },50)
+  },60)
 
 }
