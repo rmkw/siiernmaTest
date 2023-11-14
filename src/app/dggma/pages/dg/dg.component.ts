@@ -20,17 +20,17 @@ export class DgComponent implements OnInit{
   public isODSSelected : boolean = true
   public isINDSelected : boolean = true
 
-  public primerDireccion: any[] = [];
+  public primerDireccion:  any[] = [];
   public segundaDireccion: any[] = [];
   public terceraDireccion: any[] = [];
-  public cuartaDireccion: any[] = [];
-  public quintaDireccion: any[] = [];
+  public cuartaDireccion:  any[] = [];
+  public quintaDireccion:  any[] = [];
 
-  public primerDir: number=0;
+  public primerDir:  number=0;
   public segundaDir: number=0;
   public terceraDir: number=0;
-  public cuartaDir: number=0;
-  public quintaDir: number=0;
+  public cuartaDir:  number=0;
+  public quintaDir:  number=0;
 
   constructor(
     private router: Router, 
@@ -104,6 +104,7 @@ filtrarProductosPorDirecciones() {
     this.quintaDireccion = this.products.filter((product) => {
       return product.dg_prod === 5;
     });
+    console.log(this.quintaDireccion)
 }
 
 
@@ -115,7 +116,7 @@ DireccionCountstop: any  = setInterval(() => {
       clearInterval(this.DireccionCountstop)
     }
 
-  },55)
+  },30)
 
   DireccionCountstop2: any  = setInterval(() => {
 
@@ -124,7 +125,7 @@ DireccionCountstop: any  = setInterval(() => {
       clearInterval(this.DireccionCountstop2)
     }
 
-  },30)
+  },25)
 
   DireccionCountstop3: any  = setInterval(() => {
 
@@ -134,7 +135,7 @@ DireccionCountstop: any  = setInterval(() => {
         } 
         
 
-  },30)
+  },25)
 
   DireccionCountstop4: any  = setInterval(() => {
   
@@ -142,7 +143,7 @@ DireccionCountstop: any  = setInterval(() => {
         if(this.cuartaDir === this.cuartaDireccion.length){
           clearInterval(this.DireccionCountstop4)
         }
-  },45)
+  },25)
 
   DireccionCountstop5: any  = setInterval(() => {
 
@@ -151,6 +152,6 @@ DireccionCountstop: any  = setInterval(() => {
           clearInterval(this.DireccionCountstop5)
         }
    
-  },60)
+  },30)
 
 }

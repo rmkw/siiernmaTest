@@ -1,9 +1,3 @@
-.card2 {
-  border: 2px solid #6b7d91;
-  padding: 10px;
-  margin: 10px;
-}
-
 /* Estilos para la versión de escritorio */
 @media (min-width: 992px) {
   .img-desktop {
@@ -21,8 +15,6 @@
 
 }
 
-
-
 .scroll-to-top-button {
   position: fixed;
   bottom: 20px;
@@ -36,29 +28,12 @@
   transition: background-color 0.3s ease;
 }
 
-
 .scroll-to-top-button:hover {
   background-color: #73C3BF;
-
 }
-
 
 .subtlepersonalized {
   background-color: #9ccfcc;
-}
-
-.btn-mdea {
-  background-color: #5EAAA6;
-}
-
-.btn-mdea:hover {
-  background-color: #abc6c4;
-}
-
-
-.btn-primary {
-  background-color: #113250;
-  margin-top: 2;
 }
 
 #fondo {
@@ -69,17 +44,48 @@ p {
   color: aliceblue;
 }
 
-.btn-fixed-size {
-  min-width: 100px;
+ul {
+  list-style-type: none;
 }
 
-select {
-  width: 600px;
-
+#treegraph-container {
+    max-width: 2600px;
+    min-width: 768px;
+    margin: 0 auto;
+    height: 1800px;
 }
 
-@media (min-width: 250px) {
-  select {
-    width: 280px;
-  }
+#mdeaimg {
+  position: static; 
+  width: 400px;
+  height: 380px;
+  transition: transform 0.2s;
 }
+
+#mdeaimg:hover {
+  -webkit-transform:scale(1.3);transform:scale(1.3);
+}
+
+.modal-header{
+  background-color: #2979c1;
+}
+
+.modal-body{
+  background-color: #113250;
+}
+
+#container-pie-componentes{
+  max-width: 1000px;
+  min-width: 768px;
+  margin: 0 auto;
+  height: 600px;
+}
+
+#container-pie-subcomponentes{
+  max-width: 1000px;
+  min-width: 768px;
+  margin: 0 auto;
+  height: 600px;
+}
+
+

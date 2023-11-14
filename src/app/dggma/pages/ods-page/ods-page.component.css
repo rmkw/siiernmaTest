@@ -1,11 +1,3 @@
-.card2 {
-  border: 2px solid #6b7d91;
-  padding: 10px;
-  margin: 10px;
-}
-
-
-
 @media (min-width: 992px) {
   .img-desktop {
     max-width: 35%;
@@ -22,38 +14,22 @@
 
 }
 
-
 .scroll-to-top-button {
   position: fixed;
   bottom: 20px;
   right: 20px;
   background-color: #77b7d7;
-
   color: #fff;
-
   border: none;
   padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-
 }
-
 
 .scroll-to-top-button:hover {
   background-color: #87d4fa;
 
-
-}
-
-
-.subtlepersonalized {
-  background-color: #a8deff;
-}
-
-.btn-primary {
-  background-color: #113250;
-  margin-top: 2;
 }
 
 #fondo {
@@ -64,7 +40,28 @@ p {
   color: aliceblue;
 }
 
-.btn-fixed-size {
-  min-width: 100px;
+::-webkit-scrollbar {
+  display: none;
+}
 
+
+#metas{
+  max-width: 360px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+ }
+
+ #container-pie-obj{
+  max-width: 1000px;
+  min-width: 768px;
+  margin: 0 auto;
+  height: 600px;
+}
+
+#container-pie-meta{
+  max-width: 1000px;
+  min-width: 768px;
+  margin: 0 auto;
+  height: 600px;
 }

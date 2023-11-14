@@ -13,7 +13,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OdsPageComponent } from './pages/ods-page/ods-page.component';
 import { MdeaPageComponent } from './pages/mdea-page/mdea-page.component';
 import { TreeModule } from 'primeng/tree';
-
+import { HighchartsChartModule } from 'highcharts-angular';
+import { OrganizationChartModule } from 'primeng/organizationchart';
+import { TableModule } from 'primeng/table';
+import { ButtonModule } from 'primeng/button';
 
 @NgModule({
   declarations: [
@@ -33,6 +36,10 @@ import { TreeModule } from 'primeng/tree';
     FormsModule,
     ReactiveFormsModule,
     TreeModule,
+    HighchartsChartModule,
+    OrganizationChartModule,
+    TableModule,
+    ButtonModule,
   ],
   exports: [
 
