@@ -9,12 +9,13 @@ interface CheckboxesState {
 @Component({
   selector: 'app-dg',
   templateUrl: './dg.component.html',
-  styleUrls: ['./dg.component.css']
+  styleUrls: ['./dg.component.css'],
 })
-export class DgComponent implements OnInit{
+export class DgComponent implements OnInit {
+
 
   public products: Products [] = [];
-  
+
   public isINEGISelected : boolean = true
   public isMDEASelected : boolean = true
   public isODSSelected : boolean = true
@@ -33,7 +34,7 @@ export class DgComponent implements OnInit{
   public quintaDir:  number=0;
 
   constructor(
-    private router: Router, 
+    private router: Router,
     private _direServices : DGService,
   ){}
 
@@ -44,114 +45,120 @@ export class DgComponent implements OnInit{
     direEstaEconomicas: false,
     direEstaGobSegPubJus: false,
     direInteAnaInv: false,
-  }
+  };
+  DireccionCountstop: any;
+  DireccionCountstop2: any;
+  DireccionCountstop3: any;
+  DireccionCountstop4: any;
+  DireccionCountstop5: any;
 
   ngOnInit(): void {
-  
+
     this.isINEGISelected = false;
 
-    this._direServices.productos()
-    .subscribe(data => { this.products = data;
-    this.filtrarProductosPorDirecciones();
-    })
-    
-  
+    //! Merge S.E.
+    this._direServices.productos().subscribe((data) => {
+      this.products = data;
+      this.filtrarProductosPorDirecciones();
+      this.fun();
+    });
+
+
   }
-  hiddenTheOtherContents_INEGI(){
+  hiddenTheOtherContents_INEGI() {
     this.isINEGISelected = false;
     this.isMDEASelected = true;
     this.isODSSelected = true;
   }
-  hiddenTheOtherContents_MDEA(){
+  hiddenTheOtherContents_MDEA() {
     this.isINEGISelected = true;
     this.isMDEASelected = false;
     this.isODSSelected = true;
   }
-  hiddenTheOtherContents_ODS(){
+  hiddenTheOtherContents_ODS() {
     this.isINEGISelected = true;
     this.isMDEASelected = true;
     this.isODSSelected = false;
-
   }
-  
-  navigateWithParam() {
 
+  navigateWithParam() {
     this.checkboxesState['direGeogrAmbiente'] = true;
 
-  this.router.navigate(['/dg/products']);
-}
+    this.router.navigate(['/dg/products']);
+  }
 
-filtrarProductosPorDirecciones() {
- 
+  filtrarProductosPorDirecciones() {
     this.primerDireccion = this.products.filter((product) => {
       return product.dg_prod === 1;
     });
     this.segundaDireccion = this.products.filter((product) => {
-      
       return product.dg_prod === 2;
     });
 
     this.terceraDireccion = this.products.filter((product) => {
-      
       return product.dg_prod === 3;
     });
 
     this.cuartaDireccion = this.products.filter((product) => {
-     
       return product.dg_prod === 4;
     });
 
     this.quintaDireccion = this.products.filter((product) => {
       return product.dg_prod === 5;
     });
-    console.log(this.quintaDireccion)
-}
 
+    console.log(this.products);
+  }
 
+  fun() {
+    if (this.products.length == 0) {
+      console.log('first');
+    } else {
+      this.DireccionCountstop = setInterval(() => {
+        this.primerDir++;
 
-DireccionCountstop: any  = setInterval(() => {
-
-    this.primerDir++;
-    if(this.primerDir == this.primerDireccion.length){
-      clearInterval(this.DireccionCountstop)
-    }
-
-  },30)
-
-  DireccionCountstop2: any  = setInterval(() => {
-
-    this.segundaDir++;
-    if(this.segundaDir === this.segundaDireccion.length){
-      clearInterval(this.DireccionCountstop2)
-    }
-
-  },25)
-
-  DireccionCountstop3: any  = setInterval(() => {
-
-    this.terceraDir++;
-        if (this.terceraDir === this.terceraDireccion.length){
-          clearInterval(this.DireccionCountstop3)
-        } 
-        
-
-  },25)
-
-  DireccionCountstop4: any  = setInterval(() => {
-  
-    this.cuartaDir++;
-        if(this.cuartaDir === this.cuartaDireccion.length){
-          clearInterval(this.DireccionCountstop4)
+        if (this.primerDir == this.primerDireccion.length) {
+          clearInterval(this.DireccionCountstop);
         }
-  },25)
+        if (this.primerDireccion.length == 0) {
+          this.primerDir = 0;
+        }
+      }, 30);
 
-  DireccionCountstop5: any  = setInterval(() => {
+      this.DireccionCountstop2 = setInterval(() => {
+        this.segundaDir++;
 
+        if (this.segundaDir === this.segundaDireccion.length) {
+          clearInterval(this.DireccionCountstop2);
+        }
+      }, 25);
+
+      this.DireccionCountstop3 = setInterval(() => {
+        this.terceraDir++;
+
+        if (this.terceraDir === this.terceraDireccion.length) {
+          clearInterval(this.DireccionCountstop3);
+        }
+      }, 25);
+
+      this.DireccionCountstop4 = setInterval(() => {
+        this.cuartaDir++;
+
+        if (this.cuartaDir === this.cuartaDireccion.length) {
+          clearInterval(this.DireccionCountstop4);
+        }
+      }, 25);
+
+      this.DireccionCountstop5 = setInterval(() => {
         this.quintaDir++;
-        if(this.quintaDir === this.quintaDireccion.length){
-          clearInterval(this.DireccionCountstop5)
-        }
-   
-  },30)
 
+        if (this.quintaDir === this.quintaDireccion.length) {
+          clearInterval(this.DireccionCountstop5);
+        }
+        if (this.quintaDireccion.length == 0) {
+          this.quintaDir = 0;
+        }
+      }, 30);
+    }
+  }
 }

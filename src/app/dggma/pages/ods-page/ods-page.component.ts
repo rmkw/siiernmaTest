@@ -1,5 +1,3 @@
-import { MetaODS, SecuenciaOds, Ods } from './../../interfaces/ods.interface';
-import { DGService } from './../../services/dg.service';
 import { Component, OnInit } from '@angular/core';
 import { Products } from '../../interfaces/product.interface';
 import HighchartsAccessibility from 'highcharts/modules/accessibility';
@@ -7,6 +5,8 @@ import HighchartsExporting from 'highcharts/modules/exporting';
 import HighchartsTreeMap from 'highcharts/modules/treemap';
 import HighchartsTreeGraph from 'highcharts/modules/treegraph';
 import HighchartsTreeGrid from 'highcharts/modules/treegrid';
+import { MetaODS, Ods, SecuenciaOds } from '../../interfaces/ods.interface';
+import { DGService } from '../../services/dg.service';
 
 @Component({
   selector: 'app-ods-page',
@@ -305,7 +305,7 @@ export class OdsPageComponent implements OnInit{
   .subscribe( metaOds => this.metaods = metaOds)
   
   
-  this._direServices.ODS()
+  this._direServices.ods()
       .subscribe(dato => {
         this.ods = dato;
         console.log( this.ods);
