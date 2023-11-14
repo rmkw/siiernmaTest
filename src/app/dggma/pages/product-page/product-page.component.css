@@ -16,7 +16,7 @@
 
 .shadow-on-hover:hover {
   box-shadow: 0 10px 5px -5px rgba(255, 255, 255, 0.5);
-  transition: box-shadow 0.3s ease;
+  transition: box-shadow 0.1s ease;
 }
 
 .custom-scroll{
@@ -33,3 +33,19 @@
     text-overflow: ellipsis;
 }
 
+/* styles.css o cualquier otro archivo CSS principal */
+.custom-padding ol,
+.custom-padding ul {
+  padding-left: 0;
+}
+
+.custom-padding .excluir-estilo ol,
+.custom-padding .excluir-estilo ul {
+  padding-left: 2rem;
+  /* Estilo para las etiquetas excluidas */
+}
+
+.tooltip-element {
+  cursor: pointer;
+  /* Cambia el cursor al pasar sobre el elemento */
+}

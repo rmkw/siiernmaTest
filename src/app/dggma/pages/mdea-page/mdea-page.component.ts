@@ -1,8 +1,8 @@
+import { Products } from './../../interfaces/product.interface';
 import { Componente, Mdea, Subcomponente, Topico } from '../../interfaces/mdea.interface';
-import { DGService } from '../../services/dg.service';
 import { Component, OnInit } from '@angular/core';
-import {  Products } from '../../interfaces/product.interface';
-
+import { DGService } from '../../services/dg.service';
+import { TreeNode } from 'primeng/api';
 
 
 @Component({
@@ -13,123 +13,140 @@ import {  Products } from '../../interfaces/product.interface';
 
 export class MdeaPageComponent  implements OnInit{
 
+    treeDataMdea: TreeNode[] = [];
+    selectedNodesMdea: any;
+
+    public products: Products[] = [];
+    public componentesMDEA: Componente[]=[];
+    public subComponentesMDEA: Subcomponente[]=[];
+    public topicoMDEA: Topico[]=[];
+    public mdeas: Mdea[]=[] ;
+
+    subcomponentes: Subcomponente[] =[];
+    topicos: Topico[] = [];
+
+    filteredProducts: Products[] = [];
+    combinedResultsMdea: Mdea[]=[] ;
 
 
 
-  public products: Products[] = [];
-  public componentesMDEA: Componente[]=[];
-  public SubcomponentesPorComponente: Mdea[]=[];
-  public subComponentesMDEA: Subcomponente[]=[];
-  public topicoMDEA: Topico[]=[];
-  public mdeas?: Mdea[]=[];
-  subcomponentes: Subcomponente[] =[];
-  topicos: Topico[] = [];
+    constructor(
+      private _direServices: DGService,
 
-  filteredProducts: Products[] = [];
-  showFilteredProducts = false;
-  noProductsFound: boolean = false;
-  CompMdeaimg: boolean = false;
+    ){this.combinedResultsMdea = [];}
 
 
-  constructor(
-    private _direServices: DGService,
-  ){}
-
-
-
-    scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    mdeasByComponente(){
-        this.filteredProducts=this.products.filter(data => this.mdeas?.some(mdea => mdea.interview__id === data.interview__id))
-         console.log(this.filteredProducts)
-
-         if (this.filteredProducts.length === 0) {
-          this.noProductsFound = true;
-        } else {
-          this.noProductsFound = false;
-        }
-    }
-
-    SelectorComponente(event: any)  {
-      const id = event.target.value;
-      this._direServices.subcomponenteByParentid(id)
-      .subscribe( data => {
-        this.subcomponentes = data;
-
-        if (id >= 1) {
-          this.CompMdeaimg = true;
-        }
-
-      })
-
-      this._direServices.mdeaByComponenteId(id)
-      .subscribe( data => {
-        this.mdeas = data;
-        this.mdeasByComponente()
-      })
-
-    }
-
-    SelectorSubcomponente(event: any)  {
-      const id = event.target.value;
-      console.log(id);
-
-      this._direServices.topicoByParentid(id)
-      .subscribe( data => {
-        this.topicos = data; console.log('Topico', data);
-
-
-
-      })
-      this._direServices.mdeaBySubcomponenteId(id)
-      .subscribe( data => {
-        this.mdeas = data;
-        this.mdeasByComponente()
-      })
-    }
-
-
-
-    SelectorTopico(event: any)  {
-      const id = event.target.value;
-      console.log(id);
-
-      this._direServices.mdeaByTopicoId(id)
-      .subscribe( data => {
-        this.mdeas = data;
-        this.mdeasByComponente()
-      })
-
-
+    filterProductsBy(): void {
+      this.filteredProducts = this.products.filter(data => this.combinedResultsMdea.some(mdeas => mdeas.interview__id === data.interview__id));
+      console.log(this.filteredProducts);
     }
 
 
 
 
-  ngOnInit(): void {
-
-    this._direServices.productos()
-    .subscribe(data => this.products = data )
-
-    this._direServices.componentes()
-    .subscribe( componentes => this.componentesMDEA = componentes)
-
-    this._direServices.subcomponentes()
-    .subscribe( subcomponente => this.subComponentesMDEA = subcomponente)
-
-    this._direServices.topicos()
-    .subscribe( topicomdea => this.topicoMDEA = topicomdea)
-
-
+  selectComponente(event: { originalEvent: Event, node: TreeNode }): void {
+    const key = event.node.key;
+    if (key) {
+      const keyParts = key.split('_');
+      const tipo = keyParts[0];
+      const id = keyParts[1];
+      let componentResults: Mdea[] = [];
+      if (tipo === 'componente') {
+        componentResults = this.mdeas.filter((mdeas) => mdeas.comp_mdea === +id);
+      } else if (tipo === 'subcomponente') {
+        componentResults = this.mdeas.filter((mdeas) => mdeas.subcomp_mdea === +id);
+      } else if (tipo === 'topico') {
+        componentResults = this.mdeas.filter((mdeas) => mdeas.topico_mdea === +id);
+      }
+      this.combinedResultsMdea = this.combinedResultsMdea.concat(componentResults);
+      this.filterProductsBy()
+    }
   }
 
-  allFalse(): void {
 
-        this.showFilteredProducts = false;
 
-  this.ngOnInit();
+
+
+
+  UnSelectComponente(event: { originalEvent: Event, node: TreeNode }): void {
+    const key = event.node.key;
+    if (key) {
+      const keyParts = key.split('_');
+      const tipo = keyParts[0];
+      const id = keyParts[1];
+      if (!this.combinedResultsMdea) {
+        this.combinedResultsMdea = [];
+      }
+      this.combinedResultsMdea = this.combinedResultsMdea.filter((mdea: any) => {
+        if (tipo === 'componente') {
+          return mdea.comp_mdea !== +id;
+        } else if (tipo === 'subcomponente') {
+          return mdea.subcomp_mdea !== +id;
+        } else if (tipo === 'topico') {
+          return mdea.topico_mdea !== +id;
+        }
+        return true;
+      });
+      console.log(this.combinedResultsMdea)
+      console.log(this.filteredProducts);
+      this.filterProductsBy()
+  }
 }
 
+
+
+
+
+    ngOnInit(): void {
+
+      // Funcion que manda a llamar el servicio y los datos de este para que se pueda combinar con la transformaciión de datos a la estructura de treenode
+      this._direServices.componentes().subscribe(componentes => {
+        this._direServices.subcomponentes().subscribe(subcomponentes => {
+          this._direServices.topicos().subscribe(topicos => {
+            this.treeDataMdea = this.transformDataToTreeNodeMdea(componentes, subcomponentes, topicos);
+          });
+        });
+      });
+
+
+      this._direServices.productos()
+      .subscribe(data => this.products = data )
+
+      this._direServices.mdea()
+      .subscribe(data => this.mdeas = data)
+
+    }
+
+    //Funcion que ayuda a transformar los arreglos de objetos de componentes, subcomponentes y topicos para que este pueda ser compatible con la estructura treenode
+    transformDataToTreeNodeMdea(componentes: Componente[], subcomponentes: Subcomponente[], topicos: Topico[]): TreeNode[] {
+
+      return componentes.map(componente => {
+        const subcomponenteNodes: TreeNode[] = subcomponentes
+          .filter(subcomponente => subcomponente.parentid === componente.id)
+          .map(subcomponente => {
+            const topicoNodes: TreeNode[] = topicos
+              .filter(topico => topico.parentid === subcomponente.id)
+              .map(topico => ({
+                key: `topico_${topico.id}`,
+                label: topico.text,
+                data: topico,
+
+              }));
+            return {
+              key: `subcomponente_${subcomponente.id}`,
+              label: subcomponente.text,
+              data: subcomponente,
+              children: topicoNodes,
+
+            };
+          });
+        return {
+          key: `componente_${componente.id}`,
+          label: componente.text,
+          data: componente,
+          children: subcomponenteNodes,
+
+        };
+      });
+  }
 }

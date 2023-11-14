@@ -36,6 +36,10 @@ export class DGService {
 
 
   //! get secuencia MDEA
+  mdea(  ): Observable<Mdea[]> {
+    const url = `${ this.baseUrl}/mdea_coll`;
+    return this._http.get<Mdea[]>(url)
+  }
   mdeaById( id: string ): Observable<Mdea[]> {
     const url = `${ this.baseUrl}/mdea_coll?interview__id=${ id }`;
     return this._http.get<Mdea[]>(url)
@@ -112,6 +116,10 @@ export class DGService {
 
 
   //!ODS
+  ods(): Observable<SecuenciaOds[]> {
+    const url = `${ this.baseUrl}/ods_coll`;
+    return this._http.get<SecuenciaOds[]>(url)
+  }
 
   odsById( id: string ): Observable<SecuenciaOds[]> {
     const url = `${ this.baseUrl}/ods_coll?interview__id=${ id }`;

@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { Products, Escalas, SecuenciaVar } from '../../interfaces/product.interface';
@@ -10,6 +10,11 @@ import { MetaODS, Ods, SecuenciaOds } from '../../interfaces/ods.interface';
 import { IndicadoresPS2023, PS2023, SecuenciaPS } from '../../interfaces/ps.interface';
 
 import { DGService } from '../../services/dg.service';
+import { TreeNode } from 'primeng/api';
+import { Tree } from 'primeng/tree';
+
+
+
 
 
 //! Interface de los checkbox
@@ -22,21 +27,20 @@ interface CheckboxesState {
 @Component({
   selector: 'app-product-page',
   templateUrl: './product-page.component.html',
-  styleUrls: ['./product-page.component.css']
+  styleUrls: ['./product-page.component.css'],
 })
-export class ProductPageComponent implements OnInit{
-
+export class ProductPageComponent implements OnInit {
   //*PRODUCTOS
   public products: Products[] = [];
 
   //*ESCALAS
-  public escalas: Escalas[]=[];
+  public escalas: Escalas[] = [];
 
   //* VARIABLES
-  public secuenciaVAR: SecuenciaVar[]=[]
+  public secuenciaVAR: SecuenciaVar[] = [];
 
   //* Productos de información
-  public pi?: Pi[]=[];
+  public pi?: Pi[] = [];
 
   //* direcciones generales
   public dgs: UAdmin[] = [];
@@ -45,57 +49,56 @@ export class ProductPageComponent implements OnInit{
   public proInfo: ProgInformacion[] = [];
 
   //*Secuencia AEG
-  public aegSecuencia: SecuenciaAeg[]=[];
+  public aegSecuencia: SecuenciaAeg[] = [];
 
   //* NOMBRE dirección general AEG
   public dga_Pprod: DgaPprod[] = [];
 
   //*NOMBRES DE LA AEG
-  public aeg_2: Aeg2[]=[];
+  public aeg_2: Aeg2[] = [];
 
   //* NOMBRE DE LA DIRECCIÓN GENERAL ADJUNTA RESPONSABLE
-  public aeg_Prod: DgaProd[]=[];
+  public aeg_Prod: DgaProd[] = [];
 
   //*secuencia MDEAS
-  public mdeas?: Mdea[]=[];
+  public mdeas: Mdea[] = [];
 
   //* NOMBRE DE LOS COMPONENTES
-  public componentesMDEA: Componente[]=[];
+  public componentesMDEA: Componente[] = [];
 
   //*nombres de los sub componentes
-  public subComponentesMDEA: Subcomponente[]=[];
+  public subComponentesMDEA: Subcomponente[] = [];
 
   //*nombres de los tópicos
-  public topicoMDEA: Topico[]=[];
+  public topicoMDEA: Topico[] = [];
 
   //*secuencia de los ODS
-  public ODSes?: SecuenciaOds[]=[];
+  public ODSes: SecuenciaOds[] = [];
+
+  public odsSecuencia: SecuenciaOds[] = [];
 
   //*nombre de los objetivos ODS
-  public objetivODS: Ods[]=[];
+  public objetivODS: Ods[] = [];
 
   //*nombre de las metas del ods
-  public metasODS: MetaODS[]=[];
+  public metasODS: MetaODS[] = [];
 
   //*secuencia PS
-  public PSes?: SecuenciaPS[]=[];
+  public PSes?: SecuenciaPS[] = [];
 
   //*nombre de los ps
-  public ps2023: PS2023[]=[];
+  public ps2023: PS2023[] = [];
 
   //*nombre del segundo parámetro del PS
-  public indicadoresPS2023: IndicadoresPS2023[]=[];
-
-
+  public indicadoresPS2023: IndicadoresPS2023[] = [];
 
   //*banderas para ocultar filtros y mostrarlos
-  flagHidden : boolean = true;
-  flagFilter : boolean = false;
-  flagOther : boolean = true;
+  flagHidden: boolean = true;
+  flagFilter: boolean = false;
+  flagOther: boolean = true;
 
   //! elementoSeleccionado es una variable para tomar el objeto del array de productos y poder sacar la info de uno solo
   elementoSeleccionado: any;
-
 
   //!Definimos los checkbox
   checkboxesState: CheckboxesState = {
@@ -104,22 +107,22 @@ export class ProductPageComponent implements OnInit{
     direEstaEconomicas: false,
     direEstaGobSegPubJus: false,
     direInteAnaInv: false,
-  }
+  };
   checkboxesCobe: CheckboxesState = {
     cobeNacional: false,
     cobeEstatal: false,
     cobeMunicipal: false,
-    cobRegional: false
-  }
+    cobRegional: false,
+  };
   checkboxesType: CheckboxesState = {
     typeDatoGeo: false,
     typeTabulado: false,
-    typePublicacion: false
-
-  }
+    typePublicacion: false,
+  };
 
   //! elementos que nos ayudara a filtrar
   filteredProducts: Products[] = [];
+  filteredProductsBySearchByQuery: Products[] = [];
   showFilteredProducts = false;
   displayedProductCount: number = 0;
   displayedProductCountAll: number = 0;
@@ -141,7 +144,6 @@ export class ProductPageComponent implements OnInit{
   selectedYear: number | null = null;
   selectedYearHasta: number | null = null;
 
-
   //! FECHAS SELECT publicación
   pU_allYears: number[] = [];
   pU_uniqueYears: number[] = [];
@@ -153,13 +155,10 @@ export class ProductPageComponent implements OnInit{
   pU_selectedYearHasta: number | null = null;
 
   //! MDEA
-  componentes:Componente[] = []
-  subcomponente:Subcomponente[]=[]
-  topicos : Topico[]=[]
-  mdeasbyCompo: Mdea[]=[]
-
-
-  selectedOptions: { [key: string]: boolean } = {};
+  componentes: Componente[] = [];
+  subcomponente: Subcomponente[] = [];
+  topicos: Topico[] = [];
+  mdeasbyCompo: Mdea[] = [];
 
   selectedOptionsSub_componente: { [key: string]: boolean } = {};
 
@@ -167,104 +166,237 @@ export class ProductPageComponent implements OnInit{
 
   loading = true;
   cardsData = [
-    { title: '', },
-    { title: '', },
-    { title: '', },
-    { title: '', },
-    { title: '', },
-    { title: '', },
-    { title: '', },
-    { title: '', },
-    { title: '', },
-    { title: '', },
-    { title: '', },
-    { title: '', },
-    { title: '', },
+    { title: '' },
+    { title: '' },
+    { title: '' },
+    { title: '' },
+    { title: '' },
+    { title: '' },
+    { title: '' },
+    { title: '' },
+    { title: '' },
+    { title: '' },
+    { title: '' },
+    { title: '' },
+    { title: '' },
+    { title: '' },
   ];
 
+  //* filtros mdea
+  selectedNodesMdea: any;
+  treeDataMdea: TreeNode[] = [];
 
-  constructor( private _direServices: DGService, private route: ActivatedRoute){}
+  combinedResultsMdea: Mdea[] = [];
 
+  selectedTree: boolean = false;
+  unSelectedTree: boolean = false;
+
+  selectComponentekey: any;
+  unSelectComponentekey: any;
+
+  filterStates: { [key: string]: boolean } = {};
+  flagFirtsFilters: boolean = false;
+  flagSegundaFilters: boolean = false;
+  flagTerceroFilters: boolean = false;
+
+  //* Filtros ods
+  treeDataOds: TreeNode[] = [];
+  selectedNodesOds: any;
+  filterStatesODS: { [key: string]: boolean } = {};
+  selectODSkey: any;
+  unSelectODSkey: any;
+
+  public combinedResultsODS: SecuenciaOds[] = [];
+
+  deleteFilterFlag: boolean = true;
+
+  tree!: Tree;
+  banderaSearchByQuery: boolean = false;
+
+  constructor(
+    private _direServices: DGService,
+    private route: ActivatedRoute,
+    private cdr: ChangeDetectorRef
+  ) {
+    this.combinedResultsMdea = [];
+  }
+
+  //!Funcion que ayuda a transformar los arreglos de objetos de componentes, subcomponentes y topicos para que este pueda ser compatible con la estructura treenode
+  transformDataToTreeNodeMdea(
+    componentes: Componente[],
+    subcomponentes: Subcomponente[],
+    topicos: Topico[]
+  ): TreeNode[] {
+    return componentes.map((componente) => {
+      const subcomponenteNodes: TreeNode[] = subcomponentes
+        .filter((subcomponente) => subcomponente.parentid === componente.id)
+        .map((subcomponente) => {
+          const topicoNodes: TreeNode[] = topicos
+            .filter((topico) => topico.parentid === subcomponente.id)
+            .map((topico) => ({
+              key: `topico_${topico.id}`,
+              label: topico.text,
+              data: topico,
+            }));
+          return {
+            key: `subcomponente_${subcomponente.id}`,
+            label: subcomponente.text,
+            data: subcomponente,
+            children: topicoNodes,
+          };
+        });
+      return {
+        key: `componente_${componente.id}`,
+        label: componente.text,
+        data: componente,
+        children: subcomponenteNodes,
+      };
+    });
+  }
+
+  //! funcion para ods la misma que arriba
+  transformDataToTreeNodeOds(
+    objetivoOds: Ods[],
+    metaOds: MetaODS[]
+  ): TreeNode[] {
+    return objetivoOds.map((objetivo) => {
+      const objetivosNodes: TreeNode[] = metaOds
+        .filter((metas) => metas.parentid === objetivo.id)
+        .map((metas) => {
+          return {
+            key: `metas_${metas.id}`,
+            label: metas.text,
+            data: metas,
+            selected: false,
+          };
+        });
+      return {
+        key: `objetivos_${objetivo.id}`,
+        label: objetivo.text.slice(3, 50),
+        data: objetivo,
+        children: objetivosNodes,
+        selected: false,
+      };
+    });
+  }
 
   ngOnInit(): void {
-
-    this.route.queryParams.subscribe(params => {
-      this.checkboxesState['direGeogrAmbiente'] = params['direGeogrAmbiente'] === 'true';
-      this.checkboxesState['direEstaSocio'] = params['direEstaSocio'] === 'true';
-      this.checkboxesState['direEstaEconomicas'] = params['direEstaEconomicas'] === 'true';
-      this.checkboxesState['direEstaGobSegPubJus'] = params['direEstaGobSegPubJus'] === 'true';
-      this.checkboxesState['direInteAnaInv'] = params['direInteAnaInv'] === 'true';
-      console.log(this.checkboxesState)
-
+    this.route.queryParams.subscribe((params) => {
+      this.checkboxesState['direGeogrAmbiente'] =
+        params['direGeogrAmbiente'] === 'true';
+      this.checkboxesState['direEstaSocio'] =
+        params['direEstaSocio'] === 'true';
+      this.checkboxesState['direEstaEconomicas'] =
+        params['direEstaEconomicas'] === 'true';
+      this.checkboxesState['direEstaGobSegPubJus'] =
+        params['direEstaGobSegPubJus'] === 'true';
+      this.checkboxesState['direInteAnaInv'] =
+        params['direInteAnaInv'] === 'true';
     });
 
+    //! Funcion que manda a llamar el servicio y los datos de este para que se pueda combinar con la transformaciión de datos a la estructura de treenode
+    this._direServices.componentes().subscribe((componentes) => {
+      this._direServices.subcomponentes().subscribe((subcomponentes) => {
+        this._direServices.topicos().subscribe((topicos) => {
+          this.treeDataMdea = this.transformDataToTreeNodeMdea(
+            componentes,
+            subcomponentes,
+            topicos
+          );
+        });
+      });
+    });
+
+    this._direServices.mdea().subscribe((data) => (this.mdeas = data));
+
+    //!ODS para Tree Node
+    this._direServices.objetivos().subscribe((objetivoOds) => {
+      this._direServices.metas().subscribe((metasODS) => {
+        this.treeDataOds = this.transformDataToTreeNodeOds(
+          objetivoOds,
+          metasODS
+        );
+      });
+    });
+
+    this._direServices.ods().subscribe((data) => {
+      this.odsSecuencia = data;
+    });
 
     //! TODOS LOS PRODUCTOS
-    this._direServices.productos()
-      .subscribe(data => {
-        this.products = data;
+    this._direServices.productos().subscribe((data) => {
+      this.products = data;
 
-        this.displayedProductCountAll = this.products.length
-        this.extractAndSortYears();
-        this.extractAndSortYearsHasta();
-        this.pU_extractAndSortYears();
-        this.pU_extractAndSortYearsHasta();
-        this.loading = false;
-      });
+      this.displayedProductCountAll = this.products.length;
+      this.extractAndSortYears();
+      this.extractAndSortYearsHasta();
+      this.pU_extractAndSortYears();
+      this.pU_extractAndSortYearsHasta();
+      this.loading = false;
+    });
 
     //! ESCALAS
-    this._direServices.escalas()
-    .subscribe( escala => this.escalas = escala);
+    this._direServices.escalas().subscribe((escala) => (this.escalas = escala));
 
     //! PRODUCTOS DE INFORMACIÓN
-    this._direServices.programasInformaName()
-    .subscribe( pInfo => { this.proInfo = pInfo; });
+    this._direServices.programasInformaName().subscribe((pInfo) => {
+      this.proInfo = pInfo;
+    });
 
     //! DIRECCIONES
-    this._direServices.direccionesGeneralesPI()
-    .subscribe( dgs => this.dgs = dgs );
+    this._direServices
+      .direccionesGeneralesPI()
+      .subscribe((dgs) => (this.dgs = dgs));
 
     //!direcciones en AEG
-    this._direServices.dirGenProAEG()
-    .subscribe( dga_pprod => this.dga_Pprod = dga_pprod);
+    this._direServices
+      .dirGenProAEG()
+      .subscribe((dga_pprod) => (this.dga_Pprod = dga_pprod));
 
     //!AEG nombre del AEG
-    this._direServices.actiEstaGeoName()
-    .subscribe( aeg_2 => this.aeg_2 = aeg_2)
+    this._direServices
+      .actiEstaGeoName()
+      .subscribe((aeg_2) => (this.aeg_2 = aeg_2));
 
     //!DIRECCIÓN GENERAL ADJUNTA RESPONSABLE
-    this._direServices.direAdjResAEG()
-    .subscribe( aeg_prod => this.aeg_Prod = aeg_prod )
+    this._direServices
+      .direAdjResAEG()
+      .subscribe((aeg_prod) => (this.aeg_Prod = aeg_prod));
 
     //! TODOS LOS COMPONENTES DEL MDEA
-    this._direServices.componentes()
-    .subscribe( componentes => this.componentesMDEA = componentes)
+    this._direServices
+      .componentes()
+      .subscribe((componentes) => (this.componentesMDEA = componentes));
 
     //! todos los sub componentes del MDEA
-    this._direServices.subcomponentes()
-    .subscribe( subcomponente => this.subComponentesMDEA = subcomponente)
+    this._direServices
+      .subcomponentes()
+      .subscribe((subcomponente) => (this.subComponentesMDEA = subcomponente));
 
     //! todos los tópicos
-    this._direServices.topicos()
-    .subscribe( topicomdea => this.topicoMDEA = topicomdea)
+    this._direServices
+      .topicos()
+      .subscribe((topicomdea) => (this.topicoMDEA = topicomdea));
 
     //! todos los OBJETIVOS del ods
-    this._direServices.objetivos()
-    .subscribe( objetivos => this.objetivODS = objetivos)
+    this._direServices
+      .objetivos()
+      .subscribe((objetivos) => (this.objetivODS = objetivos));
 
     //! todas las metas de los ODS
-    this._direServices.metas()
-    .subscribe( metas => this.metasODS = metas )
+    this._direServices.metas().subscribe((metas) => (this.metasODS = metas));
 
     //? COMPONENTES
-    this._direServices.componentes().
-    subscribe(data => {this.componentes = data;})
+    this._direServices.componentes().subscribe((data) => {
+      this.componentes = data;
+    });
 
+    console.log('se llamo el ngOnInit');
   }
   //! LLENAMOS SELECT de fechas hasta referencia
   extractAndSortYears(): void {
     const allYearSet = new Set<number>();
-    this.products.forEach(product => {
+    this.products.forEach((product) => {
       const year = product.a_referencia;
       if (typeof year === 'number' && !isNaN(year)) {
         allYearSet.add(year);
@@ -277,7 +409,7 @@ export class ProductPageComponent implements OnInit{
   //! LLENAMOS SELECT de fechas desde referencia
   extractAndSortYearsHasta(): void {
     const allYearSet = new Set<number>();
-    this.products.forEach(product => {
+    this.products.forEach((product) => {
       const year = product.a_referencia2;
       if (typeof year === 'number' && !isNaN(year)) {
         allYearSet.add(year);
@@ -291,7 +423,7 @@ export class ProductPageComponent implements OnInit{
   //! LLENAMOS SELECT de fechas hasta publicación
   pU_extractAndSortYears(): void {
     const allYearSet = new Set<number>();
-    this.products.forEach(product => {
+    this.products.forEach((product) => {
       const year = product.a_publicacion;
       if (typeof year === 'number' && !isNaN(year)) {
         allYearSet.add(year);
@@ -304,7 +436,7 @@ export class ProductPageComponent implements OnInit{
   //! LLENAMOS SELECT de fechas desde publicación
   pU_extractAndSortYearsHasta(): void {
     const allYearSet = new Set<number>();
-    this.products.forEach(product => {
+    this.products.forEach((product) => {
       const year = product.a_publicacion2;
       if (typeof year === 'number' && !isNaN(year)) {
         allYearSet.add(year);
@@ -315,36 +447,14 @@ export class ProductPageComponent implements OnInit{
     this.pU_uniqueYearsHasta = [...this.pU_allYearsHasta];
   }
 
-  //* aquí lo del sub componente
-  onChangeComp(event: any) {
-    const id = event.target.value;
-    this._direServices.subcomponenteByParentid(id).
-    subscribe(data => {this.subcomponente = data;});
-
-    //!por componente
-    this._direServices.mdeaByComponenteId(id).subscribe(data => {this.mdeasbyCompo = data; this.productByCompont();})
-
-  }
-  productByCompont(){
-    this.filteredProducts = this.products.filter(product =>
-    this.mdeasbyCompo.some(mdea => mdea.interview__id === product.interview__id));
-  }
-  onChangeSubComp(event:any){
-    const id = event.target.value;
-    this._direServices.topicoByParentid(id).
-    subscribe(data => {this.topicos = data;})
-  }
-
-
   //!bandera para filtros para que mostrar
-  changeFlagFilter(){
+  changeFlagFilter() {
     this.flagHidden = false;
     this.flagFilter = true;
     this.flagOther = false;
   }
   //!bandera para filtros para que oculte
-  hiddenFilters(){
-
+  hiddenFilters() {
     this.flagHidden = true;
     this.flagFilter = false;
     this.flagOther = true;
@@ -355,41 +465,55 @@ export class ProductPageComponent implements OnInit{
     this.elementoSeleccionado = elemento;
 
     //! VARIABLES
-    this._direServices.variableById(this.elementoSeleccionado.interview__id)
-    .subscribe( data => { this.secuenciaVAR = data});
+    this._direServices
+      .variableById(this.elementoSeleccionado.interview__id)
+      .subscribe((data) => {
+        this.secuenciaVAR = data;
+      });
 
     //! Programas de Información
-    this._direServices.prograInfo(this.elementoSeleccionado.interview__id)
-    .subscribe(data => { this.pi = data; });
+    this._direServices
+      .prograInfo(this.elementoSeleccionado.interview__id)
+      .subscribe((data) => {
+        this.pi = data;
+      });
 
     //! Actividad Estadística o Geográfica
-    this._direServices.actiEstaGeoById(this.elementoSeleccionado.interview__id)
-    .subscribe(data => { this.aegSecuencia = data;
-    console.log(this.aegSecuencia)});
+    this._direServices
+      .actiEstaGeoById(this.elementoSeleccionado.interview__id)
+      .subscribe((data) => {
+        this.aegSecuencia = data;
+      });
 
     //!secuencia MDEA by id del producto
-    this._direServices.mdeaById(this.elementoSeleccionado.interview__id)
-    .subscribe(data => { this.mdeas = data; });
+    this._direServices
+      .mdeaById(this.elementoSeleccionado.interview__id)
+      .subscribe((data) => {
+        this.mdeas = data;
+      });
 
     //!secuencia de los ODS
-    this._direServices.odsById(this.elementoSeleccionado.interview__id)
-    .subscribe( data => { this.ODSes = data; });
+    this._direServices
+      .odsById(this.elementoSeleccionado.interview__id)
+      .subscribe((data) => {
+        this.ODSes = data;
+      });
 
     //!secuencia de PS
-    this._direServices.programaSectorialById(this.elementoSeleccionado.interview__id)
-    .subscribe( data => {
-      this.PSes = data;
-    });
+    this._direServices
+      .programaSectorialById(this.elementoSeleccionado.interview__id)
+      .subscribe((data) => {
+        this.PSes = data;
+      });
 
     //! primer parámetro de texto del PS
-    this._direServices.ps2023()
-    .subscribe(ps2023 => this.ps2023 = ps2023)
+    this._direServices.ps2023().subscribe((ps2023) => (this.ps2023 = ps2023));
 
     //! segundo parámetro de texto del ps
-    this._direServices.indicadoresPS2023()
-    .subscribe( indiPS2023 => this.indicadoresPS2023 = indiPS2023)
+    this._direServices
+      .indicadoresPS2023()
+      .subscribe((indiPS2023) => (this.indicadoresPS2023 = indiPS2023));
   }
-
 
   //! ESCALAS Transformando IDs a texto
   getEscalasText(indicador_ps: number): string {
@@ -535,15 +659,14 @@ export class ProductPageComponent implements OnInit{
     return indicadoresPS2023Text;
   }
 
-
-   //! función que detecta los cambios en los checks box DIRECCIONES
+  //! función que detecta los cambios en los checks box DIRECCIONES
   handleCheckboxChange(event: Event): void {
     const target = event.target as HTMLInputElement;
     const checkboxId = target.id;
     this.checkboxesState[checkboxId] = target.checked;
     this.applyFilters();
   }
-   //! check flag de radios TIPO
+  //! check flag de radios TIPO
   handleRadioChange(event: Event): void {
     const target = event.target as HTMLInputElement;
     this.selectedRadioValue = target.value;
@@ -562,174 +685,385 @@ export class ProductPageComponent implements OnInit{
     const checkboxId = target.id;
     this.checkboxesType[checkboxId] = target.checked;
     this.applyFilters();
-
   }
   //! función que detecta los cambios en los checks box FECHAS desde referencia
   onChangeDesdeRefe(event: Event): void {
-  const target = event.target as HTMLSelectElement;
-  const selectedYear = parseInt(target.value, 10); // Convierte el valor a un número entero
-  this.selectedYear = selectedYear; // Asigna el valor a la propiedad selectedYear
-  this.applyFilters(); // Aplica los filtros nuevamente
-}
+    const target = event.target as HTMLSelectElement;
+    const selectedYear = parseInt(target.value, 10); // Convierte el valor a un número entero
+    this.selectedYear = selectedYear; // Asigna el valor a la propiedad selectedYear
+    this.applyFilters();
+  }
   onChangeHastaRefe(event: Event): void {
-  const target = event.target as HTMLSelectElement;
-  const selectedYearHasta = parseInt(target.value, 10);
-  this.selectedYearHasta = selectedYearHasta;
-  this.applyFilters();
-}
+    const target = event.target as HTMLSelectElement;
+    const selectedYearHasta = parseInt(target.value, 10);
+    this.selectedYearHasta = selectedYearHasta;
+    this.applyFilters();
+  }
 
   //! función que detecta los cambios en los checks box FECHAS desde referencia
   onChangeDesdePubli(event: Event): void {
-  const target = event.target as HTMLSelectElement;
-  const selectedYear = parseInt(target.value, 10);
-  this.pU_selectedYear = selectedYear;
-  this.applyFilters();
-}
+    const target = event.target as HTMLSelectElement;
+    const selectedYear = parseInt(target.value, 10);
+    this.pU_selectedYear = selectedYear;
+    this.applyFilters();
+  }
   onChangeHastaPubli(event: Event): void {
-  const target = event.target as HTMLSelectElement;
-  const selectedYearHasta = parseInt(target.value, 10);
-  this.pU_selectedYearHasta = selectedYearHasta;
-  this.applyFilters();
-}
-  //!filtro calis
-  handleSelectChangeCOMPONENTES(event: Event): void {
-  const selectElement = event.target as HTMLSelectElement;
-  const selectedOption = selectElement.options[selectElement.selectedIndex];
-  const value = selectedOption.value;
+    const target = event.target as HTMLSelectElement;
+    const selectedYearHasta = parseInt(target.value, 10);
+    this.pU_selectedYearHasta = selectedYearHasta;
+    this.applyFilters();
+  }
 
-  this.selectedOptions[value] = !this.selectedOptions[value];
+  selectComponente(event: { originalEvent: Event; node: TreeNode }): void {
+    this.selectComponentekey = event.node.key;
+    this.filterStates[this.selectComponentekey] = true;
+    this.applyFilters();
+  }
 
-  console.log(this.selectedOptions);
+  unSelectComponente(event: { originalEvent: Event; node: TreeNode }): void {
+    this.unSelectComponentekey = event.node.key;
+    this.filterStates[this.unSelectComponentekey] = false;
 
+    this.applyFilters();
+  }
 
-}
+  selectODS(event: { originalEvent: Event; node: TreeNode }): void {
+    this.selectODSkey = event.node.key;
+    this.filterStatesODS[this.selectODSkey] = true;
 
-   handleSelectChangeSUBCOMPONENTES(event: Event): void {
-  const selectElement = event.target as HTMLSelectElement;
-  const selectedOption = selectElement.options[selectElement.selectedIndex];
-  const value = selectedOption.value;
+    this.applyFilters();
+  }
 
-  this.selectedOptionsSub_componente[value] = !this.selectedOptionsSub_componente[value];
+  unSelectODS(event: { originalEvent: Event; node: TreeNode }): void {
+    this.unSelectODSkey = event.node.key;
+    this.filterStatesODS[this.unSelectODSkey] = false;
 
-  console.log(this.selectedOptionsSub_componente);
-
-}
-
-  handleSelectChangeTopico(event: Event): void {
-  const selectElement = event.target as HTMLSelectElement;
-  const selectedOption = selectElement.options[selectElement.selectedIndex];
-  const value = selectedOption.value;
-
-  this.selectedOptionsTopico[value] = !this.selectedOptionsTopico[value];
-
-  console.log(this.selectedOptionsTopico);
-
-}
+    this.applyFilters();
+  }
 
   //TODO FILTROS
 
   applyFilters(): void {
-  this.showFilteredProducts = false;
-  let combinedResults = this.products;
+    this.filteredProducts = [];
+    let combinedResults = [...this.products];
 
-  if (
-    this.checkboxesState['direGeogrAmbiente'] || this.checkboxesState['direEstaSocio'] || this.checkboxesState['direEstaEconomicas'] ||
-    this.checkboxesState['direEstaGobSegPubJus'] || this.checkboxesState['direInteAnaInv']
-  ) {
-    combinedResults = combinedResults.filter((product) => {
-  return (
-    (this.checkboxesState['direGeogrAmbiente'] && product.dg_prod === 1) ||
-    (this.checkboxesState['direEstaSocio'] && product.dg_prod === 2) ||
-    (this.checkboxesState['direEstaEconomicas'] && product.dg_prod === 3) ||
-    (this.checkboxesState['direEstaGobSegPubJus'] && product.dg_prod === 4) ||
-    (this.checkboxesState['direInteAnaInv'] && product.dg_prod === 5)
-  );
-});
+    this.showFilteredProducts = false;
+    this.deleteFilterFlag = false;
 
-  }
+    let shouldContinue = true;
+    let shouldContinue2 = true;
 
-  const radioOption = this.selectedRadioValue;
-  if (radioOption) {
-    combinedResults = combinedResults.filter((product) => {
-      if (radioOption === 'option1') {
-        return product.tipo_prod__1 === 1 && product.tipo_prod__2 === 0;
-      } else if (radioOption === 'option2') {
-        return product.tipo_prod__1 === 0 && product.tipo_prod__2 === 1;
-      } else if (radioOption === 'option3') {
-        return product.tipo_prod__1 === 1 && product.tipo_prod__2 === 1;
+    console.log('\x1b[35m%s\x1b[0m', this.banderaSearchByQuery);
+
+    if (this.banderaSearchByQuery) {
+      combinedResults = this.filteredProductsBySearchByQuery;
+    }
+
+    console.log('\x1b[36m%s\x1b[0m','combinacion', combinedResults);
+    if (
+      this.checkboxesState['direGeogrAmbiente'] ||
+      this.checkboxesState['direEstaSocio'] ||
+      this.checkboxesState['direEstaEconomicas'] ||
+      this.checkboxesState['direEstaGobSegPubJus'] ||
+      this.checkboxesState['direInteAnaInv']
+    ) {
+      console.log('\x1b[29m%s\x1b[0m', 'filtro direcciones generales');
+
+      combinedResults = combinedResults.filter((product) => {
+        return (
+          (this.checkboxesState['direGeogrAmbiente'] &&
+            product.dg_prod === 1) ||
+          (this.checkboxesState['direEstaSocio'] && product.dg_prod === 2) ||
+          (this.checkboxesState['direEstaEconomicas'] &&
+            product.dg_prod === 3) ||
+          (this.checkboxesState['direEstaGobSegPubJus'] &&
+            product.dg_prod === 4) ||
+          (this.checkboxesState['direInteAnaInv'] && product.dg_prod === 5)
+        );
+      });
+    }
+
+    const radioOption = this.selectedRadioValue;
+    if (radioOption) {
+      console.log('\x1b[30m%s\x1b[0m', 'filtro de radio Button');
+      combinedResults = combinedResults.filter((product) => {
+        if (radioOption === 'option1') {
+          return product.tipo_prod__1 === 1 && product.tipo_prod__2 === 0;
+        } else if (radioOption === 'option2') {
+          return product.tipo_prod__1 === 0 && product.tipo_prod__2 === 1;
+        } else if (radioOption === 'option3') {
+          return product.tipo_prod__1 === 1 && product.tipo_prod__2 === 1;
+        }
+        return true;
+      });
+    }
+
+    if (
+      this.checkboxesCobe['cobeNacional'] ||
+      this.checkboxesCobe['cobeEstatal'] ||
+      this.checkboxesCobe['cobeMunicipal'] ||
+      this.checkboxesCobe['cobRegional']
+    ) {
+      console.log('\x1b[31m%s\x1b[0m', 'filtro de COBERTURA');
+
+      combinedResults = combinedResults.filter((product) => {
+        const coberturaGeo1 =
+          this.checkboxesCobe['cobeNacional'] && product.cobertura_geo__1 === 1;
+        const coberturaGeo2 =
+          this.checkboxesCobe['cobeEstatal'] && product.cobertura_geo__2 === 1;
+        const coberturaGeo3 =
+          this.checkboxesCobe['cobeMunicipal'] &&
+          product.cobertura_geo__3 === 1;
+        const coberturaGeo4 =
+          this.checkboxesCobe['cobRegional'] && product.cobertura_geo__4 === 1;
+
+        return coberturaGeo1 || coberturaGeo2 || coberturaGeo3 || coberturaGeo4;
+      });
+    }
+
+    if (
+      this.checkboxesType['typeDatoGeo'] ||
+      this.checkboxesType['typeTabulado'] ||
+      this.checkboxesType['typePublicacion']
+    ) {
+      console.log('\x1b[32m%s\x1b[0m', 'filtro de TIPO DE SOPORTE');
+
+      combinedResults = combinedResults.filter((product) => {
+        const typeDato =
+          this.checkboxesType['typeDatoGeo'] && product.tipo_soporte__1 === 1;
+        const typeTabu =
+          this.checkboxesType['typeTabulado'] && product.tipo_soporte__2 === 1;
+        const typePubl =
+          this.checkboxesType['typePublicacion'] &&
+          product.tipo_soporte__3 === 1;
+
+        return typeDato || typeTabu || typePubl;
+      });
+    }
+
+    if (this.selectedYear == 0) {
+      this.selectedYear = null;
+
+      return;
+    } else if (this.selectedYear) {
+      combinedResults = combinedResults.filter((product) => {
+        const productYear = parseInt(product.a_referencia as string, 10);
+        return !isNaN(productYear) && productYear >= this.selectedYear!;
+      });
+    }
+
+    if (this.selectedYearHasta == 0) {
+      this.selectedYearHasta = null;
+
+      return;
+    } else if (this.selectedYearHasta) {
+      combinedResults = combinedResults.filter((product) => {
+        const productYear = parseInt(
+          product.a_referencia2 as unknown as string,
+          10
+        );
+        return !isNaN(productYear) && productYear <= this.selectedYearHasta!;
+      });
+    }
+    //? desde aquí se filtra por a_publicación
+    if (this.pU_selectedYear == 0) {
+      this.pU_selectedYear = null;
+      return;
+    } else if (this.pU_selectedYear) {
+      combinedResults = combinedResults.filter((product) => {
+        const productYear = parseInt(product.a_publicacion as string, 10); // Convierte a número
+        return !isNaN(productYear) && productYear >= this.pU_selectedYear!;
+      });
+    }
+
+    if (this.pU_selectedYearHasta == 0) {
+      this.pU_selectedYearHasta = null;
+      return;
+    } else if (this.pU_selectedYearHasta) {
+      combinedResults = combinedResults.filter((product) => {
+        const productYear = parseInt(
+          product.a_publicacion2 as unknown as string,
+          10
+        );
+        return !isNaN(productYear) && productYear <= this.pU_selectedYearHasta!;
+      });
+    }
+    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+    Object.entries(this.filterStates).forEach(([key, value]) => {
+      if (value) {
+        if (key === this.selectComponentekey) {
+          this._direServices.mdea().subscribe((data) => (this.mdeas = data));
+          let thismdeas = [...this.mdeas];
+
+          console.log('\x1b[33m%s\x1b[0m', 'MDEAS');
+
+          const keyParts = this.selectComponentekey.split('_');
+          const tipo = keyParts[0];
+          const id = keyParts[1];
+          let mdeasResults: Mdea[] = [];
+          if (tipo === 'componente') {
+            mdeasResults = thismdeas.filter((mdeas) => mdeas.comp_mdea === +id);
+          } else if (tipo === 'subcomponente') {
+            mdeasResults = thismdeas.filter(
+              (mdeas) => mdeas.subcomp_mdea === +id
+            );
+          } else if (tipo === 'topico') {
+            mdeasResults = thismdeas.filter(
+              (mdeas) => mdeas.topico_mdea === +id
+            );
+          }
+
+          this.combinedResultsMdea =
+            this.combinedResultsMdea.concat(mdeasResults);
+
+          combinedResults = combinedResults.filter((data) =>
+            this.combinedResultsMdea.some(
+              (mdeas) => mdeas.interview__id === data.interview__id
+            )
+          );
+        }
+      } else {
+        if (key === this.unSelectComponentekey) {
+          const unselectedKeyParts = this.unSelectComponentekey.split('_');
+          const unselectedTipo = unselectedKeyParts[0];
+          const unselectedId = unselectedKeyParts[1];
+
+          if (unselectedTipo === 'componente') {
+            this.combinedResultsMdea = this.combinedResultsMdea.filter(
+              (mdeas) => mdeas.comp_mdea !== +unselectedId
+            );
+          } else if (unselectedTipo === 'subcomponente') {
+            this.combinedResultsMdea = this.combinedResultsMdea.filter(
+              (mdeas) => mdeas.subcomp_mdea !== +unselectedId
+            );
+          } else if (unselectedTipo === 'topico') {
+            this.combinedResultsMdea = this.combinedResultsMdea.filter(
+              (mdeas) => mdeas.topico_mdea !== +unselectedId
+            );
+          }
+          combinedResults = combinedResults.filter((data) =>
+            this.combinedResultsMdea.some(
+              (mdeas) => mdeas.interview__id === data.interview__id
+            )
+          );
+
+          //! Eliminar las entradas con valor false del arreglo
+          this.filterStates = Object.fromEntries(
+            Object.entries(this.filterStates).filter(([_, value]) => value)
+          );
+
+          if (this.combinedResultsMdea.length == 0) {
+            this.handleComponenteFilter();
+
+            shouldContinue = false;
+            return;
+          }
+        }
+        return;
       }
-      return true;
     });
-  }
 
-  if (
-    this.checkboxesCobe['cobeNacional'] || this.checkboxesCobe['cobeEstatal'] ||
-    this.checkboxesCobe['cobeMunicipal'] ||this.checkboxesCobe['cobRegional']
-  ) {
-    combinedResults = combinedResults.filter((product) => {
-      const coberturaGeo1 = this.checkboxesCobe['cobeNacional'] && product.cobertura_geo__1 === 1;
-      const coberturaGeo2 = this.checkboxesCobe['cobeEstatal'] && product.cobertura_geo__2 === 1;
-      const coberturaGeo3 = this.checkboxesCobe['cobeMunicipal'] && product.cobertura_geo__3 === 1;
-      const coberturaGeo4 = this.checkboxesCobe['cobRegional'] && product.cobertura_geo__4 === 1;
+    if (!shouldContinue) return;
 
-      return coberturaGeo1 || coberturaGeo2 || coberturaGeo3 || coberturaGeo4;
+    Object.entries(this.filterStatesODS).forEach(([key, value]) => {
+      if (value) {
+        if (key === this.selectODSkey) {
+          this._direServices
+            .ods()
+            .subscribe((data) => (this.odsSecuencia = data));
+          let thisodsSecuencia = [...this.odsSecuencia];
+
+          console.log('\x1b[34m%s\x1b[0m', 'filtro de ODS');
+
+          const keyParts = this.selectODSkey.split('_');
+          const tipo = keyParts[0];
+          const id = keyParts[1];
+          let odsResults: SecuenciaOds[] = [];
+          if (tipo === 'objetivos') {
+            odsResults = thisodsSecuencia.filter((ods) => ods.obj_ods === +id);
+          } else if (tipo === 'metas') {
+            odsResults = thisodsSecuencia.filter((ods) => ods.meta_ods === +id);
+          }
+          this.combinedResultsODS = this.combinedResultsODS.concat(odsResults);
+
+          combinedResults = combinedResults.filter((data) =>
+            this.combinedResultsODS.some(
+              (ods) => ods.interview__id === data.interview__id
+            )
+          );
+        }
+      } else {
+        if (key === this.unSelectODSkey) {
+          const unselectedKeyParts = this.unSelectODSkey.split('_');
+          const unselectedTipo = unselectedKeyParts[0];
+          const unselectedId = parseInt(unselectedKeyParts[1], 10);
+
+          if (unselectedTipo === 'objetivos') {
+            this.combinedResultsODS = this.combinedResultsODS.filter(
+              (mdeas) => mdeas.obj_ods !== +unselectedId
+            );
+          } else if (unselectedTipo === 'metas') {
+            this.combinedResultsODS = this.combinedResultsODS.filter(
+              (mdeas) => mdeas.meta_ods !== +unselectedId
+            );
+          }
+
+          combinedResults = combinedResults.filter((data) =>
+            this.combinedResultsODS.some(
+              (mdeas) => mdeas.interview__id === data.interview__id
+            )
+          );
+
+          // Eliminar las entradas con valor false del arreglo
+          this.filterStatesODS = Object.fromEntries(
+            Object.entries(this.filterStatesODS).filter(([_, value]) => value)
+          );
+
+          if (this.combinedResultsODS.length == 0) {
+            this.handleODSFilter();
+
+            shouldContinue2 = false;
+            return;
+          }
+        }
+      }
     });
+
+    if (!shouldContinue2) return;
+
+    this.filteredProducts = combinedResults;
+    this.displayedProductCount = this.filteredProducts.length;
+    this.showFilteredProducts = true;
+    console.log(this.filteredProducts);
   }
 
-  if (
-    this.checkboxesType['typeDatoGeo'] || this.checkboxesType['typeTabulado'] || this.checkboxesType['typePublicacion']
-  ) {
-    combinedResults = combinedResults.filter((product) =>{
-      const typeDato = this.checkboxesType['typeDatoGeo'] && product.tipo_soporte__1 === 1;
-      const typeTabu = this.checkboxesType['typeTabulado'] && product.tipo_soporte__2 === 1;
-      const typePubl = this.checkboxesType['typePublicacion'] && product.tipo_soporte__3 === 1;
-
-      return typeDato || typeTabu || typePubl
-    })
+  handleComponenteFilter(): void {
+    this.filteredProducts = [...this.products];
+    this.displayedProductCount = this.filteredProducts.length;
+    this.showFilteredProducts = true;
+    this.applyFilters();
   }
 
-  if (this.selectedYear) {
-  combinedResults = combinedResults.filter((product) => {
-    const productYear = parseInt(product.a_referencia as string, 10);
-    return !isNaN(productYear) && productYear >= this.selectedYear!;
-  });
-}
+  handleODSFilter(): void {
+    this.filteredProducts = [...this.products];
+    this.displayedProductCount = this.filteredProducts.length;
+    this.showFilteredProducts = true;
+    this.applyFilters();
+  }
 
+  deleteFilter() {
+    this.selectedNodesMdea = [];
+    this.filterStates = {};
+    this.treeDataMdea = [];
 
-if (this.selectedYearHasta != null) {
-  combinedResults = combinedResults.filter((product) => {
-    const productYear = parseInt(product.a_referencia2 as unknown as string, 10);
-    return !isNaN(productYear) && productYear <= this.selectedYearHasta!;
-  });
-}
+    this.selectedNodesOds = [];
+    this.filterStatesODS = {};
+    this.treeDataOds = [];
+    this.cdr.detectChanges();
 
-  //? desde aquí se filtra por a_publicación
-  if (this.pU_selectedYear) {
-  combinedResults = combinedResults.filter((product) => {
-    const productYear = parseInt(product.a_publicacion as string, 10); // Convierte a número
-    return !isNaN(productYear) && productYear >= this.pU_selectedYear!;
-  });
-}
-
-// Aplicar el filtro de fecha "hasta" (selectedYearHasta)
-if (this.pU_selectedYearHasta != null) {
-  combinedResults = combinedResults.filter((product) => {
-    const productYear = parseInt(product.a_publicacion2 as unknown as string, 10); // Convierte a número
-    return !isNaN(productYear) && productYear <= this.pU_selectedYearHasta!;
-  });
-}
-
-  this.filteredProducts = combinedResults;
-
-  this.displayedProductCount = this.filteredProducts.length;
-
-
-  this.showFilteredProducts = true;
-
-}
-
-  deleteFilter(){
-    this.terminoBusqueda= '';
+    this.deleteFilterFlag = true;
+    this.terminoBusqueda = '';
 
     this.checkboxesState = {
       direGeogrAmbiente: false,
@@ -739,83 +1073,145 @@ if (this.pU_selectedYearHasta != null) {
       direInteAnaInv: false,
     };
 
-   this.checkboxesCobe = {
+    this.checkboxesCobe = {
       cobeNacional: false,
       cobeEstatal: false,
       cobeMunicipal: false,
-      cobRegional: false
+      cobRegional: false,
     };
 
     this.checkboxesType = {
       typeDatoGeo: false,
       typeTabulado: false,
-      typePublicacion: false
+      typePublicacion: false,
     };
 
     this.selectedRadioValue = '';
-
     this.showFilteredProducts = false;
 
+    //! FECHAS SELECT referencia
+    this.allYears = [];
+    this.uniqueYears = [];
+    this.allYearsHasta = [];
+    this.uniqueYearsHasta = [];
+    //* Filtro fechas
+    this.selectedYear = null;
+    this.selectedYearHasta = null;
+    //! FECHAS SELECT publicación
+    this.pU_allYears = [];
+    this.pU_uniqueYears = [];
+    this.pU_allYearsHasta = [];
+    this.pU_uniqueYearsHasta = [];
+    //* Filtro fechas publicación
+    this.pU_selectedYear = null;
+    this.pU_selectedYearHasta = null;
+    this.banderaSearchByQuery = false;
 
-  //! FECHAS SELECT referencia
-  this.allYears = [];
-  this.uniqueYears = [];
-
-  this.allYearsHasta = [];
-  this.uniqueYearsHasta = [];
-
-  //* Filtro fechas
-  this.selectedYear = null;
-  this.selectedYearHasta = null;
-
-
-  //! FECHAS SELECT publicación
-  this.pU_allYears = [];
-  this.pU_uniqueYears = [];
-
-  this.pU_allYearsHasta = [];
-  this.pU_uniqueYearsHasta = [];
-  //* Filtro fechas publicación
-  this.pU_selectedYear = null;
-  this.pU_selectedYearHasta = null;
-
-  this.allProducts();
-
-
-
+    this.ngOnInit();
   }
-
-  allProducts(){
-    this._direServices.productos()
-      .subscribe(data => {
-        this.products = data;
-
-        this.displayedProductCountAll = this.products.length
-        this.extractAndSortYears();
-        this.extractAndSortYearsHasta();
-        this.pU_extractAndSortYears();
-        this.pU_extractAndSortYearsHasta();
-      });
-  }
-
 
   //! función para búsqueda difusa
   funcionParaBuscarByQuery() {
-    const inputValue = this.terminoBusqueda !== null && this.terminoBusqueda !== undefined ? this.terminoBusqueda : '';
+    const inputValue =
+      this.terminoBusqueda !== null && this.terminoBusqueda !== undefined
+        ? this.terminoBusqueda
+        : '';
+    console.log(inputValue);
+    console.log('no deberia de haber entrado aqui')
+
     if (inputValue) {
-      this._direServices.suggestionByQuery(inputValue).subscribe(result => {
-        this.filteredProducts = result;
-        this.displayedProductCount = this.filteredProducts.length;
-        this.showFilteredProducts = true;
+      this.banderaSearchByQuery = true;
+
+      this._direServices.suggestionByQuery(inputValue).subscribe((result) => {
+        this.filteredProductsBySearchByQuery = result;
+        this.applyFilters();
       });
-    } else {
-      this.filteredProducts = this.products;
-      this.showFilteredProducts = false;
     }
+  }
+
+  borrarTermino() {
+    this.banderaSearchByQuery = false;
+    console.log('borro');
+    this.terminoBusqueda = '';
+    this.applyFilters();
+    // this._direServices
+    //   .suggestionByQuery(this.terminoBusqueda)
+    //   .subscribe((result) => {
+    //     this.filteredProducts = result;
+
+    //     this.displayedProductCount = this.filteredProducts.length;
+    //     this.showFilteredProducts = true;
+    //   });
+
+  }
+
+  hiddenFirtsFilters() {
+    this.flagFirtsFilters = true;
+  }
+  showFirtsFilters() {
+    this.flagFirtsFilters = false;
+  }
+  hiddenSegundaFilters() {
+    this.flagSegundaFilters = true;
+  }
+  showSegundaFilters() {
+    this.flagSegundaFilters = false;
+  }
+  hiddenTerceroFilters() {
+    this.flagTerceroFilters = true;
+  }
+  showTerceroFilters() {
+    this.flagTerceroFilters = false;
   }
 }
 
+// if (this.checkSelect) {
+//     const keyParts = this.selectComponentekey.split('_');
+//     const tipo = keyParts[0];
+//     const id = keyParts[1];
+//     let componentResults: Mdea[] = [];
 
+//     if (tipo === 'componente') {
+//       componentResults = this.mdeas.filter((mdeas) => mdeas.comp_mdea === +id);
+//     } else if (tipo === 'subcomponente') {
+//       componentResults = this.mdeas.filter((mdeas) => mdeas.subcomp_mdea === +id);
+//     } else if (tipo === 'topico') {
+//       componentResults = this.mdeas.filter((mdeas) => mdeas.topico_mdea === +id);
+//     }
+//
+//     this.combinedResultsMdea = this.combinedResultsMdea.concat(componentResults);
+//     combinedResults = combinedResults.filter(data =>
+//       this.combinedResultsMdea.some(mdeas => mdeas.interview__id === data.interview__id));
+//
+//     this.checkSelect = false;
+//
+//   }
+
+
+// if (this.check_UnSelect) {
+//         const unselectedKeyParts = this.unSelectComponentekey.split('_');
+//         const unselectedTipo = unselectedKeyParts[0];
+//         const unselectedId = unselectedKeyParts[1];
+//         if (unselectedTipo === 'componente') {
+//             this.combinedResultsMdea = this.combinedResultsMdea.filter((mdeas) => mdeas.comp_mdea !== +unselectedId);
+//         } else if (unselectedTipo === 'subcomponente') {
+//             this.combinedResultsMdea = this.combinedResultsMdea.filter((mdeas) => mdeas.subcomp_mdea !== +unselectedId);
+//         } else if (unselectedTipo === 'topico') {
+//             this.combinedResultsMdea = this.combinedResultsMdea.filter((mdeas) => mdeas.topico_mdea !== +unselectedId);
+//         }
+//         combinedResults = combinedResults.filter((data) =>
+//         this.combinedResultsMdea.some((mdeas) => mdeas.interview__id === data.interview__id));
+//         this.check_UnSelect = false;
+
+//         if (this.combinedResultsMdea.length == 0 &&
+//           !(this.checkboxesState['direGeogrAmbiente'] || this.checkboxesState['direEstaSocio'] ||
+//           this.checkboxesState['direEstaEconomicas'] || this.checkboxesState['direEstaGobSegPubJus']
+//           || this.checkboxesState['direInteAnaInv']) && !(this.checkboxesCobe['cobeNacional'] || this.checkboxesCobe['cobeEstatal'] || this.checkboxesCobe['cobeMunicipal'] ||this.checkboxesCobe['cobRegional'])) {
+//
+//           return;
+
+//         }
+//     }
 
 
 

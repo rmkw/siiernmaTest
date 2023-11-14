@@ -20,7 +20,7 @@ const routes: Routes = [
       { path: 'new', component: NewPageComponent},
       { path: 'mdea', component: MdeaPageComponent},
       { path: 'ods', component: OdsPageComponent},
-      { path: 'by/:id', component: ByidsComponent},
+      { path: 'by', component: ByidsComponent},
       { path: '**', redirectTo: 'dg' },
 
     ]

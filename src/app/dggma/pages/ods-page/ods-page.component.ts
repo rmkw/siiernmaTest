@@ -44,13 +44,13 @@ export class OdsPageComponent implements OnInit{
 
   onNodeSelectOds(event: { originalEvent: Event, node: TreeNode }, nodeType: string): void {
     const id = event.node.data.id; // Obtén el id del nodo seleccionado
-  
+
     switch (nodeType) {
       case 'objetivo':
         this._direServices.odsByObjetivo(id).subscribe(data => {
           this.ODSes = data;
           this.odsByProducts()
-          console.log(id); 
+          console.log(id);
         });
         break;
       case 'meta':
@@ -64,7 +64,7 @@ export class OdsPageComponent implements OnInit{
   }
 
   onNodeUnselectOds(event: { originalEvent: Event, node: TreeNode }, nodeType: string): void {
-    const id = event.node.data.id; 
+    const id = event.node.data.id;
     this.filteredProducts = [];
 
   }
@@ -78,7 +78,7 @@ export class OdsPageComponent implements OnInit{
         this.treeDataOds = this.transformDataToTreeNodeOds(objetivoOds, metasODS);
       });
     });
-    
+
 
   this._direServices.productos()
   .subscribe(data => this.products = data )
@@ -105,6 +105,6 @@ export class OdsPageComponent implements OnInit{
         selected: false
       };
     });
- } 
+ }
 
 }
