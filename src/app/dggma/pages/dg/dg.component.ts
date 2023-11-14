@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
 import { DGService } from '../../services/dg.service';
 import { Products } from '../../interfaces/product.interface';
-
 import { Router } from '@angular/router';
 
 interface CheckboxesState {
@@ -14,19 +12,14 @@ interface CheckboxesState {
   styleUrls: ['./dg.component.css'],
 })
 export class DgComponent implements OnInit {
-  public products: Products[] = [];
 
-  public isINEGISelected: boolean = true;
-  public isMDEASelected: boolean = true;
-  public isODSSelected: boolean = true;
-  public isINDSelected: boolean = true;
 
-  //! merge S.E.
-  public primerDir: number = 0;
-  public segundaDir: number = 0;
-  public terceraDir: number = 0;
-  public cuartaDir: number = 0;
-  public quintaDir: number = 0;
+  public products: Products [] = [];
+
+  public isINEGISelected : boolean = true
+  public isMDEASelected : boolean = true
+  public isODSSelected : boolean = true
+  public isINDSelected : boolean = true
 
   public primerDireccion: any[] = [];
   public segundaDireccion: any[] = [];
@@ -34,10 +27,19 @@ export class DgComponent implements OnInit {
   public cuartaDireccion: any[] = [];
   public quintaDireccion: any[] = [];
 
-  constructor(private router: Router, private _direServices: DGService) {}
+  public primerDir: number=0;
+  public segundaDir: number=0;
+  public terceraDir: number=0;
+  public cuartaDir: number=0;
+  public quintaDir: number=0;
+
+  constructor(
+    private router: Router,
+    private _direServices : DGService,
+  ){}
 
   //!Definimos los checkbox
-  checkboxesState: CheckboxesState = {
+    checkboxesState: CheckboxesState = {
     direGeogrAmbiente: false,
     direEstaSocio: false,
     direEstaEconomicas: false,
@@ -51,6 +53,7 @@ export class DgComponent implements OnInit {
   DireccionCountstop5: any;
 
   ngOnInit(): void {
+
     this.isINEGISelected = false;
 
     //! Merge S.E.
@@ -77,6 +80,7 @@ export class DgComponent implements OnInit {
     this.isMDEASelected = true;
     this.isODSSelected = false;
   }
+
   navigateWithParam() {
     this.checkboxesState['direGeogrAmbiente'] = true;
 
