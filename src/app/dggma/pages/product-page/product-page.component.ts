@@ -12,6 +12,7 @@ import { IndicadoresPS2023, PS2023, SecuenciaPS } from '../../interfaces/ps.inte
 import { DGService } from '../../services/dg.service';
 import { TreeNode } from 'primeng/api';
 import { Tree } from 'primeng/tree';
+import { FlagService } from '../../services/flagService.service';
 
 
 
@@ -216,7 +217,8 @@ export class ProductPageComponent implements OnInit {
   constructor(
     private _direServices: DGService,
     private route: ActivatedRoute,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private _flagService: FlagService
   ) {
     this.combinedResultsMdea = [];
   }
@@ -280,19 +282,51 @@ export class ProductPageComponent implements OnInit {
     });
   }
 
+  async thisFlags() {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    this.applyFilters();
+  }
+
   ngOnInit(): void {
-    this.route.queryParams.subscribe((params) => {
-      this.checkboxesState['direGeogrAmbiente'] =
-        params['direGeogrAmbiente'] === 'true';
-      this.checkboxesState['direEstaSocio'] =
-        params['direEstaSocio'] === 'true';
-      this.checkboxesState['direEstaEconomicas'] =
-        params['direEstaEconomicas'] === 'true';
-      this.checkboxesState['direEstaGobSegPubJus'] =
-        params['direEstaGobSegPubJus'] === 'true';
-      this.checkboxesState['direInteAnaInv'] =
-        params['direInteAnaInv'] === 'true';
-    });
+
+    if (this._flagService.getFlagGeo()) {
+      this.changeFlagFilter();
+      this._flagService.setFlagGeo(false);
+      const string = 'direGeogrAmbiente';
+      this.checkboxesState[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagEstadisticas()) {
+      this.changeFlagFilter()
+      this._flagService.setFlagEstadisticas(false)
+      const string = 'direEstaSocio';
+      this.checkboxesState[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagEconomicas()) {
+      this.changeFlagFilter()
+      this._flagService.setFlagEconomicas(false)
+      const string = 'direEstaEconomicas';
+      this.checkboxesState[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagGobierno()) {
+      this.changeFlagFilter();
+      this._flagService.setFlagGobierno(false)
+      const string = 'direEstaGobSegPubJus';
+      this.checkboxesState[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagIntegracion()) {
+      this.changeFlagFilter()
+      this._flagService.setFlagIntegracion(false)
+      const string = 'direInteAnaInv';
+      this.checkboxesState[string] = true;
+      this.thisFlags();
+    }
+
+    //! botones MDEA filtro by componente
+
 
     //! Funcion que manda a llamar el servicio y los datos de este para que se pueda combinar con la transformaciión de datos a la estructura de treenode
     this._direServices.componentes().subscribe((componentes) => {
@@ -662,8 +696,10 @@ export class ProductPageComponent implements OnInit {
   //! función que detecta los cambios en los checks box DIRECCIONES
   handleCheckboxChange(event: Event): void {
     const target = event.target as HTMLInputElement;
+
     const checkboxId = target.id;
     this.checkboxesState[checkboxId] = target.checked;
+
     this.applyFilters();
   }
   //! check flag de radios TIPO
@@ -753,13 +789,13 @@ export class ProductPageComponent implements OnInit {
     let shouldContinue = true;
     let shouldContinue2 = true;
 
-    console.log('\x1b[35m%s\x1b[0m', this.banderaSearchByQuery);
+    // console.log('\x1b[35m%s\x1b[0m', this.banderaSearchByQuery);
 
     if (this.banderaSearchByQuery) {
       combinedResults = this.filteredProductsBySearchByQuery;
     }
 
-    console.log('\x1b[36m%s\x1b[0m','combinacion', combinedResults);
+    console.log('\x1b[36m%s\x1b[0m', 'combinacion', combinedResults);
     if (
       this.checkboxesState['direGeogrAmbiente'] ||
       this.checkboxesState['direEstaSocio'] ||
@@ -1117,7 +1153,7 @@ export class ProductPageComponent implements OnInit {
         ? this.terminoBusqueda
         : '';
     console.log(inputValue);
-    console.log('no deberia de haber entrado aqui')
+    console.log('no deberia de haber entrado aqui');
 
     if (inputValue) {
       this.banderaSearchByQuery = true;
@@ -1142,7 +1178,6 @@ export class ProductPageComponent implements OnInit {
     //     this.displayedProductCount = this.filteredProducts.length;
     //     this.showFilteredProducts = true;
     //   });
-
   }
 
   hiddenFirtsFilters() {
