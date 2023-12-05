@@ -88,4 +88,7 @@ ul {
   height: 600px;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
 

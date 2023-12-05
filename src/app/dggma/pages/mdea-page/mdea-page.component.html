@@ -1,9 +1,10 @@
 <div class="container-fluid">
   <div class="row" id="fondo">
-    <div class="">
+    <div>
       <div class="col">
-        <h2 class="mt-5 mb-3" style="color: #c2eceb; text-align: center; text-shadow: rgb(52, 214, 174) 1px 0 10px;">Relación con el Marco para el Desarrollo
-          de las Estadísticas Ambientales (MDEA)</h2>
+        <h2 class="mt-5 mb-3" style="color: #c2eceb; text-align: center; text-shadow: rgb(52, 214, 174) 1px 0 10px;">
+          Relación con el Marco para el Desarrollo de las Estadísticas Ambientales (MDEA)
+        </h2>
       </div>
     </div>
 
@@ -36,20 +37,20 @@
            </div>
         </div>
       </div>
-<!-- Estructura MDEA -->
-        <div class="container">
-        <div class="row">
+        <!-- Estructura MDEA -->
+      <div class="container">
+       <div class="row">
         <div class="col">
           <div class="mt-5">
             <h3 style="color: aliceblue;">Informacion Estadistica</h3>
            <div class="card">
             <p class="mt-3" style="color:darkblue; margin-left: 10px">
-              Dentro de este sistema de inventario de productos que se extraen de la Base de datos del SIIERNMA se puede encontrar su realción con la estrucutra del MDEA.
+              Dentro de este sistema de inventario de productos que se extraen de la Base de datos del SIIERNMA se puede encontrar su relación con la estrucutra del MDEA.
             </p>
             <div class="card-body">
                <!-- Graficos correspondientes -->
-              <p style="display: contents; color: #113250;">En el siguiente gráfico, se puede observar el procentaje de productos del INEGI que se apegan los Componentes y Subcomponentes del MDEA:</p>   
-             <hr>
+              <p style="display: contents; color: #113250;">En el siguiente gráfico, se puede observar cuantitavamente la cantidad de productos del INEGI que se apegan los Componentes y Subcomponentes del MDEA:</p>   
+              <hr style="height: 5px; background-color: #186b6a;">
               <figure class="highcharts-figure">
                 <div id="container-pie-componentes"></div>
               </figure>
@@ -57,57 +58,58 @@
             
               <div class="row">
                 <div class="card col-12">
-                  <div style="text-align:center">Total de productos que se apegan a los componentes del MDEA </div>
+                  <div style="text-align:center">Total de productos del INEGI que se apegan a los componentes del MDEA </div>
                 </div>
               </div>
              
 
-              <div class="row">
-                <div class=" col-4 form-check mt-2" *ngFor="let componente of componentesMDEA">
+              <div class="row" >
+                <div class=" col-4 mt-2" *ngFor="let componente of componentesMDEA">
                   <ul>
                     <h1 class="mt-3" style="text-align: center;"><i [ngClass]="'bi ' + iconosComp[componente.id]"></i></h1>
                     <li style="text-align: center;">{{ componente.text }}</li>
-                    <div style="text-align: center; color: rgba(43, 142, 160, 0.747);  font-weight: bold">{{ longitudesPorCompId[componente.id] }}</div>     
+                    <div style="text-align: center; color: #186b6a;  font-weight: bold">{{ longitudesPorCompId[componente.id] }}</div>     
                   </ul>
                 </div>
               </div>
             
 
-            <hr>
-
-
+              <hr style="height: 5px; background-color: #186b6a;">
               <figure class="highcharts-figure">
                 <div id="container-pie-subcomponentes"></div>
               </figure>
-              <br>
+            <br>
 
               <div class="row">
                 <div class="card col-12">
-                  <div style="text-align:center">Total de productos que se apegan a los subcomponentes del MDEA </div>
+                  <div style="text-align:center">Total de productos del INEGI que se apegan a los subcomponentes del MDEA </div>
                 </div>
               </div>
-             
-
+      
+            <div style="max-height: 600px; overflow-y: scroll;">
               <div class="row">
-                <div class="  col-3 form-check mt-2" *ngFor="let subcomponente of subComponentesMDEA">
+                <div class="col-4 mt-2"  *ngFor="let subcomponente of subComponentesMDEA">
                   <ul>
                     <h1 class="mt-3" style="text-align: center;"><i [ngClass]="'bi ' + iconosSubComp[subcomponente.id]"></i></h1>
                     <li style="text-align: center;">{{ subcomponente.text }}</li>
-                    <div style="text-align: center; color: rgba(43, 145, 163, 0.733); font-weight: bold">{{ longitudesPorSubCompId[subcomponente.id] }}</div>     
+                    <div style="text-align: center; color: #186b6a; font-weight: bold">{{ longitudesPorSubCompId[subcomponente.id] }}</div>     
                   </ul>
                 </div>
               </div>
+            </div>
+
               </div>
              </div>
-            </div>          
-           </div>
-          </div>
+           </div>          
+         </div>
         </div>
       </div>
     </div>
-    
-<button class="scroll-to-top-button" (click)="scrollToTop()" style="border-radius: 20px;"><i
-    class="bi bi-arrow-up-circle "></i></button>
+  </div>
+</div>
+
+<button class="scroll-to-top-button" (click)="scrollToTop()" style="border-radius: 20px;">
+  <i class="bi bi-arrow-up-circle "></i></button>
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-fullscreen modal-dialog-centered">
         <div class="modal-content">

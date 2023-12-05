@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <div class="row" id="fondo">
-    <div class="row">
+    <div>
       <div class="col">
         <h2 class="mt-5" style="color: #d8f3ff; text-align: center; text-shadow: rgb(91, 195, 255) 1px 0 10px;">Relación con los Objetivos del Desarrollo
           Sostenible (ODS)</h2>
@@ -21,14 +21,14 @@
           <!-- Objetivos -->
           <div class="row">
             <div class="col-4">
-              <p >La Agenda 2030 establece 17 Objetivos de Desarrollo Sostenible (ODS) que abarcan diversas áreas para mejorar la calidad de vida y proteger nuestro planeta. Estos objetivos incluyen: </p>
+              <p>La Agenda 2030 establece 17 Objetivos de Desarrollo Sostenible (ODS) que abarcan diversas áreas para mejorar la calidad de vida y proteger nuestro planeta. Estos objetivos incluyen: </p>
             </div>
             <div class="col">
               <p> Estos objetivos están respaldados por metas específicas y medidas indicadoras detalladas. La Agenda 2030 y los ODS representan un compromiso global para construir un futuro más justo, sostenible e inclusivo para todos.</p>
-              
             </div>
           </div>
-          <div class="row">
+
+        <div class="row">
           <div class="col-4">
             <div class="row mt-3">
               <ul *ngFor="let obj of objetivods">
@@ -37,37 +37,37 @@
                 </li>
               </ul>
             </div>
-            </div>
+          </div>
           
           <!-- Metas -->  
-        <div class="col" style="overflow-y: overlay; height:765px; width:768px; background-color: #184670;"> 
-              <div class="mt-3" >
-                <ul *ngFor="let item of meta"  >
-                  <li style="color: aliceblue; font-weight: bold;">
-                    {{ item.text }}
-                  </li>
-                </ul>
+          <div class="col" style="overflow-y: overlay; height:765px; width:768px; background-color: #184670;"> 
+                <div class="mt-3" >
+                  <ul *ngFor="let item of meta"  >
+                    <li style="color: aliceblue; font-weight: bold;">
+                      {{ item.text }}
+                    </li>
+                  </ul>
+                </div>
+              <div [hidden]="odsImg" class="mt-5 text-center">
+                  <div>
+                    <img src="./assets/logoODS_es.png" style="width: 400px; height: max-content;">
+                  </div>
+                  <div class="d-md-none">
+                    <img src="./assets/logoODS_es.png" class="img-fluid img-mobile">
+                  </div>
               </div>
-            <div [hidden]="odsImg" class="mt-5 text-center">
-                <div>
-                  <img src="./assets/logoODS_es.png" style="width: 400px; height: max-content;">
-                </div>
-                <div class="d-md-none">
-                  <img src="./assets/logoODS_es.png" class="img-fluid img-mobile">
-                </div>
-            </div>
+          </div>
         </div>
-      </div>
 
         <div class="mt-5">
-          <h3 style="color: aliceblue;">Informacion Estadistica</h3>
+         <h3 style="color: aliceblue;">Informacion Estadistica</h3>
          <div class="card">
           <p class="mt-3" style="color:darkblue; margin-left: 10px"> 
             Dentro del marco del Sistema de Inventario de Productos, que se extraen de la Base de Datos del SIIERNMA, se analiza su relación con los Objetivos de Desarrollo Sostenible (ODS). De este análisis, se deriva la información necesaria para llevar a cabo un conteo estadístico de los productos asociados a cada uno de los ODS.
           </p>
           <div class="card-body">
             En el siguiente tabulado, se puede observar correspondientemente el numero de productos de cada subdirección que tiene pertincencia con los objetivos y metas enfocado en los ODS.
-            <hr>
+            <hr style="height: 5px; background-color: rgb(15, 106, 224);">
 
             <figure class="highcharts-figure">
               <div id="container-pie-obj"></div>
@@ -75,7 +75,7 @@
             
             <div class="row">
               <div class="card col">
-                <div style="text-align:center">Total de prodcutos que se apegan a los Objetivos del Desarrollo Sostenible </div>
+                <div style="text-align:center">Total de prodcutos del INEGI que se apegan a los Objetivos del Desarrollo Sostenible </div>
               </div>
             </div>
 
@@ -87,13 +87,13 @@
                   {{objetivos.text | slice: 3}}
                 </li>
               </ul>
-              <div style="text-align:center; color: rgb(15, 15, 224); font-weight: bold">{{ longitudesPorIdObj[objetivos.id] }}</div>
+              <div style="text-align:center; color: rgb(15, 106, 224); font-weight: bold">{{ longitudesPorIdObj[objetivos.id] }}</div>
               </div>
             </div>
 
             <!-- Sección Grafico y datos Meta -->
 
-            <hr>
+            <hr style="height: 5px; background-color: rgb(15, 106, 224);">
 
             <figure class="highcharts-figure">
               <div id="container-pie-meta"></div>
@@ -101,26 +101,28 @@
             
             <div class="row">
               <div class="card col">
-                <div style="text-align:center">Total de prodcutos del INEG que se apegan a las Metas ODS </div>
+                <div style="text-align:center">Total de prodcutos del INEGI que se apegan a las Metas ODS </div>
               </div>
             </div>
 
+            <div style="max-height: 600px; overflow-y: auto;">
             <div class="row">
               <div class="col-2 form-check mt-2" *ngFor="let metas of metaods"  >
               <ul>
                 <h1 class="mt-3" style="text-align: center;"><i [ngClass]="'bi ' + iconosMeta[metas.id]"></i></h1>
-                <li id="metas">
+                <li id="metas"  [ngbTooltip]="metas.text">
                   {{metas.text}}
                 </li>
               </ul>
-              <div style="text-align:center; color: rgb(15, 15, 224); font-weight: bold">{{ longitudesPorIdMeta[metas.id] }}</div>
+              <div style="text-align:center; color: rgb(15, 106, 224); font-weight: bold">{{ longitudesPorIdMeta[metas.id] }}</div>
               </div>
             </div>
-
+            </div>
           </div>
           </div>
          </div>
         </div>
+        
       </div>
     </div>
   </div>

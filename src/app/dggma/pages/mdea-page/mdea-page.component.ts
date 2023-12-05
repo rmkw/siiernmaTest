@@ -206,6 +206,7 @@ export class MdeaPageComponent implements OnInit{
       const subcomponentesData = [];
 
       for (let i = 1; i <= 21; i++) {
+        const subcomponenteText = this.subcomponentesArray[i]?.text || '';
         subcomponentesData.push({
           name: `SubComponente ${i}`,
           y: this.subcomponentesArray[i]?.length || 0,
@@ -231,7 +232,7 @@ export class MdeaPageComponent implements OnInit{
               valueSuffix: ' productos'
           },
           series: [{
-              name: 'SubComponentes',
+              name: 'SubComponente',
               data: subcomponentesData,
               size: '100%',
               dataLabels: {
