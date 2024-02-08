@@ -15,6 +15,9 @@ import { DGService } from '../../services/dg.service';
 })
 export class OdsPageComponent implements OnInit{
 
+  loading = true;
+  
+
   public OdsArray: any[]=[]
   public MetaArray: any[]=[]
 
@@ -225,7 +228,8 @@ export class OdsPageComponent implements OnInit{
     168:'bi-flower2',
     169:'bi-flower2',
   };
-  
+
+
 
   coloresHexadecimales: { [key: number]: string } = {
     1: '#dc1e39',  
@@ -295,6 +299,8 @@ export class OdsPageComponent implements OnInit{
 
   ngOnInit(): void{
 
+    this.loadData();
+
     this._direServices.productos()
     .subscribe(data => this.products = data )
 
@@ -346,7 +352,7 @@ export class OdsPageComponent implements OnInit{
   
 
     var colors = Highcharts.getOptions().colors
-    const objetivosData = [];
+    const objetivosData: { name: string; y: any; color: any; }[] = [];
      for (let i = 1; i <= 17; i++) {
       objetivosData.push({
          name: `Objetivo ${i}`,
@@ -356,18 +362,17 @@ export class OdsPageComponent implements OnInit{
     }
 
 
-  Highcharts.chart('container-pie-obj', {
+   var chart1 = Highcharts.chart('container-pie-obj', {
     chart: {
         type: 'pie'
     },
     title: {
-        text: 'Productos del INEGI que se apegan determinados Componentes',
+        text: 'Productos del INEGI que se apegan determinados Objetivos del ODS',
         align: 'center'
     },
-    plotOptions: {
-        pie: {
-            shadow: false,
-            center: ['50%', '50%']
+      plotOptions: {
+        series: {
+          borderRadius: 5,
         }
     },
     tooltip: {
@@ -407,10 +412,21 @@ export class OdsPageComponent implements OnInit{
     }
   });
 
+    var loadingLabelObj = chart1.renderer.text('Cargando datos...', chart1.plotWidth / 2.2, chart1.plotHeight / 1.7).attr({
+      zIndex: 10
+  }).add();
+  
+  // Simular una llamada a la API que carga los datos
+  setTimeout(() => {
+    loadingLabelObj.destroy(); // Ocultar la pantalla de carga
+      chart1.series[1].setData(objetivosData);
+  }, 3000); // Simulando un tiempo de espera de 3 segundos
+
+
   // Grafico para meta
 
   var colors = Highcharts.getOptions().colors
-  const metaData = [];
+  const metaData: { name: string; y: any; color: any; }[] = [];
   for (let i = 1; i <= 169; i++) {
     metaData.push({
       name: `Meta ${i}`,
@@ -420,19 +436,18 @@ export class OdsPageComponent implements OnInit{
   }
 
   // Create the chart
-  Highcharts.chart('container-pie-meta', {
+   var chart2 = Highcharts.chart('container-pie-meta', {
   chart: {
       type: 'pie'
   },
   title: {
-      text: 'Productos del INEGI que se apegan determinados Componentes',
+      text: 'Productos del INEGI que se apegan determinadas Metas del ODS',
       align: 'center'
   },
   plotOptions: {
-      pie: {
-          shadow: false,
-          center: ['50%', '50%']
-      }
+    series: {
+      borderRadius: 5,
+    }
   },
   tooltip: {
       valueSuffix: ' productos'
@@ -470,6 +485,24 @@ export class OdsPageComponent implements OnInit{
   }
   });
 
+    var loadingLabelMet = chart2.renderer.text('Cargando datos...', chart2.plotWidth / 2.2, chart2.plotHeight / 1.7).attr({
+      zIndex: 10
+  }).add();
+
+  // Simular una llamada a la API que carga los datos
+  setTimeout(() => {
+    loadingLabelMet.destroy(); // Ocultar la pantalla de carga
+      chart2.series[1].setData(metaData);
+  }, 3000); // Simulando un tiempo de espera de 3 segundos
      }
   )}
+
+  loadData() {
+    this._direServices.objetivos().subscribe(
+      (data) => {
+        this.objetivods = data;
+        this.loading = false; // Marcamos como cargados cuando los datos llegan
+      },
+    );
+  }
 }

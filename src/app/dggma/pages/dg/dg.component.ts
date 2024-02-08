@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DGService } from '../../services/dg.service';
 import { Products } from '../../interfaces/product.interface';
 import { Router } from '@angular/router';
+import { FlagService } from '../../services/flagService.service';
 
 interface CheckboxesState {
   [key: string]: boolean;
@@ -12,34 +13,33 @@ interface CheckboxesState {
   styleUrls: ['./dg.component.css'],
 })
 export class DgComponent implements OnInit {
+  public products: Products[] = [];
 
+  public isINEGISelected: boolean = true;
+  public isMDEASelected: boolean = true;
+  public isODSSelected: boolean = true;
+  public isINDSelected: boolean = true;
 
-  public products: Products [] = [];
-
-  public isINEGISelected : boolean = true
-  public isMDEASelected : boolean = true
-  public isODSSelected : boolean = true
-  public isINDSelected : boolean = true
-
-  public primerDireccion:  any[] = [];
+  public primerDireccion: any[] = [];
   public segundaDireccion: any[] = [];
   public terceraDireccion: any[] = [];
-  public cuartaDireccion:  any[] = [];
-  public quintaDireccion:  any[] = [];
+  public cuartaDireccion: any[] = [];
+  public quintaDireccion: any[] = [];
 
-  public primerDir:  number=0;
-  public segundaDir: number=0;
-  public terceraDir: number=0;
-  public cuartaDir:  number=0;
-  public quintaDir:  number=0;
+  public primerDir: number = 0;
+  public segundaDir: number = 0;
+  public terceraDir: number = 0;
+  public cuartaDir: number = 0;
+  public quintaDir: number = 0;
 
   constructor(
     private router: Router,
-    private _direServices : DGService,
-  ){}
+    private _direServices: DGService,
+    private _flagService: FlagService
+  ) {}
 
   //!Definimos los checkbox
-    checkboxesState: CheckboxesState = {
+  checkboxesState: CheckboxesState = {
     direGeogrAmbiente: false,
     direEstaSocio: false,
     direEstaEconomicas: false,
@@ -53,7 +53,6 @@ export class DgComponent implements OnInit {
   DireccionCountstop5: any;
 
   ngOnInit(): void {
-
     this.isINEGISelected = false;
 
     //! Merge S.E.
@@ -62,8 +61,6 @@ export class DgComponent implements OnInit {
       this.filtrarProductosPorDirecciones();
       this.fun();
     });
-
-
   }
   hiddenTheOtherContents_INEGI() {
     this.isINEGISelected = false;
@@ -82,8 +79,23 @@ export class DgComponent implements OnInit {
   }
 
   navigateWithParam() {
-    this.checkboxesState['direGeogrAmbiente'] = true;
-
+    this._flagService.setFlagGeo(true);
+    this.router.navigate(['/dg/products']);
+  }
+  navigateWithParam1() {
+    this._flagService.setFlagEstadisticas(true);
+    this.router.navigate(['/dg/products']);
+  }
+  navigateWithParam2() {
+    this._flagService.setFlagEconomicas(true);
+    this.router.navigate(['/dg/products']);
+  }
+  navigateWithParam3() {
+    this._flagService.setFlagGobierno(true);
+    this.router.navigate(['/dg/products']);
+  }
+  navigateWithParam4() {
+    this._flagService.setFlagIntegracion(true);
     this.router.navigate(['/dg/products']);
   }
 

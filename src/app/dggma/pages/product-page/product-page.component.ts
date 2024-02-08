@@ -12,16 +12,13 @@ import { IndicadoresPS2023, PS2023, SecuenciaPS } from '../../interfaces/ps.inte
 import { DGService } from '../../services/dg.service';
 import { TreeNode } from 'primeng/api';
 import { Tree } from 'primeng/tree';
-
-
-
+import { FlagService } from '../../services/flagService.service';
 
 
 //! Interface de los checkbox
 interface CheckboxesState {
   [key: string]: boolean;
 }
-
 
 
 @Component({
@@ -216,7 +213,8 @@ export class ProductPageComponent implements OnInit {
   constructor(
     private _direServices: DGService,
     private route: ActivatedRoute,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private _flagService: FlagService,
   ) {
     this.combinedResultsMdea = [];
   }
@@ -280,19 +278,285 @@ export class ProductPageComponent implements OnInit {
     });
   }
 
+  async thisFlags() {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    this.applyFilters();
+  }
+
   ngOnInit(): void {
-    this.route.queryParams.subscribe((params) => {
-      this.checkboxesState['direGeogrAmbiente'] =
-        params['direGeogrAmbiente'] === 'true';
-      this.checkboxesState['direEstaSocio'] =
-        params['direEstaSocio'] === 'true';
-      this.checkboxesState['direEstaEconomicas'] =
-        params['direEstaEconomicas'] === 'true';
-      this.checkboxesState['direEstaGobSegPubJus'] =
-        params['direEstaGobSegPubJus'] === 'true';
-      this.checkboxesState['direInteAnaInv'] =
-        params['direInteAnaInv'] === 'true';
-    });
+
+    if (this._flagService.getFlagGeo()) {
+      this.changeFlagFilter();
+      this._flagService.setFlagGeo(false);
+      const string = 'direGeogrAmbiente';
+      this.checkboxesState[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagEstadisticas()) {
+      this.changeFlagFilter()
+      this._flagService.setFlagEstadisticas(false)
+      const string = 'direEstaSocio';
+      this.checkboxesState[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagEconomicas()) {
+      this.changeFlagFilter()
+      this._flagService.setFlagEconomicas(false)
+      const string = 'direEstaEconomicas';
+      this.checkboxesState[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagGobierno()) {
+      this.changeFlagFilter();
+      this._flagService.setFlagGobierno(false)
+      const string = 'direEstaGobSegPubJus';
+      this.checkboxesState[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagIntegracion()) {
+      this.changeFlagFilter()
+      this._flagService.setFlagIntegracion(false)
+      const string = 'direInteAnaInv';
+      this.checkboxesState[string] = true;
+      this.thisFlags();
+    }
+
+    //! botones MDEA filtro by componente
+
+    if (this._flagService.getFlagComp1()) {
+      this.changeFlagFilter();
+      this._flagService.setFlagComp1(false);
+      const string = 'componente_1';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagComp2()) {
+      this.changeFlagFilter()
+      this._flagService.setFlagComp2(false)
+      const string = 'componente_2';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagComp3()) {
+      this.changeFlagFilter()
+      this._flagService.setFlagComp3(false)
+      const string = 'componente_3';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagComp4()) {
+      this.changeFlagFilter();
+      this._flagService.setFlagComp4(false)
+      const string = 'componente_4';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagComp5()) {
+      this.changeFlagFilter()
+      this._flagService.setFlagComp5(false)
+      const string = 'componente_5';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagComp6()) {
+      this.changeFlagFilter()
+      this._flagService.setFlagComp6(false)
+      const string = 'componente_6';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+
+    //! botones MDEA filtro by Subcomponentes
+
+    if (this._flagService.getFlagSubComp1()) {
+      this.changeFlagFilter();
+      this._flagService.setFlagSubComp1(false);
+      const string = 'subcomponente_1';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagSubComp2()) {
+      this.changeFlagFilter()
+      this._flagService.setFlagSubComp2(false)
+      const string = 'subcomponente_2';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagSubComp3()) {
+      this.changeFlagFilter()
+      this._flagService.setFlagSubComp3(false)
+      const string = 'subcomponente_3';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagSubComp4()) {
+      this.changeFlagFilter();
+      this._flagService.setFlagSubComp4(false)
+      const string = 'subcomponente_4';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagSubComp5()) {
+      this.changeFlagFilter()
+      this._flagService.setFlagSubComp5(false)
+      const string = 'subcomponente_5';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagSubComp6()) {
+      this.changeFlagFilter()
+      this._flagService.setFlagSubComp6(false)
+      const string = 'subcomponente_6';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagSubComp7()) {
+      this.changeFlagFilter();
+      this._flagService.setFlagSubComp7(false);
+      const string = 'subcomponente_7';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    
+    if (this._flagService.getFlagSubComp8()) {
+      this.changeFlagFilter();
+      this._flagService.setFlagSubComp8(false);
+      const string = 'subcomponente_8';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    
+    if (this._flagService.getFlagSubComp9()) {
+      this.changeFlagFilter();
+      this._flagService.setFlagSubComp9(false);
+      const string = 'subcomponente_9';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    
+    if (this._flagService.getFlagSubComp10()) {
+      this.changeFlagFilter();
+      this._flagService.setFlagSubComp10(false);
+      const string = 'subcomponente_10';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    
+    if (this._flagService.getFlagSubComp11()) {
+      this.changeFlagFilter();
+      this._flagService.setFlagSubComp11(false);
+      const string = 'subcomponente_11';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    
+    if (this._flagService.getFlagSubComp12()) {
+      this.changeFlagFilter();
+      this._flagService.setFlagSubComp12(false);
+      const string = 'subcomponente_12';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    
+    if (this._flagService.getFlagSubComp13()) {
+      this.changeFlagFilter();
+      this._flagService.setFlagSubComp13(false);
+      const string = 'subcomponente_13';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    
+    if (this._flagService.getFlagSubComp14()) {
+      this.changeFlagFilter();
+      this._flagService.setFlagSubComp14(false);
+      const string = 'subcomponente_14';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    
+    if (this._flagService.getFlagSubComp15()) {
+      this.changeFlagFilter();
+      this._flagService.setFlagSubComp15(false);
+      const string = 'subcomponente_15';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    
+    if (this._flagService.getFlagSubComp16()) {
+      this.changeFlagFilter();
+      this._flagService.setFlagSubComp16(false);
+      const string = 'subcomponente_16';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    
+    if (this._flagService.getFlagSubComp17()) {
+      this.changeFlagFilter();
+      this._flagService.setFlagSubComp17(false);
+      const string = 'subcomponente_17';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    
+    if (this._flagService.getFlagSubComp18()) {
+      this.changeFlagFilter();
+      this._flagService.setFlagSubComp18(false);
+      const string = 'subcomponente_18';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    
+    if (this._flagService.getFlagSubComp19()) {
+      this.changeFlagFilter();
+      this._flagService.setFlagSubComp19(false);
+      const string = 'subcomponente_19';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    
+    if (this._flagService.getFlagSubComp20()) {
+      this.changeFlagFilter();
+      this._flagService.setFlagSubComp20(false);
+      const string = 'subcomponente_20';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    
+    if (this._flagService.getFlagSubComp21()) {
+      this.changeFlagFilter();
+      this._flagService.setFlagSubComp21(false);
+      const string = 'subcomponente_21';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    
 
     //! Funcion que manda a llamar el servicio y los datos de este para que se pueda combinar con la transformaciión de datos a la estructura de treenode
     this._direServices.componentes().subscribe((componentes) => {
@@ -662,8 +926,10 @@ export class ProductPageComponent implements OnInit {
   //! función que detecta los cambios en los checks box DIRECCIONES
   handleCheckboxChange(event: Event): void {
     const target = event.target as HTMLInputElement;
+
     const checkboxId = target.id;
     this.checkboxesState[checkboxId] = target.checked;
+
     this.applyFilters();
   }
   //! check flag de radios TIPO
@@ -753,13 +1019,13 @@ export class ProductPageComponent implements OnInit {
     let shouldContinue = true;
     let shouldContinue2 = true;
 
-    console.log('\x1b[35m%s\x1b[0m', this.banderaSearchByQuery);
+    // console.log('\x1b[35m%s\x1b[0m', this.banderaSearchByQuery);
 
     if (this.banderaSearchByQuery) {
       combinedResults = this.filteredProductsBySearchByQuery;
     }
 
-    console.log('\x1b[36m%s\x1b[0m','combinacion', combinedResults);
+    console.log('\x1b[36m%s\x1b[0m', 'combinacion', combinedResults);
     if (
       this.checkboxesState['direGeogrAmbiente'] ||
       this.checkboxesState['direEstaSocio'] ||
@@ -891,8 +1157,14 @@ export class ProductPageComponent implements OnInit {
     //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
     Object.entries(this.filterStates).forEach(([key, value]) => {
+
+      console.log(this.treeDataMdea);
+      console.log(this.selectedNodesMdea);
+
       if (value) {
         if (key === this.selectComponentekey) {
+          console.log(this.selectComponentekey);
+          
           this._direServices.mdea().subscribe((data) => (this.mdeas = data));
           let thismdeas = [...this.mdeas];
 
@@ -1117,7 +1389,7 @@ export class ProductPageComponent implements OnInit {
         ? this.terminoBusqueda
         : '';
     console.log(inputValue);
-    console.log('no deberia de haber entrado aqui')
+    console.log('no deberia de haber entrado aqui');
 
     if (inputValue) {
       this.banderaSearchByQuery = true;
@@ -1142,7 +1414,6 @@ export class ProductPageComponent implements OnInit {
     //     this.displayedProductCount = this.filteredProducts.length;
     //     this.showFilteredProducts = true;
     //   });
-
   }
 
   hiddenFirtsFilters() {

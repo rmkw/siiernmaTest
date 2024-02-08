@@ -1,6 +1,8 @@
 import { Componente, Mdea, Subcomponente, Topico } from '../../interfaces/mdea.interface';
 import { DGService } from '../../services/dg.service';
-import {  AfterViewInit, Component, OnInit } from '@angular/core';
+import { FlagService } from '../../services/flagService.service';
+import { Router } from '@angular/router';
+import {  Component, OnInit } from '@angular/core';
 import {  Products } from '../../interfaces/product.interface';
 import HighchartsAccessibility from 'highcharts/modules/accessibility';
 import HighchartsExporting from 'highcharts/modules/exporting';
@@ -8,7 +10,9 @@ import HighchartsTreeMap from 'highcharts/modules/treemap';
 import HighchartsTreeGraph from 'highcharts/modules/treegraph';
 import HighchartsTreeGrid from 'highcharts/modules/treegrid';
 
-
+interface CheckboxesState {
+  [key: string]: boolean;
+}
 @Component({
   selector: 'app-mdea-page',
   templateUrl: './mdea-page.component.html',
@@ -30,17 +34,42 @@ export class MdeaPageComponent implements OnInit{
   subcomponentes: Subcomponente[] =[];
   topicos: Topico[] = [];
   chart: any
+
+  ComponenteCountstop: any;
+  SubcomponenteCountstop2: any;
+
+  public primerComp: number = 0;
+  public segundoCom: number = 0;
+  public tercerComp: number = 0;
+  public cuartoComp: number = 0;
   
+  public isMDEASelected: boolean = true;
+
   CompMdeaimg: boolean = false;
 
   constructor(
+    private router: Router,
     private _direServices: DGService,
+    private _flagService: FlagService
   ){}
+
+  checkboxesState: CheckboxesState = {
+    filtroMdeaComp1: false,
+    filtroMdeaComp2: false,
+    filtroMdeaComp3: false,
+    filtroMdeaComp4: false,
+    filtroMdeaComp5: false,
+    filtroMdeaComp6: false, 
+  };
  
-  longitudesPorCompId: { [key: number]: number } = {};
+  //Variables para almacenar y dar coherencia a los numeros que se manejan en el HTML donde se cuentan los productos del INEGI por componentes
   
   longitudesPorSubCompId: { [key: number]: number } = {};
 
+  longitudesPorCompId: { [key: number]: number } = {};
+  
+ // Arreglo de iconos para relacionarlos por componente Id y Subcomponente Id.
+  
   iconosComp: { [key: number]: string } = {
     1: 'bi-tree',
     2: 'bi-minecart-loaded',
@@ -74,6 +103,8 @@ export class MdeaPageComponent implements OnInit{
     21: 'bi-people',
   };
 
+
+
   filterProductsByComponente(componente: any[]): any[] {
     return this.products.filter(data => componente.some(comp => comp.interview__id === data.interview__id));
   }
@@ -93,7 +124,7 @@ export class MdeaPageComponent implements OnInit{
 
     ngOnInit(): void {
 
-     
+
       this._direServices.productos()
       .subscribe(data => this.products = data )
      
@@ -109,6 +140,7 @@ export class MdeaPageComponent implements OnInit{
       this._direServices.mdea()
       .subscribe(dato => {
         this.mdeas = dato;
+        
         console.log(this.mdeas);
     
         // Inicializa un arreglo para almacenar los componentes
@@ -125,6 +157,8 @@ export class MdeaPageComponent implements OnInit{
           this.longitudesPorCompId[i] = this.componentesArray[i].length || 0;
         }
 
+        console.log(this.longitudesPorCompId)
+
        // Arreglo para subcomponentes
        for (let i = 1; i <= 21; i++) {
         const subcomponente = this.mdeas.filter(data => data.subcomp_mdea === i);
@@ -134,11 +168,14 @@ export class MdeaPageComponent implements OnInit{
         for (let i = 1; i <= 21; i++) {
           this.longitudesPorSubCompId[i] = this.subcomponentesArray[i].length || 0;
         }
+
+        console.log(this.longitudesPorSubCompId)
+        
       
    // Grafico de pastel para mostrar los datos por componente
 
     var colors = Highcharts.getOptions().colors
-      const componentesData = [];
+      const componentesData: { name: string; y: any; color: any; }[] = [];
 
       for (let i = 1; i <= 6; i++) {
         componentesData.push({
@@ -148,7 +185,7 @@ export class MdeaPageComponent implements OnInit{
         });
 
       }
-        Highcharts.chart('container-pie-componentes', {
+       var chart2 = Highcharts.chart('container-pie-componentes', {
           chart: {
               type: 'pie'
           },
@@ -157,9 +194,8 @@ export class MdeaPageComponent implements OnInit{
               align: 'center'
           },
           plotOptions: {
-              pie: {
-                  shadow: false,
-                  center: ['50%', '50%']
+            series: {
+              borderRadius: 5,
               }
           },
           tooltip: {
@@ -197,13 +233,26 @@ export class MdeaPageComponent implements OnInit{
                   }
               }]
           }
+      
         });
-    
+
+        var loadingLabelcomp = chart2.renderer.text('Cargando datos...', chart2.plotWidth / 2.2, chart2.plotHeight / 1.7).attr({
+          zIndex: 10
+      }).add();
+      
+      // Simular una llamada a la API que carga los datos
+      setTimeout(() => {
+        loadingLabelcomp.destroy(); // Ocultar la pantalla de carga
+          chart2.series[0].setData(componentesData);
+      }, 3000); // Simulando un tiempo de espera de 3 segundos
+        
 
       // Grafica para mostrar los Subcomponentes 
 
       var colors = Highcharts.getOptions().colors
-      const subcomponentesData = [];
+      const subcomponentesData: {
+        name: string; y: any; color: any; // Ajusta según tu lógica de asignación de colores
+      }[] = [];
 
       for (let i = 1; i <= 21; i++) {
         const subcomponenteText = this.subcomponentesArray[i]?.text || '';
@@ -214,7 +263,7 @@ export class MdeaPageComponent implements OnInit{
         });
 
       }
-        Highcharts.chart('container-pie-subcomponentes', {
+       var chart1 = Highcharts.chart('container-pie-subcomponentes', {
           chart: {
               type: 'pie'
           },
@@ -223,13 +272,12 @@ export class MdeaPageComponent implements OnInit{
               align: 'center'
           },
           plotOptions: {
-              pie: {
-                  shadow: false,
-                  center: ['50%', '50%']
-              }
-          },
+            series: {
+              borderRadius: 5,
+            }
+          },   
           tooltip: {
-              valueSuffix: ' productos'
+              valueSuffix: ' productos',
           },
           series: [{
               name: 'SubComponente',
@@ -246,8 +294,10 @@ export class MdeaPageComponent implements OnInit{
                   },
                   style: {
                       fontWeight: 'normal'
-                  }
-              }
+                  }, 
+                          
+              }, 
+              
           }],
           responsive: {
               rules: [{
@@ -265,7 +315,18 @@ export class MdeaPageComponent implements OnInit{
           }
         });
 
+        var loadingLabelsubcomp = chart1.renderer.text('Cargando datos...', chart1.plotWidth / 2.2, chart1.plotHeight / 1.7).attr({
+          zIndex: 10
+      }).add();
+      
+      // Simular una llamada a la API que carga los datos
+      setTimeout(() => {
+          loadingLabelsubcomp.destroy(); // Ocultar la pantalla de carga
+          chart1.series[1].setData(subcomponentesData);
+      }, 3000); // Simulando un tiempo de espera de 3 segundos
+
       });
+
 
 
     var Highcharts = require('highcharts'); 
@@ -383,17 +444,12 @@ export class MdeaPageComponent implements OnInit{
                 },
                 levels: [
                   {
-                    level: 1,
-                    levelIsConstant : true,
-                    colorVariation: {
-                      key: 'brightness',
-                      to: -.1 ,
+                   level: 1,
+                    levelIsConstant: false,
+                    colorVariation: null
                     },
-                    
-                  },
                   {
                     level: 2,
-                   
                     levelIsConstant : true,
                     colorByPoint: true,
                     colorVariation: {
@@ -403,11 +459,10 @@ export class MdeaPageComponent implements OnInit{
                   },
                   {
                     level: 3,
-                    
                     levelIsConstant : true,
                     colorVariation: {
                       key: 'brightness',
-                      to: -.1,
+                      to: -.2,
                     },   
                   },
                 ],
@@ -420,4 +475,104 @@ export class MdeaPageComponent implements OnInit{
     });
   }
 
+ 
+
+  navigateWithParam(componentId: number) {
+    switch (componentId) {
+      case 1:
+        this._flagService.setFlagComp1(true);
+        break;
+      case 2:
+        this._flagService.setFlagComp2(true);
+        break;
+      case 3:
+        this._flagService.setFlagComp3(true);
+        break;
+      case 4:
+        this._flagService.setFlagComp4(true);
+        break;
+      case 5:
+        this._flagService.setFlagComp5(true);
+        break;
+      case 6:
+        this._flagService.setFlagComp6(true);
+        break;
+      default:
+        break;
+    }
+    this.router.navigate(['/dg/products']);
+  }
+
+  navigateWithParamSubcomp(subcomponentId: number) {
+    // Utiliza el id del componente para establecer la bandera correspondiente
+    switch (subcomponentId) {
+      case 1:
+        this._flagService.setFlagSubComp1(true);
+        break;
+      case 2:
+        this._flagService.setFlagSubComp2(true);
+        break;
+      case 3:
+        this._flagService.setFlagSubComp3(true);
+        break;
+      case 4:
+        this._flagService.setFlagSubComp4(true);
+        break;
+      case 5:
+        this._flagService.setFlagSubComp5(true);
+        break;
+      case 6:
+        this._flagService.setFlagSubComp6(true);
+        break;
+      case 7:
+        this._flagService.setFlagSubComp7(true);
+         break;
+       case 8:
+         this._flagService.setFlagSubComp8(true);
+         break;
+       case 9:
+         this._flagService.setFlagSubComp9(true);
+         break;
+       case 10:
+         this._flagService.setFlagSubComp10(true);
+         break;
+       case 11:
+         this._flagService.setFlagSubComp11(true);
+         break;
+       case 12:
+         this._flagService.setFlagSubComp12(true);
+         break;
+       case 13:
+         this._flagService.setFlagSubComp13(true);
+         break;
+       case 14:
+         this._flagService.setFlagSubComp14(true);
+         break;
+       case 15:
+         this._flagService.setFlagSubComp15(true);
+         break;
+       case 16:
+         this._flagService.setFlagSubComp16(true);
+         break;
+       case 17:
+         this._flagService.setFlagSubComp17(true);
+         break;
+       case 18:
+         this._flagService.setFlagSubComp18(true);
+         break;
+       case 19:
+         this._flagService.setFlagSubComp19(true);
+         break;
+       case 20:
+         this._flagService.setFlagSubComp20(true);
+         break;
+       case 21:
+         this._flagService.setFlagSubComp21(true);
+         break;
+       default:
+         break;
+        }    // Navega a la ruta deseada
+    this.router.navigate(['/dg/products']);
+  }
 }
+
