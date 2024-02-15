@@ -257,11 +257,6 @@ export class OdsPageComponent implements OnInit{
     )
     {}
 
-
-    scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
     filterProductsByObjetivo(objetivo: any[]): any[] {
       return this.products.filter(data => objetivo.some(obj => obj.interview__id === data.interview__id));
     }

@@ -4,15 +4,14 @@
   }
 }
 
-
-@media (max-width: 991px) {
+@media (max-width: 1366px) {
   .img-mobile {
-    max-width: 75%;
-
-
+   max-width: 58%;
+   margin-left: 20px;
+   margin-top: 2px;
   }
-
 }
+
 
 .scroll-to-top-button {
   position: fixed;

@@ -5,3 +5,7 @@
 .logo-desktop {
   width: 8%;
 }
+
+.nav-link:hover {
+  text-decoration: underline; /* Agrega subrayado u otros estilos de texto según tus preferencias */
+}

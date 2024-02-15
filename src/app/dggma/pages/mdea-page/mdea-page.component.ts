@@ -118,9 +118,7 @@ export class MdeaPageComponent implements OnInit{
     this.expanded1 = !this.expanded1;
   }
  
-    scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+   
 
     ngOnInit(): void {
 

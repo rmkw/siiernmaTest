@@ -49,3 +49,20 @@
   cursor: pointer;
   /* Cambia el cursor al pasar sobre el elemento */
 }
+
+@media (min-width: 1366px) {
+  #ChecksCobertura {
+    margin-right: 5px;
+  }
+ #cobeMunicipal {
+    margin-right: 2px;
+  }
+} 
+
+
+
+@media (min-width: 1366px) {
+  #ChecksSoporte  {
+    margin-right: 3px;
+  }
+} 
