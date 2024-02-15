@@ -1157,10 +1157,6 @@ export class ProductPageComponent implements OnInit {
     //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
     Object.entries(this.filterStates).forEach(([key, value]) => {
-
-      console.log(this.treeDataMdea);
-      console.log(this.selectedNodesMdea);
-
       if (value) {
         if (key === this.selectComponentekey) {
           console.log(this.selectComponentekey);
@@ -1224,6 +1220,7 @@ export class ProductPageComponent implements OnInit {
           this.filterStates = Object.fromEntries(
             Object.entries(this.filterStates).filter(([_, value]) => value)
           );
+
 
           if (this.combinedResultsMdea.length == 0) {
             this.handleComponenteFilter();
@@ -1324,14 +1321,19 @@ export class ProductPageComponent implements OnInit {
     this.applyFilters();
   }
 
-  deleteFilter() {
+  async deleteFilter() {
     this.selectedNodesMdea = [];
     this.filterStates = {};
     this.treeDataMdea = [];
 
+    this.selectComponentekey = '';
+    this.combinedResultsMdea = [];
+    this.unSelectComponentekey = '';
+
     this.selectedNodesOds = [];
     this.filterStatesODS = {};
     this.treeDataOds = [];
+
     this.cdr.detectChanges();
 
     this.deleteFilterFlag = true;
@@ -1378,6 +1380,7 @@ export class ProductPageComponent implements OnInit {
     this.pU_selectedYear = null;
     this.pU_selectedYearHasta = null;
     this.banderaSearchByQuery = false;
+
 
     this.ngOnInit();
   }

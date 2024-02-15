@@ -8,6 +8,7 @@ import { ByidsComponent } from './pages/byids/byids.component';
 import { DgComponent } from './pages/dg/dg.component';
 import { OdsPageComponent } from './pages/ods-page/ods-page.component';
 import { MdeaPageComponent } from './pages/mdea-page/mdea-page.component';
+import { IndicadoresPageComponent } from './pages/indicadores-page/indicadores-page.component';
 
 const routes: Routes = [
   {
@@ -20,6 +21,7 @@ const routes: Routes = [
       { path: 'new', component: NewPageComponent},
       { path: 'mdea', component: MdeaPageComponent},
       { path: 'ods', component: OdsPageComponent},
+      { path: 'indicadores', component:IndicadoresPageComponent},
       { path: 'by', component: ByidsComponent},
       { path: '**', redirectTo: 'dg' },
 

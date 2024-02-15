@@ -17,6 +17,7 @@ import { HighchartsChartModule } from 'highcharts-angular';
 import { OrganizationChartModule } from 'primeng/organizationchart';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
+import { IndicadoresPageComponent } from './pages/indicadores-page/indicadores-page.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ButtonModule } from 'primeng/button';
     SearchPageComponent,
     ByidsComponent,
     OdsPageComponent,
-    MdeaPageComponent
+    MdeaPageComponent,
+    IndicadoresPageComponent
   ],
   imports: [
     CommonModule,
