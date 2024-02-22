@@ -80,9 +80,15 @@
           <!-- Sección Grafico y datos Objetivo -->
           <hr style="height: 5px; background-color: rgb(15, 106, 224);">
 
-            <figure class="highcharts-figure">
-              <div id="container-pie-obj"></div>
-            </figure>
+          <div class="text-center" *ngIf="loadingData">
+            <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+          </div>
+          
+          <figure class="highcharts-figure" >
+            <div *ngIf="!loadingData" id="container-pie-obj"></div>
+          </figure>
             
             <div class="row">
               <div class="card col">
@@ -106,9 +112,12 @@
 
             <hr style="height: 5px; background-color: rgb(15, 106, 224);">
 
-            <figure class="highcharts-figure">
-              <div id="container-pie-meta"></div>
-            </figure>
+            <div class="text-center">
+              <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status" *ngIf="loadingData"></div>
+              <figure class="highcharts-figure" >
+                <div *ngIf="!loadingData" id="container-pie-meta"></div>
+              </figure>
+            </div>
             
             <div class="row">
               <div class="card col">
@@ -125,7 +134,7 @@
                   {{metas.text}}
                 </li>
               </ul>
-              <div style="text-align:center; color: rgb(15, 106, 224); font-weight: bold">{{ longitudesPorIdMeta[metas.id] }}</div>
+                <div style="text-align:center; color: rgb(15, 106, 224); font-weight: bold">{{ longitudesPorIdMeta[metas.id] }}</div>
               </div>
             </div>
             </div>

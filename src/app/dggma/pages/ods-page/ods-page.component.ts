@@ -7,6 +7,7 @@ import HighchartsTreeGraph from 'highcharts/modules/treegraph';
 import HighchartsTreeGrid from 'highcharts/modules/treegrid';
 import { MetaODS, Ods, SecuenciaOds } from '../../interfaces/ods.interface';
 import { DGService } from '../../services/dg.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-ods-page',
@@ -16,7 +17,7 @@ import { DGService } from '../../services/dg.service';
 export class OdsPageComponent implements OnInit{
 
   loading = true;
-  
+  loadingData: boolean = true;
 
   public OdsArray: any[]=[]
   public MetaArray: any[]=[]
@@ -253,7 +254,8 @@ export class OdsPageComponent implements OnInit{
 
 
   constructor(
-    private _direServices: DGService
+    private _direServices: DGService,
+    private router: Router
     )
     {}
 
@@ -295,6 +297,8 @@ export class OdsPageComponent implements OnInit{
   ngOnInit(): void{
 
     this.loadData();
+
+    this.cargarDatosDesdeBD();
 
     this._direServices.productos()
     .subscribe(data => this.products = data )
@@ -433,7 +437,10 @@ export class OdsPageComponent implements OnInit{
   // Create the chart
    var chart2 = Highcharts.chart('container-pie-meta', {
   chart: {
-      type: 'pie'
+      type: 'pie',
+      events: {
+
+      }
   },
   title: {
       text: 'Productos del INEGI que se apegan determinadas Metas del ODS',
@@ -491,6 +498,25 @@ export class OdsPageComponent implements OnInit{
   }, 3000); // Simulando un tiempo de espera de 3 segundos
      }
   )}
+
+
+  // Funciones para carga de elementos. 
+
+  cargarDatosDesdeBD() {
+    this._direServices.objetivos().subscribe(
+      (data) => {
+        this.objetivo = data;
+        this.loadingData = false;
+      },
+    )
+    this._direServices.metas().subscribe(
+      (data) => {
+        this.meta = data;
+        this.loadingData = false;
+      },
+    );
+  }
+
 
   loadData() {
     this._direServices.objetivos().subscribe(
