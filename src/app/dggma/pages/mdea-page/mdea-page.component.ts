@@ -21,6 +21,8 @@ interface CheckboxesState {
 
 export class MdeaPageComponent implements OnInit{
 
+  loadingCharts: boolean = true;
+
   public componentesArray: any [] = [];
   public subcomponentesArray: any [] = [];
 
@@ -118,10 +120,10 @@ export class MdeaPageComponent implements OnInit{
     this.expanded1 = !this.expanded1;
   }
  
-   
 
     ngOnInit(): void {
 
+      this.loadChart();
 
       this._direServices.productos()
       .subscribe(data => this.products = data )
@@ -571,6 +573,22 @@ export class MdeaPageComponent implements OnInit{
          break;
         }    // Navega a la ruta deseada
     this.router.navigate(['/dg/products']);
+  }
+
+
+  loadChart(){
+    this._direServices.componentes().subscribe(
+      (data) => {
+        this.componentesMDEA = data;
+        this.loadingCharts = false; // Marcamos como cargados cuando los datos llegan
+      },
+    )
+    this._direServices.subcomponentes().subscribe(
+      (data) => {
+        this.subComponentesMDEA = data;
+        this.loadingCharts = false; // Marcamos como cargados cuando los datos llegan
+      },
+    )
   }
 }
 
