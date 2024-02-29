@@ -66,16 +66,25 @@ export class DgComponent implements OnInit {
     this.isINEGISelected = false;
     this.isMDEASelected = true;
     this.isODSSelected = true;
+    this.isINDSelected = true;
   }
   hiddenTheOtherContents_MDEA() {
     this.isINEGISelected = true;
     this.isMDEASelected = false;
     this.isODSSelected = true;
+    this.isINDSelected = true;
   }
   hiddenTheOtherContents_ODS() {
     this.isINEGISelected = true;
     this.isMDEASelected = true;
     this.isODSSelected = false;
+    this.isINDSelected = true;
+  }
+  hiddenTheOtherContents_IND() {
+    this.isINEGISelected = true;
+    this.isMDEASelected = true;
+    this.isODSSelected = true;
+    this.isINDSelected = false;
   }
 
   navigateWithParam() {
