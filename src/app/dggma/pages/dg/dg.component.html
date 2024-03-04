@@ -78,14 +78,16 @@
 
         <video loop muted autoplay oncanplay="this.play()" onloadedmetadata="this.muted = true"
           style="width: 100%; height: 100%; object-fit: cover;">
-          <source src="./assets/clip.mp4" type="video/mp4">
+          <source src="./assets/clipE.mp4" type="video/mp4">
         </video>
 
         <div class="container">
           <div class="carousel-caption text-end">
-            <!-- <h1 style="color: #5a6889; ">Indicadores ambientales desarrollados por el INEGI</h1> -->
-            <p style="color: #5a6889; ">Descubre más sobre indicadores ambientales producidos en el INEGI.</p>
-            <button class="btn btn-lg custom-btn-color3" [routerLink]="['/dg/indicadores']" href="#">Ver más</button>
+            <img focusable="false" src="./assets/snieg2.png" alt="Mi SVG"
+              style="max-width: 500px; height: auto;  margin: 0 auto;">
+            <h1 style="color: #ffffff; ">Indicadores ambientales desarrollados por el INEGI.</h1>
+            <p style="color: #ffffff; ">Descubre más sobre indicadores ambientales producidos en el INEGI.</p>
+            <button class="btn btn-lg btn-light" [routerLink]="['/dg/indicadores']" href="#">Ver más</button>
           </div>
         </div>
       </div>
@@ -214,7 +216,7 @@
               Objetivos de Desarrollo Sostenible.
             </h4>
           </div>
-          <div class="col-12" [ngClass]="{'selected': !isINDSelected}"
+          <div class="col-12" [ngClass]="{'selected': !isINDSelected}" (click)="hiddenTheOtherContents_IND()"
             style="cursor: pointer; border-bottom: solid 3px; border-color: #ffffff; padding-top: 1.5rem; padding-bottom: 1.5rem;">
             <h4>
               Indicadores.
@@ -226,12 +228,15 @@
 
       <!--! INEGI -->
       <div class="col-8" >
+
         <div [hidden]="isINEGISelected" class="row" >
           <div class="col-12 p-0 m-0" style=" background-color: #113250;">
             <img focusable="false" src="./assets/inegilogowhite.png" alt="Mi SVG"
               style=" max-height: 500px; max-width: 500px; height: auto; display: block; margin: 0 auto; margin-top: 5rem; margin-bottom: 5rem; background-color: #113250;">
           </div>
           <div class="col-12">
+
+
             <div style="margin: 2rem; margin-bottom: 5rem;">
               <h2 style="color: #036baa;">Productos detectados en las direcciones generales.</h2>
               <p class="lead">"En nuestro sistema, hemos logrado un hito importante al detectar y asignar la mayoría de los
@@ -280,8 +285,8 @@
         </div>
 
         <!--! ODS -->
-        <div [hidden]="isODSSelected" class="row" style=" margin: 1px;">
-          <div class="col-12" style=" margin: 1px; background-color: #113250;">
+        <div [hidden]="isODSSelected" class="row" >
+          <div class="col-12" style=" background-color: #113250;">
             <img focusable="false" src="./assets/logoODS_es.png" alt="Mi SVG"
               style=" max-height: 500px; max-width: 500px; height: auto; display: block; margin: 0 auto; margin-top: 5rem; margin-bottom: 5rem; background-color: #113250;">
           </div>
@@ -305,6 +310,43 @@
   </div>
 </div>
 
+        <!--! indicadores -->
+        <div [hidden]="isINDSelected"  class="row" >
+          <div class="col-12" style="  background-color: #ffffff;">
+            <img focusable="false" src="./assets/snieg.png" alt="Mi SVG"
+              style=" max-height: 500px; max-width: 500px; height: auto; display: block; margin: 0 auto; margin-top: 5rem; margin-bottom: 5rem; background-color: #ffffff;">
+          </div>
+
+          <div class="col-12 m-2">
+            <div style="margin: 2rem; margin-bottom: 5rem;">
+              <h2 style="color: #036baa;">Indicadores generados en INEGI.</h2>
+              <p class="lead">Los indicadores ambientales son una forma de estadística derivada, que fundamenta su existencia por el mandato legal
+              descrito en el artículo 27 de la Ley del SNIEG, el cual señala que el Subsistema Nacional de Información Geográfica,
+              Medio Ambiente y Ordenamiento Territorial y Urbano (SNIGMAOTU) en su componente del medio ambiente, procurará describir
+              el estado y las tendencias del medio ambiente, a través de la generación de indicadores con temáticas relacionadas.
+              </p>
+
+              <p class="lead">
+                Una de nuestras principales labores es realizar la exploración, análisis e integración de información estadística y
+                geográfica generada en el instituto en materia ambiental. Esto, para construir, implementar y actualizar indicadores
+                ambientales de Interés Nacional mediante un enfoque colaborativo, buscando así suministrar información de calidad,
+                pertinente, veraz y oportuna que coadyuve al desarrollo nacional.
+              </p>
+              <p class="lead">
+                Un indicador ambiental es un conjunto de estadísticas ambientales seleccionadas por su capacidad de representar
+                fenómenos importantes y tienen como propósito evaluar las direcciones presentes y futuras, estimar y determinar el
+                impacto de programas específicos, monitorear el progreso, medir cambios de una condición especifica a través del tiempo,
+                así como transmitir mensajes. Es por esta cuestión que los indicadores ambientales, son considerados una herramienta
+                clave para los tomadores de decisiones, ya que sintetizan de forma concisa y practica un cúmulo información que guarda
+                relación con los fenómenos presentes en nuestra dinámica diaria. Es así como INEGI, en su facultad como entidad
+                estadística del país, colabora en la consolidación de un entorno con enfoque sostenible para toda la población.
+              </p>
+            </div>
+
+          </div>
+
+
+        </div>
 
 <!-- TODO Codigo para dispositivos moviles. -->
 
