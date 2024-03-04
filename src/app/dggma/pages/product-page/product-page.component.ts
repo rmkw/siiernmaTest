@@ -27,6 +27,9 @@ interface CheckboxesState {
   styleUrls: ['./product-page.component.css'],
 })
 export class ProductPageComponent implements OnInit {
+
+  isMobile: boolean = window.innerWidth <= 480; 
+
   //*PRODUCTOS
   public products: Products[] = [];
 

@@ -21,7 +21,9 @@ interface CheckboxesState {
 
 export class MdeaPageComponent implements OnInit{
 
+  isMobile: boolean = window.innerWidth <= 480; 
   loadingCharts: boolean = true;
+  showCharts = true;
 
   public componentesArray: any [] = [];
   public subcomponentesArray: any [] = [];
@@ -49,6 +51,10 @@ export class MdeaPageComponent implements OnInit{
 
   CompMdeaimg: boolean = false;
 
+  cardsData = [
+    { title: '' },
+  ];
+
   constructor(
     private router: Router,
     private _direServices: DGService,
@@ -63,9 +69,8 @@ export class MdeaPageComponent implements OnInit{
     filtroMdeaComp5: false,
     filtroMdeaComp6: false, 
   };
- 
+
   //Variables para almacenar y dar coherencia a los numeros que se manejan en el HTML donde se cuentan los productos del INEGI por componentes
-  
   longitudesPorSubCompId: { [key: number]: number } = {};
 
   longitudesPorCompId: { [key: number]: number } = {};
@@ -123,6 +128,8 @@ export class MdeaPageComponent implements OnInit{
 
     ngOnInit(): void {
 
+      this.loadingCharts = false;
+
       this.loadChart();
 
       this._direServices.productos()
@@ -140,13 +147,11 @@ export class MdeaPageComponent implements OnInit{
       this._direServices.mdea()
       .subscribe(dato => {
         this.mdeas = dato;
-        
-        console.log(this.mdeas);
     
         // Inicializa un arreglo para almacenar los componentes
+        
         this.componentesArray = [];
         this.subcomponentesArray = [];
-       
         // Arreglo para componentes
         for (let i = 1; i <= 6; i++) {
           const componente = this.mdeas.filter(data => data.comp_mdea === i);
@@ -185,7 +190,7 @@ export class MdeaPageComponent implements OnInit{
         });
 
       }
-       var chart2 = Highcharts.chart('container-pie-componentes', {
+       var chart1 = Highcharts.chart('container-pie-componentes', {
           chart: {
               type: 'pie'
           },
@@ -219,34 +224,21 @@ export class MdeaPageComponent implements OnInit{
                   }
               }
           }],
-          responsive: {
-              rules: [{
-                  condition: {
-                      maxWidth: 500
-                  },
-                  chartOptions: {
-                      series: [{
-                          dataLabels: {
-                              enabled: false
-                          }
-                      }]
-                  }
-              }]
-          }
-      
         });
 
-        var loadingLabelcomp = chart2.renderer.text('Cargando datos...', chart2.plotWidth / 2.2, chart2.plotHeight / 1.7).attr({
+        var loadingLabelcomp = chart1.renderer.text('Cargando datos...', chart1.plotWidth / 2.2, chart1.plotHeight / 1.7).attr({
           zIndex: 10
       }).add();
       
       // Simular una llamada a la API que carga los datos
       setTimeout(() => {
         loadingLabelcomp.destroy(); // Ocultar la pantalla de carga
-          chart2.series[0].setData(componentesData);
+        chart1.series[0].setData(componentesData);
       }, 3000); // Simulando un tiempo de espera de 3 segundos
         
+      //TODO Graficos para dispositivos moviles
 
+    
       // Grafica para mostrar los Subcomponentes 
 
       var colors = Highcharts.getOptions().colors
@@ -255,7 +247,6 @@ export class MdeaPageComponent implements OnInit{
       }[] = [];
 
       for (let i = 1; i <= 21; i++) {
-        const subcomponenteText = this.subcomponentesArray[i]?.text || '';
         subcomponentesData.push({
           name: `SubComponente ${i}`,
           y: this.subcomponentesArray[i]?.length || 0,
@@ -263,7 +254,7 @@ export class MdeaPageComponent implements OnInit{
         });
 
       }
-       var chart1 = Highcharts.chart('container-pie-subcomponentes', {
+       var chart2 = Highcharts.chart('container-pie-subcomponentes', {
           chart: {
               type: 'pie'
           },
@@ -299,35 +290,19 @@ export class MdeaPageComponent implements OnInit{
               }, 
               
           }],
-          responsive: {
-              rules: [{
-                  condition: {
-                      maxWidth: 500
-                  },
-                  chartOptions: {
-                      series: [{
-                          dataLabels: {
-                              enabled: false
-                          }
-                      }]
-                  }
-              }]
-          }
         });
 
-        var loadingLabelsubcomp = chart1.renderer.text('Cargando datos...', chart1.plotWidth / 2.2, chart1.plotHeight / 1.7).attr({
+        var loadingLabelsubcomp = chart2.renderer.text('Cargando datos...', chart2.plotWidth / 2.2, chart2.plotHeight / 1.7).attr({
           zIndex: 10
       }).add();
       
       // Simular una llamada a la API que carga los datos
       setTimeout(() => {
           loadingLabelsubcomp.destroy(); // Ocultar la pantalla de carga
-          chart1.series[1].setData(subcomponentesData);
+          chart2.series[1].setData(subcomponentesData);
       }, 3000); // Simulando un tiempo de espera de 3 segundos
 
       });
-
-
 
     var Highcharts = require('highcharts'); 
 
@@ -372,7 +347,7 @@ export class MdeaPageComponent implements OnInit{
               });
             });
           });
-    
+  
           data.reverse();
           // Crear el gráfico una vez que los datos estén disponibles
           Highcharts.chart('treegraph-container', {
@@ -474,8 +449,6 @@ export class MdeaPageComponent implements OnInit{
       });
     });
   }
-
- 
 
   navigateWithParam(componentId: number) {
     switch (componentId) {

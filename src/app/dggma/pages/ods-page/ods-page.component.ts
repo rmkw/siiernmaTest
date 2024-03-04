@@ -16,6 +16,8 @@ import { Router } from '@angular/router';
 })
 export class OdsPageComponent implements OnInit{
 
+  isMobile: boolean = window.innerWidth <= 480; 
+
   loading = true;
   loadingData: boolean = true;
 
@@ -31,7 +33,7 @@ export class OdsPageComponent implements OnInit{
 
   filteredProducts: Products[] = [];
   noProductsFound: boolean = false;
-  odsImg: boolean = false;
+  odsImg: boolean = true;
   showFilteredProducts = false;
 
   longitudesPorIdObj: { [key: number]: number } = {};

@@ -4,7 +4,7 @@
   }
 }
 
-@media (max-width: 1366px) {
+@media (max-width: 1368px) {
   .img-mobile {
    max-width: 58%;
    margin-left: 20px;
@@ -12,6 +12,11 @@
   }
 }
 
+@media (max-width: 1368px) {
+  .btnObj {
+    width: 22rem
+  }
+}
 
 .scroll-to-top-button {
   position: fixed;

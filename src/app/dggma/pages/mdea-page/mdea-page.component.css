@@ -13,6 +13,15 @@
   }
 }
 
+  #container-pie-componentes {
+    max-width: 50%;
+  }
+
+ #container-pie-subcomponentes {
+    max-width: 50%;
+  }
+
+
 .scroll-to-top-button {
   position: fixed;
   bottom: 20px;
@@ -89,4 +98,4 @@ ul {
 ::-webkit-scrollbar {
   display: none;
 }
-
+ 

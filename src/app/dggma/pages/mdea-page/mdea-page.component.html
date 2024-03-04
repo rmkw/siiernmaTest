@@ -1,3 +1,4 @@
+<div *ngIf="!isMobile">
 <div class="container-fluid">
   <div class="row" id="fondo">
     <div>
@@ -48,6 +49,185 @@
               Dentro de este sistema de inventario de productos, se extraen datos de la Base de datos del SIIERNMA. Se lleva a cabo un análisis de la relación de estos productos con la estructura del MDEA.
               Este análisis proporciona la información necesaria para realizar un conteo estadístico de los productos asociados a cada uno de los niveles más importantes que maneja el Marco para el Desarrollo de las Estadísticas Ambientales, a nivel de Componente y Subcomponente.
             </p>
+
+            <p style="color: #113250; margin-left: 10px">En las siguientes representaciones graficas, se puede observar estadisticamente la cantidad y total de productos del INEGI que se apegan a determinados Componentes y Subcomponentes del MDEA:</p>
+            <!-- Graficos correspondientes -->
+
+            <!-- <div *ngIf="showCharts && componentesArray.length > 1 && subcomponentesArray.length > 1">  -->
+
+              <div class="card-body">   
+                <hr style="height: 5px; background-color: #186b6a;">
+            
+                <div class="text-center" *ngIf="loadingCharts">
+                  <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                  </div>
+                </div>
+            
+                <figure class="highcharts-figure">
+                  <div *ngIf="!loadingCharts" id="container-pie-componentes"></div>
+                </figure>
+            
+                <br>
+            
+                <div class="row">
+                  <div class="card col-12">
+                    <div style="text-align:center">Total de productos del INEGI que se apegan a los componentes del MDEA </div>
+                  </div>
+                </div>
+            
+                <div class="row" >
+                  <div class="card btn col-4 mt-2"  *ngFor="let componente of componentesMDEA" (click)="navigateWithParam(componente.id)">
+                    <ul>
+                      <h1 class="mt-3" style="text-align: center;"><i [ngClass]="'bi ' + iconosComp[componente.id]"></i></h1>
+                      <li  style="text-align: center;" >{{ componente.text }}</li>
+                      <div style="text-align: center; color: #186b6a;  font-weight: bold">{{ longitudesPorCompId[componente.id] }}</div>     
+                    </ul>
+                  </div>
+                </div>
+            
+                <hr style="height: 5px; background-color: #186b6a;">
+            
+                <div class="text-center">
+                  <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status" *ngIf="loadingCharts"></div>
+                  <figure class="highcharts-figure">
+                    <div *ngIf="!loadingCharts" id="container-pie-subcomponentes"></div>
+                  </figure>
+                </div>
+            
+                <br>
+            
+                <div class="row">
+                  <div class="card col-12">
+                    <div style="text-align:center">Total de productos del INEGI que se apegan a los subcomponentes del MDEA </div>
+                  </div>
+                </div>
+            
+                <div>
+                  <div class="row">
+                    <div class="card btn col-4 mt-2"  *ngFor="let subcomponente of subComponentesMDEA"  (click)="navigateWithParamSubcomp(subcomponente.id)">
+                      <ul>
+                        <h1 class="mt-3" style="text-align: center;"><i [ngClass]="'bi ' + iconosSubComp[subcomponente.id]"></i></h1>
+                        <li style="text-align: center;">{{ subcomponente.text }}</li>
+                        <div style="text-align: center; color: #186b6a; font-weight: bold">{{ longitudesPorSubCompId[subcomponente.id] }}</div>     
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <!-- </div> -->
+            
+
+            <!-- ELEMENTOS DE CARGA DE GRAFICOS  -->
+            <div *ngIf="!showCharts && componentesArray.length < 0 && subcomponentesArray.length < 0 ">
+             
+            <div class="card-body">
+              <div class="spinner-border">
+                <div class="row">
+                  <div class="card col-12">
+                    <div style="text-align:center">Total de productos del INEGI que se apegan a los componentes del MDEA </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-body">
+              <div class="spinner-border">
+                <div class="row">
+                  <div class="card col-12">
+                    <div style="text-align:center">Total de productos del INEGI que se apegan a los subcomponentes del MDEA </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            </div>
+
+             </div>
+           </div>          
+         </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-fullscreen modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-12">
+                <div style="text-align: center; margin-bottom: 10px;">
+                <button type="button" style="border-radius: 35px;" class="btn btn-secondary" data-bs-dismiss="modal"><i class="bi bi-x"></i></button>     
+                </div>            
+                <div class="container-fluid" id="treegraph-container"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+
+ 
+ <!-- TODO: SECCION PARA DISPOSITIVOS MOVILES -->
+ 
+ <div *ngIf="isMobile">
+ <div class="container-fluid">
+  <div class="row" id="fondo">
+    <div>
+      <div class="col">
+        <h2 class="mt-5 mb-3" style="color: #c2eceb; text-align: center; text-shadow: rgb(52, 214, 174) 1px 0 10px;">
+          Relación con el Marco para el Desarrollo de las Estadísticas Ambientales (MDEA)
+        </h2>
+      </div>
+    </div>
+<!--Introduccion al tema-->
+    <div class="col mb-2">
+      <div class="container">
+        <br>
+        <div class="mb-2" style="margin-left: 10px;">
+          <p>
+            El MDEA 2013 organiza las estadísticas ambientales en seis componentes, cada uno
+            de los cuales se desagrega en subcomponentes y a su vez en tópicos estadisticos. Los seis componentes
+            incluyen: condiciones y calidad ambiental; disponibilidad y uso de los recursos
+            ambientales y las actividades humanas relacionadas; el uso del ambiente como sumidero de
+            residuos y actividades humanas relacionadas; eventos naturales extremos y desastres; asentamientos humanos y
+            salud ambiental; y medidas sociales y económicas para proteger y gestionar el ambiente. Los temas
+            estadísticos representan los aspectos cuantificables de los componentes y están agrupados en subcomponentes,
+            tomando en cuenta los tipos y fuentes de las
+            estadísticas necesarias para describirlos.
+          </p>
+          
+          <div class="row">
+            <div class="col">
+              <p >El MDEA se compone de tres niveles: el componente principal se enfoca en bases esenciales para la educación sostenible, seguido por subcomponentes que se centran en áreas específicas como educación ambiental y habilidades para la vida. Cada subcomponente se desglosa en tópicos concretos, como conservación ambiental y diversidad.
+              </p>
+              <p>Conoce la Estructura del MDEA: </p>
+              <br>
+            </div>
+          </div>
+          
+          <div data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <img src="./assets/mdeacomp.png" type="button" style="width: 320px; height: 300px;">
+          </div>
+          
+        </div>
+      </div>
+        <!-- Estructura MDEA -->
+      <div class="container">
+       <div class="row">
+        <div class="col">
+          <div class="mt-5">
+            <h3 style="color: aliceblue;">Informacion Estadistica</h3>
+           <div class="card">
+            <p class="mt-3" style="color:darkblue; margin: 15px;">
+              Dentro de este sistema de inventario de productos, se extraen datos de la Base de datos del SIIERNMA. Se lleva a cabo un análisis de la relación de estos productos con la estructura del MDEA.
+              Este análisis proporciona la información necesaria para realizar un conteo estadístico de los productos asociados a cada uno de los niveles más importantes que maneja el Marco para el Desarrollo de las Estadísticas Ambientales, a nivel de Componente y Subcomponente.
+            </p>
             <div class="card-body">
                <!-- Graficos correspondientes -->
               <p style="display: contents; color: #113250;">En las siguientes representaciones graficas, se puede observar estadisticamente la cantidad y total de productos del INEGI que se apegan a determinados Componentes y Subcomponentes del MDEA:</p>   
@@ -61,7 +241,7 @@
             </div>
               
             <figure class="highcharts-figure">
-              <div *ngIf="!loadingCharts" id="container-pie-componentes"></div>
+              <div *ngIf="!loadingCharts" id="container-pie-componentes-movil"></div>
             </figure>
 
               <br>
@@ -89,7 +269,7 @@
             <div class="text-center">
               <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status" *ngIf="loadingCharts"></div>
               <figure class="highcharts-figure">
-                <div *ngIf="!loadingCharts" id="container-pie-subcomponentes"></div>
+                <div *ngIf="!loadingCharts" id="container-pie-subcomponentes-moviles"></div>
               </figure>
             </div>
 
@@ -101,7 +281,7 @@
                 </div>
               </div>
       
-            <div style="max-height: 600px; overflow-y: scroll;">
+            <div style="max-height: 600px;">
               <div class="row">
                 <div class="card btn col-4 mt-2"  *ngFor="let subcomponente of subComponentesMDEA"  (click)="navigateWithParamSubcomp(subcomponente.id)">
                   <ul>
@@ -121,8 +301,10 @@
       </div>
     </div>
   </div>
+  <div>
+  </div>
 
-
+ <!-- MODAL MOVIL  -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-fullscreen modal-dialog-centered">
         <div class="modal-content">
@@ -132,13 +314,15 @@
                 <div style="text-align: center; margin-bottom: 10px;">
                 <button type="button" style="border-radius: 35px;" class="btn btn-secondary" data-bs-dismiss="modal"><i class="bi bi-x"></i></button>     
                 </div>            
-                <div class="container-fluid" id="treegraph-container"></div>
+                <div class="container" id="treegraph-container"></div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
+ </div>
+ 
+ 
 
- 
- 

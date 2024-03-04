@@ -1,3 +1,4 @@
+<div *ngIf="!isMobile">
 <div class="container-fluid">
   <div class="row" id="fondo">
     <div>
@@ -39,7 +40,7 @@
                 <div class="row mt-3" >
                   <ul *ngFor="let obj of objetivods" >
                     <li style="color: aliceblue; list-style: none;" >
-                      <button type="button" [ngStyle]="{'background-color': coloresHexadecimales[obj.id]}" style="border-radius: 10px; color: white; width: 22.5rem; font-weight: 500;" (click)="SeleccionODS($event)" [value]="obj.id">{{ obj.text | slice: 3 }}</button>
+                      <button id="btnObj" type="button" [ngStyle]="{'background-color': coloresHexadecimales[obj.id]}" style="border-radius: 10px; color: white; width: 22.5rem; font-weight: 500;" (click)="SeleccionODS($event)" [value]="obj.id">{{ obj.text | slice: 3 }}</button>
                     </li>
                   </ul>
                 </div>
@@ -47,22 +48,169 @@
 
 
           <!-- Metas -->  
-          <div class="col img-mobile" style="overflow-y: overlay; height:760px; width:760px; background-color: #184670;"> 
+            <div class="col img-mobile" style="overflow-y: overlay; height:760px; width:760px; background-color: #184670;"> 
+              <div class="mt-5" >
+                <ul *ngFor="let item of meta"  >
+                  <li style="color: aliceblue; font-weight: bold;">
+                    {{ item.text }}
+                  </li>
+                </ul>
+              </div>
+            <div [hidden]="odsImg" class="mt-5 text-center">
+                <div>
+                  <img src="./assets/logoODS_es.png" style="width: 400px; height: max-content;">
+                </div>
+                <div class="d-md-none">
+                  <img src="./assets/logoODS_es.png" class="img-fluid img-mobile">
+                </div>
+            </div>
+        </div>
+      </div>
+
+        <div class="mt-5">
+         <h3 style="color: aliceblue;">Informacion Estadistica</h3>
+         <div class="card">
+          <p class="mt-3" style="color:darkblue; margin-left: 10px"> 
+            Dentro del marco del Sistema de Inventario de Productos, extraídos de la Base de Datos del SIIERNMA, 
+            se realiza un análisis de su relación con los Objetivos de Desarrollo Sostenible (ODS). 
+            Este análisis proporciona la información necesaria para llevar a cabo un conteo estadístico de los productos asociados a cada uno de los ODS.          
+          </p>
+          <div class="card-body">
+            En las siguientes representaciones gráficas, se puede observar el número correspondiente de productos de cada subdirección que guarda relación con los Objetivos y Metas enfocados en los ODS.          
+
+          <!-- Sección Grafico y datos Objetivo -->
+          <hr style="height: 5px; background-color: rgb(15, 106, 224);">
+
+          <div class="text-center" *ngIf="loadingData">
+            <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+          </div>
+          
+          <figure class="highcharts-figure" >
+            <div *ngIf="!loadingData" id="container-pie-obj"></div>
+          </figure>
+            
+            <div class="row">
+              <div class="card col">
+                <div style="text-align:center">Total de prodcutos del INEGI que se apegan a los Objetivos del Desarrollo Sostenible </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-2 form-check mt-2" *ngFor="let objetivos of objetivods" >
+              <ul>
+                <h1 class="mt-3" style="text-align: center;"><i [ngClass]="'bi ' + iconosObj[objetivos.id]"></i></h1>
+                <li style=" list-style: none;">
+                  {{objetivos.text | slice: 3}}
+                </li>
+              </ul>
+              <div style="text-align:center; color: rgb(15, 106, 224); font-weight: bold">{{ longitudesPorIdObj[objetivos.id] }}</div>
+              </div>
+            </div>
+
+            <!-- Sección Grafico y datos Meta -->
+
+            <hr style="height: 5px; background-color: rgb(15, 106, 224);">
+
+            <div class="text-center">
+              <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status" *ngIf="loadingData"></div>
+              <figure class="highcharts-figure" >
+                <div *ngIf="!loadingData" id="container-pie-meta"></div>
+              </figure>
+            </div>
+            
+            <div class="row">
+              <div class="card col">
+                <div style="text-align:center">Total de prodcutos del INEGI que se apegan a las Metas ODS </div>
+              </div>
+            </div>
+
+            <div style="max-height: 600px; overflow-y: auto;">
+            <div class="row">
+              <div class="col-2 form-check mt-2" *ngFor="let metas of metaods"  >
+              <ul>
+                <h1 class="mt-3" style="text-align: center;"><i [ngClass]="'bi ' + iconosMeta[metas.id]"></i></h1>
+                <li id="metas"  [ngbTooltip]="metas.text">
+                  {{metas.text}}
+                </li>
+              </ul>
+                <div style="text-align:center; color: rgb(15, 106, 224); font-weight: bold">{{ longitudesPorIdMeta[metas.id] }}</div>
+              </div>
+            </div>
+            </div>
+          </div>
+          </div>
+         </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+<!-- TODO: SECCION PARA DISPOSITIVOS MOVILES -->
+
+<div *ngIf="isMobile">
+<div class="container-fluid">
+  <div class="row" id="fondo">
+    <div>
+      <div class="col">
+        <h2 class="mt-5 mb-3" style="color: #d8f3ff; text-align: center; text-shadow: rgb(91, 195, 255) 1px 0 10px;">Relación con los Objetivos del Desarrollo
+          Sostenible (ODS)</h2>
+      </div>
+    </div>
+    <div class="col">
+      <div class="container">
+        <br>
+        <div class="mb-2" style="margin-left: 10px;">
+          <p style="font-style: italic; font-size: medium;">
+            El ODS y las metas figuran en el documento “Transformando nuestro mundo: La
+            Agenda 2030 para el Desarrollo Sostenible”. La Agenda 2030 es un plan de acción global adoptado por 193 países miembros de las Naciones Unidas en 2015. 
+            Su objetivo principal es abordar los desafíos globales, como la pobreza, el hambre, la salud, la educación, la igualdad de género y el cambio climático. 
+            Los Objetivos de Desarrollo Sostenible (ODS) cuentan con multiples metas interconectadas que forman parte de esta agenda. 
+            Estos objetivos buscan garantizar un futuro sostenible para todos, promoviendo la prosperidad económica, el bienestar social y la protección del medio ambiente.
+          </p>
+
+          <!-- Objetivos -->
+          <div class="row">
+            <div class="col-12">
+              <p>La Agenda 2030 establece 17 Objetivos de Desarrollo Sostenible (ODS) que abarcan diversas áreas para mejorar la calidad de vida y proteger nuestro planeta. Estos objetivos incluyen: </p>
+            </div>
+            <div class="col-12">
+              <p> Estos objetivos están respaldados por metas específicas y medidas indicadoras detalladas. La Agenda 2030 y los ODS representan un compromiso global para construir un futuro más justo, sostenible e inclusivo para todos.</p>
+            </div>
+          </div>
+
+          <div>
+            <!-- Mostrar el placeholder mientras los datos se cargan -->
+            <div class="d-flex justify-content-center mt-4" *ngIf="loading">
+              <span class="spinner-border text-light" role="status"></span>
+            </div>
+          
+            <div class="row" *ngIf="!loading">
+              <div class="col" *ngIf="!loading">
+                <div class="row mt-3" >
+                  <ul *ngFor="let obj of objetivods" >
+                    <li style="color: aliceblue; list-style: none;" >
+                      <button id="btnObj" type="button" [ngStyle]="{'background-color': coloresHexadecimales[obj.id]}" style="border-radius: 10px; color: white; width: 8rem; font-weight: 400;" (click)="SeleccionODS($event)" [value]="obj.id">{{ obj.text | slice: 3 }}</button>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+
+          <!-- Metas -->  
+          <div class="col" style="overflow-y: overlay; height: 1400px; background-color: #184670; margin-right: 2px;"> 
                 <div class="mt-5" >
                   <ul *ngFor="let item of meta"  >
-                    <li style="color: aliceblue; font-weight: bold;">
+                    <li style="color: aliceblue; font-size: small ; ">
                       {{ item.text }}
                     </li>
                   </ul>
                 </div>
-              <div [hidden]="odsImg" class="mt-5 text-center">
-                  <div>
-                    <img src="./assets/logoODS_es.png" style="width: 400px; height: max-content;">
-                  </div>
-                  <div class="d-md-none">
-                    <img src="./assets/logoODS_es.png" class="img-fluid ">
-                  </div>
-              </div>
           </div>
         </div>
 
@@ -146,6 +294,8 @@
       </div>
     </div>
   </div>
+</div> 
+</div>
 </div>
 
     

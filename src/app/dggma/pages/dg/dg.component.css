@@ -1,27 +1,6 @@
-@media only screen and (min-width: 768px) and (max-width: 1023px) {
+@media only screen and (min-width: 766px) and (max-width: 1080px) {
   #DirIntAnInv {
- margin-top: 3.5rem;
-  }
-}
-
-/* Resolución para Dispositivos Moviles */
-
-@media only screen and (max-width: 480px) {
-  #DirGob {
-  margin-top: 10px;
-  }
-}
-
-@media only screen and (max-width: 480px) {
-  #DirSociodemo{
-    margin-top: 3px;
-}
-}
-
-
-@media only screen and (max-width: 480px)  {
-  #imginegicar{
-    max-width: 100px;
+ margin-top: 8rmem;
   }
 }
 

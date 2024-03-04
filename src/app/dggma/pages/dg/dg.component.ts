@@ -13,6 +13,9 @@ interface CheckboxesState {
   styleUrls: ['./dg.component.css'],
 })
 export class DgComponent implements OnInit {
+
+  isMobile: boolean = window.innerWidth <= 480; 
+
   public products: Products[] = [];
 
   public isINEGISelected: boolean = true;
@@ -33,10 +36,13 @@ export class DgComponent implements OnInit {
   public quintaDir: number = 0;
 
   constructor(
+   
     private router: Router,
     private _direServices: DGService,
-    private _flagService: FlagService
-  ) {}
+    private _flagService: FlagService,
+  ) {
+    window.addEventListener('resize', (event) => this.onResize(event));
+  }
 
   //!Definimos los checkbox
   checkboxesState: CheckboxesState = {
@@ -53,6 +59,7 @@ export class DgComponent implements OnInit {
   DireccionCountstop5: any;
 
   ngOnInit(): void {
+
     this.isINEGISelected = false;
 
     //! Merge S.E.
@@ -62,6 +69,11 @@ export class DgComponent implements OnInit {
       this.fun();
     });
   }
+
+  onResize(event: Event): void {
+    this.isMobile = window.innerWidth <= 480;
+  }
+
   hiddenTheOtherContents_INEGI() {
     this.isINEGISelected = false;
     this.isMDEASelected = true;
