@@ -8,6 +8,7 @@
       <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
       <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
       <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="4" aria-label="Slide 5"></button>
     </div>
 
     <div class="carousel-inner">
@@ -91,6 +92,25 @@
           </div>
         </div>
       </div>
+      <!--! geoNode -->
+      <div class="carousel-item" style="background-color: #e1e3e6;" data-duration="7000">
+
+        <video loop muted autoplay oncanplay="this.play()" onloadedmetadata="this.muted = true"
+          style="width: 100%; height: 100%; object-fit: cover;">
+          <source src="./assets/definitivo.mp4" type="video/mp4">
+        </video>
+
+        <div class="container">
+          <div class="carousel-caption text-end">
+            <!-- <img focusable="false" src="./assets/snieg2.png" alt="Mi SVG"
+              style="max-width: 500px; height: auto;  margin: 0 auto;"> -->
+            <h1 style="color: #ffffff; ">Productos geográficos disponibles.</h1>
+            <p style="color: #ffffff; ">Explora y despliega las capas geográficas.</p>
+            <button class="btn btn-lg btn-light" [routerLink]="['/dg/indicadores']" href="#">Ver más</button>
+          </div>
+        </div>
+      </div>
+
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -391,7 +411,7 @@
 
         <div class="container">
           <div class="carousel-caption " >
-           
+
             <button class="btn btn-lg custom-btn-color" style="margin-left: 5px; border-color: #004045; margin-top: 5px; font-size:medium;" [routerLink]="['/dg/mdea']" href="#">Ver más</button>
           </div>
         </div>
@@ -417,13 +437,13 @@
 
       <div class="carousel-caption"
         style="position: absolute;">
-        <h1 style="color: #009edb; text-shadow: -1px -1px 0 black, 
-        1px -1px 0 black,  
-        -1px 1px 0 black, 
+        <h1 style="color: #009edb; text-shadow: -1px -1px 0 black,
+        1px -1px 0 black,
+        -1px 1px 0 black,
         1px 1px 0 black; ">Relación con los Objetivos de Desarrollo Sostenible.</h1>
-        <p style="color: #009edb; text-shadow: -1px -1px 0 black, 
-        1px -1px 0 black,  
-        -1px 1px 0 black, 
+        <p style="color: #009edb; text-shadow: -1px -1px 0 black,
+        1px -1px 0 black,
+        -1px 1px 0 black,
         1px 1px 0 black; ">Explora para saber más.</p>
         <button class="btn btn-lg custom-btn-color2" [routerLink]="['/dg/ods']" href="#" style="font-size:medium;">Ver más</button>
       </div>
