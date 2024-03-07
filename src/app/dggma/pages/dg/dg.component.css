@@ -40,19 +40,38 @@
 }
 
 /*! botones modificados */
+.custom-btn-colorWhite {
+  background-color: #ffffffbb;
+  color: #000;
+}
+
+.custom-btn-colorWhite:hover {
+  background-color: #ffffff9c;
+}
+
+.custom-btn-colorGris {
+  background-color: #949494d5;
+  color: #fff;
+}
+
+.custom-btn-colorGris:hover {
+  background-color: #949494a4;
+}
+
 .custom-btn-color {
-  background-color: #007a98;
+  background-color: #007a98b2;
   color: #fff;
 }
 .custom-btn-color:hover {
-  background-color: #005f75;
+  background-color: #0060758f;
 }
+
 .custom-btn-color2 {
-  background-color: #009edb;
+  background-color: #009ddbb7;
   color: #fff;
 }
 .custom-btn-color2:hover {
-  background-color: #007bb2;
+  background-color: #007ab2a1;
 }
 
 .custom-btn-color3 {
