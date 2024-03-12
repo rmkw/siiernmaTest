@@ -1,13 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Products } from '../../interfaces/product.interface';
-import HighchartsAccessibility from 'highcharts/modules/accessibility';
-import HighchartsExporting from 'highcharts/modules/exporting';
-import HighchartsTreeMap from 'highcharts/modules/treemap';
-import HighchartsTreeGraph from 'highcharts/modules/treegraph';
-import HighchartsTreeGrid from 'highcharts/modules/treegrid';
 import { MetaODS, Ods, SecuenciaOds } from '../../interfaces/ods.interface';
 import { DGService } from '../../services/dg.service';
-import { Router } from '@angular/router';
+import HighchartsAccessibility from 'highcharts/modules/accessibility';
+import HighchartsExporting from 'highcharts/modules/exporting';
+import HighchartsPie  from 'highcharts/modules/treegrid';
 
 @Component({
   selector: 'app-ods-page',
@@ -17,15 +14,14 @@ import { Router } from '@angular/router';
 export class OdsPageComponent implements OnInit{
 
   isMobile: boolean = window.innerWidth <= 480; 
-
-  loading = true;
   loadingData: boolean = true;
+  loading = true;
 
   public OdsArray: any[]=[]
   public MetaArray: any[]=[]
 
   public products: Products[] = [];
-  public ods?: SecuenciaOds[]=[];
+  public ods: SecuenciaOds[]=[];
   public objetivods: Ods[]=[];
   public metaods: MetaODS[]=[];
   objetivo: Ods[] = [];
@@ -33,14 +29,14 @@ export class OdsPageComponent implements OnInit{
 
   filteredProducts: Products[] = [];
   noProductsFound: boolean = false;
-  odsImg: boolean = true;
+  odsImg: boolean = false;
   showFilteredProducts = false;
 
   longitudesPorIdObj: { [key: number]: number } = {};
 
   longitudesPorIdMeta: { [key: number]: number } = {};
 
-  iconosObj: { [key: number]: string } = {
+  iconosObj: { [key: number]: string } = {  
     1: 'bi-people',
     2: 'bi-cup-hot',
     3: 'bi-heart-pulse',
@@ -257,55 +253,66 @@ export class OdsPageComponent implements OnInit{
 
   constructor(
     private _direServices: DGService,
-    private router: Router
     )
     {}
 
-    filterProductsByObjetivo(objetivo: any[]): any[] {
-      return this.products.filter(data => objetivo.some(obj => obj.interview__id === data.interview__id));
-    }
-  
-    filterProductsByMeta(meta: any[]): any[] {
-      return this.products.filter(data => meta.some(meta => meta.interview__id === data.interview__id));
-    }
-  
 
-    odsByProducts(){
 
-      this.filteredProducts = this.products.filter(data => this.ods?.some(ods => ods.interview__id === data.interview__id))
-       console.log(this.filteredProducts)
+  filterProductsByObjetivo(objetivo: any[]): any[] {
+    return this.products.filter(data => objetivo.some(obj => obj.interview__id === data.interview__id));
+  }
 
-       if (this.filteredProducts.length === 0) {
-        this.noProductsFound = true;
-      } else {
-        this.noProductsFound = false;
+  filterProductsByMeta(meta: any[]): any[] {
+    return this.products.filter(data => meta.some(meta => meta.interview__id === data.interview__id));
+  }
+
+  odsByProducts(){
+
+    this.filteredProducts = this.products.filter(data => this.ods?.some(ods => ods.interview__id === data.interview__id))
+     console.log(this.filteredProducts)
+  }
+ 
+  SeleccionODS(event: any) {
+    const id = event.target.value;
+    this._direServices.metasByparentid(id)
+      .subscribe(data => {
+        this.meta = data;
+        console.log(id);
+
+      if (id >= 1) {
+        this.odsImg = true;
       }
-   }
+    });
+  }
 
-   
-    SeleccionODS(event: any) {
-      const id = event.target.value;
-      this._direServices.metasByparentid(id)
-        .subscribe(data => {
-          this.meta = data;
-          console.log(id);
-
-        if (id >= 1) {
-          this.odsImg = true;
-        }
-      });
-    }
+  loadChart() {
+    this._direServices.objetivos().subscribe(
+      (data) => {
+        this.objetivods = data;
+        this.loading = false; // Marcamos como cargados cuando los datos llegan
+        console.log(data,'estos datos pertenecen a los objetivos')
+      },
+    );
+    this._direServices.metas().subscribe(
+      (data) => {
+        this.metaods = data;
+        this.loading = false; // Marcamos como cargados cuando los datos llegan
+        console.log(data,'estos datos pertenecen a las metas')
+      },
+    );
+  }
 
   ngOnInit(): void{
 
-    this.loadData();
+  this.loadChart();
+  this.odsByProducts();
+  this.filterProductsByMeta
+  this.filterProductsByObjetivo
 
-    this.cargarDatosDesdeBD();
+  this._direServices.productos()
+  .subscribe(data => this.products = data )
 
-    this._direServices.productos()
-    .subscribe(data => this.products = data )
-
-    this._direServices.objetivos()
+  this._direServices.objetivos()
   .subscribe( objetivoOds => this.objetivods = objetivoOds)
 
   this._direServices.metas()
@@ -313,15 +320,12 @@ export class OdsPageComponent implements OnInit{
   
   
   this._direServices.ods()
-      .subscribe(dato => {
-        this.ods = dato;
-        console.log( this.ods);
-      
-        this.OdsArray = [];
-        this.MetaArray = [];
+      .subscribe(datoOds => {
+        this.ods = datoOds;
 
+        // Arreglo de Objetivos
         for (let i = 1; i <= 17; i++) {
-          const objetivo = this.ods.filter(data => data.obj_ods === i);
+          const objetivo = this.ods.filter(dataProductos => dataProductos.obj_ods === i);
           this.OdsArray[i] = this.filterProductsByObjetivo(objetivo);
         }
       
@@ -329,8 +333,9 @@ export class OdsPageComponent implements OnInit{
           this.longitudesPorIdObj[i] = this.OdsArray[i].length || 0;
         }
 
+        // Arreglo de Metas
         for (let i = 1; i <= 169; i++) {
-          const meta = this.ods.filter(data => data.meta_ods === i);
+          const meta = this.ods.filter(dataProductos => dataProductos.meta_ods === i);
           this.MetaArray[i] = this.filterProductsByMeta(meta);
         }
       
@@ -338,20 +343,26 @@ export class OdsPageComponent implements OnInit{
           this.longitudesPorIdMeta[i] = this.MetaArray[i].length || 0;
         }
 
+        console.log(this.OdsArray, "Arreglo de los objetivos")
+        console.log(this.MetaArray, 'Arreglo de las metas')
+
+        localStorage.setItem('OdsArray', JSON.stringify(this.OdsArray) );
+        localStorage.setItem('longitudesPorIdObj', JSON.stringify(this.longitudesPorIdObj));
+        localStorage.setItem('MetaArray', JSON.stringify(this.MetaArray));
+        localStorage.setItem('longitudesPorIdMeta', JSON.stringify(this.longitudesPorIdMeta));
+
+        console.log(this.OdsArray, 'Este es el arreglo de los objetivos')
+        console.log(this.MetaArray, 'Este es el arreglo de las Metas')
+        console.log(this.longitudesPorIdObj, 'Este es el arreglo de longitudes por Objetivos')
+        console.log(this.longitudesPorIdMeta, 'Este es el arreglo de longitudes por Metas')
+      
 
     var Highcharts = require('highcharts');
-  
-      
-  
-      HighchartsAccessibility(Highcharts);
-      HighchartsExporting(Highcharts);
-      HighchartsTreeMap(Highcharts);
-      HighchartsTreeGraph(Highcharts);
-      HighchartsTreeGrid(Highcharts);
-      HighchartsTreeGraph(Highcharts);
 
+     HighchartsAccessibility(Highcharts);
+     HighchartsExporting(Highcharts);
+     HighchartsPie(Highcharts);
   
-
     var colors = Highcharts.getOptions().colors
     const objetivosData: { name: string; y: any; color: any; }[] = [];
      for (let i = 1; i <= 17; i++) {
@@ -363,7 +374,7 @@ export class OdsPageComponent implements OnInit{
     }
 
 
-   var chart1 = Highcharts.chart('container-pie-obj', {
+    Highcharts.chart('container-pie-obj', {
     chart: {
         type: 'pie'
     },
@@ -397,32 +408,7 @@ export class OdsPageComponent implements OnInit{
             }
         }
     }],
-    responsive: {
-        rules: [{
-            condition: {
-                maxWidth: 500
-            },
-            chartOptions: {
-                series: [{
-                    dataLabels: {
-                        enabled: false
-                    }
-                }]
-            }
-        }]
-    }
   });
-
-    var loadingLabelObj = chart1.renderer.text('Cargando datos...', chart1.plotWidth / 2.2, chart1.plotHeight / 1.7).attr({
-      zIndex: 10
-  }).add();
-  
-  // Simular una llamada a la API que carga los datos
-  setTimeout(() => {
-    loadingLabelObj.destroy(); // Ocultar la pantalla de carga
-      chart1.series[1].setData(objetivosData);
-  }, 3000); // Simulando un tiempo de espera de 3 segundos
-
 
   // Grafico para meta
 
@@ -437,7 +423,7 @@ export class OdsPageComponent implements OnInit{
   }
 
   // Create the chart
-   var chart2 = Highcharts.chart('container-pie-meta', {
+  Highcharts.chart('container-pie-meta', {
   chart: {
       type: 'pie',
       events: {
@@ -473,59 +459,8 @@ export class OdsPageComponent implements OnInit{
           }
       }
   }],
-  responsive: {
-      rules: [{
-          condition: {
-              maxWidth: 500
-          },
-          chartOptions: {
-              series: [{
-                  dataLabels: {
-                      enabled: false
-                  }
-              }]
-          }
-      }]
-  }
   });
+})
 
-    var loadingLabelMet = chart2.renderer.text('Cargando datos...', chart2.plotWidth / 2.2, chart2.plotHeight / 1.7).attr({
-      zIndex: 10
-  }).add();
-
-  // Simular una llamada a la API que carga los datos
-  setTimeout(() => {
-    loadingLabelMet.destroy(); // Ocultar la pantalla de carga
-      chart2.series[1].setData(metaData);
-  }, 3000); // Simulando un tiempo de espera de 3 segundos
-     }
-  )}
-
-
-  // Funciones para carga de elementos. 
-
-  cargarDatosDesdeBD() {
-    this._direServices.objetivos().subscribe(
-      (data) => {
-        this.objetivo = data;
-        this.loadingData = false;
-      },
-    )
-    this._direServices.metas().subscribe(
-      (data) => {
-        this.meta = data;
-        this.loadingData = false;
-      },
-    );
-  }
-
-
-  loadData() {
-    this._direServices.objetivos().subscribe(
-      (data) => {
-        this.objetivods = data;
-        this.loading = false; // Marcamos como cargados cuando los datos llegan
-      },
-    );
-  }
+};
 }

@@ -58,12 +58,6 @@
               <div class="card-body">   
                 <hr style="height: 5px; background-color: #186b6a;">
             
-                <div class="text-center" *ngIf="loadingCharts">
-                  <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
-                    <span class="visually-hidden">Loading...</span>
-                  </div>
-                </div>
-            
                 <figure class="highcharts-figure">
                   <div *ngIf="!loadingCharts" id="container-pie-componentes"></div>
                 </figure>
@@ -91,7 +85,7 @@
                 <div class="text-center">
                   <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status" *ngIf="loadingCharts"></div>
                   <figure class="highcharts-figure">
-                    <div *ngIf="!loadingCharts" id="container-pie-subcomponentes"></div>
+                    <div id="container-pie-subcomponentes"></div>
                   </figure>
                 </div>
             
@@ -170,7 +164,6 @@
       </div>
     </div>
   </div>
- 
 
  
  <!-- TODO: SECCION PARA DISPOSITIVOS MOVILES -->
@@ -185,6 +178,7 @@
         </h2>
       </div>
     </div>
+
 <!--Introduccion al tema-->
     <div class="col mb-2">
       <div class="container">

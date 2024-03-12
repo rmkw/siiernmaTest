@@ -9,10 +9,12 @@ import HighchartsExporting from 'highcharts/modules/exporting';
 import HighchartsTreeMap from 'highcharts/modules/treemap';
 import HighchartsTreeGraph from 'highcharts/modules/treegraph';
 import HighchartsTreeGrid from 'highcharts/modules/treegrid';
+import HighchartsPie  from 'highcharts/modules/treegrid';
 
 interface CheckboxesState {
   [key: string]: boolean;
 }
+
 @Component({
   selector: 'app-mdea-page',
   templateUrl: './mdea-page.component.html',
@@ -22,6 +24,7 @@ interface CheckboxesState {
 export class MdeaPageComponent implements OnInit{
 
   isMobile: boolean = window.innerWidth <= 480; 
+  CompMdeaimg: boolean = false;
   loadingCharts: boolean = true;
   showCharts = true;
 
@@ -29,31 +32,16 @@ export class MdeaPageComponent implements OnInit{
   public subcomponentesArray: any [] = [];
 
   public products: Products[] = [];
+  public mdeas: Mdea[]=[];
   public componentesMDEA: Componente[]=[];
-  public SubcomponentesPorComponente: Mdea[]=[];
   public subComponentesMDEA: Subcomponente[]=[];
   public topicoMDEA: Topico[]=[];
-  public mdeas: Mdea[]=[];
-  componente: Componente[]= [];
-  subcomponentes: Subcomponente[] =[];
-  topicos: Topico[] = [];
-  chart: any
+  subcomponente : Subcomponente[]=[];
+  componente: Componente[]=[];
 
-  ComponenteCountstop: any;
-  SubcomponenteCountstop2: any;
-
-  public primerComp: number = 0;
-  public segundoCom: number = 0;
-  public tercerComp: number = 0;
-  public cuartoComp: number = 0;
-  
-  public isMDEASelected: boolean = true;
-
-  CompMdeaimg: boolean = false;
-
-  cardsData = [
-    { title: '' },
-  ];
+  //Variables para almacenar y dar coherencia a los numeros que se manejan en el HTML donde se cuentan los productos del INEGI por componentes
+  longitudesPorSubCompId: { [key: number]: number } = {};
+  longitudesPorCompId: { [key: number]: number } = {};
 
   constructor(
     private router: Router,
@@ -61,6 +49,7 @@ export class MdeaPageComponent implements OnInit{
     private _flagService: FlagService
   ){}
 
+  // Checkboxes para hacer el filtrado interactivo de las Cards. 
   checkboxesState: CheckboxesState = {
     filtroMdeaComp1: false,
     filtroMdeaComp2: false,
@@ -70,11 +59,6 @@ export class MdeaPageComponent implements OnInit{
     filtroMdeaComp6: false, 
   };
 
-  //Variables para almacenar y dar coherencia a los numeros que se manejan en el HTML donde se cuentan los productos del INEGI por componentes
-  longitudesPorSubCompId: { [key: number]: number } = {};
-
-  longitudesPorCompId: { [key: number]: number } = {};
-  
  // Arreglo de iconos para relacionarlos por componente Id y Subcomponente Id.
   
   iconosComp: { [key: number]: string } = {
@@ -111,7 +95,6 @@ export class MdeaPageComponent implements OnInit{
   };
 
 
-
   filterProductsByComponente(componente: any[]): any[] {
     return this.products.filter(data => componente.some(comp => comp.interview__id === data.interview__id));
   }
@@ -124,34 +107,67 @@ export class MdeaPageComponent implements OnInit{
   toggleExpansionA() {
     this.expanded1 = !this.expanded1;
   }
- 
+
+  loadChart(){
+    this._direServices.componentes().subscribe(
+      (dataComp) => {
+        this.componentesMDEA = dataComp;
+        this.loadingCharts = false; // Marcamos como cargados cuando los datos llegan
+        console.log(dataComp,'estos datos pertenecen a los componentes de MDEA')
+      },
+    )
+    this._direServices.subcomponentes().subscribe(
+      (dataSubComp) => {
+        this.subComponentesMDEA = dataSubComp;
+        this.loadingCharts = false; // Marcamos como cargados cuando los datos llegan
+        console.log(dataSubComp,'estos datos pertenecen a los Subcomponentes de MDEA')
+      },
+    )
+  }
+
+  obtenerDatosLocalStorageMDEA() {
+    const componentesArrayString = localStorage.getItem('componentesArray');
+    const longitudesPorCompIdString = localStorage.getItem('longitudesPorCompId');
+    const subcomponentesArrayString = localStorage.getItem('subcomponentesArray');
+    const longitudesPorSubCompIdString = localStorage.getItem('longitudesPorSubCompId');
+  
+    // Verificar la existencia de los datos en localStorage antes de parsear
+    const componentesArray = componentesArrayString ? JSON.parse(componentesArrayString) : [];
+    const longitudesPorCompId = longitudesPorCompIdString ? JSON.parse(longitudesPorCompIdString) : [];
+    const subcomponentesArray = subcomponentesArrayString ? JSON.parse(subcomponentesArrayString) : [];
+    const longitudesPorSubCompId = longitudesPorSubCompIdString ? JSON.parse(longitudesPorSubCompIdString) : [];
+
+    // Asignar los datos recuperados a las variables del componente
+    this.componentesArray = componentesArray;
+    this.longitudesPorCompId = longitudesPorCompId;
+    this.subcomponentesArray = subcomponentesArray;
+    this.longitudesPorSubCompId = longitudesPorSubCompId;
+  }
+
 
     ngOnInit(): void {
 
-      this.loadingCharts = false;
-
       this.loadChart();
-
-      this._direServices.productos()
-      .subscribe(data => this.products = data )
-     
+      this.filterProductsByComponente
+      this.filterProductsBySubComponente
+      this.obtenerDatosLocalStorageMDEA();
+    
       this._direServices.componentes()
-      .subscribe( componentes => this.componentesMDEA = componentes)
+      .subscribe( dataComponentes => this.componentesMDEA = dataComponentes)
   
       this._direServices.subcomponentes()
-      .subscribe( subcomponente => this.subComponentesMDEA = subcomponente)
+      .subscribe( dataSubcomponente => this.subComponentesMDEA = dataSubcomponente)
       
       this._direServices.topicos()
-      .subscribe( topicomdea => this.topicoMDEA = topicomdea)
+      .subscribe( dataTopicomdea => this.topicoMDEA = dataTopicomdea)
 
+      this._direServices.productos()
+      .subscribe( dataProductos => this.products = dataProductos )
+     
       this._direServices.mdea()
-      .subscribe(dato => {
-        this.mdeas = dato;
-    
-        // Inicializa un arreglo para almacenar los componentes
+      .subscribe(dataMdea => {
+        this.mdeas = dataMdea;
         
-        this.componentesArray = [];
-        this.subcomponentesArray = [];
         // Arreglo para componentes
         for (let i = 1; i <= 6; i++) {
           const componente = this.mdeas.filter(data => data.comp_mdea === i);
@@ -161,8 +177,6 @@ export class MdeaPageComponent implements OnInit{
         for (let i = 1; i <= 6; i++) {
           this.longitudesPorCompId[i] = this.componentesArray[i].length || 0;
         }
-
-        console.log(this.longitudesPorCompId)
 
        // Arreglo para subcomponentes
        for (let i = 1; i <= 21; i++) {
@@ -174,14 +188,24 @@ export class MdeaPageComponent implements OnInit{
           this.longitudesPorSubCompId[i] = this.subcomponentesArray[i].length || 0;
         }
 
-        console.log(this.longitudesPorSubCompId)
-        
+        localStorage.setItem('componentesArray', JSON.stringify(this.componentesArray));
+        localStorage.setItem('longitudesPorCompId', JSON.stringify(this.longitudesPorCompId));
+        localStorage.setItem('subcomponentesArray', JSON.stringify(this.subcomponentesArray));
+        localStorage.setItem('longitudesPorSubCompId', JSON.stringify(this.longitudesPorSubCompId));
+
+        // Recuperar del localStorage
+        console.log(localStorage.getItem('componentesArray'));
+        console.log(localStorage.getItem('longitudesPorCompId'));
+        console.log(localStorage.getItem('subcomponentesArray'));
+        console.log(localStorage.getItem('longitudesPorSubCompId'));
       
    // Grafico de pastel para mostrar los datos por componente
+   HighchartsAccessibility(Highcharts);
+   HighchartsExporting(Highcharts);
+   HighchartsPie(Highcharts);
 
     var colors = Highcharts.getOptions().colors
       const componentesData: { name: string; y: any; color: any; }[] = [];
-
       for (let i = 1; i <= 6; i++) {
         componentesData.push({
           name: `Componente ${i}`,
@@ -190,7 +214,7 @@ export class MdeaPageComponent implements OnInit{
         });
 
       }
-       var chart1 = Highcharts.chart('container-pie-componentes', {
+      Highcharts.chart('container-pie-componentes', {
           chart: {
               type: 'pie'
           },
@@ -224,20 +248,8 @@ export class MdeaPageComponent implements OnInit{
                   }
               }
           }],
+          
         });
-
-        var loadingLabelcomp = chart1.renderer.text('Cargando datos...', chart1.plotWidth / 2.2, chart1.plotHeight / 1.7).attr({
-          zIndex: 10
-      }).add();
-      
-      // Simular una llamada a la API que carga los datos
-      setTimeout(() => {
-        loadingLabelcomp.destroy(); // Ocultar la pantalla de carga
-        chart1.series[0].setData(componentesData);
-      }, 3000); // Simulando un tiempo de espera de 3 segundos
-        
-      //TODO Graficos para dispositivos moviles
-
     
       // Grafica para mostrar los Subcomponentes 
 
@@ -254,7 +266,7 @@ export class MdeaPageComponent implements OnInit{
         });
 
       }
-       var chart2 = Highcharts.chart('container-pie-subcomponentes', {
+      Highcharts.chart('container-pie-subcomponentes', {
           chart: {
               type: 'pie'
           },
@@ -291,16 +303,6 @@ export class MdeaPageComponent implements OnInit{
               
           }],
         });
-
-        var loadingLabelsubcomp = chart2.renderer.text('Cargando datos...', chart2.plotWidth / 2.2, chart2.plotHeight / 1.7).attr({
-          zIndex: 10
-      }).add();
-      
-      // Simular una llamada a la API que carga los datos
-      setTimeout(() => {
-          loadingLabelsubcomp.destroy(); // Ocultar la pantalla de carga
-          chart2.series[1].setData(subcomponentesData);
-      }, 3000); // Simulando un tiempo de espera de 3 segundos
 
       });
 
@@ -450,6 +452,7 @@ export class MdeaPageComponent implements OnInit{
     });
   }
 
+ 
   navigateWithParam(componentId: number) {
     switch (componentId) {
       case 1:
@@ -548,20 +551,5 @@ export class MdeaPageComponent implements OnInit{
     this.router.navigate(['/dg/products']);
   }
 
-
-  loadChart(){
-    this._direServices.componentes().subscribe(
-      (data) => {
-        this.componentesMDEA = data;
-        this.loadingCharts = false; // Marcamos como cargados cuando los datos llegan
-      },
-    )
-    this._direServices.subcomponentes().subscribe(
-      (data) => {
-        this.subComponentesMDEA = data;
-        this.loadingCharts = false; // Marcamos como cargados cuando los datos llegan
-      },
-    )
-  }
 }
 

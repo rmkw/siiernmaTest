@@ -1,12 +1,12 @@
 @media (min-width: 992px) {
   .img-desktop {
-    max-width: 35%;
+    max-width: 80%;
   }
 }
 
-@media (max-width: 1368px) {
+@media (max-width: 480) {
   .img-mobile {
-   max-width: 58%;
+   max-width: 70%;
    margin-left: 20px;
    margin-top: 2px;
   }

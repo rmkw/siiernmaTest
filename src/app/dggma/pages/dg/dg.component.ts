@@ -34,6 +34,7 @@ export class DgComponent implements OnInit {
   public terceraDir: number = 0;
   public cuartaDir: number = 0;
   public quintaDir: number = 0;
+  
 
   constructor(
    
@@ -68,6 +69,7 @@ export class DgComponent implements OnInit {
       this.filtrarProductosPorDirecciones();
       this.fun();
     });
+
   }
 
   onResize(event: Event): void {
@@ -195,3 +197,4 @@ export class DgComponent implements OnInit {
     }
   }
 }
+

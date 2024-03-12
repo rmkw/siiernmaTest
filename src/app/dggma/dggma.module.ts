@@ -29,7 +29,7 @@ import { IndicadoresPageComponent } from './pages/indicadores-page/indicadores-p
     ByidsComponent,
     OdsPageComponent,
     MdeaPageComponent,
-    IndicadoresPageComponent
+    IndicadoresPageComponent,
   ],
   imports: [
     CommonModule,
