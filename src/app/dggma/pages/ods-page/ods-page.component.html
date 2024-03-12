@@ -80,10 +80,17 @@
   
             <!-- Sección Grafico y datos Objetivo -->
             <hr style="height: 5px; background-color: rgb(15, 106, 224);">
-            
-            <figure class="highcharts-figure" >
-              <div  id="container-pie-obj"></div>
-            </figure>
+              
+            <div>
+              <div class="text-center" *ngIf="loading">
+                <div class="spinner-border text-primary m-5" role="status" style="width: 5rem; height: 5rem;">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </div>
+                <figure class="highcharts-figure" >
+                  <div  id="container-pie-obj" [hidden]="loading"></div>
+                </figure>
+              </div>
               
               <div class="row">
                 <div class="card col">
@@ -106,12 +113,18 @@
               <!-- Sección Grafico y datos Meta -->
   
               <hr style="height: 5px; background-color: rgb(15, 106, 224);">
-  
-              <div class="text-center">
-                <figure class="highcharts-figure" >
-                  <div  id="container-pie-meta"></div>
-                </figure>
+              
+              <div>
+                <div class="text-center" *ngIf="loading">
+                  <div class="spinner-border text-primary m-5" role="status" style="width: 5rem; height: 5rem;">
+                    <span class="visually-hidden">Loading...</span>
+                  </div>
+                </div>
+                  <figure class="highcharts-figure" [hidden]="loading">
+                    <div  id="container-pie-meta"></div>
+                  </figure>
               </div>
+
               
               <div class="row">
                 <div class="card col">

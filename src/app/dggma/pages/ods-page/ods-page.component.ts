@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Products } from '../../interfaces/product.interface';
 import { MetaODS, Ods, SecuenciaOds } from '../../interfaces/ods.interface';
 import { DGService } from '../../services/dg.service';
+import { forkJoin } from 'rxjs';
 import HighchartsAccessibility from 'highcharts/modules/accessibility';
 import HighchartsExporting from 'highcharts/modules/exporting';
-import HighchartsPie  from 'highcharts/modules/treegrid';
 
 @Component({
   selector: 'app-ods-page',
@@ -14,7 +14,6 @@ import HighchartsPie  from 'highcharts/modules/treegrid';
 export class OdsPageComponent implements OnInit{
 
   isMobile: boolean = window.innerWidth <= 480; 
-  loadingData: boolean = true;
   loading = true;
 
   public OdsArray: any[]=[]
@@ -263,21 +262,19 @@ export class OdsPageComponent implements OnInit{
   }
 
   filterProductsByMeta(meta: any[]): any[] {
-    return this.products.filter(data => meta.some(meta => meta.interview__id === data.interview__id));
+    return this.products.filter(data => {
+      const matchingMeta = meta.find(m => m.interview__id === data.interview__id);
+      return matchingMeta && matchingMeta.algunaPropiedadImportante !== null;
+    });
   }
 
-  odsByProducts(){
-
-    this.filteredProducts = this.products.filter(data => this.ods?.some(ods => ods.interview__id === data.interview__id))
-     console.log(this.filteredProducts)
-  }
  
   SeleccionODS(event: any) {
     const id = event.target.value;
     this._direServices.metasByparentid(id)
       .subscribe(data => {
         this.meta = data;
-        console.log(id);
+        
 
       if (id >= 1) {
         this.odsImg = true;
@@ -290,91 +287,92 @@ export class OdsPageComponent implements OnInit{
       (data) => {
         this.objetivods = data;
         this.loading = false; // Marcamos como cargados cuando los datos llegan
-        console.log(data,'estos datos pertenecen a los objetivos')
       },
     );
     this._direServices.metas().subscribe(
       (data) => {
         this.metaods = data;
         this.loading = false; // Marcamos como cargados cuando los datos llegan
-        console.log(data,'estos datos pertenecen a las metas')
       },
     );
   }
 
   ngOnInit(): void{
 
-  this.loadChart();
-  this.odsByProducts();
-  this.filterProductsByMeta
-  this.filterProductsByObjetivo
-
-  this._direServices.productos()
-  .subscribe(data => this.products = data )
-
-  this._direServices.objetivos()
-  .subscribe( objetivoOds => this.objetivods = objetivoOds)
-
-  this._direServices.metas()
-  .subscribe( metaOds => this.metaods = metaOds)
+    forkJoin([
+      this._direServices.productos(),
+      this._direServices.objetivos(),
+      this._direServices.metas(),
+      this._direServices.ods()
+    ]).subscribe(([productos, objetivos, metas, ods]) => {
+      this.products = productos;
+      this.objetivods = objetivos;
+      this.metaods = metas;
+      this.ods = ods;
   
+      for (let i = 1; i <= 17; i++) {
+        const objetivo = this.ods.filter(data => data.obj_ods === i);
+        this.OdsArray[i] = this.filterProductsByObjetivo(objetivo);
+      }
+    
+      for (let i = 1; i <= 17; i++) {
+        this.longitudesPorIdObj[i] = this.OdsArray[i].length || 0;
+      }
+
+      // Arreglo de Metas
+      for (let i = 1; i <= 169; i++) {
+        const meta = this.ods.filter(data => data.meta_ods === i);
+        this.MetaArray[i] = this.filterProductsByMeta(meta);
+      }
+    
+      for (let i = 1; i <= 169; i++) {
+        this.longitudesPorIdMeta[i] = this.MetaArray[i].length || 0;
+      }
+
+      this.MetaArray
+      this.OdsArray
+      this.loadChart();
+      this.filterProductsByMeta(this.meta);
+      this.filterProductsByObjetivo(this.objetivo);
+      this.createObjetivosChart();
+      this.createMetaChart();
+
+      this.loading = false;
+
+      this._direServices.productos()
+      .subscribe(data => this.products = data )
+
+      this._direServices.objetivos()
+      .subscribe( objetivoOds => this.objetivods = objetivoOds)
+
+      this._direServices.metas()
+      .subscribe( metaOds => this.metaods = metaOds)
+
+      this._direServices.ods()
+          .subscribe(datoOds => 
+            this.ods = datoOds)
+        });
+
+}
+
+createObjetivosChart(): void {
+
+  var Highcharts = require('highcharts');
+
+  HighchartsAccessibility(Highcharts);
+  HighchartsExporting(Highcharts);
   
-  this._direServices.ods()
-      .subscribe(datoOds => {
-        this.ods = datoOds;
-
-        // Arreglo de Objetivos
-        for (let i = 1; i <= 17; i++) {
-          const objetivo = this.ods.filter(dataProductos => dataProductos.obj_ods === i);
-          this.OdsArray[i] = this.filterProductsByObjetivo(objetivo);
-        }
-      
-        for (let i = 1; i <= 17; i++) {
-          this.longitudesPorIdObj[i] = this.OdsArray[i].length || 0;
-        }
-
-        // Arreglo de Metas
-        for (let i = 1; i <= 169; i++) {
-          const meta = this.ods.filter(dataProductos => dataProductos.meta_ods === i);
-          this.MetaArray[i] = this.filterProductsByMeta(meta);
-        }
-      
-        for (let i = 1; i <= 169; i++) {
-          this.longitudesPorIdMeta[i] = this.MetaArray[i].length || 0;
-        }
-
-        console.log(this.OdsArray, "Arreglo de los objetivos")
-        console.log(this.MetaArray, 'Arreglo de las metas')
-
-        localStorage.setItem('OdsArray', JSON.stringify(this.OdsArray) );
-        localStorage.setItem('longitudesPorIdObj', JSON.stringify(this.longitudesPorIdObj));
-        localStorage.setItem('MetaArray', JSON.stringify(this.MetaArray));
-        localStorage.setItem('longitudesPorIdMeta', JSON.stringify(this.longitudesPorIdMeta));
-
-        console.log(this.OdsArray, 'Este es el arreglo de los objetivos')
-        console.log(this.MetaArray, 'Este es el arreglo de las Metas')
-        console.log(this.longitudesPorIdObj, 'Este es el arreglo de longitudes por Objetivos')
-        console.log(this.longitudesPorIdMeta, 'Este es el arreglo de longitudes por Metas')
-      
-
-    var Highcharts = require('highcharts');
-
-     HighchartsAccessibility(Highcharts);
-     HighchartsExporting(Highcharts);
-     HighchartsPie(Highcharts);
+  const colors = Highcharts.getOptions().colors;
+  const objetivosData: { name: string; y: any; color: any; }[] = [];
   
-    var colors = Highcharts.getOptions().colors
-    const objetivosData: { name: string; y: any; color: any; }[] = [];
-     for (let i = 1; i <= 17; i++) {
-      objetivosData.push({
-         name: `Objetivo ${i}`,
-         y: this.OdsArray[i]?.length || 0,
-         color: colors[i + 1] 
-       });
-    }
-
-
-    Highcharts.chart('container-pie-obj', {
+  for (let i = 1; i <= 17; i++) {
+    objetivosData.push({
+      name: `Objetivo ${i}`,
+      y: this.OdsArray[i]?.length || 0,
+      color: colors[i + 1] 
+    });
+  }
+  Highcharts.chart('container-pie-obj', {
     chart: {
         type: 'pie'
     },
@@ -409,58 +407,68 @@ export class OdsPageComponent implements OnInit{
         }
     }],
   });
+}
 
-  // Grafico para meta
+  createMetaChart(): void {
 
-  var colors = Highcharts.getOptions().colors
-  const metaData: { name: string; y: any; color: any; }[] = [];
-  for (let i = 1; i <= 169; i++) {
-    metaData.push({
-      name: `Meta ${i}`,
-      y: this.MetaArray[i]?.length || 0,
-      color: colors[i + 1] 
-    });
+    var Highcharts = require('highcharts');
+
+    HighchartsAccessibility(Highcharts);
+    HighchartsExporting(Highcharts);
+
+    const colors = Highcharts.getOptions().colors;
+    const metaData: { name: string; y: any; color: any; }[] = [];
+
+    for (let i = 1; i <= 169; i++) {
+      const metaLength = this.MetaArray[i]?.length || 0;
+      if (metaLength > 0) {
+        metaData.push({
+          name: `Meta ${i}`,
+          y: metaLength,
+          color: colors[i + 1] 
+        });
+      }
+    }
+    
+    Highcharts.chart('container-pie-meta', {
+      chart: {
+          type: 'pie',
+          events: {
+    
+          }
+      },
+      title: {
+          text: 'Productos del INEGI que se apegan determinadas Metas del ODS',
+          align: 'center'
+      },
+      plotOptions: {
+        series: {
+          borderRadius: 5,
+        }
+      },
+      tooltip: {
+          valueSuffix: ' productos'
+      },
+      series: [{
+          name: 'Meta',
+          data: metaData,
+          size: '100%',
+          dataLabels: {
+              color: '#113250',
+              format: '<b>{point.name}:</b><br><span style="text-allign: center;">{point.y} Productos</span>',
+              filter: {
+                  property: 'y',
+                  operator: '>',
+                  value: 1
+              },
+              style: {
+                  fontWeight: 'normal'
+              }
+          }
+      }],
+    })
   }
 
-  // Create the chart
-  Highcharts.chart('container-pie-meta', {
-  chart: {
-      type: 'pie',
-      events: {
-
-      }
-  },
-  title: {
-      text: 'Productos del INEGI que se apegan determinadas Metas del ODS',
-      align: 'center'
-  },
-  plotOptions: {
-    series: {
-      borderRadius: 5,
-    }
-  },
-  tooltip: {
-      valueSuffix: ' productos'
-  },
-  series: [{
-      name: 'Meta',
-      data: metaData,
-      size: '100%',
-      dataLabels: {
-          color: '#113250',
-          format: '<b>{point.name}:</b><br><span style="text-allign: center;">{point.y} Productos</span>',
-          filter: {
-              property: 'y',
-              operator: '>',
-              value: 1
-          },
-          style: {
-              fontWeight: 'normal'
-          }
-      }
-  }],
-  });
-})
 
 };
-}
+

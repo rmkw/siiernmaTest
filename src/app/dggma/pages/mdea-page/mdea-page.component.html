@@ -53,15 +53,21 @@
             <p style="color: #113250; margin-left: 10px">En las siguientes representaciones graficas, se puede observar estadisticamente la cantidad y total de productos del INEGI que se apegan a determinados Componentes y Subcomponentes del MDEA:</p>
             <!-- Graficos correspondientes -->
 
-            <!-- <div *ngIf="showCharts && componentesArray.length > 1 && subcomponentesArray.length > 1">  -->
 
               <div class="card-body">   
                 <hr style="height: 5px; background-color: #186b6a;">
             
+              <div>
+                <div class="text-center" *ngIf="loading">
+                  <div class="spinner-border text-success m-5" role="status" style="width: 5rem; height: 5rem;">
+                    <span class="visually-hidden">Loading...</span>
+                  </div>
+                </div>
                 <figure class="highcharts-figure">
-                  <div *ngIf="!loadingCharts" id="container-pie-componentes"></div>
+                  <div id="container-pie-componentes" [hidden]="loading"></div>
                 </figure>
-            
+              </div>
+
                 <br>
             
                 <div class="row">
@@ -82,10 +88,15 @@
             
                 <hr style="height: 5px; background-color: #186b6a;">
             
-                <div class="text-center">
-                  <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status" *ngIf="loadingCharts"></div>
+                <div>
+                  <div class="text-center" *ngIf="loading">
+                    <div class="spinner-border text-success m-5" role="status" style="width: 5rem; height: 5rem;">
+                      <span class="visually-hidden">Loading...</span>
+                    </div>
+                  </div>
+    
                   <figure class="highcharts-figure">
-                    <div id="container-pie-subcomponentes"></div>
+                    <div id="container-pie-subcomponentes" [hidden]="loading"></div>
                   </figure>
                 </div>
             
@@ -109,33 +120,6 @@
                   </div>
                 </div>
               </div>
-            <!-- </div> -->
-            
-
-            <!-- ELEMENTOS DE CARGA DE GRAFICOS  -->
-            <div *ngIf="!showCharts && componentesArray.length < 0 && subcomponentesArray.length < 0 ">
-             
-            <div class="card-body">
-              <div class="spinner-border">
-                <div class="row">
-                  <div class="card col-12">
-                    <div style="text-align:center">Total de productos del INEGI que se apegan a los componentes del MDEA </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="card-body">
-              <div class="spinner-border">
-                <div class="row">
-                  <div class="card col-12">
-                    <div style="text-align:center">Total de productos del INEGI que se apegan a los subcomponentes del MDEA </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            </div>
 
              </div>
            </div>          
