@@ -267,7 +267,6 @@ export class OdsPageComponent implements OnInit{
       return matchingMeta && matchingMeta.algunaPropiedadImportante !== null;
     });
   }
-
  
   SeleccionODS(event: any) {
     const id = event.target.value;
@@ -322,9 +321,9 @@ export class OdsPageComponent implements OnInit{
       // Arreglo de Metas
       for (let i = 1; i <= 169; i++) {
         const meta = this.ods.filter(data => data.meta_ods === i);
-        this.MetaArray[i] = this.filterProductsByMeta(meta);
+        this.MetaArray[i] = this.filterProductsByMeta(meta).filter(item => Object.keys(item).length !== 0);
       }
-    
+
       for (let i = 1; i <= 169; i++) {
         this.longitudesPorIdMeta[i] = this.MetaArray[i].length || 0;
       }
