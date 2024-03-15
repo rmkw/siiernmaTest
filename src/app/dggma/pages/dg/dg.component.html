@@ -477,21 +477,43 @@
           </div>
         </div>
       </div>
+  
+
+ <!-- GEONODE  -->
+
+ <div class="carousel-item" style="background-color: #e1e3e6;" data-duration="7000">
+
+  <video loop muted autoplay oncanplay="this.play()" onloadedmetadata="this.muted = true"
+    style="width: 100%; height: 100%; object-fit: cover;">
+    <source src="./assets/geo_video.mp4" type="video/mp4">
+  </video>
+
+    <div class="container">
+      <div class="carousel-caption text-end">
+        <img focusable="false" src="./assets/logo.png" alt="Mi SVG"
+          style="max-width: 300px; height: auto;  margin: 0 auto;">
+        <h1 style="color: #ffffff; ">Productos geográficos disponibles.</h1>
+        <p style="color: #ffffff; ">Explora y despliega las capas geográficas.</p>
+        <button class="btn btn-lg custom-btn-colorWhite" [routerLink]="['/dg/indicadores']" href="#" style="font-size: medium;">Ver más</button>
+      </div>
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
   </div>
 
+  </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+    </button>
+</div>
 
-  <div class="container marketing">
 
     <!--TODO: LAS DIRECCIONES CON ICONOS-->
+
+    <div class="container marketing">
     <div class="row justify-content-center align-items-center">
 
       <div class="col-md-4 col-sm-6 col-xs-12">
@@ -603,6 +625,12 @@
             style="cursor: pointer; border-bottom: solid 3px; border-color: #ffffff; padding-top: 1.5rem; padding-bottom: 1.5rem;">
             <h6>
               Indicadores.
+            </h6>
+          </div>
+          <div class="col-12"
+            style="cursor: pointer; border-bottom: solid 3px; border-color: #ffffff; padding-top: 1.5rem; padding-bottom: 1.5rem;">
+            <h6>
+              GeoNode.
             </h6>
           </div>
         </div>
