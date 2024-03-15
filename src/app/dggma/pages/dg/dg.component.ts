@@ -35,6 +35,7 @@ export class DgComponent implements OnInit {
   public cuartaDir: number = 0;
   public quintaDir: number = 0;
   
+  showMoreText: boolean = false;
 
   constructor(
    
@@ -70,6 +71,10 @@ export class DgComponent implements OnInit {
       this.fun();
     });
 
+  }
+
+  toggleShowMoreText() {
+    this.showMoreText = !this.showMoreText;
   }
 
   onResize(event: Event): void {

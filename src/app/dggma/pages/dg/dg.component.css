@@ -92,3 +92,6 @@ p{
   background-color: #00528a;
 }
 
+.hidden-text {
+  display: none;
+}

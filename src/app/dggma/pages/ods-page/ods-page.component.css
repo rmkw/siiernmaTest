@@ -55,6 +55,11 @@ p {
   text-overflow: ellipsis;
   overflow: hidden;
  }
+ @media (max-width: 500px) {
+  #metas{
+    text-overflow: none;
+  } 
+}
 
  #container-pie-obj{
   max-width: 1000px;
@@ -62,10 +67,30 @@ p {
   margin: 0 auto;
   height: 600px;
 }
+@media (max-width: 500px) {
+  #container-pie-obj{
+    position: relative;
+    max-width: 10%; 
+    height: auto; 
+    margin: 0 auto; 
+    left: 50%; 
+    transform: translateX(-50%); 
+  }
+}
 
 #container-pie-meta{
   max-width: 1000px;
   min-width: 768px;
   margin: 0 auto;
   height: 600px;
+}
+@media (max-width: 500px) {
+  #container-pie-meta{
+    position: relative;
+    max-width: 10%; 
+    height: auto; 
+    margin: 0 auto; 
+    left: 50%; 
+    transform: translateX(-50%); 
+  }
 }

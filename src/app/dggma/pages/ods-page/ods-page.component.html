@@ -265,10 +265,10 @@
               </div>
   
               <div class="row">
-                <div class="col-2 form-check mt-2" *ngFor="let objetivos of objetivods" >
+                <div class="col-6 mt-2" *ngFor="let objetivos of objetivods" >
                 <ul>
                   <h1 class="mt-3" style="text-align: center;"><i [ngClass]="'bi ' + iconosObj[objetivos.id]"></i></h1>
-                  <li style=" list-style: none;">
+                  <li style="">
                     {{objetivos.text | slice: 3}}
                   </li>
                 </ul>
@@ -292,17 +292,21 @@
                 </div>
               </div>
   
-              <div style="max-height: 600px; overflow-y: auto;">
+              <div>
               <div class="row">
-                <div class="col-2 form-check mt-2" *ngFor="let metas of metaods"  >
-                <ul>
-                  <h1 class="mt-3" style="text-align: center;"><i [ngClass]="'bi ' + iconosMeta[metas.id]"></i></h1>
-                  <li id="metas"  [ngbTooltip]="metas.text">
-                    {{metas.text}}
-                  </li>
-                </ul>
-                  <div style="text-align:center; color: rgb(15, 106, 224); font-weight: bold">{{ longitudesPorIdMeta[metas.id] }}</div>
-                </div>
+                <ng-container *ngFor="let metas of metaods">
+                  <ng-container *ngIf="longitudesPorIdMeta[metas.id] > 0">
+                    <div class="col-6 mt-2">
+                      <ul>
+                        <h1 class="mt-3" style="text-align: center;"><i [ngClass]="'bi ' + iconosMeta[metas.id]"></i></h1>
+                        <li id="metas" [ngbTooltip]="metas.text">
+                          {{metas.text}}
+                        </li>
+                      </ul>
+                      <div style="text-align:center; color: rgb(15, 106, 224); font-weight: bold">{{ longitudesPorIdMeta[metas.id] }}</div>
+                    </div>
+                  </ng-container>
+                </ng-container>
               </div>
               </div>
             </div>

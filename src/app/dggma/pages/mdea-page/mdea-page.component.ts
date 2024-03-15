@@ -186,23 +186,23 @@ export class MdeaPageComponent implements OnInit{
     }
 
 
-  createComponenteChart(): void {
+    createComponenteChart(): void {
 
-    var Highcharts = require('highcharts'); 
-
-   HighchartsAccessibility(Highcharts);
-   HighchartsExporting(Highcharts);
-
+      var Highcharts = require('highcharts'); 
+      HighchartsAccessibility(Highcharts);
+      HighchartsExporting(Highcharts);
+  
       const colors = Highcharts.getOptions().colors;
       const componentesData: { name: string; y: any; color: any; }[] = [];
-
+  
       for (let i = 1; i <= 6; i++) {
-        componentesData.push({
-          name: `Componente ${i}`,
-          y: this.componentesArray[i]?.length || 0,
-          color: colors[i + 1] 
-        });
+          componentesData.push({
+              name: `Componente ${i}`,
+              y: this.componentesArray[i]?.length || 0,
+              color: colors[i + 1] 
+          });
       }
+  
       Highcharts.chart('container-pie-componentes', {
           chart: {
               type: 'pie'
@@ -212,8 +212,8 @@ export class MdeaPageComponent implements OnInit{
               align: 'center'
           },
           plotOptions: {
-            series: {
-              borderRadius: 5,
+              series: {
+                  borderRadius: 5,
               }
           },
           tooltip: {
@@ -237,9 +237,24 @@ export class MdeaPageComponent implements OnInit{
                   }
               }
           }],
-          
+            responsive: {
+                rules: [{
+                    condition: {
+                        maxWidth: 500 // Aquí define el ancho máximo para el que se aplicará el ajuste responsivo
+                    },
+                    chartOptions: {
+                        plotOptions: {
+                            pie: {
+                                dataLabels: {
+                                    enabled: false
+                                }
+                            }
+                        }
+                    }
+                }]
+            }
         });
-      }
+    }
       // Grafica para mostrar los Subcomponentes 
 
       createSubcomponenteChart(): void {
@@ -262,7 +277,7 @@ export class MdeaPageComponent implements OnInit{
         }
         Highcharts.chart('container-pie-subcomponentes', {
             chart: {
-                type: 'pie'
+                type: 'pie',
             },
             title: {
                 text: 'Productos del INEGI que se apegan a determinados SubComponentes',
@@ -291,13 +306,29 @@ export class MdeaPageComponent implements OnInit{
                     },
                     style: {
                         fontWeight: 'normal'
-                    }, 
-                            
-                }, 
-                
+                    },
+                    
+                },                 
             }],
+            responsive: {
+              rules: [{
+                  condition: {
+                      maxWidth: 500
+                  },
+                  chartOptions: {
+                      plotOptions: {
+                          pie: {
+                              dataLabels: {
+                                  enabled: false
+                              }
+                          }
+                      }
+                  }
+              }]
+          }
           });
       }
+
 
    createMdeaStructureTree(): void {
 
