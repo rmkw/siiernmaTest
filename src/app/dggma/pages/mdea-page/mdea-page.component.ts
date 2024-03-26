@@ -101,8 +101,11 @@ export class MdeaPageComponent implements OnInit{
   }
 
   filterProductsBySubComponente(subcomponente: any[]): any[] {
-    return this.products.filter(data => subcomponente.some(subcomp => subcomp.interview__id === data.interview__id));
-  }
+    return this.products.filter(data => {
+      const matchingSubcomp = subcomponente.find(subcomp => subcomp.interview__id === data.interview__id);
+      return matchingSubcomp && matchingSubcomp.algunaPropiedadImportante!== null;
+  });
+}
 
   expanded1 = true; 
   toggleExpansionA() {
@@ -149,7 +152,7 @@ export class MdeaPageComponent implements OnInit{
        // Arreglo para subcomponentes
        for (let i = 1; i <= 21; i++) {
         const subcomponente = this.mdeas.filter(data => data.subcomp_mdea === i);
-        this.subcomponentesArray[i] = this.filterProductsBySubComponente(subcomponente);
+        this.subcomponentesArray[i] = this.filterProductsBySubComponente(subcomponente).filter(item => Object.keys(item).length !== 0);
         }
       
         for (let i = 1; i <= 21; i++) {
@@ -208,7 +211,7 @@ export class MdeaPageComponent implements OnInit{
               type: 'pie'
           },
           title: {
-              text: 'Productos del INEGI que se apegan a determinados Componentes',
+              text: 'Total de Componentes',
               align: 'center'
           },
           plotOptions: {
@@ -240,7 +243,7 @@ export class MdeaPageComponent implements OnInit{
             responsive: {
                 rules: [{
                     condition: {
-                        maxWidth: 500 // Aquí define el ancho máximo para el que se aplicará el ajuste responsivo
+                        maxWidth: 480 // Aquí define el ancho máximo para el que se aplicará el ajuste responsivo
                     },
                     chartOptions: {
                         plotOptions: {
@@ -273,14 +276,14 @@ export class MdeaPageComponent implements OnInit{
             y: this.subcomponentesArray[i]?.length || 0,
             color: colors[i + 1] // Ajusta según tu lógica de asignación de colores
           });
-  
         }
+        
         Highcharts.chart('container-pie-subcomponentes', {
             chart: {
                 type: 'pie',
             },
             title: {
-                text: 'Productos del INEGI que se apegan a determinados SubComponentes',
+                text: 'Total de SubComponentes',
                 align: 'center'
             },
             plotOptions: {
@@ -328,6 +331,8 @@ export class MdeaPageComponent implements OnInit{
           }
           });
       }
+
+      
 
 
    createMdeaStructureTree(): void {
@@ -395,7 +400,7 @@ export class MdeaPageComponent implements OnInit{
             },
             chart: {
               backgroundColor: '#113250',
-
+              zoomType: 'xy',
             },
             exporting: {
               enabled: true, 
@@ -472,8 +477,8 @@ export class MdeaPageComponent implements OnInit{
                 ],
               },
             ],
-          });
-
+          }
+          );
         });
    });
     });

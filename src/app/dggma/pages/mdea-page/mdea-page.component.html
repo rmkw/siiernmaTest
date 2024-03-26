@@ -110,14 +110,18 @@
             
                 <div>
                   <div class="row">
-                    <div class="card btn col-4 mt-2"  *ngFor="let subcomponente of subComponentesMDEA"  (click)="navigateWithParamSubcomp(subcomponente.id)">
-                      <ul>
-                        <h1 class="mt-3" style="text-align: center;"><i [ngClass]="'bi ' + iconosSubComp[subcomponente.id]"></i></h1>
-                        <li style="text-align: center;">{{ subcomponente.text }}</li>
-                        <div style="text-align: center; color: #186b6a; font-weight: bold">{{ longitudesPorSubCompId[subcomponente.id] }}</div>     
-                      </ul>
-                    </div>
-                  </div>
+                    <ng-container *ngFor="let subcomponente of subComponentesMDEA">
+                      <ng-container *ngIf="longitudesPorSubCompId[subcomponente.id] > 0">
+                        <div class="card btn col-4 mt-2" (click)="navigateWithParamSubcomp(subcomponente.id)">
+                          <ul>
+                            <h1 class="mt-3" style="text-align: center;"><i [ngClass]="'bi ' + iconosSubComp[subcomponente.id]"></i></h1>
+                            <li style="text-align: center;">{{ subcomponente.text }}</li>
+                            <div style="text-align: center; color: #186b6a; font-weight: bold">{{ longitudesPorSubCompId[subcomponente.id] }}</div>     
+                          </ul>
+                        </div>
+                      </ng-container>
+                    </ng-container>
+                  </div>                  
                 </div>
               </div>
 
@@ -168,7 +172,7 @@
       <div class="container">
         <br>
         <div class="mb-2" style="margin-left: 10px;">
-          <p>
+          <p style="font-size: small;">
             El MDEA 2013 organiza las estadísticas ambientales en seis componentes, cada uno
             de los cuales se desagrega en subcomponentes y a su vez en tópicos estadisticos. Los seis componentes
             incluyen: condiciones y calidad ambiental; disponibilidad y uso de los recursos
@@ -182,9 +186,9 @@
           
           <div class="row">
             <div class="col">
-              <p >El MDEA se compone de tres niveles: el componente principal se enfoca en bases esenciales para la educación sostenible, seguido por subcomponentes que se centran en áreas específicas como educación ambiental y habilidades para la vida. Cada subcomponente se desglosa en tópicos concretos, como conservación ambiental y diversidad.
+              <p style="font-size: small;">El MDEA se compone de tres niveles: el componente principal se enfoca en bases esenciales para la educación sostenible, seguido por subcomponentes que se centran en áreas específicas como educación ambiental y habilidades para la vida. Cada subcomponente se desglosa en tópicos concretos, como conservación ambiental y diversidad.
               </p>
-              <p>Conoce la Estructura del MDEA: </p>
+              <p style="font-size: small;">Conoce la Estructura del MDEA: </p>
               <br>
             </div>
           </div>
@@ -202,13 +206,13 @@
           <div class="mt-5">
             <h3 style="color: aliceblue;">Informacion Estadistica</h3>
            <div class="card">
-            <p class="mt-3" style="color:darkblue; margin: 15px;">
+            <p class="mt-3" style="color:darkblue; margin: 15px; font-size: small;">
               Dentro de este sistema de inventario de productos, se extraen datos de la Base de datos del SIIERNMA. Se lleva a cabo un análisis de la relación de estos productos con la estructura del MDEA.
               Este análisis proporciona la información necesaria para realizar un conteo estadístico de los productos asociados a cada uno de los niveles más importantes que maneja el Marco para el Desarrollo de las Estadísticas Ambientales, a nivel de Componente y Subcomponente.
             </p>
             <br>
             
-            <p style="color: #113250; margin-left: 10px">En las siguientes representaciones graficas, se puede observar estadisticamente la cantidad y total de productos del INEGI que se apegan a determinados Componentes y Subcomponentes del MDEA:</p>
+            <p style="color: #113250; margin-left: 10px; font-size: small;">En las siguientes representaciones graficas, se puede observar estadisticamente la cantidad y total de productos del INEGI que se apegan a determinados Componentes y Subcomponentes del MDEA:</p>
 
             <!-- Sección de graficos correspondientes a los Componentes y subcomponentes del MDEA -->
 
@@ -235,11 +239,10 @@
                 </div>
             
                 <div class="row" >
-                  <div class="card btn col-4 mt-2"  *ngFor="let componente of componentesMDEA" (click)="navigateWithParam(componente.id)">
+                  <div class="card btn col-12 mt-2"  *ngFor="let componente of componentesMDEA" (click)="navigateWithParam(componente.id)">
                     <ul>
-                      <h1 class="mt-3" style="text-align: center;"><i [ngClass]="'bi ' + iconosComp[componente.id]"></i></h1>
-                      <li  style="text-align: center;" >{{ componente.text }}</li>
-                      <div style="text-align: center; color: #186b6a;  font-weight: bold">{{ longitudesPorCompId[componente.id] }}</div>     
+                      <li  style="text-align: start; font-size: small;" >{{ componente.text }} <i [ngClass]="'bi ' + iconosComp[componente.id]"></i></li>
+                      <div style="text-align: end; color: #186b6a;  font-weight: bold">{{ longitudesPorCompId[componente.id] }}</div>     
                     </ul>
                   </div>
                 </div>
@@ -268,11 +271,10 @@
             
                 <div>
                   <div class="row">
-                    <div class="card btn col-4 mt-2"  *ngFor="let subcomponente of subComponentesMDEA"  (click)="navigateWithParamSubcomp(subcomponente.id)">
+                    <div class="card btn col-12 mt-2"  *ngFor="let subcomponente of subComponentesMDEA"  (click)="navigateWithParamSubcomp(subcomponente.id)">
                       <ul>
-                        <h1 class="mt-3" style="text-align: center;"><i [ngClass]="'bi ' + iconosSubComp[subcomponente.id]"></i></h1>
-                        <li style="text-align: center;">{{ subcomponente.text }}</li>
-                        <div style="text-align: center; color: #186b6a; font-weight: bold">{{ longitudesPorSubCompId[subcomponente.id] }}</div>     
+                        <li style="text-align: start; font-size: small;">{{ subcomponente.text }} <i [ngClass]="'bi ' + iconosSubComp[subcomponente.id]"></i> </li>
+                        <div style="text-align: end; color: #186b6a; font-weight: bold">{{ longitudesPorSubCompId[subcomponente.id] }}</div>     
                       </ul>
                     </div>
                   </div>
@@ -290,7 +292,7 @@
 
  <!-- MODAL MOVIL  -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-sm modal-dialog-centered">
+      <div class="modal-dialog  modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-body">
             <div class="row">
@@ -298,7 +300,10 @@
                 <div style="text-align: center; margin-bottom: 10px;">
                 <button type="button" style="border-radius: 35px;" class="btn btn-secondary" data-bs-dismiss="modal"><i class="bi bi-x"></i></button>     
                 </div>            
-                <div class="container" id="treegraph-container"></div>
+                <!-- IMAGEN -->
+                <div>
+                  <img src="./assets/MdeaStructure.png" style="width: 350px; height: 350px;">
+                </div>
               </div>
             </div>
           </div>

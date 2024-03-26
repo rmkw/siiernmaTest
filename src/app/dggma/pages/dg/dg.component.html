@@ -614,19 +614,19 @@
           <div class="col-12" [ngClass]="{'selected': !isINEGISelected}" (click)="hiddenTheOtherContents_INEGI()"
             style="cursor: pointer; border-bottom: solid 3px; border-color: #ffffff; padding-top: 1.5rem; padding-bottom: 1.5rem;">
             <h6>
-              Productos detectados en las direcciones generales.
+              Productos detectados en el INEGI.
             </h6>
           </div>
           <div class="col-12" [ngClass]="{'selected': !isMDEASelected}" (click)="hiddenTheOtherContents_MDEA()"
             style="cursor: pointer; border-bottom: solid 3px; border-color: #ffffff; padding-top: 1.5rem; padding-bottom: 1.5rem;">
             <h6  >
-              Marco para el Desarrollo de las Estadísticas Ambientales.
+              MDEA.
             </h6>
           </div>
           <div class="col-12" [ngClass]="{'selected': !isODSSelected}" (click)="hiddenTheOtherContents_ODS()"
             style="cursor: pointer; border-bottom: solid 3px; border-color: #ffffff; padding-top: 1.5rem; padding-bottom: 1.5rem;">
             <h6  >
-              Objetivos de Desarrollo Sostenible.
+              ODS.
             </h6>
           </div>
           <div class="col-12" [ngClass]="{'selected': !isINDSelected}" (click)="hiddenTheOtherContents_IND()"
@@ -655,27 +655,23 @@
           <div class="col-12">
             <div style="margin: 2rem; margin-bottom: 5rem;">
               <h4 style="color: #036baa; ">Productos detectados en las direcciones generales.</h4>
-              <p class="lead" style="font-size: small;">"En nuestro sistema, hemos logrado un hito importante al detectar y asignar la mayoría de los
-              productos registrados por
-              el INEGI. Pero nuestra labor no se detiene allí. Hemos llevado a cabo una integración profunda, vinculando cada
-              uno de
-              estos productos con actividades estadísticas geográficas, programas de información y programas sectoriales. En
-              este
-              proceso, hemos asignado posibles variables que enriquecen la información de cada producto.
+              <p class="lead" style="font-size: small;">En el presente portal, se ha logrado un hito importante al detectar y asignar la mayoría de los productos publicados por el INEGI, 
+                llevando a cabo una integración profunda, vinculando cada uno de estos productos con actividades estadísticas geográficas, programas de información y programas sectoriales. 
+                En este proceso, se han asignado posibles variables que enriquecen la información de cada producto.
             </p>
             <p class="lead" style="font-size: small;">
-              Pero lo que hace que nuestro sistema sea aún más poderoso es su conexión con el MDEA (Marco de Desarrollo
-              Estadístico) y
-              su alineación con los ODS (Objetivos de Desarrollo Sostenible). Estas conexiones estratégicas permiten una gestión
-              más
-              eficiente y una comprensión más profunda de la información estadística.
+              Así también, se ha reforzado la alineación con estándares nacionales e internacionales, tales como el Marco para el Desarrollo de las Estadísticas Ambientales (MDEA) y los Objetivos de Desarrollo Sostenible (ODS). 
+              Estas conexiones estratégicas, permiten una gestión más eficiente y una comprensión más profunda de la información estadística. 
             </p>
             <p class="lead" style="font-size: small;">
-              Bienvenido a un mundo de datos en constante evolución, donde la integración y la visión integral son nuestra
-              prioridad.
-              ¡Explora y descubre cómo nuestra plataforma transforma la forma en que comprendemos y utilizamos los datos
-              estadísticos!".
+              Bienvenido a un mundo de datos en constante evolución, donde la integración y la visión integral son la prioridad. 
+              ¡Explora y descubre cómo esta plataforma transforma la manera en que comprendemos y utilizamos los datos estadísticos!". 
             </p>
+            <p class="lead" style="font-size: small;" [ngClass]="{'hidden-text': !showMoreText}">
+              En este apartado, podrás consultar la disponibilidad de productos publicados por el INEGI mediante filtros que van desde lo general hasta lo particular, 
+              permitiendo localizar productos acordes a las necesidades individuales de cada usuario.  
+            </p> 
+            <button (click)="toggleShowMoreText()" style="font-size: small; " class="btn btn-link mt-2">{{ showMoreText ? 'Ver menos' : 'Ver más' }}</button>
             </div>
           </div>
         </div>
@@ -689,13 +685,13 @@
           <div class="col-12 mt-2">
             <div style="margin: 2rem; margin-bottom: 5rem;">
               <h4 style="color: #036baa;">Marco para el Desarrollo de las Estadísticas Ambientales.</h4>
-              <p class="lead" style="font-size: small;">El MDEA organiza las estadísticas ambientales en seis componentes, cada uno
-              de los cuales se desagrega en subcomponentes y a su vez en tópicos estadísticos.
-              </p>
+              <p class="lead" style="font-size: small;">El MDEA organiza las estadísticas ambientales en seis componentes, cada uno desagregado en subcomponentes y en tópicos estadísticos.</p>
               <p class="lead" style="font-size: small;">
-                Los temas estadísticos representan los aspectos cuantificables de los componentes y están agrupados en subcomponentes,
-                tomando en cuenta los tipos y fuentes de las estadísticas necesarias para describirlos.
-              </p>
+                Los temas estadísticos representan los aspectos cuantificables de los componentes y están agrupados en subcomponentes, tomando en cuenta los tipos y fuentes de las estadísticas necesarias para describirlos.</p>
+                <p class="lead" style="font-size: small;">
+                  En este apartado podrás visualizar gráficamente por componente, los productos del INEGI que se apegan a los estándares estipulados en el MDEA, 
+                  de modo que sea posible identificar aquellos temas de mayor cobertura en nuestro país y cuáles hace falta reforzar
+                </p>
             </div>
           </div>
         </div>
@@ -709,14 +705,12 @@
           <div class="col-12 m-2">
             <div style="margin: 2rem; margin-bottom: 5rem;">
               <h4 style="color: #036baa;">Objetivos de Desarrollo Sostenible.</h4>
-              <p class="lead" style="font-size: small;">Los Objetivos de Desarrollo Sostenible (ODS), fueron adoptados por las
-                Naciones Unidas en 2015 como un llamado universal para poner fin a la pobreza, proteger el planeta y garantizar
-                que
-                para el 2030 todas las personas disfruten de un futuro fundamentado en la sostenibilidad.
+              <p class="lead" style="font-size: small;">Los Objetivos de Desarrollo Sostenible (ODS), fueron adoptados por las Naciones Unidas en 2015
+                 como un llamado global para velar y garantizar que para el 2030 toda la población disfrute de un futuro fundamentado en la sostenibilidad. 
+                Para ello, se establecieron 17 objetivos con sus respectivas metas, mismas que permitirán el logro de estos
               </p>
               <p class="lead" style="font-size: small;">
-                La creatividad, el conocimiento, la tecnología y los recursos financieros de toda la sociedad son necesarios para
-                alcanzar los ODS en todos los contextos.
+                En este apartado puedes visualizar la cantidad de productos del INEGI que guardan relación con los objetivos y las metas ODS
               </p>
             </div>
           </div>
@@ -732,27 +726,15 @@
           <div class="col-12 m-2">
             <div style="margin: 2rem; margin-bottom: 5rem;">
               <h4 style="color: #036baa;">Indicadores generados en INEGI.</h4>
-              <p class="lead" style="font-size: small;">Los indicadores ambientales son una forma de estadística derivada, que fundamenta su existencia por el mandato legal
-              descrito en el artículo 27 de la Ley del SNIEG, el cual señala que el Subsistema Nacional de Información Geográfica,
-              Medio Ambiente y Ordenamiento Territorial y Urbano (SNIGMAOTU) en su componente del medio ambiente, procurará describir
-              el estado y las tendencias del medio ambiente, a través de la generación de indicadores con temáticas relacionadas.
+              <p class="lead" style="font-size: small;">Los indicadores ambientales son una forma de estadística derivada, que en el INEGI, se rige por el mandato legal descrito en el artículo 27 de la Ley del SNIEG,
+                 el cual señala que el Subsistema Nacional de Información Geográfica, Medio Ambiente y Ordenamiento Territorial y Urbano (SNIGMAOTU) en su componente del medio ambiente, 
+                 procurará describir el estado y las tendencias del medio ambiente, a través de la generación de indicadores con temáticas relacionadas. 
               </p>
               <p class="lead" style="font-size: small;">
-                Una de nuestras principales labores es realizar la exploración, análisis e integración de información estadística y
-                geográfica generada en el instituto en materia ambiental. Esto, para construir, implementar y actualizar indicadores
-                ambientales de Interés Nacional mediante un enfoque colaborativo, buscando así suministrar información de calidad,
-                pertinente, veraz y oportuna que coadyuve al desarrollo nacional.
+                Una de las labores de la DGGMA es realizar la exploración, análisis e integración de información estadística y geográfica generada en el instituto en materia ambiental. 
+                Esto, para construir, implementar y actualizar indicadores ambientales de Interés Nacional mediante un enfoque colaborativo, buscando así suministrar información de calidad, pertinente, 
+                veraz y oportuna que coadyuve al desarrollo nacional. 
               </p>
-              <p class="lead" style="font-size: small;" [ngClass]="{'hidden-text': !showMoreText}">
-                Un indicador ambiental es un conjunto de estadísticas ambientales seleccionadas por su capacidad de representar
-                fenómenos importantes y tienen como propósito evaluar las direcciones presentes y futuras, estimar y determinar el
-                impacto de programas específicos, monitorear el progreso, medir cambios de una condición especifica a través del tiempo,
-                así como transmitir mensajes. Es por esta cuestión que los indicadores ambientales, son considerados una herramienta
-                clave para los tomadores de decisiones, ya que sintetizan de forma concisa y practica un cúmulo información que guarda
-                relación con los fenómenos presentes en nuestra dinámica diaria. Es así como INEGI, en su facultad como entidad
-                estadística del país, colabora en la consolidación de un entorno con enfoque sostenible para toda la población.
-              </p>
-              <button (click)="toggleShowMoreText()" style="font-size: small; " class="btn btn-link mt-2">{{ showMoreText ? 'Ver menos' : 'Ver más' }}</button>
             </div>
 
           </div>

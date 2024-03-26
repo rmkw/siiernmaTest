@@ -44,11 +44,6 @@ p {
   color: aliceblue;
 }
 
-::-webkit-scrollbar {
-  display: none;
-}
-
-
 #metas{
   max-width: 360px;
   white-space: nowrap;
@@ -57,7 +52,9 @@ p {
  }
  @media (max-width: 500px) {
   #metas{
-    text-overflow: none;
+    margin-top: 10px;
+    white-space: nowrap;
+    align-items: left;
   } 
 }
 
@@ -89,7 +86,7 @@ p {
     position: relative;
     max-width: 10%; 
     height: auto; 
-    margin: 0 auto; 
+    margin: 0; 
     left: 50%; 
     transform: translateX(-50%); 
   }

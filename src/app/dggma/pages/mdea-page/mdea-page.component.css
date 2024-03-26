@@ -109,6 +109,17 @@ ul {
   }
 }
 
+@media (max-width: 500px) {
+#treegraph-container{
+  position: relative;
+  max-width: 10%; /* Reducir el ancho máximo */
+  height: auto; /* Cambiar la altura automática para que se ajuste según el contenido */
+  margin: 0 auto; /* Centrar horizontalmente */
+  left: 50%; /* Mover hacia la derecha */
+  transform: translateX(-50%); 
+}
+}
+
 ::-webkit-scrollbar {
   display: none;
 }
