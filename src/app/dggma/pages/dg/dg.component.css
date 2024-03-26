@@ -95,3 +95,8 @@ p{
 .hidden-text {
   display: none;
 }
+
+.customParrafo{
+  font-size: medium;
+  text-align: justify;
+}

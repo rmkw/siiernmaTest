@@ -13,8 +13,7 @@ interface CheckboxesState {
   styleUrls: ['./dg.component.css'],
 })
 export class DgComponent implements OnInit {
-
-  isMobile: boolean = window.innerWidth <= 480; 
+  isMobile: boolean = window.innerWidth <= 480;
 
   public products: Products[] = [];
 
@@ -22,6 +21,7 @@ export class DgComponent implements OnInit {
   public isMDEASelected: boolean = true;
   public isODSSelected: boolean = true;
   public isINDSelected: boolean = true;
+  public isGeoNodeSelected: boolean = true;
 
   public primerDireccion: any[] = [];
   public segundaDireccion: any[] = [];
@@ -34,14 +34,13 @@ export class DgComponent implements OnInit {
   public terceraDir: number = 0;
   public cuartaDir: number = 0;
   public quintaDir: number = 0;
-  
+
   showMoreText: boolean = false;
 
   constructor(
-   
     private router: Router,
     private _direServices: DGService,
-    private _flagService: FlagService,
+    private _flagService: FlagService
   ) {
     window.addEventListener('resize', (event) => this.onResize(event));
   }
@@ -61,7 +60,6 @@ export class DgComponent implements OnInit {
   DireccionCountstop5: any;
 
   ngOnInit(): void {
-
     this.isINEGISelected = false;
 
     //! Merge S.E.
@@ -70,7 +68,6 @@ export class DgComponent implements OnInit {
       this.filtrarProductosPorDirecciones();
       this.fun();
     });
-
   }
 
   toggleShowMoreText() {
@@ -86,24 +83,35 @@ export class DgComponent implements OnInit {
     this.isMDEASelected = true;
     this.isODSSelected = true;
     this.isINDSelected = true;
+    this.isGeoNodeSelected = true;
   }
   hiddenTheOtherContents_MDEA() {
     this.isINEGISelected = true;
     this.isMDEASelected = false;
     this.isODSSelected = true;
     this.isINDSelected = true;
+    this.isGeoNodeSelected = true;
   }
   hiddenTheOtherContents_ODS() {
     this.isINEGISelected = true;
     this.isMDEASelected = true;
     this.isODSSelected = false;
     this.isINDSelected = true;
+    this.isGeoNodeSelected = true;
   }
   hiddenTheOtherContents_IND() {
     this.isINEGISelected = true;
     this.isMDEASelected = true;
     this.isODSSelected = true;
     this.isINDSelected = false;
+    this.isGeoNodeSelected = true;
+  }
+  hiddenTheOtherContents_GeoNode(){
+    this.isINEGISelected = true;
+    this.isMDEASelected = true;
+    this.isODSSelected = true;
+    this.isINDSelected = true;
+    this.isGeoNodeSelected = false;
   }
 
   navigateWithParam() {
