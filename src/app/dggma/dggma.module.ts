@@ -43,8 +43,6 @@ import { IndicadoresPageComponent } from './pages/indicadores-page/indicadores-p
     TableModule,
     ButtonModule,
   ],
-  exports: [
-
-  ]
+  exports: [NgbModule],
 })
-export class DggmaModule { }
+export class DggmaModule {}
