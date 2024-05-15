@@ -19,6 +19,7 @@ import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { IndicadoresPageComponent } from './pages/indicadores-page/indicadores-page.component';
 
+
 @NgModule({
   declarations: [
     DgComponent,

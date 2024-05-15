@@ -1,317 +1,586 @@
-<div *ngIf="!isMobile">
-<div class="container-fluid">
-  <div class="row" id="fondo">
-    <div>
+<div *ngIf="!isMobile" style="background-color: #eef5f8;">
+  <div class="container">
+    <div class="row">
       <div class="col">
-        <h2 class="mt-5 mb-3" style="color: #c2eceb; text-align: center; text-shadow: rgb(52, 214, 174) 1px 0 10px;">
-          Relación con el Marco para el Desarrollo de las Estadísticas Ambientales (MDEA)
-        </h2>
-      </div>
-    </div>
-<!--Introduccion al tema-->
-    <div class="col mb-2">
-      <div class="container">
-        <br>
-        <div class="mb-2" style="margin-left: 10px;">
-          <p>
-            El MDEA 2013 organiza las estadísticas ambientales en seis componentes, cada uno
-            de los cuales se desagrega en subcomponentes y a su vez en tópicos estadisticos. Los seis componentes
-            incluyen: condiciones y calidad ambiental; disponibilidad y uso de los recursos
-            ambientales y las actividades humanas relacionadas; el uso del ambiente como sumidero de
-            residuos y actividades humanas relacionadas; eventos naturales extremos y desastres; asentamientos humanos y
-            salud ambiental; y medidas sociales y económicas para proteger y gestionar el ambiente. Los temas
-            estadísticos representan los aspectos cuantificables de los componentes y están agrupados en subcomponentes,
-            tomando en cuenta los tipos y fuentes de las
-            estadísticas necesarias para describirlos.
-          </p>
-          
-          <div class="row">
-            <div class="col">
-              <p >El MDEA se compone de tres niveles: el componente principal se enfoca en bases esenciales para la educación sostenible, seguido por subcomponentes que se centran en áreas específicas como educación ambiental y habilidades para la vida. Cada subcomponente se desglosa en tópicos concretos, como conservación ambiental y diversidad.
-              </p>
-              <p>Conoce la Estructura del MDEA: </p>
-              <br>
+        <h1 class="mt-4" style="color: #113250; ">
+          Marco para el Desarrollo de las Estadísticas Ambientales (MDEA).
+        </h1>
+
+        <p style="text-align: justify;">
+          El MDEA 2013 organiza las estadísticas ambientales en seis componentes, cada uno de los cuales se desagrega en subcomponentes y a su vez en tópicos estadisticos.
+        </p>
+
+        <div class="row">
+          <div class="col-6">
+            <p>Los seis componentes incluyen:</p>
+            <div style="text-align: center;" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              <img id="mdeaimg" src="./assets/mdeacomp.png" type="button">
             </div>
+
+
           </div>
-          <div style="text-align: center;" data-bs-toggle="modal" data-bs-target="#exampleModal"> 
-            <img id="mdeaimg" src="./assets/mdeacomp.png" type="button">
-           </div>
-        </div>
-      </div>
-        <!-- Estructura MDEA -->
-      <div class="container">
-       <div class="row">
-        <div class="col">
-          <div class="mt-5">
-            <h3 style="color: aliceblue;">Informacion Estadistica</h3>
-           <div class="card">
-            <p class="mt-3" style="color:darkblue; margin-left: 10px">
-              Dentro de este sistema de inventario de productos, se extraen datos de la Base de datos del SIIERNMA. Se lleva a cabo un análisis de la relación de estos productos con la estructura del MDEA.
-              Este análisis proporciona la información necesaria para realizar un conteo estadístico de los productos asociados a cada uno de los niveles más importantes que maneja el Marco para el Desarrollo de las Estadísticas Ambientales, a nivel de Componente y Subcomponente.
+          <div class="col-6">
+            <p style="text-align: justify; ">
+              Los temas estadísticos representan los aspectos cuantificables de los componentes y están agrupados en subcomponentes,
+              tomando en cuenta los tipos y fuentes de las estadísticas necesarias para describirlos.
             </p>
 
-            <p style="color: #113250; margin-left: 10px">En las siguientes representaciones graficas, se puede observar estadisticamente la cantidad y total de productos del INEGI que se apegan a determinados Componentes y Subcomponentes del MDEA:</p>
-            <!-- Graficos correspondientes -->
+            <p style="text-align: justify; ">El uso del MDEA 2013 en los sistemas estadísticos nacionales promoverá el desarrollo en este campo de las
+              estadísticas,
+              ya que es una herramienta flexible y multipropósito que puede ser adaptada para abordar intereses y prioridades
+              específicos de política ambiental de los países, y puede adaptarse según sus diferentes niveles de desarrollo
+              estadístico.
+            </p>
 
+            <p>Conoce a detalle la estructura del MDEA:&nbsp;
+              <a href="https://www.cepal.org/es/publicaciones/46644-marco-desarrollo-estadisticas-ambientales-mdea-2013"
+                target="_blank">Ver sitio.</a> &nbsp;
+              <a href="https://repositorio.cepal.org/server/api/core/bitstreams/778fbad3-77fa-4b4b-9d8c-dc4b3e1b71b7/content"
+                target="_blank">Descargar documento.</a>
+            </p>
 
-              <div class="card-body">   
-                <hr style="height: 5px; background-color: #186b6a;">
-            
-              <div>
-                <div class="text-center" *ngIf="loading">
-                  <div class="spinner-border text-success m-5" role="status" style="width: 5rem; height: 5rem;">
-                    <span class="visually-hidden">Loading...</span>
-                  </div>
-                </div>
-                <figure class="highcharts-figure">
-                  <div id="container-pie-componentes" [hidden]="loading"></div>
-                </figure>
-              </div>
-
-                <br>
-            
-                <div class="row">
-                  <div class="card col-12">
-                    <div style="text-align:center">Total de productos del INEGI que se apegan a los componentes del MDEA </div>
-                  </div>
-                </div>
-            
-                <div class="row" >
-                  <div class="card btn col-4 mt-2"  *ngFor="let componente of componentesMDEA" (click)="navigateWithParam(componente.id)">
-                    <ul>
-                      <h1 class="mt-3" style="text-align: center;"><i [ngClass]="'bi ' + iconosComp[componente.id]"></i></h1>
-                      <li  style="text-align: center;" >{{ componente.text }}</li>
-                      <div style="text-align: center; color: #186b6a;  font-weight: bold">{{ longitudesPorCompId[componente.id] }}</div>     
-                    </ul>
-                  </div>
-                </div>
-            
-                <hr style="height: 5px; background-color: #186b6a;">
-            
-                <div>
-                  <div class="text-center" *ngIf="loading">
-                    <div class="spinner-border text-success m-5" role="status" style="width: 5rem; height: 5rem;">
-                      <span class="visually-hidden">Loading...</span>
-                    </div>
-                  </div>
-    
-                  <figure class="highcharts-figure">
-                    <div id="container-pie-subcomponentes" [hidden]="loading"></div>
-                  </figure>
-                </div>
-            
-                <br>
-            
-                <div class="row">
-                  <div class="card col-12">
-                    <div style="text-align:center">Total de productos del INEGI que se apegan a los subcomponentes del MDEA </div>
-                  </div>
-                </div>
-            
-                <div>
-                  <div class="row">
-                    <ng-container *ngFor="let subcomponente of subComponentesMDEA">
-                      <ng-container *ngIf="longitudesPorSubCompId[subcomponente.id] > 0">
-                        <div class="card btn col-4 mt-2" (click)="navigateWithParamSubcomp(subcomponente.id)">
-                          <ul>
-                            <h1 class="mt-3" style="text-align: center;"><i [ngClass]="'bi ' + iconosSubComp[subcomponente.id]"></i></h1>
-                            <li style="text-align: center;">{{ subcomponente.text }}</li>
-                            <div style="text-align: center; color: #186b6a; font-weight: bold">{{ longitudesPorSubCompId[subcomponente.id] }}</div>     
-                          </ul>
-                        </div>
-                      </ng-container>
-                    </ng-container>
-                  </div>                  
-                </div>
-              </div>
-
-             </div>
-           </div>          
-         </div>
+          </div>
         </div>
+
+          <div class="row">
+            <div class="col">
+
+            </div>
+          </div>
+
       </div>
+
+
+
+  </div>
+  <div class="row">
+    <div class="col">
+      <h2 class="" style="color: #113250; ">
+        Productos detectados en las direcciones generales que cuentan con una relación con el Marco para el Desarrollo de las Estadísticas Ambientales (MDEA).
+      </h2>
+
+      <p class="">
+        Dentro de este sistema de inventario de productos, se extraen datos de la Base de datos del SIIERNMA. Se
+        lleva a cabo un análisis de la relación de estos productos con la estructura del MDEA.
+        Este análisis proporciona la información necesaria para realizar un conteo estadístico de los productos
+        asociados a cada uno de los niveles más importantes que maneja el Marco para el Desarrollo de las
+        Estadísticas Ambientales, a nivel de Componente y Subcomponente.
+      </p>
+      <p>En la siguiente representación gráfica, se puede observar estadisticamente la cantidad y total de productos del INEGI que se apegan a determinados Componentes del MDEA:</p>
     </div>
   </div>
+
+  <div class="row">
+    <div class="col">
+      <h2 style="color: #113250; text-align: center;">Total de productos del INEGI que cuentan con una relación con el MDEA.</h2>
+
+      <div style="display: flex; justify-content: center;">
+        <div style="width: 1100px;   margin: 2rem;">
+          <canvas id="acquisitions"></canvas>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <!--! navs de componentes -->
+      <nav>
+        <div class="nav nav-tabs justify-content-center"  id="nav-tab" role="tablist">
+
+          <button  class="nav-link active text-dark" id="nav-compo1-tab" data-bs-toggle="tab" data-bs-target="#nav-compo1"
+            type="button" role="tab" aria-controls="nav-compo1" aria-selected="true">Componente 1</button>
+
+          <button  class="nav-link text-dark" id="nav-compo2-tab" data-bs-toggle="tab" data-bs-target="#nav-compo2"
+            type="button" role="tab" aria-controls="nav-compo2" aria-selected="false">Componente 2</button>
+
+          <button class="nav-link text-dark" id="nav-compo3-tab" data-bs-toggle="tab" data-bs-target="#nav-compo3"
+            type="button" role="tab" aria-controls="nav-compo3" aria-selected="false">Componente 3</button>
+
+          <button class="nav-link text-dark" id="nav-compo4-tab" data-bs-toggle="tab" data-bs-target="#nav-compo4"
+            type="button" role="tab" aria-controls="nav-compo4" aria-selected="false" >Componente 4</button>
+
+          <button class="nav-link text-dark" id="nav-compo5-tab" data-bs-toggle="tab" data-bs-target="#nav-compo5"
+            type="button" role="tab" aria-controls="nav-compo5" aria-selected="false">Componente 5</button>
+
+          <button class="nav-link text-dark" id="nav-compo6-tab" data-bs-toggle="tab" data-bs-target="#nav-compo6"
+            type="button" role="tab" aria-controls="nav-compo6" aria-selected="false" >Componente 6</button>
+
+        </div>
+      </nav>
+      <h4 style="text-align: center; margin: 1rem;">Productos INEGI con relación a los subcomponentes:</h4>
+      <div class="tab-content" id="nav-tabContent">
+        <!--! Componente 1. -->
+        <div class="tab-pane fade show active" id="nav-compo1" role="tabpanel" aria-labelledby="nav-compo1-tab" tabindex="0">
+
+          <div style="display: flex; justify-content: center;">
+            <div style="width: 900px; margin: 2rem;">
+              <canvas id="componente1"></canvas>
+            </div>
+          </div>
+
+          <!--! nav subcompo -->
+          <nav>
+            <div class="nav nav-tabs justify-content-center" id="nav-tab" role="tablist">
+
+              <button class="nav-link active text-dark" id="nav-Subcompo1-tab" data-bs-toggle="tab" data-bs-target="#nav-Subcompo1"
+                type="button" role="tab" aria-controls="nav-Subcompo1" aria-selected="true">1.1: Condiciones físicas</button>
+
+              <button class="nav-link text-dark" id="nav-Subcompo2-tab" data-bs-toggle="tab" data-bs-target="#nav-Subcompo2"
+                type="button" role="tab" aria-controls="nav-Subcompo2" aria-selected="false">1.2: Cobertura terrestre, ecosistemas y biodiversidad</button>
+
+              <button class="nav-link text-dark" id="nav-Subcompo3-tab" data-bs-toggle="tab" data-bs-target="#nav-Subcompo3"
+                type="button" role="tab" aria-controls="nav-Subcompo3" aria-selected="false">1.3: Calidad ambiental</button>
+
+
+
+            </div>
+          </nav>
+          <h4 style="text-align: center; margin: 1rem;">Productos INEGI con relación a los tópicos:</h4>
+          <div class="tab-content" id="nav-tabContent">
+            <!--! Componente 1. -->
+            <div class="tab-pane fade show active" id="nav-Subcompo1" role="tabpanel" aria-labelledby="nav-Subcompo1-tab" tabindex="0">
+
+              <div style="display: flex; justify-content: center;">
+                <div style="width: 900px; margin: 2rem;">
+                  <!--! aqui va el id del grafico -->
+                  <canvas id=""></canvas>
+                </div>
+              </div>
+
+
+            </div>
+
+            <!--! Componente 2. -->
+            <div class="tab-pane fade" id="nav-Subcompo2" role="tabpanel" aria-labelledby="nav-Subcompo2-tab" tabindex="0">
+
+              <div style="display: flex; justify-content: center;">
+                <div style="width: 800px; margin: 2rem;">
+                  <!--! aqui va el id del grafico -->
+                  <canvas id=""></canvas>
+                </div>
+              </div>
+
+            </div>
+
+            <!--! Componente 3. -->
+            <div class="tab-pane fade" id="nav-Subcompo3" role="tabpanel" aria-labelledby="nav-Subcompo3-tab" tabindex="0">
+
+
+              <div style="display: flex; justify-content: center;">
+                <div style="width: 800px; margin: 2rem;">
+                  <!--! aqui va el id del grafico -->
+                  <canvas id=""></canvas>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+
+
+        </div>
+
+        <!--! Componente 2. -->
+        <div class="tab-pane fade" id="nav-compo2" role="tabpanel" aria-labelledby="nav-compo2-tab" tabindex="0">
+
+          <div style="display: flex; justify-content: center;">
+            <div style="width: 800px; margin: 2rem;">
+              <canvas id="componente2"></canvas>
+            </div>
+          </div>
+
+          <nav>
+            <div class="nav nav-tabs justify-content-center" id="nav-tab" role="tablist">
+
+              <button class="nav-link active text-dark" id="nav-Sub2compo1-tab" data-bs-toggle="tab" data-bs-target="#nav-Sub2compo1"
+                type="button" role="tab" aria-controls="nav-Sub2compo1" aria-selected="true">2.1: Recursos minerales</button>
+
+              <button class="nav-link text-dark" id="nav-Sub2compo2-tab" data-bs-toggle="tab" data-bs-target="#nav-Sub2compo2"
+                type="button" role="tab" aria-controls="nav-Sub2compo2" aria-selected="false">2.2: Recursos energéticos</button>
+
+              <button class="nav-link text-dark" id="nav-Sub2compo3-tab" data-bs-toggle="tab" data-bs-target="#nav-Sub2compo3"
+                type="button" role="tab" aria-controls="nav-Sub2compo3" aria-selected="false">2.3: Tierra</button>
+
+              <button class="nav-link text-dark" id="nav-Sub2compo4-tab" data-bs-toggle="tab" data-bs-target="#nav-Sub2compo4"
+                type="button" role="tab" aria-controls="nav-Sub2compo4" aria-selected="false">2.5: Recursos biológicos.</button>
+
+              <button class="nav-link text-dark" id="nav-Sub2compo5-tab" data-bs-toggle="tab" data-bs-target="#nav-Sub2compo5"
+                type="button" role="tab" aria-controls="nav-Sub2compo5" aria-selected="false">2.6: Recursos hídricos</button>
+
+
+
+            </div>
+          </nav>
+
+          <h4 style="text-align: center; margin: 1rem;">Productos INEGI con relación a los tópicos:</h4>
+          <div class="tab-content" id="nav-tabContent">
+            <!--! 2.1: Recursos minerales. -->
+            <div class="tab-pane fade show active" id="nav-Sub2compo1" role="tabpanel" aria-labelledby="nav-Sub2compo1-tab" tabindex="0">
+
+              <div style="display: flex; justify-content: center;">
+                <div style="width: 900px; margin: 2rem;">
+                  <canvas id=""></canvas>
+                </div>
+              </div>
+
+
+            </div>
+
+            <!--! 2.2: Recursos energéticos -->
+            <div class="tab-pane fade" id="nav-Sub2compo2" role="tabpanel" aria-labelledby="nav-Sub2compo2-tab" tabindex="0">
+
+              <div style="display: flex; justify-content: center;">
+                <div style="width: 800px; margin: 2rem;">
+                  <canvas id=""></canvas>
+                </div>
+              </div>
+
+            </div>
+
+            <!--! 2.3: Tierra. -->
+            <div class="tab-pane fade" id="nav-Sub2compo3" role="tabpanel" aria-labelledby="nav-Sub2compo3-tab" tabindex="0">
+
+
+              <div style="display: flex; justify-content: center;">
+                <div style="width: 800px; margin: 2rem;">
+                  <canvas id=""></canvas>
+                </div>
+              </div>
+            </div>
+
+            <!--! 2.5: Recursos biológicos. -->
+            <div class="tab-pane fade" id="nav-Sub2compo4" role="tabpanel" aria-labelledby="nav-Sub2compo4-tab" tabindex="0">
+
+
+              <div style="display: flex; justify-content: center;">
+                <div style="width: 800px; margin: 2rem;">
+                  <canvas id=""></canvas>
+                </div>
+              </div>
+            </div>
+
+            <!--! 2.6: Recursos hídricos. -->
+            <div class="tab-pane fade" id="nav-Sub2compo5" role="tabpanel" aria-labelledby="nav-Sub2compo5-tab" tabindex="0">
+
+
+              <div style="display: flex; justify-content: center;">
+                <div style="width: 800px; margin: 2rem;">
+                  <canvas id=""></canvas>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+
+        </div>
+
+        <!--! Componente 3. -->
+        <div class="tab-pane fade" id="nav-compo3" role="tabpanel" aria-labelledby="nav-compo3-tab" tabindex="0">
+
+
+          <div style="display: flex; justify-content: center;">
+            <div style="width: 800px; margin: 2rem;">
+              <canvas id="componente3"></canvas>
+            </div>
+          </div>
+
+          <nav>
+            <div class="nav nav-tabs justify-content-center" id="nav-tab" role="tablist">
+
+              <button class="nav-link active text-dark" id="nav-Sub3compo1-tab" data-bs-toggle="tab"
+                data-bs-target="#nav-Sub3compo1" type="button" role="tab" aria-controls="nav-Sub3compo1" aria-selected="true">3.1:
+                Emisiones al aire</button>
+
+              <button class="nav-link text-dark" id="nav-Sub3compo2-tab" data-bs-toggle="tab" data-bs-target="#nav-Sub3compo2"
+                type="button" role="tab" aria-controls="nav-Sub3compo2" aria-selected="false">3.2: Generación y gestión de aguas
+                residuales</button>
+
+              <button class="nav-link text-dark" id="nav-Sub3compo3-tab" data-bs-toggle="tab" data-bs-target="#nav-Sub3compo3"
+                type="button" role="tab" aria-controls="nav-Sub3compo3" aria-selected="false">3.3: Generación y gestión de
+                desechos</button>
+
+              <button class="nav-link text-dark" id="nav-Sub3compo4-tab" data-bs-toggle="tab" data-bs-target="#nav-Sub3compo4"
+                type="button" role="tab" aria-controls="nav-Sub3compo4" aria-selected="false">3.4: Aplicación de
+                químicos.</button>
+
+
+
+            </div>
+          </nav>
+
+          <h4 style="text-align: center; margin: 1rem;">Productos INEGI con relación a los tópicos:</h4>
+          <div class="tab-content" id="nav-tabContent">
+            <!--! Sub3Componente 1. -->
+            <div class="tab-pane fade show active" id="nav-Sub3compo1" role="tabpanel" aria-labelledby="nav-Sub3compo1-tab"
+              tabindex="0">
+
+              <div style="display: flex; justify-content: center;">
+                <div style="width: 900px; margin: 2rem;">
+                  <canvas id=""></canvas>
+                </div>
+              </div>
+
+            </div>
+
+            <!--! Sub3Componente 2. -->
+            <div class="tab-pane fade" id="nav-Sub3compo2" role="tabpanel" aria-labelledby="nav-Sub3compo2-tab" tabindex="0">
+
+              <div style="display: flex; justify-content: center;">
+                <div style="width: 800px; margin: 2rem;">
+                  <canvas id=""></canvas>
+                </div>
+              </div>
+
+            </div>
+
+            <!--! Sub3Componente 3. -->
+            <div class="tab-pane fade" id="nav-Sub3compo3" role="tabpanel" aria-labelledby="nav-Sub3compo3-tab" tabindex="0">
+
+
+              <div style="display: flex; justify-content: center;">
+                <div style="width: 800px; margin: 2rem;">
+                  <canvas id=""></canvas>
+                </div>
+              </div>
+            </div>
+
+            <!--! Sub3Componente 4. -->
+            <div class="tab-pane fade" id="nav-Sub3compo4" role="tabpanel" aria-labelledby="nav-Sub3compo4-tab" tabindex="0">
+
+
+              <div style="display: flex; justify-content: center;">
+                <div style="width: 800px; margin: 2rem;">
+                  <canvas id=""></canvas>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+
+
+        </div>
+
+
+
+        <!--! Componente 4. -->
+        <div class="tab-pane fade" id="nav-compo4" role="tabpanel" aria-labelledby="nav-compo4-tab" tabindex="0">
+
+
+          <div style="display: flex; justify-content: center;">
+            <div style="width: 800px; margin: 2rem;">
+              <canvas id="componente4"></canvas>
+            </div>
+          </div>
+
+          <nav>
+            <div class="nav nav-tabs justify-content-center" id="nav-tab" role="tablist">
+
+              <button class="nav-link active text-dark" id="nav-Sub4compo1-tab" data-bs-toggle="tab"
+                data-bs-target="#nav-Sub4compo1" type="button" role="tab" aria-controls="nav-Sub4compo1" aria-selected="true">4.1:
+                Eventos naturales extremos y desastres</button>
+
+              <button class="nav-link text-dark" id="nav-Sub4compo2-tab" data-bs-toggle="tab" data-bs-target="#nav-Sub4compo2"
+                type="button" role="tab" aria-controls="nav-Sub4compo2" aria-selected="false">4.2: Desastres tecnológicos</button>
+
+
+
+            </div>
+          </nav>
+
+          <h4 style="text-align: center; margin: 1rem;">Productos INEGI con relación a los tópicos:</h4>
+          <div class="tab-content" id="nav-tabContent">
+            <!--! Sub4Componente 1. -->
+            <div class="tab-pane fade show active" id="nav-Sub4compo1" role="tabpanel" aria-labelledby="nav-Sub4compo1-tab"
+              tabindex="0">
+
+              <div style="display: flex; justify-content: center;">
+                <div style="width: 900px; margin: 2rem;">
+                  <canvas id=""></canvas>
+                </div>
+              </div>
+
+            </div>
+
+            <!--! Sub4Componente 2. -->
+            <div class="tab-pane fade" id="nav-Sub4compo2" role="tabpanel" aria-labelledby="nav-Sub4compo2-tab" tabindex="0">
+
+              <div style="display: flex; justify-content: center;">
+                <div style="width: 800px; margin: 2rem;">
+                  <canvas id=""></canvas>
+                </div>
+              </div>
+
+            </div>
+
+
+
+          </div>
+
+        </div>
+
+        <!--! Componente 5. -->
+        <div class="tab-pane fade" id="nav-compo5" role="tabpanel" aria-labelledby="nav-compo5-tab" tabindex="0">
+
+
+          <div style="display: flex; justify-content: center;">
+            <div style="width: 800px; margin: 2rem;">
+              <canvas id="componente5"></canvas>
+            </div>
+          </div>
+
+          <nav>
+            <div class="nav nav-tabs justify-content-center" id="nav-tab" role="tablist">
+
+              <button class="nav-link active text-dark" id="nav-Sub4compo1-tab" data-bs-toggle="tab"
+                data-bs-target="#nav-Sub4compo1" type="button" role="tab" aria-controls="nav-Sub4compo1" aria-selected="true">5.1: Asentamientos humanos</button>
+
+              <button class="nav-link text-dark" id="nav-Sub4compo2-tab" data-bs-toggle="tab" data-bs-target="#nav-Sub4compo2"
+                type="button" role="tab" aria-controls="nav-Sub4compo2" aria-selected="false">5.2: Salud ambiental</button>
+
+
+
+            </div>
+          </nav>
+
+          <h4 style="text-align: center; margin: 1rem;">Productos INEGI con relación a los tópicos:</h4>
+          <div class="tab-content" id="nav-tabContent">
+            <!--! Sub4Componente 1. -->
+            <div class="tab-pane fade show active" id="nav-Sub4compo1" role="tabpanel" aria-labelledby="nav-Sub4compo1-tab"
+              tabindex="0">
+
+              <div style="display: flex; justify-content: center;">
+                <div style="width: 900px; margin: 2rem;">
+                  <canvas id=""></canvas>
+                </div>
+              </div>
+
+            </div>
+
+            <!--! Sub4Componente 2. -->
+            <div class="tab-pane fade" id="nav-Sub4compo2" role="tabpanel" aria-labelledby="nav-Sub4compo2-tab" tabindex="0">
+
+              <div style="display: flex; justify-content: center;">
+                <div style="width: 800px; margin: 2rem;">
+                  <canvas id=""></canvas>
+                </div>
+              </div>
+
+            </div>
+
+
+
+          </div>
+
+        </div>
+
+        <!--! Componente 6. -->
+        <div class="tab-pane fade" id="nav-compo6" role="tabpanel" aria-labelledby="nav-compo6-tab" tabindex="0">
+
+          <div style="display: flex; justify-content: center;">
+            <div style="width: 800px; margin: 2rem;">
+              <canvas id="componente6"></canvas>
+            </div>
+          </div>
+          <nav>
+            <div class="nav nav-tabs justify-content-center" id="nav-tab" role="tablist">
+
+              <button class="nav-link active text-dark" id="nav-Sub5compo1-tab" data-bs-toggle="tab"
+                data-bs-target="#nav-Sub5compo1" type="button" role="tab" aria-controls="nav-Sub5compo1" aria-selected="true">6.1: Gastos en protección ambiental</button>
+
+              <button class="nav-link text-dark" id="nav-Sub5compo2-tab" data-bs-toggle="tab" data-bs-target="#nav-Sub5compo2"
+                type="button" role="tab" aria-controls="nav-Sub5compo2" aria-selected="false">6.2: Regulación y gobernanza ambiental</button>
+
+              <button class="nav-link text-dark" id="nav-Sub5compo3-tab" data-bs-toggle="tab" data-bs-target="#nav-Sub5compo3"
+                type="button" role="tab" aria-controls="nav-Sub5compo3" aria-selected="false">6.3: Preparación ante eventos extremos y gestión de desastres</button>
+
+              <button class="nav-link text-dark" id="nav-Sub5compo4-tab" data-bs-toggle="tab" data-bs-target="#nav-Sub5compo4"
+                type="button" role="tab" aria-controls="nav-Sub5compo4" aria-selected="false">6.4: Información y conciencia ambiental</button>
+
+
+
+            </div>
+          </nav>
+
+          <h4 style="text-align: center; margin: 1rem;">Productos INEGI con relación a los tópicos:</h4>
+          <div class="tab-content" id="nav-tabContent">
+            <!--! Sub5Componente 1. -->
+            <div class="tab-pane fade show active" id="nav-Sub5compo1" role="tabpanel" aria-labelledby="nav-Sub5compo1-tab"
+              tabindex="0">
+
+              <div style="display: flex; justify-content: center;">
+                <div style="width: 900px; margin: 2rem;">
+                  <canvas id=""></canvas>
+                </div>
+              </div>
+
+            </div>
+
+            <!--! Sub5Componente 2. -->
+            <div class="tab-pane fade" id="nav-Sub5compo2" role="tabpanel" aria-labelledby="nav-Sub5compo2-tab" tabindex="0">
+
+              <div style="display: flex; justify-content: center;">
+                <div style="width: 800px; margin: 2rem;">
+                  <canvas id=""></canvas>
+                </div>
+              </div>
+
+            </div>
+
+            <!--! Sub5Componente 3. -->
+            <div class="tab-pane fade" id="nav-Sub5compo3" role="tabpanel" aria-labelledby="nav-Sub5compo3-tab" tabindex="0">
+
+
+              <div style="display: flex; justify-content: center;">
+                <div style="width: 800px; margin: 2rem;">
+                  <canvas id=""></canvas>
+                </div>
+              </div>
+            </div>
+
+            <!--! Sub5Componente 4. -->
+            <div class="tab-pane fade" id="nav-Sub5compo4" role="tabpanel" aria-labelledby="nav-Sub5compo4-tab" tabindex="0">
+
+
+              <div style="display: flex; justify-content: center;">
+                <div style="width: 800px; margin: 2rem;">
+                  <canvas id=""></canvas>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+  </div>
+
 </div>
 
 
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-fullscreen modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-body">
-            <div class="row">
-              <div class="col-12">
-                <div style="text-align: center; margin-bottom: 10px;">
-                <button type="button" style="border-radius: 35px;" class="btn btn-secondary" data-bs-dismiss="modal"><i class="bi bi-x"></i></button>     
-                </div>            
-                <div class="container-fluid" id="treegraph-container"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+
+
+
+
+
+
+
+
+
+
+
   </div>
 
- 
- <!-- TODO: SECCION PARA DISPOSITIVOS MOVILES -->
- 
- <div *ngIf="isMobile">
- <div class="container-fluid">
-  <div class="row" id="fondo">
-    <div>
-      <div class="col">
-        <h2 class="mt-5 mb-3" style="color: #c2eceb; text-align: center; text-shadow: rgb(52, 214, 174) 1px 0 10px;">
-          Relación con el Marco para el Desarrollo de las Estadísticas Ambientales (MDEA)
-        </h2>
-      </div>
-    </div>
 
-<!--Introduccion al tema-->
-    <div class="col mb-2">
-      <div class="container">
-        <br>
-        <div class="mb-2" style="margin-left: 10px;">
-          <p style="font-size: small;">
-            El MDEA 2013 organiza las estadísticas ambientales en seis componentes, cada uno
-            de los cuales se desagrega en subcomponentes y a su vez en tópicos estadisticos. Los seis componentes
-            incluyen: condiciones y calidad ambiental; disponibilidad y uso de los recursos
-            ambientales y las actividades humanas relacionadas; el uso del ambiente como sumidero de
-            residuos y actividades humanas relacionadas; eventos naturales extremos y desastres; asentamientos humanos y
-            salud ambiental; y medidas sociales y económicas para proteger y gestionar el ambiente. Los temas
-            estadísticos representan los aspectos cuantificables de los componentes y están agrupados en subcomponentes,
-            tomando en cuenta los tipos y fuentes de las
-            estadísticas necesarias para describirlos.
-          </p>
-          
-          <div class="row">
-            <div class="col">
-              <p style="font-size: small;">El MDEA se compone de tres niveles: el componente principal se enfoca en bases esenciales para la educación sostenible, seguido por subcomponentes que se centran en áreas específicas como educación ambiental y habilidades para la vida. Cada subcomponente se desglosa en tópicos concretos, como conservación ambiental y diversidad.
-              </p>
-              <p style="font-size: small;">Conoce la Estructura del MDEA: </p>
-              <br>
-            </div>
-          </div>
-          
-          <div data-bs-toggle="modal" data-bs-target="#exampleModal">
-            <img src="./assets/mdeacomp.png" type="button" style="width: 320px; height: 300px;">
-          </div>
-          
-        </div>
-      </div>
-        <!-- Estructura MDEA -->
-      <div class="container">
-       <div class="row">
-        <div class="col">
-          <div class="mt-5">
-            <h3 style="color: aliceblue;">Informacion Estadistica</h3>
-           <div class="card">
-            <p class="mt-3" style="color:darkblue; margin: 15px; font-size: small;">
-              Dentro de este sistema de inventario de productos, se extraen datos de la Base de datos del SIIERNMA. Se lleva a cabo un análisis de la relación de estos productos con la estructura del MDEA.
-              Este análisis proporciona la información necesaria para realizar un conteo estadístico de los productos asociados a cada uno de los niveles más importantes que maneja el Marco para el Desarrollo de las Estadísticas Ambientales, a nivel de Componente y Subcomponente.
-            </p>
-            <br>
-            
-            <p style="color: #113250; margin-left: 10px; font-size: small;">En las siguientes representaciones graficas, se puede observar estadisticamente la cantidad y total de productos del INEGI que se apegan a determinados Componentes y Subcomponentes del MDEA:</p>
 
-            <!-- Sección de graficos correspondientes a los Componentes y subcomponentes del MDEA -->
 
-           <div class="card-body">   
-                <hr style="height: 5px; background-color: #186b6a;">
-            
-              <div>
-                <div class="text-center" *ngIf="loading">
-                  <div class="spinner-border text-success m-5" role="status" style="width: 5rem; height: 5rem;">
-                    <span class="visually-hidden">Loading...</span>
-                  </div>
-                </div>
-                <figure class="highcharts-figure">
-                  <div id="container-pie-componentes" [hidden]="loading"></div>
-                </figure>
-              </div>
 
-                <br>
-             
-                <div class="row">
-                  <div class="card col-12">
-                    <div style="text-align:center">Total de productos del INEGI que se apegan a los componentes del MDEA </div>
-                  </div>
-                </div>
-            
-                <div class="row" >
-                  <div class="card btn col-12 mt-2"  *ngFor="let componente of componentesMDEA" (click)="navigateWithParam(componente.id)">
-                    <ul>
-                      <li  style="text-align: start; font-size: small;" >{{ componente.text }} <i [ngClass]="'bi ' + iconosComp[componente.id]"></i></li>
-                      <div style="text-align: end; color: #186b6a;  font-weight: bold">{{ longitudesPorCompId[componente.id] }}</div>     
-                    </ul>
-                  </div>
-                </div>
-            
-                <hr style="height: 5px; background-color: #186b6a;">
-            
-                <div>
-                  <div class="text-center" *ngIf="loading">
-                    <div class="spinner-border text-success m-5" role="status" style="width: 5rem; height: 5rem;">
-                      <span class="visually-hidden">Loading...</span>
-                    </div>
-                  </div>
-    
-                  <figure class="highcharts-figure">
-                    <div id="container-pie-subcomponentes" [hidden]="loading"></div>
-                  </figure>
-                </div>
-            
-                <br>
-            
-                <div class="row">
-                  <div class="card col-12">
-                    <div style="text-align:center">Total de productos del INEGI que se apegan a los subcomponentes del MDEA </div>
-                  </div>
-                </div>
-            
-                <div>
-                  <div class="row">
-                    <div class="card btn col-12 mt-2"  *ngFor="let subcomponente of subComponentesMDEA"  (click)="navigateWithParamSubcomp(subcomponente.id)">
-                      <ul>
-                        <li style="text-align: start; font-size: small;">{{ subcomponente.text }} <i [ngClass]="'bi ' + iconosSubComp[subcomponente.id]"></i> </li>
-                        <div style="text-align: end; color: #186b6a; font-weight: bold">{{ longitudesPorSubCompId[subcomponente.id] }}</div>     
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-             </div>
-           </div>          
-         </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div>
-  </div>
 
- <!-- MODAL MOVIL  -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog  modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-body">
-            <div class="row">
-              <div class="col-12">
-                <div style="text-align: center; margin-bottom: 10px;">
-                <button type="button" style="border-radius: 35px;" class="btn btn-secondary" data-bs-dismiss="modal"><i class="bi bi-x"></i></button>     
-                </div>            
-                <!-- IMAGEN -->
-                <div>
-                  <img src="./assets/MdeaStructure.png" style="width: 350px; height: 350px;">
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
- </div>
- 
- 
 

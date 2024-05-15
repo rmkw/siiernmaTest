@@ -25,8 +25,8 @@
 
             <img focusable="false" src="./assets/inegilogowhite.png" alt="Mi SVG"
               style="max-width: 350px; height: auto;  margin: 0 auto;">
-            <h1 style="color: white;">Productos detectados en las direcciones generales.</h1>
-            <p style="color: white;">Descubre los productos detectados y catalogados por direcciones generales.
+            <h1 style="color: white;">Productos INEGI con relevancia ambiental detectados.</h1>
+            <p style="color: white;">Descubre los productos ambientales detectados y catalogados por direcciones generales.
             </p>
             <button class="btn btn-lg custom-btn-colorWhite" [routerLink]="['/dg/products']" href="#">Ver más</button>
           </div>
@@ -43,11 +43,11 @@
 
 
         <div class="container">
-          <div class="carousel-caption text-center">
+          <div class="carousel-caption text-end">
 
             <h2 style="color: #dff9ff; ">Relación con el Marco para el Desarrollo de las Estadísticas Ambientales.</h2>
             <p style="color: #dff9ff; ">Explora para saber más.</p>
-            <button class="btn btn-lg custom-btn-color" style="margin-bottom: 0px;" [routerLink]="['/dg/mdea']" href="#">Ver más</button>
+            <button class="btn btn-lg custom-btn-colorWhite" style="margin-bottom: 0px;" [routerLink]="['/dg/mdea']" href="#">Ver más</button>
           </div>
         </div>
       </div>
@@ -60,21 +60,23 @@
           src="https://sdgintegration.undp.org/video/29062020/SDGi-Low.mp4"
           type="video/mp4">
       </video>
-      <div class="container" style="position: relative; z-index: 2;">
-        <img
-          src="https://www.un.org/sustainabledevelopment/wp-content/uploads/sites/3/2020/05/SDG_website_banner_S_100px.png"
-          srcset="https://www.un.org/sustainabledevelopment/wp-content/uploads/sites/3/2020/05/SDG_website_banner_S_100px.png 1x, https://www.un.org/sustainabledevelopment/wp-content/uploads/sites/3/2020/05/SDG_website_banner_S.png 2x"
-          width="841" height="100" alt="Desarrollo Sostenible Logo"
-          style="max-height: 100px; height: auto; display: block; margin: 0 auto; margin-top: 7rem; "
-          data-retina_logo_url="https://www.un.org/sustainabledevelopment/wp-content/uploads/sites/3/2020/05/SDG_website_banner_S.png">
+      <div class="container " style="position: relative; z-index: 2;">
+        <div class="carousel-caption text-end">
+          <img src="https://www.un.org/sustainabledevelopment/wp-content/uploads/sites/3/2020/05/SDG_website_banner_S_100px.png"
+            srcset="https://www.un.org/sustainabledevelopment/wp-content/uploads/sites/3/2020/05/SDG_website_banner_S_100px.png 1x, https://www.un.org/sustainabledevelopment/wp-content/uploads/sites/3/2020/05/SDG_website_banner_S.png 2x"
+            width="841" height="100" alt="Desarrollo Sostenible Logo"
+            style="max-height: 100px; height: auto; display: block; margin: 0 auto; margin-top: 7rem; "
+            data-retina_logo_url="https://www.un.org/sustainabledevelopment/wp-content/uploads/sites/3/2020/05/SDG_website_banner_S.png">
+        </div>
+
       </div>
 
 
-      <div class="carousel-caption"
+      <div class="carousel-caption text-end"
         style="position: absolute;">
-        <h1 style="color: #009edb;">Relación con los Objetivos de Desarrollo Sostenible.</h1>
-        <p style="color: #009edb;">Explora para saber más.</p>
-        <button class="btn btn-lg custom-btn-color2" [routerLink]="['/dg/ods']" href="#">Ver más</button>
+        <h1 style="color: #ffffff;">Relación con los Objetivos de Desarrollo Sostenible.</h1>
+        <p style="color: #ffffff;">Explora para saber más.</p>
+        <button class="btn btn-lg custom-btn-colorWhite" [routerLink]="['/dg/ods']" href="#">Ver más</button>
       </div>
       </div>
 
@@ -88,9 +90,8 @@
 
         <div class="container">
           <div class="carousel-caption text-end">
-            <img focusable="false" src="./assets/snieg2.png" alt="Mi SVG"
-              style="max-width: 500px; height: auto;  margin: 0 auto;">
-            <h1 style="color: #ffffff; ">Indicadores ambientales desarrollados por el INEGI.</h1>
+
+            <h1 style="color: #ffffff; ">Indicadores ambientales identificados.</h1>
             <p style="color: #ffffff; ">Descubre más sobre indicadores ambientales producidos en el INEGI.</p>
             <button class="btn btn-lg custom-btn-colorGris" [routerLink]="['/dg/indicadores']" href="#">Ver más</button>
           </div>
@@ -250,7 +251,7 @@
           <div class="col-12" [ngClass]="{'selected': !isGeoNodeSelected}" (click)="hiddenTheOtherContents_GeoNode()"
             style="cursor: pointer; border-bottom: solid 3px; border-color: #ffffff; padding-top: 1.5rem; padding-bottom: 1.5rem;">
             <h4>
-              GeoNode.
+              Inventario geográfico del INEGI.
             </h4>
           </div>
         </div>

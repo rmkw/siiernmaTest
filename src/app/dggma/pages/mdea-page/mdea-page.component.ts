@@ -1,490 +1,574 @@
-import { Componente, Mdea, Subcomponente, Topico } from '../../interfaces/mdea.interface';
-import { DGService } from '../../services/dg.service';
+import { Component, AfterViewInit, Renderer2, OnInit } from '@angular/core';
+import Chart from 'chart.js/auto';
+import { Componente, Topico } from '../../interfaces/mdea.interface';
 import { FlagService } from '../../services/flagService.service';
 import { Router } from '@angular/router';
-import {  Component, OnInit } from '@angular/core';
-import {  Products } from '../../interfaces/product.interface';
-import { forkJoin } from 'rxjs';
-import HighchartsAccessibility from 'highcharts/modules/accessibility';
-import HighchartsExporting from 'highcharts/modules/exporting';
-import HighchartsTreeMap from 'highcharts/modules/treemap';
-import HighchartsTreeGraph from 'highcharts/modules/treegraph';
-import HighchartsTreeGrid from 'highcharts/modules/treegrid';
-
-interface CheckboxesState {
-  [key: string]: boolean;
-}
+import { Products } from '../../interfaces/product.interface';
+import { DGService } from '../../services/dg.service';
 
 @Component({
   selector: 'app-mdea-page',
   templateUrl: './mdea-page.component.html',
-  styleUrls: ['./mdea-page.component.css']
+  styleUrls: ['./mdea-page.component.css'],
 })
-
-export class MdeaPageComponent implements OnInit{
-
-  isMobile: boolean = window.innerWidth <= 480; 
-  CompMdeaimg: boolean = false;
-  loadingCharts: boolean = true;
-  loading = true; 
-
-  public componentesArray: any [] = [];
-  public subcomponentesArray: any [] = [];
-
+export class MdeaPageComponent implements OnInit, AfterViewInit {
+  isMobile: boolean = window.innerWidth <= 480;
+  public componentesMDEA: Componente[] = [];
+  public topicoMDEA: Topico[] = [];
   public products: Products[] = [];
-  public mdeas: Mdea[]=[];
-  public componentesMDEA: Componente[]=[];
-  public subComponentesMDEA: Subcomponente[]=[];
-  public topicoMDEA: Topico[]=[];
-  subcomponente : Subcomponente[]=[];
-  componente: Componente[]=[];
-  filteredProducts: Products[] = [];
 
-  //Variables para almacenar y dar coherencia a los numeros que se manejan en el HTML donde se cuentan los productos del INEGI por componentes
-  longitudesPorSubCompId: { [key: number]: number } = {};
   longitudesPorCompId: { [key: number]: number } = {};
 
   constructor(
     private router: Router,
+    private _flagService: FlagService,
     private _direServices: DGService,
-    private _flagService: FlagService
-  ){}
+    private renderer: Renderer2
+  ) {}
+  ngOnInit(): void {
+    this._direServices.productos().subscribe((data) => {this.products = data;console.log('productos:',this.products)});
 
-  // Checkboxes para hacer el filtrado interactivo de las Cards. 
-  checkboxesState: CheckboxesState = {
-    filtroMdeaComp1: false,
-    filtroMdeaComp2: false,
-    filtroMdeaComp3: false,
-    filtroMdeaComp4: false,
-    filtroMdeaComp5: false,
-    filtroMdeaComp6: false, 
-  };
-
- // Arreglo de iconos para relacionarlos por componente Id y Subcomponente Id.
-  
-  iconosComp: { [key: number]: string } = {
-    1: 'bi-tree',
-    2: 'bi-minecart-loaded',
-    3: 'bi-trash3',
-    4: 'bi-cloud-lightning-rain',
-    5: 'bi-houses',
-    6: 'bi-people'
-  };
-
-  iconosSubComp: { [key: number]: string } = {
-    1: 'bi-tree',
-    2: 'bi-tree',
-    3: 'bi-tree',
-    4: 'bi-minecart-loaded',
-    5: 'bi-minecart-loaded',
-    6: 'bi-minecart-loaded',
-    7: 'bi-minecart-loaded',
-    8: 'bi-minecart-loaded',
-    9: 'bi-minecart-loaded',
-    10: 'bi-trash3',
-    11: 'bi-trash3',
-    12: 'bi-trash3',
-    13: 'bi-trash3',
-    14: 'bi-cloud-lightning-rain',
-    15: 'bi-cloud-lightning-rain',
-    16: 'bi-houses',
-    17: 'bi-houses',
-    18: 'bi-people',
-    19: 'bi-people',
-    20: 'bi-people',
-    21: 'bi-people',
-  };
-
-
-  filterProductsByComponente(componente: any[]): any[] {
-    return this.products.filter(data => componente.some(comp => comp.interview__id === data.interview__id));
-  }
-
-  filterProductsBySubComponente(subcomponente: any[]): any[] {
-    return this.products.filter(data => {
-      const matchingSubcomp = subcomponente.find(subcomp => subcomp.interview__id === data.interview__id);
-      return matchingSubcomp && matchingSubcomp.algunaPropiedadImportante!== null;
-  });
-}
-
-  expanded1 = true; 
-  toggleExpansionA() {
-    this.expanded1 = !this.expanded1;
-  }
-
-  loadChart(){
-    this._direServices.componentes().subscribe(
-      (dataComp) => {
-        this.componentesMDEA = dataComp;
-        this.loadingCharts = false; // Marcamos como cargados cuando los datos llegan
-      },
-    )
-    this._direServices.subcomponentes().subscribe(
-      (dataSubComp) => {
-        this.subComponentesMDEA = dataSubComp;
-        this.loadingCharts = false; // Marcamos como cargados cuando los datos llegan
-      },
-    )
-  }
-
-    ngOnInit(): void {
-
-      forkJoin([
-        this._direServices.productos(),
-        this._direServices.componentes(),
-        this._direServices.subcomponentes(),
-        this._direServices.mdea()
-      ]).subscribe(([productos, componentes, subcomponentes, mdea]) =>{
-        this.products= productos;
-        this.componentesMDEA = componentes;
-        this.subComponentesMDEA = subcomponentes;
-        this.mdeas = mdea;
-
-        for (let i = 1; i <= 6; i++) {
-          const componente = this.mdeas.filter(data => data.comp_mdea === i);
-          this.componentesArray[i] = this.filterProductsByComponente(componente);
-        }
-      
-        for (let i = 1; i <= 6; i++) {
-          this.longitudesPorCompId[i] = this.componentesArray[i].length || 0;
-        }
-
-       // Arreglo para subcomponentes
-       for (let i = 1; i <= 21; i++) {
-        const subcomponente = this.mdeas.filter(data => data.subcomp_mdea === i);
-        this.subcomponentesArray[i] = this.filterProductsBySubComponente(subcomponente).filter(item => Object.keys(item).length !== 0);
-        }
-      
-        for (let i = 1; i <= 21; i++) {
-          this.longitudesPorSubCompId[i] = this.subcomponentesArray[i].length || 0;
-        }
-
-        this.componentesArray
-        this.subcomponentesArray
-        this.loadChart();
-        this.filterProductsByComponente(this.componente);
-        this.filterProductsBySubComponente(this.subcomponente);
-        this.createComponenteChart();
-        this.createSubcomponenteChart();
-        this.createMdeaStructureTree();
-        this.loading = false;
-
-        this._direServices.componentes()
-        .subscribe( dataComponentes => this.componentesMDEA = dataComponentes)
-    
-        this._direServices.subcomponentes()
-        .subscribe( dataSubcomponente => this.subComponentesMDEA = dataSubcomponente)
-        
-        this._direServices.topicos()
-        .subscribe( dataTopicomdea => this.topicoMDEA = dataTopicomdea)
-  
-        this._direServices.productos()
-        .subscribe( data => this.products = data )
-       
-        this._direServices.mdea()
-        .subscribe(dataMdea => 
-          this.mdeas = dataMdea)
-      });
-
-    }
-
-
-    createComponenteChart(): void {
-
-      var Highcharts = require('highcharts'); 
-      HighchartsAccessibility(Highcharts);
-      HighchartsExporting(Highcharts);
-  
-      const colors = Highcharts.getOptions().colors;
-      const componentesData: { name: string; y: any; color: any; }[] = [];
-  
-      for (let i = 1; i <= 6; i++) {
-          componentesData.push({
-              name: `Componente ${i}`,
-              y: this.componentesArray[i]?.length || 0,
-              color: colors[i + 1] 
-          });
-      }
-  
-      Highcharts.chart('container-pie-componentes', {
-          chart: {
-              type: 'pie'
-          },
-          title: {
-              text: 'Total de Componentes',
-              align: 'center'
-          },
-          plotOptions: {
-              series: {
-                  borderRadius: 5,
-              }
-          },
-          tooltip: {
-              valueSuffix: ' productos'
-          },
-          series: [{
-              name: 'Componentes',
-              data: componentesData,
-              size: '100%',
-              dataLabels: {
-                  color: '#113250',
-                  distance: 10,
-                  format: '<b>{point.name}:</b><br><span style="text-allign: center;">{point.y} Productos</span>',
-                  filter: {
-                      property: 'y',
-                      operator: '>',
-                      value: 1
-                  },
-                  style: {
-                      fontWeight: 'normal'
-                  }
-              }
-          }],
-            responsive: {
-                rules: [{
-                    condition: {
-                        maxWidth: 480 // Aquí define el ancho máximo para el que se aplicará el ajuste responsivo
-                    },
-                    chartOptions: {
-                        plotOptions: {
-                            pie: {
-                                dataLabels: {
-                                    enabled: false
-                                }
-                            }
-                        }
-                    }
-                }]
-            }
-        });
-    }
-      // Grafica para mostrar los Subcomponentes 
-
-      createSubcomponenteChart(): void {
-
-        var Highcharts = require('highcharts'); 
-
-        HighchartsAccessibility(Highcharts);
-        HighchartsExporting(Highcharts);
-
-        const colors = Highcharts.getOptions().colors;
-        const subcomponentesData: {name: string; y: any; color: any;}[] = [];
-  
-        for (let i = 1; i <= 21; i++) {
-          subcomponentesData.push({
-            name: `SubComponente ${i}`,
-            y: this.subcomponentesArray[i]?.length || 0,
-            color: colors[i + 1] // Ajusta según tu lógica de asignación de colores
-          });
-        }
-        
-        Highcharts.chart('container-pie-subcomponentes', {
-            chart: {
-                type: 'pie',
-            },
-            title: {
-                text: 'Total de SubComponentes',
-                align: 'center'
-            },
-            plotOptions: {
-              series: {
-                borderRadius: 5,
-              }
-            },   
-            tooltip: {
-                valueSuffix: ' productos',
-            },
-            series: [{
-                name: 'SubComponente',
-                data: subcomponentesData,
-                size: '100%',
-                dataLabels: {
-                    color: '#113250',
-                    distance: 10,
-                    format: '<b>{point.name}:</b><br><span style="text-allign: center;">{point.y} Productos</span>',
-                    filter: {
-                        property: 'y',
-                        operator: '>',
-                        value: 1
-                    },
-                    style: {
-                        fontWeight: 'normal'
-                    },
-                    
-                },                 
-            }],
-            responsive: {
-              rules: [{
-                  condition: {
-                      maxWidth: 500
-                  },
-                  chartOptions: {
-                      plotOptions: {
-                          pie: {
-                              dataLabels: {
-                                  enabled: false
-                              }
-                          }
-                      }
-                  }
-              }]
-          }
-          });
-      }
-
-      
-
-
-   createMdeaStructureTree(): void {
-
-    var Highcharts = require('highcharts'); 
-
-    HighchartsAccessibility(Highcharts);
-    HighchartsExporting(Highcharts);
-    HighchartsTreeMap(Highcharts);
-    HighchartsTreeGraph(Highcharts);
-    HighchartsTreeGrid(Highcharts);
-    HighchartsTreeGraph(Highcharts);
-
-
-    this._direServices.componentes().subscribe(componentes => {
-      this.componentesMDEA = componentes;
-      this._direServices.subcomponentes().subscribe(subcomponentes => {
-        this.subComponentesMDEA = subcomponentes;
-        this._direServices.topicos().subscribe(topicos => {
-          this.topicoMDEA = topicos;
-
-          const data: any = [];
-          this.componentesMDEA.forEach(componente => {
-            data.push({
-              id: `componente-${componente.id}`,
-              parent: '',
-              name: componente.text,
-            });
-
-            const subcomponentes = this.subComponentesMDEA.filter(subcomponente => subcomponente.parentid === componente.id);
-            subcomponentes.forEach(subcomponente => {
-              data.push({
-                id: `subcomponente-${subcomponente.id}`,
-                parent: `componente-${componente.id}`,
-                name: subcomponente.text,
-              });
-
-              const topicos = this.topicoMDEA.filter(topico => topico.parentid === subcomponente.id);
-              topicos.forEach(topico => {
-                data.push({
-                  id: `topico-${topico.id}`,
-                  parent: `subcomponente-${subcomponente.id}`,
-                  name: topico.text,
-                });
-              });
-            });
-          });
-  
-          data.reverse();
-     
-          // Crear el gráfico una vez que los datos estén disponibles
-          Highcharts.chart('treegraph-container', {
-            title: {
-              style: {
-                color: '#deebf8',
-              },
-              text: 'Estructura MDEA',
-            },
-            subtitle: {
-              style: {
-                color: '#deebf8',
-              },
-              text: 'Componente, Subcomponente y Tópíco',
-              
-            },
-            chart: {
-              backgroundColor: '#113250',
-              zoomType: 'xy',
-            },
-            exporting: {
-              enabled: true, 
-              buttons: {
-                contextButton: {
-                  symbol: 'square',
-                  symbolStrokeWidth: .5,
-                  symbolFill: '#5EC1AB',
-                  symbolStroke: '#000000',
-                  menuItems: [
-                    "viewFullscreen",
-                  ]
-                }
-              }
-            },
-            series: [    
-              {
-                type: 'treegraph',
-                data: data,
-                borderRadius: 10,
-                crisp: true,
-                clip: true,
-                tooltip: {
-                  pointFormat: '{point.name}',
-                },
-                link: {
-                  color: '#bdd8f1',
-                  lineWidth: 1,
-                },
-                marker: {
-                  symbol: 'rect',
-                  width: '30%',
-                  height: '2%',
-                  lineColor: '#07141f',
-                  lineWidth: 1.5,
-                  
-                },
-                dataLabels: {
-                  shadow: true,
-                  color: '#FFFFFF',
-                 
-                  style: {
-                    cursor:   'text',
-                    whiteSpace: 'normal',
-                    textOverflow: 'ellipsis',
-                    margin: 20,
-                    fontSize: '11.5px',
-                    textOutline: '1px contrast',
-                  },
-                },
-                levels: [
-                  {
-                   level: 1,
-                    levelIsConstant: false,
-                    colorVariation: null
-                    },
-                  {
-                    level: 2,
-                    levelIsConstant : true,
-                    colorByPoint: true,
-                    colorVariation: {
-                      key: 'brightness',
-                      to: -.1,
-                    }
-                  },
-                  {
-                    level: 3,
-                    levelIsConstant : true,
-                    colorVariation: {
-                      key: 'brightness',
-                      to: -.2,
-                    },   
-                  },
-                ],
-              },
-            ],
-          }
-          );
-        });
-   });
+    this._direServices.topicos().subscribe((dataTopicomdea) => {
+      this.topicoMDEA = dataTopicomdea;
+      const filteredProducts = this.filterProductsByTopicoMDEA(this.topicoMDEA); // Filtrar productos aquí
+      console.log('productos filtrados:', filteredProducts); // Imprimir productos filtrados
+      console.log('lostopicos:', this.topicoMDEA);
     });
   }
 
- 
+  ngAfterViewInit(): void {
+    this.createChart();
+    this.createChart1();
+    this.createChart2();
+    this.createChart3();
+    this.createChart4();
+    this.createChart5();
+    this.createChart6();
+  }
+
+  filterProductsByTopicoMDEA(topicoMDEA: any[]): Products[] {
+    return this.products.filter((producto) => {
+      return topicoMDEA.some(
+        (topico) => topico.interview__id === producto.interview__id
+      );
+    });
+  }
+
+  createChart(): void {
+    const labels = [
+      ['1. Condiciones y', 'calidad ambiental.'],
+      ['2. Recursos ambientales', 'y su uso.'],
+      ['3. Residuos y actividades', 'humanas relacionadas.'],
+      ['4. Eventos extremos y', 'desastres.'],
+      ['5. Asentamientos humanos y', 'salud ambiental.'],
+      ['6. Protección ambiental y', 'participación ciudadana.'],
+    ];
+    const data = [110, 273, 92, 21, 309, 152];
+    const chartElement = document.getElementById(
+      'acquisitions'
+    ) as HTMLCanvasElement;
+
+    if (chartElement) {
+      new Chart(chartElement, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              label: ' Productos que cuentan con una relación',
+              data: data,
+              backgroundColor: [
+                'rgba(54, 162, 235, 0.6)',
+                'rgba(255, 159, 64, 0.6)',
+                'rgba(255, 99, 132, 0.6)',
+                'rgba(153, 102, 255, 0.6)',
+                'rgba(75, 192, 192, 0.6)',
+
+                'rgba(255, 205, 86, 0.6)',
+              ],
+              borderColor: [
+                'rgb(54, 162, 235)',
+                'rgb(255, 159, 64)',
+                'rgb(255, 99, 132)',
+                'rgb(153, 102, 255)',
+                'rgb(75, 192, 192)',
+
+                'rgb(255, 205, 86)',
+              ],
+              borderWidth: 1,
+            },
+          ],
+        },
+
+        options: {
+          animation: {
+            delay: 1000,
+            // loop: true
+          },
+          responsive: true,
+          scales: {
+            x: {
+              ticks: {
+                maxRotation: 0,
+                autoSkip: false,
+                labelOffset: 0,
+
+                padding: 0,
+              },
+            },
+            y: {
+              beginAtZero: true,
+
+              title: {
+                display: true,
+                text: 'Productos',
+                font: {
+                  size: 20,
+                },
+              },
+            },
+          },
+
+          plugins: {
+            legend: {
+              display: false,
+              labels: {
+                textAlign: 'center',
+              },
+            },
+          },
+          onClick: (event, elements) => {
+            if (elements && elements.length > 0) {
+              const index = elements[0].index;
+              // Aquí puedes redireccionar a la página deseada según la barra clicada
+              switch (index) {
+                case 0:
+                  window.location.href = 'http://localhost:4200/#/dg';
+                  break;
+                // Puedes añadir más casos para las demás barras si es necesario
+              }
+            }
+          },
+        },
+      });
+    } else {
+      console.error('Element with id "acquisitions" not found.');
+    }
+  }
+
+  createChart1(): void {
+    const labels = [
+      '1.1: Condiciones físicas',
+      '1.2: Cobertura terrestre, ecosistemas y biodiversidad',
+      '1.3: Calidad ambiental',
+    ];
+    const data = [69, 55, 9];
+    const chartElement = document.getElementById(
+      'componente1'
+    ) as HTMLCanvasElement;
+
+    if (chartElement) {
+      new Chart(chartElement, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              label: ' Productos que cuentan con una relación',
+              data: data,
+              backgroundColor: [
+                'rgba(54, 162, 235, 0.6)',
+                'rgba(54, 162, 235, 0.6)',
+                'rgba(54, 162, 235, 0.6)',
+              ],
+              borderColor: [
+                'rgb(54, 162, 235)',
+                'rgb(54, 162, 235)',
+                'rgb(54, 162, 235)',
+              ],
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          scales: {
+            x: {
+              ticks: {
+                maxRotation: 0,
+                autoSkip: false,
+                labelOffset: 0,
+
+                padding: 0,
+              },
+            },
+            y: {
+              beginAtZero: true,
+              title: {
+                display: true,
+                text: 'Productos',
+                font: {
+                  size: 20,
+                },
+              },
+            },
+          },
+
+          plugins: {
+            legend: {
+              display: false,
+            },
+          },
+        },
+      });
+    } else {
+      console.error('Element with id "componente1" not found.');
+    }
+  }
+
+  createChart2(): void {
+    const labels = [
+      ['2.1: Recursos', 'minerales.'],
+      ['2.2: Recursos', 'energéticos.'],
+
+      '2.3: Tierra.',
+      ['2.5: Recursos', 'biológicos.'],
+
+      '2.6: Recursos hídricos',
+    ];
+    const data = [14, 35, 85, 135, 49];
+    const chartElement = document.getElementById(
+      'componente2'
+    ) as HTMLCanvasElement;
+
+    if (chartElement) {
+      new Chart(chartElement, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              label: ' Productos que cuentan con una relación',
+              data: data,
+              backgroundColor: [
+                'rgba(255, 159, 64, 0.6)',
+                'rgba(255, 159, 64, 0.6)',
+                'rgba(255, 159, 64, 0.6)',
+                'rgba(255, 159, 64, 0.6)',
+                'rgba(255, 159, 64, 0.6)',
+              ],
+              borderColor: [
+                'rgb(255, 159, 64)',
+                'rgb(255, 159, 64)',
+                'rgb(255, 159, 64)',
+                'rgb(255, 159, 64)',
+                'rgb(255, 159, 64)',
+              ],
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          scales: {
+            x: {
+              ticks: {
+                maxRotation: 0,
+                autoSkip: false,
+                labelOffset: 0,
+
+                padding: 0,
+              },
+            },
+            y: {
+              beginAtZero: true,
+              title: {
+                display: true,
+                text: 'Productos',
+                font: {
+                  size: 20,
+                },
+              },
+            },
+          },
+
+          plugins: {
+            legend: {
+              display: false,
+            },
+          },
+        },
+      });
+    } else {
+      console.error('Element with id "acquisitions" not found.');
+    }
+  }
+
+  createChart3(): void {
+    const labels = [
+      '3.1: Emisiones al aire.',
+      ['3.2: Generación y gestión', 'de aguas residuales.'],
+      ['3.3: Generación y gestión', 'de desechos.'],
+      '3.4: Aplicación de químicos.',
+    ];
+    const data = [9, 23, 55, 12];
+    const chartElement = document.getElementById(
+      'componente3'
+    ) as HTMLCanvasElement;
+
+    if (chartElement) {
+      new Chart(chartElement, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              label: ' Productos que cuentan con una relación',
+              data: data,
+              backgroundColor: [
+                'rgba(255, 99, 132, 0.6)',
+                'rgba(255, 99, 132, 0.6)',
+                'rgba(255, 99, 132, 0.6)',
+                'rgba(255, 99, 132, 0.6)',
+              ],
+              borderColor: [
+                'rgb(255, 99, 132)',
+                'rgb(255, 99, 132)',
+                'rgb(255, 99, 132)',
+                'rgb(255, 99, 132)',
+              ],
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          scales: {
+            x: {
+              ticks: {
+                maxRotation: 0,
+                autoSkip: false,
+                labelOffset: 0,
+
+                padding: 0,
+              },
+            },
+            y: {
+              beginAtZero: true,
+              title: {
+                display: true,
+                text: 'Productos',
+                font: {
+                  size: 20,
+                },
+              },
+            },
+          },
+
+          plugins: {
+            legend: {
+              display: false,
+            },
+          },
+        },
+      });
+    } else {
+      console.error('Element with id "acquisitions" not found.');
+    }
+  }
+
+  createChart4(): void {
+    const labels = [
+      '4.1: Eventos naturales extremos y desastres.',
+      '4.2: Desastres tecnológicos.',
+    ];
+    const data = [20, 1];
+    const chartElement = document.getElementById(
+      'componente4'
+    ) as HTMLCanvasElement;
+
+    if (chartElement) {
+      new Chart(chartElement, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              label: ' Productos que cuentan con una relación',
+              data: data,
+              backgroundColor: [
+                'rgba(153, 102, 255, 0.6)',
+                'rgba(153, 102, 255, 0.6)',
+              ],
+              borderColor: ['rgb(153, 102, 255)', 'rgb(153, 102, 255)'],
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          scales: {
+            x: {
+              ticks: {
+                maxRotation: 0,
+                autoSkip: false,
+                labelOffset: 0,
+
+                padding: 0,
+              },
+            },
+            y: {
+              beginAtZero: true,
+              title: {
+                display: true,
+                text: 'Productos',
+                font: {
+                  size: 20,
+                },
+              },
+            },
+          },
+
+          plugins: {
+            legend: {
+              display: false,
+            },
+          },
+        },
+      });
+    } else {
+      console.error('Element with id "acquisitions" not found.');
+    }
+  }
+
+  createChart5(): void {
+    const labels = ['5.1: Asentamientos humanos.', '5.2: Salud ambiental.'];
+    const data = [306, 7];
+    const chartElement = document.getElementById(
+      'componente5'
+    ) as HTMLCanvasElement;
+
+    if (chartElement) {
+      new Chart(chartElement, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              label: ' Productos que cuentan con una relación',
+              data: data,
+              backgroundColor: [
+                'rgba(75, 192, 192, 0.6)',
+                'rgba(75, 192, 192, 0.6)',
+              ],
+              borderColor: ['rgb(75, 192, 192)', 'rgb(75, 192, 192)'],
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          scales: {
+            x: {
+              ticks: {
+                maxRotation: 0,
+                autoSkip: false,
+                labelOffset: 0,
+
+                padding: 0,
+              },
+            },
+            y: {
+              beginAtZero: true,
+              title: {
+                display: true,
+                text: 'Productos',
+                font: {
+                  size: 20,
+                },
+              },
+            },
+          },
+
+          plugins: {
+            legend: {
+              display: false,
+            },
+          },
+        },
+      });
+    } else {
+      console.error('Element with id "acquisitions" not found.');
+    }
+  }
+
+  createChart6(): void {
+    const labels = [
+      ['6.1: Gastos en protección', 'ambiental.'],
+      ['6.2: Regulación y gobernanza', 'ambiental.'],
+      ['6.3: Preparación ante eventos', 'extremos y gestión de desastres.'],
+      ['6.4: Información y conciencia', 'ambiental.'],
+    ];
+    const data = [35, 63, 9, 55];
+    const chartElement = document.getElementById(
+      'componente6'
+    ) as HTMLCanvasElement;
+
+    if (chartElement) {
+      new Chart(chartElement, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              label: ' Productos que cuentan con una relación',
+              data: data,
+              backgroundColor: [
+                'rgba(255, 205, 86, 0.6)',
+                'rgba(255, 205, 86, 0.6)',
+                'rgba(255, 205, 86, 0.6)',
+                'rgba(255, 205, 86, 0.6)',
+              ],
+              borderColor: [
+                'rgb(255, 205, 86)',
+                'rgb(255, 205, 86)',
+                'rgb(255, 205, 86)',
+                'rgb(255, 205, 86)',
+              ],
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          scales: {
+            x: {
+              ticks: {
+                maxRotation: 0,
+                autoSkip: false,
+                labelOffset: 0,
+
+                padding: 0,
+              },
+            },
+            y: {
+              beginAtZero: true,
+              title: {
+                display: true,
+                text: 'Productos',
+                font: {
+                  size: 20,
+                },
+              },
+            },
+          },
+
+          plugins: {
+            legend: {
+              display: false,
+            },
+          },
+        },
+      });
+    } else {
+      console.error('Element with id "acquisitions" not found.');
+    }
+  }
+
   navigateWithParam(componentId: number) {
     switch (componentId) {
       case 1:
@@ -510,78 +594,4 @@ export class MdeaPageComponent implements OnInit{
     }
     this.router.navigate(['/dg/products']);
   }
-
-  navigateWithParamSubcomp(subcomponentId: number) {
-    // Utiliza el id del componente para establecer la bandera correspondiente
-    switch (subcomponentId) {
-      case 1:
-        this._flagService.setFlagSubComp1(true);
-        break;
-      case 2:
-        this._flagService.setFlagSubComp2(true);
-        break;
-      case 3:
-        this._flagService.setFlagSubComp3(true);
-        break;
-      case 4:
-        this._flagService.setFlagSubComp4(true);
-        break;
-      case 5:
-        this._flagService.setFlagSubComp5(true);
-        break;
-      case 6:
-        this._flagService.setFlagSubComp6(true);
-        break;
-      case 7:
-        this._flagService.setFlagSubComp7(true);
-         break;
-       case 8:
-         this._flagService.setFlagSubComp8(true);
-         break;
-       case 9:
-         this._flagService.setFlagSubComp9(true);
-         break;
-       case 10:
-         this._flagService.setFlagSubComp10(true);
-         break;
-       case 11:
-         this._flagService.setFlagSubComp11(true);
-         break;
-       case 12:
-         this._flagService.setFlagSubComp12(true);
-         break;
-       case 13:
-         this._flagService.setFlagSubComp13(true);
-         break;
-       case 14:
-         this._flagService.setFlagSubComp14(true);
-         break;
-       case 15:
-         this._flagService.setFlagSubComp15(true);
-         break;
-       case 16:
-         this._flagService.setFlagSubComp16(true);
-         break;
-       case 17:
-         this._flagService.setFlagSubComp17(true);
-         break;
-       case 18:
-         this._flagService.setFlagSubComp18(true);
-         break;
-       case 19:
-         this._flagService.setFlagSubComp19(true);
-         break;
-       case 20:
-         this._flagService.setFlagSubComp20(true);
-         break;
-       case 21:
-         this._flagService.setFlagSubComp21(true);
-         break;
-       default:
-         break;
-        }    // Navega a la ruta deseada
-    this.router.navigate(['/dg/products']);
-  }
-
 }
-
