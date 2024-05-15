@@ -1,7 +1,13 @@
-@media only screen and (min-width: 766px) and (max-width: 1080px) {
-  #DirIntAnInv {
- margin-top: 8rmem;
-  }
+@media only screen and (min-width: 1366px) and (max-height: 768px) {
+#mdeatext {
+  top: 17.5rem;
+}
+}
+
+@media only screen and (min-width: 1366px) and (max-height: 768px) {
+#DirEstEco{
+margin-top: 32px;
+}
 }
 
 .carousel {
@@ -99,4 +105,9 @@ p{
 .customParrafo{
   font-size: medium;
   text-align: justify;
+  font-family: Helvetica, Sans-Serif;
+}
+
+p {
+  font-family: Helvetica, Sans-Serif;
 }

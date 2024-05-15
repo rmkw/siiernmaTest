@@ -355,56 +355,81 @@ export class OdsPageComponent implements OnInit{
 }
 
 createObjetivosChart(): void {
-
   var Highcharts = require('highcharts');
-
   HighchartsAccessibility(Highcharts);
   HighchartsExporting(Highcharts);
-  
+
   const colors = Highcharts.getOptions().colors;
-  const objetivosData: { name: string; y: any; color: any; }[] = [];
-  
+  const objetivosData: { name: string; y: any; color: any; drilldown: string; }[] = [];
+
   for (let i = 1; i <= 17; i++) {
-    objetivosData.push({
-      name: `Objetivo ${i}`,
-      y: this.OdsArray[i]?.length || 0,
-      color: colors[i + 1] 
-    });
+      objetivosData.push({
+          name: `Objetivo ${i}`,
+          y: this.OdsArray[i]?.length || 0,
+          color: colors[i + 1],
+          drilldown: `nivel${i}`
+      });
   }
+
+  const metaData: { name: string; y: any; color: any; }[] = [];
+
+    for (let i = 1; i <= 169; i++) {
+      const metaLength = this.MetaArray[i]?.length || 0;
+      if (metaLength > 0) {
+        metaData.push({
+          name: `Meta ${i}`,
+          y: metaLength,
+          color: colors[i + 1] 
+        });
+      }
+    }
+
   Highcharts.chart('container-pie-obj', {
-    chart: {
-        type: 'pie'
-    },
-    title: {
-        text: 'Productos del INEGI que se apegan determinados Objetivos del ODS',
-        align: 'center'
-    },
+      chart: {
+          type: 'pie'
+      },
+      title: {
+          text: 'Productos del INEGI que se apegan a determinados Objetivos del ODS',
+          align: 'center'
+      },
       plotOptions: {
-        series: {
-          borderRadius: 5,
-        }
-    },
-    tooltip: {
-        valueSuffix: ' productos'
-    },
-    series: [{
-        name: 'Objetivo',
-        data: objetivosData,
-        size: '100%',
-        dataLabels: {
-            color: '#113250',
-            distance: 10,
-            format: '<b>{point.name}:</b><br><span style="text-allign: center;">{point.y} Productos</span>',
-            filter: {
-                property: 'y',
-                operator: '>',
-                value: 1
-            },
-            style: {
-                fontWeight: 'normal'
-            }
-        }
-    }],
+          series: {
+              borderRadius: 5,
+              point: {
+                  events: {
+                      click: function () {
+                          // Aquí puedes implementar la lógica para mostrar el drilldown
+                      }
+                  }
+              }
+          }
+      },
+      tooltip: {
+          valueSuffix: ' productos'
+      },
+      series: [{
+          name: 'Objetivo',
+          data: objetivosData,
+          size: '100%',
+          dataLabels: {
+              color: '#113250',
+              distance: 10,
+              format: '<b>{point.name}:</b><br><span style="text-align: center;">{point.y} Productos</span>',
+              filter: {
+                  property: 'y',
+                  operator: '>',
+                  value: 1
+              },
+              style: {
+                  fontWeight: 'normal'
+              }
+          }
+      }],
+      drilldown: {
+          series: [
+              // Aquí puedes agregar los datos detallados para cada objetivo
+          ]
+      }
   });
 }
 

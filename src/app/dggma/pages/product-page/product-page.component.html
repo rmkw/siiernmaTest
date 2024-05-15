@@ -1,12 +1,14 @@
 <div *ngIf="!isMobile">
 
-<div class="container-fluid" style="background-color: #113250;">
+<div class="container-fluid" style="background-color: #f0f0f0;">
   <div class="row ">
+
 
     <!--* FILTROS -->
     <div [hidden]="flagHidden" class="col-3"
       style="background-color: #f8f9fa; border-top: solid 1px; border-color: #113250;">
 
+      
       <!--! boton para ocultar todos los filtros y también para reiniciarlos -->
       <div class="row mt-2">
         <div class="col">
@@ -17,17 +19,14 @@
                 style=" --bs-btn-padding-y: .20rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem; margin-right: 0.5rem;">
                 Quitar filtros
               </button>
-
               <button type="button" class="btn-close" aria-label="Close" (click)="hiddenFilters()"></button>
-
             </div>
-
           </div>
           <hr>
-
         </div>
       </div>
 
+     
       <!--! ojito para ocultar filtro de propiedades del producto -->
       <div class="row ">
         <div class="col">
@@ -377,16 +376,120 @@
     <div [ngClass]="{'col-8': flagOther, 'col-9': flagFilter}">
       <div class="row align-items-center">
         <div class="col d-flex ms-3">
-          <button type="button" class="btn btn-outline-light btn-sm" (click)="changeFlagFilter()"
+          <button type="button" class="btn btn-outline-dark btn-sm" (click)="changeFlagFilter()"
              style=" --bs-btn-padding-y: .20rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem; margin-bottom: 0px; margin-top: 1rem;"><span>Filtrar</span></button>
           <p *ngIf="!showFilteredProducts"
-            style="color: #ffffff; margin-bottom: 0px; margin-top: 1rem; margin-left: 10px;">
+            style="color: #113250; margin-bottom: 0px; margin-top: 1rem; margin-left: 10px;">
             {{displayedProductCountAll}} Recursos encontrados</p>
           <p *ngIf="showFilteredProducts"
-            style="color: #ffffff; margin-bottom: 0px; margin-top: 1rem; margin-left: 10px;">{{displayedProductCount}}
+            style="color: #113250; margin-bottom: 0px; margin-top: 1rem; margin-left: 10px;">{{displayedProductCount}}
             Recursos encontrados</p>
         </div>
       </div>
+
+      <br>
+
+    <div class="container">
+      <p style="color: #113250; margin: 5px;  text-align: justify; font-family: Helvetica, Sans-Serif;">
+        En esta sección, explorarás los productos identificados y catalogados por las diversas direcciones generales del Instituto Nacional de Estadística y Geografía (INEGI).
+        Esta colección abarca una amplia gama de temas, desde datos demográficos hasta análisis medioambientales, ofreciendo una visión detallada de diferentes aspectos relevantes
+        para nuestra sociedad.
+
+        Los productos aquí presentados son el resultado de rigurosos procesos de recopilación y análisis de información. Están diseñados para proporcionar datos precisos y confiables 
+        que puedan utilizarse para una variedad de propósitos, como investigación, toma de decisiones y análisis de tendencias.
+
+        Al navegar por el sitio, podrás descubrir cómo estas herramientas contribuyen a una comprensión más profunda de nuestro entorno y cómo pueden ser utilizadas para 
+        informar y enriquecer el desarrollo de políticas y estrategias en diversos ámbitos.
+      </p>
+
+      <br>
+
+      <div class="container ">
+        <div class="row ">
+          <div class="col ">
+            <h3 class="display-6 " style="margin-bottom: 2rem; text-align: center; color: #113250; font-family: Helvetica, Sans-Serif;">
+              Total de productos registrados por cada dirección.</h3>
+            <hr style="color: #113250;">
+          </div>
+        </div>
+      </div>
+    
+     
+    
+        <div class="row  justify-content-center align-items-center">
+    
+          <div class="col-2 m-1">
+            <div class="d-flex justify-content-center">
+              <i class="bi bi-globe display-1" style="color: #113250;"></i>
+            </div>
+            <h5 class="fw-normal text-center" style="height: 7.5rem; color: #113250; font-family: Helvetica, Sans-Serif;">Dirección General de Geografía y Medio Ambiente.</h5>
+            <h5 style="text-align: center; color: #004045; font-family: Helvetica, Sans-Serif;">Total de productos:</h5>
+              <h3 style="text-align: center; color: #1a538c; font-family: 'Monaco', monospace; font-weight: bold;">{{ primerDir }}</h3>
+    
+    
+            <div class="d-flex justify-content-center">
+             
+            </div>
+          </div>
+    
+          <div class="col-2 m-1">
+            <div class="d-flex justify-content-center ">
+              <i class="bi bi-bar-chart display-1 " style="color: #113250;"></i>
+            </div>
+            <h5 class="fw-normal text-center" style="height: 7.5rem; color: #113250; font-family: Helvetica, Sans-Serif;">Dirección General de Estadísticas Sociodemográficas.</h5>
+            <h5 style="text-align: center; color: #004045; font-family: Helvetica, Sans-Serif;">Total de productos:</h5>
+            <h3 style="text-align: center; color: #1a538c; font-family: 'Monaco', monospace; font-weight: bold">{{ segundaDir }}</h3>
+    
+            <div class="d-flex justify-content-center">
+             
+            </div>
+          </div>
+    
+          <div id="DirEstEco" class="col-2 m-1">
+            <div class="d-flex justify-content-center ">
+              <i class="bi bi-cash-stack display-1 " style="color: #113250;"></i>
+            </div>
+            <h5 class="fw-normal text-center" style="height: 7.5rem; color: #113250; font-family: Helvetica, Sans-Serif;">Dirección General de Estadísticas Económicas.</h5>
+            <h5 style="text-align: center; color: #004045; font-family: Helvetica, Sans-Serif;">Total de productos:</h5>
+            <h3 style="text-align: center; color: #1a538c; font-family: 'Monaco', monospace; font-weight: bold"> {{ terceraDir }}</h3>
+    
+            <div class="d-flex justify-content-center">
+             
+            </div>
+          </div>
+    
+          <div class="col-2 m-1">
+            <div class="d-flex justify-content-center ">
+              <i class="bi bi-bank display-1 " style="color: #113250;"></i>
+            </div>
+            <h5 style="color: #113250; font-family: Helvetica, Sans-Serif; height: 7.5rem;" class="fw-normal text-center ">Direrccion General de Estadísticas de Gobierno, Seguridad Pública y Justicia.
+            </h5>
+            <h5 style="text-align: center; color: #004045; font-family: Helvetica, Sans-Serif;">Total de productos: </h5>
+            <h3 style="text-align: center; color: #1a538c; font-family: 'Monaco', monospace; font-weight: bold">{{ cuartaDir }}</h3>
+    
+            <div class="d-flex justify-content-center">
+             
+            </div>
+          </div>
+    
+          <div class="col-2 m-1">
+            <div class="d-flex justify-content-center ">
+              <i class="bi bi-file-earmark-text display-1 " style="color: #113250;"></i>
+            </div>
+            <h5  style="color: #113250; font-family: Helvetica, Sans-Serif; height: 7.5rem;" class="fw-normal text-center ">Dirección General de Integración, Análisis e
+              Investigación.</h5>
+              <h5 style="text-align: center; color: #004045; margin-top: 10; font-family: Helvetica, Sans-Serif;">Total de productos: </h5>
+              <h3 style="text-align: center; color: #1a538c; font-family: 'Monaco', monospace; font-weight: bold;">{{ quintaDir }}</h3>
+    
+            <div class="d-flex justify-content-center">
+             
+            </div>
+          </div>
+        </div>
+
+    </div>
+
+    <br>
 
       <div *ngIf="showFilteredProducts">
         <div *ngFor="let item of filteredProducts">
@@ -410,7 +513,7 @@
                 </div>
 
                 <div>
-                  <strong class="card-title" style="color: #113250;  ">{{item.nom_producto | uppercase}}</strong>
+                  <strong class="card-title" style="color: #113250;  font-family: Helvetica, Sans-Serif;">{{item.nom_producto | uppercase}}</strong>
                 </div>
 
               </div>
@@ -418,7 +521,7 @@
                 <div class="ms-auto">
                   <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
                     (click)="openModal(item)"
-                    style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem; background-color: #113250; color: #ffffff;">Mas
+                    style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem; background-color: #113250; color: #ffffff; font-family: Helvetica, Sans-Serif;">Mas
                     Información</button>
                 </div>
               </div>
@@ -449,7 +552,7 @@
                 </div>
 
                 <div>
-                  <strong class="card-title" style="color: #113250;  ">{{item.nom_producto | uppercase}}</strong>
+                  <strong class="card-title" style="color: #113250;  font-family: Helvetica, Sans-Serif;">{{item.nom_producto | uppercase}}</strong>
                 </div>
 
               </div>
@@ -457,8 +560,8 @@
                 <div class="ms-auto">
                   <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
                     (click)="openModal(item)"
-                    style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem; background-color: #113250; color: #ffffff;">Mas
-                    Información</button>
+                    style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem; background-color: #113250; color: #ffffff; font-family: Helvetica, Sans-Serif;">
+                    Mas Información</button>
                 </div>
               </div>
             </div>
@@ -485,7 +588,7 @@
                   <div class="ms-auto">
                     <button type="button btn-moreInfo" class="btn" data-bs-toggle="modal"
                       data-bs-target="#staticBackdrop" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem;
-                          --bs-btn-font-size: .75rem; background-color: #113250; color: #113250;">
+                          --bs-btn-font-size: .75rem; background-color: #113250; color: #113250; font-family: Helvetica, Sans-Serif;">
                       Mas Información
                     </button>
                   </div>
@@ -520,24 +623,24 @@
           <!--! ICONOS DEL PRODUCTO -->
           <div class="col-10 d-flex align-items-center">
             <div *ngIf="elementoSeleccionado?.dg_prod == 1">
-              <i class="bi bi-globe me-2" style="color: #113250; font-size: 1.5rem;"></i>
+              <i class="bi bi-globe me-2" style="color: #113250; font-size: 1.5rem; font-family: Helvetica, Sans-Serif;"></i>
             </div>
             <div *ngIf="elementoSeleccionado?.dg_prod == 2">
-              <i class="bi bi-bar-chart me-2" style="color: #113250; font-size: 1.5rem;"></i>
+              <i class="bi bi-bar-chart me-2" style="color: #113250; font-size: 1.5rem; font-family: Helvetica, Sans-Serif;"></i>
             </div>
             <div *ngIf="elementoSeleccionado?.dg_prod == 3">
-              <i class="bi bi-cash-stack me-2" style="color: #113250; font-size: 1.5rem;"></i>
+              <i class="bi bi-cash-stack me-2" style="color: #113250; font-size: 1.5rem; font-family: Helvetica, Sans-Serif;"></i>
             </div>
             <div *ngIf="elementoSeleccionado?.dg_prod == 4">
-              <i class="bi bi-file-earmark-text me-2" style="color: #113250; font-size: 1.5rem;"></i>
+              <i class="bi bi-file-earmark-text me-2" style="color: #113250; font-size: 1.5rem; font-family: Helvetica, Sans-Serif;"></i>
             </div>
             <div *ngIf="elementoSeleccionado?.dg_prod == 5">
-              <i class="bi bi-bank me-2" style="color: #113250; font-size: 1.5rem;"></i>
+              <i class="bi bi-bank me-2" style="color: #113250; font-size: 1.5rem; font-family: Helvetica, Sans-Serif;"></i>
             </div>
 
             <!--! NOMBRE DEL PRODUCTO -->
             <div>
-              <h2 class="modal-title fs-6" id="staticBackdropLabel" style="color: #113250;">
+              <h2 class="modal-title fs-6" id="staticBackdropLabel" style="color: #113250; font-family: Helvetica, Sans-Serif;">
                 {{elementoSeleccionado?.nom_producto | uppercase}}</h2>
             </div>
 
@@ -552,9 +655,9 @@
 
             <!--! TIPO DE PRODUCTO -->
             <div class="col-md-4 col-12">
-              <span>Producto de tipo: </span>
+              <span style="font-family: Helvetica, Sans-Serif;">Producto de tipo: </span>
               <br>
-              <span class="badge">
+              <span class="badge" style="font-family: Helvetica, Sans-Serif;">
                 {{ elementoSeleccionado?.tipo_prod__1 == 0 ? '' : (
                 elementoSeleccionado?.tipo_prod__1 == 1 && elementoSeleccionado?.tipo_prod__2 == 0 ? 'Geográfico' :
                 '') }}
@@ -569,7 +672,7 @@
 
             <!--! COBERTURA -->
             <div class="col-md-4 col-12">
-              <span>Cobertura del producto: </span>
+              <span style="font-family: Helvetica, Sans-Serif;"> Cobertura del producto: </span>
               <br>
               <span class="badge me-1" *ngIf="elementoSeleccionado?.cobertura_geo__1 == 1">
                 {{ elementoSeleccionado?.cobertura_geo__1 == 1 ? 'Nacional' : '' }}
@@ -597,7 +700,7 @@
             </div>
 
             <div class="col-md-4 col-12">
-              <span>El producto se fragmenta:</span>
+              <span style="font-family: Helvetica, Sans-Serif;">El producto se fragmenta:</span>
               <br>
 
               <span class="badge m-1">{{
@@ -610,10 +713,10 @@
 
 
                 <div class="col-12">
-                  <span>
+                  <span style="font-family: Helvetica, Sans-Serif;">
                     Número de fragmentos:
                   </span>
-                  <span class="badge m-1">
+                  <span class="badge m-1" style="font-family: Helvetica, Sans-Serif;">
                     {{ elementoSeleccionado?.n_fragmenta }}
                   </span>
                 </div>
@@ -638,9 +741,9 @@
 
             <!--! AÑOS DE PUBLICACIÓN -->
             <div class="col-md-4 col-12">
-              <span>Año de publicación: </span>
+              <span style="font-family: Helvetica, Sans-Serif;">Año de publicación: </span>
               <br>
-              <span class="badge">{{ elementoSeleccionado?.a_publicacion}}
+              <span class="badge" style="font-family: Helvetica, Sans-Serif;">{{ elementoSeleccionado?.a_publicacion}}
                 {{elementoSeleccionado?.a_publicacion2 ? (
                 ' - ' + elementoSeleccionado?.a_publicacion2): ''}}
               </span>
@@ -648,9 +751,9 @@
             </div>
             <!--! AÑOS DE REFERENCIA -->
             <div class="col-md-4 col-12">
-              <span>Año de referencia: </span>
+              <span style="font-family: Helvetica, Sans-Serif;">Año de referencia: </span>
               <br>
-              <span class="badge">{{
+              <span class="badge" style="font-family: Helvetica, Sans-Serif;">{{
                 elementoSeleccionado?.a_referencia }}{{
                 elementoSeleccionado?.a_referencia2 ? (
                 ' - ' + elementoSeleccionado?.a_referencia2) : ''}}
@@ -660,7 +763,7 @@
 
             <div class="col-md-4 col-12">
               <span *ngIf="elementoSeleccionado?.actualizacion == 1">
-                <span>Se actualiza: </span>
+                <span style="font-family: Helvetica, Sans-Serif;">Se actualiza: </span>
                 <br>
                 <span class="badge badgewrap"
                   [title]="elementoSeleccionado?.p_actualizacion == 7 ? ''+ elementoSeleccionado?.o_periodo : ''">
@@ -678,9 +781,9 @@
                 </span>
               </span>
               <span *ngIf="elementoSeleccionado?.actualizacion == 2">
-                <span>Se actualiza: </span>
+                <span style="font-family: Helvetica, Sans-Serif;">Se actualiza: </span>
                 <br>
-                <span class="badge">No</span>
+                <span class="badge" style="font-family: Helvetica, Sans-Serif;">No</span>
               </span>
             </div>
 
@@ -691,9 +794,9 @@
 
           <div class="row mb-2">
             <div class="col-md-4 col-12">
-              <span *ngIf="elementoSeleccionado?.escala">Escala geográfica: </span>
+              <span *ngIf="elementoSeleccionado?.escala" style="font-family: Helvetica, Sans-Serif;">Escala geográfica: </span>
 
-              <span *ngIf="elementoSeleccionado?.escala">
+              <span *ngIf="elementoSeleccionado?.escala" style="font-family: Helvetica, Sans-Serif;">
                 <span class="badge">
                   {{ elementoSeleccionado?.escala != 14 ? getEscalasText(elementoSeleccionado?.escala) : 'Otra: '+elementoSeleccionado?.o_escala }}
                 </span>
@@ -702,28 +805,28 @@
 
               <span *ngIf="!elementoSeleccionado?.escala">
 
-                <span> Ninguna escala geográfica. </span>
+                <span style="font-family: Helvetica, Sans-Serif;"> Ninguna escala geográfica. </span>
               </span>
             </div>
             <div class="col-md-4 col-12">
               <span *ngIf="elementoSeleccionado?.liga">
-                <span>Ligas de acceso: </span>
+                <span style="font-family: Helvetica, Sans-Serif;">Ligas de acceso: </span>
                 <a (click)="$event.stopPropagation()" target="_blank" [href]="elementoSeleccionado?.liga">
                   enlace.
                 </a>
               </span>
             </div>
             <div class="col-md-4 col-12">
-              <span *ngIf="elementoSeleccionado?.metodologia == 1">
-                <span *ngIf="elementoSeleccionado?.metodologia == 1">
+              <span *ngIf="elementoSeleccionado?.metodologia == 1" >
+                <span *ngIf="elementoSeleccionado?.metodologia == 1" style="font-family: Helvetica, Sans-Serif;">
                   Cuenta con metodología:
                 </span>
-                <a (click)="$event.stopPropagation()" [href]="elementoSeleccionado?.liga_metodologia" target="_blank">
+                <a (click)="$event.stopPropagation()" [href]="elementoSeleccionado?.liga_metodologia" target="_blank" style="font-family: Helvetica, Sans-Serif;">
                   enlace.
                 </a>
               </span>
               <span *ngIf="elementoSeleccionado?.metodologia == 2">
-                <span>No cuenta con metodología</span>
+                <span style="font-family: Helvetica, Sans-Serif;">No cuenta con metodología</span>
               </span>
             </div>
             <div class="container">
@@ -734,7 +837,7 @@
 
           <div class="row">
             <div class="col-12">
-              <span>Tipo(s) de soporte del producto:</span>
+              <span style="font-family: Helvetica, Sans-Serif;">Tipo(s) de soporte del producto:</span>
               <div class="row mt-2">
                 <div class="col" *ngIf="elementoSeleccionado?.tipo_soporte__1 == 1">
                   <ul class="list-group list-group-flush">
@@ -743,28 +846,28 @@
                       ? 'Datos Geográficos' : ''}}
                     </li>
                     <li *ngIf="elementoSeleccionado?.tipo_soporte__1 == 1" class="list-group-item">
-                      <span> En formato: </span>
-                      <span class="badge me-1" *ngIf="elementoSeleccionado?.formato_geo__1 == 1">
+                      <span style="font-family: Helvetica, Sans-Serif;"> En formato: </span>
+                      <span class="badge me-1" *ngIf="elementoSeleccionado?.formato_geo__1 == 1" style="font-family: Helvetica, Sans-Serif;">
                         {{
                         elementoSeleccionado?.formato_geo__1 == 1 ? 'Conjunto de datos vectoriales (SHP)' : ''
                         }}
                       </span>
-                      <span class="badge me-1" *ngIf="elementoSeleccionado?.formato_geo__2 == 1">
+                      <span class="badge me-1" *ngIf="elementoSeleccionado?.formato_geo__2 == 1" style="font-family: Helvetica, Sans-Serif;">
                         {{
                         elementoSeleccionado?.formato_geo__2 == 1 ? 'Raster (TIIF, GIF, BIL, etc.)' : ''
                         }}
                       </span>
-                      <span class="badge me-1" *ngIf="elementoSeleccionado?.formato_geo__3 == 1">
+                      <span class="badge me-1" *ngIf="elementoSeleccionado?.formato_geo__3 == 1" style="font-family: Helvetica, Sans-Serif;">
                         {{
                         elementoSeleccionado?.formato_geo__3 == 1 ? 'GeoPDF' : ''
                         }}
                       </span>
-                      <span class="badge me-1" *ngIf="elementoSeleccionado?.formato_geo__4 == 1">
+                      <span class="badge me-1" *ngIf="elementoSeleccionado?.formato_geo__4 == 1" style="font-family: Helvetica, Sans-Serif;">
                         {{
                         elementoSeleccionado?.formato_geo__4 == 1 ? 'PDF' : ''
                         }}
                       </span>
-                      <span class="badge" *ngIf="elementoSeleccionado?.formato_geo__5 == 1">
+                      <span class="badge" *ngIf="elementoSeleccionado?.formato_geo__5 == 1" style="font-family: Helvetica, Sans-Serif;">
                         {{
                         elementoSeleccionado?.formato_geo__5 == 1 ? 'Otro: ' + elementoSeleccionado?.o_formato_geo : ''
                         }}
@@ -781,29 +884,29 @@
                       }}
                     </li>
                     <li class="list-group-item">
-                      <strong> En formato: </strong>
-                      <span class="badge me-1" *ngIf="elementoSeleccionado?.formato_tab__1 == 1">
+                      <strong style="font-family: Helvetica, Sans-Serif;"> En formato: </strong>
+                      <span class="badge me-1" *ngIf="elementoSeleccionado?.formato_tab__1 == 1" style="font-family: Helvetica, Sans-Serif;">
                         {{
                         elementoSeleccionado?.formato_tab__1 == 1 ? '.dbf' : ''
                         }}
 
                       </span>
-                      <span class="badge me-1" *ngIf="elementoSeleccionado?.formato_tab__2 == 1">
+                      <span class="badge me-1" *ngIf="elementoSeleccionado?.formato_tab__2 == 1" style="font-family: Helvetica, Sans-Serif;">
                         {{
                         elementoSeleccionado?.formato_tab__2 == 1 ? '.csv' : ''
                         }}
                       </span>
-                      <span class="badge me-1" *ngIf="elementoSeleccionado?.formato_tab__3 == 1">
+                      <span class="badge me-1" *ngIf="elementoSeleccionado?.formato_tab__3 == 1" style="font-family: Helvetica, Sans-Serif;">
                         {{
                         elementoSeleccionado?.formato_tab__3 == 1 ? '.txt' : ''
                         }}
                       </span>
-                      <span class="badge me-1" *ngIf="elementoSeleccionado?.formato_tab__4 == 1">
+                      <span class="badge me-1" *ngIf="elementoSeleccionado?.formato_tab__4 == 1" style="font-family: Helvetica, Sans-Serif;">
                         {{
                         elementoSeleccionado?.formato_tab__4 == 1 ? '.xlsx' : ''
                         }}
                       </span>
-                      <span class="badge" *ngIf="elementoSeleccionado?.formato_tab__5 == 1">
+                      <span class="badge" *ngIf="elementoSeleccionado?.formato_tab__5 == 1" style="font-family: Helvetica, Sans-Serif;">
                         {{
                         elementoSeleccionado?.formato_tab__5 == 1 ? 'Otro: ' + elementoSeleccionado?.o_formato_tab : ''
                         }}
@@ -846,26 +949,26 @@
                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
                   <button class="nav-link active" id="nav-variable-tab" data-bs-toggle="tab"
                     data-bs-target="#nav-variable" type="button" role="tab" aria-controls="nav-variable"
-                    aria-selected="true" style="color: #113250;">Variables</button>
+                    aria-selected="true" style="color: #113250; font-family: Helvetica, Sans-Serif;">Variables</button>
 
                   <button class="nav-link" id="nav-pi-tab" data-bs-toggle="tab" data-bs-target="#nav-pi" type="button"
-                    role="tab" aria-controls="nav-pi" aria-selected="false" style="color: #113250;">Programas de
+                    role="tab" aria-controls="nav-pi" aria-selected="false" style="color: #113250; font-family: Helvetica, Sans-Serif;">Programas de
                     Información</button>
 
                   <button class="nav-link" id="nav-aeg-tab" data-bs-toggle="tab" data-bs-target="#nav-aeg" type="button"
-                    role="tab" aria-controls="nav-aeg" aria-selected="false" style="color: #113250;">Actividades
+                    role="tab" aria-controls="nav-aeg" aria-selected="false" style="color: #113250; font-family: Helvetica, Sans-Serif;">Actividades
                     Estadísticas o
                     Geográficas</button>
 
                   <button class="nav-link" id="nav-mdea-tab" data-bs-toggle="tab" data-bs-target="#nav-mdea"
                     type="button" role="tab" aria-controls="nav-mdea" aria-selected="false"
-                    style="color: #113250;">MDEA</button>
+                    style="color: #113250; font-family: Helvetica, Sans-Serif;">MDEA</button>
 
                   <button class="nav-link" id="nav-ods-tab" data-bs-toggle="tab" data-bs-target="#nav-ods" type="button"
-                    role="tab" aria-controls="nav-ods" aria-selected="false" style="color: #113250;">ODS</button>
+                    role="tab" aria-controls="nav-ods" aria-selected="false" style="color: #113250; font-family: Helvetica, Sans-Serif;">ODS</button>
 
                   <button class="nav-link" id="nav-ps-tab" data-bs-toggle="tab" data-bs-target="#nav-ps" type="button"
-                    role="tab" aria-controls="nav-ps" aria-selected="false" style="color: #113250;">Programas
+                    role="tab" aria-controls="nav-ps" aria-selected="false" style="color: #113250; font-family: Helvetica, Sans-Serif;">Programas
                     Sectoriales</button>
                 </div>
               </nav>
@@ -882,7 +985,7 @@
                             <div class="row">
                               <div class="col-md-4 col-12" *ngFor="let item of secuenciaVAR">
                                 <div class="shadow-sm p-1 mt-2 mb-0 bg-body-tertiary rounded">
-                                  <h6 style="color: #113250; text-align: center;">{{item.nom_var | uppercase}}</h6>
+                                  <h6 style="color: #113250; text-align: center; font-family: Helvetica, Sans-Serif;">{{item.nom_var | uppercase}}</h6>
                                 </div>
                               </div>
                             </div>
@@ -891,7 +994,7 @@
                       </ng-container>
                       <ng-template #nosecuenciaVAR>
                         <div class="text-center shadow-sm p-1 mt-2 mb-0 bg-body-tertiary rounded">
-                          <h5 style="color: #113250;">Ninguna Variable Detectada.</h5>
+                          <h5 style="color: #113250; font-family: Helvetica, Sans-Serif;">Ninguna Variable Detectada.</h5>
                         </div>
                       </ng-template>
                     </div>
@@ -910,15 +1013,15 @@
                               <div class=" card-body">
                                 <div class="row">
                                   <div class="col-md-12 col-12">
-                                    <strong style="color: #113250;">Unidad Administrativa Responsable:</strong>
+                                    <strong style="color: #113250; font-family: Helvetica, Sans-Serif;">Unidad Administrativa Responsable:</strong>
                                     <span> {{getDireccionGeneralText(item.dg_pi)}}.</span>
                                   </div>
                                   <div class="col-md-12 col-12">
-                                    <strong style="color: #113250;">Programa de Información:</strong>
+                                    <strong style="color: #113250; font-family: Helvetica, Sans-Serif;">Programa de Información:</strong>
                                     <span> {{getProgInfoText(item.nom_pi)}}.</span>
                                   </div>
                                   <div class="col-md-12 col-12">
-                                    <strong style="color: #113250;">Proceso de Producción:</strong>
+                                    <strong style="color: #113250; font-family: Helvetica, Sans-Serif;">Proceso de Producción:</strong>
                                     <span> {{getDga_PprodText(item.pp_pi)}}.</span>
                                     <hr class="mt-2">
                                   </div>
@@ -931,7 +1034,7 @@
                       </ng-container>
                       <ng-template #noPi>
                         <div class="text-center shadow-sm p-2 mt-2 m-1 mb-0 bg-body-tertiary rounded">
-                          <h5 style="color: #113250;">Ningún Programa de Información Detectado.</h5>
+                          <h5 style="color: #113250; font-family: Helvetica, Sans-Serif;">Ningún Programa de Información Detectado.</h5>
                         </div>
                       </ng-template>
 
@@ -951,15 +1054,15 @@
                               <div class="card-body">
                                 <div class="row">
                                   <div class="col-md-12 col-12">
-                                    <strong style="color: #113250;">Dirección General Responsable: </strong>
+                                    <strong style="color: #113250; font-family: Helvetica, Sans-Serif;">Dirección General Responsable: </strong>
                                     <span> {{getDga_PprodText(item.dg_aeg)}}.</span>
                                   </div>
                                   <div class="col-md-12 col-12">
-                                    <strong style="color: #113250;">Actividad Estadística o Geográfica: </strong>
+                                    <strong style="color: #113250; font-family: Helvetica, Sans-Serif;">Actividad Estadística o Geográfica: </strong>
                                     <span> {{getAEG_2Text(item.nom_aeg)}}.</span>
                                   </div>
                                   <div class="col-md-12 col-12">
-                                    <strong style="color: #113250;">Dirección General Adjunta Responsable : </strong>
+                                    <strong style="color: #113250; font-family: Helvetica, Sans-Serif;">Dirección General Adjunta Responsable : </strong>
                                     <span> {{getAEG_ProdText(item.dga_aeg)}}.</span>
 
                                   </div>
@@ -971,7 +1074,7 @@
                       </ng-container>
                       <ng-template #noaegSecuencia>
                         <div class="text-center shadow-sm p-2 mt-3 m-1 mb-0 bg-body-tertiary rounded">
-                          <h5 style="color: #113250;">Ninguna Actividad Estadística o Geográfica Detectada.</h5>
+                          <h5 style="color: #113250; font-family: Helvetica, Sans-Serif;">Ninguna Actividad Estadística o Geográfica Detectada.</h5>
                         </div>
                       </ng-template>
                     </div>
@@ -983,7 +1086,7 @@
                     <div class="col">
                       <ng-container *ngIf="mdeas && mdeas.length > 0; else nomdeas">
                         <div class="pt-2 m-2  bg-body-tertiary rounded">
-                          <h4 style="color: #113250; padding-left: 0.5rem;">Relación con el Marco para el Desarrollo de
+                          <h4 style="color: #113250; padding-left: 0.5rem; font-family: Helvetica, Sans-Serif;">Relación con el Marco para el Desarrollo de
                             las Estadísticas Ambientales:
                           </h4>
                           <div class="row" *ngFor="let item of mdeas">
@@ -991,17 +1094,17 @@
                               <div class="card card-body m-2 mb-2">
                                 <div class="row">
                                   <div class="col-md-4 col-12">
-                                    <strong style="color: #113250;">Componente: </strong>
+                                    <strong style="color: #113250; font-family: Helvetica, Sans-Serif;">Componente: </strong>
                                     <br>
                                     <span> {{getComponenteText(item.comp_mdea)}}.</span>
                                   </div>
                                   <div class="col-md-4 col-12">
-                                    <strong style="color: #113250;">Subcomponente: </strong>
+                                    <strong style="color: #113250; font-family: Helvetica, Sans-Serif;">Subcomponente: </strong>
                                     <br>
                                     <span> {{getSubcomponenteText(item.subcomp_mdea)}}.</span>
                                   </div>
                                   <div class="col-md-4 col-12">
-                                    <strong style="color: #113250;">Tópico: </strong>
+                                    <strong style="color: #113250; font-family: Helvetica, Sans-Serif;">Tópico: </strong>
                                     <br>
                                     <span> {{getTopicoText(item.topico_mdea)}}.</span>
                                   </div>
@@ -1013,7 +1116,7 @@
                       </ng-container>
                       <ng-template #nomdeas>
                         <div class="text-center shadow-sm p-2 mt-3 m-1 mb-0 bg-body-tertiary rounded">
-                          <h5 style="color: #113250;">Ninguna Relación con el Marco para el Desarrollo de las
+                          <h5 style="color: #113250; font-family: Helvetica, Sans-Serif;">Ninguna Relación con el Marco para el Desarrollo de las
                             Estadísticas Ambientales.
                           </h5>
                         </div>
@@ -1028,19 +1131,19 @@
                     <div class="col">
                       <ng-container *ngIf="ODSes && ODSes.length > 0; else noODSes">
                         <div class="pt-2 m-2 bg-body-tertiary rounded">
-                          <h4 style="color: #113250; padding-left: 0.5rem;">Relación con Objetivos del Desarrollo
+                          <h4 style="color: #113250; padding-left: 0.5rem; font-family: Helvetica, Sans-Serif;">Relación con Objetivos del Desarrollo
                             Sostenible:</h4>
                           <div class="row" *ngFor="let item of ODSes">
                             <div class="col">
                               <div class="card card-body m-2 mb-2">
                                 <div class="row">
                                   <div class="col-md-6 col-12">
-                                    <strong style="color: #113250;">Objetivo: </strong>
+                                    <strong style="color: #113250; font-family: Helvetica, Sans-Serif;">Objetivo: </strong>
                                     <br>
                                     <span class=""> {{getObjetivODSText(item.obj_ods) | slice:3}}.</span>
                                   </div>
                                   <div class="col-md-6 col-12">
-                                    <strong style="color: #113250;">Meta: </strong>
+                                    <strong style="color: #113250; font-family: Helvetica, Sans-Serif;">Meta: </strong>
                                     <br>
                                     <span> {{getMetaODSText(item.meta_ods)}}.</span>
                                   </div>
@@ -1052,7 +1155,7 @@
                       </ng-container>
                       <ng-template #noODSes>
                         <div class="text-center shadow-sm p-2 mt-3 m-1 mb-0 bg-body-tertiary rounded">
-                          <h5 style="color: #113250;">Ninguna Relación con Objetivos del Desarrollo Sostenible.</h5>
+                          <h5 style="color: #113250; font-family: Helvetica, Sans-Serif;">Ninguna Relación con Objetivos del Desarrollo Sostenible.</h5>
                         </div>
                       </ng-template>
                     </div>
@@ -1064,13 +1167,13 @@
                     <div class="col">
                       <ng-container *ngIf="PSes && PSes.length > 0; else noPSes">
                         <div class="pt-2 m-2 bg-body-tertiary rounded">
-                          <h4 style="color: #113250; padding-left: 0.5rem;">Relación con Programas Sectoriales:</h4>
+                          <h4 style="color: #113250; padding-left: 0.5rem; font-family: Helvetica, Sans-Serif;">Relación con Programas Sectoriales:</h4>
                           <div class="row" *ngFor="let item of PSes">
                             <div class="col">
                               <div class="card card-body m-2 mb-2">
                                 <div class="row">
                                   <div class="col-md-6 col-12">
-                                    <strong style="color: #113250;">Programa Sectorial: </strong>
+                                    <strong style="color: #113250; font-family: Helvetica, Sans-Serif;">Programa Sectorial: </strong>
                                     <br>
                                     <span>{{getps2023Text(item.prog_ps)}}.</span>
 
@@ -1078,7 +1181,7 @@
                                   </div>
                                   <div class="col-md-6 col-12">
                                     <div *ngIf="item.indicador_ps">
-                                      <strong style="color: #113250;">Indicador que corresponde: </strong>
+                                      <strong style="color: #113250; font-family: Helvetica, Sans-Serif;">Indicador que corresponde: </strong>
                                       <br>
                                       <span> {{getIndicadoresPS2023Text(item.indicador_ps)}}.</span>
                                     </div>
@@ -1091,7 +1194,7 @@
                       </ng-container>
                       <ng-template #noPSes>
                         <div class="text-center shadow-sm p-2 mt-3 m-1 mb-0 bg-body-tertiary rounded">
-                          <h4 style="color: #113250;">Ninguna relación con algún Programa Sectorial.</h4>
+                          <h4 style="color: #113250; font-family: Helvetica, Sans-Serif;">Ninguna relación con algún Programa Sectorial.</h4>
                         </div>
                       </ng-template>
                     </div>
@@ -1106,7 +1209,7 @@
 
         </div>
         <div class="modal-footer">
-          <span style="color: #113250;">
+          <span style="color: #113250; font-family: Helvetica, Sans-Serif;">
             {{ elementoSeleccionado?.dg_prod == 1 ? 'Dirección General de Geografía y Medio Ambiente':(
             elementoSeleccionado?.dg_prod == 2 ? 'Dirección General de Estadísticas Sociodemográficas': (
             elementoSeleccionado?.dg_prod == 3 ? 'Dirección General de Estadísticas Económicas': (

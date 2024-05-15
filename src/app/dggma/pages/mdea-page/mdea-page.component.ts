@@ -592,6 +592,8 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
       default:
         break;
     }
-    this.router.navigate(['/dg/products']);
+    this.router.navigate(['/dg/products']).then(() => {
+      // this.hiddenFilters();
+    });
   }
 }

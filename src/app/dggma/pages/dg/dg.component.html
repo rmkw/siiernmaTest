@@ -25,8 +25,8 @@
 
             <img focusable="false" src="./assets/inegilogowhite.png" alt="Mi SVG"
               style="max-width: 350px; height: auto;  margin: 0 auto;">
-            <h1 style="color: white;">Productos INEGI con relevancia ambiental detectados.</h1>
-            <p style="color: white;">Descubre los productos ambientales detectados y catalogados por direcciones generales.
+            <h1 style="color: white; font-family: Helvetica, Sans-Serif;">Productos detectados en las direcciones generales.</h1>
+            <p style="color: white; font-family: Helvetica, Sans-Serif;">Descubre los productos detectados y catalogados por direcciones generales.
             </p>
             <button class="btn btn-lg custom-btn-colorWhite" [routerLink]="['/dg/products']" href="#">Ver más</button>
           </div>
@@ -43,42 +43,42 @@
 
 
         <div class="container">
-          <div class="carousel-caption text-end">
-
-            <h2 style="color: #dff9ff; ">Relación con el Marco para el Desarrollo de las Estadísticas Ambientales.</h2>
-            <p style="color: #dff9ff; ">Explora para saber más.</p>
-            <button class="btn btn-lg custom-btn-colorWhite" style="margin-bottom: 0px;" [routerLink]="['/dg/mdea']" href="#">Ver más</button>
+          <div id="mdeatext" class="carousel-caption text-center" >
+            <h2 style="color: #dff9ff; font-family: Helvetica, Sans-Serif;" >Relación con el Marco para el Desarrollo de las Estadísticas Ambientales.</h2>
+            <p style="color: #dff9ff; font-family: Helvetica, Sans-Serif;">Explora para saber más.</p>
+            <button class="btn btn-lg custom-btn-color" [routerLink]="['/dg/mdea']" href="#">Ver más</button>
           </div>
         </div>
       </div>
 
-      <!--! ODS CARRUSEL -->
-      <div class="carousel-item" style="background-color: white; border-bottom: 1px solid #009edb; position: relative;">
-      <video loop muted autoplay oncanplay="this.play()" onloadedmetadata="this.muted = true"
-        style="width: 100%; height: 100%; object-fit: cover; position: absolute; z-index: 1;">
-        <source
-          src="https://sdgintegration.undp.org/video/29062020/SDGi-Low.mp4"
-          type="video/mp4">
-      </video>
-      <div class="container " style="position: relative; z-index: 2;">
-        <div class="carousel-caption text-end">
-          <img src="https://www.un.org/sustainabledevelopment/wp-content/uploads/sites/3/2020/05/SDG_website_banner_S_100px.png"
+
+      <!--! ods -->
+
+      <div class="carousel-item" style="background-color: white; border-bottom: 1px solid #009edb;">
+
+        <video loop muted autoplay oncanplay="this.play()" onloadedmetadata="this.muted = true"
+          style="width: 100%; height: 100%; object-fit: cover;">
+          <source src="https://sdgintegration.undp.org/video/29062020/SDGi-Low.mp4" type="video/mp4">
+        </video>
+
+        <div class="carousel-caption">
+
+          <img style="margin-top: -21rem; margin-right: -22rem;"
+            src="https://www.un.org/sustainabledevelopment/wp-content/uploads/sites/3/2020/05/SDG_website_banner_S_100px.png"
             srcset="https://www.un.org/sustainabledevelopment/wp-content/uploads/sites/3/2020/05/SDG_website_banner_S_100px.png 1x, https://www.un.org/sustainabledevelopment/wp-content/uploads/sites/3/2020/05/SDG_website_banner_S.png 2x"
-            width="841" height="100" alt="Desarrollo Sostenible Logo"
-            style="max-height: 100px; height: auto; display: block; margin: 0 auto; margin-top: 7rem; "
+            alt="Desarrollo Sostenible Logo"
             data-retina_logo_url="https://www.un.org/sustainabledevelopment/wp-content/uploads/sites/3/2020/05/SDG_website_banner_S.png">
         </div>
 
+        <div class="carousel-caption text-end" >
+          <h1 style="color: #009edb; font-family: Helvetica, Sans-Serif;">Relación con los Objetivos de Desarrollo Sostenible.
+          </h1>
+          <p style="color: #009edb; font-family: Helvetica, Sans-Serif;">Explora para saber más.</p>
+          <button class="btn btn-lg custom-btn-color2" [routerLink]="['/dg/ods']" href="#">Ver más</button>
+        </div>
       </div>
 
 
-      <div class="carousel-caption text-end"
-        style="position: absolute;">
-        <h1 style="color: #ffffff;">Relación con los Objetivos de Desarrollo Sostenible.</h1>
-        <p style="color: #ffffff;">Explora para saber más.</p>
-        <button class="btn btn-lg custom-btn-colorWhite" [routerLink]="['/dg/ods']" href="#">Ver más</button>
-      </div>
-      </div>
 
       <!--! SNIEG -->
       <div class="carousel-item" style="background-color: #e1e3e6;" data-duration="7000">
@@ -90,9 +90,10 @@
 
         <div class="container">
           <div class="carousel-caption text-end">
-
-            <h1 style="color: #ffffff; ">Indicadores ambientales identificados.</h1>
-            <p style="color: #ffffff; ">Descubre más sobre indicadores ambientales producidos en el INEGI.</p>
+            <img focusable="false" src="./assets/snieg2.png" alt="Mi SVG"
+              style="max-width: 500px; height: auto;  margin: 0 auto;">
+            <h1 style="color: #ffffff; font-family: Helvetica, Sans-Serif;">Indicadores ambientales desarrollados por el INEGI.</h1>
+            <p style="color: #ffffff; font-family: Helvetica, Sans-Serif; ">Descubre más sobre indicadores ambientales producidos en el INEGI.</p>
             <button class="btn btn-lg custom-btn-colorGris" [routerLink]="['/dg/indicadores']" href="#">Ver más</button>
           </div>
         </div>
@@ -109,8 +110,8 @@
           <div class="carousel-caption text-end">
             <img focusable="false" src="./assets/logo.png" alt="Mi SVG"
               style="max-width: 500px; height: auto;  margin: 0 auto;">
-            <h1 style="color: #ffffff; ">Productos geográficos disponibles.</h1>
-            <p style="color: #ffffff; ">Explora y despliega las capas geográficas.</p>
+            <h1 style="color: #ffffff; font-family: Helvetica, Sans-Serif;">Productos geográficos disponibles.</h1>
+            <p style="color: #ffffff; font-family: Helvetica, Sans-Serif;">Explora y despliega las capas geográficas.</p>
             <button class="btn btn-lg custom-btn-colorWhite" [routerLink]="['/dg/indicadores']" href="#">Ver más</button>
           </div>
         </div>
@@ -128,94 +129,20 @@
   </div>
 
 
-  <div class="container marketing">
+
 
     <!--TODO: LAS DIRECCIONES CON ICONOS-->
-    <div class="row justify-content-center align-items-center">
-
-      <div class="col-md-4 col-sm-6 col-xs-12">
-        <div class="d-flex justify-content-center ">
-
-          <i class="bi bi-globe display-1" style="color: #113250;"></i>
-        </div>
-        <h3 class="fw-normal text-center">Dirección General de Geografía y Medio Ambiente.</h3>
-        <h3 style="text-align: center; color: #004045;">Total de productos:</h3>
-          <h1 style="text-align: center; color: #1a538c; font-family: 'Monaco', monospace; font-weight: bold;">{{ primerDir }}</h1>
-
-
-        <div class="d-flex justify-content-center">
-          <button class="btn btn-secondary mt-2"  (click)="navigateWithParam()" href="#">Ver productos detectados</button>
-        </div>
-      </div>
-
-      <div class="col-md-4 col-sm-6 col-xs-12">
-        <div class="d-flex justify-content-center ">
-          <i class="bi bi-bar-chart display-1 " style="color: #113250;"></i>
-        </div>
-        <h3 class="fw-normal text-center">Dirección General de Estadísticas Sociodemográficas.</h3>
-        <h3 style="text-align: center; color: #004045;">Total de productos:</h3>
-        <h1 style="text-align: center; color: #1a538c; font-family: 'Monaco', monospace; font-weight: bold">{{ segundaDir }}</h1>
-
-        <div class="d-flex justify-content-center">
-          <button class="btn btn-secondary mt-2" (click)="navigateWithParam1()" href="#">Ver productos detectados</button>
-        </div>
-      </div>
-
-      <div class="col-md-4 col-sm-6 col-xs-12">
-        <div class="d-flex justify-content-center ">
-          <i class="bi bi-cash-stack display-1 " style="color: #113250;"></i>
-        </div>
-        <h3 class="fw-normal text-center">Dirección General de Estadísticas Económicas.</h3>
-        <h3 style="text-align: center; color: #004045;">Total de productos:</h3>
-        <h1 style="text-align: center; color: #1a538c; font-family: 'Monaco', monospace; font-weight: bold"> {{ terceraDir }}</h1>
-
-        <div class="d-flex justify-content-center">
-          <button class="btn btn-secondary mt-2" (click)="navigateWithParam2()" href="#">Ver productos detectados</button>
-        </div>
-      </div>
-
-      <div class="mt-5"></div>
-
-      <div class="col-md-4 col-sm-6 col-xs-12">
-        <div class="d-flex justify-content-center ">
-          <i class="bi bi-bank display-1 " style="color: #113250;"></i>
-        </div>
-        <h3 class="fw-normal text-center ">Dirección General de Estadísticas de Gobierno, Seguridad Pública y Justicia.
-        </h3>
-        <h3 style="text-align: center; color: #004045;">Total de productos: </h3>
-        <h1 style="text-align: center; color: #1a538c; font-family: 'Monaco', monospace; font-weight: bold">{{ cuartaDir }}</h1>
-
-        <div class="d-flex justify-content-center">
-          <button class="btn btn-secondary custom-buttonMT mt-2" (click)="navigateWithParam3()" href="#">Ver productos detectados</button>
-        </div>
-      </div>
-
-      <div class="col-md-4 col-sm-6 col-xs-12">
-        <div class="d-flex justify-content-center ">
-          <i class="bi bi-file-earmark-text display-1 " style="color: #113250;"></i>
-        </div>
-        <h3 class="fw-normal text-center " style="height: 6.4rem;">Dirección General de Integración, Análisis e
-          Investigación .</h3>
-          <h3 style="text-align: center; color: #004045; margin-top: 10;">Total de productos: </h3>
-          <h1 style="text-align: center; color: #1a538c; font-family: 'Monaco', monospace; font-weight: bold;">{{ quintaDir }}</h1>
-
-        <div class="d-flex justify-content-center">
-          <button class="btn btn-secondary mt-2" (click)="navigateWithParam4()" href="#">Ver productos detectados</button>
-        </div>
-      </div>
-    </div>
-
 
 
     <!--! START THE FEATURETTES -->
 
-
+  <div class="container marketing">
 
     <hr class="featurette-divider">
 
     <div class="row">
       <div class="col">
-        <h1 class="display-5" style="margin-bottom: 2rem;">Temas de actualidad</h1>
+        <h1 class="display-5" style="margin-bottom: 2rem; font-family: Helvetica, Sans-Serif;">Temas de actualidad</h1>
       </div>
     </div>
     <div class="row" style=" margin-bottom: 10rem; background-color: #eef5f8; ">
@@ -225,32 +152,32 @@
         <div class="row">
           <div class="col-12" [ngClass]="{'selected': !isINEGISelected}" (click)="hiddenTheOtherContents_INEGI()"
             style="cursor: pointer; border-bottom: solid 3px; border-color: #ffffff; padding-top: 1.5rem; padding-bottom: 1.5rem;">
-            <h4  >
+            <h4  style="font-family: Helvetica, Sans-Serif;">
               Productos detectados en las direcciones generales.
             </h4>
           </div>
           <div class="col-12" [ngClass]="{'selected': !isMDEASelected}" (click)="hiddenTheOtherContents_MDEA()"
             style="cursor: pointer; border-bottom: solid 3px; border-color: #ffffff; padding-top: 1.5rem; padding-bottom: 1.5rem;">
-            <h4  >
+            <h4  style="font-family: Helvetica, Sans-Serif;">
               Marco para el Desarrollo de las Estadísticas Ambientales.
             </h4>
           </div>
           <div class="col-12" [ngClass]="{'selected': !isODSSelected}" (click)="hiddenTheOtherContents_ODS()"
             style="cursor: pointer; border-bottom: solid 3px; border-color: #ffffff; padding-top: 1.5rem; padding-bottom: 1.5rem;">
-            <h4  >
+            <h4  style="font-family: Helvetica, Sans-Serif;">
               Objetivos de Desarrollo Sostenible.
             </h4>
           </div>
           <div class="col-12" [ngClass]="{'selected': !isINDSelected}" (click)="hiddenTheOtherContents_IND()"
             style="cursor: pointer; border-bottom: solid 3px; border-color: #ffffff; padding-top: 1.5rem; padding-bottom: 1.5rem;">
-            <h4>
+            <h4 style="font-family: Helvetica, Sans-Serif;">
               Indicadores.
             </h4>
           </div>
 
           <div class="col-12" [ngClass]="{'selected': !isGeoNodeSelected}" (click)="hiddenTheOtherContents_GeoNode()"
             style="cursor: pointer; border-bottom: solid 3px; border-color: #ffffff; padding-top: 1.5rem; padding-bottom: 1.5rem;">
-            <h4>
+            <h4 style="font-family: Helvetica, Sans-Serif;">
               Inventario geográfico del INEGI.
             </h4>
           </div>
@@ -270,7 +197,7 @@
 
 
             <div style="margin: 2rem; margin-bottom: 5rem;">
-              <h2 style="color: #036baa;">Productos detectados en las direcciones generales.</h2>
+              <h2 style="color: #036baa; font-family: Helvetica, Sans-Serif;">Productos detectados en las direcciones generales.</h2>
               <p class="lead customParrafo">
                 En el presente portal, se ha logrado un hito importante al detectar y asignar la mayoría de los productos publicados por
                 el INEGI, llevando a cabo una integración profunda, vinculando cada uno de estos productos con actividades estadísticas
@@ -302,7 +229,7 @@
           </div>
           <div class="col-12 mt-2">
             <div style="margin: 2rem; margin-bottom: 5rem;">
-              <h2 style="color: #036baa;">Marco para el Desarrollo de las Estadísticas Ambientales.</h2>
+              <h2 style="color: #036baa; font-family: Helvetica, Sans-Serif;">Marco para el Desarrollo de las Estadísticas Ambientales.</h2>
               <p class="lead customParrafo">
                 El MDEA organiza las estadísticas ambientales en seis componentes, cada uno desagregado en subcomponentes y en tópicos
                 estadísticos.
@@ -328,7 +255,7 @@
           </div>
           <div class="col-12 m-2">
             <div style="margin: 2rem; margin-bottom: 5rem;">
-              <h2 style="color: #036baa;">Objetivos de Desarrollo Sostenible.</h2>
+              <h2 style="color: #036baa; font-family: Helvetica, Sans-Serif;">Objetivos de Desarrollo Sostenible.</h2>
               <p class="lead customParrafo">
                 Los Objetivos de Desarrollo Sostenible (ODS), fueron adoptados por las Naciones Unidas en 2015 como un llamado global
                 para velar y garantizar que para el 2030 toda la población disfrute de un futuro fundamentado en la sostenibilidad. Para
@@ -350,7 +277,7 @@
 
           <div class="col-12 m-2">
             <div style="margin: 2rem; margin-bottom: 5rem;">
-              <h2 style="color: #036baa;">Indicadores generados en INEGI.</h2>
+              <h2 style="color: #036baa; font-family: Helvetica, Sans-Serif;">Indicadores generados en INEGI.</h2>
               <p class="lead customParrafo">
                 Los indicadores ambientales son una forma de estadística derivada, que en el INEGI, se rige por el mandato legal
                 descrito en el artículo 27 de la Ley del SNIEG, el cual señala que el Subsistema Nacional de Información Geográfica,
@@ -370,13 +297,13 @@
         </div>
         <div [hidden]="isGeoNodeSelected" class="row">
           <div class="col-12" style="  background-color: #113250;">
-            <img focusable="false" src="./assets/logo.png" alt="Mi SVG"
-              style=" max-height: 500px; max-width: 500px; height: auto; display: block; margin: 0 auto; margin-top: 5rem; margin-bottom: 5rem; background-color: #113250;">
+            <img focusable="false" src="./assets/inegixgeonode.png" alt="Mi SVG"
+              style=" max-height: 600px; max-width: 600px; height: auto; display: block; margin: 0 auto; margin-top: 3rem; margin-bottom: 3rem; background-color: #113250;">
           </div>
 
           <div class="col-12 m-2">
             <div style="margin: 2rem; margin-bottom: 5rem;">
-              <h2 style="color: #036baa;">GeoNode.</h2>
+              <h2 style="color: #036baa; font-family: Helvetica, Sans-Serif;" >Inventario geográfico del INEGI.</h2>
               <p class="lead customParrafo">
                 Existen diversas opciones en cuanto a plataformas para implementar una IDE; sin embargo, se considera que GeoNode
                 es una
@@ -662,10 +589,10 @@
               Indicadores.
             </h6>
           </div>
-          <div class="col-12"
+          <div class="col-12" [ngClass]="{'selected': !isGeoNodeSelected}" (click)="hiddenTheOtherContents_GeoNode()"
             style="cursor: pointer; border-bottom: solid 3px; border-color: #ffffff; padding-top: 1.5rem; padding-bottom: 1.5rem;">
             <h6>
-              GeoNode.
+              Inventario geográfico del INEGI.
             </h6>
           </div>
         </div>
@@ -705,7 +632,7 @@
 
         <!--! MDEA  -->
         <div [hidden]="isMDEASelected" class="row" >
-          <div class="col-12 " style=" background-color: #e6e6e6; margin-left: 0px;">
+          <div class="col-12 " style=" background-color: #e6e6e6;">
             <img focusable="false" src="./assets/mdea.png" alt="Mi SVG"
               style=" max-height: 20rem; max-width: 100%; height: auto; display: block; margin: 0 auto; margin-right: 20px;  ">
           </div>
@@ -744,10 +671,10 @@
         </div>
 
         <!-- INDICADORES -->
-         <div [hidden]="isINDSelected"  class="row" >
-          <div class="col-12" style="  background-color: #ffffff;">
+         <div [hidden]="isINDSelected"  class="row" style=" margin: 0.5px;">
+          <div class="col-11 p-0 m-2" style="  background-color: #ffffff;">
             <img focusable="false" src="./assets/snieg.png" alt="Mi SVG"
-              style=" max-height: 200px; max-width: 200px; height: auto; display: block; margin: 0 auto; margin-top: 3rem; margin-bottom: 3rem; background-color: #ffffff;">
+            style="max-width: 80%; height: auto; display: block; margin: auto; margin-top: 2rem; margin-bottom: 2rem; background-color: #ffffff;">
           </div>
 
           <div class="col-12 m-2">
@@ -763,11 +690,41 @@
                 veraz y oportuna que coadyuve al desarrollo nacional.
               </p>
             </div>
+          </div>
+        </div>
 
+        <!-- Geonode -->
+        <div [hidden]="isGeoNodeSelected" class="row" style=" margin: 0.5px;">
+          <div class="col-11 p-0 m-2" style="background-color: #113250;">
+            <img focusable="false" src="./assets/logo.png" alt="Mi SVG"
+            style="max-width: 80%; height: auto; display: block; margin: auto; margin-top: 2rem; margin-bottom: 2rem; background-color: #113250;">
           </div>
 
+          <div class="col-12 m-2">
+            <div style="margin: 2rem; margin-bottom: 5rem;">
+              <h4 style="color: #036baa;">Inventario geográfico del INEGI.</h4>
+              <p class="lead" style="font-size: small;">
+                Existen diversas opciones en cuanto a plataformas para implementar una IDE; sin embargo, se considera que GeoNode
+                es una
+                de las más potentes. GeoNode es una plataforma de código abierto que permite la creación, administración y
+                visualización
+                de datos geoespaciales. Está diseñado para colaborar y compartir datos geográficos; lo utilizan gobiernos y
+                organizaciones sin fines de lucro para proyectos relacionados con el medio ambiente, la planificación del
+                territorio y
+                otros temas geográficos.
+              </p>
 
+              <p class="lead" style="font-size: small;">
+                En este apartado puedes navegar por el Entorno de Desarrollo Integrado (IDE) capaz de desplegar las capas
+                geográficas
+                del INEGI, así como consultar fácilmente la información contenida en dichas capas.
+              </p>
+
+            </div>
+
+          </div>
         </div>
+
       </div>
     </div>
   </div>
