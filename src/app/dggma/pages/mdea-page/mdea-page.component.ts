@@ -508,7 +508,9 @@ export class MdeaPageComponent implements OnInit{
       default:
         break;
     }
-    this.router.navigate(['/dg/products']);
+    this.router.navigate(['/dg/products']).then(() => {
+      // this.hiddenFilters();
+    });
   }
 
   navigateWithParamSubcomp(subcomponentId: number) {

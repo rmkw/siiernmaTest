@@ -6,4 +6,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   templateUrl: './indicadores-page.component.html',
   styleUrls: ['./indicadores-page.component.css'],
 })
-export class IndicadoresPageComponent {}
+export class IndicadoresPageComponent {
+
+
+  isMobile: boolean = window.innerWidth <= 480; 
+}
+

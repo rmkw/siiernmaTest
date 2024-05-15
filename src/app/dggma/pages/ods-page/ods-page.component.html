@@ -50,7 +50,7 @@
                   <div class="row mt-3" >
                     <ul *ngFor="let obj of objetivods" >
                       <li style="color: aliceblue; list-style: none;" >
-                        <button id="btnObj" type="button" [ngStyle]="{'background-color': coloresHexadecimales[obj.id]}" style="border-radius: 10px; color: white; width: 22.5rem; font-weight: 500;" (click)="SeleccionODS($event)" [value]="obj.id">{{ obj.text | slice: 3 }}</button>
+                        <button id="btnObj" type="button" [ngStyle]="{'background-color': coloresHexadecimales[obj.id]}" (click)="SeleccionODS($event)" [value]="obj.id">{{ obj.text | slice: 3 }}</button>
                       </li>
                     </ul>
                   </div>
@@ -58,7 +58,7 @@
   
   
             <!-- Metas -->  
-              <div class="col img-mobile" style="overflow-y: overlay; height:760px; width:760px; background-color: #184670;"> 
+              <div class="col img-mobile" id="odscontainermeta"> 
                 <div class="mt-5" >
                   <ul *ngFor="let item of meta"  >
                     <li style="color: aliceblue; font-weight: bold;">

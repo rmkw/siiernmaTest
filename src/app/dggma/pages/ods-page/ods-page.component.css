@@ -1,4 +1,4 @@
-@media (min-width: 992px) {
+@media (min-width: 166px) {
   .img-desktop {
     max-width: 80%;
   }
@@ -12,9 +12,28 @@
   }
 }
 
-@media (max-width: 1368px) {
-  .btnObj {
-    width: 22rem
+#btnObj {
+  border-radius: 10px; 
+  color: white;
+  width: 22.5rem; 
+  font-weight: 500;
+}
+@media (max-width: 1366px) and (min-width: 1024px) {
+  #btnObj {
+    width: 18.5rem
+  }
+}
+
+#odscontainermeta{
+  overflow-y: overlay; 
+  height:760px; 
+  width:760px; 
+  background-color: #184670;
+}
+@media (max-width: 1366px) and (min-width: 1024px) {
+  #odscontainermeta {
+    height:760px; 
+    width:700px; 
   }
 }
 
@@ -90,4 +109,11 @@ p {
     left: 50%; 
     transform: translateX(-50%); 
   }
+}
+
+#container-combined-pie{
+  max-width: 1000px;
+  min-width: 768px;
+  margin: 0 auto;
+  height: 600px;
 }
