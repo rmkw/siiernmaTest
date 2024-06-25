@@ -13,9 +13,9 @@
 }
 
 #btnObj {
-  border-radius: 10px; 
+  border-radius: 10px;
   color: white;
-  width: 22.5rem; 
+  width: 22.5rem;
   font-weight: 500;
 }
 @media (max-width: 1366px) and (min-width: 1024px) {
@@ -25,15 +25,15 @@
 }
 
 #odscontainermeta{
-  overflow-y: overlay; 
-  height:760px; 
-  width:760px; 
+  overflow-y: overlay;
+  height:760px;
+  width:760px;
   background-color: #184670;
 }
 @media (max-width: 1366px) and (min-width: 1024px) {
   #odscontainermeta {
-    height:760px; 
-    width:700px; 
+    height:760px;
+    width:700px;
   }
 }
 
@@ -74,7 +74,7 @@ p {
     margin-top: 10px;
     white-space: nowrap;
     align-items: left;
-  } 
+  }
 }
 
  #container-pie-obj{
@@ -86,11 +86,11 @@ p {
 @media (max-width: 500px) {
   #container-pie-obj{
     position: relative;
-    max-width: 10%; 
-    height: auto; 
-    margin: 0 auto; 
-    left: 50%; 
-    transform: translateX(-50%); 
+    max-width: 10%;
+    height: auto;
+    margin: 0 auto;
+    left: 50%;
+    transform: translateX(-50%);
   }
 }
 
@@ -103,11 +103,11 @@ p {
 @media (max-width: 500px) {
   #container-pie-meta{
     position: relative;
-    max-width: 10%; 
-    height: auto; 
-    margin: 0; 
-    left: 50%; 
-    transform: translateX(-50%); 
+    max-width: 10%;
+    height: auto;
+    margin: 0;
+    left: 50%;
+    transform: translateX(-50%);
   }
 }
 
@@ -116,4 +116,230 @@ p {
   min-width: 768px;
   margin: 0 auto;
   height: 600px;
+}
+
+
+
+
+
+/*! no se  */
+/*! objetivo 1 */
+.custom-btn {
+  background-color: #e5233d !important;
+  color: white !important;
+  border: none !important;
+}
+.custom-badge {
+  background-color: #ff6f61 !important;
+  color: white !important;
+}
+/*! objetivo 2 */
+.custom-btn2 {
+  background-color: #dda73a !important;
+  color: white !important;
+  border: none !important;
+}
+.custom-badge2 {
+  background-color: #ddb76b !important;
+  color: white !important;
+}
+/*! objetivo 3 */
+.custom-btn3 {
+  background-color: #4ca146 !important;
+  color: white !important;
+  border: none !important;
+}
+
+.custom-badge3 {
+  background-color: #6fa76b !important;
+  color: white !important;
+}
+/*! objetivo 4 */
+.custom-btn4 {
+  background-color: #c7212f !important;
+  color: white !important;
+  border: none !important;
+}
+
+.custom-badge4 {
+  background-color: #cc555f !important;
+  color: white !important;
+}
+/*! objetivo 5 */
+.custom-btn5 {
+  background-color: #ef402d !important;
+  color: white !important;
+  border: none !important;
+}
+
+.custom-badge5 {
+  background-color: #f07b6e !important;
+  color: white !important;
+}
+/*! objetivo 6 */
+.custom-btn6 {
+  background-color: #27bfe6 !important;
+  color: white !important;
+  border: none !important;
+}
+
+.custom-badge6 {
+  background-color: #69cde6 !important;
+  color: white !important;
+}
+/*! objetivo 7 */
+.custom-btn7 {
+  background-color: #fbc412 !important;
+  color: white !important;
+  border: none !important;
+}
+
+.custom-badge7 {
+  background-color: #fad661 !important;
+  color: white !important;
+}
+/*! objetivo 8 */
+.custom-btn8 {
+  background-color: #a31c44 !important;
+  color: white !important;
+  border: none !important;
+}
+
+.custom-badge8 {
+  background-color: #a04e67 !important;
+  color: white !important;
+}
+/*! objetivo 9 */
+.custom-btn9 {
+  background-color: #f26a2e !important;
+  color: white !important;
+  border: none !important;
+}
+
+.custom-badge9 {
+  background-color: #f1956d !important;
+  color: white !important;
+}
+/*! objetivo 10 */
+.custom-btn10 {
+  background-color: #e01483 !important;
+  color: white !important;
+  border: none !important;
+}
+
+.custom-badge10 {
+  background-color: #dd4b9b !important;
+  color: white !important;
+}
+/*! objetivo 11 */
+.custom-btn11 {
+  background-color: #f89d2a !important;
+  color: white !important;
+  border: none !important;
+}
+
+.custom-badge11 {
+  background-color: #faaf54 !important;
+  color: white !important;
+}
+/*! objetivo 12 */
+.custom-btn12 {
+  background-color: #bf8d2c !important;
+  color: white !important;
+  border: none !important;
+}
+
+.custom-badge12 {
+  background-color: #be984c !important;
+  color: white !important;
+}
+/*! objetivo 13 */
+.custom-btn13 {
+  background-color: #407f46 !important;
+  color: white !important;
+  border: none !important;
+}
+
+.custom-badge13 {
+  background-color: #517c55 !important;
+  color: white !important;
+}
+/*! objetivo 14 */
+.custom-btn14 {
+  background-color: #1f97d4 !important;
+  color: white !important;
+  border: none !important;
+}
+
+.custom-badge14 {
+  background-color: #3ba0d3 !important;
+  color: white !important;
+}
+/*! objetivo 15 */
+.custom-btn15 {
+  background-color: #59ba47 !important;
+  color: white !important;
+  border: none !important;
+}
+
+.custom-badge15 {
+  background-color: #60b351 !important;
+  color: white !important;
+}
+/*! objetivo 16 */
+.custom-btn16 {
+  background-color: #136a9f !important;
+  color: white !important;
+  border: none !important;
+}
+
+.custom-badge16 {
+  background-color: #2270a1 !important;
+  color: white !important;
+}
+/*! objetivo 17 */
+.custom-btn17 {
+  background-color: #14496b !important;
+  color: white !important;
+  border: none !important;
+}
+
+.custom-badge17 {
+  background-color: #21516e !important;
+  color: white !important;
+}
+
+
+
+
+/*! more badge */
+.custom-btnIndicator {
+  background-color: #cce8c6 !important;
+  color: black !important;
+  border: none !important;
+}
+.custom-btnIndicator2 {
+  background-color: #eed5a6 !important;
+  color: black !important;
+  border: none !important;
+}
+
+
+
+.symbol-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.symbol-item .badge {
+  flex-shrink: 0;
+  width: 2rem;
+  /* Ajusta este valor según sea necesario */
+  display: inline-flex;
+  justify-content: center;
+}
+
+.symbol-item label {
+  margin-left: 0.5rem;
 }

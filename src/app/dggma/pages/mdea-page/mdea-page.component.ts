@@ -26,12 +26,23 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
     private renderer: Renderer2
   ) {}
   ngOnInit(): void {
-    this._direServices.productos().subscribe((data) => {this.products = data;console.log('productos:',this.products)});
+    // Suscribirse al observable 'productos' de '_direServices'
+    this._direServices.productos().subscribe((data) => {
+      // Asignar los datos recibidos a la propiedad 'products'
+      this.products = data;
+      // Imprimir los productos en la consola
+      console.log('productos:', this.products);
+    });
 
+    // Suscribirse al observable 'topicos' de '_direServices'
     this._direServices.topicos().subscribe((dataTopicomdea) => {
+      // Asignar los datos recibidos a la propiedad 'topicoMDEA'
       this.topicoMDEA = dataTopicomdea;
+      // Filtrar los productos usando 'topicoMDEA'
       const filteredProducts = this.filterProductsByTopicoMDEA(this.topicoMDEA); // Filtrar productos aquí
-      console.log('productos filtrados:', filteredProducts); // Imprimir productos filtrados
+      // Imprimir los productos filtrados en la consola
+      console.log('productos filtrados:', filteredProducts);
+      // Imprimir los tópicos en la consola
       console.log('lostopicos:', this.topicoMDEA);
     });
   }
@@ -597,3 +608,4 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
     });
   }
 }
+
