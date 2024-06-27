@@ -8,3 +8,7 @@
   transform: scale(0.5);
   transform-origin: top left;
 }
+
+.container {
+  min-height: 64vh;
+}

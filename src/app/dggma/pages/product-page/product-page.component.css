@@ -64,3 +64,10 @@
     margin-right: 3px;
   }
 } 
+
+.custom-spinner {
+  width: 1.3rem; /* Cambia el tamaño del spinner */
+  height: 1.3rem; /* Cambia el tamaño del spinner */
+  border-width: 0.25em; /* Ajusta el grosor del borde */
+  color: #1a538c; /* Color del spinner */
+}
