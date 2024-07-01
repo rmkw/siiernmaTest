@@ -3,9 +3,9 @@ import { Products } from '../../interfaces/product.interface';
 import { MetaODS, Ods, SecuenciaOds } from '../../interfaces/ods.interface';
 import { DGService } from '../../services/dg.service';
 import { forkJoin } from 'rxjs';
-import HighchartsAccessibility from 'highcharts/modules/accessibility';
-import HighchartsExporting from 'highcharts/modules/exporting';
-import { Collapse }  from 'bootstrap';
+import Chart from 'chart.js/auto';
+
+
 
 @Component({
   selector: 'app-ods-page',
@@ -249,49 +249,50 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
 
   constructor(private _direServices: DGService) {}
   ngAfterViewInit(): void {
-      const collapseElements = [
-        document.getElementById('collapseExample')!,
-        document.getElementById('collapseExample2')!,
-        document.getElementById('collapseExample3')!,
-        document.getElementById('collapseExample4')!,
-        document.getElementById('collapseExample5')!,
-        document.getElementById('collapseExample6')!,
-        document.getElementById('collapseExample7')!,
-        document.getElementById('collapseExample8')!,
-        document.getElementById('collapseExample9')!,
-        document.getElementById('collapseExample10')!,
-        document.getElementById('collapseExample11')!,
-        document.getElementById('collapseExample12')!,
-        document.getElementById('collapseExample13')!,
-        document.getElementById('collapseExample14')!,
-        document.getElementById('collapseExample15')!,
-        document.getElementById('collapseExample16')!,
-        document.getElementById('collapseExample17')!,
-      ];
+    const collapseElements = [
+      document.getElementById('collapseExample')!,
+      document.getElementById('collapseExample2')!,
+      document.getElementById('collapseExample3')!,
+      document.getElementById('collapseExample4')!,
+      document.getElementById('collapseExample5')!,
+      document.getElementById('collapseExample6')!,
+      document.getElementById('collapseExample7')!,
+      document.getElementById('collapseExample8')!,
+      document.getElementById('collapseExample9')!,
+      document.getElementById('collapseExample10')!,
+      document.getElementById('collapseExample11')!,
+      document.getElementById('collapseExample12')!,
+      document.getElementById('collapseExample13')!,
+      document.getElementById('collapseExample14')!,
+      document.getElementById('collapseExample15')!,
+      document.getElementById('collapseExample16')!,
+      document.getElementById('collapseExample17')!,
+    ];
 
-      // Función para ocultar todos los colapsos excepto el clicado
-      const toggleCollapse = (collapseElements: HTMLElement[]) => {
-        collapseElements.forEach((elementToShow, indexToShow) => {
-          elementToShow.addEventListener('show.bs.collapse', () => {
-            collapseElements.forEach((elementToHide, indexToHide) => {
-              if (indexToShow !== indexToHide) {
-                const collapseInstance = new (window as any).bootstrap.Collapse(
-                  elementToHide,
-                  {
-                    toggle: false,
-                  }
-                );
-                collapseInstance.hide();
-              }
-            });
+    // Función para ocultar todos los colapsos excepto el clicado
+    const toggleCollapse = (collapseElements: HTMLElement[]) => {
+      collapseElements.forEach((elementToShow, indexToShow) => {
+        elementToShow.addEventListener('show.bs.collapse', () => {
+          collapseElements.forEach((elementToHide, indexToHide) => {
+            if (indexToShow !== indexToHide) {
+              const collapseInstance = new (window as any).bootstrap.Collapse(
+                elementToHide,
+                {
+                  toggle: false,
+                }
+              );
+              collapseInstance.hide();
+            }
           });
         });
-      };
+      });
+    };
 
-      // Asignar eventos
-      toggleCollapse(collapseElements);
+    // Asignar eventos
+    toggleCollapse(collapseElements);
+
+    this.createChart();
   }
-
 
   ngOnInit(): void {
     forkJoin([
@@ -331,8 +332,6 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
       this.loadChart();
       this.filterProductsByMeta(this.meta);
       this.filterProductsByObjetivo(this.objetivo);
-      this.createObjetivosChart();
-      this.createMetaChart();
 
       this.loading = false;
 
@@ -350,6 +349,78 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
 
       this._direServices.ods().subscribe((datoOds) => (this.ods = datoOds));
     });
+  }
+
+  createChart(): void {
+    const labels = [
+      'Meta 1.1',
+      'Meta 1.3',
+      'Meta 1.4',
+      'Meta 1.5',
+    ];
+    const data = [6, 17, 104, 19];
+    const chartElement = document.getElementById(
+      'objetivo1'
+    ) as HTMLCanvasElement;
+
+    if (chartElement) {
+      new Chart(chartElement, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              label: ' Productos del INEGI que cuentan con una relación con esta meta',
+              data: data,
+              backgroundColor: [
+                'rgba(229, 35, 61, 1)',
+                'rgba(229, 35, 61, 1)',
+                'rgba(229, 35, 61, 1)',
+                'rgba(229, 35, 61, 1)',
+              ],
+              borderColor: [
+                'rgb(229, 35, 61)',
+                'rgb(229, 35, 61)',
+                'rgb(229, 35, 61)',
+                'rgb(229, 35, 61)',
+              ],
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          scales: {
+            x: {
+              ticks: {
+                maxRotation: 0,
+                autoSkip: false,
+                labelOffset: 0,
+
+                padding: 0,
+              },
+            },
+            y: {
+              beginAtZero: true,
+              title: {
+                display: true,
+                text: 'Productos',
+                font: {
+                  size: 20,
+                },
+              },
+            },
+          },
+
+          plugins: {
+            legend: {
+              display: false,
+            },
+          },
+        },
+      });
+    } else {
+      console.error('Element with id "componente1" not found.');
+    }
   }
 
   filterProductsByObjetivo(objetivo: any[]): any[] {
@@ -386,153 +457,6 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     this._direServices.metas().subscribe((data) => {
       this.metaods = data;
       this.loading = false; // Marcamos como cargados cuando los datos llegan
-    });
-  }
-
-  createObjetivosChart(): void {
-    var Highcharts = require('highcharts');
-    HighchartsAccessibility(Highcharts);
-    HighchartsExporting(Highcharts);
-
-    const colors = Highcharts.getOptions().colors;
-    const objetivosData: {
-      name: string;
-      y: any;
-      color: any;
-      drilldown: string;
-    }[] = [];
-
-    for (let i = 1; i <= 17; i++) {
-      objetivosData.push({
-        name: `Objetivo ${i}`,
-        y: this.OdsArray[i]?.length || 0,
-        color: colors[i + 1],
-        drilldown: `nivel${i}`,
-      });
-    }
-
-    const metaData: { name: string; y: any; color: any }[] = [];
-
-    for (let i = 1; i <= 169; i++) {
-      const metaLength = this.MetaArray[i]?.length || 0;
-      if (metaLength > 0) {
-        metaData.push({
-          name: `Meta ${i}`,
-          y: metaLength,
-          color: colors[i + 1],
-        });
-      }
-    }
-
-    Highcharts.chart('container-pie-obj', {
-      chart: {
-        type: 'pie',
-      },
-      title: {
-        text: 'Productos del INEGI que se apegan a determinados Objetivos del ODS',
-        align: 'center',
-      },
-      plotOptions: {
-        series: {
-          borderRadius: 5,
-          point: {
-            events: {
-              click: function () {
-                // Aquí puedes implementar la lógica para mostrar el drilldown
-              },
-            },
-          },
-        },
-      },
-      tooltip: {
-        valueSuffix: ' productos',
-      },
-      series: [
-        {
-          name: 'Objetivo',
-          data: objetivosData,
-          size: '100%',
-          dataLabels: {
-            color: '#113250',
-            distance: 10,
-            format:
-              '<b>{point.name}:</b><br><span style="text-align: center;">{point.y} Productos</span>',
-            filter: {
-              property: 'y',
-              operator: '>',
-              value: 1,
-            },
-            style: {
-              fontWeight: 'normal',
-            },
-          },
-        },
-      ],
-      drilldown: {
-        series: [
-          // Aquí puedes agregar los datos detallados para cada objetivo
-        ],
-      },
-    });
-  }
-
-  createMetaChart(): void {
-    var Highcharts = require('highcharts');
-
-    HighchartsAccessibility(Highcharts);
-    HighchartsExporting(Highcharts);
-
-    const colors = Highcharts.getOptions().colors;
-    const metaData: { name: string; y: any; color: any }[] = [];
-
-    for (let i = 1; i <= 169; i++) {
-      const metaLength = this.MetaArray[i]?.length || 0;
-      if (metaLength > 0) {
-        metaData.push({
-          name: `Meta ${i}`,
-          y: metaLength,
-          color: colors[i + 1],
-        });
-      }
-    }
-
-    Highcharts.chart('container-pie-meta', {
-      chart: {
-        type: 'pie',
-        events: {},
-      },
-      title: {
-        text: 'Productos del INEGI que se apegan determinadas Metas del ODS',
-        align: 'center',
-      },
-      plotOptions: {
-        series: {
-          borderRadius: 5,
-        },
-      },
-      tooltip: {
-        valueSuffix: ' productos',
-      },
-      series: [
-        {
-          name: 'Meta',
-          data: metaData,
-          size: '100%',
-          dataLabels: {
-            color: '#113250',
-            format:
-              '<b>{point.name}:</b><br><span style="text-allign: center;">{point.y} Productos</span>',
-            filter: {
-              property: 'y',
-              operator: '>',
-              value: 1,
-            },
-            style: {
-              fontWeight: 'normal',
-            },
-          },
-        },
-      ],
     });
   }
 };
