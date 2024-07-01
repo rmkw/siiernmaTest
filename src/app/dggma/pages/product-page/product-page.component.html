@@ -424,12 +424,14 @@
             </div>
             <h5 class="fw-normal text-center" style="height: 7.5rem; color: #113250; font-family: Helvetica, Sans-Serif;">Dirección General de Geografía y Medio Ambiente.</h5>
             <h5 style="text-align: center; color: #004045; font-family: Helvetica, Sans-Serif;">Total de productos:</h5>
-              <h3 style="text-align: center; color: #1a538c; font-family: 'Monaco', monospace; font-weight: bold;">{{ primerDir }}</h3>
-    
-    
-            <div class="d-flex justify-content-center">
-             
+            <div class="text-center" *ngIf="loading">
+              <div class="spinner-border spinner-border-sm custom-spinner" role="status" >
+                <span class="visually-hidden">Loading...</span>
+              </div>
             </div>
+            <h3 style="text-align: center; color: #1a538c; font-family: 'Monaco', monospace; font-weight: bold;" [hidden]="loading">{{ primerDir }}</h3>
+          <div class="d-flex justify-content-center">
+          </div>
           </div>
     
           <div class="col-2 m-1">
@@ -438,7 +440,12 @@
             </div>
             <h5 class="fw-normal text-center" style="height: 7.5rem; color: #113250; font-family: Helvetica, Sans-Serif;">Dirección General de Estadísticas Sociodemográficas.</h5>
             <h5 style="text-align: center; color: #004045; font-family: Helvetica, Sans-Serif;">Total de productos:</h5>
-            <h3 style="text-align: center; color: #1a538c; font-family: 'Monaco', monospace; font-weight: bold">{{ segundaDir }}</h3>
+            <div class="text-center" *ngIf="loading">
+              <div class="spinner-border spinner-border-sm custom-spinner" role="status" >
+                <span class="visually-hidden">Loading...</span>
+              </div>
+            </div>
+            <h3 style="text-align: center; color: #1a538c; font-family: 'Monaco', monospace; font-weight: bold" [hidden]="loading">{{ segundaDir }}</h3>
     
             <div class="d-flex justify-content-center">
              
@@ -451,7 +458,12 @@
             </div>
             <h5 class="fw-normal text-center" style="height: 7.5rem; color: #113250; font-family: Helvetica, Sans-Serif;">Dirección General de Estadísticas Económicas.</h5>
             <h5 style="text-align: center; color: #004045; font-family: Helvetica, Sans-Serif;">Total de productos:</h5>
-            <h3 style="text-align: center; color: #1a538c; font-family: 'Monaco', monospace; font-weight: bold"> {{ terceraDir }}</h3>
+            <div class="text-center" *ngIf="loading">
+              <div class="spinner-border spinner-border-sm custom-spinner" role="status" >
+                <span class="visually-hidden">Loading...</span>
+              </div>
+            </div>
+            <h3 style="text-align: center; color: #1a538c; font-family: 'Monaco', monospace; font-weight: bold" [hidden]="loading"> {{ terceraDir }}</h3>
     
             <div class="d-flex justify-content-center">
              
@@ -465,7 +477,12 @@
             <h5 style="color: #113250; font-family: Helvetica, Sans-Serif; height: 7.5rem;" class="fw-normal text-center ">Direrccion General de Estadísticas de Gobierno, Seguridad Pública y Justicia.
             </h5>
             <h5 style="text-align: center; color: #004045; font-family: Helvetica, Sans-Serif;">Total de productos: </h5>
-            <h3 style="text-align: center; color: #1a538c; font-family: 'Monaco', monospace; font-weight: bold">{{ cuartaDir }}</h3>
+            <div class="text-center" *ngIf="loading">
+              <div class="spinner-border spinner-border-sm custom-spinner" role="status" >
+                <span class="visually-hidden">Loading...</span>
+              </div>
+            </div>
+            <h3 style="text-align: center; color: #1a538c; font-family: 'Monaco', monospace; font-weight: bold" [hidden]="loading">{{ cuartaDir }}</h3>
     
             <div class="d-flex justify-content-center">
              
@@ -479,7 +496,12 @@
             <h5  style="color: #113250; font-family: Helvetica, Sans-Serif; height: 7.5rem;" class="fw-normal text-center ">Dirección General de Integración, Análisis e
               Investigación.</h5>
               <h5 style="text-align: center; color: #004045; margin-top: 10; font-family: Helvetica, Sans-Serif;">Total de productos: </h5>
-              <h3 style="text-align: center; color: #1a538c; font-family: 'Monaco', monospace; font-weight: bold;">{{ quintaDir }}</h3>
+              <div class="text-center" *ngIf="loading">
+                <div class="spinner-border spinner-border-sm custom-spinner" role="status" >
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </div>
+              <h3 style="text-align: center; color: #1a538c; font-family: 'Monaco', monospace; font-weight: bold;" [hidden]="loading">{{ quintaDir }}</h3>
     
             <div class="d-flex justify-content-center">
              
