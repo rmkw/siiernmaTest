@@ -77,7 +77,7 @@ export class DGService {
      return this._http.get<Topico[]>(url)
    }
 
-   
+
 
 
    //! PROGRAMAS DE INFORMACIÓN
@@ -144,7 +144,7 @@ export class DGService {
     return this._http.get<SecuenciaOds[]>(url)
   }
 
- 
+
 
 
   //! PROGRAMAS SECTORIALES

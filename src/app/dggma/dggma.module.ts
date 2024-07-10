@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+
+
 import { DggmaRoutingModule } from './dggma-routing.module';
 import { DgComponent } from './pages/dg/dg.component';
 import { LayoutPageComponent } from './pages/layout-page/layout-page.component';
@@ -18,6 +20,8 @@ import { OrganizationChartModule } from 'primeng/organizationchart';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { IndicadoresPageComponent } from './pages/indicadores-page/indicadores-page.component';
+import { ToastModule } from 'primeng/toast';
+
 
 
 @NgModule({
@@ -43,6 +47,9 @@ import { IndicadoresPageComponent } from './pages/indicadores-page/indicadores-p
     OrganizationChartModule,
     TableModule,
     ButtonModule,
+    ToastModule,
+
+
   ],
   exports: [NgbModule],
 })

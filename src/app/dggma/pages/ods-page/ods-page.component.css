@@ -219,3 +219,62 @@
 .symbol-item label {
   margin-left: 0.5rem;
 }
+
+
+
+:host ::ng-deep .custom-tooltip .tooltip-inner {
+  max-width: 400px;
+  /* Ajusta el ancho según tus necesidades */
+  background-color: #000000f1;
+  /* Opcional: Color de fondo personalizado */
+  color: #ffffff;
+  /* Opcional: Color del texto personalizado */
+  border: 1px solid #ccc;
+    /* Color del borde */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Sombra */
+  padding: 10px;
+    /* Relleno */
+  margin: 5px;
+    /* Margen */
+
+}
+
+/* Define a specific width and height for all buttons */
+button {
+ width: 7rem;
+}
+
+/* Make the text look like a link when hovered */
+.clickable-text {
+  cursor: pointer;
+  color: black;
+  text-align: justify;
+
+
+}
+
+/* Optional: Change color on hover */
+.clickable-text:hover {
+  color: darkblue;
+  text-decoration: underline;
+
+}
+
+.justificado{
+  text-align: justify;
+}
+
+/* CSS para personalizar el ancho del modal */
+.custom-modal-width .modal-dialog {
+  max-width: 80% !important;
+  /* Cambia el valor según el ancho deseado */
+}
+
+/* Alternativamente, usar un valor fijo en píxeles */
+.custom-modal-width .modal-dialog {
+  max-width: 1230px !important;
+  /* Cambia el valor a tu necesidad */
+}
+
+

@@ -4,6 +4,9 @@ import { MetaODS, Ods, SecuenciaOds } from '../../interfaces/ods.interface';
 import { DGService } from '../../services/dg.service';
 import { forkJoin } from 'rxjs';
 import Chart from 'chart.js/auto';
+import { MessageService } from 'primeng/api';
+
+
 
 
 
@@ -11,8 +14,11 @@ import Chart from 'chart.js/auto';
   selector: 'app-ods-page',
   templateUrl: './ods-page.component.html',
   styleUrls: ['./ods-page.component.css'],
+  providers: [MessageService],
 })
 export class OdsPageComponent implements OnInit, AfterViewInit {
+
+
   isMobile: boolean = window.innerWidth <= 480;
   loading = true;
 
@@ -35,219 +41,10 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
 
   longitudesPorIdMeta: { [key: number]: number } = {};
 
-  iconosObj: { [key: number]: string } = {
-    1: 'bi-people',
-    2: 'bi-cup-hot',
-    3: 'bi-heart-pulse',
-    4: 'bi-book',
-    5: 'bi-gender-ambiguous',
-    6: 'bi-moisture',
-    7: 'bi-power',
-    8: 'bi-graph-up-arrow',
-    9: 'bi-boxes',
-    10: 'bi-list-nested',
-    11: 'bi-building',
-    12: 'bi-infinity',
-    13: 'bi-globe-americas',
-    14: 'bi-water',
-    15: 'bi-tree',
-    16: 'bi-diagram-2',
-    17: 'bi-flower2',
-  };
-
-  iconosMeta: { [key: number]: string } = {
-    1: 'bi-people',
-    2: 'bi-people',
-    3: 'bi-people',
-    4: 'bi-people',
-    5: 'bi-people',
-    6: 'bi-people',
-    7: 'bi-people',
-    8: 'bi-cup-hot',
-    9: 'bi-cup-hot',
-    10: 'bi-cup-hot',
-    11: 'bi-cup-hot',
-    12: 'bi-cup-hot',
-    13: 'bi-cup-hot',
-    14: 'bi-cup-hot',
-    15: 'bi-cup-hot',
-    16: 'bi-heart-pulse',
-    17: 'bi-heart-pulse',
-    18: 'bi-heart-pulse',
-    19: 'bi-heart-pulse',
-    20: 'bi-heart-pulse',
-    21: 'bi-heart-pulse',
-    22: 'bi-heart-pulse',
-    23: 'bi-heart-pulse',
-    24: 'bi-heart-pulse',
-    25: 'bi-heart-pulse',
-    26: 'bi-heart-pulse',
-    27: 'bi-heart-pulse',
-    28: 'bi-heart-pulse',
-    29: 'bi-book',
-    30: 'bi-book',
-    31: 'bi-book',
-    32: 'bi-book',
-    33: 'bi-book',
-    34: 'bi-book',
-    35: 'bi-book',
-    36: 'bi-book',
-    37: 'bi-book',
-    38: 'bi-book',
-    39: 'bi-gender-ambiguous',
-    40: 'bi-gender-ambiguous',
-    41: 'bi-gender-ambiguous',
-    42: 'bi-gender-ambiguous',
-    43: 'bi-gender-ambiguous',
-    44: 'bi-gender-ambiguous',
-    45: 'bi-gender-ambiguous',
-    46: 'bi-gender-ambiguous',
-    47: 'bi-gender-ambiguous',
-    48: 'bi-moisture',
-    49: 'bi-moisture',
-    50: 'bi-moisture',
-    51: 'bi-moisture',
-    52: 'bi-moisture',
-    53: 'bi-moisture',
-    54: 'bi-moisture',
-    55: 'bi-moisture',
-    56: 'bi-power',
-    57: 'bi-power',
-    58: 'bi-power',
-    59: 'bi-power',
-    60: 'bi-power',
-    61: 'bi-graph-up-arrow',
-    62: 'bi-graph-up-arrow',
-    63: 'bi-graph-up-arrow',
-    64: 'bi-graph-up-arrow',
-    65: 'bi-graph-up-arrow',
-    66: 'bi-graph-up-arrow',
-    67: 'bi-graph-up-arrow',
-    68: 'bi-graph-up-arrow',
-    69: 'bi-graph-up-arrow',
-    70: 'bi-graph-up-arrow',
-    71: 'bi-graph-up-arrow',
-    72: 'bi-graph-up-arrow',
-    73: 'bi-boxes',
-    74: 'bi-boxes',
-    75: 'bi-boxes',
-    76: 'bi-boxes',
-    77: 'bi-boxes',
-    78: 'bi-boxes',
-    79: 'bi-boxes',
-    80: 'bi-boxes',
-    81: 'bi-list-nested',
-    82: 'bi-list-nested',
-    83: 'bi-list-nested',
-    84: 'bi-list-nested',
-    85: 'bi-list-nested',
-    86: 'bi-list-nested',
-    87: 'bi-list-nested',
-    88: 'bi-list-nested',
-    89: 'bi-list-nested',
-    90: 'bi-list-nested',
-    91: 'bi-building',
-    92: 'bi-building',
-    93: 'bi-building',
-    94: 'bi-building',
-    95: 'bi-building',
-    96: 'bi-building',
-    97: 'bi-building',
-    98: 'bi-building',
-    99: 'bi-building',
-    100: 'bi-building',
-    101: 'bi-infinity',
-    102: 'bi-infinity',
-    103: 'bi-infinity',
-    104: 'bi-infinity',
-    105: 'bi-infinity',
-    106: 'bi-infinity',
-    107: 'bi-infinity',
-    108: 'bi-infinity',
-    109: 'bi-infinity',
-    110: 'bi-infinity',
-    111: 'bi-infinity',
-    112: 'bi-globe-americas',
-    113: 'bi-globe-americas',
-    114: 'bi-globe-americas',
-    115: 'bi-globe-americas',
-    116: 'bi-globe-americas',
-    117: 'bi-water',
-    118: 'bi-water',
-    119: 'bi-water',
-    120: 'bi-water',
-    121: 'bi-water',
-    122: 'bi-water',
-    123: 'bi-water',
-    124: 'bi-water',
-    125: 'bi-water',
-    126: 'bi-water',
-    127: 'bi-tree',
-    128: 'bi-tree',
-    129: 'bi-tree',
-    130: 'bi-tree',
-    131: 'bi-tree',
-    132: 'bi-tree',
-    133: 'bi-tree',
-    134: 'bi-tree',
-    135: 'bi-tree',
-    136: 'bi-tree',
-    137: 'bi-tree',
-    138: 'bi-tree',
-    139: 'bi-diagram-2',
-    140: 'bi-diagram-2',
-    141: 'bi-diagram-2',
-    142: 'bi-diagram-2',
-    143: 'bi-diagram-2',
-    144: 'bi-diagram-2',
-    145: 'bi-diagram-2',
-    146: 'bi-diagram-2',
-    147: 'bi-diagram-2',
-    148: 'bi-diagram-2',
-    149: 'bi-diagram-2',
-    150: 'bi-diagram-2',
-    151: 'bi-flower2',
-    152: 'bi-flower2',
-    153: 'bi-flower2',
-    154: 'bi-flower2',
-    155: 'bi-flower2',
-    156: 'bi-flower2',
-    157: 'bi-flower2',
-    158: 'bi-flower2',
-    159: 'bi-flower2',
-    160: 'bi-flower2',
-    161: 'bi-flower2',
-    162: 'bi-flower2',
-    163: 'bi-flower2',
-    164: 'bi-flower2',
-    165: 'bi-flower2',
-    166: 'bi-flower2',
-    167: 'bi-flower2',
-    168: 'bi-flower2',
-    169: 'bi-flower2',
-  };
-
-  coloresHexadecimales: { [key: number]: string } = {
-    1: '#dc1e39',
-    2: '#d8a72c',
-    3: '#57a141',
-    4: '#bf1d2b',
-    5: '#e53d24',
-    6: '#4cbfe8',
-    7: '#f6c300',
-    8: '#9c1a43',
-    9: '#e96922',
-    10: '#d41067',
-    11: '#f19c10',
-    12: '#bb8c1f',
-    13: '#488043',
-    14: '#3d98d7',
-    15: '#66ba3f',
-    16: '#296ba0',
-    17: '#1f496c',
-  };
-
-  constructor(private _direServices: DGService) {}
+  constructor(
+    private _direServices: DGService,
+    private messageService: MessageService
+  ) {}
   ngAfterViewInit(): void {
     const collapseElements = [
       document.getElementById('collapseExample')!,
@@ -291,7 +88,43 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     // Asignar eventos
     toggleCollapse(collapseElements);
 
+    //! free
+    // Función para quitar el foco de todos los botones con tooltip
+    const removeFocusFromButtons = () => {
+      const buttons = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+      buttons.forEach((button) => {
+        (button as HTMLElement).blur();
+      });
+    };
+
+    // Agregar evento a cada modal para quitar el foco de los botones cuando el modal se abra
+    const modalElements = document.querySelectorAll('.modal');
+    modalElements.forEach((modalElement) => {
+      modalElement.addEventListener('shown.bs.modal', () => {
+        console.log('Modal opened');
+        removeFocusFromButtons();
+      });
+    });
+
+    //! free
+
     this.createChart();
+    this.createChart2();
+    this.createChart3();
+    this.createChart4();
+    this.createChart5();
+    this.createChart6();
+    this.createChart7();
+    this.createChart8();
+    this.createChart9();
+    this.createChart10();
+    this.createChart11();
+    this.createChart12();
+    this.createChart13();
+    this.createChart14();
+    this.createChart15();
+    this.createChart16();
+    this.createChart17();
   }
 
   ngOnInit(): void {
@@ -350,14 +183,18 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
       this._direServices.ods().subscribe((datoOds) => (this.ods = datoOds));
     });
   }
+  showWarn() {
+    this.messageService.add({
+      severity: 'warn',
+      summary: 'NOTA',
+      detail:
+        'Esta meta no cuenta con información por parte de México | SIODS | Sistema de Información de los Objetivos de Desarrollo Sostenible.',
+    });
+  }
 
+  //! gráficas
   createChart(): void {
-    const labels = [
-      'Meta 1.1',
-      'Meta 1.3',
-      'Meta 1.4',
-      'Meta 1.5',
-    ];
+    const labels = ['Meta 1.1', 'Meta 1.3', 'Meta 1.4', 'Meta 1.5'];
     const data = [6, 17, 104, 19];
     const chartElement = document.getElementById(
       'objetivo1'
@@ -370,7 +207,8 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
           labels: labels,
           datasets: [
             {
-              label: ' Productos del INEGI que cuentan con una relación con esta meta',
+              label:
+                ' Productos del INEGI que cuentan con una relación con esta meta',
               data: data,
               backgroundColor: [
                 'rgba(229, 35, 61, 1)',
@@ -421,6 +259,1350 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     } else {
       console.error('Element with id "componente1" not found.');
     }
+  }
+
+  createChart2(): void {
+    const labels = ['Meta 2.1', 'Meta 2.3', 'Meta 2.4', 'Meta 2.a', 'Meta 2.c'];
+    const data = [1, 65, 56, 2, 2];
+    const chartElement = document.getElementById(
+      'objetivo2'
+    ) as HTMLCanvasElement;
+
+    if (chartElement) {
+      new Chart(chartElement, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              label:
+                ' Productos del INEGI que cuentan con una relación con esta meta',
+              data: data,
+              backgroundColor: [
+                'rgba(221, 167, 58, 1)',
+                'rgba(221, 167, 58, 1)',
+                'rgba(221, 167, 58, 1)',
+                'rgba(221, 167, 58, 1)',
+                'rgba(221, 167, 58, 1)',
+              ],
+              borderColor: [
+                'rgb(221, 167, 58)',
+                'rgb(221, 167, 58)',
+                'rgb(221, 167, 58)',
+                'rgb(221, 167, 58)',
+                'rgb(221, 167, 58)',
+              ],
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          scales: {
+            x: {
+              ticks: {
+                maxRotation: 0,
+                autoSkip: false,
+                labelOffset: 0,
+
+                padding: 0,
+              },
+            },
+            y: {
+              beginAtZero: true,
+              title: {
+                display: true,
+                text: 'Productos',
+                font: {
+                  size: 20,
+                },
+              },
+            },
+          },
+
+          plugins: {
+            legend: {
+              display: false,
+            },
+          },
+        },
+      });
+    } else {
+      console.error('Element with id "componente1" not found.');
+    }
+  }
+
+  createChart3(): void {
+    const labels = ['Meta 3.4', 'Meta 3.7', 'Meta 3.8', 'Meta 3.9'];
+    const data = [1, 5, 107, 39];
+    const chartElement = document.getElementById(
+      'objetivo3'
+    ) as HTMLCanvasElement;
+
+    if (chartElement) {
+      new Chart(chartElement, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              label:
+                ' Productos del INEGI que cuentan con una relación con esta meta',
+              data: data,
+              backgroundColor: [
+                'rgba(76, 161, 70, 1)',
+                'rgba(76, 161, 70, 1)',
+                'rgba(76, 161, 70, 1)',
+                'rgba(76, 161, 70, 1)',
+              ],
+              borderColor: [
+                'rgb(76, 161, 70)',
+                'rgb(76, 161, 70)',
+                'rgb(76, 161, 70)',
+                'rgb(76, 161, 70)',
+              ],
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          scales: {
+            x: {
+              ticks: {
+                maxRotation: 0,
+                autoSkip: false,
+                labelOffset: 0,
+
+                padding: 0,
+              },
+            },
+            y: {
+              beginAtZero: true,
+              title: {
+                display: true,
+                text: 'Productos',
+                font: {
+                  size: 20,
+                },
+              },
+            },
+          },
+
+          plugins: {
+            legend: {
+              display: false,
+            },
+          },
+        },
+      });
+    } else {
+      console.error('Element with id "componente1" not found.');
+    }
+  }
+
+  createChart4(): void {
+    const labels = ['Meta 4.1', 'Meta 4.2', 'Meta 4.3', 'Meta 4.5', 'Meta 4.7'];
+    const data = [5, 4, 4, 4, 11];
+    const chartElement = document.getElementById(
+      'objetivo4'
+    ) as HTMLCanvasElement;
+
+    if (chartElement) {
+      new Chart(chartElement, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              label:
+                ' Productos del INEGI que cuentan con una relación con esta meta',
+              data: data,
+              backgroundColor: [
+                'rgba(199, 33, 47, 1)',
+                'rgba(199, 33, 47, 1)',
+                'rgba(199, 33, 47, 1)',
+                'rgba(199, 33, 47, 1)',
+                'rgba(199, 33, 47, 1)',
+              ],
+              borderColor: [
+                'rgb(199, 33, 47)',
+                'rgb(199, 33, 47)',
+                'rgb(199, 33, 47)',
+                'rgb(199, 33, 47)',
+                'rgb(199, 33, 47)',
+              ],
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          scales: {
+            x: {
+              ticks: {
+                maxRotation: 0,
+                autoSkip: false,
+                labelOffset: 0,
+
+                padding: 0,
+              },
+            },
+            y: {
+              beginAtZero: true,
+              title: {
+                display: true,
+                text: 'Productos',
+                font: {
+                  size: 20,
+                },
+              },
+            },
+          },
+
+          plugins: {
+            legend: {
+              display: false,
+            },
+          },
+        },
+      });
+    } else {
+      console.error('Element with id "componente1" not found.');
+    }
+  }
+
+  createChart5(): void {
+    const labels = ['Meta 5.1', 'Meta 5.2', 'Meta 5.4', 'Meta 5.5', 'Meta 5.a'];
+    const data = [17, 21, 1, 7, 7];
+    const chartElement = document.getElementById(
+      'objetivo5'
+    ) as HTMLCanvasElement;
+
+    if (chartElement) {
+      new Chart(chartElement, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              label:
+                ' Productos del INEGI que cuentan con una relación con esta meta',
+              data: data,
+              backgroundColor: [
+                'rgba(239, 64, 45, 1)',
+                'rgba(239, 64, 45, 1)',
+                'rgba(239, 64, 45, 1)',
+                'rgba(239, 64, 45, 1)',
+                'rgba(239, 64, 45, 1)',
+              ],
+              borderColor: [
+                'rgb(239, 64, 45)',
+                'rgb(239, 64, 45)',
+                'rgb(239, 64, 45)',
+                'rgb(239, 64, 45)',
+                'rgb(239, 64, 45)',
+              ],
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          scales: {
+            x: {
+              ticks: {
+                maxRotation: 0,
+                autoSkip: false,
+                labelOffset: 0,
+
+                padding: 0,
+              },
+            },
+            y: {
+              beginAtZero: true,
+              title: {
+                display: true,
+                text: 'Productos',
+                font: {
+                  size: 20,
+                },
+              },
+            },
+          },
+
+          plugins: {
+            legend: {
+              display: false,
+            },
+          },
+        },
+      });
+    } else {
+      console.error('Element with id "componente1" not found.');
+    }
+  }
+
+  createChart6(): void {
+    const labels = [
+      'Meta 6.1',
+      'Meta 6.2',
+      'Meta 6.3',
+      'Meta 6.4',
+      'Meta 6.5',
+      'Meta 6.6',
+      'Meta 6.b',
+    ];
+    const data = [139, 56, 28, 45, 5, 54, 3];
+    const chartElement = document.getElementById(
+      'objetivo6'
+    ) as HTMLCanvasElement;
+
+    if (chartElement) {
+      new Chart(chartElement, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              label:
+                ' Productos del INEGI que cuentan con una relación con esta meta',
+              data: data,
+              backgroundColor: [
+                'rgba(39, 191, 230, 1)',
+                'rgba(39, 191, 230, 1)',
+                'rgba(39, 191, 230, 1)',
+                'rgba(39, 191, 230, 1)',
+                'rgba(39, 191, 230, 1)',
+                'rgba(39, 191, 230, 1)',
+                'rgba(39, 191, 230, 1)',
+              ],
+              borderColor: [
+                'rgb(39, 191, 230)',
+                'rgb(39, 191, 230)',
+                'rgb(39, 191, 230)',
+                'rgb(39, 191, 230)',
+                'rgb(39, 191, 230)',
+                'rgb(39, 191, 230)',
+                'rgb(39, 191, 230)',
+              ],
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          scales: {
+            x: {
+              ticks: {
+                maxRotation: 0,
+                autoSkip: false,
+                labelOffset: 0,
+
+                padding: 0,
+              },
+            },
+            y: {
+              beginAtZero: true,
+              title: {
+                display: true,
+                text: 'Productos',
+                font: {
+                  size: 20,
+                },
+              },
+            },
+          },
+
+          plugins: {
+            legend: {
+              display: false,
+            },
+          },
+        },
+      });
+    } else {
+      console.error('Element with id "componente1" not found.');
+    }
+  }
+
+  createChart7(): void {
+    const labels = ['Meta 7.1', 'Meta 7.2', 'Meta 7.3'];
+    const data = [146, 13, 5];
+    const chartElement = document.getElementById(
+      'objetivo7'
+    ) as HTMLCanvasElement;
+
+    if (chartElement) {
+      new Chart(chartElement, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              label:
+                ' Productos del INEGI que cuentan con una relación con esta meta',
+              data: data,
+              backgroundColor: [
+                'rgba(251, 196, 18, 1)',
+                'rgba(251, 196, 18, 1)',
+                'rgba(251, 196, 18, 1)',
+              ],
+              borderColor: [
+                'rgb(251, 196, 18)',
+                'rgb(251, 196, 18)',
+                'rgb(251, 196, 18)',
+              ],
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          scales: {
+            x: {
+              ticks: {
+                maxRotation: 0,
+                autoSkip: false,
+                labelOffset: 0,
+
+                padding: 0,
+              },
+            },
+            y: {
+              beginAtZero: true,
+              title: {
+                display: true,
+                text: 'Productos',
+                font: {
+                  size: 20,
+                },
+              },
+            },
+          },
+
+          plugins: {
+            legend: {
+              display: false,
+            },
+          },
+        },
+      });
+    } else {
+      console.error('Element with id "componente1" not found.');
+    }
+  }
+
+  createChart8(): void {
+    const labels = [
+      'Meta 8.1',
+      'Meta 8.2',
+      'Meta 8.3',
+      'Meta 8.4',
+      'Meta 8.5',
+      'Meta 8.6',
+      'Meta 8.7',
+      'Meta 8.8',
+      'Meta 8.10',
+      'Meta 8.a',
+      'Meta 8.b',
+    ];
+    const data = [2, 2, 16, 73, 19, 2, 9, 19, 5, 1, 1];
+    const chartElement = document.getElementById(
+      'objetivo8'
+    ) as HTMLCanvasElement;
+
+    if (chartElement) {
+      new Chart(chartElement, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              label:
+                ' Productos del INEGI que cuentan con una relación con esta meta',
+              data: data,
+              backgroundColor: [
+                'rgba(163, 28, 68, 1)',
+                'rgba(163, 28, 68, 1)',
+                'rgba(163, 28, 68, 1)',
+                'rgba(163, 28, 68, 1)',
+                'rgba(163, 28, 68, 1)',
+                'rgba(163, 28, 68, 1)',
+                'rgba(163, 28, 68, 1)',
+                'rgba(163, 28, 68, 1)',
+                'rgba(163, 28, 68, 1)',
+                'rgba(163, 28, 68, 1)',
+                'rgba(163, 28, 68, 1)',
+              ],
+              borderColor: [
+                'rgb(163, 28, 68)',
+                'rgb(163, 28, 68)',
+                'rgb(163, 28, 68)',
+                'rgb(163, 28, 68)',
+                'rgb(163, 28, 68)',
+                'rgb(163, 28, 68)',
+                'rgb(163, 28, 68)',
+                'rgb(163, 28, 68)',
+                'rgb(163, 28, 68)',
+                'rgb(163, 28, 68)',
+                'rgb(163, 28, 68)',
+              ],
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          scales: {
+            x: {
+              ticks: {
+                maxRotation: 0,
+                autoSkip: false,
+                labelOffset: 0,
+
+                padding: 0,
+              },
+            },
+            y: {
+              beginAtZero: true,
+              title: {
+                display: true,
+                text: 'Productos',
+                font: {
+                  size: 20,
+                },
+              },
+            },
+          },
+
+          plugins: {
+            legend: {
+              display: false,
+            },
+          },
+        },
+      });
+    } else {
+      console.error('Element with id "componente1" not found.');
+    }
+  }
+
+  createChart9(): void {
+    const labels = ['Meta 9.1', 'Meta 9.3', 'Meta 9.5'];
+    const data = [40, 1, 10];
+    const chartElement = document.getElementById(
+      'objetivo9'
+    ) as HTMLCanvasElement;
+
+    if (chartElement) {
+      new Chart(chartElement, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              label:
+                ' Productos del INEGI que cuentan con una relación con esta meta',
+              data: data,
+              backgroundColor: [
+                'rgba(242, 106, 46, 1)',
+                'rgba(242, 106, 46, 1)',
+                'rgba(242, 106, 46, 1)',
+              ],
+              borderColor: [
+                'rgb(242, 106, 46)',
+                'rgb(242, 106, 46)',
+                'rgb(242, 106, 46)',
+              ],
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          scales: {
+            x: {
+              ticks: {
+                maxRotation: 0,
+                autoSkip: false,
+                labelOffset: 0,
+
+                padding: 0,
+              },
+            },
+            y: {
+              beginAtZero: true,
+              title: {
+                display: true,
+                text: 'Productos',
+                font: {
+                  size: 20,
+                },
+              },
+            },
+          },
+
+          plugins: {
+            legend: {
+              display: false,
+            },
+          },
+        },
+      });
+    } else {
+      console.error('Element with id "componente1" not found.');
+    }
+  }
+
+  createChart10(): void {
+    const labels = ['Meta 10.2', 'Meta 10.4'];
+    const data = [28, 9];
+    const chartElement = document.getElementById(
+      'objetivo10'
+    ) as HTMLCanvasElement;
+
+    if (chartElement) {
+      new Chart(chartElement, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              label:
+                ' Productos del INEGI que cuentan con una relación con esta meta',
+              data: data,
+              backgroundColor: [
+                'rgba(224, 20, 131, 1)',
+                'rgba(224, 20, 131, 1)',
+                'rgba(224, 20, 131, 1)',
+                'rgba(224, 20, 131, 1)',
+              ],
+              borderColor: [
+                'rgb(224, 20, 131)',
+                'rgb(224, 20, 131)',
+                'rgb(224, 20, 131)',
+                'rgb(224, 20, 131)',
+              ],
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          scales: {
+            x: {
+              ticks: {
+                maxRotation: 0,
+                autoSkip: false,
+                labelOffset: 0,
+
+                padding: 0,
+              },
+            },
+            y: {
+              beginAtZero: true,
+              title: {
+                display: true,
+                text: 'Productos',
+                font: {
+                  size: 20,
+                },
+              },
+            },
+          },
+
+          plugins: {
+            legend: {
+              display: false,
+            },
+          },
+        },
+      });
+    } else {
+      console.error('Element with id "componente1" not found.');
+    }
+  }
+
+  createChart11(): void {
+    const labels = [
+      'Meta 11.1',
+      'Meta 11.2',
+      'Meta 11.3',
+      'Meta 11.4',
+      'Meta 11.5',
+      'Meta 11.6',
+      'Meta 11.7',
+      'Meta 11.a',
+      'Meta 11.b',
+    ];
+    const data = [103, 101, 80, 6, 5, 50, 8, 1, 37];
+    const chartElement = document.getElementById(
+      'objetivo11'
+    ) as HTMLCanvasElement;
+
+    if (chartElement) {
+      new Chart(chartElement, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              label:
+                ' Productos del INEGI que cuentan con una relación con esta meta',
+              data: data,
+              backgroundColor: [
+                'rgba(248, 157, 42, 1)',
+                'rgba(248, 157, 42, 1)',
+                'rgba(248, 157, 42, 1)',
+                'rgba(248, 157, 42, 1)',
+              ],
+              borderColor: [
+                'rgb(248, 157, 42)',
+                'rgb(248, 157, 42)',
+                'rgb(248, 157, 42)',
+                'rgb(248, 157, 42)',
+              ],
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          scales: {
+            x: {
+              ticks: {
+                maxRotation: 0,
+                autoSkip: false,
+                labelOffset: 0,
+
+                padding: 0,
+              },
+            },
+            y: {
+              beginAtZero: true,
+              title: {
+                display: true,
+                text: 'Productos',
+                font: {
+                  size: 20,
+                },
+              },
+            },
+          },
+
+          plugins: {
+            legend: {
+              display: false,
+            },
+          },
+        },
+      });
+    } else {
+      console.error('Element with id "componente1" not found.');
+    }
+  }
+
+  createChart12(): void {
+    const labels = [
+      'Meta 12.2',
+      'Meta 12.3',
+      'Meta 12.4',
+      'Meta 12.5',
+      'Meta 12.6',
+      'Meta 12.8',
+    ];
+    const data = [89, 4, 47, 13, 1, 23];
+    const chartElement = document.getElementById(
+      'objetivo12'
+    ) as HTMLCanvasElement;
+
+    if (chartElement) {
+      new Chart(chartElement, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              label:
+                ' Productos del INEGI que cuentan con una relación con esta meta',
+              data: data,
+              backgroundColor: [
+                'rgba(191, 141, 44, 1)',
+                'rgba(191, 141, 44, 1)',
+                'rgba(191, 141, 44, 1)',
+                'rgba(191, 141, 44, 1)',
+                'rgba(191, 141, 44, 1)',
+                'rgba(191, 141, 44, 1)',
+              ],
+              borderColor: [
+                'rgb(191, 141, 44)',
+                'rgb(191, 141, 44)',
+                'rgb(191, 141, 44)',
+                'rgb(191, 141, 44)',
+                'rgb(191, 141, 44)',
+                'rgb(191, 141, 44)',
+              ],
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          scales: {
+            x: {
+              ticks: {
+                maxRotation: 0,
+                autoSkip: false,
+                labelOffset: 0,
+
+                padding: 0,
+              },
+            },
+            y: {
+              beginAtZero: true,
+              title: {
+                display: true,
+                text: 'Productos',
+                font: {
+                  size: 20,
+                },
+              },
+            },
+          },
+
+          plugins: {
+            legend: {
+              display: false,
+            },
+          },
+        },
+      });
+    } else {
+      console.error('Element with id "componente1" not found.');
+    }
+  }
+
+  createChart13(): void {
+    const labels = ['Meta 13.1', 'Meta 13.2', 'Meta 13.3', 'Meta 13.b'];
+    const data = [3, 3, 13, 2];
+    const chartElement = document.getElementById(
+      'objetivo13'
+    ) as HTMLCanvasElement;
+
+    if (chartElement) {
+      new Chart(chartElement, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              label:
+                ' Productos del INEGI que cuentan con una relación con esta meta',
+              data: data,
+              backgroundColor: [
+                'rgba(64, 127, 70, 1)',
+                'rgba(64, 127, 70, 1)',
+                'rgba(64, 127, 70, 1)',
+                'rgba(64, 127, 70, 1)',
+              ],
+              borderColor: [
+                'rgb(64, 127, 70)',
+                'rgb(64, 127, 70)',
+                'rgb(64, 127, 70)',
+                'rgb(64, 127, 70)',
+              ],
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          scales: {
+            x: {
+              ticks: {
+                maxRotation: 0,
+                autoSkip: false,
+                labelOffset: 0,
+
+                padding: 0,
+              },
+            },
+            y: {
+              beginAtZero: true,
+              title: {
+                display: true,
+                text: 'Productos',
+                font: {
+                  size: 20,
+                },
+              },
+            },
+          },
+
+          plugins: {
+            legend: {
+              display: false,
+            },
+          },
+        },
+      });
+    } else {
+      console.error('Element with id "componente1" not found.');
+    }
+  }
+
+  createChart14(): void {
+    const labels = ['Meta 14.1', 'Meta 14.2', 'Meta 14.4', 'Meta 14.5'];
+    const data = [1, 1, 6, 4];
+    const chartElement = document.getElementById(
+      'objetivo14'
+    ) as HTMLCanvasElement;
+
+    if (chartElement) {
+      new Chart(chartElement, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              label:
+                ' Productos del INEGI que cuentan con una relación con esta meta',
+              data: data,
+              backgroundColor: [
+                'rgba(31, 151, 212, 1)',
+                'rgba(31, 151, 212, 1)',
+                'rgba(31, 151, 212, 1)',
+                'rgba(31, 151, 212, 1)',
+              ],
+              borderColor: [
+                'rgb(31, 151, 212)',
+                'rgb(31, 151, 212)',
+                'rgb(31, 151, 212)',
+                'rgb(31, 151, 212)',
+              ],
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          scales: {
+            x: {
+              ticks: {
+                maxRotation: 0,
+                autoSkip: false,
+                labelOffset: 0,
+
+                padding: 0,
+              },
+            },
+            y: {
+              beginAtZero: true,
+              title: {
+                display: true,
+                text: 'Productos',
+                font: {
+                  size: 20,
+                },
+              },
+            },
+          },
+
+          plugins: {
+            legend: {
+              display: false,
+            },
+          },
+        },
+      });
+    } else {
+      console.error('Element with id "componente1" not found.');
+    }
+  }
+
+  createChart15(): void {
+    const labels = [
+      'Meta 15.1',
+      'Meta 15.2',
+      'Meta 15.3',
+      'Meta 15.4',
+      'Meta 15.5',
+      'Meta 15.7',
+      'Meta 15.a',
+    ];
+    const data = [37, 49, 14, 1, 4, 9, 1];
+    const chartElement = document.getElementById(
+      'objetivo15'
+    ) as HTMLCanvasElement;
+
+    if (chartElement) {
+      new Chart(chartElement, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              label:
+                ' Productos del INEGI que cuentan con una relación con esta meta',
+              data: data,
+              backgroundColor: [
+                'rgba(89, 186, 71, 1)',
+                'rgba(89, 186, 71, 1)',
+                'rgba(89, 186, 71, 1)',
+                'rgba(89, 186, 71, 1)',
+                'rgba(89, 186, 71, 1)',
+                'rgba(89, 186, 71, 1)',
+                'rgba(89, 186, 71, 1)',
+              ],
+              borderColor: [
+                'rgb(89, 186, 71)',
+                'rgb(89, 186, 71)',
+                'rgb(89, 186, 71)',
+                'rgb(89, 186, 71)',
+                'rgb(89, 186, 71)',
+                'rgb(89, 186, 71)',
+                'rgb(89, 186, 71)',
+              ],
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          scales: {
+            x: {
+              ticks: {
+                maxRotation: 0,
+                autoSkip: false,
+                labelOffset: 0,
+
+                padding: 0,
+              },
+            },
+            y: {
+              beginAtZero: true,
+              title: {
+                display: true,
+                text: 'Productos',
+                font: {
+                  size: 20,
+                },
+              },
+            },
+          },
+
+          plugins: {
+            legend: {
+              display: false,
+            },
+          },
+        },
+      });
+    } else {
+      console.error('Element with id "componente1" not found.');
+    }
+  }
+
+  createChart16(): void {
+    const labels = [
+      'Meta 16.1',
+      'Meta 16.2',
+      'Meta 16.5',
+      'Meta 16.7',
+      'Meta 16.10',
+      'Meta 16.a',
+      'Meta 16.b',
+    ];
+    const data = [12, 6, 12, 1, 3, 10, 1];
+    const chartElement = document.getElementById(
+      'objetivo16'
+    ) as HTMLCanvasElement;
+
+    if (chartElement) {
+      new Chart(chartElement, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              label:
+                ' Productos del INEGI que cuentan con una relación con esta meta',
+              data: data,
+              backgroundColor: [
+                'rgba(19, 106, 159, 1)',
+                'rgba(19, 106, 159, 1)',
+                'rgba(19, 106, 159, 1)',
+                'rgba(19, 106, 159, 1)',
+                'rgba(19, 106, 159, 1)',
+                'rgba(19, 106, 159, 1)',
+                'rgba(19, 106, 159, 1)',
+              ],
+              borderColor: [
+                'rgb(19, 106, 159)',
+                'rgb(19, 106, 159)',
+                'rgb(19, 106, 159)',
+                'rgb(19, 106, 159)',
+                'rgb(19, 106, 159)',
+                'rgb(19, 106, 159)',
+                'rgb(19, 106, 159)',
+              ],
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          scales: {
+            x: {
+              ticks: {
+                maxRotation: 0,
+                autoSkip: false,
+                labelOffset: 0,
+
+                padding: 0,
+              },
+            },
+            y: {
+              beginAtZero: true,
+              title: {
+                display: true,
+                text: 'Productos',
+                font: {
+                  size: 20,
+                },
+              },
+            },
+          },
+
+          plugins: {
+            legend: {
+              display: false,
+            },
+          },
+        },
+      });
+    } else {
+      console.error('Element with id "componente1" not found.');
+    }
+  }
+  createChart17(): void {
+    const labels = ['Meta 17.10', 'Meta 17.11'];
+    const data = [1, 1];
+    const chartElement = document.getElementById(
+      'objetivo17'
+    ) as HTMLCanvasElement;
+
+    if (chartElement) {
+      new Chart(chartElement, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              label:
+                ' Productos del INEGI que cuentan con una relación con esta meta',
+              data: data,
+              backgroundColor: ['rgba(20, 73, 107, 1)', 'rgba(20, 73, 107, 1)'],
+              borderColor: ['rgb(20, 73, 107)', 'rgb(20, 73, 107)'],
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          scales: {
+            x: {
+              ticks: {
+                maxRotation: 0,
+                autoSkip: false,
+                labelOffset: 0,
+
+                padding: 0,
+              },
+            },
+            y: {
+              beginAtZero: true,
+              title: {
+                display: true,
+                text: 'Productos',
+                font: {
+                  size: 20,
+                },
+              },
+            },
+          },
+
+          plugins: {
+            legend: {
+              display: false,
+            },
+          },
+        },
+      });
+    } else {
+      console.error('Element with id "componente1" not found.');
+    }
+  }
+
+  //! links al siouts
+  navigateToLink(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS001000100010&cveind=1&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink2(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS001000100020&cveind=482&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink3(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS001000100030&cveind=594&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink4(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS001000200002&cveind=2&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink5(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS001000200004&cveind=550&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink6(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS001000200005&cveind=637&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink7(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS001000200007&cveind=395&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink8(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS001000200010&cveind=105&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink9(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS001000200015&cveind=551&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink10(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS001000200020&cveind=396&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink11(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS001000200030&cveind=638&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink12(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS001000250010&cveind=106&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink13(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS001000250020&cveind=639&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink14(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS001000280010&cveind=107&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink15(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS001000280020&cveind=114&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink16(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS001000290010&cveind=108&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink17(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS001000390020&cveind=111&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink18(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS001000620010&cveind=494&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink19(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS001000620020&cveind=554&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink20(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS001000620030&cveind=573&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink21(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS001000750010&cveind=478&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink22(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS001000750020&cveind=479&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink23(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS001000790010&cveind=480&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink24(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS001000790015&cveind=563&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink25(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS001000790020&cveind=495&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink26(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS001000790025&cveind=571&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink27(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS001000790030&cveind=496&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink28(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS001000790040&cveind=569&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink29(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS001000790050&cveind=574&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
   }
 
   filterProductsByObjetivo(objetivo: any[]): any[] {

@@ -66,7 +66,7 @@ export class DgComponent implements OnInit {
     this._direServices.productos().subscribe((data) => {
       this.products = data;
       this.filtrarProductosPorDirecciones();
-      this.fun();
+
     });
   }
 
@@ -158,56 +158,6 @@ export class DgComponent implements OnInit {
     console.log(this.products);
   }
 
-  fun() {
-    if (this.products.length == 0) {
-      console.log('first');
-    } else {
-      this.DireccionCountstop = setInterval(() => {
-        this.primerDir++;
 
-        if (this.primerDir == this.primerDireccion.length) {
-          clearInterval(this.DireccionCountstop);
-        }
-        if (this.primerDireccion.length == 0) {
-          this.primerDir = 0;
-        }
-      }, 30);
-
-      this.DireccionCountstop2 = setInterval(() => {
-        this.segundaDir++;
-
-        if (this.segundaDir === this.segundaDireccion.length) {
-          clearInterval(this.DireccionCountstop2);
-        }
-      }, 25);
-
-      this.DireccionCountstop3 = setInterval(() => {
-        this.terceraDir++;
-
-        if (this.terceraDir === this.terceraDireccion.length) {
-          clearInterval(this.DireccionCountstop3);
-        }
-      }, 25);
-
-      this.DireccionCountstop4 = setInterval(() => {
-        this.cuartaDir++;
-
-        if (this.cuartaDir === this.cuartaDireccion.length) {
-          clearInterval(this.DireccionCountstop4);
-        }
-      }, 25);
-
-      this.DireccionCountstop5 = setInterval(() => {
-        this.quintaDir++;
-
-        if (this.quintaDir === this.quintaDireccion.length) {
-          clearInterval(this.DireccionCountstop5);
-        }
-        if (this.quintaDireccion.length == 0) {
-          this.quintaDir = 0;
-        }
-      }, 30);
-    }
-  }
 }
 

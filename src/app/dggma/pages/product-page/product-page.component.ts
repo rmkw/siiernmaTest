@@ -29,7 +29,7 @@ interface CheckboxesState {
 })
 export class ProductPageComponent implements OnInit {
 
-  isMobile: boolean = window.innerWidth <= 480; 
+  isMobile: boolean = window.innerWidth <= 480;
 
   //*PRODUCTOS
   public products: Products[] = [];
@@ -121,13 +121,13 @@ export class ProductPageComponent implements OnInit {
     typePublicacion: false,
   };
 
-  // Contadores para las direcciones. 
+  // Contadores para las direcciones.
   public primerDir: number = 0;
   public segundaDir: number = 0;
   public terceraDir: number = 0;
   public cuartaDir: number = 0;
   public quintaDir: number = 0;
- 
+
   DireccionCountstop: any;
   DireccionCountstop2: any;
   DireccionCountstop3: any;
@@ -464,7 +464,7 @@ export class ProductPageComponent implements OnInit {
       this.filterStates[string] = true;
       this.thisFlags();
     }
-    
+
     if (this._flagService.getFlagSubComp8()) {
       this.changeFlagFilter();
       this._flagService.setFlagSubComp8(false);
@@ -473,7 +473,7 @@ export class ProductPageComponent implements OnInit {
       this.filterStates[string] = true;
       this.thisFlags();
     }
-    
+
     if (this._flagService.getFlagSubComp9()) {
       this.changeFlagFilter();
       this._flagService.setFlagSubComp9(false);
@@ -482,7 +482,7 @@ export class ProductPageComponent implements OnInit {
       this.filterStates[string] = true;
       this.thisFlags();
     }
-    
+
     if (this._flagService.getFlagSubComp10()) {
       this.changeFlagFilter();
       this._flagService.setFlagSubComp10(false);
@@ -491,7 +491,7 @@ export class ProductPageComponent implements OnInit {
       this.filterStates[string] = true;
       this.thisFlags();
     }
-    
+
     if (this._flagService.getFlagSubComp11()) {
       this.changeFlagFilter();
       this._flagService.setFlagSubComp11(false);
@@ -500,7 +500,7 @@ export class ProductPageComponent implements OnInit {
       this.filterStates[string] = true;
       this.thisFlags();
     }
-    
+
     if (this._flagService.getFlagSubComp12()) {
       this.changeFlagFilter();
       this._flagService.setFlagSubComp12(false);
@@ -509,7 +509,7 @@ export class ProductPageComponent implements OnInit {
       this.filterStates[string] = true;
       this.thisFlags();
     }
-    
+
     if (this._flagService.getFlagSubComp13()) {
       this.changeFlagFilter();
       this._flagService.setFlagSubComp13(false);
@@ -518,7 +518,7 @@ export class ProductPageComponent implements OnInit {
       this.filterStates[string] = true;
       this.thisFlags();
     }
-    
+
     if (this._flagService.getFlagSubComp14()) {
       this.changeFlagFilter();
       this._flagService.setFlagSubComp14(false);
@@ -527,7 +527,7 @@ export class ProductPageComponent implements OnInit {
       this.filterStates[string] = true;
       this.thisFlags();
     }
-    
+
     if (this._flagService.getFlagSubComp15()) {
       this.changeFlagFilter();
       this._flagService.setFlagSubComp15(false);
@@ -536,7 +536,7 @@ export class ProductPageComponent implements OnInit {
       this.filterStates[string] = true;
       this.thisFlags();
     }
-    
+
     if (this._flagService.getFlagSubComp16()) {
       this.changeFlagFilter();
       this._flagService.setFlagSubComp16(false);
@@ -545,7 +545,7 @@ export class ProductPageComponent implements OnInit {
       this.filterStates[string] = true;
       this.thisFlags();
     }
-    
+
     if (this._flagService.getFlagSubComp17()) {
       this.changeFlagFilter();
       this._flagService.setFlagSubComp17(false);
@@ -554,7 +554,7 @@ export class ProductPageComponent implements OnInit {
       this.filterStates[string] = true;
       this.thisFlags();
     }
-    
+
     if (this._flagService.getFlagSubComp18()) {
       this.changeFlagFilter();
       this._flagService.setFlagSubComp18(false);
@@ -563,7 +563,7 @@ export class ProductPageComponent implements OnInit {
       this.filterStates[string] = true;
       this.thisFlags();
     }
-    
+
     if (this._flagService.getFlagSubComp19()) {
       this.changeFlagFilter();
       this._flagService.setFlagSubComp19(false);
@@ -572,7 +572,7 @@ export class ProductPageComponent implements OnInit {
       this.filterStates[string] = true;
       this.thisFlags();
     }
-    
+
     if (this._flagService.getFlagSubComp20()) {
       this.changeFlagFilter();
       this._flagService.setFlagSubComp20(false);
@@ -581,7 +581,7 @@ export class ProductPageComponent implements OnInit {
       this.filterStates[string] = true;
       this.thisFlags();
     }
-    
+
     if (this._flagService.getFlagSubComp21()) {
       this.changeFlagFilter();
       this._flagService.setFlagSubComp21(false);
@@ -590,7 +590,7 @@ export class ProductPageComponent implements OnInit {
       this.filterStates[string] = true;
       this.thisFlags();
     }
-    
+
 
     //! Funcion que manda a llamar el servicio y los datos de este para que se pueda combinar con la transformaciión de datos a la estructura de treenode
     this._direServices.componentes().subscribe((componentes) => {
@@ -1194,7 +1194,7 @@ export class ProductPageComponent implements OnInit {
       if (value) {
         if (key === this.selectComponentekey) {
           console.log(this.selectComponentekey);
-          
+
           this._direServices.mdea().subscribe((data) => (this.mdeas = data));
           let thismdeas = [...this.mdeas];
 
@@ -1529,7 +1529,7 @@ export class ProductPageComponent implements OnInit {
         if (this.primerDireccion.length == 0) {
           this.primerDir = 0;
         }
-      }, 30);
+      }, 10);
 
       this.DireccionCountstop2 = setInterval(() => {
         this.segundaDir++;
@@ -1537,7 +1537,7 @@ export class ProductPageComponent implements OnInit {
         if (this.segundaDir === this.segundaDireccion.length) {
           clearInterval(this.DireccionCountstop2);
         }
-      }, 25);
+      }, 10);
 
       this.DireccionCountstop3 = setInterval(() => {
         this.terceraDir++;
@@ -1545,7 +1545,7 @@ export class ProductPageComponent implements OnInit {
         if (this.terceraDir === this.terceraDireccion.length) {
           clearInterval(this.DireccionCountstop3);
         }
-      }, 25);
+      }, 10);
 
       this.DireccionCountstop4 = setInterval(() => {
         this.cuartaDir++;
@@ -1553,7 +1553,7 @@ export class ProductPageComponent implements OnInit {
         if (this.cuartaDir === this.cuartaDireccion.length) {
           clearInterval(this.DireccionCountstop4);
         }
-      }, 25);
+      }, 10);
 
       this.DireccionCountstop5 = setInterval(() => {
         this.quintaDir++;
@@ -1564,7 +1564,7 @@ export class ProductPageComponent implements OnInit {
         if (this.quintaDireccion.length == 0) {
           this.quintaDir = 0;
         }
-      }, 30);
+      }, 10);
     }
   }
 
