@@ -225,7 +225,7 @@
 :host ::ng-deep .custom-tooltip .tooltip-inner {
   max-width: 400px;
   /* Ajusta el ancho según tus necesidades */
-  background-color: #000000f1;
+  background-color: #000000e5;
   /* Opcional: Color de fondo personalizado */
   color: #ffffff;
   /* Opcional: Color del texto personalizado */

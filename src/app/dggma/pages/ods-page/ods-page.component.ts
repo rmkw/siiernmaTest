@@ -17,8 +17,6 @@ import { MessageService } from 'primeng/api';
   providers: [MessageService],
 })
 export class OdsPageComponent implements OnInit, AfterViewInit {
-
-
   isMobile: boolean = window.innerWidth <= 480;
   loading = true;
 
@@ -89,20 +87,10 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     toggleCollapse(collapseElements);
 
     //! free
-    // Función para quitar el foco de todos los botones con tooltip
-    const removeFocusFromButtons = () => {
-      const buttons = document.querySelectorAll('[data-bs-toggle="tooltip"]');
-      buttons.forEach((button) => {
-        (button as HTMLElement).blur();
-      });
-    };
-
-    // Agregar evento a cada modal para quitar el foco de los botones cuando el modal se abra
-    const modalElements = document.querySelectorAll('.modal');
-    modalElements.forEach((modalElement) => {
-      modalElement.addEventListener('shown.bs.modal', () => {
-        console.log('Modal opened');
-        removeFocusFromButtons();
+    const modalElements1 = document.querySelectorAll('.modal');
+    modalElements1.forEach((modalElement) => {
+      modalElement.addEventListener('hidden.bs.modal', () => {
+        this.clickCornerButton();
       });
     });
 
@@ -125,6 +113,37 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     this.createChart15();
     this.createChart16();
     this.createChart17();
+  }
+
+  clickCornerButton(): void {
+    setTimeout(() => {
+      const buttonIds = [
+        'corner-button',
+        'corner-button2',
+        'corner-button3',
+        'corner-button4',
+        'corner-button5',
+        'corner-button6',
+        'corner-button7',
+        'corner-button8',
+        'corner-button9',
+        'corner-button10',
+        'corner-button11',
+        'corner-button12',
+        'corner-button13',
+        'corner-button14',
+        'corner-button15',
+        'corner-button16',
+        'corner-button17',
+      ]; // Lista de IDs de botones
+      buttonIds.forEach((id) => {
+        const button = document.getElementById(id);
+        if (button) {
+          button.focus(); // Primero enfoca el botón
+          button.click(); // Luego hace clic en el botón
+        }
+      });
+    }, 100); // Ajusta el tiempo (500 ms) según sea necesario
   }
 
   ngOnInit(): void {
@@ -1601,6 +1620,878 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
   navigateToLink29(): void {
     window.open(
       'https://agenda2030.mx/ODSind.html?ind=ODS001000790050&cveind=574&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+
+  //? objetivos 2
+  navigateToLink30(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS002000050015&cveind=382&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink31(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS002000050017&cveind=635&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink32(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS002000050020&cveind=118&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink33(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS002000050030&cveind=636&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+
+  navigateToLink34(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS002000080010&cveind=117&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink35(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS002000080020&cveind=120&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink36(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS002000080030&cveind=540&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink37(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS002000080040&cveind=542&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink38(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS002000080050&cveind=608&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink39(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS002000080060&cveind=609&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+
+  navigateToLink40(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS002000690010&cveind=417&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink41(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS002000790010&cveind=474&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink42(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS002000790020&cveind=564&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink43(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS002000790025&cveind=572&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink44(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS002000790030&cveind=565&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink45(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS002000790040&cveind=566&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink46(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS002000890010&cveind=422&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+
+  navigateToLink47(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS003000030010&cveind=26&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink48(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS003000030020&cveind=27&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+
+  navigateToLink49(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS003000030010&cveind=26&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink50(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS003000030020&cveind=27&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+
+  navigateToLink51(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS003000050010&cveind=23&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink52(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS003000050020&cveind=623&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+
+  navigateToLink53(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS003000100007&cveind=578&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink54(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS003000100015&cveind=508&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink55(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS003000100022&cveind=631&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink56(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS003000100026&cveind=632&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink57(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS003000100030&cveind=132&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink58(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS003000100033&cveind=626&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink59(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS003000100035&cveind=627&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink60(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS003000100036&cveind=628&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink61(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS003000100037&cveind=629&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink62(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS003000100044&cveind=625&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink63(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS003000100045&cveind=134&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+
+  navigateToLink64(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS003000200010&cveind=543&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink65(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS003000200020&cveind=537&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink66(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS003000200030&cveind=544&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+
+  navigateToLink67(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS003000500010&cveind=140&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink68(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS003000500015&cveind=557&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink69(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS003000500020&cveind=141&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink70(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS003000500030&cveind=334&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink71(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS003000500040&cveind=517&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink72(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS003000500050&cveind=595&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+
+  navigateToLink73(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS003000700010&cveind=630&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink74(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS003000700020&cveind=523&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink75(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS003000700030&cveind=548&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink76(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS003000700040&cveind=549&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+
+  navigateToLink77(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS003001000010&cveind=150&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+
+  navigateToLink78(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS003001200010&cveind=424&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink79(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS003001200015&cveind=567&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink80(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS003001200017&cveind=575&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink81(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS003001200020&cveind=425&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink82(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS003001200025&cveind=570&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink83(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS003001200030&cveind=427&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink84(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS003001200035&cveind=568&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink85(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS003001200040&cveind=428&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+
+  navigateToLink86(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS003001400010&cveind=432&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+
+  navigateToLink87(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS003001500010&cveind=434&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+
+  navigateToLink88(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS003001500020&cveind=611&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+
+  navigateToLink89(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS004000100011&cveind=587&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink90(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS004000100012&cveind=529&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink91(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS004000100013&cveind=599&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink92(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS004000100014&cveind=600&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+
+  //! 4.2.1
+  navigateToLink93(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS004000200010&cveind=152&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink94(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS004000200020&cveind=153&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+
+  navigateToLink95(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS004000300010&cveind=154&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  //! 4r.3.1
+  navigateToLink96(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS004000300020&cveind=507&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  //! 4.4.1
+  navigateToLink97(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS004000400010&cveind=155&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  //! 4.5.1a
+  navigateToLink98(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS004000500010&cveind=156&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink99(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS004000500020&cveind=640&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink100(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS004000500030&cveind=641&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink101(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS004000500040&cveind=642&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink102(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS004000500050&cveind=643&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink103(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS004000500060&cveind=644&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+
+  //! 4.6.1.a
+  navigateToLink104(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS004000600010&cveind=157&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink105(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS004000600020&cveind=518&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink106(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS004000600025&cveind=615&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink107(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS004000600030&cveind=612&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink108(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS004000600040&cveind=616&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+
+  //! 4.a.1.a
+  navigateToLink109(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS004000800010&cveind=159&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink110(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS004000800020&cveind=385&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink111(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS004000800030&cveind=386&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink112(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS004000800040&cveind=387&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink113(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS004000800045&cveind=400&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink114(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS004000800050&cveind=388&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink115(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS004000800060&cveind=389&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink116(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS004000800065&cveind=401&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+
+  navigateToLink117(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS004001000010&cveind=161&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink118(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS004001000020&cveind=383&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink119(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS004001000030&cveind=384&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+
+  navigateToLink120(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS004001100010&cveind=436&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+
+  navigateToLink121(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS004001200010&cveind=476&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+
+  navigateToLink122(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS005000120010&cveind=163&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink123(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS005000120015&cveind=338&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink124(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS005000120020&cveind=183&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink125(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS005000120030&cveind=339&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+
+  navigateToLink126(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS005000140010&cveind=164&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink127(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS005000140020&cveind=553&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+
+  navigateToLink128(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS005000250010&cveind=165&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink129(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS005000250020&cveind=532&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink130(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS005000250030&cveind=533&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink131(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS005000250040&cveind=601&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink132(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS005000250050&cveind=602&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink133(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS005000250060&cveind=603&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink134(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS005000250070&cveind=604&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+
+  navigateToLink135(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS005000350075&cveind=324&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink136(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS005000350076&cveind=335&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink137(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS005000350077&cveind=592&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink138(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS005000350078&cveind=590&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink139(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS005000350079&cveind=591&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink140(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS005000350080&cveind=185&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+
+  navigateToLink141(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS005000450010&cveind=186&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+
+  navigateToLink142(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS005000550010&cveind=188&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink143(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS005000550020&cveind=528&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+
+  navigateToLink144(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS005000650010&cveind=190&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+
+  navigateToLink145(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS005000750010&cveind=441&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink146(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS005000750020&cveind=443&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink147(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS005000750030&cveind=444&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink148(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS005000750040&cveind=445&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink149(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS005000850010&cveind=448&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink150(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS005000950010&cveind=450&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+
+  navigateToLink151(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS006000050010&cveind=54&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink152(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS006000050020&cveind=617&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink153(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS006000050030&cveind=618&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+
+  navigateToLink154(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS006000150010&cveind=192&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink155(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS006000150020&cveind=621&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink156(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS006000150030&cveind=622&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+
+  navigateToLink157(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS006000250010&cveind=193&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink158(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS006000250020&cveind=194&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+
+  navigateToLink159(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS006000450010&cveind=197&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink160(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS006000450020&cveind=198&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+
+  navigateToLink161(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS006000650010&cveind=582&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+
+  navigateToLink162(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS006000850010&cveind=451&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink163(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS006000850015&cveind=624&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink164(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS006000850020&cveind=619&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink165(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS006000850030&cveind=620&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink166(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS006000950010&cveind=452&cveCob=99&lang=es#/Indicator',
+      '_blank'
+    );
+  }
+  navigateToLink167(): void {
+    window.open(
+      'https://agenda2030.mx/ODSind.html?ind=ODS006000950020&cveind=453&cveCob=99&lang=es#/Indicator',
       '_blank'
     );
   }
