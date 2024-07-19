@@ -415,15 +415,15 @@
       </div>
     
      
-    
+    <div id="contador">
         <div class="row  justify-content-center align-items-center">
     
           <div class="col-2 m-1">
             <div class="d-flex justify-content-center">
               <i class="bi bi-globe display-1" style="color: #113250;"></i>
             </div>
-            <h5 class="fw-normal text-center" style="height: 7.5rem; color: #113250; font-family: Helvetica, Sans-Serif;">Dirección General de Geografía y Medio Ambiente.</h5>
-            <h5 style="text-align: center; color: #004045; font-family: Helvetica, Sans-Serif;">Total de productos:</h5>
+            <h6 class="fw-normal text-center" style="height: 7.5rem; color: #113250; font-family: Helvetica, Sans-Serif;">Dirección General de Geografía y Medio Ambiente.</h6>
+            <h6 style="text-align: center; color: #004045; font-family: Helvetica, Sans-Serif;">Total de productos:</h6>
             <div class="text-center" *ngIf="loading">
               <div class="spinner-border spinner-border-sm custom-spinner" role="status" >
                 <span class="visually-hidden">Loading...</span>
@@ -438,8 +438,8 @@
             <div class="d-flex justify-content-center ">
               <i class="bi bi-bar-chart display-1 " style="color: #113250;"></i>
             </div>
-            <h5 class="fw-normal text-center" style="height: 7.5rem; color: #113250; font-family: Helvetica, Sans-Serif;">Dirección General de Estadísticas Sociodemográficas.</h5>
-            <h5 style="text-align: center; color: #004045; font-family: Helvetica, Sans-Serif;">Total de productos:</h5>
+            <h6 class="fw-normal text-center" style="height: 7.5rem; color: #113250; font-family: Helvetica, Sans-Serif;">Dirección General de Estadísticas Sociodemográficas.</h6>
+            <h6 style="text-align: center; color: #004045; font-family: Helvetica, Sans-Serif;">Total de productos:</h6>
             <div class="text-center" *ngIf="loading">
               <div class="spinner-border spinner-border-sm custom-spinner" role="status" >
                 <span class="visually-hidden">Loading...</span>
@@ -452,12 +452,13 @@
             </div>
           </div>
     
+          
           <div id="DirEstEco" class="col-2 m-1">
             <div class="d-flex justify-content-center ">
               <i class="bi bi-cash-stack display-1 " style="color: #113250;"></i>
             </div>
-            <h5 class="fw-normal text-center" style="height: 7.5rem; color: #113250; font-family: Helvetica, Sans-Serif;">Dirección General de Estadísticas Económicas.</h5>
-            <h5 style="text-align: center; color: #004045; font-family: Helvetica, Sans-Serif;">Total de productos:</h5>
+            <h6 class="fw-normal text-center" style="height: 7.5rem; color: #113250; font-family: Helvetica, Sans-Serif;">Dirección General de Estadísticas Económicas.</h6>
+            <h6 style="text-align: center; color: #004045; font-family: Helvetica, Sans-Serif;">Total de productos:</h6>
             <div class="text-center" *ngIf="loading">
               <div class="spinner-border spinner-border-sm custom-spinner" role="status" >
                 <span class="visually-hidden">Loading...</span>
@@ -474,9 +475,9 @@
             <div class="d-flex justify-content-center ">
               <i class="bi bi-bank display-1 " style="color: #113250;"></i>
             </div>
-            <h5 style="color: #113250; font-family: Helvetica, Sans-Serif; height: 7.5rem;" class="fw-normal text-center ">Direrccion General de Estadísticas de Gobierno, Seguridad Pública y Justicia.
-            </h5>
-            <h5 style="text-align: center; color: #004045; font-family: Helvetica, Sans-Serif;">Total de productos: </h5>
+            <h6 id="DirSeg" style="color: #113250; font-family: Helvetica, Sans-Serif; height: 7.5rem;" class="fw-normal text-center ">Direrccion General de Estadísticas de Gobierno, Seguridad Pública y Justicia.
+            </h6>
+            <h6 style="text-align: center; color: #004045; font-family: Helvetica, Sans-Serif;">Total de productos: </h6>
             <div class="text-center" *ngIf="loading">
               <div class="spinner-border spinner-border-sm custom-spinner" role="status" >
                 <span class="visually-hidden">Loading...</span>
@@ -493,9 +494,9 @@
             <div class="d-flex justify-content-center ">
               <i class="bi bi-file-earmark-text display-1 " style="color: #113250;"></i>
             </div>
-            <h5  style="color: #113250; font-family: Helvetica, Sans-Serif; height: 7.5rem;" class="fw-normal text-center ">Dirección General de Integración, Análisis e
-              Investigación.</h5>
-              <h5 style="text-align: center; color: #004045; margin-top: 10; font-family: Helvetica, Sans-Serif;">Total de productos: </h5>
+            <h6  style="color: #113250; font-family: Helvetica, Sans-Serif; height: 7.5rem;" class="fw-normal text-center ">Dirección General de Integración, Análisis e
+              Investigación.</h6>
+              <h6 style="text-align: center; color: #004045; margin-top: 10; font-family: Helvetica, Sans-Serif;">Total de productos: </h6>
               <div class="text-center" *ngIf="loading">
                 <div class="spinner-border spinner-border-sm custom-spinner" role="status" >
                   <span class="visually-hidden">Loading...</span>
@@ -508,6 +509,7 @@
             </div>
           </div>
         </div>
+      </div>
 
     </div>
 
@@ -853,6 +855,14 @@
             </div>
             <div class="container">
               <hr>
+            </div>
+          </div>
+
+          <div class="row mb-2">
+            <div class="col-md-4 col-12">
+              <span>
+                Enlace de referencia:
+              </span>
             </div>
           </div>
 
@@ -1968,6 +1978,13 @@
             </div>
           </div>
 
+          <div class="row mb-2">
+            <div class="col-md-4 col-12">
+              <span>
+                Enlace de referencia:
+              </span>
+            </div>
+          </div>
 
           <div class="row">
             <div class="col-12">

@@ -71,3 +71,11 @@
   border-width: 0.25em; /* Ajusta el grosor del borde */
   color: #1a538c; /* Color del spinner */
 }
+
+
+  @media (min-width: 1366px) {
+    #DirSeg{  
+       font-size: 15px;
+    }
+    }
+  
