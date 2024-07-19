@@ -1082,20 +1082,21 @@
             tooltipClass="custom-tooltip" placement="top" [animation]="true" [openDelay]="200" [closeDelay]="500"
             autoClose="true">Meta <span class="badge custom-badge8">8.10</span></button>
 
-          <button type="button" class=" btn btn-primary custom-btn8 m-2"
+          <p-toast [breakpoints]="{'920px': {width: '100%', right: '0', left: '0'}}"></p-toast>
+          <button type="button" class=" btn btn-primary custom-btn8 m-2" (click)="showWarn()"
             [ngbTooltip]="'Aumentar el apoyo a la iniciativa de ayuda para el comercio en los países en desarrollo, en particular los países menos adelantados, incluso mediante el Marco Integrado Mejorado para la Asistencia Técnica a los Países Menos Adelantados en Materia de Comercio'"
             tooltipClass="custom-tooltip" placement="top" [animation]="true" [openDelay]="200" [closeDelay]="500"
             autoClose="true">Meta <span class="badge custom-badge8">8.a</span></button>
 
-          <button type="button" class=" btn btn-primary custom-btn8 m-2"
+          <button type="button" class=" btn btn-primary custom-btn8 m-2" (click)="showWarn()"
             [ngbTooltip]="'De aquí a 2020, desarrollar y poner en marcha una estrategia mundial para el empleo de los jóvenes y aplicar el Pacto Mundial para el Empleo de la Organización Internacional del Trabajo'"
             tooltipClass="custom-tooltip" placement="top" [animation]="true" [openDelay]="200" [closeDelay]="500"
             autoClose="true">Meta <span class="badge custom-badge8">8.b</span></button>
 
-          <button type="button" class=" btn btn-primary custom-btn8 m-2" data-bs-toggle="modal" data-bs-target="#exampleModal58"
+          <button type="button" class=" btn btn-primary custom-btn8 m-2" data-bs-toggle="modal" data-bs-target="#exampleModal58" style="width: 13rem;"
             [ngbTooltip]="'Indicadores Nacionales publicados en México | SIODS | Sistema de Información de los Objetivos de Desarrollo Sostenible.'"
             tooltipClass="custom-tooltip" placement="top" [animation]="true" [openDelay]="200" [closeDelay]="500"
-            autoClose="true">Nacionales</button>
+            autoClose="true">Indicadores Nacionales</button>
 
           <button style="opacity: 0; cursor: default;" class="btn btn-primary" id="corner-button8">NO ME VEO</button>
 
@@ -1601,7 +1602,7 @@
           <button type="button" class="btn btn-primary custom-btn12 m-2"
             [ngbTooltip]="'Indicadores Nacionales publicados en México | SIODS | Sistema de Información de los Objetivos de Desarrollo Sostenible.'"
             tooltipClass="custom-tooltip" placement="top" [animation]="true" [openDelay]="200" [closeDelay]="500"
-            autoClose="true">Nacionales</button>
+            autoClose="true">Indicadores Nacionales</button>
 
           <button style="opacity: 0; cursor: default;" class="btn btn-primary" id="corner-button12">NO ME VEO</button>
 
@@ -2686,6 +2687,7 @@
             </div>
             <hr>
           </div>
+
 
 
 
@@ -8061,7 +8063,7 @@
 
         <h6 class="clickable-text" [ngbTooltip]="'Click para ver los productos relacionados con esta meta.'"
           tooltipClass="custom-tooltip" placement="top" [animation]="true" [openDelay]="100" [closeDelay]="500"
-          autoClose="true">Esta meta tiene 146 relaciones con los productos del INEGI. </h6>
+          autoClose="true">Esta meta tiene 2 relaciones con los productos del INEGI. </h6>
 
 
 
@@ -8149,7 +8151,7 @@
 
         <h6 class="clickable-text" [ngbTooltip]="'Click para ver los productos relacionados con esta meta.'"
           tooltipClass="custom-tooltip" placement="top" [animation]="true" [openDelay]="100" [closeDelay]="500"
-          autoClose="true">Esta meta tiene 146 relaciones con los productos del INEGI. </h6>
+          autoClose="true">Esta meta tiene 2 relaciones con los productos del INEGI. </h6>
 
 
 
@@ -8230,7 +8232,7 @@
       <div class="modal-footer">
         <h6 class="clickable-text" [ngbTooltip]="'Click para ver los productos relacionados con esta meta.'"
           tooltipClass="custom-tooltip" placement="top" [animation]="true" [openDelay]="100" [closeDelay]="500"
-          autoClose="true">Esta meta tiene 146 relaciones con los productos del INEGI. </h6>
+          autoClose="true">Esta meta tiene 16 relaciones con los productos del INEGI. </h6>
       </div>
     </div>
   </div>
@@ -8316,7 +8318,7 @@
       <div class="modal-footer">
         <h6 class="clickable-text" [ngbTooltip]="'Click para ver los productos relacionados con esta meta.'"
           tooltipClass="custom-tooltip" placement="top" [animation]="true" [openDelay]="100" [closeDelay]="500"
-          autoClose="true">Esta meta tiene 146 relaciones con los productos del INEGI. </h6>
+          autoClose="true">Esta meta tiene 73 relaciones con los productos del INEGI. </h6>
       </div>
     </div>
   </div>
@@ -8425,7 +8427,7 @@
       <div class="modal-footer">
         <h6 class="clickable-text" [ngbTooltip]="'Click para ver los productos relacionados con esta meta.'"
           tooltipClass="custom-tooltip" placement="top" [animation]="true" [openDelay]="100" [closeDelay]="500"
-          autoClose="true">Esta meta tiene 146 relaciones con los productos del INEGI. </h6>
+          autoClose="true">Esta meta tiene 19 relaciones con los productos del INEGI. </h6>
       </div>
     </div>
   </div>
@@ -8524,7 +8526,7 @@
       <div class="modal-footer">
         <h6 class="clickable-text" [ngbTooltip]="'Click para ver los productos relacionados con esta meta.'"
           tooltipClass="custom-tooltip" placement="top" [animation]="true" [openDelay]="100" [closeDelay]="500"
-          autoClose="true">Esta meta tiene 146 relaciones con los productos del INEGI. </h6>
+          autoClose="true">Esta meta tiene 2 relaciones con los productos del INEGI. </h6>
       </div>
     </div>
   </div>
@@ -8596,7 +8598,7 @@
       <div class="modal-footer">
         <h6 class="clickable-text" [ngbTooltip]="'Click para ver los productos relacionados con esta meta.'"
           tooltipClass="custom-tooltip" placement="top" [animation]="true" [openDelay]="100" [closeDelay]="500"
-          autoClose="true">Esta meta tiene 146 relaciones con los productos del INEGI. </h6>
+          autoClose="true">Esta meta tiene 9 relaciones con los productos del INEGI. </h6>
       </div>
     </div>
   </div>
@@ -8667,7 +8669,7 @@
       <div class="modal-footer">
         <h6 class="clickable-text" [ngbTooltip]="'Click para ver los productos relacionados con esta meta.'"
           tooltipClass="custom-tooltip" placement="top" [animation]="true" [openDelay]="100" [closeDelay]="500"
-          autoClose="true">Esta meta tiene 146 relaciones con los productos del INEGI. </h6>
+          autoClose="true">Esta meta tiene 19 relaciones con los productos del INEGI. </h6>
       </div>
     </div>
   </div>
@@ -8736,7 +8738,7 @@
       <div class="modal-footer">
         <h6 class="clickable-text" [ngbTooltip]="'Click para ver los productos relacionados con esta meta.'"
           tooltipClass="custom-tooltip" placement="top" [animation]="true" [openDelay]="100" [closeDelay]="500"
-          autoClose="true">Esta meta tiene 146 relaciones con los productos del INEGI. </h6>
+          autoClose="true">Esta meta no cuenta con relaciones con los productos del INEGI. </h6>
       </div>
     </div>
   </div>
@@ -8824,7 +8826,7 @@
       <div class="modal-footer">
         <h6 class="clickable-text" [ngbTooltip]="'Click para ver los productos relacionados con esta meta.'"
           tooltipClass="custom-tooltip" placement="top" [animation]="true" [openDelay]="100" [closeDelay]="500"
-          autoClose="true">Esta meta tiene 146 relaciones con los productos del INEGI. </h6>
+          autoClose="true">Esta meta tiene 5 relaciones con los productos del INEGI. </h6>
       </div>
     </div>
   </div>
@@ -9069,4 +9071,210 @@
         </div>
       </div>
     </div>
+</div>
+
+
+<!--? modales OBJ 9 -->
+<!--! 9.1 -->
+<div class="modal fade" id="exampleModal48" tabindex="-1" aria-labelledby="exampleModalLabel48" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color: #a31c44;">
+
+        <div class="row g-1">
+          <div class="col">
+            <h6 class="justificado" style="color: white; ">
+              Meta <span class="badge custom-badge8">9.1</span> Desarrollar infraestructuras fiables, sostenibles, resilientes y de calidad, incluidas infraestructuras regionales y
+              transfronterizas, para apoyar el desarrollo económico y el bienestar humano, haciendo especial hincapié en el acceso
+              asequible y equitativo para todos</h6>
+          </div>
+        </div>
+
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col">
+            <h5>Indicadores</h5>
+
+            <div class="mb-3">
+              <label class="clickable-text" (click)="navigateToLink151()"
+                [ngbTooltip]="'Click para ver mas información en: México | SIODS | Sistema de Información de los Objetivos de Desarrollo Sostenible.'"
+                tooltipClass="custom-tooltip" placement="top" [animation]="true" [openDelay]="100" [closeDelay]="500"
+                autoClose="true"><strong>9.1.1</strong><br> Proporción de la población rural que vive a menos de 2 km de una carretera transitable todo el año
+                &nbsp;<span class="badge custom-btnIndicator">G</span>&nbsp;<span class="badge custom-btnIndicator2">EM</span>
+              </label>
+            </div>
+
+            <div class="mb-3">
+              <label class="clickable-text" (click)="navigateToLink151()"
+                [ngbTooltip]="'Click para ver mas información en: México | SIODS | Sistema de Información de los Objetivos de Desarrollo Sostenible.'"
+                tooltipClass="custom-tooltip" placement="top" [animation]="true" [openDelay]="100" [closeDelay]="500"
+                autoClose="true"><strong>9.1.2.a.</strong><br> Volumen de transporte de pasajeros, desglosado por medio de transporte
+                &nbsp;<span class="badge custom-btnIndicator">G</span>&nbsp;<span class="badge custom-btnIndicator2">EM</span>
+              </label>
+            </div>
+
+            <div class="mb-3">
+              <label class="clickable-text" (click)="navigateToLink151()"
+                [ngbTooltip]="'Click para ver mas información en: México | SIODS | Sistema de Información de los Objetivos de Desarrollo Sostenible.'"
+                tooltipClass="custom-tooltip" placement="top" [animation]="true" [openDelay]="100" [closeDelay]="500"
+                autoClose="true"><strong>9.1.2.b.</strong><br> Volumen de transporte de carga, desglosado por medio de transporte
+                &nbsp;<span class="badge custom-btnIndicator">G</span>&nbsp;<span class="badge custom-btnIndicator2">EM</span>
+              </label>
+            </div>
+
+            <hr>
+          </div>
+
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="mb-3">
+              <h5>Simbología</h5>
+              <div class="symbol-item">
+                <span class="badge custom-btnIndicator">G</span>&nbsp;<label href="">Indicador del marco global.</label>
+              </div>
+              <div class="symbol-item">
+                <span class="badge custom-btnIndicator">C</span>&nbsp;<label href="">Son los indicadores definidos en el
+                  marco de la
+                  CEA-CEPAL.</label>
+              </div>
+              <div class="symbol-item">
+                <span class="badge custom-btnIndicator">N</span>&nbsp;<label href="">Indicador específico para
+                  México.</label>
+              </div>
+              <div class="symbol-item">
+                <span class="badge custom-btnIndicator2">E</span>&nbsp;<label href="">Desglose por entidad
+                  federativa.</label>
+              </div>
+              <div class="symbol-item">
+                <span class="badge custom-btnIndicator2">EM</span>&nbsp;<label href="">Desglose por entidad federativa y
+                  municipio.</label>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+
+        <h6 class="clickable-text" [ngbTooltip]="'Click para ver los productos relacionados con esta meta.'"
+          tooltipClass="custom-tooltip" placement="top" [animation]="true" [openDelay]="100" [closeDelay]="500"
+          autoClose="true">Esta meta tiene 2 relaciones con los productos del INEGI. </h6>
+
+
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--! 9.1 -->
+<div class="modal fade" id="exampleModal48" tabindex="-1" aria-labelledby="exampleModalLabel48" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color: #a31c44;">
+
+        <div class="row g-1">
+          <div class="col">
+            <h6 class="justificado" style="color: white; ">
+              Meta <span class="badge custom-badge8">9.1</span> Desarrollar infraestructuras fiables, sostenibles,
+              resilientes y de calidad, incluidas infraestructuras regionales y
+              transfronterizas, para apoyar el desarrollo económico y el bienestar humano, haciendo especial hincapié en
+              el acceso
+              asequible y equitativo para todos</h6>
+          </div>
+        </div>
+
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col">
+            <h5>Indicadores</h5>
+
+            <div class="mb-3">
+              <label class="clickable-text" (click)="navigateToLink151()"
+                [ngbTooltip]="'Click para ver mas información en: México | SIODS | Sistema de Información de los Objetivos de Desarrollo Sostenible.'"
+                tooltipClass="custom-tooltip" placement="top" [animation]="true" [openDelay]="100" [closeDelay]="500"
+                autoClose="true"><strong>9.1.1</strong><br> Proporción de la población rural que vive a menos de 2 km de
+                una carretera transitable todo el año
+                &nbsp;<span class="badge custom-btnIndicator">G</span>&nbsp;<span
+                  class="badge custom-btnIndicator2">EM</span>
+              </label>
+            </div>
+
+            <div class="mb-3">
+              <label class="clickable-text" (click)="navigateToLink151()"
+                [ngbTooltip]="'Click para ver mas información en: México | SIODS | Sistema de Información de los Objetivos de Desarrollo Sostenible.'"
+                tooltipClass="custom-tooltip" placement="top" [animation]="true" [openDelay]="100" [closeDelay]="500"
+                autoClose="true"><strong>9.1.2.a.</strong><br> Volumen de transporte de pasajeros, desglosado por medio
+                de transporte
+                &nbsp;<span class="badge custom-btnIndicator">G</span>&nbsp;<span
+                  class="badge custom-btnIndicator2">EM</span>
+              </label>
+            </div>
+
+            <div class="mb-3">
+              <label class="clickable-text" (click)="navigateToLink151()"
+                [ngbTooltip]="'Click para ver mas información en: México | SIODS | Sistema de Información de los Objetivos de Desarrollo Sostenible.'"
+                tooltipClass="custom-tooltip" placement="top" [animation]="true" [openDelay]="100" [closeDelay]="500"
+                autoClose="true"><strong>9.1.2.b.</strong><br> Volumen de transporte de carga, desglosado por medio de
+                transporte
+                &nbsp;<span class="badge custom-btnIndicator">G</span>&nbsp;<span
+                  class="badge custom-btnIndicator2">EM</span>
+              </label>
+            </div>
+
+            <hr>
+          </div>
+
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="mb-3">
+              <h5>Simbología</h5>
+              <div class="symbol-item">
+                <span class="badge custom-btnIndicator">G</span>&nbsp;<label href="">Indicador del marco global.</label>
+              </div>
+              <div class="symbol-item">
+                <span class="badge custom-btnIndicator">C</span>&nbsp;<label href="">Son los indicadores definidos en el
+                  marco de la
+                  CEA-CEPAL.</label>
+              </div>
+              <div class="symbol-item">
+                <span class="badge custom-btnIndicator">N</span>&nbsp;<label href="">Indicador específico para
+                  México.</label>
+              </div>
+              <div class="symbol-item">
+                <span class="badge custom-btnIndicator2">E</span>&nbsp;<label href="">Desglose por entidad
+                  federativa.</label>
+              </div>
+              <div class="symbol-item">
+                <span class="badge custom-btnIndicator2">EM</span>&nbsp;<label href="">Desglose por entidad federativa y
+                  municipio.</label>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+
+        <h6 class="clickable-text" [ngbTooltip]="'Click para ver los productos relacionados con esta meta.'"
+          tooltipClass="custom-tooltip" placement="top" [animation]="true" [openDelay]="100" [closeDelay]="500"
+          autoClose="true">Esta meta tiene 2 relaciones con los productos del INEGI. </h6>
+
+
+
+
+      </div>
+    </div>
+  </div>
 </div>
