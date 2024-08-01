@@ -29,6 +29,7 @@ interface CheckboxesState {
 })
 export class ProductPageComponent implements OnInit {
 
+  
   isMobile: boolean = window.innerWidth <= 480;
 
   //*PRODUCTOS
@@ -229,7 +230,7 @@ export class ProductPageComponent implements OnInit {
 
   public combinedResultsODS: SecuenciaOds[] = [];
 
-  deleteFilterFlag: boolean = true;
+  deleteFilterFlag: boolean = false;
 
   tree!: Tree;
   banderaSearchByQuery: boolean = false;
@@ -315,10 +316,12 @@ export class ProductPageComponent implements OnInit {
     // });
     this._direServices.productos().subscribe((data) => {
       this.products = data;
-      this.filtrarProductosPorDirecciones();
-      this.fun();
+      if (!this.deleteFilterFlag) {
+        this.filtrarProductosPorDirecciones();
+        this.fun();
+      }
     });
-
+  
     if (this._flagService.getFlagGeo()) {
       this.changeFlagFilter();
       this._flagService.setFlagGeo(false);
