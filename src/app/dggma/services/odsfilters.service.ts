@@ -42,6 +42,22 @@ export class OdsFilterService {
   bool_meta6_6: boolean = false;
   bool_meta6_b: boolean = false;
 
+  bool_meta7_1: boolean = false;
+  bool_meta7_2: boolean = false;
+  bool_meta7_3: boolean = false;
+
+  bool_meta8_1: boolean = false;
+  bool_meta8_2: boolean = false;
+  bool_meta8_3: boolean = false;
+  bool_meta8_4: boolean = false;
+  bool_meta8_5: boolean = false;
+  bool_meta8_6: boolean = false;
+  bool_meta8_7: boolean = false;
+  bool_meta8_8: boolean = false;
+  bool_meta8_10: boolean = false;
+  bool_meta8_a: boolean = false;
+  bool_meta8_b: boolean = false;
+
   setMeta1_1(value: boolean): void {
     this.bool_meta1_1 = value;
   }
@@ -230,4 +246,91 @@ export class OdsFilterService {
   getMeta6_b(): boolean {
     return this.bool_meta6_b;
   }
+  //! metas7
+  setMeta7_1(value: boolean): void {
+    this.bool_meta7_1 = value;
+  }
+  getMeta7_1(): boolean {
+    return this.bool_meta7_1;
+  }
+  setMeta7_2(value: boolean): void {
+    this.bool_meta7_2 = value;
+  }
+  getMeta7_2(): boolean {
+    return this.bool_meta7_2;
+  }
+  setMeta7_3(value: boolean): void {
+    this.bool_meta7_3 = value;
+  }
+  getMeta7_3(): boolean {
+    return this.bool_meta7_3;
+  }
+  //! metas8
+  setMeta8_1(value: boolean): void {
+    this.bool_meta8_1 = value;
+  }
+  getMeta8_1(): boolean {
+    return this.bool_meta8_1;
+  }
+  setMeta8_2(value: boolean): void {
+    this.bool_meta8_2 = value;
+  }
+  getMeta8_2(): boolean {
+    return this.bool_meta8_2;
+  }
+  setMeta8_3(value: boolean): void {
+    this.bool_meta8_3 = value;
+  }
+  getMeta8_3(): boolean {
+    return this.bool_meta8_3;
+  }
+  setMeta8_4(value: boolean): void {
+    this.bool_meta8_4 = value;
+  }
+  getMeta8_4(): boolean {
+    return this.bool_meta8_4;
+  }
+  setMeta8_5(value: boolean): void {
+    this.bool_meta8_5 = value;
+  }
+  getMeta8_5(): boolean {
+    return this.bool_meta8_5;
+  }
+  setMeta8_6(value: boolean): void {
+    this.bool_meta8_6 = value;
+  }
+  getMeta8_6(): boolean {
+    return this.bool_meta8_6;
+  }
+  setMeta8_7(value: boolean): void {
+    this.bool_meta8_7 = value;
+  }
+  getMeta8_7(): boolean {
+    return this.bool_meta8_7;
+  }
+  setMeta8_8(value: boolean): void {
+    this.bool_meta8_8 = value;
+  }
+  getMeta8_8(): boolean {
+    return this.bool_meta8_8;
+  }
+  setMeta8_10(value: boolean): void {
+    this.bool_meta8_10 = value;
+  }
+  getMeta8_10(): boolean {
+    return this.bool_meta8_10;
+  }
+  setMeta8_a(value: boolean): void {
+    this.bool_meta8_a = value;
+  }
+  getMeta8_a(): boolean {
+    return this.bool_meta8_a;
+  }
+  setMeta8_b(value: boolean): void {
+    this.bool_meta8_b = value;
+  }
+  getMeta8_b(): boolean {
+    return this.bool_meta8_b;
+  }
+
 }

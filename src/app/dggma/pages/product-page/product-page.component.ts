@@ -974,6 +974,40 @@ export class ProductPageComponent implements OnInit {
         this.applyFilters();
         this.loading = false;
       }
+      //! metas7
+      if (this._odsFlag.getMeta7_1()) {
+        this._odsFlag.setMeta7_1(false);
+        this.selectODSkey = 'metas_56';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+
+        console.log('111', this.selectODSkey);
+        console.log('222', this.filterStatesODS[this.selectODSkey]);
+        this.applyFilters();
+        this.loading = false;
+      }
+      if (this._odsFlag.getMeta7_2()) {
+        this._odsFlag.setMeta7_2(false);
+        this.selectODSkey = 'metas_57';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+
+        console.log('111', this.selectODSkey);
+        console.log('222', this.filterStatesODS[this.selectODSkey]);
+        this.applyFilters();
+        this.loading = false;
+      }
+      if (this._odsFlag.getMeta7_3()) {
+        this._odsFlag.setMeta7_3(false);
+        this.selectODSkey = 'metas_58';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+
+        console.log('111', this.selectODSkey);
+        console.log('222', this.filterStatesODS[this.selectODSkey]);
+        this.applyFilters();
+        this.loading = false;
+      }
     });
 
     //! ESCALAS

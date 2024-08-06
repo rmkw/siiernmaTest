@@ -3700,7 +3700,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
   }
   filtroMeta6_6(): void {
     this._odsFlag.setMeta6_6(true);
-     // Cierra el modal
+    // Cierra el modal
 
     // Retrasa la navegación por 1 segundo (1000 milisegundos)
     setTimeout(() => {
@@ -3709,7 +3709,35 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
   }
   filtroMeta6_b(): void {
     this._odsFlag.setMeta6_b(true);
-     // Cierra el modal
+    // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  //! metas7
+  filtroMeta7_1(): void {
+    this._odsFlag.setMeta7_1(true);
+    $('#exampleModal44').modal('hide'); // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroMeta7_2(): void {
+    this._odsFlag.setMeta7_2(true);
+    $('#exampleModal45').modal('hide'); // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroMeta7_3(): void {
+    this._odsFlag.setMeta7_3(true);
+    $('#exampleModal46').modal('hide'); // Cierra el modal
 
     // Retrasa la navegación por 1 segundo (1000 milisegundos)
     setTimeout(() => {
