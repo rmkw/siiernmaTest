@@ -1,14 +1,10 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { Products } from '../../interfaces/product.interface';
-import { MetaODS, Ods, SecuenciaOds } from '../../interfaces/ods.interface';
-import { DGService } from '../../services/dg.service';
-import { forkJoin } from 'rxjs';
 import Chart from 'chart.js/auto';
 import { MessageService } from 'primeng/api';
+import { OdsFilterService } from '../../services/odsfilters.service';
+import { Router } from '@angular/router';
 
-
-
-
+declare var $: any;
 
 @Component({
   selector: 'app-ods-page',
@@ -17,32 +13,14 @@ import { MessageService } from 'primeng/api';
   providers: [MessageService],
 })
 export class OdsPageComponent implements OnInit, AfterViewInit {
-  isMobile: boolean = window.innerWidth <= 480;
-  loading = true;
-
-  public OdsArray: any[] = [];
-  public MetaArray: any[] = [];
-
-  public products: Products[] = [];
-  public ods: SecuenciaOds[] = [];
-  public objetivods: Ods[] = [];
-  public metaods: MetaODS[] = [];
-  objetivo: Ods[] = [];
-  meta: MetaODS[] = [];
-
-  filteredProducts: Products[] = [];
-  noProductsFound: boolean = false;
-  odsImg: boolean = false;
-  showFilteredProducts = false;
-
-  longitudesPorIdObj: { [key: number]: number } = {};
-
-  longitudesPorIdMeta: { [key: number]: number } = {};
-
   constructor(
-    private _direServices: DGService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private _odsFlag: OdsFilterService,
+    private router: Router
   ) {}
+
+  ngOnInit(): void {}
+
   ngAfterViewInit(): void {
     const collapseElements = [
       document.getElementById('collapseExample')!,
@@ -64,7 +42,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
       document.getElementById('collapseExample17')!,
     ];
 
-    // Función para ocultar todos los colapsos excepto el clicado
+    // Función para ocultar todos los colapso excepto el cli
     const toggleCollapse = (collapseElements: HTMLElement[]) => {
       collapseElements.forEach((elementToShow, indexToShow) => {
         elementToShow.addEventListener('show.bs.collapse', () => {
@@ -115,6 +93,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     this.createChart17();
   }
 
+  //! botón invisible
   clickCornerButton(): void {
     setTimeout(() => {
       const buttonIds = [
@@ -146,62 +125,6 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 100); // Ajusta el tiempo (500 ms) según sea necesario
   }
 
-  ngOnInit(): void {
-    forkJoin([
-      this._direServices.productos(),
-      this._direServices.objetivos(),
-      this._direServices.metas(),
-      this._direServices.ods(),
-    ]).subscribe(([productos, objetivos, metas, ods]) => {
-      this.products = productos;
-      this.objetivods = objetivos;
-      this.metaods = metas;
-      this.ods = ods;
-
-      for (let i = 1; i <= 17; i++) {
-        const objetivo = this.ods.filter((data) => data.obj_ods === i);
-        this.OdsArray[i] = this.filterProductsByObjetivo(objetivo);
-      }
-
-      for (let i = 1; i <= 17; i++) {
-        this.longitudesPorIdObj[i] = this.OdsArray[i].length || 0;
-      }
-
-      // Arreglo de Metas
-      for (let i = 1; i <= 169; i++) {
-        const meta = this.ods.filter((data) => data.meta_ods === i);
-        this.MetaArray[i] = this.filterProductsByMeta(meta).filter(
-          (item) => Object.keys(item).length !== 0
-        );
-      }
-
-      for (let i = 1; i <= 169; i++) {
-        this.longitudesPorIdMeta[i] = this.MetaArray[i].length || 0;
-      }
-
-      this.MetaArray;
-      this.OdsArray;
-      this.loadChart();
-      this.filterProductsByMeta(this.meta);
-      this.filterProductsByObjetivo(this.objetivo);
-
-      this.loading = false;
-
-      this._direServices
-        .productos()
-        .subscribe((data) => (this.products = data));
-
-      this._direServices
-        .objetivos()
-        .subscribe((objetivoOds) => (this.objetivods = objetivoOds));
-
-      this._direServices
-        .metas()
-        .subscribe((metaOds) => (this.metaods = metaOds));
-
-      this._direServices.ods().subscribe((datoOds) => (this.ods = datoOds));
-    });
-  }
   showWarn() {
     this.messageService.add({
       severity: 'warn',
@@ -279,7 +202,6 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
       console.error('Element with id "componente1" not found.');
     }
   }
-
   createChart2(): void {
     const labels = ['Meta 2.1', 'Meta 2.3', 'Meta 2.4', 'Meta 2.a', 'Meta 2.c'];
     const data = [1, 65, 56, 2, 2];
@@ -343,13 +265,30 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
               display: false,
             },
           },
+          onClick: (event, elements) => {
+            if (elements && elements.length > 0) {
+              const index = elements[0].index;
+              // Lógica de activación de la función según la barra clicada
+              if (index === 1) {
+                this.filtroMeta2_3();
+              }
+              if (index === 2) {
+                this.filtroMeta2_4();
+              }
+              if (index === 3) {
+                this.filtroMeta2_a();
+              }
+              if (index === 4) {
+                this.filtroMeta2_c();
+              }
+            }
+          },
         },
       });
     } else {
       console.error('Element with id "componente1" not found.');
     }
   }
-
   createChart3(): void {
     const labels = ['Meta 3.4', 'Meta 3.7', 'Meta 3.8', 'Meta 3.9'];
     const data = [1, 5, 107, 39];
@@ -411,13 +350,22 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
               display: false,
             },
           },
+          onClick: (event, elements) => {
+            if (elements && elements.length > 0) {
+              const index = elements[0].index;
+              // Lógica de activación de la función según la barra clicada
+
+              if (index === 2) {
+                this.filtroMeta3_8();
+              }
+            }
+          },
         },
       });
     } else {
       console.error('Element with id "componente1" not found.');
     }
   }
-
   createChart4(): void {
     const labels = ['Meta 4.1', 'Meta 4.2', 'Meta 4.3', 'Meta 4.5', 'Meta 4.7'];
     const data = [5, 4, 4, 4, 11];
@@ -481,13 +429,22 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
               display: false,
             },
           },
+          onClick: (event, elements) => {
+            if (elements && elements.length > 0) {
+              const index = elements[0].index;
+              // Lógica de activación de la función según la barra clicada
+
+              if (index === 4) {
+                this.filtroMeta4_7();
+              }
+            }
+          },
         },
       });
     } else {
       console.error('Element with id "componente1" not found.');
     }
   }
-
   createChart5(): void {
     const labels = ['Meta 5.1', 'Meta 5.2', 'Meta 5.4', 'Meta 5.5', 'Meta 5.a'];
     const data = [17, 21, 1, 7, 7];
@@ -551,13 +508,22 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
               display: false,
             },
           },
+          onClick: (event, elements) => {
+            if (elements && elements.length > 0) {
+              const index = elements[0].index;
+              // Lógica de activación de la función según la barra clicada
+
+              if (index === 0) {
+                this.filtroMeta5_1();
+              }
+            }
+          },
         },
       });
     } else {
       console.error('Element with id "componente1" not found.');
     }
   }
-
   createChart6(): void {
     const labels = [
       'Meta 6.1',
@@ -633,13 +599,25 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
               display: false,
             },
           },
+          onClick: (event, elements) => {
+            if (elements && elements.length > 0) {
+              const index = elements[0].index;
+              // Lógica de activación de la función según la barra clicada
+
+              if (index === 5) {
+                this.filtroMeta6_6();
+              }
+              if (index === 6) {
+                this.filtroMeta6_b();
+              }
+            }
+          },
         },
       });
     } else {
       console.error('Element with id "componente1" not found.');
     }
   }
-
   createChart7(): void {
     const labels = ['Meta 7.1', 'Meta 7.2', 'Meta 7.3'];
     const data = [146, 13, 5];
@@ -705,7 +683,6 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
       console.error('Element with id "componente1" not found.');
     }
   }
-
   createChart8(): void {
     const labels = [
       'Meta 8.1',
@@ -799,7 +776,6 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
       console.error('Element with id "componente1" not found.');
     }
   }
-
   createChart9(): void {
     const labels = ['Meta 9.1', 'Meta 9.3', 'Meta 9.5'];
     const data = [40, 1, 10];
@@ -865,7 +841,6 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
       console.error('Element with id "componente1" not found.');
     }
   }
-
   createChart10(): void {
     const labels = ['Meta 10.2', 'Meta 10.4'];
     const data = [28, 9];
@@ -933,7 +908,6 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
       console.error('Element with id "componente1" not found.');
     }
   }
-
   createChart11(): void {
     const labels = [
       'Meta 11.1',
@@ -1011,7 +985,6 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
       console.error('Element with id "componente1" not found.');
     }
   }
-
   createChart12(): void {
     const labels = [
       'Meta 12.2',
@@ -1090,7 +1063,6 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
       console.error('Element with id "componente1" not found.');
     }
   }
-
   createChart13(): void {
     const labels = ['Meta 13.1', 'Meta 13.2', 'Meta 13.3', 'Meta 13.b'];
     const data = [3, 3, 13, 2];
@@ -1158,7 +1130,6 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
       console.error('Element with id "componente1" not found.');
     }
   }
-
   createChart14(): void {
     const labels = ['Meta 14.1', 'Meta 14.2', 'Meta 14.4', 'Meta 14.5'];
     const data = [1, 1, 6, 4];
@@ -1226,7 +1197,6 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
       console.error('Element with id "componente1" not found.');
     }
   }
-
   createChart15(): void {
     const labels = [
       'Meta 15.1',
@@ -1308,7 +1278,6 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
       console.error('Element with id "componente1" not found.');
     }
   }
-
   createChart16(): void {
     const labels = [
       'Meta 16.1',
@@ -1448,7 +1417,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }
   }
 
-  //! links al siouts
+  //! links al
   navigateToLink(): void {
     window.open(
       'https://agenda2030.mx/ODSind.html?ind=ODS001000100010&cveind=1&cveCob=99&lang=es#/Indicator',
@@ -3472,41 +3441,280 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     );
   }
 
-  filterProductsByObjetivo(objetivo: any[]): any[] {
-    return this.products.filter((data) =>
-      objetivo.some((obj) => obj.interview__id === data.interview__id)
-    );
-  }
+  filtroMeta1_1(): void {
+    this._odsFlag.setMeta1_1(true);
+    $('#exampleModal').modal('hide'); // Cierra el modal
 
-  filterProductsByMeta(meta: any[]): any[] {
-    return this.products.filter((data) => {
-      const matchingMeta = meta.find(
-        (m) => m.interview__id === data.interview__id
-      );
-      return matchingMeta && matchingMeta.algunaPropiedadImportante !== null;
-    });
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
   }
+  filtroMeta1_3(): void {
+    this._odsFlag.setMeta1_3(true);
+    $('#exampleModal3').modal('hide'); // Cierra el modal
 
-  SeleccionODS(event: any) {
-    const id = event.target.value;
-    this._direServices.metasByparentid(id).subscribe((data) => {
-      this.meta = data;
-
-      if (id >= 1) {
-        this.odsImg = true;
-      }
-    });
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
   }
+  filtroMeta1_4(): void {
+    this._odsFlag.setMeta1_4(true);
+    $('#exampleModal4').modal('hide'); // Cierra el modal
 
-  loadChart() {
-    this._direServices.objetivos().subscribe((data) => {
-      this.objetivods = data;
-      this.loading = false; // Marcamos como cargados cuando los datos llegan
-    });
-    this._direServices.metas().subscribe((data) => {
-      this.metaods = data;
-      this.loading = false; // Marcamos como cargados cuando los datos llegan
-    });
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
   }
-};
+  filtroMeta1_5(): void {
+    this._odsFlag.setMeta1_5(true);
+    $('#exampleModal5').modal('hide'); // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  //! meta 2
+  filtroMeta2_1(): void {
+    this._odsFlag.setMeta2_1(true);
+    $('#exampleModal9').modal('hide'); // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroMeta2_3(): void {
+    this._odsFlag.setMeta2_3(true);
+    // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroMeta2_4(): void {
+    this._odsFlag.setMeta2_4(true);
+    // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroMeta2_a(): void {
+    this._odsFlag.setMeta2_a(true);
+    // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroMeta2_c(): void {
+    this._odsFlag.setMeta2_c(true);
+    // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  //! metas 3
+  filtroMeta3_4(): void {
+    this._odsFlag.setMeta3_4(true);
+    $('#exampleModal15').modal('hide'); // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroMeta3_7(): void {
+    this._odsFlag.setMeta3_7(true);
+    $('#exampleModal16').modal('hide'); // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroMeta3_8(): void {
+    this._odsFlag.setMeta3_8(true);
+    // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroMeta3_9(): void {
+    this._odsFlag.setMeta3_9(true);
+    $('#exampleModal17').modal('hide'); // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  //! metas4
+  filtroMeta4_1(): void {
+    this._odsFlag.setMeta4_1(true);
+    $('#exampleModal20').modal('hide'); // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroMeta4_2(): void {
+    this._odsFlag.setMeta4_2(true);
+    $('#exampleModal21').modal('hide'); // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroMeta4_3(): void {
+    this._odsFlag.setMeta4_3(true);
+    $('#exampleModal22').modal('hide'); // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroMeta4_5(): void {
+    this._odsFlag.setMeta4_5(true);
+    $('#exampleModal24').modal('hide'); // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroMeta4_7(): void {
+    this._odsFlag.setMeta4_7(true);
+    // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  //! metas5
+  filtroMeta5_1(): void {
+    this._odsFlag.setMeta5_1(true);
+    // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroMeta5_2(): void {
+    this._odsFlag.setMeta5_2(true);
+    $('#exampleModal29').modal('hide'); // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroMeta5_4(): void {
+    this._odsFlag.setMeta5_4(true);
+    $('#exampleModal31').modal('hide'); // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroMeta5_5(): void {
+    this._odsFlag.setMeta5_5(true);
+    $('#exampleModal32').modal('hide'); // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroMeta5_a(): void {
+    this._odsFlag.setMeta5_a(true);
+    $('#exampleModal34').modal('hide'); // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  //! metas6
+  filtroMeta6_1(): void {
+    this._odsFlag.setMeta6_1(true);
+    $('#exampleModal37').modal('hide'); // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroMeta6_2(): void {
+    this._odsFlag.setMeta6_2(true);
+    $('#exampleModal38').modal('hide'); // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroMeta6_3(): void {
+    this._odsFlag.setMeta6_3(true);
+    $('#exampleModal39').modal('hide'); // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroMeta6_4(): void {
+    this._odsFlag.setMeta6_4(true);
+    $('#exampleModal40').modal('hide'); // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroMeta6_5(): void {
+    this._odsFlag.setMeta6_5(true);
+    $('#exampleModal41').modal('hide'); // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroMeta6_6(): void {
+    this._odsFlag.setMeta6_6(true);
+     // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroMeta6_b(): void {
+    this._odsFlag.setMeta6_b(true);
+     // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+}
 

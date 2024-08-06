@@ -14,6 +14,7 @@ import { DGService } from '../../services/dg.service';
 import { TreeNode } from 'primeng/api';
 import { Tree } from 'primeng/tree';
 import { FlagService } from '../../services/flagService.service';
+import { OdsFilterService } from '../../services/odsfilters.service';
 
 
 //! Interface de los checkbox
@@ -28,8 +29,6 @@ interface CheckboxesState {
   styleUrls: ['./product-page.component.css'],
 })
 export class ProductPageComponent implements OnInit {
-
-  
   isMobile: boolean = window.innerWidth <= 480;
 
   //*PRODUCTOS
@@ -141,7 +140,6 @@ export class ProductPageComponent implements OnInit {
   public cuartaDireccion: any[] = [];
   public quintaDireccion: any[] = [];
 
-
   //! elementos que nos ayudara a filtrar
   filteredProducts: Products[] = [];
   filteredProductsBySearchByQuery: Products[] = [];
@@ -241,6 +239,7 @@ export class ProductPageComponent implements OnInit {
     private route: ActivatedRoute,
     private cdr: ChangeDetectorRef,
     private _flagService: FlagService,
+    private _odsFlag: OdsFilterService
   ) {
     this.combinedResultsMdea = [];
   }
@@ -310,18 +309,10 @@ export class ProductPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
     // this._flagService.triggerHiddenFilters$.subscribe(() => {
     //   this.hiddenFilters();
     // });
-    this._direServices.productos().subscribe((data) => {
-      this.products = data;
-      if (!this.deleteFilterFlag) {
-        this.filtrarProductosPorDirecciones();
-        this.fun();
-      }
-    });
-  
+
     if (this._flagService.getFlagGeo()) {
       this.changeFlagFilter();
       this._flagService.setFlagGeo(false);
@@ -330,29 +321,29 @@ export class ProductPageComponent implements OnInit {
       this.thisFlags();
     }
     if (this._flagService.getFlagEstadisticas()) {
-      this.changeFlagFilter()
-      this._flagService.setFlagEstadisticas(false)
+      this.changeFlagFilter();
+      this._flagService.setFlagEstadisticas(false);
       const string = 'direEstaSocio';
       this.checkboxesState[string] = true;
       this.thisFlags();
     }
     if (this._flagService.getFlagEconomicas()) {
-      this.changeFlagFilter()
-      this._flagService.setFlagEconomicas(false)
+      this.changeFlagFilter();
+      this._flagService.setFlagEconomicas(false);
       const string = 'direEstaEconomicas';
       this.checkboxesState[string] = true;
       this.thisFlags();
     }
     if (this._flagService.getFlagGobierno()) {
       this.changeFlagFilter();
-      this._flagService.setFlagGobierno(false)
+      this._flagService.setFlagGobierno(false);
       const string = 'direEstaGobSegPubJus';
       this.checkboxesState[string] = true;
       this.thisFlags();
     }
     if (this._flagService.getFlagIntegracion()) {
-      this.changeFlagFilter()
-      this._flagService.setFlagIntegracion(false)
+      this.changeFlagFilter();
+      this._flagService.setFlagIntegracion(false);
       const string = 'direInteAnaInv';
       this.checkboxesState[string] = true;
       this.thisFlags();
@@ -369,16 +360,16 @@ export class ProductPageComponent implements OnInit {
       this.thisFlags();
     }
     if (this._flagService.getFlagComp2()) {
-      this.changeFlagFilter()
-      this._flagService.setFlagComp2(false)
+      this.changeFlagFilter();
+      this._flagService.setFlagComp2(false);
       const string = 'componente_2';
       this.selectComponentekey = string;
       this.filterStates[string] = true;
       this.thisFlags();
     }
     if (this._flagService.getFlagComp3()) {
-      this.changeFlagFilter()
-      this._flagService.setFlagComp3(false)
+      this.changeFlagFilter();
+      this._flagService.setFlagComp3(false);
       const string = 'componente_3';
       this.selectComponentekey = string;
       this.filterStates[string] = true;
@@ -386,23 +377,23 @@ export class ProductPageComponent implements OnInit {
     }
     if (this._flagService.getFlagComp4()) {
       this.changeFlagFilter();
-      this._flagService.setFlagComp4(false)
+      this._flagService.setFlagComp4(false);
       const string = 'componente_4';
       this.selectComponentekey = string;
       this.filterStates[string] = true;
       this.thisFlags();
     }
     if (this._flagService.getFlagComp5()) {
-      this.changeFlagFilter()
-      this._flagService.setFlagComp5(false)
+      this.changeFlagFilter();
+      this._flagService.setFlagComp5(false);
       const string = 'componente_5';
       this.selectComponentekey = string;
       this.filterStates[string] = true;
       this.thisFlags();
     }
     if (this._flagService.getFlagComp6()) {
-      this.changeFlagFilter()
-      this._flagService.setFlagComp6(false)
+      this.changeFlagFilter();
+      this._flagService.setFlagComp6(false);
       const string = 'componente_6';
       this.selectComponentekey = string;
       this.filterStates[string] = true;
@@ -420,16 +411,16 @@ export class ProductPageComponent implements OnInit {
       this.thisFlags();
     }
     if (this._flagService.getFlagSubComp2()) {
-      this.changeFlagFilter()
-      this._flagService.setFlagSubComp2(false)
+      this.changeFlagFilter();
+      this._flagService.setFlagSubComp2(false);
       const string = 'subcomponente_2';
       this.selectComponentekey = string;
       this.filterStates[string] = true;
       this.thisFlags();
     }
     if (this._flagService.getFlagSubComp3()) {
-      this.changeFlagFilter()
-      this._flagService.setFlagSubComp3(false)
+      this.changeFlagFilter();
+      this._flagService.setFlagSubComp3(false);
       const string = 'subcomponente_3';
       this.selectComponentekey = string;
       this.filterStates[string] = true;
@@ -437,23 +428,23 @@ export class ProductPageComponent implements OnInit {
     }
     if (this._flagService.getFlagSubComp4()) {
       this.changeFlagFilter();
-      this._flagService.setFlagSubComp4(false)
+      this._flagService.setFlagSubComp4(false);
       const string = 'subcomponente_4';
       this.selectComponentekey = string;
       this.filterStates[string] = true;
       this.thisFlags();
     }
     if (this._flagService.getFlagSubComp5()) {
-      this.changeFlagFilter()
-      this._flagService.setFlagSubComp5(false)
+      this.changeFlagFilter();
+      this._flagService.setFlagSubComp5(false);
       const string = 'subcomponente_5';
       this.selectComponentekey = string;
       this.filterStates[string] = true;
       this.thisFlags();
     }
     if (this._flagService.getFlagSubComp6()) {
-      this.changeFlagFilter()
-      this._flagService.setFlagSubComp6(false)
+      this.changeFlagFilter();
+      this._flagService.setFlagSubComp6(false);
       const string = 'subcomponente_6';
       this.selectComponentekey = string;
       this.filterStates[string] = true;
@@ -594,7 +585,6 @@ export class ProductPageComponent implements OnInit {
       this.thisFlags();
     }
 
-
     //! Funcion que manda a llamar el servicio y los datos de este para que se pueda combinar con la transformaciión de datos a la estructura de treenode
     this._direServices.componentes().subscribe((componentes) => {
       this._direServices.subcomponentes().subscribe((subcomponentes) => {
@@ -633,7 +623,357 @@ export class ProductPageComponent implements OnInit {
       this.extractAndSortYearsHasta();
       this.pU_extractAndSortYears();
       this.pU_extractAndSortYearsHasta();
-      this.loading = false;
+
+      if (!this.deleteFilterFlag) {
+        this.filtrarProductosPorDirecciones();
+        this.fun();
+        this.loading = false;
+      }
+      if (this._odsFlag.getMeta1_1()) {
+        this._odsFlag.setMeta1_1(false);
+        this.selectODSkey = 'metas_1';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+
+        console.log('111', this.selectODSkey);
+        console.log('222', this.filterStatesODS[this.selectODSkey]);
+        this.applyFilters();
+        this.loading = false;
+      }
+      if (this._odsFlag.getMeta1_3()) {
+        this._odsFlag.setMeta1_3(false);
+        this.selectODSkey = 'metas_3';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+
+        console.log('111', this.selectODSkey);
+        console.log('222', this.filterStatesODS[this.selectODSkey]);
+        this.applyFilters();
+        this.loading = false;
+      }
+      if (this._odsFlag.getMeta1_4()) {
+        this._odsFlag.setMeta1_4(false);
+        this.selectODSkey = 'metas_4';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+
+        console.log('111', this.selectODSkey);
+        console.log('222', this.filterStatesODS[this.selectODSkey]);
+        this.applyFilters();
+        this.loading = false;
+      }
+      if (this._odsFlag.getMeta1_5()) {
+        this._odsFlag.setMeta1_5(false);
+        this.selectODSkey = 'metas_5';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+
+        console.log('111', this.selectODSkey);
+        console.log('222', this.filterStatesODS[this.selectODSkey]);
+        this.applyFilters();
+        this.loading = false;
+      }
+      if (this._odsFlag.getMeta1_5()) {
+        this._odsFlag.setMeta1_5(false);
+        this.selectODSkey = 'metas_5';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+
+        console.log('111', this.selectODSkey);
+        console.log('222', this.filterStatesODS[this.selectODSkey]);
+        this.applyFilters();
+        this.loading = false;
+      }
+      if (this._odsFlag.getMeta2_1()) {
+        this._odsFlag.setMeta2_1(false);
+        this.selectODSkey = 'metas_8';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+
+        console.log('111', this.selectODSkey);
+        console.log('222', this.filterStatesODS[this.selectODSkey]);
+        this.applyFilters();
+        this.loading = false;
+      }
+      if (this._odsFlag.getMeta2_3()) {
+        this._odsFlag.setMeta2_3(false);
+        this.selectODSkey = 'metas_10';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+
+        console.log('111', this.selectODSkey);
+        console.log('222', this.filterStatesODS[this.selectODSkey]);
+        this.applyFilters();
+        this.loading = false;
+      }
+      if (this._odsFlag.getMeta2_4()) {
+        this._odsFlag.setMeta2_4(false);
+        this.selectODSkey = 'metas_11';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+
+        console.log('111', this.selectODSkey);
+        console.log('222', this.filterStatesODS[this.selectODSkey]);
+        this.applyFilters();
+        this.loading = false;
+      }
+      if (this._odsFlag.getMeta2_a()) {
+        this._odsFlag.setMeta2_a(false);
+        this.selectODSkey = 'metas_13';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+
+        console.log('111', this.selectODSkey);
+        console.log('222', this.filterStatesODS[this.selectODSkey]);
+        this.applyFilters();
+        this.loading = false;
+      }
+      if (this._odsFlag.getMeta2_c()) {
+        this._odsFlag.setMeta2_c(false);
+        this.selectODSkey = 'metas_15';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+
+        console.log('111', this.selectODSkey);
+        console.log('222', this.filterStatesODS[this.selectODSkey]);
+        this.applyFilters();
+        this.loading = false;
+      }
+      //! metas3
+      if (this._odsFlag.getMeta3_4()) {
+        this._odsFlag.setMeta3_4(false);
+        this.selectODSkey = 'metas_19';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+
+        console.log('111', this.selectODSkey);
+        console.log('222', this.filterStatesODS[this.selectODSkey]);
+        this.applyFilters();
+        this.loading = false;
+      }
+      if (this._odsFlag.getMeta3_7()) {
+        this._odsFlag.setMeta3_7(false);
+        this.selectODSkey = 'metas_22';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+
+        console.log('111', this.selectODSkey);
+        console.log('222', this.filterStatesODS[this.selectODSkey]);
+        this.applyFilters();
+        this.loading = false;
+      }
+      if (this._odsFlag.getMeta3_8()) {
+        this._odsFlag.setMeta3_8(false);
+        this.selectODSkey = 'metas_23';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+
+        console.log('111', this.selectODSkey);
+        console.log('222', this.filterStatesODS[this.selectODSkey]);
+        this.applyFilters();
+        this.loading = false;
+      }
+      if (this._odsFlag.getMeta3_9()) {
+        this._odsFlag.setMeta3_9(false);
+        this.selectODSkey = 'metas_24';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+
+        console.log('111', this.selectODSkey);
+        console.log('222', this.filterStatesODS[this.selectODSkey]);
+        this.applyFilters();
+        this.loading = false;
+      }
+      //! metas4
+      if (this._odsFlag.getMeta4_1()) {
+        this._odsFlag.setMeta4_1(false);
+        this.selectODSkey = 'metas_29';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+
+        console.log('111', this.selectODSkey);
+        console.log('222', this.filterStatesODS[this.selectODSkey]);
+        this.applyFilters();
+        this.loading = false;
+      }
+      if (this._odsFlag.getMeta4_2()) {
+        this._odsFlag.setMeta4_2(false);
+        this.selectODSkey = 'metas_30';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+
+        console.log('111', this.selectODSkey);
+        console.log('222', this.filterStatesODS[this.selectODSkey]);
+        this.applyFilters();
+        this.loading = false;
+      }
+      if (this._odsFlag.getMeta4_3()) {
+        this._odsFlag.setMeta4_3(false);
+        this.selectODSkey = 'metas_31';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+
+        console.log('111', this.selectODSkey);
+        console.log('222', this.filterStatesODS[this.selectODSkey]);
+        this.applyFilters();
+        this.loading = false;
+      }
+      if (this._odsFlag.getMeta4_5()) {
+        this._odsFlag.setMeta4_5(false);
+        this.selectODSkey = 'metas_33';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+
+        console.log('111', this.selectODSkey);
+        console.log('222', this.filterStatesODS[this.selectODSkey]);
+        this.applyFilters();
+        this.loading = false;
+      }
+      if (this._odsFlag.getMeta4_7()) {
+        this._odsFlag.setMeta4_7(false);
+        this.selectODSkey = 'metas_35';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+
+        console.log('111', this.selectODSkey);
+        console.log('222', this.filterStatesODS[this.selectODSkey]);
+        this.applyFilters();
+        this.loading = false;
+      }
+      //! metas5
+      if (this._odsFlag.getMeta5_1()) {
+        this._odsFlag.setMeta5_1(false);
+        this.selectODSkey = 'metas_39';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+
+        console.log('111', this.selectODSkey);
+        console.log('222', this.filterStatesODS[this.selectODSkey]);
+        this.applyFilters();
+        this.loading = false;
+      }
+      if (this._odsFlag.getMeta5_2()) {
+        this._odsFlag.setMeta5_2(false);
+        this.selectODSkey = 'metas_40';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+
+        console.log('111', this.selectODSkey);
+        console.log('222', this.filterStatesODS[this.selectODSkey]);
+        this.applyFilters();
+        this.loading = false;
+      }
+      if (this._odsFlag.getMeta5_4()) {
+        this._odsFlag.setMeta5_4(false);
+        this.selectODSkey = 'metas_42';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+
+        console.log('111', this.selectODSkey);
+        console.log('222', this.filterStatesODS[this.selectODSkey]);
+        this.applyFilters();
+        this.loading = false;
+      }
+      if (this._odsFlag.getMeta5_5()) {
+        this._odsFlag.setMeta5_5(false);
+        this.selectODSkey = 'metas_43';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+
+        console.log('111', this.selectODSkey);
+        console.log('222', this.filterStatesODS[this.selectODSkey]);
+        this.applyFilters();
+        this.loading = false;
+      }
+      if (this._odsFlag.getMeta5_a()) {
+        this._odsFlag.setMeta5_a(false);
+        this.selectODSkey = 'metas_45';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+
+        console.log('111', this.selectODSkey);
+        console.log('222', this.filterStatesODS[this.selectODSkey]);
+        this.applyFilters();
+        this.loading = false;
+      }
+      //! metas6
+      if (this._odsFlag.getMeta6_1()) {
+        this._odsFlag.setMeta6_1(false);
+        this.selectODSkey = 'metas_48';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+
+        console.log('111', this.selectODSkey);
+        console.log('222', this.filterStatesODS[this.selectODSkey]);
+        this.applyFilters();
+        this.loading = false;
+      }
+      if (this._odsFlag.getMeta6_2()) {
+        this._odsFlag.setMeta6_2(false);
+        this.selectODSkey = 'metas_49';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+
+        console.log('111', this.selectODSkey);
+        console.log('222', this.filterStatesODS[this.selectODSkey]);
+        this.applyFilters();
+        this.loading = false;
+      }
+      if (this._odsFlag.getMeta6_3()) {
+        this._odsFlag.setMeta6_3(false);
+        this.selectODSkey = 'metas_50';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+
+        console.log('111', this.selectODSkey);
+        console.log('222', this.filterStatesODS[this.selectODSkey]);
+        this.applyFilters();
+        this.loading = false;
+      }
+      if (this._odsFlag.getMeta6_4()) {
+        this._odsFlag.setMeta6_4(false);
+        this.selectODSkey = 'metas_51';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+
+        console.log('111', this.selectODSkey);
+        console.log('222', this.filterStatesODS[this.selectODSkey]);
+        this.applyFilters();
+        this.loading = false;
+      }
+      if (this._odsFlag.getMeta6_5()) {
+        this._odsFlag.setMeta6_5(false);
+        this.selectODSkey = 'metas_52';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+
+        console.log('111', this.selectODSkey);
+        console.log('222', this.filterStatesODS[this.selectODSkey]);
+        this.applyFilters();
+        this.loading = false;
+      }
+      if (this._odsFlag.getMeta6_6()) {
+        this._odsFlag.setMeta6_6(false);
+        this.selectODSkey = 'metas_53';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+
+        console.log('111', this.selectODSkey);
+        console.log('222', this.filterStatesODS[this.selectODSkey]);
+        this.applyFilters();
+        this.loading = false;
+      }
+      if (this._odsFlag.getMeta6_b()) {
+        this._odsFlag.setMeta6_b(false);
+        this.selectODSkey = 'metas_55';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+
+        console.log('111', this.selectODSkey);
+        console.log('222', this.filterStatesODS[this.selectODSkey]);
+        this.applyFilters();
+        this.loading = false;
+      }
     });
 
     //! ESCALAS
@@ -692,7 +1032,9 @@ export class ProductPageComponent implements OnInit {
       this.componentes = data;
     });
 
-    console.log('se llamo el ngOnInit');
+    //! ODS FILTER DESDE LEJOS
+
+
   }
   //! LLENAMOS SELECT de fechas hasta referencia
   extractAndSortYears(): void {
@@ -1032,7 +1374,9 @@ export class ProductPageComponent implements OnInit {
 
   selectODS(event: { originalEvent: Event; node: TreeNode }): void {
     this.selectODSkey = event.node.key;
+    console.log('111',this.selectODSkey);
     this.filterStatesODS[this.selectODSkey] = true;
+    console.log('222',this.filterStatesODS[this.selectODSkey]);
 
     this.applyFilters();
   }
@@ -1047,8 +1391,11 @@ export class ProductPageComponent implements OnInit {
   //TODO FILTROS
 
   applyFilters(): void {
+    console.log('entre a filtros')
     this.filteredProducts = [];
     let combinedResults = [...this.products];
+
+    console.log('productos', this.products)
 
     this.showFilteredProducts = false;
     this.deleteFilterFlag = false;
@@ -1056,7 +1403,7 @@ export class ProductPageComponent implements OnInit {
     let shouldContinue = true;
     let shouldContinue2 = true;
 
-    // console.log('\x1b[35m%s\x1b[0m', this.banderaSearchByQuery);
+    console.log('\x1b[35m%s\x1b[0m', this.banderaSearchByQuery);
 
     if (this.banderaSearchByQuery) {
       combinedResults = this.filteredProductsBySearchByQuery;
@@ -1258,7 +1605,6 @@ export class ProductPageComponent implements OnInit {
             Object.entries(this.filterStates).filter(([_, value]) => value)
           );
 
-
           if (this.combinedResultsMdea.length == 0) {
             this.handleComponenteFilter();
 
@@ -1280,6 +1626,8 @@ export class ProductPageComponent implements OnInit {
             .subscribe((data) => (this.odsSecuencia = data));
           let thisodsSecuencia = [...this.odsSecuencia];
 
+          console.log('111EN funcion', this.selectODSkey);
+          console.log('222EN funcion', this.filterStatesODS[this.selectODSkey]);
           console.log('\x1b[34m%s\x1b[0m', 'filtro de ODS');
 
           const keyParts = this.selectODSkey.split('_');
@@ -1418,7 +1766,6 @@ export class ProductPageComponent implements OnInit {
     this.pU_selectedYearHasta = null;
     this.banderaSearchByQuery = false;
 
-
     this.ngOnInit();
   }
 
@@ -1516,13 +1863,16 @@ export class ProductPageComponent implements OnInit {
       return product.dg_prod === 5;
     });
 
-    console.log(this.products);
+
+
   }
 
   fun() {
+
     if (this.products.length == 0) {
-      console.log('first');
+
     } else {
+
       this.DireccionCountstop = setInterval(() => {
         this.primerDir++;
 
@@ -1570,7 +1920,6 @@ export class ProductPageComponent implements OnInit {
       }, 10);
     }
   }
-
 }
 
 // if (this.checkSelect) {

@@ -9,3 +9,21 @@
 .nav-link:hover {
   text-decoration: underline; /* Agrega subrayado u otros estilos de texto según tus preferencias */
 }
+
+:host ::ng-deep .custom-tooltip .tooltip-inner {
+  max-width: 400px;
+  /* Ajusta el ancho según tus necesidades */
+  background-color: #000000e5;
+  /* Opcional: Color de fondo personalizado */
+  color: #ffffff;
+  /* Opcional: Color del texto personalizado */
+  border: 1px solid #ccc;
+  /* Color del borde */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  /* Sombra */
+  padding: 10px;
+  /* Relleno */
+  margin: 5px;
+  /* Margen */
+
+}
