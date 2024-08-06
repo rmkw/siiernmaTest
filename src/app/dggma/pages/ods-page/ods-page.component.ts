@@ -770,6 +770,19 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
               display: false,
             },
           },
+          onClick: (event, elements) => {
+            if (elements && elements.length > 0) {
+              const index = elements[0].index;
+              // Lógica de activación de la función según la barra clicada
+
+              if (index === 9) {
+                this.filtroMeta8_a();
+              }
+              if (index === 10) {
+                this.filtroMeta8_b();
+              }
+            }
+          },
         },
       });
     } else {
@@ -3744,5 +3757,134 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
       this.router.navigate(['/dg/products']);
     }, 1000);
   }
+  //! metas8
+  filtroMeta8_1(): void {
+    this._odsFlag.setMeta8_1(true);
+    $('#exampleModal48').modal('hide'); // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroMeta8_2(): void {
+    this._odsFlag.setMeta8_2(true);
+    $('#exampleModal49').modal('hide'); // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroMeta8_3(): void {
+    this._odsFlag.setMeta8_3(true);
+    $('#exampleModal50').modal('hide'); // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroMeta8_4(): void {
+    this._odsFlag.setMeta8_4(true);
+    $('#exampleModal51').modal('hide'); // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroMeta8_5(): void {
+    this._odsFlag.setMeta8_5(true);
+    $('#exampleModal52').modal('hide'); // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroMeta8_6(): void {
+    this._odsFlag.setMeta8_6(true);
+    $('#exampleModal53').modal('hide'); // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroMeta8_7(): void {
+    this._odsFlag.setMeta8_7(true);
+    $('#exampleModal54').modal('hide'); // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroMeta8_8(): void {
+    this._odsFlag.setMeta8_8(true);
+    $('#exampleModal55').modal('hide'); // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroMeta8_10(): void {
+    this._odsFlag.setMeta8_10(true);
+    $('#exampleModal57').modal('hide'); // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroMeta8_a(): void {
+    this._odsFlag.setMeta8_a(true);
+    // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroMeta8_b(): void {
+    this._odsFlag.setMeta8_b(true);
+    // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  //! metas9
+  filtroMeta9_1(): void {
+    this._odsFlag.setMeta9_1(true);
+    $('#exampleModal59').modal('hide'); // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroMeta9_3(): void {
+    this._odsFlag.setMeta9_3(true);
+    $('#exampleModal61').modal('hide'); // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroMeta9_5(): void {
+    this._odsFlag.setMeta9_5(true);
+    $('#exampleModal63').modal('hide'); // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
 }
+
 

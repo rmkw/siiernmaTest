@@ -635,8 +635,6 @@ export class ProductPageComponent implements OnInit {
 
         this.filterStatesODS[this.selectODSkey] = true;
 
-        console.log('111', this.selectODSkey);
-        console.log('222', this.filterStatesODS[this.selectODSkey]);
         this.applyFilters();
         this.loading = false;
       }
@@ -646,8 +644,6 @@ export class ProductPageComponent implements OnInit {
 
         this.filterStatesODS[this.selectODSkey] = true;
 
-        console.log('111', this.selectODSkey);
-        console.log('222', this.filterStatesODS[this.selectODSkey]);
         this.applyFilters();
         this.loading = false;
       }
@@ -657,8 +653,6 @@ export class ProductPageComponent implements OnInit {
 
         this.filterStatesODS[this.selectODSkey] = true;
 
-        console.log('111', this.selectODSkey);
-        console.log('222', this.filterStatesODS[this.selectODSkey]);
         this.applyFilters();
         this.loading = false;
       }
@@ -668,8 +662,6 @@ export class ProductPageComponent implements OnInit {
 
         this.filterStatesODS[this.selectODSkey] = true;
 
-        console.log('111', this.selectODSkey);
-        console.log('222', this.filterStatesODS[this.selectODSkey]);
         this.applyFilters();
         this.loading = false;
       }
@@ -679,8 +671,6 @@ export class ProductPageComponent implements OnInit {
 
         this.filterStatesODS[this.selectODSkey] = true;
 
-        console.log('111', this.selectODSkey);
-        console.log('222', this.filterStatesODS[this.selectODSkey]);
         this.applyFilters();
         this.loading = false;
       }
@@ -690,8 +680,6 @@ export class ProductPageComponent implements OnInit {
 
         this.filterStatesODS[this.selectODSkey] = true;
 
-        console.log('111', this.selectODSkey);
-        console.log('222', this.filterStatesODS[this.selectODSkey]);
         this.applyFilters();
         this.loading = false;
       }
@@ -701,8 +689,6 @@ export class ProductPageComponent implements OnInit {
 
         this.filterStatesODS[this.selectODSkey] = true;
 
-        console.log('111', this.selectODSkey);
-        console.log('222', this.filterStatesODS[this.selectODSkey]);
         this.applyFilters();
         this.loading = false;
       }
@@ -712,8 +698,6 @@ export class ProductPageComponent implements OnInit {
 
         this.filterStatesODS[this.selectODSkey] = true;
 
-        console.log('111', this.selectODSkey);
-        console.log('222', this.filterStatesODS[this.selectODSkey]);
         this.applyFilters();
         this.loading = false;
       }
@@ -723,8 +707,6 @@ export class ProductPageComponent implements OnInit {
 
         this.filterStatesODS[this.selectODSkey] = true;
 
-        console.log('111', this.selectODSkey);
-        console.log('222', this.filterStatesODS[this.selectODSkey]);
         this.applyFilters();
         this.loading = false;
       }
@@ -734,8 +716,6 @@ export class ProductPageComponent implements OnInit {
 
         this.filterStatesODS[this.selectODSkey] = true;
 
-        console.log('111', this.selectODSkey);
-        console.log('222', this.filterStatesODS[this.selectODSkey]);
         this.applyFilters();
         this.loading = false;
       }
@@ -746,8 +726,6 @@ export class ProductPageComponent implements OnInit {
 
         this.filterStatesODS[this.selectODSkey] = true;
 
-        console.log('111', this.selectODSkey);
-        console.log('222', this.filterStatesODS[this.selectODSkey]);
         this.applyFilters();
         this.loading = false;
       }
@@ -757,8 +735,6 @@ export class ProductPageComponent implements OnInit {
 
         this.filterStatesODS[this.selectODSkey] = true;
 
-        console.log('111', this.selectODSkey);
-        console.log('222', this.filterStatesODS[this.selectODSkey]);
         this.applyFilters();
         this.loading = false;
       }
@@ -768,8 +744,6 @@ export class ProductPageComponent implements OnInit {
 
         this.filterStatesODS[this.selectODSkey] = true;
 
-        console.log('111', this.selectODSkey);
-        console.log('222', this.filterStatesODS[this.selectODSkey]);
         this.applyFilters();
         this.loading = false;
       }
@@ -779,8 +753,6 @@ export class ProductPageComponent implements OnInit {
 
         this.filterStatesODS[this.selectODSkey] = true;
 
-        console.log('111', this.selectODSkey);
-        console.log('222', this.filterStatesODS[this.selectODSkey]);
         this.applyFilters();
         this.loading = false;
       }
@@ -791,8 +763,6 @@ export class ProductPageComponent implements OnInit {
 
         this.filterStatesODS[this.selectODSkey] = true;
 
-        console.log('111', this.selectODSkey);
-        console.log('222', this.filterStatesODS[this.selectODSkey]);
         this.applyFilters();
         this.loading = false;
       }
@@ -802,8 +772,6 @@ export class ProductPageComponent implements OnInit {
 
         this.filterStatesODS[this.selectODSkey] = true;
 
-        console.log('111', this.selectODSkey);
-        console.log('222', this.filterStatesODS[this.selectODSkey]);
         this.applyFilters();
         this.loading = false;
       }
@@ -813,8 +781,6 @@ export class ProductPageComponent implements OnInit {
 
         this.filterStatesODS[this.selectODSkey] = true;
 
-        console.log('111', this.selectODSkey);
-        console.log('222', this.filterStatesODS[this.selectODSkey]);
         this.applyFilters();
         this.loading = false;
       }
@@ -824,8 +790,6 @@ export class ProductPageComponent implements OnInit {
 
         this.filterStatesODS[this.selectODSkey] = true;
 
-        console.log('111', this.selectODSkey);
-        console.log('222', this.filterStatesODS[this.selectODSkey]);
         this.applyFilters();
         this.loading = false;
       }
@@ -835,8 +799,6 @@ export class ProductPageComponent implements OnInit {
 
         this.filterStatesODS[this.selectODSkey] = true;
 
-        console.log('111', this.selectODSkey);
-        console.log('222', this.filterStatesODS[this.selectODSkey]);
         this.applyFilters();
         this.loading = false;
       }
@@ -847,8 +809,6 @@ export class ProductPageComponent implements OnInit {
 
         this.filterStatesODS[this.selectODSkey] = true;
 
-        console.log('111', this.selectODSkey);
-        console.log('222', this.filterStatesODS[this.selectODSkey]);
         this.applyFilters();
         this.loading = false;
       }
@@ -858,8 +818,6 @@ export class ProductPageComponent implements OnInit {
 
         this.filterStatesODS[this.selectODSkey] = true;
 
-        console.log('111', this.selectODSkey);
-        console.log('222', this.filterStatesODS[this.selectODSkey]);
         this.applyFilters();
         this.loading = false;
       }
@@ -869,8 +827,6 @@ export class ProductPageComponent implements OnInit {
 
         this.filterStatesODS[this.selectODSkey] = true;
 
-        console.log('111', this.selectODSkey);
-        console.log('222', this.filterStatesODS[this.selectODSkey]);
         this.applyFilters();
         this.loading = false;
       }
@@ -880,8 +836,6 @@ export class ProductPageComponent implements OnInit {
 
         this.filterStatesODS[this.selectODSkey] = true;
 
-        console.log('111', this.selectODSkey);
-        console.log('222', this.filterStatesODS[this.selectODSkey]);
         this.applyFilters();
         this.loading = false;
       }
@@ -891,8 +845,6 @@ export class ProductPageComponent implements OnInit {
 
         this.filterStatesODS[this.selectODSkey] = true;
 
-        console.log('111', this.selectODSkey);
-        console.log('222', this.filterStatesODS[this.selectODSkey]);
         this.applyFilters();
         this.loading = false;
       }
@@ -903,8 +855,6 @@ export class ProductPageComponent implements OnInit {
 
         this.filterStatesODS[this.selectODSkey] = true;
 
-        console.log('111', this.selectODSkey);
-        console.log('222', this.filterStatesODS[this.selectODSkey]);
         this.applyFilters();
         this.loading = false;
       }
@@ -914,8 +864,6 @@ export class ProductPageComponent implements OnInit {
 
         this.filterStatesODS[this.selectODSkey] = true;
 
-        console.log('111', this.selectODSkey);
-        console.log('222', this.filterStatesODS[this.selectODSkey]);
         this.applyFilters();
         this.loading = false;
       }
@@ -925,8 +873,6 @@ export class ProductPageComponent implements OnInit {
 
         this.filterStatesODS[this.selectODSkey] = true;
 
-        console.log('111', this.selectODSkey);
-        console.log('222', this.filterStatesODS[this.selectODSkey]);
         this.applyFilters();
         this.loading = false;
       }
@@ -936,8 +882,6 @@ export class ProductPageComponent implements OnInit {
 
         this.filterStatesODS[this.selectODSkey] = true;
 
-        console.log('111', this.selectODSkey);
-        console.log('222', this.filterStatesODS[this.selectODSkey]);
         this.applyFilters();
         this.loading = false;
       }
@@ -947,8 +891,6 @@ export class ProductPageComponent implements OnInit {
 
         this.filterStatesODS[this.selectODSkey] = true;
 
-        console.log('111', this.selectODSkey);
-        console.log('222', this.filterStatesODS[this.selectODSkey]);
         this.applyFilters();
         this.loading = false;
       }
@@ -958,8 +900,6 @@ export class ProductPageComponent implements OnInit {
 
         this.filterStatesODS[this.selectODSkey] = true;
 
-        console.log('111', this.selectODSkey);
-        console.log('222', this.filterStatesODS[this.selectODSkey]);
         this.applyFilters();
         this.loading = false;
       }
@@ -969,8 +909,6 @@ export class ProductPageComponent implements OnInit {
 
         this.filterStatesODS[this.selectODSkey] = true;
 
-        console.log('111', this.selectODSkey);
-        console.log('222', this.filterStatesODS[this.selectODSkey]);
         this.applyFilters();
         this.loading = false;
       }
@@ -981,8 +919,6 @@ export class ProductPageComponent implements OnInit {
 
         this.filterStatesODS[this.selectODSkey] = true;
 
-        console.log('111', this.selectODSkey);
-        console.log('222', this.filterStatesODS[this.selectODSkey]);
         this.applyFilters();
         this.loading = false;
       }
@@ -992,8 +928,6 @@ export class ProductPageComponent implements OnInit {
 
         this.filterStatesODS[this.selectODSkey] = true;
 
-        console.log('111', this.selectODSkey);
-        console.log('222', this.filterStatesODS[this.selectODSkey]);
         this.applyFilters();
         this.loading = false;
       }
@@ -1003,8 +937,120 @@ export class ProductPageComponent implements OnInit {
 
         this.filterStatesODS[this.selectODSkey] = true;
 
-        console.log('111', this.selectODSkey);
-        console.log('222', this.filterStatesODS[this.selectODSkey]);
+        this.applyFilters();
+        this.loading = false;
+      }
+      //! metas8
+      if (this._odsFlag.getMeta8_1()) {
+        this._odsFlag.setMeta8_1(false);
+        this.selectODSkey = 'metas_61';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+        this.applyFilters();
+        this.loading = false;
+      }
+      if (this._odsFlag.getMeta8_2()) {
+        this._odsFlag.setMeta8_2(false);
+        this.selectODSkey = 'metas_62';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+        this.applyFilters();
+        this.loading = false;
+      }
+      if (this._odsFlag.getMeta8_3()) {
+        this._odsFlag.setMeta8_3(false);
+        this.selectODSkey = 'metas_63';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+        this.applyFilters();
+        this.loading = false;
+      }
+      if (this._odsFlag.getMeta8_4()) {
+        this._odsFlag.setMeta8_4(false);
+        this.selectODSkey = 'metas_64';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+        this.applyFilters();
+        this.loading = false;
+      }
+      if (this._odsFlag.getMeta8_5()) {
+        this._odsFlag.setMeta8_5(false);
+        this.selectODSkey = 'metas_65';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+        this.applyFilters();
+        this.loading = false;
+      }
+      if (this._odsFlag.getMeta8_6()) {
+        this._odsFlag.setMeta8_6(false);
+        this.selectODSkey = 'metas_66';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+        this.applyFilters();
+        this.loading = false;
+      }
+      if (this._odsFlag.getMeta8_7()) {
+        this._odsFlag.setMeta8_7(false);
+        this.selectODSkey = 'metas_67';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+        this.applyFilters();
+        this.loading = false;
+      }
+      if (this._odsFlag.getMeta8_8()) {
+        this._odsFlag.setMeta8_8(false);
+        this.selectODSkey = 'metas_68';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+        this.applyFilters();
+        this.loading = false;
+      }
+      if (this._odsFlag.getMeta8_10()) {
+        this._odsFlag.setMeta8_10(false);
+        this.selectODSkey = 'metas_70';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+        this.applyFilters();
+        this.loading = false;
+      }
+      if (this._odsFlag.getMeta8_a()) {
+        this._odsFlag.setMeta8_a(false);
+        this.selectODSkey = 'metas_71';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+        this.applyFilters();
+        this.loading = false;
+      }
+      if (this._odsFlag.getMeta8_b()) {
+        this._odsFlag.setMeta8_b(false);
+        this.selectODSkey = 'metas_72';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+        this.applyFilters();
+        this.loading = false;
+      }
+      //! metas9
+      if (this._odsFlag.getMeta9_1()) {
+        this._odsFlag.setMeta9_1(false);
+        this.selectODSkey = 'metas_73';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+        this.applyFilters();
+        this.loading = false;
+      }
+      if (this._odsFlag.getMeta9_3()) {
+        this._odsFlag.setMeta9_3(false);
+        this.selectODSkey = 'metas_75';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+        this.applyFilters();
+        this.loading = false;
+      }
+      if (this._odsFlag.getMeta9_5()) {
+        this._odsFlag.setMeta9_5(false);
+        this.selectODSkey = 'metas_77';
+
+        this.filterStatesODS[this.selectODSkey] = true;
         this.applyFilters();
         this.loading = false;
       }
