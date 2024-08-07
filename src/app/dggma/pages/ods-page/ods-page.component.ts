@@ -3885,6 +3885,381 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
       this.router.navigate(['/dg/products']);
     }, 1000);
   }
+  //! metas10
+  filtroMeta10_2(): void {
+    this._odsFlag.setMeta10_2(true);
+    $('#exampleModal68').modal('hide'); // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroMeta10_4(): void {
+    this._odsFlag.setMeta10_4(true);
+    $('#exampleModal70').modal('hide'); // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  //! metas11
+  filtroMeta11_1(): void {
+    this._odsFlag.setMeta11_1(true);
+    $('#exampleModal72').modal('hide'); // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroMeta11_2(): void {
+    this._odsFlag.setMeta11_2(true);
+    $('#exampleModal73').modal('hide'); // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroMeta11_3(): void {
+    this._odsFlag.setMeta11_3(true);
+    $('#exampleModal74').modal('hide'); // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroMeta11_4(): void {
+    this._odsFlag.setMeta11_4(true);
+    $('#exampleModal75').modal('hide'); // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroMeta11_5(): void {
+    this._odsFlag.setMeta11_5(true);
+    $('#exampleModal76').modal('hide'); // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroMeta11_6(): void {
+    this._odsFlag.setMeta11_6(true);
+    $('#exampleModal77').modal('hide'); // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroMeta11_7(): void {
+    this._odsFlag.setMeta11_7(true);
+    $('#exampleModal78').modal('hide'); // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroMeta11_a(): void {
+    this._odsFlag.setMeta11_a(true);
+    // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroMeta11_b(): void {
+    this._odsFlag.setMeta11_b(true);
+    // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  //! metas12
+  filtroMeta12_2(): void {
+    this._odsFlag.setMeta12_2(true);
+    $('#exampleModal80').modal('hide'); // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroMeta12_3(): void {
+    this._odsFlag.setMeta12_3(true);
+    // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroMeta12_4(): void {
+    this._odsFlag.setMeta12_4(true);
+    // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroMeta12_5(): void {
+    this._odsFlag.setMeta12_5(true);
+    $('#exampleModal81').modal('hide'); // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroMeta12_6(): void {
+    this._odsFlag.setMeta12_6(true);
+    // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroMeta12_8(): void {
+    this._odsFlag.setMeta12_8(true);
+    // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  //! metas13
+  filtroMeta13_1(): void {
+    this._odsFlag.setMeta13_1(true);
+    $('#exampleModal84').modal('hide'); // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroMeta13_2(): void {
+    this._odsFlag.setMeta13_2(true);
+    // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroMeta13_3(): void {
+    this._odsFlag.setMeta13_3(true);
+    $('#exampleModal85').modal('hide'); // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroMeta13_b(): void {
+    this._odsFlag.setMeta13_b(true);
+    // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  //! metas14
+  filtroMeta14_1(): void {
+    this._odsFlag.setMeta14_1(true);
+    // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroMeta14_2(): void {
+    this._odsFlag.setMeta14_2(true);
+    $('#exampleModal87').modal('hide'); // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroMeta14_4(): void {
+    this._odsFlag.setMeta14_4(true);
+    // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroMeta14_5(): void {
+    this._odsFlag.setMeta14_5(true);
+    $('#exampleModal88').modal('hide'); // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  //! metas15
+  filtroMeta15_1(): void {
+    this._odsFlag.setMeta15_1(true);
+    $('#exampleModal90').modal('hide'); // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroMeta15_2(): void {
+    this._odsFlag.setMeta15_2(true);
+    // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroMeta15_3(): void {
+    this._odsFlag.setMeta15_3(true);
+    // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroMeta15_4(): void {
+    this._odsFlag.setMeta15_4(true);
+    $('#exampleModal91').modal('hide'); // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroMeta15_5(): void {
+    this._odsFlag.setMeta15_5(true);
+    $('#exampleModal92').modal('hide'); // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroMeta15_7(): void {
+    this._odsFlag.setMeta15_7(true);
+    // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroMeta15_a(): void {
+    this._odsFlag.setMeta15_a(true);
+    // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  //! metas16
+  filtroMeta16_1(): void {
+    this._odsFlag.setMeta16_1(true);
+    $('#exampleModal94').modal('hide'); // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroMeta16_2(): void {
+    this._odsFlag.setMeta16_2(true);
+    // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroMeta16_5(): void {
+    this._odsFlag.setMeta16_5(true);
+    $('#exampleModal96').modal('hide'); // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroMeta16_7(): void {
+    this._odsFlag.setMeta16_7(true);
+    $('#exampleModal98').modal('hide'); // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroMeta16_10(): void {
+    this._odsFlag.setMeta16_10(true);
+    // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroMeta16_a(): void {
+    this._odsFlag.setMeta16_a(true);
+    // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroMeta16_b(): void {
+    this._odsFlag.setMeta16_b(true);
+    $('#exampleModal100').modal('hide'); // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  //! metas17
+  filtroMeta17_10(): void {
+    this._odsFlag.setMeta17_10(true);
+    $('#exampleModal100').modal('hide'); // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroMeta17_11(): void {
+    this._odsFlag.setMeta17_11(true);
+    $('#exampleModal100').modal('hide'); // Cierra el modal
+
+    // Retrasa la navegación por 1 segundo (1000 milisegundos)
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
 }
-
-
