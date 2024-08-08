@@ -3563,6 +3563,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
   }
 
   filtroMeta1_1(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta1_1(true);
     $('#exampleModal').modal('hide'); // Cierra el modal
 

@@ -311,9 +311,11 @@ export class ProductPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this._flagService.triggerHiddenFilters$.subscribe(() => {
-    //   this.hiddenFilters();
-    // });
+
+    if (this._odsFlag.getMasterFlag()) {
+      this.boolFilter_ODS_o_MDEA = true
+    }
+
 
     if (this._flagService.getFlagGeo()) {
       this.changeFlagFilter();
@@ -625,6 +627,7 @@ export class ProductPageComponent implements OnInit {
       this.extractAndSortYearsHasta();
       this.pU_extractAndSortYears();
       this.pU_extractAndSortYearsHasta();
+      this.filtros_ods_pageTopage();
 
       if (!this.deleteFilterFlag) {
         this.filtrarProductosPorDirecciones();
@@ -632,768 +635,7 @@ export class ProductPageComponent implements OnInit {
         this.loading = false;
       }
 
-      if (this._odsFlag.getMeta1_1()) {
-        this.boolFilter_ODS_o_MDEA = true;
-        this._odsFlag.setMeta1_1(false);
-        this.selectODSkey = 'metas_1';
 
-        this.filterStatesODS[this.selectODSkey] = true;
-
-        this.applyFilters();
-        this.loading = false;
-      }
-      if (this._odsFlag.getMeta1_3()) {
-        this._odsFlag.setMeta1_3(false);
-        this.selectODSkey = 'metas_3';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-
-        this.applyFilters();
-        this.loading = false;
-      }
-      if (this._odsFlag.getMeta1_4()) {
-        this._odsFlag.setMeta1_4(false);
-        this.selectODSkey = 'metas_4';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-
-        this.applyFilters();
-        this.loading = false;
-      }
-      if (this._odsFlag.getMeta1_5()) {
-        this._odsFlag.setMeta1_5(false);
-        this.selectODSkey = 'metas_5';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-
-        this.applyFilters();
-        this.loading = false;
-      }
-      if (this._odsFlag.getMeta1_5()) {
-        this._odsFlag.setMeta1_5(false);
-        this.selectODSkey = 'metas_5';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-
-        this.applyFilters();
-        this.loading = false;
-      }
-      if (this._odsFlag.getMeta2_1()) {
-        this._odsFlag.setMeta2_1(false);
-        this.selectODSkey = 'metas_8';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-
-        this.applyFilters();
-        this.loading = false;
-      }
-      if (this._odsFlag.getMeta2_3()) {
-        this._odsFlag.setMeta2_3(false);
-        this.selectODSkey = 'metas_10';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-
-        this.applyFilters();
-        this.loading = false;
-      }
-      if (this._odsFlag.getMeta2_4()) {
-        this._odsFlag.setMeta2_4(false);
-        this.selectODSkey = 'metas_11';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-
-        this.applyFilters();
-        this.loading = false;
-      }
-      if (this._odsFlag.getMeta2_a()) {
-        this._odsFlag.setMeta2_a(false);
-        this.selectODSkey = 'metas_13';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-
-        this.applyFilters();
-        this.loading = false;
-      }
-      if (this._odsFlag.getMeta2_c()) {
-        this._odsFlag.setMeta2_c(false);
-        this.selectODSkey = 'metas_15';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-
-        this.applyFilters();
-        this.loading = false;
-      }
-      //! metas3
-      if (this._odsFlag.getMeta3_4()) {
-        this._odsFlag.setMeta3_4(false);
-        this.selectODSkey = 'metas_19';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-
-        this.applyFilters();
-        this.loading = false;
-      }
-      if (this._odsFlag.getMeta3_7()) {
-        this._odsFlag.setMeta3_7(false);
-        this.selectODSkey = 'metas_22';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-
-        this.applyFilters();
-        this.loading = false;
-      }
-      if (this._odsFlag.getMeta3_8()) {
-        this._odsFlag.setMeta3_8(false);
-        this.selectODSkey = 'metas_23';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-
-        this.applyFilters();
-        this.loading = false;
-      }
-      if (this._odsFlag.getMeta3_9()) {
-        this._odsFlag.setMeta3_9(false);
-        this.selectODSkey = 'metas_24';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-
-        this.applyFilters();
-        this.loading = false;
-      }
-      //! metas4
-      if (this._odsFlag.getMeta4_1()) {
-        this._odsFlag.setMeta4_1(false);
-        this.selectODSkey = 'metas_29';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-
-        this.applyFilters();
-        this.loading = false;
-      }
-      if (this._odsFlag.getMeta4_2()) {
-        this._odsFlag.setMeta4_2(false);
-        this.selectODSkey = 'metas_30';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-
-        this.applyFilters();
-        this.loading = false;
-      }
-      if (this._odsFlag.getMeta4_3()) {
-        this._odsFlag.setMeta4_3(false);
-        this.selectODSkey = 'metas_31';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-
-        this.applyFilters();
-        this.loading = false;
-      }
-      if (this._odsFlag.getMeta4_5()) {
-        this._odsFlag.setMeta4_5(false);
-        this.selectODSkey = 'metas_33';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-
-        this.applyFilters();
-        this.loading = false;
-      }
-      if (this._odsFlag.getMeta4_7()) {
-        this._odsFlag.setMeta4_7(false);
-        this.selectODSkey = 'metas_35';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-
-        this.applyFilters();
-        this.loading = false;
-      }
-      //! metas5
-      if (this._odsFlag.getMeta5_1()) {
-        this._odsFlag.setMeta5_1(false);
-        this.selectODSkey = 'metas_39';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-
-        this.applyFilters();
-        this.loading = false;
-      }
-      if (this._odsFlag.getMeta5_2()) {
-        this._odsFlag.setMeta5_2(false);
-        this.selectODSkey = 'metas_40';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-
-        this.applyFilters();
-        this.loading = false;
-      }
-      if (this._odsFlag.getMeta5_4()) {
-        this._odsFlag.setMeta5_4(false);
-        this.selectODSkey = 'metas_42';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-
-        this.applyFilters();
-        this.loading = false;
-      }
-      if (this._odsFlag.getMeta5_5()) {
-        this._odsFlag.setMeta5_5(false);
-        this.selectODSkey = 'metas_43';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-
-        this.applyFilters();
-        this.loading = false;
-      }
-      if (this._odsFlag.getMeta5_a()) {
-        this._odsFlag.setMeta5_a(false);
-        this.selectODSkey = 'metas_45';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-
-        this.applyFilters();
-        this.loading = false;
-      }
-      //! metas6
-      if (this._odsFlag.getMeta6_1()) {
-        this._odsFlag.setMeta6_1(false);
-        this.selectODSkey = 'metas_48';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-
-        this.applyFilters();
-        this.loading = false;
-      }
-      if (this._odsFlag.getMeta6_2()) {
-        this._odsFlag.setMeta6_2(false);
-        this.selectODSkey = 'metas_49';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-
-        this.applyFilters();
-        this.loading = false;
-      }
-      if (this._odsFlag.getMeta6_3()) {
-        this._odsFlag.setMeta6_3(false);
-        this.selectODSkey = 'metas_50';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-
-        this.applyFilters();
-        this.loading = false;
-      }
-      if (this._odsFlag.getMeta6_4()) {
-        this._odsFlag.setMeta6_4(false);
-        this.selectODSkey = 'metas_51';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-
-        this.applyFilters();
-        this.loading = false;
-      }
-      if (this._odsFlag.getMeta6_5()) {
-        this._odsFlag.setMeta6_5(false);
-        this.selectODSkey = 'metas_52';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-
-        this.applyFilters();
-        this.loading = false;
-      }
-      if (this._odsFlag.getMeta6_6()) {
-        this._odsFlag.setMeta6_6(false);
-        this.selectODSkey = 'metas_53';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-
-        this.applyFilters();
-        this.loading = false;
-      }
-      if (this._odsFlag.getMeta6_b()) {
-        this._odsFlag.setMeta6_b(false);
-        this.selectODSkey = 'metas_55';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-
-        this.applyFilters();
-        this.loading = false;
-      }
-      //! metas7
-      if (this._odsFlag.getMeta7_1()) {
-        this._odsFlag.setMeta7_1(false);
-        this.selectODSkey = 'metas_56';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-
-        this.applyFilters();
-        this.loading = false;
-      }
-      if (this._odsFlag.getMeta7_2()) {
-        this._odsFlag.setMeta7_2(false);
-        this.selectODSkey = 'metas_57';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-
-        this.applyFilters();
-        this.loading = false;
-      }
-      if (this._odsFlag.getMeta7_3()) {
-        this._odsFlag.setMeta7_3(false);
-        this.selectODSkey = 'metas_58';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-
-        this.applyFilters();
-        this.loading = false;
-      }
-      //! metas8
-      if (this._odsFlag.getMeta8_1()) {
-        this._odsFlag.setMeta8_1(false);
-        this.selectODSkey = 'metas_61';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-        this.applyFilters();
-        this.loading = false;
-      }
-      if (this._odsFlag.getMeta8_2()) {
-        this._odsFlag.setMeta8_2(false);
-        this.selectODSkey = 'metas_62';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-        this.applyFilters();
-        this.loading = false;
-      }
-      if (this._odsFlag.getMeta8_3()) {
-        this._odsFlag.setMeta8_3(false);
-        this.selectODSkey = 'metas_63';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-        this.applyFilters();
-        this.loading = false;
-      }
-      if (this._odsFlag.getMeta8_4()) {
-        this._odsFlag.setMeta8_4(false);
-        this.selectODSkey = 'metas_64';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-        this.applyFilters();
-        this.loading = false;
-      }
-      if (this._odsFlag.getMeta8_5()) {
-        this._odsFlag.setMeta8_5(false);
-        this.selectODSkey = 'metas_65';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-        this.applyFilters();
-        this.loading = false;
-      }
-      if (this._odsFlag.getMeta8_6()) {
-        this._odsFlag.setMeta8_6(false);
-        this.selectODSkey = 'metas_66';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-        this.applyFilters();
-        this.loading = false;
-      }
-      if (this._odsFlag.getMeta8_7()) {
-        this._odsFlag.setMeta8_7(false);
-        this.selectODSkey = 'metas_67';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-        this.applyFilters();
-        this.loading = false;
-      }
-      if (this._odsFlag.getMeta8_8()) {
-        this._odsFlag.setMeta8_8(false);
-        this.selectODSkey = 'metas_68';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-        this.applyFilters();
-        this.loading = false;
-      }
-      if (this._odsFlag.getMeta8_10()) {
-        this._odsFlag.setMeta8_10(false);
-        this.selectODSkey = 'metas_70';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-        this.applyFilters();
-        this.loading = false;
-      }
-      if (this._odsFlag.getMeta8_a()) {
-        this._odsFlag.setMeta8_a(false);
-        this.selectODSkey = 'metas_71';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-        this.applyFilters();
-        this.loading = false;
-      }
-      if (this._odsFlag.getMeta8_b()) {
-        this._odsFlag.setMeta8_b(false);
-        this.selectODSkey = 'metas_72';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-        this.applyFilters();
-        this.loading = false;
-      }
-      //! metas9
-      if (this._odsFlag.getMeta9_1()) {
-        this._odsFlag.setMeta9_1(false);
-        this.selectODSkey = 'metas_73';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-        this.applyFilters();
-        this.loading = false;
-      }
-      if (this._odsFlag.getMeta9_3()) {
-        this._odsFlag.setMeta9_3(false);
-        this.selectODSkey = 'metas_75';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-        this.applyFilters();
-        this.loading = false;
-      }
-      if (this._odsFlag.getMeta9_5()) {
-        this._odsFlag.setMeta9_5(false);
-        this.selectODSkey = 'metas_77';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-        this.applyFilters();
-        this.loading = false;
-      }
-      //! metas10
-      if (this._odsFlag.getMeta10_2()) {
-        this._odsFlag.setMeta10_2(false);
-        this.selectODSkey = 'metas_82';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-        this.applyFilters();
-        this.loading = false;
-      }
-      if (this._odsFlag.getMeta10_4()) {
-        this._odsFlag.setMeta10_4(false);
-        this.selectODSkey = 'metas_84';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-        this.applyFilters();
-        this.loading = false;
-      }
-      //! metas11
-      if (this._odsFlag.getMeta11_1()) {
-        this._odsFlag.setMeta11_1(false);
-        this.selectODSkey = 'metas_91';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-        this.applyFilters();
-        this.loading = false;
-      }
-      if (this._odsFlag.getMeta11_2()) {
-        this._odsFlag.setMeta11_2(false);
-        this.selectODSkey = 'metas_92';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-        this.applyFilters();
-        this.loading = false;
-      }
-      if (this._odsFlag.getMeta11_3()) {
-        this._odsFlag.setMeta11_3(false);
-        this.selectODSkey = 'metas_93';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-        this.applyFilters();
-        this.loading = false;
-      }
-      if (this._odsFlag.getMeta11_4()) {
-        this._odsFlag.setMeta11_4(false);
-        this.selectODSkey = 'metas_94';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-        this.applyFilters();
-        this.loading = false;
-      }
-      if (this._odsFlag.getMeta11_5()) {
-        this._odsFlag.setMeta11_5(false);
-        this.selectODSkey = 'metas_95';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-        this.applyFilters();
-        this.loading = false;
-      }
-      if (this._odsFlag.getMeta11_6()) {
-        this._odsFlag.setMeta11_6(false);
-        this.selectODSkey = 'metas_96';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-        this.applyFilters();
-        this.loading = false;
-      }
-      if (this._odsFlag.getMeta11_7()) {
-        this._odsFlag.setMeta11_7(false);
-        this.selectODSkey = 'metas_97';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-        this.applyFilters();
-        this.loading = false;
-      }
-      if (this._odsFlag.getMeta11_a()) {
-        this._odsFlag.setMeta11_a(false);
-        this.selectODSkey = 'metas_98';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-        this.applyFilters();
-        this.loading = false;
-      }
-      if (this._odsFlag.getMeta11_b()) {
-        this._odsFlag.setMeta11_b(false);
-        this.selectODSkey = 'metas_99';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-        this.applyFilters();
-        this.loading = false;
-      }
-      //! metas12
-      if (this._odsFlag.getMeta12_2()) {
-        this._odsFlag.setMeta12_2(false);
-        this.selectODSkey = 'metas_102';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-        this.applyFilters();
-        this.loading = false;
-      }
-      if (this._odsFlag.getMeta12_3()) {
-        this._odsFlag.setMeta12_3(false);
-        this.selectODSkey = 'metas_103';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-        this.applyFilters();
-        this.loading = false;
-      }
-      if (this._odsFlag.getMeta12_4()) {
-        this._odsFlag.setMeta12_4(false);
-        this.selectODSkey = 'metas_104';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-        this.applyFilters();
-        this.loading = false;
-      }
-      if (this._odsFlag.getMeta12_5()) {
-        this._odsFlag.setMeta12_5(false);
-        this.selectODSkey = 'metas_105';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-        this.applyFilters();
-        this.loading = false;
-      }
-      if (this._odsFlag.getMeta12_6()) {
-        this._odsFlag.setMeta12_6(false);
-        this.selectODSkey = 'metas_106';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-        this.applyFilters();
-        this.loading = false;
-      }
-      if (this._odsFlag.getMeta12_8()) {
-        this._odsFlag.setMeta12_8(false);
-        this.selectODSkey = 'metas_108';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-        this.applyFilters();
-        this.loading = false;
-      }
-      //! metas13
-      if (this._odsFlag.getMeta13_1()) {
-        this._odsFlag.setMeta13_1(false);
-        this.selectODSkey = 'metas_112';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-        this.applyFilters();
-        this.loading = false;
-      }
-      if (this._odsFlag.getMeta13_2()) {
-        this._odsFlag.setMeta13_2(false);
-        this.selectODSkey = 'metas_113';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-        this.applyFilters();
-        this.loading = false;
-      }
-      if (this._odsFlag.getMeta13_3()) {
-        this._odsFlag.setMeta13_3(false);
-        this.selectODSkey = 'metas_114';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-        this.applyFilters();
-        this.loading = false;
-      }
-      if (this._odsFlag.getMeta13_b()) {
-        this._odsFlag.setMeta13_b(false);
-        this.selectODSkey = 'metas_116';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-        this.applyFilters();
-        this.loading = false;
-      }
-      //! metas14
-      if (this._odsFlag.getMeta14_1()) {
-        this._odsFlag.setMeta14_1(false);
-        this.selectODSkey = 'metas_117';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-        this.applyFilters();
-        this.loading = false;
-      }
-      if (this._odsFlag.getMeta14_2()) {
-        this._odsFlag.setMeta14_2(false);
-        this.selectODSkey = 'metas_118';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-        this.applyFilters();
-        this.loading = false;
-      }
-      if (this._odsFlag.getMeta14_4()) {
-        this._odsFlag.setMeta14_4(false);
-        this.selectODSkey = 'metas_120';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-        this.applyFilters();
-        this.loading = false;
-      }
-      if (this._odsFlag.getMeta14_5()) {
-        this._odsFlag.setMeta14_5(false);
-        this.selectODSkey = 'metas_121';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-        this.applyFilters();
-        this.loading = false;
-      }
-      //! metas15
-      if (this._odsFlag.getMeta15_1()) {
-        this._odsFlag.setMeta15_1(false);
-        this.selectODSkey = 'metas_127';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-        this.applyFilters();
-        this.loading = false;
-      }
-      if (this._odsFlag.getMeta15_2()) {
-        this._odsFlag.setMeta15_2(false);
-        this.selectODSkey = 'metas_128';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-        this.applyFilters();
-        this.loading = false;
-      }
-      if (this._odsFlag.getMeta15_3()) {
-        this._odsFlag.setMeta15_3(false);
-        this.selectODSkey = 'metas_129';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-        this.applyFilters();
-        this.loading = false;
-      }
-      if (this._odsFlag.getMeta15_4()) {
-        this._odsFlag.setMeta15_4(false);
-        this.selectODSkey = 'metas_130';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-        this.applyFilters();
-        this.loading = false;
-      }
-      if (this._odsFlag.getMeta15_5()) {
-        this._odsFlag.setMeta15_5(false);
-        this.selectODSkey = 'metas_131';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-        this.applyFilters();
-        this.loading = false;
-      }
-      if (this._odsFlag.getMeta15_7()) {
-        this._odsFlag.setMeta15_7(false);
-        this.selectODSkey = 'metas_133';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-        this.applyFilters();
-        this.loading = false;
-      }
-      if (this._odsFlag.getMeta15_a()) {
-        this._odsFlag.setMeta15_a(false);
-        this.selectODSkey = 'metas_136';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-        this.applyFilters();
-        this.loading = false;
-      }
-      //! metas16
-      if (this._odsFlag.getMeta16_1()) {
-        this._odsFlag.setMeta16_1(false);
-        this.selectODSkey = 'metas_139';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-        this.applyFilters();
-        this.loading = false;
-      }
-      if (this._odsFlag.getMeta16_2()) {
-        this._odsFlag.setMeta16_2(false);
-        this.selectODSkey = 'metas_140';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-        this.applyFilters();
-        this.loading = false;
-      }
-      if (this._odsFlag.getMeta16_5()) {
-        this._odsFlag.setMeta16_5(false);
-        this.selectODSkey = 'metas_143';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-        this.applyFilters();
-        this.loading = false;
-      }
-      if (this._odsFlag.getMeta16_7()) {
-        this._odsFlag.setMeta16_7(false);
-        this.selectODSkey = 'metas_145';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-        this.applyFilters();
-        this.loading = false;
-      }
-      if (this._odsFlag.getMeta16_10()) {
-        this._odsFlag.setMeta16_10(false);
-        this.selectODSkey = 'metas_148';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-        this.applyFilters();
-        this.loading = false;
-      }
-      if (this._odsFlag.getMeta16_a()) {
-        this._odsFlag.setMeta16_a(false);
-        this.selectODSkey = 'metas_149';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-        this.applyFilters();
-        this.loading = false;
-      }
-      if (this._odsFlag.getMeta16_b()) {
-        this._odsFlag.setMeta16_b(false);
-        this.selectODSkey = 'metas_150';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-        this.applyFilters();
-        this.loading = false;
-      }
-      //! metas17
-      if (this._odsFlag.getMeta17_10()) {
-        this._odsFlag.setMeta17_10(false);
-        this.selectODSkey = 'metas_160';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-        this.applyFilters();
-        this.loading = false;
-      }
-      if (this._odsFlag.getMeta17_11()) {
-        this._odsFlag.setMeta17_11(false);
-        this.selectODSkey = 'metas_161';
-
-        this.filterStatesODS[this.selectODSkey] = true;
-        this.applyFilters();
-        this.loading = false;
-      }
     });
 
     //! ESCALAS
@@ -1453,6 +695,859 @@ export class ProductPageComponent implements OnInit {
     });
 
     //! ODS FILTER DESDE LEJOS
+  }
+  filtros_ods_pageTopage(): void{
+
+    if (this._odsFlag.getMeta1_1()) {
+
+      this._odsFlag.setMeta1_1(false);
+      this.selectODSkey = 'metas_1';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+
+      this.applyFilters();
+      this.loading = false;
+    }
+    if (this._odsFlag.getMeta1_3()) {
+
+      this._odsFlag.setMeta1_3(false);
+      this.selectODSkey = 'metas_3';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+
+      this.applyFilters();
+      this.loading = false;
+    }
+    if (this._odsFlag.getMeta1_4()) {
+
+      this._odsFlag.setMeta1_4(false);
+      this.selectODSkey = 'metas_4';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+
+      this.applyFilters();
+      this.loading = false;
+    }
+    if (this._odsFlag.getMeta1_5()) {
+
+      this._odsFlag.setMeta1_5(false);
+      this.selectODSkey = 'metas_5';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+
+      this.applyFilters();
+      this.loading = false;
+    }
+    if (this._odsFlag.getMeta1_5()) {
+
+      this._odsFlag.setMeta1_5(false);
+      this.selectODSkey = 'metas_5';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+
+      this.applyFilters();
+      this.loading = false;
+    }
+    if (this._odsFlag.getMeta2_1()) {
+
+      this._odsFlag.setMeta2_1(false);
+      this.selectODSkey = 'metas_8';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+
+      this.applyFilters();
+      this.loading = false;
+    }
+    if (this._odsFlag.getMeta2_3()) {
+
+      this._odsFlag.setMeta2_3(false);
+      this.selectODSkey = 'metas_10';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+
+      this.applyFilters();
+      this.loading = false;
+    }
+    if (this._odsFlag.getMeta2_4()) {
+
+      this._odsFlag.setMeta2_4(false);
+      this.selectODSkey = 'metas_11';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+
+      this.applyFilters();
+      this.loading = false;
+    }
+    if (this._odsFlag.getMeta2_a()) {
+
+      this._odsFlag.setMeta2_a(false);
+      this.selectODSkey = 'metas_13';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+
+      this.applyFilters();
+      this.loading = false;
+    }
+    if (this._odsFlag.getMeta2_c()) {
+
+      this._odsFlag.setMeta2_c(false);
+      this.selectODSkey = 'metas_15';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+
+      this.applyFilters();
+      this.loading = false;
+    }
+    //! metas3
+    if (this._odsFlag.getMeta3_4()) {
+
+      this._odsFlag.setMeta3_4(false);
+      this.selectODSkey = 'metas_19';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+
+      this.applyFilters();
+      this.loading = false;
+    }
+    if (this._odsFlag.getMeta3_7()) {
+
+      this._odsFlag.setMeta3_7(false);
+      this.selectODSkey = 'metas_22';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+
+      this.applyFilters();
+      this.loading = false;
+    }
+    if (this._odsFlag.getMeta3_8()) {
+
+      this._odsFlag.setMeta3_8(false);
+      this.selectODSkey = 'metas_23';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+
+      this.applyFilters();
+      this.loading = false;
+    }
+    if (this._odsFlag.getMeta3_9()) {
+
+      this._odsFlag.setMeta3_9(false);
+      this.selectODSkey = 'metas_24';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+
+      this.applyFilters();
+      this.loading = false;
+    }
+    //! metas4
+    if (this._odsFlag.getMeta4_1()) {
+
+      this._odsFlag.setMeta4_1(false);
+      this.selectODSkey = 'metas_29';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+
+      this.applyFilters();
+      this.loading = false;
+    }
+    if (this._odsFlag.getMeta4_2()) {
+
+      this._odsFlag.setMeta4_2(false);
+      this.selectODSkey = 'metas_30';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+
+      this.applyFilters();
+      this.loading = false;
+    }
+    if (this._odsFlag.getMeta4_3()) {
+
+      this._odsFlag.setMeta4_3(false);
+      this.selectODSkey = 'metas_31';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+
+      this.applyFilters();
+      this.loading = false;
+    }
+    if (this._odsFlag.getMeta4_5()) {
+
+      this._odsFlag.setMeta4_5(false);
+      this.selectODSkey = 'metas_33';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+
+      this.applyFilters();
+      this.loading = false;
+    }
+    if (this._odsFlag.getMeta4_7()) {
+
+      this._odsFlag.setMeta4_7(false);
+      this.selectODSkey = 'metas_35';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+
+      this.applyFilters();
+      this.loading = false;
+    }
+    //! metas5
+    if (this._odsFlag.getMeta5_1()) {
+
+      this._odsFlag.setMeta5_1(false);
+      this.selectODSkey = 'metas_39';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+
+      this.applyFilters();
+      this.loading = false;
+    }
+    if (this._odsFlag.getMeta5_2()) {
+
+      this._odsFlag.setMeta5_2(false);
+      this.selectODSkey = 'metas_40';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+
+      this.applyFilters();
+      this.loading = false;
+    }
+    if (this._odsFlag.getMeta5_4()) {
+
+      this._odsFlag.setMeta5_4(false);
+      this.selectODSkey = 'metas_42';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+
+      this.applyFilters();
+      this.loading = false;
+    }
+    if (this._odsFlag.getMeta5_5()) {
+
+      this._odsFlag.setMeta5_5(false);
+      this.selectODSkey = 'metas_43';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+
+      this.applyFilters();
+      this.loading = false;
+    }
+    if (this._odsFlag.getMeta5_a()) {
+
+      this._odsFlag.setMeta5_a(false);
+      this.selectODSkey = 'metas_45';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+
+      this.applyFilters();
+      this.loading = false;
+    }
+    //! metas6
+    if (this._odsFlag.getMeta6_1()) {
+
+      this._odsFlag.setMeta6_1(false);
+      this.selectODSkey = 'metas_48';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+
+      this.applyFilters();
+      this.loading = false;
+    }
+    if (this._odsFlag.getMeta6_2()) {
+
+      this._odsFlag.setMeta6_2(false);
+      this.selectODSkey = 'metas_49';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+
+      this.applyFilters();
+      this.loading = false;
+    }
+    if (this._odsFlag.getMeta6_3()) {
+
+      this._odsFlag.setMeta6_3(false);
+      this.selectODSkey = 'metas_50';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+
+      this.applyFilters();
+      this.loading = false;
+    }
+    if (this._odsFlag.getMeta6_4()) {
+
+      this._odsFlag.setMeta6_4(false);
+      this.selectODSkey = 'metas_51';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+
+      this.applyFilters();
+      this.loading = false;
+    }
+    if (this._odsFlag.getMeta6_5()) {
+
+      this._odsFlag.setMeta6_5(false);
+      this.selectODSkey = 'metas_52';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+
+      this.applyFilters();
+      this.loading = false;
+    }
+    if (this._odsFlag.getMeta6_6()) {
+
+      this._odsFlag.setMeta6_6(false);
+      this.selectODSkey = 'metas_53';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+
+      this.applyFilters();
+      this.loading = false;
+    }
+    if (this._odsFlag.getMeta6_b()) {
+
+      this._odsFlag.setMeta6_b(false);
+      this.selectODSkey = 'metas_55';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+
+      this.applyFilters();
+      this.loading = false;
+    }
+    //! metas7
+    if (this._odsFlag.getMeta7_1()) {
+
+      this._odsFlag.setMeta7_1(false);
+      this.selectODSkey = 'metas_56';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+
+      this.applyFilters();
+      this.loading = false;
+    }
+    if (this._odsFlag.getMeta7_2()) {
+
+      this._odsFlag.setMeta7_2(false);
+      this.selectODSkey = 'metas_57';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+
+      this.applyFilters();
+      this.loading = false;
+    }
+    if (this._odsFlag.getMeta7_3()) {
+
+      this._odsFlag.setMeta7_3(false);
+      this.selectODSkey = 'metas_58';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+
+      this.applyFilters();
+      this.loading = false;
+    }
+    //! metas8
+    if (this._odsFlag.getMeta8_1()) {
+
+      this._odsFlag.setMeta8_1(false);
+      this.selectODSkey = 'metas_61';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+      this.applyFilters();
+      this.loading = false;
+    }
+    if (this._odsFlag.getMeta8_2()) {
+
+      this._odsFlag.setMeta8_2(false);
+      this.selectODSkey = 'metas_62';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+      this.applyFilters();
+      this.loading = false;
+    }
+    if (this._odsFlag.getMeta8_3()) {
+
+      this._odsFlag.setMeta8_3(false);
+      this.selectODSkey = 'metas_63';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+      this.applyFilters();
+      this.loading = false;
+    }
+    if (this._odsFlag.getMeta8_4()) {
+
+      this._odsFlag.setMeta8_4(false);
+      this.selectODSkey = 'metas_64';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+      this.applyFilters();
+      this.loading = false;
+    }
+    if (this._odsFlag.getMeta8_5()) {
+
+      this._odsFlag.setMeta8_5(false);
+      this.selectODSkey = 'metas_65';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+      this.applyFilters();
+      this.loading = false;
+    }
+    if (this._odsFlag.getMeta8_6()) {
+
+      this._odsFlag.setMeta8_6(false);
+      this.selectODSkey = 'metas_66';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+      this.applyFilters();
+      this.loading = false;
+    }
+    if (this._odsFlag.getMeta8_7()) {
+
+      this._odsFlag.setMeta8_7(false);
+      this.selectODSkey = 'metas_67';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+      this.applyFilters();
+      this.loading = false;
+    }
+    if (this._odsFlag.getMeta8_8()) {
+
+      this._odsFlag.setMeta8_8(false);
+      this.selectODSkey = 'metas_68';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+      this.applyFilters();
+      this.loading = false;
+    }
+    if (this._odsFlag.getMeta8_10()) {
+
+      this._odsFlag.setMeta8_10(false);
+      this.selectODSkey = 'metas_70';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+      this.applyFilters();
+      this.loading = false;
+    }
+    if (this._odsFlag.getMeta8_a()) {
+
+      this._odsFlag.setMeta8_a(false);
+      this.selectODSkey = 'metas_71';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+      this.applyFilters();
+      this.loading = false;
+    }
+    if (this._odsFlag.getMeta8_b()) {
+
+      this._odsFlag.setMeta8_b(false);
+      this.selectODSkey = 'metas_72';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+      this.applyFilters();
+      this.loading = false;
+    }
+    //! metas9
+    if (this._odsFlag.getMeta9_1()) {
+
+      this._odsFlag.setMeta9_1(false);
+      this.selectODSkey = 'metas_73';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+      this.applyFilters();
+      this.loading = false;
+    }
+    if (this._odsFlag.getMeta9_3()) {
+
+      this._odsFlag.setMeta9_3(false);
+      this.selectODSkey = 'metas_75';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+      this.applyFilters();
+      this.loading = false;
+    }
+    if (this._odsFlag.getMeta9_5()) {
+
+      this._odsFlag.setMeta9_5(false);
+      this.selectODSkey = 'metas_77';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+      this.applyFilters();
+      this.loading = false;
+    }
+    //! metas10
+    if (this._odsFlag.getMeta10_2()) {
+
+      this._odsFlag.setMeta10_2(false);
+      this.selectODSkey = 'metas_82';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+      this.applyFilters();
+      this.loading = false;
+    }
+    if (this._odsFlag.getMeta10_4()) {
+
+      this._odsFlag.setMeta10_4(false);
+      this.selectODSkey = 'metas_84';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+      this.applyFilters();
+      this.loading = false;
+    }
+    //! metas11
+    if (this._odsFlag.getMeta11_1()) {
+
+      this._odsFlag.setMeta11_1(false);
+      this.selectODSkey = 'metas_91';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+      this.applyFilters();
+      this.loading = false;
+    }
+    if (this._odsFlag.getMeta11_2()) {
+
+      this._odsFlag.setMeta11_2(false);
+      this.selectODSkey = 'metas_92';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+      this.applyFilters();
+      this.loading = false;
+    }
+    if (this._odsFlag.getMeta11_3()) {
+
+      this._odsFlag.setMeta11_3(false);
+      this.selectODSkey = 'metas_93';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+      this.applyFilters();
+      this.loading = false;
+    }
+    if (this._odsFlag.getMeta11_4()) {
+
+      this._odsFlag.setMeta11_4(false);
+      this.selectODSkey = 'metas_94';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+      this.applyFilters();
+      this.loading = false;
+    }
+    if (this._odsFlag.getMeta11_5()) {
+
+      this._odsFlag.setMeta11_5(false);
+      this.selectODSkey = 'metas_95';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+      this.applyFilters();
+      this.loading = false;
+    }
+    if (this._odsFlag.getMeta11_6()) {
+
+      this._odsFlag.setMeta11_6(false);
+      this.selectODSkey = 'metas_96';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+      this.applyFilters();
+      this.loading = false;
+    }
+    if (this._odsFlag.getMeta11_7()) {
+
+      this._odsFlag.setMeta11_7(false);
+      this.selectODSkey = 'metas_97';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+      this.applyFilters();
+      this.loading = false;
+    }
+    if (this._odsFlag.getMeta11_a()) {
+
+      this._odsFlag.setMeta11_a(false);
+      this.selectODSkey = 'metas_98';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+      this.applyFilters();
+      this.loading = false;
+    }
+    if (this._odsFlag.getMeta11_b()) {
+
+      this._odsFlag.setMeta11_b(false);
+      this.selectODSkey = 'metas_99';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+      this.applyFilters();
+      this.loading = false;
+    }
+    //! metas12
+    if (this._odsFlag.getMeta12_2()) {
+
+      this._odsFlag.setMeta12_2(false);
+      this.selectODSkey = 'metas_102';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+      this.applyFilters();
+      this.loading = false;
+    }
+    if (this._odsFlag.getMeta12_3()) {
+
+      this._odsFlag.setMeta12_3(false);
+      this.selectODSkey = 'metas_103';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+      this.applyFilters();
+      this.loading = false;
+    }
+    if (this._odsFlag.getMeta12_4()) {
+
+      this._odsFlag.setMeta12_4(false);
+      this.selectODSkey = 'metas_104';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+      this.applyFilters();
+      this.loading = false;
+    }
+    if (this._odsFlag.getMeta12_5()) {
+
+      this._odsFlag.setMeta12_5(false);
+      this.selectODSkey = 'metas_105';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+      this.applyFilters();
+      this.loading = false;
+    }
+    if (this._odsFlag.getMeta12_6()) {
+
+      this._odsFlag.setMeta12_6(false);
+      this.selectODSkey = 'metas_106';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+      this.applyFilters();
+      this.loading = false;
+    }
+    if (this._odsFlag.getMeta12_8()) {
+
+      this._odsFlag.setMeta12_8(false);
+      this.selectODSkey = 'metas_108';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+      this.applyFilters();
+      this.loading = false;
+    }
+    //! metas13
+    if (this._odsFlag.getMeta13_1()) {
+
+      this._odsFlag.setMeta13_1(false);
+      this.selectODSkey = 'metas_112';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+      this.applyFilters();
+      this.loading = false;
+    }
+    if (this._odsFlag.getMeta13_2()) {
+
+      this._odsFlag.setMeta13_2(false);
+      this.selectODSkey = 'metas_113';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+      this.applyFilters();
+      this.loading = false;
+    }
+    if (this._odsFlag.getMeta13_3()) {
+
+      this._odsFlag.setMeta13_3(false);
+      this.selectODSkey = 'metas_114';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+      this.applyFilters();
+      this.loading = false;
+    }
+    if (this._odsFlag.getMeta13_b()) {
+
+      this._odsFlag.setMeta13_b(false);
+      this.selectODSkey = 'metas_116';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+      this.applyFilters();
+      this.loading = false;
+    }
+    //! metas14
+    if (this._odsFlag.getMeta14_1()) {
+
+      this._odsFlag.setMeta14_1(false);
+      this.selectODSkey = 'metas_117';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+      this.applyFilters();
+      this.loading = false;
+    }
+    if (this._odsFlag.getMeta14_2()) {
+
+      this._odsFlag.setMeta14_2(false);
+      this.selectODSkey = 'metas_118';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+      this.applyFilters();
+      this.loading = false;
+    }
+    if (this._odsFlag.getMeta14_4()) {
+
+      this._odsFlag.setMeta14_4(false);
+      this.selectODSkey = 'metas_120';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+      this.applyFilters();
+      this.loading = false;
+    }
+    if (this._odsFlag.getMeta14_5()) {
+
+      this._odsFlag.setMeta14_5(false);
+      this.selectODSkey = 'metas_121';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+      this.applyFilters();
+      this.loading = false;
+    }
+    //! metas15
+    if (this._odsFlag.getMeta15_1()) {
+
+      this._odsFlag.setMeta15_1(false);
+      this.selectODSkey = 'metas_127';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+      this.applyFilters();
+      this.loading = false;
+    }
+    if (this._odsFlag.getMeta15_2()) {
+
+      this._odsFlag.setMeta15_2(false);
+      this.selectODSkey = 'metas_128';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+      this.applyFilters();
+      this.loading = false;
+    }
+    if (this._odsFlag.getMeta15_3()) {
+
+      this._odsFlag.setMeta15_3(false);
+      this.selectODSkey = 'metas_129';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+      this.applyFilters();
+      this.loading = false;
+    }
+    if (this._odsFlag.getMeta15_4()) {
+
+      this._odsFlag.setMeta15_4(false);
+      this.selectODSkey = 'metas_130';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+      this.applyFilters();
+      this.loading = false;
+    }
+    if (this._odsFlag.getMeta15_5()) {
+
+      this._odsFlag.setMeta15_5(false);
+      this.selectODSkey = 'metas_131';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+      this.applyFilters();
+      this.loading = false;
+    }
+    if (this._odsFlag.getMeta15_7()) {
+
+      this._odsFlag.setMeta15_7(false);
+      this.selectODSkey = 'metas_133';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+      this.applyFilters();
+      this.loading = false;
+    }
+    if (this._odsFlag.getMeta15_a()) {
+
+      this._odsFlag.setMeta15_a(false);
+      this.selectODSkey = 'metas_136';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+      this.applyFilters();
+      this.loading = false;
+    }
+    //! metas16
+    if (this._odsFlag.getMeta16_1()) {
+
+      this._odsFlag.setMeta16_1(false);
+      this.selectODSkey = 'metas_139';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+      this.applyFilters();
+      this.loading = false;
+    }
+    if (this._odsFlag.getMeta16_2()) {
+
+      this._odsFlag.setMeta16_2(false);
+      this.selectODSkey = 'metas_140';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+      this.applyFilters();
+      this.loading = false;
+    }
+    if (this._odsFlag.getMeta16_5()) {
+
+      this._odsFlag.setMeta16_5(false);
+      this.selectODSkey = 'metas_143';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+      this.applyFilters();
+      this.loading = false;
+    }
+    if (this._odsFlag.getMeta16_7()) {
+
+      this._odsFlag.setMeta16_7(false);
+      this.selectODSkey = 'metas_145';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+      this.applyFilters();
+      this.loading = false;
+    }
+    if (this._odsFlag.getMeta16_10()) {
+
+      this._odsFlag.setMeta16_10(false);
+      this.selectODSkey = 'metas_148';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+      this.applyFilters();
+      this.loading = false;
+    }
+    if (this._odsFlag.getMeta16_a()) {
+
+      this._odsFlag.setMeta16_a(false);
+      this.selectODSkey = 'metas_149';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+      this.applyFilters();
+      this.loading = false;
+    }
+    if (this._odsFlag.getMeta16_b()) {
+
+      this._odsFlag.setMeta16_b(false);
+      this.selectODSkey = 'metas_150';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+      this.applyFilters();
+      this.loading = false;
+    }
+    //! metas17
+    if (this._odsFlag.getMeta17_10()) {
+
+      this._odsFlag.setMeta17_10(false);
+      this.selectODSkey = 'metas_160';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+      this.applyFilters();
+      this.loading = false;
+    }
+    if (this._odsFlag.getMeta17_11()) {
+
+      this._odsFlag.setMeta17_11(false);
+      this.selectODSkey = 'metas_161';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+      this.applyFilters();
+      this.loading = false;
+    }
   }
   //! LLENAMOS SELECT de fechas hasta referencia
   extractAndSortYears(): void {
@@ -2184,6 +2279,8 @@ export class ProductPageComponent implements OnInit {
     this.pU_selectedYearHasta = null;
     this.banderaSearchByQuery = false;
 
+    this.boolFilter_ODS_o_MDEA = false;
+
     this.ngOnInit();
   }
 
@@ -2294,7 +2391,7 @@ export class ProductPageComponent implements OnInit {
         if (this.primerDireccion.length == 0) {
           this.primerDir = 0;
         }
-      }, 10);
+      }, 1);
 
       this.DireccionCountstop2 = setInterval(() => {
         this.segundaDir++;
@@ -2302,7 +2399,7 @@ export class ProductPageComponent implements OnInit {
         if (this.segundaDir === this.segundaDireccion.length) {
           clearInterval(this.DireccionCountstop2);
         }
-      }, 10);
+      }, 1);
 
       this.DireccionCountstop3 = setInterval(() => {
         this.terceraDir++;
@@ -2310,7 +2407,7 @@ export class ProductPageComponent implements OnInit {
         if (this.terceraDir === this.terceraDireccion.length) {
           clearInterval(this.DireccionCountstop3);
         }
-      }, 10);
+      }, 1);
 
       this.DireccionCountstop4 = setInterval(() => {
         this.cuartaDir++;
@@ -2318,7 +2415,7 @@ export class ProductPageComponent implements OnInit {
         if (this.cuartaDir === this.cuartaDireccion.length) {
           clearInterval(this.DireccionCountstop4);
         }
-      }, 10);
+      }, 1);
 
       this.DireccionCountstop5 = setInterval(() => {
         this.quintaDir++;
@@ -2329,58 +2426,9 @@ export class ProductPageComponent implements OnInit {
         if (this.quintaDireccion.length == 0) {
           this.quintaDir = 0;
         }
-      }, 10);
+      }, 1);
     }
   }
 }
-
-// if (this.checkSelect) {
-//     const keyParts = this.selectComponentekey.split('_');
-//     const tipo = keyParts[0];
-//     const id = keyParts[1];
-//     let componentResults: Mdea[] = [];
-
-//     if (tipo === 'componente') {
-//       componentResults = this.mdeas.filter((mdeas) => mdeas.comp_mdea === +id);
-//     } else if (tipo === 'subcomponente') {
-//       componentResults = this.mdeas.filter((mdeas) => mdeas.subcomp_mdea === +id);
-//     } else if (tipo === 'topico') {
-//       componentResults = this.mdeas.filter((mdeas) => mdeas.topico_mdea === +id);
-//     }
-//
-//     this.combinedResultsMdea = this.combinedResultsMdea.concat(componentResults);
-//     combinedResults = combinedResults.filter(data =>
-//       this.combinedResultsMdea.some(mdeas => mdeas.interview__id === data.interview__id));
-//
-//     this.checkSelect = false;
-//
-//   }
-
-
-// if (this.check_UnSelect) {
-//         const unselectedKeyParts = this.unSelectComponentekey.split('_');
-//         const unselectedTipo = unselectedKeyParts[0];
-//         const unselectedId = unselectedKeyParts[1];
-//         if (unselectedTipo === 'componente') {
-//             this.combinedResultsMdea = this.combinedResultsMdea.filter((mdeas) => mdeas.comp_mdea !== +unselectedId);
-//         } else if (unselectedTipo === 'subcomponente') {
-//             this.combinedResultsMdea = this.combinedResultsMdea.filter((mdeas) => mdeas.subcomp_mdea !== +unselectedId);
-//         } else if (unselectedTipo === 'topico') {
-//             this.combinedResultsMdea = this.combinedResultsMdea.filter((mdeas) => mdeas.topico_mdea !== +unselectedId);
-//         }
-//         combinedResults = combinedResults.filter((data) =>
-//         this.combinedResultsMdea.some((mdeas) => mdeas.interview__id === data.interview__id));
-//         this.check_UnSelect = false;
-
-//         if (this.combinedResultsMdea.length == 0 &&
-//           !(this.checkboxesState['direGeogrAmbiente'] || this.checkboxesState['direEstaSocio'] ||
-//           this.checkboxesState['direEstaEconomicas'] || this.checkboxesState['direEstaGobSegPubJus']
-//           || this.checkboxesState['direInteAnaInv']) && !(this.checkboxesCobe['cobeNacional'] || this.checkboxesCobe['cobeEstatal'] || this.checkboxesCobe['cobeMunicipal'] ||this.checkboxesCobe['cobRegional'])) {
-//
-//           return;
-
-//         }
-//     }
-
 
 

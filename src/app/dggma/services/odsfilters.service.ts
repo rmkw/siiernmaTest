@@ -111,6 +111,15 @@ export class OdsFilterService {
   bool_meta17_10: boolean = false;
   bool_meta17_11: boolean = false;
 
+  masterFlag: boolean = false;
+
+  setMasterFlag(value: boolean): void {
+    this.masterFlag = value;
+  }
+  getMasterFlag(): boolean {
+    return this.masterFlag;
+  }
+
   setMeta1_1(value: boolean): void {
     this.bool_meta1_1 = value;
   }
