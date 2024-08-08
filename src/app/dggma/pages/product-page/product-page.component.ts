@@ -314,6 +314,7 @@ export class ProductPageComponent implements OnInit {
 
     if (this._odsFlag.getMasterFlag()) {
       this.boolFilter_ODS_o_MDEA = true
+      this._odsFlag.setMasterFlag(false)
     }
 
 
