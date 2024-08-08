@@ -1,3 +1,4 @@
 export const environments = {
-  // baseUrl: 'http://luismyhost:3000'
-}
+  production: true,
+  baseUrl: 'https://siiernmadata.onrender.com',
+};
