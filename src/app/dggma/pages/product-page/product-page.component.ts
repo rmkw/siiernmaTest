@@ -1054,6 +1054,342 @@ export class ProductPageComponent implements OnInit {
         this.applyFilters();
         this.loading = false;
       }
+      //! metas10
+      if (this._odsFlag.getMeta10_2()) {
+        this._odsFlag.setMeta10_2(false);
+        this.selectODSkey = 'metas_82';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+        this.applyFilters();
+        this.loading = false;
+      }
+      if (this._odsFlag.getMeta10_4()) {
+        this._odsFlag.setMeta10_4(false);
+        this.selectODSkey = 'metas_84';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+        this.applyFilters();
+        this.loading = false;
+      }
+      //! metas11
+      if (this._odsFlag.getMeta11_1()) {
+        this._odsFlag.setMeta11_1(false);
+        this.selectODSkey = 'metas_91';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+        this.applyFilters();
+        this.loading = false;
+      }
+      if (this._odsFlag.getMeta11_2()) {
+        this._odsFlag.setMeta11_2(false);
+        this.selectODSkey = 'metas_92';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+        this.applyFilters();
+        this.loading = false;
+      }
+      if (this._odsFlag.getMeta11_3()) {
+        this._odsFlag.setMeta11_3(false);
+        this.selectODSkey = 'metas_93';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+        this.applyFilters();
+        this.loading = false;
+      }
+      if (this._odsFlag.getMeta11_4()) {
+        this._odsFlag.setMeta11_4(false);
+        this.selectODSkey = 'metas_94';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+        this.applyFilters();
+        this.loading = false;
+      }
+      if (this._odsFlag.getMeta11_5()) {
+        this._odsFlag.setMeta11_5(false);
+        this.selectODSkey = 'metas_95';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+        this.applyFilters();
+        this.loading = false;
+      }
+      if (this._odsFlag.getMeta11_6()) {
+        this._odsFlag.setMeta11_6(false);
+        this.selectODSkey = 'metas_96';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+        this.applyFilters();
+        this.loading = false;
+      }
+      if (this._odsFlag.getMeta11_7()) {
+        this._odsFlag.setMeta11_7(false);
+        this.selectODSkey = 'metas_97';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+        this.applyFilters();
+        this.loading = false;
+      }
+      if (this._odsFlag.getMeta11_a()) {
+        this._odsFlag.setMeta11_a(false);
+        this.selectODSkey = 'metas_98';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+        this.applyFilters();
+        this.loading = false;
+      }
+      if (this._odsFlag.getMeta11_b()) {
+        this._odsFlag.setMeta11_b(false);
+        this.selectODSkey = 'metas_99';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+        this.applyFilters();
+        this.loading = false;
+      }
+      //! metas12
+      if (this._odsFlag.getMeta12_2()) {
+        this._odsFlag.setMeta12_2(false);
+        this.selectODSkey = 'metas_102';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+        this.applyFilters();
+        this.loading = false;
+      }
+      if (this._odsFlag.getMeta12_3()) {
+        this._odsFlag.setMeta12_3(false);
+        this.selectODSkey = 'metas_103';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+        this.applyFilters();
+        this.loading = false;
+      }
+      if (this._odsFlag.getMeta12_4()) {
+        this._odsFlag.setMeta12_4(false);
+        this.selectODSkey = 'metas_104';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+        this.applyFilters();
+        this.loading = false;
+      }
+      if (this._odsFlag.getMeta12_5()) {
+        this._odsFlag.setMeta12_5(false);
+        this.selectODSkey = 'metas_105';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+        this.applyFilters();
+        this.loading = false;
+      }
+      if (this._odsFlag.getMeta12_6()) {
+        this._odsFlag.setMeta12_6(false);
+        this.selectODSkey = 'metas_106';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+        this.applyFilters();
+        this.loading = false;
+      }
+      if (this._odsFlag.getMeta12_8()) {
+        this._odsFlag.setMeta12_8(false);
+        this.selectODSkey = 'metas_108';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+        this.applyFilters();
+        this.loading = false;
+      }
+      //! metas13
+      if (this._odsFlag.getMeta13_1()) {
+        this._odsFlag.setMeta13_1(false);
+        this.selectODSkey = 'metas_112';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+        this.applyFilters();
+        this.loading = false;
+      }
+      if (this._odsFlag.getMeta13_2()) {
+        this._odsFlag.setMeta13_2(false);
+        this.selectODSkey = 'metas_113';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+        this.applyFilters();
+        this.loading = false;
+      }
+      if (this._odsFlag.getMeta13_3()) {
+        this._odsFlag.setMeta13_3(false);
+        this.selectODSkey = 'metas_114';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+        this.applyFilters();
+        this.loading = false;
+      }
+      if (this._odsFlag.getMeta13_b()) {
+        this._odsFlag.setMeta13_b(false);
+        this.selectODSkey = 'metas_116';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+        this.applyFilters();
+        this.loading = false;
+      }
+      //! metas14
+      if (this._odsFlag.getMeta14_1()) {
+        this._odsFlag.setMeta14_1(false);
+        this.selectODSkey = 'metas_117';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+        this.applyFilters();
+        this.loading = false;
+      }
+      if (this._odsFlag.getMeta14_2()) {
+        this._odsFlag.setMeta14_2(false);
+        this.selectODSkey = 'metas_118';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+        this.applyFilters();
+        this.loading = false;
+      }
+      if (this._odsFlag.getMeta14_4()) {
+        this._odsFlag.setMeta14_4(false);
+        this.selectODSkey = 'metas_120';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+        this.applyFilters();
+        this.loading = false;
+      }
+      if (this._odsFlag.getMeta14_5()) {
+        this._odsFlag.setMeta14_5(false);
+        this.selectODSkey = 'metas_121';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+        this.applyFilters();
+        this.loading = false;
+      }
+      //! metas15
+      if (this._odsFlag.getMeta15_1()) {
+        this._odsFlag.setMeta15_1(false);
+        this.selectODSkey = 'metas_127';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+        this.applyFilters();
+        this.loading = false;
+      }
+      if (this._odsFlag.getMeta15_2()) {
+        this._odsFlag.setMeta15_2(false);
+        this.selectODSkey = 'metas_128';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+        this.applyFilters();
+        this.loading = false;
+      }
+      if (this._odsFlag.getMeta15_3()) {
+        this._odsFlag.setMeta15_3(false);
+        this.selectODSkey = 'metas_129';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+        this.applyFilters();
+        this.loading = false;
+      }
+      if (this._odsFlag.getMeta15_4()) {
+        this._odsFlag.setMeta15_4(false);
+        this.selectODSkey = 'metas_130';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+        this.applyFilters();
+        this.loading = false;
+      }
+      if (this._odsFlag.getMeta15_5()) {
+        this._odsFlag.setMeta15_5(false);
+        this.selectODSkey = 'metas_131';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+        this.applyFilters();
+        this.loading = false;
+      }
+      if (this._odsFlag.getMeta15_7()) {
+        this._odsFlag.setMeta15_7(false);
+        this.selectODSkey = 'metas_133';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+        this.applyFilters();
+        this.loading = false;
+      }
+      if (this._odsFlag.getMeta15_a()) {
+        this._odsFlag.setMeta15_a(false);
+        this.selectODSkey = 'metas_136';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+        this.applyFilters();
+        this.loading = false;
+      }
+      //! metas16
+      if (this._odsFlag.getMeta16_1()) {
+        this._odsFlag.setMeta16_1(false);
+        this.selectODSkey = 'metas_139';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+        this.applyFilters();
+        this.loading = false;
+      }
+      if (this._odsFlag.getMeta16_2()) {
+        this._odsFlag.setMeta16_2(false);
+        this.selectODSkey = 'metas_140';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+        this.applyFilters();
+        this.loading = false;
+      }
+      if (this._odsFlag.getMeta16_5()) {
+        this._odsFlag.setMeta16_5(false);
+        this.selectODSkey = 'metas_143';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+        this.applyFilters();
+        this.loading = false;
+      }
+      if (this._odsFlag.getMeta16_7()) {
+        this._odsFlag.setMeta16_7(false);
+        this.selectODSkey = 'metas_145';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+        this.applyFilters();
+        this.loading = false;
+      }
+      if (this._odsFlag.getMeta16_10()) {
+        this._odsFlag.setMeta16_10(false);
+        this.selectODSkey = 'metas_148';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+        this.applyFilters();
+        this.loading = false;
+      }
+      if (this._odsFlag.getMeta16_a()) {
+        this._odsFlag.setMeta16_a(false);
+        this.selectODSkey = 'metas_149';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+        this.applyFilters();
+        this.loading = false;
+      }
+      if (this._odsFlag.getMeta16_b()) {
+        this._odsFlag.setMeta16_b(false);
+        this.selectODSkey = 'metas_150';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+        this.applyFilters();
+        this.loading = false;
+      }
+      //! metas17
+      if (this._odsFlag.getMeta17_10()) {
+        this._odsFlag.setMeta17_10(false);
+        this.selectODSkey = 'metas_160';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+        this.applyFilters();
+        this.loading = false;
+      }
+      if (this._odsFlag.getMeta17_11()) {
+        this._odsFlag.setMeta17_11(false);
+        this.selectODSkey = 'metas_161';
+
+        this.filterStatesODS[this.selectODSkey] = true;
+        this.applyFilters();
+        this.loading = false;
+      }
     });
 
     //! ESCALAS

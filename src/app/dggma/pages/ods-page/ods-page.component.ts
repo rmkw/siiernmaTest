@@ -992,6 +992,19 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
               display: false,
             },
           },
+          onClick: (event, elements) => {
+            if (elements && elements.length > 0) {
+              const index = elements[0].index;
+              // Lógica de activación de la función según la barra clicada
+
+              if (index === 7) {
+                this.filtroMeta11_a();
+              }
+              if (index === 8) {
+                this.filtroMeta11_b();
+              }
+            }
+          },
         },
       });
     } else {
@@ -1070,6 +1083,25 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
               display: false,
             },
           },
+          onClick: (event, elements) => {
+            if (elements && elements.length > 0) {
+              const index = elements[0].index;
+              // Lógica de activación de la función según la barra clicada
+
+              if (index === 1) {
+                this.filtroMeta12_3();
+              }
+              if (index === 2) {
+                this.filtroMeta12_4();
+              }
+              if (index === 4) {
+                this.filtroMeta12_6();
+              }
+              if (index === 5) {
+                this.filtroMeta12_8();
+              }
+            }
+          },
         },
       });
     } else {
@@ -1137,6 +1169,20 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
               display: false,
             },
           },
+          onClick: (event, elements) => {
+            if (elements && elements.length > 0) {
+              const index = elements[0].index;
+              // Lógica de activación de la función según la barra clicada
+
+              if (index === 1) {
+                this.filtroMeta13_2();
+              }
+              if (index === 3) {
+                this.filtroMeta13_b();
+              }
+
+            }
+          },
         },
       });
     } else {
@@ -1203,6 +1249,19 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
             legend: {
               display: false,
             },
+          },
+          onClick: (event, elements) => {
+            if (elements && elements.length > 0) {
+              const index = elements[0].index;
+              // Lógica de activación de la función según la barra clicada
+
+              if (index === 0) {
+                this.filtroMeta14_1();
+              }
+              if (index === 2) {
+                this.filtroMeta14_4();
+              }
+            }
           },
         },
       });
@@ -1285,6 +1344,25 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
               display: false,
             },
           },
+          onClick: (event, elements) => {
+            if (elements && elements.length > 0) {
+              const index = elements[0].index;
+              // Lógica de activación de la función según la barra clicada
+
+              if (index === 1) {
+                this.filtroMeta15_2();
+              }
+              if (index === 2) {
+                this.filtroMeta15_3();
+              }
+              if (index === 5) {
+                this.filtroMeta15_7();
+              }
+              if (index === 6) {
+                this.filtroMeta15_a();
+              }
+            }
+          },
         },
       });
     } else {
@@ -1366,6 +1444,22 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
               display: false,
             },
           },
+          onClick: (event, elements) => {
+            if (elements && elements.length > 0) {
+              const index = elements[0].index;
+              // Lógica de activación de la función según la barra clicada
+
+              if (index === 1) {
+                this.filtroMeta16_2();
+              }
+              if (index === 4) {
+                this.filtroMeta16_10();
+              }
+              if (index === 5) {
+                this.filtroMeta16_a();
+              }
+            }
+          },
         },
       });
     } else {
@@ -1422,6 +1516,20 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
             legend: {
               display: false,
             },
+          },
+          onClick: (event, elements) => {
+            if (elements && elements.length > 0) {
+              const index = elements[0].index;
+              // Lógica de activación de la función según la barra clicada
+
+              if (index === 0) {
+                this.filtroMeta17_10();
+              }
+              if (index === 1) {
+                this.filtroMeta17_11();
+              }
+
+            }
           },
         },
       });
