@@ -57,42 +57,58 @@
  #cobeMunicipal {
     margin-right: 2px;
   }
-} 
+}
 
 @media (min-width: 1366px) {
   #ChecksSoporte  {
     margin-right: 3px;
   }
-} 
+}
 
 .custom-spinner {
-  width: 1.3rem; 
-  height: 1.3rem; 
-  border-width: 0.25em; 
-  color: #1a538c; 
+  width: 1.3rem;
+  height: 1.3rem;
+  border-width: 0.25em;
+  color: #1a538c;
 }
 
 
 @media (max-width: 1366px) and (max-height: 768px) {
-    h5 {  
+    h5 {
        font-size: 15px;
     }
     }
-   
+
 @media (max-width: 1366px) and (max-height: 768px) {
-      h3 {  
+      h3 {
          font-size: 22px;
     }
   }
 
   @media (max-width: 1366px) and (max-height: 768px) {
-    #iconoDir{  
+    #iconoDir{
         font-size: 4rem;
    }
  }
-  
+
  @media (max-width: 1366px) and (max-height: 768px) {
   strong {
     font-size: 15px;
   }
+}
+.texto-direction{
+  color: #113250;
+  font-family: Helvetica, Sans-Serif;
+  font-size: 1.05rem;
+  height: 5.5rem;
+}
+.texto-totalP {
+  color: #113250;
+  font-family: Helvetica, Sans-Serif;
+  font-size: 1.05rem;
+}
+.texto-numero{
+  color: #1a538c;
+  font-family: 'Monaco', monospace;
+  font-weight: bold;
 }

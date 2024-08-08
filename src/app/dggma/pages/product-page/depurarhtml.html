@@ -2,7 +2,8 @@
   <div class="row">
 
     <!--* FILTROS -->
-    <div [hidden]="flagHidden" class="col-3" style="background-color: #f8f9fa; border-top: solid 1px; border-color: #113250;">
+    <div [hidden]="flagHidden" class="col-3"
+      style="background-color: #f8f9fa; border-top: solid 1px; border-color: #113250;">
 
 
       <!--! boton para ocultar todos los filtros y también para reiniciarlos -->
@@ -381,213 +382,173 @@
     <!--* PRODUCTOS -->
     <div *ngIf="flagOther" class="col-2"></div>
     <div [ngClass]="{'col-8': flagOther, 'col-9': flagFilter}">
-      <!--! titulo -->
-      <div class="row">
-        <div class="col">
-          <h3 class="display-6"
-            style="margin: 2rem; text-align: center; color: #113250; font-family: Helvetica, Sans-Serif;">
-            Productos Generados en las Direcciones Generales del INEGI.</h3>
-          <hr style="color: #113250;">
+      <div class="row align-items-center">
+        <div class="col d-flex ms-3">
+          <button type="button" class="btn btn-outline-dark btn-sm" (click)="changeFlagFilter()"
+            style=" --bs-btn-padding-y: .20rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem; margin-bottom: 0px; margin-top: 1rem;"><span>Filtrar</span></button>
+          <p *ngIf="!showFilteredProducts"
+            style="color: #113250; margin-bottom: 0px; margin-top: 1rem; margin-left: 10px;">
+            {{displayedProductCountAll}} Recursos encontrados</p>
+          <p *ngIf="showFilteredProducts"
+            style="color: #113250; margin-bottom: 0px; margin-top: 1rem; margin-left: 10px;">{{displayedProductCount}}
+            Recursos encontrados</p>
         </div>
       </div>
 
+      <br>
 
-      <!--! div para ocultar cuando se filtra desde otra pagina -->
-      <div [hidden]="boolFilter_ODS_o_MDEA">
-        <!--! texto -->
-        <div class="row align-items-center">
+      <!-- Contador  -->
 
-          <div class="col d-flex">
-            <p style="color: #113250; margin: 5px;  text-align: justify; font-family: Helvetica, Sans-Serif;">
-              En esta sección, explorarás los productos identificados y catalogados por las diversas direcciones generales
-              del Instituto Nacional de Estadística y Geografía (INEGI).
-              Esta colección abarca una amplia gama de temas, desde datos demográficos hasta análisis medioambientales,
-              ofreciendo una visión detallada de diferentes aspectos relevantes
-              para nuestra sociedad.
+      <div class="container">
+        <p style="color: #113250; margin: 5px;  text-align: justify; font-family: Helvetica, Sans-Serif;">
+          En esta sección, explorarás los productos identificados y catalogados por las diversas direcciones generales
+          del Instituto Nacional de Estadística y Geografía (INEGI).
+          Esta colección abarca una amplia gama de temas, desde datos demográficos hasta análisis medioambientales,
+          ofreciendo una visión detallada de diferentes aspectos relevantes
+          para nuestra sociedad.
 
-              Los productos aquí presentados son el resultado de rigurosos procesos de recopilación y análisis de
-              información. Están diseñados para proporcionar datos precisos y confiables
-              que puedan utilizarse para una variedad de propósitos, como investigación, toma de decisiones y análisis de
-              tendencias.
+          Los productos aquí presentados son el resultado de rigurosos procesos de recopilación y análisis de
+          información. Están diseñados para proporcionar datos precisos y confiables
+          que puedan utilizarse para una variedad de propósitos, como investigación, toma de decisiones y análisis de
+          tendencias.
 
-              Al navegar por el sitio, podrás descubrir cómo estas herramientas contribuyen a una comprensión más profunda
-              de nuestro entorno y cómo pueden ser utilizadas para
-              informar y enriquecer el desarrollo de políticas y estrategias en diversos ámbitos.
-            </p>
-          </div>
+          Al navegar por el sitio, podrás descubrir cómo estas herramientas contribuyen a una comprensión más profunda
+          de nuestro entorno y cómo pueden ser utilizadas para
+          informar y enriquecer el desarrollo de políticas y estrategias en diversos ámbitos.
+        </p>
 
-        </div>
+        <br>
 
-
-        <!--! contadores -->
-        <div class="row pt-2">
-          <!--? ***************************************************************************************** -->
-          <div class="col">
-
-            <!--! icono -->
-            <div class="d-flex justify-content-center align-items-center">
-              <i id="iconoDir" class="bi bi-globe display-5" style="color: #113250;"></i>
+        <div class="container ">
+          <div class="row ">
+            <div class="col ">
+              <h3 class="display-6 "
+                style="margin-bottom: 2rem; text-align: center; color: #113250; font-family: Helvetica, Sans-Serif;">
+                Total de productos registrados por cada dirección.</h3>
+              <hr style="color: #113250;">
             </div>
-
-            <!--! direccion -->
-            <div class="text-center">
-
-              <label class="texto-direction">Dirección General de Geografía y Medio Ambiente.</label>
-
-              <!--! texto total de productos -->
-              <label class="texto-totalP">Total de productos:</label>
-
-            </div>
-
-            <!--! spin -->
-            <div class="text-center pt-2" *ngIf="loading">
-              <div class="spinner-border spinner-border-sm custom-spinner" role="status">
-                <span class="visually-hidden">Loading...</span>
-              </div>
-            </div>
-
-            <!--! numeros -->
-            <div class="text-center">
-              <h3 class="texto-numero" [hidden]="loading">{{ primerDir }}</h3>
-            </div>
-
-          </div>
-          <!--? ***************************************************************************************** -->
-          <div class="col">
-            <!--! icono -->
-            <div class="d-flex justify-content-center align-items-center">
-              <i id="iconoDir" class="bi bi-bar-chart display-5" style="color: #113250;"></i>
-            </div>
-
-            <div class="text-center">
-              <!--! direccion -->
-              <label class="texto-direction">Dirección General de Estadísticas Sociodemográficas.</label>
-              <!--! texto total de productos -->
-              <label class="texto-totalP">Total de productos:</label>
-
-            </div>
-
-            <!--! spin -->
-            <div class="text-center pt-2" *ngIf="loading">
-              <div class="spinner-border spinner-border-sm custom-spinner" role="status">
-                <span class="visually-hidden">Loading...</span>
-              </div>
-            </div>
-            <!--! numeros -->
-            <div class="text-center">
-              <h3 class="texto-numero" [hidden]="loading">{{ segundaDir }}</h3>
-            </div>
-
-          </div>
-
-          <!--? ***************************************************************************************** -->
-          <div class="col">
-
-            <div class="d-flex justify-content-center align-items-center">
-              <i id="iconoDir" class="bi bi-cash-stack display-5" style="color: #113250;"></i>
-            </div>
-
-            <div class="text-center">
-
-              <label class="texto-direction">Dirección General de Estadísticas Económicas.</label>
-
-              <label class="texto-totalP">Total de productos:</label>
-
-            </div>
-
-            <div class="text-center pt-2" *ngIf="loading">
-              <div class="spinner-border spinner-border-sm custom-spinner" role="status">
-                <span class="visually-hidden">Loading...</span>
-              </div>
-            </div>
-
-            <div class="text-center">
-              <h3 class="texto-numero" [hidden]="loading">
-                {{ terceraDir }}</h3>
-            </div>
-
-          </div>
-          <!--? ***************************************************************************************** -->
-          <div class="col">
-
-            <div class="d-flex justify-content-center align-items-center">
-              <i id="iconoDir" class="bi bi-bank display-5" style="color: #113250;"></i>
-            </div>
-
-            <div class="text-center">
-
-              <label class="texto-direction">Dirección General de Estadísticas de Gobierno, Seguridad Pública y Justicia.
-              </label>
-
-              <label class="texto-totalP">Total de productos:</label>
-
-            </div>
-
-
-            <div class="text-center pt-2" *ngIf="loading">
-              <div class="spinner-border spinner-border-sm custom-spinner" role="status">
-                <span class="visually-hidden">Loading...</span>
-              </div>
-            </div>
-
-            <div class="text-center">
-              <h3 class="texto-numero" [hidden]="loading">
-                {{ cuartaDir }}</h3>
-            </div>
-
-          </div>
-          <!--? ***************************************************************************************** -->
-          <div class="col">
-            <div class="d-flex justify-content-center align-items-center">
-              <i id="iconoDir" class="bi bi-file-earmark-text display-5" style="color: #113250;"></i>
-            </div>
-
-            <div class="text-center">
-              <label class="texto-direction">Dirección General de Integración, Análisis e Investigación.</label>
-
-              <label class="texto-totalP">Total de productos: </label>
-            </div>
-
-
-            <div class="text-center pt-2" *ngIf="loading">
-              <div class="spinner-border spinner-border-sm custom-spinner" role="status">
-                <span class="visually-hidden">Loading...</span>
-              </div>
-            </div>
-
-            <div class="text-center">
-              <h3 class="texto-numero" [hidden]="loading">{{ quintaDir }}</h3>
-            </div>
-
-
-
           </div>
         </div>
+
+
+        <div id="contador">
+          <div class="row  justify-content-center align-items-center">
+
+            <div class="col-2 m-1">
+              <div class="d-flex justify-content-center">
+                <i id="iconoDir" class="bi bi-globe display-1" style="color: #113250;"></i>
+              </div>
+              <h5 class="fw-normal text-center"
+                style="height: 7.5rem; color: #113250; font-family: Helvetica, Sans-Serif;">Dirección General de
+                Geografía y Medio Ambiente.</h5>
+              <h5 style="text-align: center; color: #004045; font-family: Helvetica, Sans-Serif;">Total de productos:
+              </h5>
+              <div class="text-center" *ngIf="loading">
+                <div class="spinner-border spinner-border-sm custom-spinner" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </div>
+              <h3 style="text-align: center; color: #1a538c; font-family: 'Monaco', monospace; font-weight: bold;"
+                [hidden]="loading">{{ primerDir }}</h3>
+              <div class="d-flex justify-content-center">
+              </div>
+            </div>
+
+            <div class="col-2 m-1">
+              <div class="d-flex justify-content-center ">
+                <i id="iconoDir" class="bi bi-bar-chart display-1 " style="color: #113250;"></i>
+              </div>
+              <h5 class="fw-normal text-center"
+                style="height: 7.5rem; color: #113250; font-family: Helvetica, Sans-Serif;">Dirección General de
+                Estadísticas Sociodemográficas.</h5>
+              <h5 style="text-align: center; color: #004045; font-family: Helvetica, Sans-Serif;">Total de productos:
+              </h5>
+              <div class="text-center" *ngIf="loading">
+                <div class="spinner-border spinner-border-sm custom-spinner" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </div>
+              <h3 style="text-align: center; color: #1a538c; font-family: 'Monaco', monospace; font-weight: bold"
+                [hidden]="loading">{{ segundaDir }}</h3>
+
+              <div class="d-flex justify-content-center">
+
+              </div>
+            </div>
+
+
+            <div id="DirEstEco" class="col-2 m-1">
+              <div class="d-flex justify-content-center ">
+                <i id="iconoDir" class="bi bi-cash-stack display-1 " style="color: #113250;"></i>
+              </div>
+              <h5 class="fw-normal text-center"
+                style="height: 7.5rem; color: #113250; font-family: Helvetica, Sans-Serif;">Dirección General de
+                Estadísticas Económicas.</h5>
+              <h5 style="text-align: center; color: #004045; font-family: Helvetica, Sans-Serif;">Total de productos:
+              </h5>
+              <div class="text-center" *ngIf="loading">
+                <div class="spinner-border spinner-border-sm custom-spinner" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </div>
+              <h3 style="text-align: center; color: #1a538c; font-family: 'Monaco', monospace; font-weight: bold"
+                [hidden]="loading"> {{ terceraDir }}</h3>
+
+              <div class="d-flex justify-content-center">
+
+              </div>
+            </div>
+
+            <div class="col-2 m-1">
+              <div class="d-flex justify-content-center ">
+                <i id="iconoDir" class="bi bi-bank display-1 " style="color: #113250;"></i>
+              </div>
+              <h5 id="DirSeg" style="color: #113250; font-family: Helvetica, Sans-Serif; height: 7.5rem;"
+                class="fw-normal text-center ">Direrccion General de Estadísticas de Gobierno, Seguridad Pública y
+                Justicia.
+              </h5>
+              <h5 style="text-align: center; color: #004045; font-family: Helvetica, Sans-Serif;">Total de productos:
+              </h5>
+              <div class="text-center" *ngIf="loading">
+                <div class="spinner-border spinner-border-sm custom-spinner" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </div>
+              <h3 style="text-align: center; color: #1a538c; font-family: 'Monaco', monospace; font-weight: bold"
+                [hidden]="loading">{{ cuartaDir }}</h3>
+
+              <div class="d-flex justify-content-center">
+
+              </div>
+            </div>
+
+            <div class="col-2 m-1">
+              <div class="d-flex justify-content-center ">
+                <i id="iconoDir" class="bi bi-file-earmark-text display-1 " style="color: #113250;"></i>
+              </div>
+              <h5 style="color: #113250; font-family: Helvetica, Sans-Serif; height: 7.5rem;"
+                class="fw-normal text-center ">Dirección General de Integración, Análisis e
+                Investigación.</h5>
+              <h5 style="text-align: center; color: #004045; margin-top: 10; font-family: Helvetica, Sans-Serif;">Total
+                de productos: </h5>
+              <div class="text-center" *ngIf="loading">
+                <div class="spinner-border spinner-border-sm custom-spinner" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </div>
+              <h3 style="text-align: center; color: #1a538c; font-family: 'Monaco', monospace; font-weight: bold;"
+                [hidden]="loading">{{ quintaDir }}</h3>
+
+              <div class="d-flex justify-content-center">
+
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
 
-<!--? ***************************************************************************************** -->
-          <!--! contador de recursos encontrados -->
-          <div class="row align-items-center">
-
-            <div class="col d-flex ms-3">
-
-              <button type="button" class="btn btn-outline-dark btn-sm" (click)="changeFlagFilter()"
-                style=" --bs-btn-padding-y: .20rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem; margin-bottom: 0px; margin-top: 1rem;"><span>Filtrar</span></button>
-
-              <p *ngIf="!showFilteredProducts" style="color: #113250; margin-bottom: 0px; margin-top: 1rem; margin-left: 10px;">
-                {{displayedProductCountAll}} Recursos encontrados</p>
-
-              <p *ngIf="showFilteredProducts" style="color: #113250; margin-bottom: 0px; margin-top: 1rem; margin-left: 10px;">
-                {{displayedProductCount}}
-                Recursos encontrados</p>
-
-            </div>
-          </div>
-
-
-
-
-
+      <br>
 
       <div *ngIf="showFilteredProducts">
         <div *ngFor="let item of filteredProducts">
@@ -707,8 +668,7 @@
 </div>
 
 <!--* MODAL -->
-<div class="modal fade " id="staticBackdrop" data-bs-keyboard="false" tabindex="-1"
-  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade " id="staticBackdrop" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="custom-scroll">
     <div class="modal-dialog modal-xl">
       <div class="modal-content">
@@ -899,8 +859,7 @@
 
               <span *ngIf="elementoSeleccionado?.escala" style="font-family: Helvetica, Sans-Serif;">
                 <span class="badge">
-                  {{ elementoSeleccionado?.escala != 14 ? getEscalasText(elementoSeleccionado?.escala) :
-                  'Otra:'+elementoSeleccionado?.o_escala }}
+                  {{ elementoSeleccionado?.escala != 14 ? getEscalasText(elementoSeleccionado?.escala) : 'Otra:'+elementoSeleccionado?.o_escala }}
                 </span>
               </span>
 
@@ -1375,9 +1334,3 @@
     </div>
   </div>
 </div>
-
-
-
-
-
-

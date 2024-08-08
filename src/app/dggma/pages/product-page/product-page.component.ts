@@ -98,6 +98,8 @@ export class ProductPageComponent implements OnInit {
   flagFilter: boolean = false;
   flagOther: boolean = true;
 
+  boolFilter_ODS_o_MDEA: boolean = false;
+
   //! elementoSeleccionado es una variable para tomar el objeto del array de productos y poder sacar la info de uno solo
   elementoSeleccionado: any;
 
@@ -629,7 +631,9 @@ export class ProductPageComponent implements OnInit {
         this.fun();
         this.loading = false;
       }
+
       if (this._odsFlag.getMeta1_1()) {
+        this.boolFilter_ODS_o_MDEA = true;
         this._odsFlag.setMeta1_1(false);
         this.selectODSkey = 'metas_1';
 
@@ -1449,8 +1453,6 @@ export class ProductPageComponent implements OnInit {
     });
 
     //! ODS FILTER DESDE LEJOS
-
-
   }
   //! LLENAMOS SELECT de fechas hasta referencia
   extractAndSortYears(): void {
@@ -1790,9 +1792,9 @@ export class ProductPageComponent implements OnInit {
 
   selectODS(event: { originalEvent: Event; node: TreeNode }): void {
     this.selectODSkey = event.node.key;
-    console.log('111',this.selectODSkey);
+    console.log('111', this.selectODSkey);
     this.filterStatesODS[this.selectODSkey] = true;
-    console.log('222',this.filterStatesODS[this.selectODSkey]);
+    console.log('222', this.filterStatesODS[this.selectODSkey]);
 
     this.applyFilters();
   }
@@ -1807,11 +1809,11 @@ export class ProductPageComponent implements OnInit {
   //TODO FILTROS
 
   applyFilters(): void {
-    console.log('entre a filtros')
+    console.log('entre a filtros');
     this.filteredProducts = [];
     let combinedResults = [...this.products];
 
-    console.log('productos', this.products)
+    console.log('productos', this.products);
 
     this.showFilteredProducts = false;
     this.deleteFilterFlag = false;
@@ -2278,17 +2280,11 @@ export class ProductPageComponent implements OnInit {
     this.quintaDireccion = this.products.filter((product) => {
       return product.dg_prod === 5;
     });
-
-
-
   }
 
   fun() {
-
     if (this.products.length == 0) {
-
     } else {
-
       this.DireccionCountstop = setInterval(() => {
         this.primerDir++;
 
