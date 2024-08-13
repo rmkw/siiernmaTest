@@ -1609,12 +1609,23 @@ export class ProductPageComponent implements OnInit {
     this.flagHidden = false;
     this.flagFilter = true;
     this.flagOther = false;
+    this.boolFilter_ODS_o_MDEA = true;
+    console.log(
+      'this.flagHidden:',
+      this.flagHidden,
+      'this.flagFilter:',
+      this.flagFilter,
+      'this.flagOther:',
+      this.flagOther
+    );
   }
   //!bandera para filtros para que oculte
   hiddenFilters() {
+
     this.flagHidden = true;
     this.flagFilter = false;
     this.flagOther = true;
+    this.boolFilter_ODS_o_MDEA = false;
   }
 
   //* ABRE EL MODAL CON INFO
