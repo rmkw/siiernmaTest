@@ -4,9 +4,13 @@ import { Observable, map, of, tap } from 'rxjs';
 import { environments } from 'src/app/environments/environments';
 import { Escalas, Products, SecuenciaVar } from "../interfaces/product.interface";
 import { Componente, Mdea, Subcomponente, Topico } from '../interfaces/mdea.interface';
-import { UAdmin } from '../interfaces/u_admin.interface';
+import { iDireccionesGenerales } from '../interfaces/u_admin.interface';
 import { DgaPprod, Pi, ProcProduccion, ProgInformacion } from '../interfaces/pi.interface';
-import { Aeg2, DgaProd, SecuenciaAeg } from '../interfaces/aeg.interface';
+import {
+  iActividadEstadisticaGeografica,
+  DgaProd,
+  SecuenciaAeg,
+} from '../interfaces/aeg.interface';
 import { MetaODS, Ods, SecuenciaOds } from '../interfaces/ods.interface';
 import { IndicadoresPS2023, PS2023, SecuenciaPS } from '../interfaces/ps.interface';
 
@@ -20,10 +24,10 @@ export class DGService {
 
   //! get direcciones generales
   direccionesGenerales(){
-    return this._http.get<UAdmin[]>(`${ this.baseUrl}/direcciones_ctrl`)
+    return this._http.get<iDireccionesGenerales[]>(`${ this.baseUrl}/direcciones_ctrl`)
   }
   direccionesGeneralesPI(){
-    return this._http.get<UAdmin[]>(`${ this.baseUrl}/direcciones_ctrl_PI`)
+    return this._http.get<iDireccionesGenerales[]>(`${ this.baseUrl}/direcciones_ctrl_PI`)
   }
   //! get productos
   productos(){
@@ -107,7 +111,7 @@ export class DGService {
     return this._http.get<DgaPprod[]>(`${ this.baseUrl}/dga_pprod_ctrl`)
   }
   actiEstaGeoName(){
-    return this._http.get<Aeg2[]>(`${ this.baseUrl}/aeg_name_ctrl`)
+    return this._http.get<iActividadEstadisticaGeografica[]>(`${ this.baseUrl}/aeg_name_ctrl`)
   }
   //? Dirección general adjunta responsable de la AEG
   direAdjResAEG(){

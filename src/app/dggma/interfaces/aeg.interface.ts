@@ -6,11 +6,11 @@ export interface SecuenciaAeg {
     nom_aeg:           number;
     dga_aeg:           number;
 }
-export interface Aeg2 {
-    id:             number;
-    text:           string;
-    parentid:       number;
-    attachmentname: string;
+export interface iActividadEstadisticaGeografica {
+  id: number;
+  text: string;
+  parentid: number;
+  attachmentname: string;
 }
 export interface DgaProd {
     id:             number;

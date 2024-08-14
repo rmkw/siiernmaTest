@@ -9,6 +9,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 export class IndicadoresPageComponent {
 
 
-  isMobile: boolean = window.innerWidth <= 480; 
+
 }
 

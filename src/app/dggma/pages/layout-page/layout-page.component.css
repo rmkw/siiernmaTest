@@ -27,3 +27,9 @@
   /* Margen */
 
 }
+/* Asegúrate de que esta clase tenga la suficiente especificidad para aplicar el estilo */
+.active-link {
+  text-decoration: underline;
+  color: #113250;
+  /* Cambia el color si es necesario */
+}

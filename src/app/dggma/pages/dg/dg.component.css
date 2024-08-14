@@ -1,48 +1,19 @@
-@media only screen and (min-width: 1366px) and (max-height: 768px) {
-#mdeatext {
-  top: 17.5rem;
-}
-}
 
-@media only screen and (min-width: 1366px) and (max-height: 768px) {
-#DirEstEco{
-margin-top: 32px;
-}
-}
-
-.carousel {
-  margin-bottom: 4rem;
-}
 
 .carousel-caption {
-  bottom: 3rem;
+  bottom: 5rem;
   z-index: 10;
 }
-
 .carousel-item {
   height: 32rem;
 }
-
-
 .marketing .col-lg-4 {
   margin-bottom: 1.5rem;
   text-align: center;
 }
-
-
 .marketing .col-lg-4 p {
   margin-right: .75rem;
   margin-left: .75rem;
-}
-
-
-.featurette-divider {
-  margin: 5rem 0;
-
-}
-
-.featurette-heading {
-  letter-spacing: -.05rem;
 }
 
 /*! botones modificados */
@@ -50,20 +21,16 @@ margin-top: 32px;
   background-color: #ffffffbb;
   color: #000;
 }
-
 .custom-btn-colorWhite:hover {
   background-color: #ffffff9c;
 }
-
 .custom-btn-colorGris {
   background-color: #949494d5;
   color: #fff;
 }
-
 .custom-btn-colorGris:hover {
   background-color: #949494a4;
 }
-
 .custom-btn-color {
   background-color: #007a98b2;
   color: #fff;
@@ -71,7 +38,6 @@ margin-top: 32px;
 .custom-btn-color:hover {
   background-color: #0060758f;
 }
-
 .custom-btn-color2 {
   background-color: #009ddbb7;
   color: #fff;
@@ -79,35 +45,25 @@ margin-top: 32px;
 .custom-btn-color2:hover {
   background-color: #007ab2a1;
 }
-
 .custom-btn-color3 {
   background-color: #5a6889;
   color: #fff;
 }
-
 .custom-btn-color3:hover {
   background-color: #4a5d8a;
 }
-
 p{
  font-family: Arial, Helvetica, sans-serif;
 }
-
 .selected {
   color: #ffffff;
   background-color: #00528a;
 }
-
-.hidden-text {
-  display: none;
-}
-
 .customParrafo{
   font-size: medium;
   text-align: justify;
   font-family: Helvetica, Sans-Serif;
 }
-
 p {
   font-family: Helvetica, Sans-Serif;
 }

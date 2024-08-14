@@ -1,12 +1,7 @@
 .customPa{
   text-align: justify;
   padding-top: 10px;
-  
-}
 
-.zoomout{
-  transform: scale(0.5);
-  transform-origin: top left;
 }
 
 .container {

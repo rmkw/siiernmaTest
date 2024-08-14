@@ -1,4 +1,4 @@
-export interface UAdmin {
+export interface iDireccionesGenerales {
     id:             number;
     text:           string;
     parentid:       string;

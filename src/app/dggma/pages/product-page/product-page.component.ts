@@ -4,8 +4,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { Products, Escalas, SecuenciaVar } from '../../interfaces/product.interface';
 import { DgaPprod, Pi, ProgInformacion } from '../../interfaces/pi.interface';
-import { UAdmin } from '../../interfaces/u_admin.interface';
-import { Aeg2, DgaProd, SecuenciaAeg } from '../../interfaces/aeg.interface';
+import { iDireccionesGenerales } from '../../interfaces/u_admin.interface';
+import { iActividadEstadisticaGeografica, DgaProd, SecuenciaAeg } from '../../interfaces/aeg.interface';
 import { Componente, Mdea, Subcomponente, Topico } from '../../interfaces/mdea.interface';
 import { MetaODS, Ods, SecuenciaOds } from '../../interfaces/ods.interface';
 import { IndicadoresPS2023, PS2023, SecuenciaPS } from '../../interfaces/ps.interface';
@@ -44,7 +44,7 @@ export class ProductPageComponent implements OnInit {
   public pi?: Pi[] = [];
 
   //* direcciones generales
-  public dgs: UAdmin[] = [];
+  public dgs: iDireccionesGenerales[] = [];
 
   //*secuencia PI
   public proInfo: ProgInformacion[] = [];
@@ -56,7 +56,7 @@ export class ProductPageComponent implements OnInit {
   public dga_Pprod: DgaPprod[] = [];
 
   //*NOMBRES DE LA AEG
-  public aeg_2: Aeg2[] = [];
+  public aeg_2: iActividadEstadisticaGeografica[] = [];
 
   //* NOMBRE DE LA DIRECCIÓN GENERAL ADJUNTA RESPONSABLE
   public aeg_Prod: DgaProd[] = [];
@@ -313,45 +313,8 @@ export class ProductPageComponent implements OnInit {
   ngOnInit(): void {
 
     if (this._odsFlag.getMasterFlag()) {
-      this.boolFilter_ODS_o_MDEA = true
-      this._odsFlag.setMasterFlag(false)
-    }
-
-
-    if (this._flagService.getFlagGeo()) {
-      this.changeFlagFilter();
-      this._flagService.setFlagGeo(false);
-      const string = 'direGeogrAmbiente';
-      this.checkboxesState[string] = true;
-      this.thisFlags();
-    }
-    if (this._flagService.getFlagEstadisticas()) {
-      this.changeFlagFilter();
-      this._flagService.setFlagEstadisticas(false);
-      const string = 'direEstaSocio';
-      this.checkboxesState[string] = true;
-      this.thisFlags();
-    }
-    if (this._flagService.getFlagEconomicas()) {
-      this.changeFlagFilter();
-      this._flagService.setFlagEconomicas(false);
-      const string = 'direEstaEconomicas';
-      this.checkboxesState[string] = true;
-      this.thisFlags();
-    }
-    if (this._flagService.getFlagGobierno()) {
-      this.changeFlagFilter();
-      this._flagService.setFlagGobierno(false);
-      const string = 'direEstaGobSegPubJus';
-      this.checkboxesState[string] = true;
-      this.thisFlags();
-    }
-    if (this._flagService.getFlagIntegracion()) {
-      this.changeFlagFilter();
-      this._flagService.setFlagIntegracion(false);
-      const string = 'direInteAnaInv';
-      this.checkboxesState[string] = true;
-      this.thisFlags();
+      this.boolFilter_ODS_o_MDEA = true;
+      this._odsFlag.setMasterFlag(false);
     }
 
     //! botones MDEA filtro by componente
@@ -364,46 +327,8 @@ export class ProductPageComponent implements OnInit {
       this.filterStates[string] = true;
       this.thisFlags();
     }
-    if (this._flagService.getFlagComp2()) {
-      this.changeFlagFilter();
-      this._flagService.setFlagComp2(false);
-      const string = 'componente_2';
-      this.selectComponentekey = string;
-      this.filterStates[string] = true;
-      this.thisFlags();
-    }
-    if (this._flagService.getFlagComp3()) {
-      this.changeFlagFilter();
-      this._flagService.setFlagComp3(false);
-      const string = 'componente_3';
-      this.selectComponentekey = string;
-      this.filterStates[string] = true;
-      this.thisFlags();
-    }
-    if (this._flagService.getFlagComp4()) {
-      this.changeFlagFilter();
-      this._flagService.setFlagComp4(false);
-      const string = 'componente_4';
-      this.selectComponentekey = string;
-      this.filterStates[string] = true;
-      this.thisFlags();
-    }
-    if (this._flagService.getFlagComp5()) {
-      this.changeFlagFilter();
-      this._flagService.setFlagComp5(false);
-      const string = 'componente_5';
-      this.selectComponentekey = string;
-      this.filterStates[string] = true;
-      this.thisFlags();
-    }
-    if (this._flagService.getFlagComp6()) {
-      this.changeFlagFilter();
-      this._flagService.setFlagComp6(false);
-      const string = 'componente_6';
-      this.selectComponentekey = string;
-      this.filterStates[string] = true;
-      this.thisFlags();
-    }
+
+
 
     //! botones MDEA filtro by Subcomponentes
 
@@ -415,180 +340,7 @@ export class ProductPageComponent implements OnInit {
       this.filterStates[string] = true;
       this.thisFlags();
     }
-    if (this._flagService.getFlagSubComp2()) {
-      this.changeFlagFilter();
-      this._flagService.setFlagSubComp2(false);
-      const string = 'subcomponente_2';
-      this.selectComponentekey = string;
-      this.filterStates[string] = true;
-      this.thisFlags();
-    }
-    if (this._flagService.getFlagSubComp3()) {
-      this.changeFlagFilter();
-      this._flagService.setFlagSubComp3(false);
-      const string = 'subcomponente_3';
-      this.selectComponentekey = string;
-      this.filterStates[string] = true;
-      this.thisFlags();
-    }
-    if (this._flagService.getFlagSubComp4()) {
-      this.changeFlagFilter();
-      this._flagService.setFlagSubComp4(false);
-      const string = 'subcomponente_4';
-      this.selectComponentekey = string;
-      this.filterStates[string] = true;
-      this.thisFlags();
-    }
-    if (this._flagService.getFlagSubComp5()) {
-      this.changeFlagFilter();
-      this._flagService.setFlagSubComp5(false);
-      const string = 'subcomponente_5';
-      this.selectComponentekey = string;
-      this.filterStates[string] = true;
-      this.thisFlags();
-    }
-    if (this._flagService.getFlagSubComp6()) {
-      this.changeFlagFilter();
-      this._flagService.setFlagSubComp6(false);
-      const string = 'subcomponente_6';
-      this.selectComponentekey = string;
-      this.filterStates[string] = true;
-      this.thisFlags();
-    }
-    if (this._flagService.getFlagSubComp7()) {
-      this.changeFlagFilter();
-      this._flagService.setFlagSubComp7(false);
-      const string = 'subcomponente_7';
-      this.selectComponentekey = string;
-      this.filterStates[string] = true;
-      this.thisFlags();
-    }
 
-    if (this._flagService.getFlagSubComp8()) {
-      this.changeFlagFilter();
-      this._flagService.setFlagSubComp8(false);
-      const string = 'subcomponente_8';
-      this.selectComponentekey = string;
-      this.filterStates[string] = true;
-      this.thisFlags();
-    }
-
-    if (this._flagService.getFlagSubComp9()) {
-      this.changeFlagFilter();
-      this._flagService.setFlagSubComp9(false);
-      const string = 'subcomponente_9';
-      this.selectComponentekey = string;
-      this.filterStates[string] = true;
-      this.thisFlags();
-    }
-
-    if (this._flagService.getFlagSubComp10()) {
-      this.changeFlagFilter();
-      this._flagService.setFlagSubComp10(false);
-      const string = 'subcomponente_10';
-      this.selectComponentekey = string;
-      this.filterStates[string] = true;
-      this.thisFlags();
-    }
-
-    if (this._flagService.getFlagSubComp11()) {
-      this.changeFlagFilter();
-      this._flagService.setFlagSubComp11(false);
-      const string = 'subcomponente_11';
-      this.selectComponentekey = string;
-      this.filterStates[string] = true;
-      this.thisFlags();
-    }
-
-    if (this._flagService.getFlagSubComp12()) {
-      this.changeFlagFilter();
-      this._flagService.setFlagSubComp12(false);
-      const string = 'subcomponente_12';
-      this.selectComponentekey = string;
-      this.filterStates[string] = true;
-      this.thisFlags();
-    }
-
-    if (this._flagService.getFlagSubComp13()) {
-      this.changeFlagFilter();
-      this._flagService.setFlagSubComp13(false);
-      const string = 'subcomponente_13';
-      this.selectComponentekey = string;
-      this.filterStates[string] = true;
-      this.thisFlags();
-    }
-
-    if (this._flagService.getFlagSubComp14()) {
-      this.changeFlagFilter();
-      this._flagService.setFlagSubComp14(false);
-      const string = 'subcomponente_14';
-      this.selectComponentekey = string;
-      this.filterStates[string] = true;
-      this.thisFlags();
-    }
-
-    if (this._flagService.getFlagSubComp15()) {
-      this.changeFlagFilter();
-      this._flagService.setFlagSubComp15(false);
-      const string = 'subcomponente_15';
-      this.selectComponentekey = string;
-      this.filterStates[string] = true;
-      this.thisFlags();
-    }
-
-    if (this._flagService.getFlagSubComp16()) {
-      this.changeFlagFilter();
-      this._flagService.setFlagSubComp16(false);
-      const string = 'subcomponente_16';
-      this.selectComponentekey = string;
-      this.filterStates[string] = true;
-      this.thisFlags();
-    }
-
-    if (this._flagService.getFlagSubComp17()) {
-      this.changeFlagFilter();
-      this._flagService.setFlagSubComp17(false);
-      const string = 'subcomponente_17';
-      this.selectComponentekey = string;
-      this.filterStates[string] = true;
-      this.thisFlags();
-    }
-
-    if (this._flagService.getFlagSubComp18()) {
-      this.changeFlagFilter();
-      this._flagService.setFlagSubComp18(false);
-      const string = 'subcomponente_18';
-      this.selectComponentekey = string;
-      this.filterStates[string] = true;
-      this.thisFlags();
-    }
-
-    if (this._flagService.getFlagSubComp19()) {
-      this.changeFlagFilter();
-      this._flagService.setFlagSubComp19(false);
-      const string = 'subcomponente_19';
-      this.selectComponentekey = string;
-      this.filterStates[string] = true;
-      this.thisFlags();
-    }
-
-    if (this._flagService.getFlagSubComp20()) {
-      this.changeFlagFilter();
-      this._flagService.setFlagSubComp20(false);
-      const string = 'subcomponente_20';
-      this.selectComponentekey = string;
-      this.filterStates[string] = true;
-      this.thisFlags();
-    }
-
-    if (this._flagService.getFlagSubComp21()) {
-      this.changeFlagFilter();
-      this._flagService.setFlagSubComp21(false);
-      const string = 'subcomponente_21';
-      this.selectComponentekey = string;
-      this.filterStates[string] = true;
-      this.thisFlags();
-    }
 
     //! Funcion que manda a llamar el servicio y los datos de este para que se pueda combinar con la transformaciión de datos a la estructura de treenode
     this._direServices.componentes().subscribe((componentes) => {
@@ -635,8 +387,6 @@ export class ProductPageComponent implements OnInit {
         this.fun();
         this.loading = false;
       }
-
-
     });
 
     //! ESCALAS
@@ -697,10 +447,8 @@ export class ProductPageComponent implements OnInit {
 
     //! ODS FILTER DESDE LEJOS
   }
-  filtros_ods_pageTopage(): void{
-
+  filtros_ods_pageTopage(): void {
     if (this._odsFlag.getMeta1_1()) {
-
       this._odsFlag.setMeta1_1(false);
       this.selectODSkey = 'metas_1';
 
@@ -710,7 +458,6 @@ export class ProductPageComponent implements OnInit {
       this.loading = false;
     }
     if (this._odsFlag.getMeta1_3()) {
-
       this._odsFlag.setMeta1_3(false);
       this.selectODSkey = 'metas_3';
 
@@ -720,7 +467,6 @@ export class ProductPageComponent implements OnInit {
       this.loading = false;
     }
     if (this._odsFlag.getMeta1_4()) {
-
       this._odsFlag.setMeta1_4(false);
       this.selectODSkey = 'metas_4';
 
@@ -730,7 +476,6 @@ export class ProductPageComponent implements OnInit {
       this.loading = false;
     }
     if (this._odsFlag.getMeta1_5()) {
-
       this._odsFlag.setMeta1_5(false);
       this.selectODSkey = 'metas_5';
 
@@ -740,7 +485,6 @@ export class ProductPageComponent implements OnInit {
       this.loading = false;
     }
     if (this._odsFlag.getMeta1_5()) {
-
       this._odsFlag.setMeta1_5(false);
       this.selectODSkey = 'metas_5';
 
@@ -750,7 +494,6 @@ export class ProductPageComponent implements OnInit {
       this.loading = false;
     }
     if (this._odsFlag.getMeta2_1()) {
-
       this._odsFlag.setMeta2_1(false);
       this.selectODSkey = 'metas_8';
 
@@ -760,7 +503,6 @@ export class ProductPageComponent implements OnInit {
       this.loading = false;
     }
     if (this._odsFlag.getMeta2_3()) {
-
       this._odsFlag.setMeta2_3(false);
       this.selectODSkey = 'metas_10';
 
@@ -770,7 +512,6 @@ export class ProductPageComponent implements OnInit {
       this.loading = false;
     }
     if (this._odsFlag.getMeta2_4()) {
-
       this._odsFlag.setMeta2_4(false);
       this.selectODSkey = 'metas_11';
 
@@ -780,7 +521,6 @@ export class ProductPageComponent implements OnInit {
       this.loading = false;
     }
     if (this._odsFlag.getMeta2_a()) {
-
       this._odsFlag.setMeta2_a(false);
       this.selectODSkey = 'metas_13';
 
@@ -790,7 +530,6 @@ export class ProductPageComponent implements OnInit {
       this.loading = false;
     }
     if (this._odsFlag.getMeta2_c()) {
-
       this._odsFlag.setMeta2_c(false);
       this.selectODSkey = 'metas_15';
 
@@ -801,7 +540,6 @@ export class ProductPageComponent implements OnInit {
     }
     //! metas3
     if (this._odsFlag.getMeta3_4()) {
-
       this._odsFlag.setMeta3_4(false);
       this.selectODSkey = 'metas_19';
 
@@ -811,7 +549,6 @@ export class ProductPageComponent implements OnInit {
       this.loading = false;
     }
     if (this._odsFlag.getMeta3_7()) {
-
       this._odsFlag.setMeta3_7(false);
       this.selectODSkey = 'metas_22';
 
@@ -821,7 +558,6 @@ export class ProductPageComponent implements OnInit {
       this.loading = false;
     }
     if (this._odsFlag.getMeta3_8()) {
-
       this._odsFlag.setMeta3_8(false);
       this.selectODSkey = 'metas_23';
 
@@ -831,7 +567,6 @@ export class ProductPageComponent implements OnInit {
       this.loading = false;
     }
     if (this._odsFlag.getMeta3_9()) {
-
       this._odsFlag.setMeta3_9(false);
       this.selectODSkey = 'metas_24';
 
@@ -842,7 +577,6 @@ export class ProductPageComponent implements OnInit {
     }
     //! metas4
     if (this._odsFlag.getMeta4_1()) {
-
       this._odsFlag.setMeta4_1(false);
       this.selectODSkey = 'metas_29';
 
@@ -852,7 +586,6 @@ export class ProductPageComponent implements OnInit {
       this.loading = false;
     }
     if (this._odsFlag.getMeta4_2()) {
-
       this._odsFlag.setMeta4_2(false);
       this.selectODSkey = 'metas_30';
 
@@ -862,7 +595,6 @@ export class ProductPageComponent implements OnInit {
       this.loading = false;
     }
     if (this._odsFlag.getMeta4_3()) {
-
       this._odsFlag.setMeta4_3(false);
       this.selectODSkey = 'metas_31';
 
@@ -872,7 +604,6 @@ export class ProductPageComponent implements OnInit {
       this.loading = false;
     }
     if (this._odsFlag.getMeta4_5()) {
-
       this._odsFlag.setMeta4_5(false);
       this.selectODSkey = 'metas_33';
 
@@ -882,7 +613,6 @@ export class ProductPageComponent implements OnInit {
       this.loading = false;
     }
     if (this._odsFlag.getMeta4_7()) {
-
       this._odsFlag.setMeta4_7(false);
       this.selectODSkey = 'metas_35';
 
@@ -893,7 +623,6 @@ export class ProductPageComponent implements OnInit {
     }
     //! metas5
     if (this._odsFlag.getMeta5_1()) {
-
       this._odsFlag.setMeta5_1(false);
       this.selectODSkey = 'metas_39';
 
@@ -903,7 +632,6 @@ export class ProductPageComponent implements OnInit {
       this.loading = false;
     }
     if (this._odsFlag.getMeta5_2()) {
-
       this._odsFlag.setMeta5_2(false);
       this.selectODSkey = 'metas_40';
 
@@ -913,7 +641,6 @@ export class ProductPageComponent implements OnInit {
       this.loading = false;
     }
     if (this._odsFlag.getMeta5_4()) {
-
       this._odsFlag.setMeta5_4(false);
       this.selectODSkey = 'metas_42';
 
@@ -923,7 +650,6 @@ export class ProductPageComponent implements OnInit {
       this.loading = false;
     }
     if (this._odsFlag.getMeta5_5()) {
-
       this._odsFlag.setMeta5_5(false);
       this.selectODSkey = 'metas_43';
 
@@ -933,7 +659,6 @@ export class ProductPageComponent implements OnInit {
       this.loading = false;
     }
     if (this._odsFlag.getMeta5_a()) {
-
       this._odsFlag.setMeta5_a(false);
       this.selectODSkey = 'metas_45';
 
@@ -944,7 +669,6 @@ export class ProductPageComponent implements OnInit {
     }
     //! metas6
     if (this._odsFlag.getMeta6_1()) {
-
       this._odsFlag.setMeta6_1(false);
       this.selectODSkey = 'metas_48';
 
@@ -954,7 +678,6 @@ export class ProductPageComponent implements OnInit {
       this.loading = false;
     }
     if (this._odsFlag.getMeta6_2()) {
-
       this._odsFlag.setMeta6_2(false);
       this.selectODSkey = 'metas_49';
 
@@ -964,7 +687,6 @@ export class ProductPageComponent implements OnInit {
       this.loading = false;
     }
     if (this._odsFlag.getMeta6_3()) {
-
       this._odsFlag.setMeta6_3(false);
       this.selectODSkey = 'metas_50';
 
@@ -974,7 +696,6 @@ export class ProductPageComponent implements OnInit {
       this.loading = false;
     }
     if (this._odsFlag.getMeta6_4()) {
-
       this._odsFlag.setMeta6_4(false);
       this.selectODSkey = 'metas_51';
 
@@ -984,7 +705,6 @@ export class ProductPageComponent implements OnInit {
       this.loading = false;
     }
     if (this._odsFlag.getMeta6_5()) {
-
       this._odsFlag.setMeta6_5(false);
       this.selectODSkey = 'metas_52';
 
@@ -994,7 +714,6 @@ export class ProductPageComponent implements OnInit {
       this.loading = false;
     }
     if (this._odsFlag.getMeta6_6()) {
-
       this._odsFlag.setMeta6_6(false);
       this.selectODSkey = 'metas_53';
 
@@ -1004,7 +723,6 @@ export class ProductPageComponent implements OnInit {
       this.loading = false;
     }
     if (this._odsFlag.getMeta6_b()) {
-
       this._odsFlag.setMeta6_b(false);
       this.selectODSkey = 'metas_55';
 
@@ -1015,7 +733,6 @@ export class ProductPageComponent implements OnInit {
     }
     //! metas7
     if (this._odsFlag.getMeta7_1()) {
-
       this._odsFlag.setMeta7_1(false);
       this.selectODSkey = 'metas_56';
 
@@ -1025,7 +742,6 @@ export class ProductPageComponent implements OnInit {
       this.loading = false;
     }
     if (this._odsFlag.getMeta7_2()) {
-
       this._odsFlag.setMeta7_2(false);
       this.selectODSkey = 'metas_57';
 
@@ -1035,7 +751,6 @@ export class ProductPageComponent implements OnInit {
       this.loading = false;
     }
     if (this._odsFlag.getMeta7_3()) {
-
       this._odsFlag.setMeta7_3(false);
       this.selectODSkey = 'metas_58';
 
@@ -1046,7 +761,6 @@ export class ProductPageComponent implements OnInit {
     }
     //! metas8
     if (this._odsFlag.getMeta8_1()) {
-
       this._odsFlag.setMeta8_1(false);
       this.selectODSkey = 'metas_61';
 
@@ -1055,7 +769,6 @@ export class ProductPageComponent implements OnInit {
       this.loading = false;
     }
     if (this._odsFlag.getMeta8_2()) {
-
       this._odsFlag.setMeta8_2(false);
       this.selectODSkey = 'metas_62';
 
@@ -1064,7 +777,6 @@ export class ProductPageComponent implements OnInit {
       this.loading = false;
     }
     if (this._odsFlag.getMeta8_3()) {
-
       this._odsFlag.setMeta8_3(false);
       this.selectODSkey = 'metas_63';
 
@@ -1073,7 +785,6 @@ export class ProductPageComponent implements OnInit {
       this.loading = false;
     }
     if (this._odsFlag.getMeta8_4()) {
-
       this._odsFlag.setMeta8_4(false);
       this.selectODSkey = 'metas_64';
 
@@ -1082,7 +793,6 @@ export class ProductPageComponent implements OnInit {
       this.loading = false;
     }
     if (this._odsFlag.getMeta8_5()) {
-
       this._odsFlag.setMeta8_5(false);
       this.selectODSkey = 'metas_65';
 
@@ -1091,7 +801,6 @@ export class ProductPageComponent implements OnInit {
       this.loading = false;
     }
     if (this._odsFlag.getMeta8_6()) {
-
       this._odsFlag.setMeta8_6(false);
       this.selectODSkey = 'metas_66';
 
@@ -1100,7 +809,6 @@ export class ProductPageComponent implements OnInit {
       this.loading = false;
     }
     if (this._odsFlag.getMeta8_7()) {
-
       this._odsFlag.setMeta8_7(false);
       this.selectODSkey = 'metas_67';
 
@@ -1109,7 +817,6 @@ export class ProductPageComponent implements OnInit {
       this.loading = false;
     }
     if (this._odsFlag.getMeta8_8()) {
-
       this._odsFlag.setMeta8_8(false);
       this.selectODSkey = 'metas_68';
 
@@ -1118,7 +825,6 @@ export class ProductPageComponent implements OnInit {
       this.loading = false;
     }
     if (this._odsFlag.getMeta8_10()) {
-
       this._odsFlag.setMeta8_10(false);
       this.selectODSkey = 'metas_70';
 
@@ -1127,7 +833,6 @@ export class ProductPageComponent implements OnInit {
       this.loading = false;
     }
     if (this._odsFlag.getMeta8_a()) {
-
       this._odsFlag.setMeta8_a(false);
       this.selectODSkey = 'metas_71';
 
@@ -1136,7 +841,6 @@ export class ProductPageComponent implements OnInit {
       this.loading = false;
     }
     if (this._odsFlag.getMeta8_b()) {
-
       this._odsFlag.setMeta8_b(false);
       this.selectODSkey = 'metas_72';
 
@@ -1146,7 +850,6 @@ export class ProductPageComponent implements OnInit {
     }
     //! metas9
     if (this._odsFlag.getMeta9_1()) {
-
       this._odsFlag.setMeta9_1(false);
       this.selectODSkey = 'metas_73';
 
@@ -1155,7 +858,6 @@ export class ProductPageComponent implements OnInit {
       this.loading = false;
     }
     if (this._odsFlag.getMeta9_3()) {
-
       this._odsFlag.setMeta9_3(false);
       this.selectODSkey = 'metas_75';
 
@@ -1164,7 +866,6 @@ export class ProductPageComponent implements OnInit {
       this.loading = false;
     }
     if (this._odsFlag.getMeta9_5()) {
-
       this._odsFlag.setMeta9_5(false);
       this.selectODSkey = 'metas_77';
 
@@ -1174,7 +875,6 @@ export class ProductPageComponent implements OnInit {
     }
     //! metas10
     if (this._odsFlag.getMeta10_2()) {
-
       this._odsFlag.setMeta10_2(false);
       this.selectODSkey = 'metas_82';
 
@@ -1183,7 +883,6 @@ export class ProductPageComponent implements OnInit {
       this.loading = false;
     }
     if (this._odsFlag.getMeta10_4()) {
-
       this._odsFlag.setMeta10_4(false);
       this.selectODSkey = 'metas_84';
 
@@ -1193,7 +892,6 @@ export class ProductPageComponent implements OnInit {
     }
     //! metas11
     if (this._odsFlag.getMeta11_1()) {
-
       this._odsFlag.setMeta11_1(false);
       this.selectODSkey = 'metas_91';
 
@@ -1202,7 +900,6 @@ export class ProductPageComponent implements OnInit {
       this.loading = false;
     }
     if (this._odsFlag.getMeta11_2()) {
-
       this._odsFlag.setMeta11_2(false);
       this.selectODSkey = 'metas_92';
 
@@ -1211,7 +908,6 @@ export class ProductPageComponent implements OnInit {
       this.loading = false;
     }
     if (this._odsFlag.getMeta11_3()) {
-
       this._odsFlag.setMeta11_3(false);
       this.selectODSkey = 'metas_93';
 
@@ -1220,7 +916,6 @@ export class ProductPageComponent implements OnInit {
       this.loading = false;
     }
     if (this._odsFlag.getMeta11_4()) {
-
       this._odsFlag.setMeta11_4(false);
       this.selectODSkey = 'metas_94';
 
@@ -1229,7 +924,6 @@ export class ProductPageComponent implements OnInit {
       this.loading = false;
     }
     if (this._odsFlag.getMeta11_5()) {
-
       this._odsFlag.setMeta11_5(false);
       this.selectODSkey = 'metas_95';
 
@@ -1238,7 +932,6 @@ export class ProductPageComponent implements OnInit {
       this.loading = false;
     }
     if (this._odsFlag.getMeta11_6()) {
-
       this._odsFlag.setMeta11_6(false);
       this.selectODSkey = 'metas_96';
 
@@ -1247,7 +940,6 @@ export class ProductPageComponent implements OnInit {
       this.loading = false;
     }
     if (this._odsFlag.getMeta11_7()) {
-
       this._odsFlag.setMeta11_7(false);
       this.selectODSkey = 'metas_97';
 
@@ -1256,7 +948,6 @@ export class ProductPageComponent implements OnInit {
       this.loading = false;
     }
     if (this._odsFlag.getMeta11_a()) {
-
       this._odsFlag.setMeta11_a(false);
       this.selectODSkey = 'metas_98';
 
@@ -1265,7 +956,6 @@ export class ProductPageComponent implements OnInit {
       this.loading = false;
     }
     if (this._odsFlag.getMeta11_b()) {
-
       this._odsFlag.setMeta11_b(false);
       this.selectODSkey = 'metas_99';
 
@@ -1275,7 +965,6 @@ export class ProductPageComponent implements OnInit {
     }
     //! metas12
     if (this._odsFlag.getMeta12_2()) {
-
       this._odsFlag.setMeta12_2(false);
       this.selectODSkey = 'metas_102';
 
@@ -1284,7 +973,6 @@ export class ProductPageComponent implements OnInit {
       this.loading = false;
     }
     if (this._odsFlag.getMeta12_3()) {
-
       this._odsFlag.setMeta12_3(false);
       this.selectODSkey = 'metas_103';
 
@@ -1293,7 +981,6 @@ export class ProductPageComponent implements OnInit {
       this.loading = false;
     }
     if (this._odsFlag.getMeta12_4()) {
-
       this._odsFlag.setMeta12_4(false);
       this.selectODSkey = 'metas_104';
 
@@ -1302,7 +989,6 @@ export class ProductPageComponent implements OnInit {
       this.loading = false;
     }
     if (this._odsFlag.getMeta12_5()) {
-
       this._odsFlag.setMeta12_5(false);
       this.selectODSkey = 'metas_105';
 
@@ -1311,7 +997,6 @@ export class ProductPageComponent implements OnInit {
       this.loading = false;
     }
     if (this._odsFlag.getMeta12_6()) {
-
       this._odsFlag.setMeta12_6(false);
       this.selectODSkey = 'metas_106';
 
@@ -1320,7 +1005,6 @@ export class ProductPageComponent implements OnInit {
       this.loading = false;
     }
     if (this._odsFlag.getMeta12_8()) {
-
       this._odsFlag.setMeta12_8(false);
       this.selectODSkey = 'metas_108';
 
@@ -1330,7 +1014,6 @@ export class ProductPageComponent implements OnInit {
     }
     //! metas13
     if (this._odsFlag.getMeta13_1()) {
-
       this._odsFlag.setMeta13_1(false);
       this.selectODSkey = 'metas_112';
 
@@ -1339,7 +1022,6 @@ export class ProductPageComponent implements OnInit {
       this.loading = false;
     }
     if (this._odsFlag.getMeta13_2()) {
-
       this._odsFlag.setMeta13_2(false);
       this.selectODSkey = 'metas_113';
 
@@ -1348,7 +1030,6 @@ export class ProductPageComponent implements OnInit {
       this.loading = false;
     }
     if (this._odsFlag.getMeta13_3()) {
-
       this._odsFlag.setMeta13_3(false);
       this.selectODSkey = 'metas_114';
 
@@ -1357,7 +1038,6 @@ export class ProductPageComponent implements OnInit {
       this.loading = false;
     }
     if (this._odsFlag.getMeta13_b()) {
-
       this._odsFlag.setMeta13_b(false);
       this.selectODSkey = 'metas_116';
 
@@ -1367,7 +1047,6 @@ export class ProductPageComponent implements OnInit {
     }
     //! metas14
     if (this._odsFlag.getMeta14_1()) {
-
       this._odsFlag.setMeta14_1(false);
       this.selectODSkey = 'metas_117';
 
@@ -1376,7 +1055,6 @@ export class ProductPageComponent implements OnInit {
       this.loading = false;
     }
     if (this._odsFlag.getMeta14_2()) {
-
       this._odsFlag.setMeta14_2(false);
       this.selectODSkey = 'metas_118';
 
@@ -1385,7 +1063,6 @@ export class ProductPageComponent implements OnInit {
       this.loading = false;
     }
     if (this._odsFlag.getMeta14_4()) {
-
       this._odsFlag.setMeta14_4(false);
       this.selectODSkey = 'metas_120';
 
@@ -1394,7 +1071,6 @@ export class ProductPageComponent implements OnInit {
       this.loading = false;
     }
     if (this._odsFlag.getMeta14_5()) {
-
       this._odsFlag.setMeta14_5(false);
       this.selectODSkey = 'metas_121';
 
@@ -1404,7 +1080,6 @@ export class ProductPageComponent implements OnInit {
     }
     //! metas15
     if (this._odsFlag.getMeta15_1()) {
-
       this._odsFlag.setMeta15_1(false);
       this.selectODSkey = 'metas_127';
 
@@ -1413,7 +1088,6 @@ export class ProductPageComponent implements OnInit {
       this.loading = false;
     }
     if (this._odsFlag.getMeta15_2()) {
-
       this._odsFlag.setMeta15_2(false);
       this.selectODSkey = 'metas_128';
 
@@ -1422,7 +1096,6 @@ export class ProductPageComponent implements OnInit {
       this.loading = false;
     }
     if (this._odsFlag.getMeta15_3()) {
-
       this._odsFlag.setMeta15_3(false);
       this.selectODSkey = 'metas_129';
 
@@ -1431,7 +1104,6 @@ export class ProductPageComponent implements OnInit {
       this.loading = false;
     }
     if (this._odsFlag.getMeta15_4()) {
-
       this._odsFlag.setMeta15_4(false);
       this.selectODSkey = 'metas_130';
 
@@ -1440,7 +1112,6 @@ export class ProductPageComponent implements OnInit {
       this.loading = false;
     }
     if (this._odsFlag.getMeta15_5()) {
-
       this._odsFlag.setMeta15_5(false);
       this.selectODSkey = 'metas_131';
 
@@ -1449,7 +1120,6 @@ export class ProductPageComponent implements OnInit {
       this.loading = false;
     }
     if (this._odsFlag.getMeta15_7()) {
-
       this._odsFlag.setMeta15_7(false);
       this.selectODSkey = 'metas_133';
 
@@ -1458,7 +1128,6 @@ export class ProductPageComponent implements OnInit {
       this.loading = false;
     }
     if (this._odsFlag.getMeta15_a()) {
-
       this._odsFlag.setMeta15_a(false);
       this.selectODSkey = 'metas_136';
 
@@ -1468,7 +1137,6 @@ export class ProductPageComponent implements OnInit {
     }
     //! metas16
     if (this._odsFlag.getMeta16_1()) {
-
       this._odsFlag.setMeta16_1(false);
       this.selectODSkey = 'metas_139';
 
@@ -1477,7 +1145,6 @@ export class ProductPageComponent implements OnInit {
       this.loading = false;
     }
     if (this._odsFlag.getMeta16_2()) {
-
       this._odsFlag.setMeta16_2(false);
       this.selectODSkey = 'metas_140';
 
@@ -1486,7 +1153,6 @@ export class ProductPageComponent implements OnInit {
       this.loading = false;
     }
     if (this._odsFlag.getMeta16_5()) {
-
       this._odsFlag.setMeta16_5(false);
       this.selectODSkey = 'metas_143';
 
@@ -1495,7 +1161,6 @@ export class ProductPageComponent implements OnInit {
       this.loading = false;
     }
     if (this._odsFlag.getMeta16_7()) {
-
       this._odsFlag.setMeta16_7(false);
       this.selectODSkey = 'metas_145';
 
@@ -1504,7 +1169,6 @@ export class ProductPageComponent implements OnInit {
       this.loading = false;
     }
     if (this._odsFlag.getMeta16_10()) {
-
       this._odsFlag.setMeta16_10(false);
       this.selectODSkey = 'metas_148';
 
@@ -1513,7 +1177,6 @@ export class ProductPageComponent implements OnInit {
       this.loading = false;
     }
     if (this._odsFlag.getMeta16_a()) {
-
       this._odsFlag.setMeta16_a(false);
       this.selectODSkey = 'metas_149';
 
@@ -1522,7 +1185,6 @@ export class ProductPageComponent implements OnInit {
       this.loading = false;
     }
     if (this._odsFlag.getMeta16_b()) {
-
       this._odsFlag.setMeta16_b(false);
       this.selectODSkey = 'metas_150';
 
@@ -1532,7 +1194,6 @@ export class ProductPageComponent implements OnInit {
     }
     //! metas17
     if (this._odsFlag.getMeta17_10()) {
-
       this._odsFlag.setMeta17_10(false);
       this.selectODSkey = 'metas_160';
 
@@ -1541,7 +1202,6 @@ export class ProductPageComponent implements OnInit {
       this.loading = false;
     }
     if (this._odsFlag.getMeta17_11()) {
-
       this._odsFlag.setMeta17_11(false);
       this.selectODSkey = 'metas_161';
 
@@ -1621,7 +1281,6 @@ export class ProductPageComponent implements OnInit {
   }
   //!bandera para filtros para que oculte
   hiddenFilters() {
-
     this.flagHidden = true;
     this.flagFilter = false;
     this.flagOther = true;
@@ -2347,27 +2006,6 @@ export class ProductPageComponent implements OnInit {
   }
   showTerceroFilters() {
     this.flagTerceroFilters = false;
-  }
-
-  navigateWithParam() {
-    this._flagService.setFlagGeo(true);
-    this.router.navigate(['/dg/products']);
-  }
-  navigateWithParam1() {
-    this._flagService.setFlagEstadisticas(true);
-    this.router.navigate(['/dg/products']);
-  }
-  navigateWithParam2() {
-    this._flagService.setFlagEconomicas(true);
-    this.router.navigate(['/dg/products']);
-  }
-  navigateWithParam3() {
-    this._flagService.setFlagGobierno(true);
-    this.router.navigate(['/dg/products']);
-  }
-  navigateWithParam4() {
-    this._flagService.setFlagIntegracion(true);
-    this.router.navigate(['/dg/products']);
   }
 
   filtrarProductosPorDirecciones() {
