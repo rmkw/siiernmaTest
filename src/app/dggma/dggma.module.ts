@@ -14,7 +14,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OdsPageComponent } from './pages/ods-page/ods-page.component';
 import { MdeaPageComponent } from './pages/mdea-page/mdea-page.component';
+
 import { TreeModule } from 'primeng/tree';
+import { PaginatorModule } from 'primeng/paginator';
+
 import { HighchartsChartModule } from 'highcharts-angular';
 import { OrganizationChartModule } from 'primeng/organizationchart';
 import { TableModule } from 'primeng/table';
@@ -48,8 +51,7 @@ import { ToastModule } from 'primeng/toast';
     TableModule,
     ButtonModule,
     ToastModule,
-
-
+    PaginatorModule,
   ],
   exports: [NgbModule],
 })

@@ -1,6 +1,30 @@
 .container {
   min-height: 70vh;
 }
+.titulo{
+  margin: 2rem;
+  text-align: center;
+  color: #113250;
+  font-family: Helvetica, Sans-Serif;
+}
+
+.titulodetarjeta{
+  color: #113250;
+  font-size: 1.25rem;
+}
+.titulodeDirecciones {
+  color: #113250;
+  font-size: 1rem;
+}
+.stylebuton{
+  width: max-content;
+    --bs-btn-padding-y: .25rem;
+    --bs-btn-padding-x: .5rem;
+    --bs-btn-font-size: .75rem;
+    background-color: #113250;
+    color: #ffffff;
+    font-family: Helvetica, Sans-Serif;
+}
 
 pre {
   background-color: #f5f5f5;
@@ -14,8 +38,53 @@ code {
   white-space: pre-wrap;
   /* Preserva los saltos de línea */
 }
-.custom-bg {
+
+
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  /* Ocupa todo el ancho disponible */
+  width: 100%;
+  /* Ajusta al ancho del contenedor */
+}
+
+.truncate {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 1.25rem;
+  /* Tamaño del texto */
+}
+
+.collapse {
+  display: none;
+  transition: height 0.3s ease;
+}
+
+.show {
+  display: block;
+}
+
+.card-body {
+  height: auto;
+  overflow: hidden;
+}
+/* En un archivo CSS global o en el archivo de estilos del componente */
+.custom-badge {
   background-color: #113250;
+  /* Cambia a tu color deseado */
   color: #ffffff;
-  /* Ajusta el color del texto para asegurarte de que contraste bien con el fondo */
+  /* Cambia el color del texto si es necesario */
+  margin-right: 0.5rem;
+  font-weight: normal;
+}
+
+.marlef{
+  margin-left: 0.25rem;
+}
+.gizards{
+  color: #113250;
+  font-family: Helvetica, Sans-Serif;
+
 }
