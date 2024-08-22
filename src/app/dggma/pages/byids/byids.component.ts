@@ -60,6 +60,9 @@ export class ByidsComponent implements OnInit {
 
   files: TreeNode<any>[] = [];
   selectedFiles: any;
+  selectedComponents: number[] = [];
+  selectedSubcomponents: number[] = [];
+  selectedTopicos: number[] = [];
 
   paginatedProducts: any[] = [];
 
@@ -67,9 +70,10 @@ export class ByidsComponent implements OnInit {
     // Inicializa la copia del array original
     this._direServices.productos().subscribe((data) => {
       this.arrProductos = data;
-      this.updatePaginatedProducts();
+
       this.arrProductosOriginal = [...this.arrProductos];
       console.log('arrProductosOriginal', this.arrProductosOriginal);
+      this.updatePaginatedProducts();
     });
   }
 
@@ -84,6 +88,7 @@ export class ByidsComponent implements OnInit {
     const end = this.first + this.rows;
     this.paginatedProducts = this.arrProductos.slice(start, end);
   }
+
   onPageChange(event: any) {
     this.first = event.first;
     this.rows = event.rows;
@@ -330,34 +335,73 @@ export class ByidsComponent implements OnInit {
   }
 
   filtroMdea() {
-    const selected = this.selectedFiles.map((file: any) => {
+    const selectedComp: number[] = [];
+    const selectedSubcomp: number[] = [];
+    const selectedTopico: number[] = [];
+
+    this.selectedFiles.forEach((file: any) => {
       const keyParts = file.key.split('_');
-      return parseInt(keyParts[1], 10); // Obtenemos el número del key
+      const id = parseInt(keyParts[1], 10); // Obtenemos el número del key
+      if (keyParts[0] === 'componente') {
+        selectedComp.push(id);
+      } else if (keyParts[0] === 'subcomponente') {
+        selectedSubcomp.push(id);
+      } else if (keyParts[0] === 'topico') {
+        selectedTopico.push(id);
+      }
     });
-    console.log(' IDs seleccionados:', selected);
-    this.obtenerResultadoFiltrado(selected);
+
+    console.log(
+      ' IDs seleccionados:',
+      selectedComp,
+      selectedSubcomp,
+      selectedTopico
+    );
+    this.actualizarSeleccion(selectedComp, selectedSubcomp, selectedTopico);
   }
 
-  filtrarMdeaPorComponente(select: any) {
-    console.log('memandaste', select);
+  filtrarMdea(
+    selectComp: number[],
+    selectSubcomp: number[],
+    selectTopico: number[]
+  ) {
+    console.log('memandaste', selectComp, selectSubcomp, selectTopico);
     return of(this.arrMdea).pipe(
-      map((mdea) => mdea.filter((item) => item.comp_mdea == select))
+      map((mdea) =>
+        mdea.filter(
+          (item) =>
+            (selectComp.length === 0 || selectComp.includes(item.comp_mdea)) &&
+            (selectSubcomp.length === 0 ||
+              selectSubcomp.includes(item.subcomp_mdea)) &&
+            (selectTopico.length === 0 ||
+              selectTopico.includes(item.topico_mdea))
+        )
+      )
     );
   }
 
-  obtenerResultadoFiltrado(selected: any) {
-    if (selected.length === 0) {
+  obtenerResultadoFiltrado(
+    selectedComp: number[],
+    selectedSubcomp: number[],
+    selectedTopico: number[]
+  ) {
+    if (
+      selectedComp.length === 0 &&
+      selectedSubcomp.length === 0 &&
+      selectedTopico.length === 0
+    ) {
+      console.log('entre a selectedComponents');
       // Si no hay elementos seleccionados, restaura arrProductos al estado original
       this.arrProductos = [...this.arrProductosOriginal];
       console.log(
         'Filtro eliminado, productos restaurados:',
         this.arrProductos
       );
+      this.updatePaginatedProducts(); // Actualiza la paginación
     } else {
-      const select = selected;
-      console.log('memandaste', select);
+      console.log('memandaste', selectedComp, selectedSubcomp, selectedTopico);
       console.log('first', this.arrProductosOriginal);
-      this.filtrarMdeaPorComponente(select)
+      this.filtrarMdea(selectedComp, selectedSubcomp, selectedTopico)
         .pipe(
           map((resultado) => {
             const interviewIds = resultado.map((item) => item.interview__id);
@@ -370,9 +414,30 @@ export class ByidsComponent implements OnInit {
         )
         .subscribe((productosFiltrados) => {
           console.log('Productos filtrados:', productosFiltrados);
+          this.updatePaginatedProducts(); // Actualiza la paginación
         });
     }
   }
-}
 
+  actualizarSeleccion(
+    selectedComp: number[],
+    selectedSubcomp: number[],
+    selectedTopico: number[]
+  ) {
+    this.selectedComponents = selectedComp;
+    this.selectedSubcomponents = selectedSubcomp;
+    this.selectedTopicos = selectedTopico;
+    console.log(
+      ' IDs seleccionados:',
+      this.selectedComponents,
+      this.selectedSubcomponents,
+      this.selectedTopicos
+    );
+    this.obtenerResultadoFiltrado(
+      this.selectedComponents,
+      this.selectedSubcomponents,
+      this.selectedTopicos
+    );
+  }
+}
 

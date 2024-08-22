@@ -96,7 +96,7 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
       ['5. Asentamientos humanos y', 'salud ambiental.'],
       ['6. Protección ambiental y', 'participación ciudadana.'],
     ];
-    const data = [346, 542, 167, 33, 645, 349];
+    const data = [182, 542, 167, 33, 645, 349];
     const chartElement = document.getElementById(
       'acquisitions'
     ) as HTMLCanvasElement;

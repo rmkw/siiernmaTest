@@ -14,7 +14,7 @@
       <div class="card flex flex-column align-items-center justify-content-center" *ngIf="files.length > 0">
 
         <p-tree [value]="files" selectionMode="checkbox" class="w-full md:w-30rem" [(selection)]="selectedFiles" [propagateSelectionUp]="false"
-          [propagateSelectionDown]="false"   (onNodeSelect)="filtroMdea()"></p-tree>
+          [propagateSelectionDown]="false"   (onNodeSelect)="filtroMdea()" (onNodeUnselect)="filtroMdea()"></p-tree>
 
 
 

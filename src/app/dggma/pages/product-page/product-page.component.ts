@@ -447,6 +447,7 @@ export class ProductPageComponent implements OnInit {
 
     //! ODS FILTER DESDE LEJOS
   }
+
   filtros_ods_pageTopage(): void {
     if (this._odsFlag.getMeta1_1()) {
       this._odsFlag.setMeta1_1(false);
