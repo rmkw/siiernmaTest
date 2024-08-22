@@ -5,7 +5,7 @@ import { environments } from 'src/app/environments/environments';
 import { Escalas, Products, SecuenciaVar } from "../interfaces/product.interface";
 import { Componente, Mdea, Subcomponente, Topico } from '../interfaces/mdea.interface';
 import { iDireccionesGenerales } from '../interfaces/u_admin.interface';
-import { DgaPprod, Pi, ProcProduccion, ProgInformacion } from '../interfaces/pi.interface';
+import { DgaPprod, Pi,  ProgInformacion } from '../interfaces/pi.interface';
 import {
   iActividadEstadisticaGeografica,
   DgaProd,

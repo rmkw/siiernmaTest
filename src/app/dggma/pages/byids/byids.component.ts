@@ -8,9 +8,12 @@ import { iActividadEstadisticaGeografica } from '../../interfaces/aeg.interface'
 import { ProgInformacion } from '../../interfaces/pi.interface';
 
 import { TreeNode } from 'primeng/api';
-import { Componente, Subcomponente, Topico } from '../../interfaces/mdea.interface';
+import { Componente, Mdea, Subcomponente, Topico } from '../../interfaces/mdea.interface';
 
 import { forkJoin } from 'rxjs';
+import { of } from 'rxjs';
+import { filter, map } from 'rxjs/operators';
+
 
 
 
@@ -20,6 +23,19 @@ import { forkJoin } from 'rxjs';
   styleUrls: ['./byids.component.css'],
 })
 export class ByidsComponent implements OnInit {
+  cardsData = [
+    { title: '' },
+    { title: '' },
+    { title: '' },
+    { title: '' },
+    { title: '' },
+    { title: '' },
+    { title: '' },
+    { title: '' },
+    { title: '' },
+    { title: '' },
+  ];
+
   first: number = 0;
   rows: number = 10;
 
@@ -31,22 +47,35 @@ export class ByidsComponent implements OnInit {
   arrActividadEstadisticaGeografica: iActividadEstadisticaGeografica[] = [];
   arrProInfo: ProgInformacion[] = [];
 
+  arrMdea: Mdea[] = [];
+
   //! arreglos de mdea y sus controles
   arrComponentes: Componente[] = [];
   arrSubComponete: Subcomponente[] = [];
   arrTopico: Topico[] = [];
+
+  arrCompoFiltrado: Mdea[] = [];
+  arrProductosFiltrados: Products[] = [];
+  arrProductosOriginal: Products[] = [...this.arrProductos]; // Copia del array original
 
   files: TreeNode<any>[] = [];
   selectedFiles: any;
 
   paginatedProducts: any[] = [];
 
-  constructor(private _direServices: DGService) {}
+  constructor(private _direServices: DGService) {
+    // Inicializa la copia del array original
+    this._direServices.productos().subscribe((data) => {
+      this.arrProductos = data;
+      this.updatePaginatedProducts();
+      this.arrProductosOriginal = [...this.arrProductos];
+      console.log('arrProductosOriginal', this.arrProductosOriginal);
+    });
+  }
 
   ngOnInit(): void {
     this.mdeaControll();
-
-    this.getProductos();
+    this.getMdea_Collection();
     this.getAllControl();
   }
 
@@ -67,6 +96,7 @@ export class ByidsComponent implements OnInit {
       this.updatePaginatedProducts();
     });
   }
+
   getAllControl() {
     //! DIRECCIONES
     this._direServices.direccionesGenerales().subscribe((data) => {
@@ -86,6 +116,11 @@ export class ByidsComponent implements OnInit {
     //! PROGRAMAS DE INFORMACIÓN
     this._direServices.programasInformaName().subscribe((data) => {
       this.arrProInfo = data;
+    });
+  }
+  getMdea_Collection() {
+    this._direServices.mdea().subscribe((data) => {
+      this.arrMdea = data;
     });
   }
 
@@ -247,7 +282,6 @@ export class ByidsComponent implements OnInit {
       },
     });
   }
-
   //! para el treenode
   transformDataToTreeNodeMdea(
     componentes: Componente[],
@@ -295,8 +329,49 @@ export class ByidsComponent implements OnInit {
     }));
   }
 
-  printSelectedFiles() {
-    console.log('Archivos seleccionados:', this.selectedFiles);
+  filtroMdea() {
+    const selected = this.selectedFiles.map((file: any) => {
+      const keyParts = file.key.split('_');
+      return parseInt(keyParts[1], 10); // Obtenemos el número del key
+    });
+    console.log(' IDs seleccionados:', selected);
+    this.obtenerResultadoFiltrado(selected);
+  }
+
+  filtrarMdeaPorComponente(select: any) {
+    console.log('memandaste', select);
+    return of(this.arrMdea).pipe(
+      map((mdea) => mdea.filter((item) => item.comp_mdea == select))
+    );
+  }
+
+  obtenerResultadoFiltrado(selected: any) {
+    if (selected.length === 0) {
+      // Si no hay elementos seleccionados, restaura arrProductos al estado original
+      this.arrProductos = [...this.arrProductosOriginal];
+      console.log(
+        'Filtro eliminado, productos restaurados:',
+        this.arrProductos
+      );
+    } else {
+      const select = selected;
+      console.log('memandaste', select);
+      console.log('first', this.arrProductosOriginal);
+      this.filtrarMdeaPorComponente(select)
+        .pipe(
+          map((resultado) => {
+            const interviewIds = resultado.map((item) => item.interview__id);
+            const productosFiltrados = this.arrProductosOriginal.filter(
+              (producto) => interviewIds.includes(producto.interview__id)
+            );
+            this.arrProductos = productosFiltrados; // Actualiza arrProductos con los productos filtrados
+            return productosFiltrados;
+          })
+        )
+        .subscribe((productosFiltrados) => {
+          console.log('Productos filtrados:', productosFiltrados);
+        });
+    }
   }
 }
 

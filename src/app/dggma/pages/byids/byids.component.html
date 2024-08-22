@@ -10,24 +10,58 @@
   </div>
 
   <div class="row">
-    <div class="col-4">
-      <div class="card flex flex-column align-items-center justify-content-center">
-        <p-tree [value]="files" selectionMode="checkbox" class="w-full md:w-30rem" [(selection)]="selectedFiles" [propagateSelectionUp]="true"
-          [propagateSelectionDown]="true" (click)="printSelectedFiles()"></p-tree>
+    <div class="col-3">
+      <div class="card flex flex-column align-items-center justify-content-center" *ngIf="files.length > 0">
+
+        <p-tree [value]="files" selectionMode="checkbox" class="w-full md:w-30rem" [(selection)]="selectedFiles" [propagateSelectionUp]="false"
+          [propagateSelectionDown]="false"   (onNodeSelect)="filtroMdea()"></p-tree>
+
+
+
+      </div>
+      <div class="card flex flex-column align-items-center justify-content-center" *ngIf="files.length == 0">
+
+        <div class="col-12 d-flex align-items-center mt-4">
+          <h5 class="card-title placeholder-glow w-100 text-center">
+            <span class="placeholder" style="width: 70%; display: inline-block; height: 1.5rem;"></span>
+          </h5>
+        </div>
+        <div class="col-12 d-flex align-items-center mt-2">
+          <h5 class="card-title placeholder-glow w-100 text-center">
+            <span class="placeholder" style="width: 70%; display: inline-block; height: 1.5rem;"></span>
+          </h5>
+        </div>
+        <div class="col-12 d-flex align-items-center mt-2">
+          <h5 class="card-title placeholder-glow w-100 text-center">
+            <span class="placeholder" style="width: 70%; display: inline-block; height: 1.5rem;"></span>
+          </h5>
+        </div>
+        <div class="col-12 d-flex align-items-center mt-2">
+          <h5 class="card-title placeholder-glow w-100 text-center">
+            <span class="placeholder" style="width: 70%; display: inline-block; height: 1.5rem;"></span>
+          </h5>
+        </div>
+        <div class="col-12 d-flex align-items-center mt-2">
+          <h5 class="card-title placeholder-glow w-100 text-center">
+            <span class="placeholder" style="width: 70%; display: inline-block; height: 1.5rem;"></span>
+          </h5>
+        </div>
+        <div class="col-12 d-flex align-items-center mt-2 mb-4">
+          <h5 class="card-title placeholder-glow w-100 text-center">
+            <span class="placeholder" style="width: 70%; display: inline-block; height: 1.5rem;"></span>
+          </h5>
+        </div>
 
 
 
       </div>
     </div>
 
-    <div class="col">
-      <div class="card flex justify-content-center">
+    <div class="col" >
 
-        <p-paginator (onPageChange)="onPageChange($event)" [first]="first" [rows]="rows" [totalRecords]="arrProductos.length"
-          [rowsPerPageOptions]="[10, 20, 30]"></p-paginator>
-      </div>
 
-      <div class="row" *ngFor="let item of paginatedProducts; let i = index">
+      <div style="min-height: 100vh;">
+<div class="row" *ngFor="let item of paginatedProducts; let i = index">
 
         <div class="col">
           <div class="card mb-3">
@@ -49,7 +83,7 @@
             </div>
 
             <!-- <div [ngClass]="{'collapse': selectedCardIndex !== i, 'show': selectedCardIndex === i}"></div> -->
-            <div class="card-body">
+            <div class="card-body" [ngClass]="{'collapse': selectedCardIndex !== i, 'show': selectedCardIndex === i}">
               <div class="row">
                 <div class="col-6">
 
@@ -291,6 +325,56 @@
           </div>
         </div>
       </div>
+
+      <div class="row">
+        <div class="col">
+          <div *ngIf="paginatedProducts.length == 0" style="margin-bottom: 100vh;">
+            <div *ngFor="let card of cardsData">
+              <div class="card shadow-on-hover mb-3" aria-hidden="true">
+                <div class="row card-body" style="height: 5rem;">
+
+                  <div class="col-2 d-flex align-items-center">
+                    <h5 class="card-title placeholder-glow w-100 text-center">
+                      <span class="placeholder" style="width: 70%; display: inline-block; height: 1.5rem;"></span>
+                    </h5>
+                  </div>
+
+                  <div class="col d-flex align-items-center">
+                    <h5 class="card-title placeholder-glow w-100 text-center">
+                      <span class="placeholder" style="width: 100%; display: inline-block; height: 1.5rem;"></span>
+                    </h5>
+                  </div>
+
+                  <div class="col-2 text-end d-flex align-items-center">
+                    <div class="ms-auto">
+                      <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                        style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem;
+                                --bs-btn-font-size: .75rem; background-color: #113250; color: #113250; font-family: Helvetica, Sans-Serif;">
+                        Mas Información
+                      </button>
+                    </div>
+                  </div>
+
+                </div>
+
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      </div>
+      <div class="card flex justify-content-center">
+
+        <p-paginator (onPageChange)="onPageChange($event)" [first]="first" [rows]="rows" [totalRecords]="arrProductos.length"
+          [rowsPerPageOptions]="[10, 20, 30]"></p-paginator>
+      </div>
+
+
     </div>
   </div>
 
