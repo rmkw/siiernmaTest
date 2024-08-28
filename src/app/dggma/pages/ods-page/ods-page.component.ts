@@ -265,6 +265,14 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
               display: false,
             },
           },
+          onHover: (event, elements) => {
+            const target = chartElement; // Se refiere directamente al elemento canvas
+            if (elements.length > 0) {
+              target.style.cursor = 'pointer'; // Cambia el cursor a mano (puntero)
+            } else {
+              target.style.cursor = 'default'; // Restaura el cursor predeterminado
+            }
+          },
           onClick: (event, elements) => {
             if (elements && elements.length > 0) {
               const index = elements[0].index;
@@ -350,6 +358,14 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
               display: false,
             },
           },
+           onHover: (event, elements) => {
+            const target = chartElement; 
+            if (elements.length > 0) {
+              target.style.cursor = 'pointer'; 
+            } else {
+              target.style.cursor = 'default'; 
+            }
+          },
           onClick: (event, elements) => {
             if (elements && elements.length > 0) {
               const index = elements[0].index;
@@ -429,6 +445,14 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
               display: false,
             },
           },
+          onHover: (event, elements) => {
+            const target = chartElement; 
+            if (elements.length > 0) {
+              target.style.cursor = 'pointer'; 
+            } else {
+              target.style.cursor = 'default'; 
+            }
+          },
           onClick: (event, elements) => {
             if (elements && elements.length > 0) {
               const index = elements[0].index;
@@ -507,6 +531,14 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
             legend: {
               display: false,
             },
+          },
+          onHover: (event, elements) => {
+            const target = chartElement; 
+            if (elements.length > 0) {
+              target.style.cursor = 'pointer'; 
+            } else {
+              target.style.cursor = 'default'; 
+            }
           },
           onClick: (event, elements) => {
             if (elements && elements.length > 0) {
@@ -598,6 +630,14 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
             legend: {
               display: false,
             },
+          },
+          onHover: (event, elements) => {
+            const target = chartElement; 
+            if (elements.length > 0) {
+              target.style.cursor = 'pointer'; 
+            } else {
+              target.style.cursor = 'default'; 
+            }
           },
           onClick: (event, elements) => {
             if (elements && elements.length > 0) {
@@ -769,6 +809,14 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
             legend: {
               display: false,
             },
+          },
+          onHover: (event, elements) => {
+            const target = chartElement; 
+            if (elements.length > 0) {
+              target.style.cursor = 'pointer'; 
+            } else {
+              target.style.cursor = 'default'; 
+            }
           },
           onClick: (event, elements) => {
             if (elements && elements.length > 0) {
@@ -992,6 +1040,14 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
               display: false,
             },
           },
+          onHover: (event, elements) => {
+            const target = chartElement; 
+            if (elements.length > 0) {
+              target.style.cursor = 'pointer'; 
+            } else {
+              target.style.cursor = 'default'; 
+            }
+          },
           onClick: (event, elements) => {
             if (elements && elements.length > 0) {
               const index = elements[0].index;
@@ -1083,6 +1139,14 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
               display: false,
             },
           },
+          onHover: (event, elements) => {
+            const target = chartElement; 
+            if (elements.length > 0) {
+              target.style.cursor = 'pointer'; 
+            } else {
+              target.style.cursor = 'default'; 
+            }
+          },
           onClick: (event, elements) => {
             if (elements && elements.length > 0) {
               const index = elements[0].index;
@@ -1169,6 +1233,14 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
               display: false,
             },
           },
+          onHover: (event, elements) => {
+            const target = chartElement; 
+            if (elements.length > 0) {
+              target.style.cursor = 'pointer'; 
+            } else {
+              target.style.cursor = 'default'; 
+            }
+          },
           onClick: (event, elements) => {
             if (elements && elements.length > 0) {
               const index = elements[0].index;
@@ -1249,6 +1321,14 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
             legend: {
               display: false,
             },
+          },
+          onHover: (event, elements) => {
+            const target = chartElement; 
+            if (elements.length > 0) {
+              target.style.cursor = 'pointer'; 
+            } else {
+              target.style.cursor = 'default'; 
+            }
           },
           onClick: (event, elements) => {
             if (elements && elements.length > 0) {
@@ -1343,6 +1423,14 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
             legend: {
               display: false,
             },
+          },
+          onHover: (event, elements) => {
+            const target = chartElement; 
+            if (elements.length > 0) {
+              target.style.cursor = 'pointer'; 
+            } else {
+              target.style.cursor = 'default'; 
+            }
           },
           onClick: (event, elements) => {
             if (elements && elements.length > 0) {
@@ -1444,6 +1532,14 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
               display: false,
             },
           },
+          onHover: (event, elements) => {
+            const target = chartElement; 
+            if (elements.length > 0) {
+              target.style.cursor = 'pointer'; 
+            } else {
+              target.style.cursor = 'default'; 
+            }
+          },
           onClick: (event, elements) => {
             if (elements && elements.length > 0) {
               const index = elements[0].index;
@@ -1516,6 +1612,14 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
             legend: {
               display: false,
             },
+          },
+          onHover: (event, elements) => {
+            const target = chartElement; 
+            if (elements.length > 0) {
+              target.style.cursor = 'pointer'; 
+            } else {
+              target.style.cursor = 'default'; 
+            }
           },
           onClick: (event, elements) => {
             if (elements && elements.length > 0) {
