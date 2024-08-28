@@ -2,20 +2,18 @@
   <div class="row">
 
     <!--* FILTROS -->
-    <div [hidden]="flagHidden" class="col-3" style="background-color: #f8f9fa; border-top: solid 1px; border-color: #113250;">
+    <div [hidden]="flagHidden" class="col-3 colorfilter" >
 
 
       <!--! boton para ocultar todos los filtros y también para reiniciarlos -->
       <div class="row mt-2">
         <div class="col">
           <div class="d-flex justify-content-between mt-2">
-            <div><i style="color: #113250;" class="bi bi-funnel-fill"></i> <strong><span
-                  style="color: #113250;">Filtros</span></strong></div>
+            <div><i class="bi bi-funnel-fill color113250"></i>
+              <strong><label class="color113250">Filtros</label></strong>
+            </div>
             <div class="d-flex">
-              <button (click)="deleteFilter()" class="btn btn-outline-secondary" [disabled]="deleteFilterFlag"
-                style=" --bs-btn-padding-y: .20rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem; margin-right: 0.5rem;">
-                Quitar filtros
-              </button>
+              <button (click)="deleteFilter()" class="btn btn-outline-secondary botonfilter" [disabled]="deleteFilterFlag">Quitar filtros</button>
               <button type="button" class="btn-close" aria-label="Close" (click)="hiddenFilters()"></button>
             </div>
           </div>
@@ -27,18 +25,19 @@
       <!--! ojito para ocultar filtro de propiedades del producto -->
       <div class="row ">
         <div class="col">
+
           <div class="d-flex justify-content-between ">
-            <div><i style="color: #113250;" class="bi bi-funnel-fill"></i> <strong><span style="color: #113250;">Filtros
-                  por propiedades</span></strong></div>
+
+            <div>
+              <i class="bi bi-funnel-fill color113250"></i>
+              <strong><span class="color113250">Filtros por propiedades</span></strong></div>
             <div class="d-flex">
 
-              <button *ngIf="!flagFirtsFilters" (click)="hiddenFirtsFilters()" class="btn "
-                style=" --bs-btn-padding-y: .20rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem; margin-right: 0.5rem; border-radius: 50%;"><i
-                  class="bi bi-eye-fill" style="color: #113250;"></i></button>
+              <button *ngIf="!flagFirtsFilters" (click)="hiddenFirtsFilters()" class="btn hiddenojito">
+                <i class="bi bi-eye-fill color113250" ></i></button>
 
-              <button *ngIf="flagFirtsFilters" (click)="showFirtsFilters()" class="btn "
-                style=" --bs-btn-padding-y: .20rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem; margin-right: 0.5rem; border-radius: 50%;"><i
-                  class="bi bi-eye-slash" style="color: #113250;"></i></button>
+              <button *ngIf="flagFirtsFilters" (click)="showFirtsFilters()" class="btn hiddenojito">
+                <i class="bi bi-eye-slash color113250"></i></button>
             </div>
           </div>
           <hr>
@@ -380,6 +379,7 @@
 
     <!--* PRODUCTOS -->
     <div *ngIf="flagOther" class="col-2"></div>
+
     <div [ngClass]="{'col-8': flagOther, 'col-9': flagFilter}">
       <!--! titulo -->
       <div class="row">
@@ -619,10 +619,8 @@
               </div>
               <div class="col-2 text-end d-flex align-items-center">
                 <div class="ms-auto">
-                  <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
-                    (click)="openModal(item)"
-                    style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem; background-color: #113250; color: #ffffff; font-family: Helvetica, Sans-Serif;">Mas
-                    Información</button>
+                  <button type="button" class="btn vermasinformacion" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                    (click)="openModal(item)">MásInformación</button>
                 </div>
               </div>
             </div>
@@ -632,7 +630,7 @@
 
       <div *ngIf="!showFilteredProducts && products.length > 1">
         <div *ngFor="let item of products">
-          <div class="card shadow-on-hover" style="margin: 1rem;">
+          <div class="card shadow-on-hover m1rem">
             <div class="row card-body">
               <div class="col-10 d-flex align-items-center">
                 <div *ngIf="item.dg_prod == 1">
@@ -673,7 +671,7 @@
 
       <div *ngIf="!showFilteredProducts && products.length == 0" style="margin-bottom: 100vh;">
         <div *ngFor="let card of cardsData">
-          <div class="card shadow-on-hover" style="margin: 1rem;" aria-hidden="true">
+          <div class="card shadow-on-hover m1rem" aria-hidden="true">
             <div class="row card-body">
               <div class="col-2">
                 <h5 class="card-title placeholder-glow">
@@ -682,32 +680,26 @@
               </div>
               <div class="col">
                 <h5 class="card-title placeholder-glow">
-                  <span class="placeholder" style="width: 100%;"></span>
+                  <span class="placeholder whit100"></span>
                 </h5>
 
               </div>
               <div class="col-2  text-end d-flex align-items-center">
                 <div class="ms-auto">
-                  <button type="button btn-moreInfo" class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
-                    style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem;
-                          --bs-btn-font-size: .75rem; background-color: #113250; color: #113250; font-family: Helvetica, Sans-Serif;">
-                    Mas Información
-                  </button>
+                  <button type="button btn-moreInfo" class="btn vermasinformacion">Más Información</button>
                 </div>
               </div>
             </div>
           </div>
-
         </div>
       </div>
+
 
     </div>
 
   </div>
-  <div style="padding-bottom: 25rem;">
-
-  </div>
 </div>
+
 
 <!--* MODAL -->
 <div class="modal fade " id="staticBackdrop" data-bs-keyboard="false" tabindex="-1"
