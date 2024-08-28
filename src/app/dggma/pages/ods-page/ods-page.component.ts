@@ -265,32 +265,38 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
               display: false,
             },
           },
-          onHover: (event, elements) => {
-            const target = chartElement; // Se refiere directamente al elemento canvas
+          onHover: (event, elements, chart) => {
+            const target = chart.canvas; // Obtén el canvas directamente desde el objeto chart
             if (elements.length > 0) {
-              target.style.cursor = 'pointer'; // Cambia el cursor a mano (puntero)
+                const index = elements[0].index;
+                // Cambia el cursor a 'pointer' solo si el índice es uno de los especificados
+                if (index === 1 || index === 2 || index === 3 || index === 4) {
+                    target.style.cursor = 'pointer';
+                } else {
+                    target.style.cursor = 'default';
+                }
             } else {
-              target.style.cursor = 'default'; // Restaura el cursor predeterminado
+                target.style.cursor = 'default';
             }
-          },
-          onClick: (event, elements) => {
+        },
+        onClick: (event, elements) => {
             if (elements && elements.length > 0) {
-              const index = elements[0].index;
-              // Lógica de activación de la función según la barra clicada
-              if (index === 1) {
-                this.filtroMeta2_3();
-              }
-              if (index === 2) {
-                this.filtroMeta2_4();
-              }
-              if (index === 3) {
-                this.filtroMeta2_a();
-              }
-              if (index === 4) {
-                this.filtroMeta2_c();
-              }
+                const index = elements[0].index;
+                // Lógica de activación de la función según la barra clicada
+                if (index === 1) {
+                    this.filtroMeta2_3();
+                }
+                if (index === 2) {
+                    this.filtroMeta2_4();
+                }
+                if (index === 3) {
+                    this.filtroMeta2_a();
+                }
+                if (index === 4) {
+                    this.filtroMeta2_c();
+                }
             }
-          },
+        },        
         },
       });
     } else {
@@ -358,24 +364,27 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
               display: false,
             },
           },
-           onHover: (event, elements) => {
-            const target = chartElement; 
+          onHover: (event, elements, chart) => {
+            const target = chart.canvas; 
             if (elements.length > 0) {
-              target.style.cursor = 'pointer'; 
+                const index = elements[0].index;
+                if (index === 2) {
+                    target.style.cursor = 'pointer';
+                } else {
+                    target.style.cursor = 'default';
+                }
             } else {
-              target.style.cursor = 'default'; 
+                target.style.cursor = 'default';
             }
-          },
-          onClick: (event, elements) => {
+        },
+        onClick: (event, elements) => {
             if (elements && elements.length > 0) {
-              const index = elements[0].index;
-              // Lógica de activación de la función según la barra clicada
-
-              if (index === 2) {
-                this.filtroMeta3_8();
-              }
+                const index = elements[0].index;
+                if (index === 2) {
+                    this.filtroMeta3_8();
+                }
             }
-          },
+        },        
         },
       });
     } else {
@@ -445,24 +454,27 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
               display: false,
             },
           },
-          onHover: (event, elements) => {
-            const target = chartElement; 
+          onHover: (event, elements, chart) => {
+            const target = chart.canvas; 
             if (elements.length > 0) {
-              target.style.cursor = 'pointer'; 
+                const index = elements[0].index;
+                if (index === 4) {
+                    target.style.cursor = 'pointer';
+                } else {
+                    target.style.cursor = 'default';
+                }
             } else {
-              target.style.cursor = 'default'; 
+                target.style.cursor = 'default';
             }
-          },
-          onClick: (event, elements) => {
+        },
+        onClick: (event, elements) => {
             if (elements && elements.length > 0) {
-              const index = elements[0].index;
-              // Lógica de activación de la función según la barra clicada
-
-              if (index === 4) {
-                this.filtroMeta4_7();
-              }
+                const index = elements[0].index;
+                if (index === 4) {
+                    this.filtroMeta4_7();
+                }
             }
-          },
+        },        
         },
       });
     } else {
@@ -532,24 +544,27 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
               display: false,
             },
           },
-          onHover: (event, elements) => {
-            const target = chartElement; 
+          onHover: (event, elements, chart) => {
+            const target = chart.canvas; 
             if (elements.length > 0) {
-              target.style.cursor = 'pointer'; 
+                const index = elements[0].index;
+                if (index === 0) {
+                    target.style.cursor = 'pointer';
+                } else {
+                    target.style.cursor = 'default';
+                }
             } else {
-              target.style.cursor = 'default'; 
+                target.style.cursor = 'default';
             }
-          },
-          onClick: (event, elements) => {
+        },
+        onClick: (event, elements) => {
             if (elements && elements.length > 0) {
-              const index = elements[0].index;
-              // Lógica de activación de la función según la barra clicada
-
-              if (index === 0) {
-                this.filtroMeta5_1();
-              }
+                const index = elements[0].index;
+                if (index === 0) {
+                    this.filtroMeta5_1();
+                }
             }
-          },
+        },        
         },
       });
     } else {
@@ -631,27 +646,30 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
               display: false,
             },
           },
-          onHover: (event, elements) => {
-            const target = chartElement; 
+          onHover: (event, elements, chart) => {
+            const target = chart.canvas; 
             if (elements.length > 0) {
-              target.style.cursor = 'pointer'; 
+                const index = elements[0].index;
+                if (index === 5 || index === 6) {
+                    target.style.cursor = 'pointer';
+                } else {
+                    target.style.cursor = 'default';
+                }
             } else {
-              target.style.cursor = 'default'; 
+                target.style.cursor = 'default';
             }
-          },
-          onClick: (event, elements) => {
+        },
+        onClick: (event, elements) => {
             if (elements && elements.length > 0) {
-              const index = elements[0].index;
-              // Lógica de activación de la función según la barra clicada
-
-              if (index === 5) {
-                this.filtroMeta6_6();
-              }
-              if (index === 6) {
-                this.filtroMeta6_b();
-              }
+                const index = elements[0].index;
+                if (index === 5) {
+                    this.filtroMeta6_6();
+                }
+                if (index === 6) {
+                    this.filtroMeta6_b();
+                }
             }
-          },
+        },        
         },
       });
     } else {
@@ -810,27 +828,30 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
               display: false,
             },
           },
-          onHover: (event, elements) => {
-            const target = chartElement; 
+          onHover: (event, elements, chart) => {
+            const target = chart.canvas; 
             if (elements.length > 0) {
-              target.style.cursor = 'pointer'; 
+                const index = elements[0].index;
+                if (index === 9 || index === 10) {
+                    target.style.cursor = 'pointer';
+                } else {
+                    target.style.cursor = 'default';
+                }
             } else {
-              target.style.cursor = 'default'; 
+                target.style.cursor = 'default';
             }
-          },
-          onClick: (event, elements) => {
+        },
+        onClick: (event, elements) => {
             if (elements && elements.length > 0) {
-              const index = elements[0].index;
-              // Lógica de activación de la función según la barra clicada
-
-              if (index === 9) {
-                this.filtroMeta8_a();
-              }
-              if (index === 10) {
-                this.filtroMeta8_b();
-              }
+                const index = elements[0].index;
+                if (index === 9) {
+                    this.filtroMeta8_a();
+                }
+                if (index === 10) {
+                    this.filtroMeta8_b();
+                }
             }
-          },
+        },        
         },
       });
     } else {
@@ -1040,27 +1061,30 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
               display: false,
             },
           },
-          onHover: (event, elements) => {
-            const target = chartElement; 
+          onHover: (event, elements, chart) => {
+            const target = chart.canvas; 
             if (elements.length > 0) {
-              target.style.cursor = 'pointer'; 
+                const index = elements[0].index;
+                if (index === 7 || index === 8) {
+                    target.style.cursor = 'pointer';
+                } else {
+                    target.style.cursor = 'default';
+                }
             } else {
-              target.style.cursor = 'default'; 
+                target.style.cursor = 'default';
             }
-          },
-          onClick: (event, elements) => {
+        },
+        onClick: (event, elements) => {
             if (elements && elements.length > 0) {
-              const index = elements[0].index;
-              // Lógica de activación de la función según la barra clicada
-
-              if (index === 7) {
-                this.filtroMeta11_a();
-              }
-              if (index === 8) {
-                this.filtroMeta11_b();
-              }
+                const index = elements[0].index;
+                if (index === 7) {
+                    this.filtroMeta11_a();
+                }
+                if (index === 8) {
+                    this.filtroMeta11_b();
+                }
             }
-          },
+        },        
         },
       });
     } else {
@@ -1139,33 +1163,36 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
               display: false,
             },
           },
-          onHover: (event, elements) => {
-            const target = chartElement; 
+          onHover: (event, elements, chart) => {
+            const target = chart.canvas;
             if (elements.length > 0) {
-              target.style.cursor = 'pointer'; 
+                const index = elements[0].index;
+                if (index === 1 || index === 2 || index === 4 || index === 5) {
+                    target.style.cursor = 'pointer';
+                } else {
+                    target.style.cursor = 'default';
+                }
             } else {
-              target.style.cursor = 'default'; 
+                target.style.cursor = 'default';
             }
-          },
-          onClick: (event, elements) => {
+        },
+        onClick: (event, elements) => {
             if (elements && elements.length > 0) {
-              const index = elements[0].index;
-              // Lógica de activación de la función según la barra clicada
-
-              if (index === 1) {
-                this.filtroMeta12_3();
-              }
-              if (index === 2) {
-                this.filtroMeta12_4();
-              }
-              if (index === 4) {
-                this.filtroMeta12_6();
-              }
-              if (index === 5) {
-                this.filtroMeta12_8();
-              }
+                const index = elements[0].index;
+                if (index === 1) {
+                    this.filtroMeta12_3();
+                }
+                if (index === 2) {
+                    this.filtroMeta12_4();
+                }
+                if (index === 4) {
+                    this.filtroMeta12_6();
+                }
+                if (index === 5) {
+                    this.filtroMeta12_8();
+                }
             }
-          },
+        },        
         },
       });
     } else {
@@ -1233,28 +1260,30 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
               display: false,
             },
           },
-          onHover: (event, elements) => {
-            const target = chartElement; 
+          onHover: (event, elements, chart) => {
+            const target = chart.canvas; 
             if (elements.length > 0) {
-              target.style.cursor = 'pointer'; 
+                const index = elements[0].index;
+                if (index === 1 || index === 3) {
+                    target.style.cursor = 'pointer';
+                } else {
+                    target.style.cursor = 'default';
+                }
             } else {
-              target.style.cursor = 'default'; 
+                target.style.cursor = 'default';
             }
-          },
-          onClick: (event, elements) => {
+        },
+        onClick: (event, elements) => {
             if (elements && elements.length > 0) {
-              const index = elements[0].index;
-              // Lógica de activación de la función según la barra clicada
-
-              if (index === 1) {
-                this.filtroMeta13_2();
-              }
-              if (index === 3) {
-                this.filtroMeta13_b();
-              }
-
+                const index = elements[0].index;
+                if (index === 1) {
+                    this.filtroMeta13_2();
+                }
+                if (index === 3) {
+                    this.filtroMeta13_b();
+                }
             }
-          },
+        },        
         },
       });
     } else {
@@ -1322,27 +1351,31 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
               display: false,
             },
           },
-          onHover: (event, elements) => {
-            const target = chartElement; 
+          onHover: (event, elements, chart) => {
+            const target = chart.canvas; 
             if (elements.length > 0) {
-              target.style.cursor = 'pointer'; 
+                const index = elements[0].index;
+                if (index === 0 || index === 2) {
+                    target.style.cursor = 'pointer';
+                } else {
+                    target.style.cursor = 'default';
+                }
             } else {
-              target.style.cursor = 'default'; 
+                target.style.cursor = 'default';
             }
-          },
-          onClick: (event, elements) => {
+        },
+        onClick: (event, elements) => {
             if (elements && elements.length > 0) {
-              const index = elements[0].index;
-              // Lógica de activación de la función según la barra clicada
-
-              if (index === 0) {
-                this.filtroMeta14_1();
-              }
-              if (index === 2) {
-                this.filtroMeta14_4();
-              }
+                const index = elements[0].index;
+                if (index === 0) {
+                    this.filtroMeta14_1();
+                }
+                if (index === 2) {
+                    this.filtroMeta14_4();
+                }
             }
-          },
+        },
+        
         },
       });
     } else {
@@ -1424,33 +1457,36 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
               display: false,
             },
           },
-          onHover: (event, elements) => {
-            const target = chartElement; 
+          onHover: (event, elements, chart) => {
+            const target = chart.canvas;
             if (elements.length > 0) {
-              target.style.cursor = 'pointer'; 
+                const index = elements[0].index;
+                if (index === 1 || index === 2 || index === 5 || index === 6) {
+                    target.style.cursor = 'pointer';
+                } else {
+                    target.style.cursor = 'default';
+                }
             } else {
-              target.style.cursor = 'default'; 
+                target.style.cursor = 'default';
             }
-          },
-          onClick: (event, elements) => {
+        },
+        onClick: (event, elements) => {
             if (elements && elements.length > 0) {
-              const index = elements[0].index;
-              // Lógica de activación de la función según la barra clicada
-
-              if (index === 1) {
-                this.filtroMeta15_2();
-              }
-              if (index === 2) {
-                this.filtroMeta15_3();
-              }
-              if (index === 5) {
-                this.filtroMeta15_7();
-              }
-              if (index === 6) {
-                this.filtroMeta15_a();
-              }
+                const index = elements[0].index;
+                if (index === 1) {
+                    this.filtroMeta15_2();
+                }
+                if (index === 2) {
+                    this.filtroMeta15_3();
+                }
+                if (index === 5) {
+                    this.filtroMeta15_7();
+                }
+                if (index === 6) {
+                    this.filtroMeta15_a();
+                }
             }
-          },
+        },
         },
       });
     } else {
@@ -1532,36 +1568,40 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
               display: false,
             },
           },
-          onHover: (event, elements) => {
-            const target = chartElement; 
+          onHover: (event, elements, chart) => {
+            const target = chart.canvas;
             if (elements.length > 0) {
-              target.style.cursor = 'pointer'; 
+                const index = elements[0].index;
+                if (index === 1 || index === 4 || index === 5) {
+                    target.style.cursor = 'pointer';
+                } else {
+                    target.style.cursor = 'default';
+                }
             } else {
-              target.style.cursor = 'default'; 
+                target.style.cursor = 'default';
             }
-          },
-          onClick: (event, elements) => {
+        },
+        onClick: (event, elements) => {
             if (elements && elements.length > 0) {
-              const index = elements[0].index;
-              // Lógica de activación de la función según la barra clicada
-
-              if (index === 1) {
-                this.filtroMeta16_2();
-              }
-              if (index === 4) {
-                this.filtroMeta16_10();
-              }
-              if (index === 5) {
-                this.filtroMeta16_a();
-              }
+                const index = elements[0].index;
+                if (index === 1) {
+                    this.filtroMeta16_2();
+                }
+                if (index === 4) {
+                    this.filtroMeta16_10();
+                }
+                if (index === 5) {
+                    this.filtroMeta16_a();
+                }
             }
-          },
+        },
         },
       });
     } else {
       console.error('Element with id "componente1" not found.');
     }
   }
+  
   createChart17(): void {
     const labels = ['Meta 17.10', 'Meta 17.11'];
     const data = [1, 1];
