@@ -235,6 +235,11 @@ export class ProductPageComponent implements OnInit {
   tree!: Tree;
   banderaSearchByQuery: boolean = false;
 
+  first: number = 0;
+  rows: number = 10;
+  paginatedProducts: any[] = [];
+  paginatedProductsFilter: any[] = [];
+
   constructor(
     private router: Router,
     private _direServices: DGService,
@@ -244,6 +249,25 @@ export class ProductPageComponent implements OnInit {
     private _odsFlag: OdsFilterService
   ) {
     this.combinedResultsMdea = [];
+    //! TODOS LOS PRODUCTOS
+    this._direServices.productos().subscribe((data) => {
+      this.products = data;
+
+      this.displayedProductCountAll = this.products.length;
+      this.extractAndSortYears();
+      this.extractAndSortYearsHasta();
+      this.pU_extractAndSortYears();
+      this.pU_extractAndSortYearsHasta();
+      this.filtros_ods_pageTopage();
+      this.updatePaginatedProducts();
+      this.updatePaginatedProductsFilter();
+
+      if (!this.deleteFilterFlag) {
+        this.filtrarProductosPorDirecciones();
+        this.fun();
+        this.loading = false;
+      }
+    });
   }
 
   //!Funcion que ayuda a transformar los arreglos de objetos de componentes, subcomponentes y topicos para que este pueda ser compatible con la estructura treenode
@@ -310,8 +334,30 @@ export class ProductPageComponent implements OnInit {
     this.applyFilters();
   }
 
-  ngOnInit(): void {
+  updatePaginatedProducts() {
+    const start = this.first;
+    const end = this.first + this.rows;
+    this.paginatedProducts = this.products.slice(start, end);
+  }
 
+  onPageChange(event: any) {
+    this.first = event.first;
+    this.rows = event.rows;
+    this.updatePaginatedProducts();
+  }
+
+  updatePaginatedProductsFilter() {
+    const start = this.first;
+    const end = this.first + this.rows;
+    this.paginatedProductsFilter = this.filteredProducts.slice(start, end);
+  }
+
+  onPageChangeFilter(event: any) {
+    this.first = event.first;
+    this.rows = event.rows;
+    this.updatePaginatedProductsFilter();
+  }
+  ngOnInit(): void {
     if (this._odsFlag.getMasterFlag()) {
       this.boolFilter_ODS_o_MDEA = true;
       this._odsFlag.setMasterFlag(false);
@@ -328,8 +374,6 @@ export class ProductPageComponent implements OnInit {
       this.thisFlags();
     }
 
-
-
     //! botones MDEA filtro by Subcomponentes
 
     if (this._flagService.getFlagSubComp1()) {
@@ -340,7 +384,6 @@ export class ProductPageComponent implements OnInit {
       this.filterStates[string] = true;
       this.thisFlags();
     }
-
 
     //! Funcion que manda a llamar el servicio y los datos de este para que se pueda combinar con la transformaciión de datos a la estructura de treenode
     this._direServices.componentes().subscribe((componentes) => {
@@ -369,24 +412,6 @@ export class ProductPageComponent implements OnInit {
 
     this._direServices.ods().subscribe((data) => {
       this.odsSecuencia = data;
-    });
-
-    //! TODOS LOS PRODUCTOS
-    this._direServices.productos().subscribe((data) => {
-      this.products = data;
-
-      this.displayedProductCountAll = this.products.length;
-      this.extractAndSortYears();
-      this.extractAndSortYearsHasta();
-      this.pU_extractAndSortYears();
-      this.pU_extractAndSortYearsHasta();
-      this.filtros_ods_pageTopage();
-
-      if (!this.deleteFilterFlag) {
-        this.filtrarProductosPorDirecciones();
-        this.fun();
-        this.loading = false;
-      }
     });
 
     //! ESCALAS
@@ -1875,6 +1900,7 @@ export class ProductPageComponent implements OnInit {
     this.displayedProductCount = this.filteredProducts.length;
     this.showFilteredProducts = true;
     console.log(this.filteredProducts);
+    this.updatePaginatedProductsFilter();
   }
 
   handleComponenteFilter(): void {

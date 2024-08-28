@@ -384,8 +384,7 @@
       <!--! titulo -->
       <div class="row">
         <div class="col">
-          <h3 class="display-6"
-            style="margin: 2rem; text-align: center; color: #113250; font-family: Helvetica, Sans-Serif;">
+          <h3 class="display-6 titleproductos">
             Productos Generados en las Direcciones Generales del INEGI.</h3>
           <hr style="color: #113250;">
         </div>
@@ -589,85 +588,112 @@
 
 
 
-      <div *ngIf="showFilteredProducts">
-        <div *ngFor="let item of filteredProducts">
-          <div class="card shadow-on-hover" style="margin: 1rem;">
-            <div class="row card-body">
-              <div class="col-10 d-flex align-items-center">
-                <div *ngIf="item.dg_prod == 1">
-                  <i class="bi bi-globe me-2" style="color: #113250; font-size: 1.5rem;"></i>
-                </div>
-                <div *ngIf="item.dg_prod == 2">
-                  <i class="bi bi-bar-chart me-2" style="color: #113250; font-size: 1.5rem;"></i>
-                </div>
-                <div *ngIf="item.dg_prod == 3">
-                  <i class="bi bi-cash-stack me-2" style="color: #113250; font-size: 1.5rem;"></i>
-                </div>
-                <div *ngIf="item.dg_prod == 4">
-                  <i class="bi bi-bank me-2" style="color: #113250; font-size: 1.5rem;"></i>
-                </div>
-                <div *ngIf="item.dg_prod == 5">
-                  <i class="bi bi-file-earmark-text me-2" style="color: #113250; font-size: 1.5rem;"></i>
-                </div>
+        <div style="min-height: 100vh;" *ngIf="showFilteredProducts">
+          <div *ngIf="showFilteredProducts">
 
-                <div>
-                  <strong class="card-title"
-                    style="color: #113250;  font-family: Helvetica, Sans-Serif;">{{item.nom_producto |
-                    uppercase}}</strong>
-                </div>
+            <div *ngFor="let item of paginatedProductsFilter">
+              <div class="card shadow-on-hover" style="margin: 1rem;">
+                <div class="row card-body">
+                  <div class="col-10 d-flex align-items-center">
+                    <div *ngIf="item.dg_prod == 1">
+                      <i class="bi bi-globe me-2" style="color: #113250; font-size: 1.5rem;"></i>
+                    </div>
+                    <div *ngIf="item.dg_prod == 2">
+                      <i class="bi bi-bar-chart me-2" style="color: #113250; font-size: 1.5rem;"></i>
+                    </div>
+                    <div *ngIf="item.dg_prod == 3">
+                      <i class="bi bi-cash-stack me-2" style="color: #113250; font-size: 1.5rem;"></i>
+                    </div>
+                    <div *ngIf="item.dg_prod == 4">
+                      <i class="bi bi-bank me-2" style="color: #113250; font-size: 1.5rem;"></i>
+                    </div>
+                    <div *ngIf="item.dg_prod == 5">
+                      <i class="bi bi-file-earmark-text me-2" style="color: #113250; font-size: 1.5rem;"></i>
+                    </div>
 
-              </div>
-              <div class="col-2 text-end d-flex align-items-center">
-                <div class="ms-auto">
-                  <button type="button" class="btn vermasinformacion" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
-                    (click)="openModal(item)">MásInformación</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+                    <div>
+                      <strong class="card-title" style="color: #113250;  font-family: Helvetica, Sans-Serif;">{{item.nom_producto
+                        |
+                        uppercase}}</strong>
+                    </div>
 
-      <div *ngIf="!showFilteredProducts && products.length > 1">
-        <div *ngFor="let item of products">
-          <div class="card shadow-on-hover m1rem">
-            <div class="row card-body">
-              <div class="col-10 d-flex align-items-center">
-                <div *ngIf="item.dg_prod == 1">
-                  <i class="bi bi-globe me-2" style="color: #113250; font-size: 1.5rem;"></i>
-                </div>
-                <div *ngIf="item.dg_prod == 2">
-                  <i class="bi bi-bar-chart me-2" style="color: #113250; font-size: 1.5rem;"></i>
-                </div>
-                <div *ngIf="item.dg_prod == 3">
-                  <i class="bi bi-cash-stack me-2" style="color: #113250; font-size: 1.5rem;"></i>
-                </div>
-                <div *ngIf="item.dg_prod == 4">
-                  <i class="bi bi-bank me-2" style="color: #113250; font-size: 1.5rem;"></i>
-                </div>
-                <div *ngIf="item.dg_prod == 5">
-                  <i class="bi bi-file-earmark-text me-2" style="color: #113250; font-size: 1.5rem;"></i>
-                </div>
-
-                <div>
-                  <strong class="card-title"
-                    style="color: #113250;  font-family: Helvetica, Sans-Serif;">{{item.nom_producto |
-                    uppercase}}</strong>
-                </div>
-
-              </div>
-              <div class="col-2 text-end d-flex align-items-center">
-                <div class="ms-auto">
-                  <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
-                    (click)="openModal(item)"
-                    style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem; background-color: #113250; color: #ffffff; font-family: Helvetica, Sans-Serif;">
-                    Mas Información</button>
+                  </div>
+                  <div class="col-2 text-end d-flex align-items-center">
+                    <div class="ms-auto">
+                      <button type="button" class="btn vermasinformacion" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                        (click)="openModal(item)">MásInformación</button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+        <div class="card flex justify-content-center" *ngIf="showFilteredProducts">
+
+          <p-paginator (onPageChange)="onPageChangeFilter($event)" [first]="first" [rows]="rows" [totalRecords]="filteredProducts.length"
+            [rowsPerPageOptions]="[10, 20, 30]"></p-paginator>
+        </div>
+
+
+
+
+
+        <div style="min-height: 100vh;" *ngIf="!showFilteredProducts && products.length > 1">
+
+          <div *ngIf="!showFilteredProducts && products.length > 1">
+            <div *ngFor="let item of paginatedProducts">
+              <div class="card shadow-on-hover m1rem">
+                <div class="row card-body">
+                  <div class="col-10 d-flex align-items-center">
+                    <div *ngIf="item.dg_prod == 1">
+                      <i class="bi bi-globe me-2" style="color: #113250; font-size: 1.5rem;"></i>
+                    </div>
+                    <div *ngIf="item.dg_prod == 2">
+                      <i class="bi bi-bar-chart me-2" style="color: #113250; font-size: 1.5rem;"></i>
+                    </div>
+                    <div *ngIf="item.dg_prod == 3">
+                      <i class="bi bi-cash-stack me-2" style="color: #113250; font-size: 1.5rem;"></i>
+                    </div>
+                    <div *ngIf="item.dg_prod == 4">
+                      <i class="bi bi-bank me-2" style="color: #113250; font-size: 1.5rem;"></i>
+                    </div>
+                    <div *ngIf="item.dg_prod == 5">
+                      <i class="bi bi-file-earmark-text me-2" style="color: #113250; font-size: 1.5rem;"></i>
+                    </div>
+
+                    <div>
+                      <strong class="card-title" style="color: #113250;  font-family: Helvetica, Sans-Serif;">{{item.nom_producto
+                        |
+                        uppercase}}</strong>
+                    </div>
+
+                  </div>
+                  <div class="col-2 text-end d-flex align-items-center">
+                    <div class="ms-auto">
+                      <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                        (click)="openModal(item)"
+                        style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem; background-color: #113250; color: #ffffff; font-family: Helvetica, Sans-Serif;">
+                        Mas Información</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card flex justify-content-center" *ngIf="!showFilteredProducts && products.length > 1">
+
+          <p-paginator (onPageChange)="onPageChange($event)" [first]="first" [rows]="rows" [totalRecords]="products.length"
+            [rowsPerPageOptions]="[10, 20, 30]"></p-paginator>
+        </div>
+
+
+
+
+
+
+
 
       <div *ngIf="!showFilteredProducts && products.length == 0" style="margin-bottom: 100vh;">
         <div *ngFor="let card of cardsData">
@@ -686,7 +712,7 @@
               </div>
               <div class="col-2  text-end d-flex align-items-center">
                 <div class="ms-auto">
-                  <button type="button btn-moreInfo" class="btn vermasinformacion">Más Información</button>
+                  <button type="button btn-moreInfo" class="btn vermasinformacionhidden">Más Información</button>
                 </div>
               </div>
             </div>

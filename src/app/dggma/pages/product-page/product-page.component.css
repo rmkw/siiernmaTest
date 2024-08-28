@@ -118,6 +118,14 @@
   --bs-btn-padding-x: .5rem;
   --bs-btn-font-size: .75rem;
   background-color: #113250;
+  color: #ffffff;
+  font-family: Helvetica, Sans-Serif;
+}
+.vermasinformacionhidden {
+  --bs-btn-padding-y: .25rem;
+  --bs-btn-padding-x: .5rem;
+  --bs-btn-font-size: .75rem;
+  background-color: #113250;
   color: #113250;
   font-family: Helvetica, Sans-Serif;
 }
@@ -149,4 +157,10 @@
 }
 .color113250{
   color: #113250;
+}
+.titleproductos{
+  margin: 2rem;
+  text-align: center;
+  color: #113250;
+  font-family: Helvetica, Sans-Serif;
 }
