@@ -112,3 +112,41 @@
   font-family: 'Monaco', monospace;
   font-weight: bold;
 }
+
+.vermasinformacion{
+  --bs-btn-padding-y: .25rem;
+  --bs-btn-padding-x: .5rem;
+  --bs-btn-font-size: .75rem;
+  background-color: #113250;
+  color: #113250;
+  font-family: Helvetica, Sans-Serif;
+}
+.whit100{
+  width: 100%
+}
+.m1rem{
+  margin: 1rem;
+}
+
+.colorfilter{
+  background-color: #f8f9fa;
+  border-top: solid 1px;
+  border-color: #113250;
+}
+.botonfilter{
+    --bs-btn-padding-y: .20rem;
+    --bs-btn-padding-x: .5rem;
+    --bs-btn-font-size: .75rem;
+    margin-right: 0.5rem;
+}
+.hiddenojito{
+    --bs-btn-padding-y: .20rem;
+    --bs-btn-padding-x: .5rem;
+    --bs-btn-font-size: .75rem;
+    margin-right: 0.5rem;
+    border-radius: 50%;
+
+}
+.color113250{
+  color: #113250;
+}
