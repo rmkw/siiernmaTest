@@ -96,7 +96,7 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
       ['5. Asentamientos humanos y', 'salud ambiental.'],
       ['6. Protección ambiental y', 'participación ciudadana.'],
     ];
-    const data = [182, 542, 167, 33, 645, 349];
+    const data = [182, 386, 151, 25, 578, 320];
     const chartElement = document.getElementById(
       'acquisitions'
     ) as HTMLCanvasElement;
@@ -108,7 +108,7 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
           labels: labels,
           datasets: [
             {
-              label: ' Productos que cuentan con una relación',
+              label: ' Número de productos que tienen relación con este componente ',
               data: data,
               backgroundColor: [
                 'rgba(54, 162, 235, 0.6)',
@@ -170,6 +170,14 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
               },
             },
           },
+          onHover: (event, elements) => {
+            const target = chartElement; // Se refiere directamente al elemento canvas
+            if (elements.length > 0) {
+              target.style.cursor = 'pointer'; // Cambia el cursor a mano (puntero)
+            } else {
+              target.style.cursor = 'default'; // Restaura el cursor predeterminado
+            }
+          },
           onClick: (event, elements) => {
             if (elements && elements.length > 0) {
               const index = elements[0].index;
@@ -195,7 +203,7 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
       '1.2: Cobertura terrestre, ecosistemas y biodiversidad',
       '1.3: Calidad ambiental',
     ];
-    const data = [168, 163, 15];
+    const data = [114, 97, 15];
     const chartElement = document.getElementById(
       'componente1'
     ) as HTMLCanvasElement;
@@ -207,7 +215,7 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
           labels: labels,
           datasets: [
             {
-              label: ' Productos que cuentan con una relación',
+              label: ' Número de productos que tienen relación con este subcomponente ',
               data: data,
               backgroundColor: [
                 'rgba(54, 162, 235, 0.6)',
@@ -250,6 +258,14 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
             legend: {
               display: false,
             },
+          },
+          onHover: (event, elements) => {
+            const target = chartElement; 
+            if (elements.length > 0) {
+              target.style.cursor = 'pointer'; 
+            } else {
+              target.style.cursor = 'default'; 
+            }
           },
         },
       });
@@ -268,7 +284,7 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
 
       '2.6: Recursos hídricos',
     ];
-    const data = [47, 54, 138, 228, 75];
+    const data = [41, 54, 126, 174, 65];
     const chartElement = document.getElementById(
       'componente2'
     ) as HTMLCanvasElement;
@@ -280,7 +296,7 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
           labels: labels,
           datasets: [
             {
-              label: ' Productos que cuentan con una relación',
+              label: ' Número de productos que tienen relación con este subcomponente',
               data: data,
               backgroundColor: [
                 'rgba(255, 159, 64, 0.6)',
@@ -327,6 +343,14 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
             legend: {
               display: false,
             },
+          },
+          onHover: (event, elements) => {
+            const target = chartElement; 
+            if (elements.length > 0) {
+              target.style.cursor = 'pointer'; 
+            } else {
+              target.style.cursor = 'default'; 
+            }
           },
         },
       });
@@ -342,7 +366,7 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
       ['3.3: Generación y gestión', 'de desechos.'],
       '3.4: Aplicación de químicos.',
     ];
-    const data = [11, 29, 115, 12];
+    const data = [11, 24, 111, 12];
     const chartElement = document.getElementById(
       'componente3'
     ) as HTMLCanvasElement;
@@ -354,7 +378,7 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
           labels: labels,
           datasets: [
             {
-              label: ' Productos que cuentan con una relación',
+              label: ' Número de productos que tienen relación con este subcomponente',
               data: data,
               backgroundColor: [
                 'rgba(255, 99, 132, 0.6)',
@@ -400,6 +424,14 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
               display: false,
             },
           },
+          onHover: (event, elements) => {
+            const target = chartElement; 
+            if (elements.length > 0) {
+              target.style.cursor = 'pointer'; 
+            } else {
+              target.style.cursor = 'default'; 
+            }
+          },
         },
       });
     } else {
@@ -412,7 +444,7 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
       '4.1: Eventos naturales extremos y desastres.',
       '4.2: Desastres tecnológicos.',
     ];
-    const data = [31, 2];
+    const data = [24, 2];
     const chartElement = document.getElementById(
       'componente4'
     ) as HTMLCanvasElement;
@@ -424,7 +456,7 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
           labels: labels,
           datasets: [
             {
-              label: ' Productos que cuentan con una relación',
+              label: ' Número de productos que tienen relación con este subcomponente',
               data: data,
               backgroundColor: [
                 'rgba(153, 102, 255, 0.6)',
@@ -463,6 +495,14 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
               display: false,
             },
           },
+          onHover: (event, elements) => {
+            const target = chartElement; 
+            if (elements.length > 0) {
+              target.style.cursor = 'pointer'; 
+            } else {
+              target.style.cursor = 'default'; 
+            }
+          },
         },
       });
     } else {
@@ -472,7 +512,7 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
 
   createChart5(): void {
     const labels = ['5.1: Asentamientos humanos.', '5.2: Salud ambiental.'];
-    const data = [552, 93];
+    const data = [499, 83];
     const chartElement = document.getElementById(
       'componente5'
     ) as HTMLCanvasElement;
@@ -484,7 +524,7 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
           labels: labels,
           datasets: [
             {
-              label: ' Productos que cuentan con una relación',
+              label: ' Número de productos que tienen relación con este subcomponente',
               data: data,
               backgroundColor: [
                 'rgba(75, 192, 192, 0.6)',
@@ -523,6 +563,14 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
               display: false,
             },
           },
+          onHover: (event, elements) => {
+            const target = chartElement; 
+            if (elements.length > 0) {
+              target.style.cursor = 'pointer'; 
+            } else {
+              target.style.cursor = 'default';
+            }
+          },
         },
       });
     } else {
@@ -537,7 +585,7 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
       ['6.3: Preparación ante eventos', 'extremos y gestión de desastres.'],
       ['6.4: Información y conciencia', 'ambiental.'],
     ];
-    const data = [87, 121, 39, 102];
+    const data = [80, 121, 38, 93];
     const chartElement = document.getElementById(
       'componente6'
     ) as HTMLCanvasElement;
@@ -549,7 +597,7 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
           labels: labels,
           datasets: [
             {
-              label: ' Productos que cuentan con una relación',
+              label: ' Número de productos que tienen relación con este subcomponente ',
               data: data,
               backgroundColor: [
                 'rgba(255, 205, 86, 0.6)',
@@ -594,6 +642,14 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
             legend: {
               display: false,
             },
+          },
+          onHover: (event, elements) => {
+            const target = chartElement; 
+            if (elements.length > 0) {
+              target.style.cursor = 'pointer'; 
+            } else {
+              target.style.cursor = 'default'; 
+            }
           },
         },
       });
@@ -623,7 +679,7 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
           labels: labels,
           datasets: [
             {
-              label: ' Productos que cuentan con una relación',
+              label: ' Número de productos que tienen relación con este tópico ',
               data: data,
               backgroundColor: [
                 'rgba(54, 162, 235, 0.6)',
@@ -666,6 +722,14 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
             legend: {
               display: false,
             },
+          },
+          onHover: (event, elements) => {
+            const target = chartElement; 
+            if (elements.length > 0) {
+              target.style.cursor = 'pointer'; 
+            } else {
+              target.style.cursor = 'default'; 
+            }
           },
         },
       });
@@ -680,7 +744,7 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
 
       '1.2.3: Bosques',
     ];
-    const data = [77, 70, 16];
+    const data = [76, 70, 16];
     const chartElement = document.getElementById(
       'topico2'
     ) as HTMLCanvasElement;
@@ -692,7 +756,7 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
           labels: labels,
           datasets: [
             {
-              label: ' Productos que cuentan con una relación',
+              label: ' Número de productos que tienen relación con este tópico ',
               data: data,
               backgroundColor: [
                 'rgba(54, 162, 235, 0.6)',
@@ -735,6 +799,14 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
             legend: {
               display: false,
             },
+          },
+          onHover: (event, elements) => {
+            const target = chartElement; 
+            if (elements.length > 0) {
+              target.style.cursor = 'pointer'; 
+            } else {
+              target.style.cursor = 'default'; 
+            }
           },
         },
       });
@@ -760,7 +832,7 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
           labels: labels,
           datasets: [
             {
-              label: ' Productos que cuentan con una relación',
+              label: ' Número de productos que tienen relación con este tópico ',
               data: data,
               backgroundColor: [
                 'rgba(54, 162, 235, 0.6)',
@@ -804,6 +876,14 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
               display: false,
             },
           },
+          onHover: (event, elements) => {
+            const target = chartElement; 
+            if (elements.length > 0) {
+              target.style.cursor = 'pointer'; 
+            } else {
+              target.style.cursor = 'default'; 
+            }
+          },
         },
       });
     } else {
@@ -828,7 +908,7 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
           labels: labels,
           datasets: [
             {
-              label: ' Productos que cuentan con una relación',
+              label: ' Número de productos que tienen relación con este tópico ',
               data: data,
               backgroundColor: [
                 'rgba(255, 159, 64, 0.6)',
@@ -866,6 +946,14 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
             legend: {
               display: false,
             },
+          },
+          onHover: (event, elements) => {
+            const target = chartElement; 
+            if (elements.length > 0) {
+              target.style.cursor = 'pointer'; 
+            } else {
+              target.style.cursor = 'default'; 
+            }
           },
         },
       });
@@ -890,7 +978,7 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
           labels: labels,
           datasets: [
             {
-              label: ' Productos que cuentan con una relación',
+              label: ' Número de productos que tienen relación con este tópico ',
               data: data,
               backgroundColor: [
                 'rgba(255, 159, 64, 0.6)',
@@ -928,6 +1016,14 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
             legend: {
               display: false,
             },
+          },
+          onHover: (event, elements) => {
+            const target = chartElement; 
+            if (elements.length > 0) {
+              target.style.cursor = 'pointer'; 
+            } else {
+              target.style.cursor = 'default'; 
+            }
           },
         },
       });
@@ -952,7 +1048,7 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
           labels: labels,
           datasets: [
             {
-              label: ' Productos que cuentan con una relación',
+              label: ' Número de productos que tienen relación con este tópico ',
               data: data,
               backgroundColor: [
                 'rgba(255, 159, 64, 0.6)',
@@ -990,6 +1086,14 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
             legend: {
               display: false,
             },
+          },
+          onHover: (event, elements) => {
+            const target = chartElement; 
+            if (elements.length > 0) {
+              target.style.cursor = 'pointer';
+            } else {
+              target.style.cursor = 'default'; 
+            }
           },
         },
       });
@@ -1017,7 +1121,7 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
           labels: labels,
           datasets: [
             {
-              label: ' Productos que cuentan con una relación',
+              label: ' Número de productos que tienen relación con este tópico ',
               data: data,
               backgroundColor: [
                 'rgba(255, 159, 64, 0.6)',
@@ -1065,6 +1169,14 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
               display: false,
             },
           },
+          onHover: (event, elements) => {
+            const target = chartElement; 
+            if (elements.length > 0) {
+              target.style.cursor = 'pointer'; 
+            } else {
+              target.style.cursor = 'default';
+            }
+          },
         },
       });
     } else {
@@ -1088,7 +1200,7 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
           labels: labels,
           datasets: [
             {
-              label: ' Productos que cuentan con una relación',
+              label: ' Número de productos que tienen relación con este tópico ',
               data: data,
               backgroundColor: [
                 'rgba(255, 159, 64, 0.6)',
@@ -1127,6 +1239,14 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
               display: false,
             },
           },
+          onHover: (event, elements) => {
+            const target = chartElement; 
+            if (elements.length > 0) {
+              target.style.cursor = 'pointer'; 
+            } else {
+              target.style.cursor = 'default';
+            }
+          },
         },
       });
     } else {
@@ -1151,7 +1271,7 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
           labels: labels,
           datasets: [
             {
-              label: ' Productos que cuentan con una relación',
+              label: ' Número de productos que tienen relación con este tópico ',
               data: data,
               backgroundColor: [
                 'rgba(255, 99, 132, 0.6)',
@@ -1190,6 +1310,14 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
               display: false,
             },
           },
+          onHover: (event, elements) => {
+            const target = chartElement; 
+            if (elements.length > 0) {
+              target.style.cursor = 'pointer'; 
+            } else {
+              target.style.cursor = 'default'; 
+            }
+          },
         },
       });
     } else {
@@ -1214,7 +1342,7 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
           labels: labels,
           datasets: [
             {
-              label: ' Productos que cuentan con una relación',
+              label: ' Número de productos que tienen relación con este tópico ',
               data: data,
               backgroundColor: [
                 'rgba(255, 99, 132, 0.6)',
@@ -1258,6 +1386,14 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
               display: false,
             },
           },
+          onHover: (event, elements) => {
+            const target = chartElement; // Se refiere directamente al elemento canvas
+            if (elements.length > 0) {
+              target.style.cursor = 'pointer'; // Cambia el cursor a mano (puntero)
+            } else {
+              target.style.cursor = 'default'; // Restaura el cursor predeterminado
+            }
+          },
         },
       });
     } else {
@@ -1281,7 +1417,7 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
           labels: labels,
           datasets: [
             {
-              label: ' Productos que cuentan con una relación',
+              label: ' Número de productos que tienen relación con este tópico ',
               data: data,
               backgroundColor: [
                 'rgba(255, 99, 132, 0.6)',
@@ -1320,6 +1456,14 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
               display: false,
             },
           },
+          onHover: (event, elements) => {
+            const target = chartElement; // Se refiere directamente al elemento canvas
+            if (elements.length > 0) {
+              target.style.cursor = 'pointer'; // Cambia el cursor a mano (puntero)
+            } else {
+              target.style.cursor = 'default'; // Restaura el cursor predeterminado
+            }
+          },
         },
       });
     } else {
@@ -1340,7 +1484,7 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
           labels: labels,
           datasets: [
             {
-              label: ' Productos que cuentan con una relación',
+              label: ' Número de productos que tienen relación con este tópico ',
               data: data,
               backgroundColor: ['rgba(255, 99, 132, 0.6)'],
               borderColor: ['rgb(255, 99, 132)'],
@@ -1376,6 +1520,14 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
               display: false,
             },
           },
+          onHover: (event, elements) => {
+            const target = chartElement; // Se refiere directamente al elemento canvas
+            if (elements.length > 0) {
+              target.style.cursor = 'pointer'; // Cambia el cursor a mano (puntero)
+            } else {
+              target.style.cursor = 'default'; // Restaura el cursor predeterminado
+            }
+          },
         },
       });
     } else {
@@ -1400,7 +1552,7 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
           labels: labels,
           datasets: [
             {
-              label: ' Productos que cuentan con una relación',
+              label: ' Número de productos que tienen relación con este tópico',
               data: data,
               backgroundColor: [
                 'rgba(153, 102, 255, 0.6)',
@@ -1438,6 +1590,14 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
             legend: {
               display: false,
             },
+          },
+          onHover: (event, elements) => {
+            const target = chartElement; // Se refiere directamente al elemento canvas
+            if (elements.length > 0) {
+              target.style.cursor = 'pointer'; // Cambia el cursor a mano (puntero)
+            } else {
+              target.style.cursor = 'default'; // Restaura el cursor predeterminado
+            }
           },
         },
       });
@@ -1459,7 +1619,7 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
           labels: labels,
           datasets: [
             {
-              label: ' Productos que cuentan con una relación',
+              label: ' Número de productos que tienen relación con este tópico',
               data: data,
               backgroundColor: [
                 'rgba(153, 102, 255, 0.6)',
@@ -1498,6 +1658,14 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
               display: false,
             },
           },
+          onHover: (event, elements) => {
+            const target = chartElement; // Se refiere directamente al elemento canvas
+            if (elements.length > 0) {
+              target.style.cursor = 'pointer'; // Cambia el cursor a mano (puntero)
+            } else {
+              target.style.cursor = 'default'; // Restaura el cursor predeterminado
+            }
+          },
         },
       });
     } else {
@@ -1517,7 +1685,7 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
         'asentamientos urbanos',
       ],
     ];
-    const data = [32, 248, 74, 8, 190];
+    const data = [32, 247, 74, 8, 190];
     const chartElement = document.getElementById(
       'topico15'
     ) as HTMLCanvasElement;
@@ -1529,7 +1697,7 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
           labels: labels,
           datasets: [
             {
-              label: ' Productos que cuentan con una relación',
+              label: ' Número de productos que tienen relación con este tópico',
               data: data,
               backgroundColor: [
                 'rgba(75, 192, 192, 0.6)',
@@ -1576,6 +1744,14 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
             legend: {
               display: false,
             },
+          },
+          onHover: (event, elements) => {
+            const target = chartElement; // Se refiere directamente al elemento canvas
+            if (elements.length > 0) {
+              target.style.cursor = 'pointer'; // Cambia el cursor a mano (puntero)
+            } else {
+              target.style.cursor = 'default'; // Restaura el cursor predeterminado
+            }
           },
         },
       });
@@ -1613,7 +1789,7 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
           labels: labels,
           datasets: [
             {
-              label: ' Productos que cuentan con una relación',
+              label: ' Número de productos que tienen relación con este tópico',
               data: data,
               backgroundColor: [
                 'rgba(75, 192, 192, 0.6)',
@@ -1660,6 +1836,14 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
             legend: {
               display: false,
             },
+          },
+          onHover: (event, elements) => {
+            const target = chartElement; // Se refiere directamente al elemento canvas
+            if (elements.length > 0) {
+              target.style.cursor = 'pointer'; // Cambia el cursor a mano (puntero)
+            } else {
+              target.style.cursor = 'default'; // Restaura el cursor predeterminado
+            }
           },
         },
       });
@@ -1689,7 +1873,7 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
           labels: labels,
           datasets: [
             {
-              label: ' Productos que cuentan con una relación',
+              label: ' Número de productos que tienen relación con este tópico',
               data: data,
               backgroundColor: [
                 'rgba(255, 205, 86, 0.6)',
@@ -1727,6 +1911,14 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
             legend: {
               display: false,
             },
+          },
+          onHover: (event, elements) => {
+            const target = chartElement; // Se refiere directamente al elemento canvas
+            if (elements.length > 0) {
+              target.style.cursor = 'pointer'; // Cambia el cursor a mano (puntero)
+            } else {
+              target.style.cursor = 'default'; // Restaura el cursor predeterminado
+            }
           },
         },
       });
@@ -1752,7 +1944,7 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
           labels: labels,
           datasets: [
             {
-              label: ' Productos que cuentan con una relación',
+              label: ' Número de productos que tienen relación con este tópico',
               data: data,
               backgroundColor: [
                 'rgba(255, 205, 86, 0.6)',
@@ -1790,6 +1982,14 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
             legend: {
               display: false,
             },
+          },
+          onHover: (event, elements) => {
+            const target = chartElement; // Se refiere directamente al elemento canvas
+            if (elements.length > 0) {
+              target.style.cursor = 'pointer'; // Cambia el cursor a mano (puntero)
+            } else {
+              target.style.cursor = 'default'; // Restaura el cursor predeterminado
+            }
           },
         },
       });
@@ -1814,7 +2014,7 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
           labels: labels,
           datasets: [
             {
-              label: ' Productos que cuentan con una relación',
+              label: ' Número de productos que tienen relación con este tópico',
               data: data,
               backgroundColor: [
                 'rgba(255, 205, 86, 0.6)',
@@ -1852,6 +2052,14 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
             legend: {
               display: false,
             },
+          },
+          onHover: (event, elements) => {
+            const target = chartElement; // Se refiere directamente al elemento canvas
+            if (elements.length > 0) {
+              target.style.cursor = 'pointer'; // Cambia el cursor a mano (puntero)
+            } else {
+              target.style.cursor = 'default'; // Restaura el cursor predeterminado
+            }
           },
         },
       });
@@ -1878,7 +2086,7 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
           labels: labels,
           datasets: [
             {
-              label: ' Productos que cuentan con una relación',
+              label: ' Número de productos que tienen relación con este tópico',
               data: data,
               backgroundColor: [
                 'rgba(255, 205, 86, 0.6)',
@@ -1923,6 +2131,14 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
             legend: {
               display: false,
             },
+          },
+          onHover: (event, elements) => {
+            const target = chartElement; // Se refiere directamente al elemento canvas
+            if (elements.length > 0) {
+              target.style.cursor = 'pointer'; // Cambia el cursor a mano (puntero)
+            } else {
+              target.style.cursor = 'default'; // Restaura el cursor predeterminado
+            }
           },
         },
       });

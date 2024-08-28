@@ -3573,6 +3573,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta1_3(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta1_3(true);
     $('#exampleModal3').modal('hide'); // Cierra el modal
 
@@ -3582,6 +3583,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta1_4(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta1_4(true);
     $('#exampleModal4').modal('hide'); // Cierra el modal
 
@@ -3591,6 +3593,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta1_5(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta1_5(true);
     $('#exampleModal5').modal('hide'); // Cierra el modal
 
@@ -3601,6 +3604,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
   }
   //! meta 2
   filtroMeta2_1(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta2_1(true);
     $('#exampleModal9').modal('hide'); // Cierra el modal
 
@@ -3610,6 +3614,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta2_3(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta2_3(true);
     // Cierra el modal
 
@@ -3619,6 +3624,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta2_4(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta2_4(true);
     // Cierra el modal
 
@@ -3628,6 +3634,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta2_a(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta2_a(true);
     // Cierra el modal
 
@@ -3637,6 +3644,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta2_c(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta2_c(true);
     // Cierra el modal
 
@@ -3647,6 +3655,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
   }
   //! metas 3
   filtroMeta3_4(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta3_4(true);
     $('#exampleModal15').modal('hide'); // Cierra el modal
 
@@ -3656,6 +3665,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta3_7(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta3_7(true);
     $('#exampleModal16').modal('hide'); // Cierra el modal
 
@@ -3665,6 +3675,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta3_8(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta3_8(true);
     // Cierra el modal
 
@@ -3674,6 +3685,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta3_9(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta3_9(true);
     $('#exampleModal17').modal('hide'); // Cierra el modal
 
@@ -3684,6 +3696,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
   }
   //! metas4
   filtroMeta4_1(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta4_1(true);
     $('#exampleModal20').modal('hide'); // Cierra el modal
 
@@ -3693,6 +3706,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta4_2(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta4_2(true);
     $('#exampleModal21').modal('hide'); // Cierra el modal
 
@@ -3702,6 +3716,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta4_3(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta4_3(true);
     $('#exampleModal22').modal('hide'); // Cierra el modal
 
@@ -3711,6 +3726,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta4_5(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta4_5(true);
     $('#exampleModal24').modal('hide'); // Cierra el modal
 
@@ -3720,6 +3736,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta4_7(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta4_7(true);
     // Cierra el modal
 
@@ -3730,6 +3747,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
   }
   //! metas5
   filtroMeta5_1(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta5_1(true);
     // Cierra el modal
 
@@ -3739,6 +3757,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta5_2(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta5_2(true);
     $('#exampleModal29').modal('hide'); // Cierra el modal
 
@@ -3748,6 +3767,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta5_4(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta5_4(true);
     $('#exampleModal31').modal('hide'); // Cierra el modal
 
@@ -3757,6 +3777,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta5_5(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta5_5(true);
     $('#exampleModal32').modal('hide'); // Cierra el modal
 
@@ -3766,6 +3787,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta5_a(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta5_a(true);
     $('#exampleModal34').modal('hide'); // Cierra el modal
 
@@ -3776,6 +3798,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
   }
   //! metas6
   filtroMeta6_1(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta6_1(true);
     $('#exampleModal37').modal('hide'); // Cierra el modal
 
@@ -3785,6 +3808,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta6_2(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta6_2(true);
     $('#exampleModal38').modal('hide'); // Cierra el modal
 
@@ -3794,6 +3818,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta6_3(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta6_3(true);
     $('#exampleModal39').modal('hide'); // Cierra el modal
 
@@ -3803,6 +3828,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta6_4(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta6_4(true);
     $('#exampleModal40').modal('hide'); // Cierra el modal
 
@@ -3812,6 +3838,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta6_5(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta6_5(true);
     $('#exampleModal41').modal('hide'); // Cierra el modal
 
@@ -3821,6 +3848,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta6_6(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta6_6(true);
     // Cierra el modal
 
@@ -3830,6 +3858,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta6_b(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta6_b(true);
     // Cierra el modal
 
@@ -3840,6 +3869,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
   }
   //! metas7
   filtroMeta7_1(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta7_1(true);
     $('#exampleModal44').modal('hide'); // Cierra el modal
 
@@ -3849,6 +3879,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta7_2(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta7_2(true);
     $('#exampleModal45').modal('hide'); // Cierra el modal
 
@@ -3858,6 +3889,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta7_3(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta7_3(true);
     $('#exampleModal46').modal('hide'); // Cierra el modal
 
@@ -3868,6 +3900,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
   }
   //! metas8
   filtroMeta8_1(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta8_1(true);
     $('#exampleModal48').modal('hide'); // Cierra el modal
 
@@ -3877,6 +3910,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta8_2(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta8_2(true);
     $('#exampleModal49').modal('hide'); // Cierra el modal
 
@@ -3886,6 +3920,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta8_3(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta8_3(true);
     $('#exampleModal50').modal('hide'); // Cierra el modal
 
@@ -3895,6 +3930,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta8_4(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta8_4(true);
     $('#exampleModal51').modal('hide'); // Cierra el modal
 
@@ -3904,6 +3940,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta8_5(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta8_5(true);
     $('#exampleModal52').modal('hide'); // Cierra el modal
 
@@ -3913,6 +3950,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta8_6(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta8_6(true);
     $('#exampleModal53').modal('hide'); // Cierra el modal
 
@@ -3922,6 +3960,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta8_7(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta8_7(true);
     $('#exampleModal54').modal('hide'); // Cierra el modal
 
@@ -3931,6 +3970,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta8_8(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta8_8(true);
     $('#exampleModal55').modal('hide'); // Cierra el modal
 
@@ -3940,6 +3980,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta8_10(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta8_10(true);
     $('#exampleModal57').modal('hide'); // Cierra el modal
 
@@ -3949,6 +3990,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta8_a(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta8_a(true);
     // Cierra el modal
 
@@ -3958,6 +4000,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta8_b(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta8_b(true);
     // Cierra el modal
 
@@ -3968,6 +4011,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
   }
   //! metas9
   filtroMeta9_1(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta9_1(true);
     $('#exampleModal59').modal('hide'); // Cierra el modal
 
@@ -3977,6 +4021,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta9_3(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta9_3(true);
     $('#exampleModal61').modal('hide'); // Cierra el modal
 
@@ -3986,6 +4031,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta9_5(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta9_5(true);
     $('#exampleModal63').modal('hide'); // Cierra el modal
 
@@ -3996,6 +4042,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
   }
   //! metas10
   filtroMeta10_2(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta10_2(true);
     $('#exampleModal68').modal('hide'); // Cierra el modal
 
@@ -4005,6 +4052,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta10_4(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta10_4(true);
     $('#exampleModal70').modal('hide'); // Cierra el modal
 
@@ -4015,6 +4063,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
   }
   //! metas11
   filtroMeta11_1(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta11_1(true);
     $('#exampleModal72').modal('hide'); // Cierra el modal
 
@@ -4024,6 +4073,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta11_2(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta11_2(true);
     $('#exampleModal73').modal('hide'); // Cierra el modal
 
@@ -4033,6 +4083,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta11_3(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta11_3(true);
     $('#exampleModal74').modal('hide'); // Cierra el modal
 
@@ -4042,6 +4093,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta11_4(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta11_4(true);
     $('#exampleModal75').modal('hide'); // Cierra el modal
 
@@ -4051,6 +4103,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta11_5(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta11_5(true);
     $('#exampleModal76').modal('hide'); // Cierra el modal
 
@@ -4060,6 +4113,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta11_6(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta11_6(true);
     $('#exampleModal77').modal('hide'); // Cierra el modal
 
@@ -4069,6 +4123,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta11_7(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta11_7(true);
     $('#exampleModal78').modal('hide'); // Cierra el modal
 
@@ -4078,6 +4133,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta11_a(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta11_a(true);
     // Cierra el modal
 
@@ -4087,6 +4143,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta11_b(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta11_b(true);
     // Cierra el modal
 
@@ -4097,6 +4154,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
   }
   //! metas12
   filtroMeta12_2(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta12_2(true);
     $('#exampleModal80').modal('hide'); // Cierra el modal
 
@@ -4106,6 +4164,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta12_3(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta12_3(true);
     // Cierra el modal
 
@@ -4115,6 +4174,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta12_4(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta12_4(true);
     // Cierra el modal
 
@@ -4124,6 +4184,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta12_5(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta12_5(true);
     $('#exampleModal81').modal('hide'); // Cierra el modal
 
@@ -4133,6 +4194,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta12_6(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta12_6(true);
     // Cierra el modal
 
@@ -4142,6 +4204,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta12_8(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta12_8(true);
     // Cierra el modal
 
@@ -4152,6 +4215,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
   }
   //! metas13
   filtroMeta13_1(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta13_1(true);
     $('#exampleModal84').modal('hide'); // Cierra el modal
 
@@ -4161,6 +4225,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta13_2(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta13_2(true);
     // Cierra el modal
 
@@ -4170,6 +4235,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta13_3(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta13_3(true);
     $('#exampleModal85').modal('hide'); // Cierra el modal
 
@@ -4179,6 +4245,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta13_b(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta13_b(true);
     // Cierra el modal
 
@@ -4189,6 +4256,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
   }
   //! metas14
   filtroMeta14_1(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta14_1(true);
     // Cierra el modal
 
@@ -4198,6 +4266,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta14_2(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta14_2(true);
     $('#exampleModal87').modal('hide'); // Cierra el modal
 
@@ -4207,6 +4276,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta14_4(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta14_4(true);
     // Cierra el modal
 
@@ -4216,6 +4286,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta14_5(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta14_5(true);
     $('#exampleModal88').modal('hide'); // Cierra el modal
 
@@ -4226,6 +4297,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
   }
   //! metas15
   filtroMeta15_1(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta15_1(true);
     $('#exampleModal90').modal('hide'); // Cierra el modal
 
@@ -4235,6 +4307,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta15_2(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta15_2(true);
     // Cierra el modal
 
@@ -4244,6 +4317,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta15_3(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta15_3(true);
     // Cierra el modal
 
@@ -4253,6 +4327,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta15_4(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta15_4(true);
     $('#exampleModal91').modal('hide'); // Cierra el modal
 
@@ -4262,6 +4337,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta15_5(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta15_5(true);
     $('#exampleModal92').modal('hide'); // Cierra el modal
 
@@ -4271,6 +4347,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta15_7(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta15_7(true);
     // Cierra el modal
 
@@ -4280,6 +4357,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta15_a(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta15_a(true);
     // Cierra el modal
 
@@ -4290,6 +4368,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
   }
   //! metas16
   filtroMeta16_1(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta16_1(true);
     $('#exampleModal94').modal('hide'); // Cierra el modal
 
@@ -4299,6 +4378,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta16_2(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta16_2(true);
     // Cierra el modal
 
@@ -4308,6 +4388,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta16_5(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta16_5(true);
     $('#exampleModal96').modal('hide'); // Cierra el modal
 
@@ -4317,6 +4398,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta16_7(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta16_7(true);
     $('#exampleModal98').modal('hide'); // Cierra el modal
 
@@ -4326,6 +4408,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta16_10(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta16_10(true);
     // Cierra el modal
 
@@ -4335,6 +4418,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta16_a(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta16_a(true);
     // Cierra el modal
 
@@ -4344,6 +4428,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta16_b(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta16_b(true);
     $('#exampleModal100').modal('hide'); // Cierra el modal
 
@@ -4354,6 +4439,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
   }
   //! metas17
   filtroMeta17_10(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta17_10(true);
     $('#exampleModal100').modal('hide'); // Cierra el modal
 
@@ -4363,6 +4449,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta17_11(): void {
+    this._odsFlag.setMasterFlag(true)
     this._odsFlag.setMeta17_11(true);
     $('#exampleModal100').modal('hide'); // Cierra el modal
 
