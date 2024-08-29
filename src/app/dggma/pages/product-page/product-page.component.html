@@ -572,7 +572,7 @@
               <button type="button" class="btn btn-outline-dark btn-sm boton_recursos_encontrados"
                 (click)="changeFlagFilter()"><span>Filtrar</span></button>
 
-              <h5 class="card-title placeholder-glow mb-0 ms-2 flex-grow-1" [hidden]="!(products.length == 0)">
+              <h5 class="card-title placeholder-glow mb-0 ms-2 flex-grow-1" [hidden]="_mdeaTOproducts || !(products.length == 0)">
                 <span class="placeholder whit20"></span>
               </h5>
 
