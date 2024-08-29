@@ -602,7 +602,8 @@
 
 
 
-        <div style="min-height: 100vh;" [hidden]="paginatedProductsFilter.length === 0">
+          <!--! productos filtrados -->
+        <div style="min-height: 100vh;" [hidden]="!showProductsFiltrados || paginatedProductsFilter.length === 0">
 
 
             <div *ngFor="let item of paginatedProductsFilter">
@@ -643,7 +644,7 @@
             </div>
 
         </div>
-        <div class="card flex justify-content-center m-3" [hidden]="paginatedProductsFilter.length === 0">
+        <div class="card flex justify-content-center m-3" [hidden]="!showProductsFiltrados || paginatedProductsFilter.length === 0">
 
           <p-paginator (onPageChange)="onPageChangeFilter($event)" [first]="first" [rows]="rows" [totalRecords]="filteredProducts.length"
             [rowsPerPageOptions]="[10, 20, 30]"></p-paginator>
@@ -652,7 +653,7 @@
 
 
 
-
+        <!--! TODOS los productos -->
         <div style="min-height: 100vh;" [hidden]="_mdeaTOproducts || showProductsFiltrados || paginatedProducts.length === 0">
 
 
