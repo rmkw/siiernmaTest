@@ -14,10 +14,6 @@
   border-color: #113250;
 }
 
-.shadow-on-hover:hover {
-  box-shadow: 0 10px 5px -5px rgba(255, 255, 255, 0.5);
-  transition: box-shadow 0.1s ease;
-}
 
 .custom-scroll{
   overflow-y: visible;
@@ -187,3 +183,69 @@ margin-left: 1rem;
     margin-top: 1rem;
     margin-left: 10px;
 }
+.openmodalBoton{
+  --bs-btn-padding-y: .25rem;
+    --bs-btn-padding-x: .5rem;
+    --bs-btn-font-size: .75rem;
+    background-color: #113250;
+    color: #ffffff;
+    font-family: Helvetica, Sans-Serif;
+}
+.stylebuton {
+  width: max-content;
+  --bs-btn-padding-y: .25rem;
+  --bs-btn-padding-x: .5rem;
+  --bs-btn-font-size: .75rem;
+  background-color: #113250;
+  color: #ffffff;
+  font-family: Helvetica, Sans-Serif;
+}
+.truncate {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 1.25rem;
+  /* Tamaño del texto */
+}
+.titulodetarjeta {
+  color: #113250;
+  font-size: 1.25rem;
+}
+.titulodeDirecciones {
+  color: #113250;
+  font-size: 1rem;
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  /* Ocupa todo el ancho disponible */
+  width: 100%;
+  /* Ajusta al ancho del contenedor */
+}
+:host ::ng-deep .custom-tooltip .tooltip-inner {
+  max-width: 800px;
+  /* Ajusta el ancho según tus necesidades */
+  background-color: #000000e5;
+  /* Opcional: Color de fondo personalizado */
+  color: #ffffff;
+  /* Opcional: Color del texto personalizado */
+  border: 1px solid #ccc;
+  /* Color del borde */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  /* Sombra */
+  padding: 10px;
+  /* Relleno */
+  margin: 5px;
+  /* Margen */
+
+}
+::ng-deep .p-paginator .p-paginator-pages .p-paginator-page.p-highlight,
+::ng-deep .p-paginator .p-paginator-pages {
+  background-color: #113250;
+  /* Cambia esto por el color que prefieras */
+  color: white;
+  /* Cambia esto por el color del texto que prefieras */
+  /* border-color: #113250; */
+  /* Cambia esto por el color del borde que prefieras */
+}
+

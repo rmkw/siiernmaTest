@@ -588,13 +588,6 @@
                 <strong>{{displayedProductCount}}&nbsp;</strong>Recursos encontrados
               </p>
             </div>
-
-
-
-
-
-
-
           </div>
 
 
@@ -607,39 +600,30 @@
 
 
             <div *ngFor="let item of paginatedProductsFilter">
-              <div class="card shadow-on-hover" style="margin: 1rem;">
-                <div class="row card-body">
-                  <div class="col-10 d-flex align-items-center">
-                    <div *ngIf="item.dg_prod == 1">
-                      <i class="bi bi-globe me-2" style="color: #113250; font-size: 1.5rem;"></i>
-                    </div>
-                    <div *ngIf="item.dg_prod == 2">
-                      <i class="bi bi-bar-chart me-2" style="color: #113250; font-size: 1.5rem;"></i>
-                    </div>
-                    <div *ngIf="item.dg_prod == 3">
-                      <i class="bi bi-cash-stack me-2" style="color: #113250; font-size: 1.5rem;"></i>
-                    </div>
-                    <div *ngIf="item.dg_prod == 4">
-                      <i class="bi bi-bank me-2" style="color: #113250; font-size: 1.5rem;"></i>
-                    </div>
-                    <div *ngIf="item.dg_prod == 5">
-                      <i class="bi bi-file-earmark-text me-2" style="color: #113250; font-size: 1.5rem;"></i>
+              <div class="card m1rem">
+                <div class="card-header">
+                  <div class="d-flex align-items-center">
+
+                    <i [ngClass]="getIconClass(item.dg_prod)"></i>
+
+                    <div class="grid-container">
+                      <label class="truncate titulodetarjeta" [ngbTooltip]="item.nom_prod"
+                      tooltipClass="custom-tooltip" placement="top" [animation]="true" [openDelay]="200" [closeDelay]="500"
+                      autoClose="true">{{ item.nom_prod }}</label>
                     </div>
 
-                    <div>
-                      <strong class="card-title" style="color: #113250;  font-family: Helvetica, Sans-Serif;">{{item.nom_producto
-                        |
-                        uppercase}}</strong>
-                    </div>
-
-                  </div>
-                  <div class="col-2 text-end d-flex align-items-center">
-                    <div class="ms-auto">
-                      <button type="button" class="btn vermasinformacion" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
-                        (click)="openModal(item)">MásInformación</button>
+                    <div class="text-end d-flex align-items-center">
+                      <button type="button" class="btn stylebuton" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                        (click)="openModal(item)">
+                        Más Información
+                      </button>
                     </div>
                   </div>
                 </div>
+                <div class="card-footer">
+                  <small class="titulodeDirecciones">{{getDireccionGeneral(item.dg_prod)}}</small>
+                </div>
+
               </div>
             </div>
 
@@ -655,45 +639,32 @@
 
         <!--! TODOS los productos -->
         <div style="min-height: 100vh;" [hidden]="_mdeaTOproducts || showProductsFiltrados || paginatedProducts.length === 0">
-
-
-
             <div *ngFor="let item of paginatedProducts">
-              <div class="card shadow-on-hover m1rem">
-                <div class="row card-body">
-                  <div class="col-10 d-flex align-items-center">
-                    <div *ngIf="item.dg_prod == 1">
-                      <i class="bi bi-globe me-2" style="color: #113250; font-size: 1.5rem;"></i>
-                    </div>
-                    <div *ngIf="item.dg_prod == 2">
-                      <i class="bi bi-bar-chart me-2" style="color: #113250; font-size: 1.5rem;"></i>
-                    </div>
-                    <div *ngIf="item.dg_prod == 3">
-                      <i class="bi bi-cash-stack me-2" style="color: #113250; font-size: 1.5rem;"></i>
-                    </div>
-                    <div *ngIf="item.dg_prod == 4">
-                      <i class="bi bi-bank me-2" style="color: #113250; font-size: 1.5rem;"></i>
-                    </div>
-                    <div *ngIf="item.dg_prod == 5">
-                      <i class="bi bi-file-earmark-text me-2" style="color: #113250; font-size: 1.5rem;"></i>
+
+              <div class="card m1rem">
+                <div class="card-header">
+                  <div class="d-flex align-items-center">
+
+                    <i [ngClass]="getIconClass(item.dg_prod)"></i>
+
+                    <div class="grid-container">
+                      <label class="truncate titulodetarjeta" [ngbTooltip]="item.nom_prod"
+                      tooltipClass="custom-tooltip" placement="top" [animation]="true" [openDelay]="200" [closeDelay]="500"
+                      autoClose="true">{{ item.nom_prod }}</label>
                     </div>
 
-                    <div>
-                      <strong class="card-title" style="color: #113250;  font-family: Helvetica, Sans-Serif;">{{item.nom_producto
-                        |
-                        uppercase}}</strong>
-                    </div>
-
-                  </div>
-                  <div class="col-2 text-end d-flex align-items-center">
-                    <div class="ms-auto">
-                      <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
-                        (click)="openModal(item)"
-                        style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem; background-color: #113250; color: #ffffff; font-family: Helvetica, Sans-Serif;">
-                        Mas Información</button>
+                    <div class="text-end d-flex align-items-center">
+                      <button type="button" class="btn stylebuton" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                        (click)="openModal(item)">
+                        Más Información
+                      </button>
                     </div>
                   </div>
                 </div>
+                <div class="card-footer">
+                  <small class="titulodeDirecciones">{{getDireccionGeneral(item.dg_prod)}}</small>
+                </div>
+
               </div>
             </div>
 
@@ -714,7 +685,7 @@
       <div  style="margin-bottom: 10vh;" [hidden]="_mdeaTOproducts || !(products.length == 0)">
 
         <div *ngFor="let card of cardsData">
-          <div class="card shadow-on-hover m1rem" aria-hidden="true">
+          <div class="card m1rem" aria-hidden="true">
             <div class="row card-body">
               <div class="col-2">
                 <h5 class="card-title placeholder-glow">
@@ -740,7 +711,7 @@
       <div style="margin-bottom: 10vh;" [hidden]="!_mdeaTOproducts || !(paginatedProductsFilter.length === 0)">
 
         <div *ngFor="let card of cardsData">
-          <div class="card shadow-on-hover m1rem" aria-hidden="true">
+          <div class="card m1rem" aria-hidden="true">
             <div class="row card-body">
               <div class="col-2">
                 <h5 class="card-title placeholder-glow">

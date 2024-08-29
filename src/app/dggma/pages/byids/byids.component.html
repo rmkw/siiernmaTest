@@ -19,6 +19,7 @@
 
 
       </div>
+
       <div class="card flex flex-column align-items-center justify-content-center" *ngIf="files.length == 0">
 
         <div class="col-12 d-flex align-items-center mt-4">
@@ -55,13 +56,13 @@
 
 
       </div>
+
     </div>
 
+
     <div class="col" >
-
-
       <div style="min-height: 100vh;">
-<div class="row" *ngFor="let item of paginatedProducts; let i = index">
+      <div class="row" *ngFor="let item of paginatedProducts; let i = index">
 
         <div class="col">
           <div class="card mb-3">
@@ -322,6 +323,7 @@
             <div class="card-footer">
               <small class="titulodeDirecciones">{{getDireccionGeneral(item.dg_prod)}}</small>
             </div>
+
           </div>
         </div>
       </div>
@@ -359,17 +361,14 @@
 
 
               </div>
-
             </div>
           </div>
         </div>
       </div>
 
-
-
       </div>
-      <div class="card flex justify-content-center">
 
+      <div class="card flex justify-content-center">
         <p-paginator (onPageChange)="onPageChange($event)" [first]="first" [rows]="rows" [totalRecords]="arrProductos.length"
           [rowsPerPageOptions]="[10, 20, 30]"></p-paginator>
       </div>

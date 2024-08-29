@@ -361,15 +361,11 @@ export class ProductPageComponent implements OnInit {
     this.updatePaginatedProductsFilter();
   }
   ngOnInit(): void {
-
     if (this._odsFlag.getMasterFlag()) {
       this.boolFilter_ODS_o_MDEA = true;
       this._mdeaTOproducts = true;
       this._odsFlag.setMasterFlag(false);
     }
-
-
-
 
     //! Funcion que manda a llamar el servicio y los datos de este para que se pueda combinar con la transformaciión de datos a la estructura de treenode
     this._direServices.componentes().subscribe((componentes) => {
@@ -459,7 +455,7 @@ export class ProductPageComponent implements OnInit {
     //! ODS FILTER DESDE LEJOS
   }
 
-  filtros_MDEA_pageTopage(): void{
+  filtros_MDEA_pageTopage(): void {
     if (this._flagService.getFlagComp1()) {
       this._flagService.setFlagComp1(false);
       const string = 'componente_1';
@@ -865,181 +861,175 @@ export class ProductPageComponent implements OnInit {
       this.filterStates[string] = true;
       this.thisFlags();
     }
-  if (this._flagService.getFlagTopico35()) {
-    this._flagService.setFlagTopico35(false);
-    const string = 'topico_35';
-    this.selectComponentekey = string;
-    this.filterStates[string] = true;
-    this.thisFlags();
-  }
-  if (this._flagService.getFlagTopico36()) {
-    this._flagService.setFlagTopico36(false);
-    const string = 'topico_36';
-    this.selectComponentekey = string;
-    this.filterStates[string] = true;
-    this.thisFlags();
-  }
-  if (this._flagService.getFlagTopico37()) {
-    this._flagService.setFlagTopico37(false);
-    const string = 'topico_37';
-    this.selectComponentekey = string;
-    this.filterStates[string] = true;
-    this.thisFlags();
-  }
-  if (this._flagService.getFlagTopico39()) {
-    this._flagService.setFlagTopico39(false);
-    const string = 'topico_39';
-    this.selectComponentekey = string;
-    this.filterStates[string] = true;
-    this.thisFlags();
-   }
-  if (this._flagService.getFlagTopico40()) {
-    this._flagService.setFlagTopico40(false);
-    const string = 'topico_40';
-    this.selectComponentekey = string;
-    this.filterStates[string] = true;
-    this.thisFlags();
-  }
-  if (this._flagService.getFlagTopico41()) {
-    this._flagService.setFlagTopico41(false);
-    const string = 'topico_41';
-    this.selectComponentekey = string;
-    this.filterStates[string] = true;
-    this.thisFlags();
-  }
-  if (this._flagService.getFlagTopico42()) {
-    this._flagService.setFlagTopico42(false);
-    const string = 'topico_42';
-    this.selectComponentekey = string;
-    this.filterStates[string] = true;
-    this.thisFlags();
-  }
-  if (this._flagService.getFlagTopico43()) {
-    this._flagService.setFlagTopico43(false);
-    const string = 'topico_43';
-    this.selectComponentekey = string;
-    this.filterStates[string] = true;
-    this.thisFlags();
-  }
-  if (this._flagService.getFlagTopico44()) {
-    this._flagService.setFlagTopico44(false);
-    const string = 'topico_44';
-    this.selectComponentekey = string;
-    this.filterStates[string] = true;
-    this.thisFlags();
-  }
-  if (this._flagService.getFlagTopico45()) {
-    this._flagService.setFlagTopico45(false);
-    const string = 'topico_45';
-    this.selectComponentekey = string;
-    this.filterStates[string] = true;
-    this.thisFlags();
-  }
-  if (this._flagService.getFlagTopico46()) {
-    this._flagService.setFlagTopico46(false);
-    const string = 'topico_46';
-    this.selectComponentekey = string;
-    this.filterStates[string] = true;
-    this.thisFlags();
-  }
-  if (this._flagService.getFlagTopico47()) {
-    this._flagService.setFlagTopico47(false);
-    const string = 'topico_47';
-    this.selectComponentekey = string;
-    this.filterStates[string] = true;
-    this.thisFlags();
-  }
-  if (this._flagService.getFlagTopico48()) {
-    this._flagService.setFlagTopico48(false);
-    const string = 'topico_48';
-    this.selectComponentekey = string;
-    this.filterStates[string] = true;
-    this.thisFlags();
-  }
-  if (this._flagService.getFlagTopico49()) {
-    this._flagService.setFlagTopico49(false);
-    const string = 'topico_49';
-    this.selectComponentekey = string;
-    this.filterStates[string] = true;
-    this.thisFlags();
-  }
-  if (this._flagService.getFlagTopico50()) {
-    this._flagService.setFlagTopico50(false);
-    const string = 'topico_50';
-    this.selectComponentekey = string;
-    this.filterStates[string] = true;
-    this.thisFlags();
-  }
-  if (this._flagService.getFlagTopico51()) {
-    this._flagService.setFlagTopico51(false);
-    const string = 'topico_51';
-    this.selectComponentekey = string;
-    this.filterStates[string] = true;
-    this.thisFlags();
-  }
-  if (this._flagService.getFlagTopico52()) {
-    this._flagService.setFlagTopico52(false);
-    const string = 'topico_52';
-    this.selectComponentekey = string;
-    this.filterStates[string] = true;
-    this.thisFlags();
-  }
-  if (this._flagService.getFlagTopico53()) {
-    this._flagService.setFlagTopico53(false);
-    const string = 'topico_53';
-    this.selectComponentekey = string;
-    this.filterStates[string] = true;
-    this.thisFlags();
-  }
+    if (this._flagService.getFlagTopico35()) {
+      this._flagService.setFlagTopico35(false);
+      const string = 'topico_35';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagTopico36()) {
+      this._flagService.setFlagTopico36(false);
+      const string = 'topico_36';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagTopico37()) {
+      this._flagService.setFlagTopico37(false);
+      const string = 'topico_37';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagTopico39()) {
+      this._flagService.setFlagTopico39(false);
+      const string = 'topico_39';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagTopico40()) {
+      this._flagService.setFlagTopico40(false);
+      const string = 'topico_40';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagTopico41()) {
+      this._flagService.setFlagTopico41(false);
+      const string = 'topico_41';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagTopico42()) {
+      this._flagService.setFlagTopico42(false);
+      const string = 'topico_42';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagTopico43()) {
+      this._flagService.setFlagTopico43(false);
+      const string = 'topico_43';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagTopico44()) {
+      this._flagService.setFlagTopico44(false);
+      const string = 'topico_44';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagTopico45()) {
+      this._flagService.setFlagTopico45(false);
+      const string = 'topico_45';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagTopico46()) {
+      this._flagService.setFlagTopico46(false);
+      const string = 'topico_46';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagTopico47()) {
+      this._flagService.setFlagTopico47(false);
+      const string = 'topico_47';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagTopico48()) {
+      this._flagService.setFlagTopico48(false);
+      const string = 'topico_48';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagTopico49()) {
+      this._flagService.setFlagTopico49(false);
+      const string = 'topico_49';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagTopico50()) {
+      this._flagService.setFlagTopico50(false);
+      const string = 'topico_50';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagTopico51()) {
+      this._flagService.setFlagTopico51(false);
+      const string = 'topico_51';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagTopico52()) {
+      this._flagService.setFlagTopico52(false);
+      const string = 'topico_52';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagTopico53()) {
+      this._flagService.setFlagTopico53(false);
+      const string = 'topico_53';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
 
-  if (this._flagService.getFlagTopico55()) {
-    this._flagService.setFlagTopico55(false);
-    const string = 'topico_55';
-    this.selectComponentekey = string;
-    this.filterStates[string] = true;
-    this.thisFlags();
-  }
-  if (this._flagService.getFlagTopico56()) {
-    this._flagService.setFlagTopico56(false);
-    const string = 'topico_56';
-    this.selectComponentekey = string;
-    this.filterStates[string] = true;
-    this.thisFlags();
-  }
-  if (this._flagService.getFlagTopico57()) {
-    this._flagService.setFlagTopico57(false);
-    const string = 'topico_57';
-    this.selectComponentekey = string;
-    this.filterStates[string] = true;
-    this.thisFlags();
-  }
-  if (this._flagService.getFlagTopico58()) {
-    this._flagService.setFlagTopico58(false);
-    const string = 'topico_58';
-    this.selectComponentekey = string;
-    this.filterStates[string] = true;
-    this.thisFlags();
-  }
-  if (this._flagService.getFlagTopico59()) {
-    this._flagService.setFlagTopico59(false);
-    const string = 'topico_59';
-    this.selectComponentekey = string;
-    this.filterStates[string] = true;
-    this.thisFlags();
-  }
-  if (this._flagService.getFlagTopico60()) {
-    this._flagService.setFlagTopico60(false);
-    const string = 'topico_60';
-    this.selectComponentekey = string;
-    this.filterStates[string] = true;
-    this.thisFlags();
-  }
-
-
-
-
-
-
+    if (this._flagService.getFlagTopico55()) {
+      this._flagService.setFlagTopico55(false);
+      const string = 'topico_55';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagTopico56()) {
+      this._flagService.setFlagTopico56(false);
+      const string = 'topico_56';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagTopico57()) {
+      this._flagService.setFlagTopico57(false);
+      const string = 'topico_57';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagTopico58()) {
+      this._flagService.setFlagTopico58(false);
+      const string = 'topico_58';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagTopico59()) {
+      this._flagService.setFlagTopico59(false);
+      const string = 'topico_59';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagTopico60()) {
+      this._flagService.setFlagTopico60(false);
+      const string = 'topico_60';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
   }
   filtros_ods_pageTopage(): void {
     if (this._odsFlag.getMeta1_1()) {
@@ -2545,8 +2535,6 @@ export class ProductPageComponent implements OnInit {
     this.pU_selectedYearHasta = null;
     this.banderaSearchByQuery = false;
 
-
-
     this.ngOnInit();
   }
 
@@ -2672,6 +2660,41 @@ export class ProductPageComponent implements OnInit {
           this.quintaDir = 0;
         }
       }, 1);
+    }
+  }
+  getIconClass(dgProd: number | string): string {
+    const numDgProd = Number(dgProd); // Convertimos a número
+
+    switch (numDgProd) {
+      case 1:
+        return 'bi bi-globe me-2 titulodetarjeta';
+      case 2:
+        return 'bi bi-bar-chart me-2 titulodetarjeta';
+      case 3:
+        return 'bi bi-cash-stack me-2 titulodetarjeta';
+      case 4:
+        return 'bi bi-bank me-2 titulodetarjeta';
+      case 5:
+        return 'bi bi-file-earmark-text me-2 titulodetarjeta';
+      default:
+        return ''; // Retorna una cadena vacía o un ícono por defecto si es necesario
+    }
+  }
+  getDireccionGeneral(dgProd: string | number): string {
+    const numDgProd = Number(dgProd);
+    switch (numDgProd) {
+      case 1:
+        return 'Dirección General de Geografía y Medio Ambiente';
+      case 2:
+        return 'Dirección General de Estadísticas Sociodemográficas';
+      case 3:
+        return 'Dirección General de Estadísticas Económicas';
+      case 4:
+        return 'Dirección General de Estadísticas de Gobierno, Seguridad Pública y Justicia';
+      case 5:
+        return 'Dirección General de Integración, Análisis e Investigación';
+      default:
+        return '';
     }
   }
 }
