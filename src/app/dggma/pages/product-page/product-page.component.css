@@ -129,8 +129,17 @@
   color: #113250;
   font-family: Helvetica, Sans-Serif;
 }
-.whit100{
-  width: 100%
+.whit100 {
+
+  width: 100%;
+
+}
+.whit20{
+  margin-top: 1rem;
+    width: 15%;
+    height: 1em;
+    /* Ajusta la altura según sea necesario */
+    display: block;
 }
 .m1rem{
   margin: 1rem;
@@ -163,4 +172,18 @@
   text-align: center;
   color: #113250;
   font-family: Helvetica, Sans-Serif;
+}
+.boton_recursos_encontrados{
+--bs-btn-padding-y: .20rem;
+--bs-btn-padding-x: .5rem;
+--bs-btn-font-size: .75rem;
+margin-bottom: 0px;
+margin-top: 1rem;
+margin-left: 1rem;
+}
+.texto_RecursoEncontrado{
+  color: #113250;
+    margin-bottom: 0px;
+    margin-top: 1rem;
+    margin-left: 10px;
 }

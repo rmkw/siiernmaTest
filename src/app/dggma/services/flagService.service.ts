@@ -96,7 +96,17 @@ export class FlagService {
   topico59Filtro_MDEA: boolean = false;
   topico60Filtro_MDEA: boolean = false;
 
-  // TODO Servicios para obtener los productos por componente
+  masterFlagMDEA: boolean = false;
+
+  // TODO Servicios para obtener los productos por componente.
+
+  setFlagMasterMdea(value: boolean): void {
+    this.masterFlagMDEA = value;
+  }
+  getFlagMasterMdea(): boolean {
+    return this.masterFlagMDEA;
+  }
+
   setFlagComp1(value: boolean): void {
     this.componente1Filtro_MDEA = value;
   }

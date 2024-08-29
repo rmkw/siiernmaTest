@@ -145,7 +145,7 @@ export class ProductPageComponent implements OnInit {
   //! elementos que nos ayudara a filtrar
   filteredProducts: Products[] = [];
   filteredProductsBySearchByQuery: Products[] = [];
-  showFilteredProducts = false;
+  showProductsFiltrados = false;
   displayedProductCount: number = 0;
   displayedProductCountAll: number = 0;
 
@@ -240,6 +240,8 @@ export class ProductPageComponent implements OnInit {
   paginatedProducts: any[] = [];
   paginatedProductsFilter: any[] = [];
 
+  _mdeaTOproducts: boolean = false;
+
   constructor(
     private router: Router,
     private _direServices: DGService,
@@ -259,6 +261,7 @@ export class ProductPageComponent implements OnInit {
       this.pU_extractAndSortYears();
       this.pU_extractAndSortYearsHasta();
       this.filtros_ods_pageTopage();
+      this.filtros_MDEA_pageTopage();
       this.updatePaginatedProducts();
       this.updatePaginatedProductsFilter();
 
@@ -330,7 +333,7 @@ export class ProductPageComponent implements OnInit {
   }
 
   async thisFlags() {
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    await new Promise((resolve) => setTimeout(resolve, 100));
     this.applyFilters();
   }
 
@@ -358,32 +361,15 @@ export class ProductPageComponent implements OnInit {
     this.updatePaginatedProductsFilter();
   }
   ngOnInit(): void {
+
     if (this._odsFlag.getMasterFlag()) {
       this.boolFilter_ODS_o_MDEA = true;
+      this._mdeaTOproducts = true;
       this._odsFlag.setMasterFlag(false);
     }
 
-    //! botones MDEA filtro by componente
 
-    if (this._flagService.getFlagComp1()) {
-      this.changeFlagFilter();
-      this._flagService.setFlagComp1(false);
-      const string = 'componente_1';
-      this.selectComponentekey = string;
-      this.filterStates[string] = true;
-      this.thisFlags();
-    }
 
-    //! botones MDEA filtro by Subcomponentes
-
-    if (this._flagService.getFlagSubComp1()) {
-      this.changeFlagFilter();
-      this._flagService.setFlagSubComp1(false);
-      const string = 'subcomponente_1';
-      this.selectComponentekey = string;
-      this.filterStates[string] = true;
-      this.thisFlags();
-    }
 
     //! Funcion que manda a llamar el servicio y los datos de este para que se pueda combinar con la transformaciión de datos a la estructura de treenode
     this._direServices.componentes().subscribe((componentes) => {
@@ -473,6 +459,588 @@ export class ProductPageComponent implements OnInit {
     //! ODS FILTER DESDE LEJOS
   }
 
+  filtros_MDEA_pageTopage(): void{
+    if (this._flagService.getFlagComp1()) {
+      this._flagService.setFlagComp1(false);
+      const string = 'componente_1';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+
+    if (this._flagService.getFlagComp2()) {
+      this._flagService.setFlagComp2(false);
+      const string = 'componente_2';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+
+    if (this._flagService.getFlagComp3()) {
+      this._flagService.setFlagComp3(false);
+      const string = 'componente_3';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+
+    if (this._flagService.getFlagComp4()) {
+      this._flagService.setFlagComp4(false);
+      const string = 'componente_4';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+
+    if (this._flagService.getFlagComp5()) {
+      this._flagService.setFlagComp5(false);
+      const string = 'componente_5';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+
+    if (this._flagService.getFlagComp6()) {
+      this._flagService.setFlagComp6(false);
+      const string = 'componente_6';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+
+    //* subcomponentes
+    if (this._flagService.getFlagSubComp1()) {
+      this._flagService.setFlagSubComp1(false);
+      const string = 'subcomponente_1';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagSubComp2()) {
+      this._flagService.setFlagSubComp2(false);
+      const string = 'subcomponente_2';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagSubComp3()) {
+      this._flagService.setFlagSubComp3(false);
+      const string = 'subcomponente_3';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagSubComp4()) {
+      this._flagService.setFlagSubComp4(false);
+      const string = 'subcomponente_4';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagSubComp5()) {
+      this._flagService.setFlagSubComp5(false);
+      const string = 'subcomponente_5';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagSubComp6()) {
+      this._flagService.setFlagSubComp6(false);
+      const string = 'subcomponente_6';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+
+    if (this._flagService.getFlagSubComp8()) {
+      this._flagService.setFlagSubComp8(false);
+      const string = 'subcomponente_8';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagSubComp9()) {
+      this._flagService.setFlagSubComp9(false);
+      const string = 'subcomponente_9';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagSubComp10()) {
+      this._flagService.setFlagSubComp10(false);
+      const string = 'subcomponente_10';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagSubComp11()) {
+      this._flagService.setFlagSubComp11(false);
+      const string = 'subcomponente_11';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagSubComp12()) {
+      this._flagService.setFlagSubComp12(false);
+      const string = 'subcomponente_12';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagSubComp13()) {
+      this._flagService.setFlagSubComp13(false);
+      const string = 'subcomponente_13';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagSubComp14()) {
+      this._flagService.setFlagSubComp14(false);
+      const string = 'subcomponente_14';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagSubComp15()) {
+      this._flagService.setFlagSubComp15(false);
+      const string = 'subcomponente_15';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagSubComp16()) {
+      this._flagService.setFlagSubComp16(false);
+      const string = 'subcomponente_16';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagSubComp17()) {
+      this._flagService.setFlagSubComp17(false);
+      const string = 'subcomponente_17';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagSubComp18()) {
+      this._flagService.setFlagSubComp18(false);
+      const string = 'subcomponente_18';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagSubComp19()) {
+      this._flagService.setFlagSubComp19(false);
+      const string = 'subcomponente_19';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagSubComp20()) {
+      this._flagService.setFlagSubComp20(false);
+      const string = 'subcomponente_20';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagSubComp21()) {
+      this._flagService.setFlagSubComp21(false);
+      const string = 'subcomponente_21';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+
+    if (this._flagService.getFlagTopico1()) {
+      this._flagService.setFlagTopico1(false);
+      const string = 'topico_1';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagTopico2()) {
+      this._flagService.setFlagTopico2(false);
+      const string = 'topico_2';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagTopico3()) {
+      this._flagService.setFlagTopico3(false);
+      const string = 'topico_3';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagTopico4()) {
+      this._flagService.setFlagTopico4(false);
+      const string = 'topico_4';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagTopico5()) {
+      this._flagService.setFlagTopico5(false);
+      const string = 'topico_5';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagTopico6()) {
+      this._flagService.setFlagTopico6(false);
+      const string = 'topico_6';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagTopico7()) {
+      this._flagService.setFlagTopico7(false);
+      const string = 'topico_7';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+
+    if (this._flagService.getFlagTopico9()) {
+      this._flagService.setFlagTopico9(false);
+      const string = 'topico_9';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+
+    if (this._flagService.getFlagTopico11()) {
+      this._flagService.setFlagTopico11(false);
+      const string = 'topico_11';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagTopico12()) {
+      this._flagService.setFlagTopico12(false);
+      const string = 'topico_12';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagTopico13()) {
+      this._flagService.setFlagTopico13(false);
+      const string = 'topico_13';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagTopico14()) {
+      this._flagService.setFlagTopico14(false);
+      const string = 'topico_14';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagTopico15()) {
+      this._flagService.setFlagTopico15(false);
+      const string = 'topico_15';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagTopico16()) {
+      this._flagService.setFlagTopico16(false);
+      const string = 'topico_16';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagTopico17()) {
+      this._flagService.setFlagTopico17(false);
+      const string = 'topico_17';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagTopico18()) {
+      this._flagService.setFlagTopico18(false);
+      const string = 'topico_18';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+
+    if (this._flagService.getFlagTopico20()) {
+      this._flagService.setFlagTopico20(false);
+      const string = 'topico_20';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagTopico21()) {
+      this._flagService.setFlagTopico21(false);
+      const string = 'topico_21';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagTopico22()) {
+      this._flagService.setFlagTopico22(false);
+      const string = 'topico_22';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagTopico23()) {
+      this._flagService.setFlagTopico23(false);
+      const string = 'topico_23';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagTopico24()) {
+      this._flagService.setFlagTopico24(false);
+      const string = 'topico_24';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagTopico25()) {
+      this._flagService.setFlagTopico25(false);
+      const string = 'topico_25';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagTopico26()) {
+      this._flagService.setFlagTopico26(false);
+      const string = 'topico_26';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagTopico27()) {
+      this._flagService.setFlagTopico27(false);
+      const string = 'topico_27';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagTopico28()) {
+      this._flagService.setFlagTopico28(false);
+      const string = 'topico_28';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+
+    if (this._flagService.getFlagTopico30()) {
+      this._flagService.setFlagTopico30(false);
+      const string = 'topico_30';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagTopico31()) {
+      this._flagService.setFlagTopico31(false);
+      const string = 'topico_31';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagTopico32()) {
+      this._flagService.setFlagTopico32(false);
+      const string = 'topico_32';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagTopico33()) {
+      this._flagService.setFlagTopico33(false);
+      const string = 'topico_33';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+    if (this._flagService.getFlagTopico34()) {
+      this._flagService.setFlagTopico34(false);
+      const string = 'topico_34';
+      this.selectComponentekey = string;
+      this.filterStates[string] = true;
+      this.thisFlags();
+    }
+  if (this._flagService.getFlagTopico35()) {
+    this._flagService.setFlagTopico35(false);
+    const string = 'topico_35';
+    this.selectComponentekey = string;
+    this.filterStates[string] = true;
+    this.thisFlags();
+  }
+  if (this._flagService.getFlagTopico36()) {
+    this._flagService.setFlagTopico36(false);
+    const string = 'topico_36';
+    this.selectComponentekey = string;
+    this.filterStates[string] = true;
+    this.thisFlags();
+  }
+  if (this._flagService.getFlagTopico37()) {
+    this._flagService.setFlagTopico37(false);
+    const string = 'topico_37';
+    this.selectComponentekey = string;
+    this.filterStates[string] = true;
+    this.thisFlags();
+  }
+  if (this._flagService.getFlagTopico39()) {
+    this._flagService.setFlagTopico39(false);
+    const string = 'topico_39';
+    this.selectComponentekey = string;
+    this.filterStates[string] = true;
+    this.thisFlags();
+   }
+  if (this._flagService.getFlagTopico40()) {
+    this._flagService.setFlagTopico40(false);
+    const string = 'topico_40';
+    this.selectComponentekey = string;
+    this.filterStates[string] = true;
+    this.thisFlags();
+  }
+  if (this._flagService.getFlagTopico41()) {
+    this._flagService.setFlagTopico41(false);
+    const string = 'topico_41';
+    this.selectComponentekey = string;
+    this.filterStates[string] = true;
+    this.thisFlags();
+  }
+  if (this._flagService.getFlagTopico42()) {
+    this._flagService.setFlagTopico42(false);
+    const string = 'topico_42';
+    this.selectComponentekey = string;
+    this.filterStates[string] = true;
+    this.thisFlags();
+  }
+  if (this._flagService.getFlagTopico43()) {
+    this._flagService.setFlagTopico43(false);
+    const string = 'topico_43';
+    this.selectComponentekey = string;
+    this.filterStates[string] = true;
+    this.thisFlags();
+  }
+  if (this._flagService.getFlagTopico44()) {
+    this._flagService.setFlagTopico44(false);
+    const string = 'topico_44';
+    this.selectComponentekey = string;
+    this.filterStates[string] = true;
+    this.thisFlags();
+  }
+  if (this._flagService.getFlagTopico45()) {
+    this._flagService.setFlagTopico45(false);
+    const string = 'topico_45';
+    this.selectComponentekey = string;
+    this.filterStates[string] = true;
+    this.thisFlags();
+  }
+  if (this._flagService.getFlagTopico46()) {
+    this._flagService.setFlagTopico46(false);
+    const string = 'topico_46';
+    this.selectComponentekey = string;
+    this.filterStates[string] = true;
+    this.thisFlags();
+  }
+  if (this._flagService.getFlagTopico47()) {
+    this._flagService.setFlagTopico47(false);
+    const string = 'topico_47';
+    this.selectComponentekey = string;
+    this.filterStates[string] = true;
+    this.thisFlags();
+  }
+  if (this._flagService.getFlagTopico48()) {
+    this._flagService.setFlagTopico48(false);
+    const string = 'topico_48';
+    this.selectComponentekey = string;
+    this.filterStates[string] = true;
+    this.thisFlags();
+  }
+  if (this._flagService.getFlagTopico49()) {
+    this._flagService.setFlagTopico49(false);
+    const string = 'topico_49';
+    this.selectComponentekey = string;
+    this.filterStates[string] = true;
+    this.thisFlags();
+  }
+  if (this._flagService.getFlagTopico50()) {
+    this._flagService.setFlagTopico50(false);
+    const string = 'topico_50';
+    this.selectComponentekey = string;
+    this.filterStates[string] = true;
+    this.thisFlags();
+  }
+  if (this._flagService.getFlagTopico51()) {
+    this._flagService.setFlagTopico51(false);
+    const string = 'topico_51';
+    this.selectComponentekey = string;
+    this.filterStates[string] = true;
+    this.thisFlags();
+  }
+  if (this._flagService.getFlagTopico52()) {
+    this._flagService.setFlagTopico52(false);
+    const string = 'topico_52';
+    this.selectComponentekey = string;
+    this.filterStates[string] = true;
+    this.thisFlags();
+  }
+  if (this._flagService.getFlagTopico53()) {
+    this._flagService.setFlagTopico53(false);
+    const string = 'topico_53';
+    this.selectComponentekey = string;
+    this.filterStates[string] = true;
+    this.thisFlags();
+  }
+
+  if (this._flagService.getFlagTopico55()) {
+    this._flagService.setFlagTopico55(false);
+    const string = 'topico_55';
+    this.selectComponentekey = string;
+    this.filterStates[string] = true;
+    this.thisFlags();
+  }
+  if (this._flagService.getFlagTopico56()) {
+    this._flagService.setFlagTopico56(false);
+    const string = 'topico_56';
+    this.selectComponentekey = string;
+    this.filterStates[string] = true;
+    this.thisFlags();
+  }
+  if (this._flagService.getFlagTopico57()) {
+    this._flagService.setFlagTopico57(false);
+    const string = 'topico_57';
+    this.selectComponentekey = string;
+    this.filterStates[string] = true;
+    this.thisFlags();
+  }
+  if (this._flagService.getFlagTopico58()) {
+    this._flagService.setFlagTopico58(false);
+    const string = 'topico_58';
+    this.selectComponentekey = string;
+    this.filterStates[string] = true;
+    this.thisFlags();
+  }
+  if (this._flagService.getFlagTopico59()) {
+    this._flagService.setFlagTopico59(false);
+    const string = 'topico_59';
+    this.selectComponentekey = string;
+    this.filterStates[string] = true;
+    this.thisFlags();
+  }
+  if (this._flagService.getFlagTopico60()) {
+    this._flagService.setFlagTopico60(false);
+    const string = 'topico_60';
+    this.selectComponentekey = string;
+    this.filterStates[string] = true;
+    this.thisFlags();
+  }
+
+
+
+
+
+
+  }
   filtros_ods_pageTopage(): void {
     if (this._odsFlag.getMeta1_1()) {
       this._odsFlag.setMeta1_1(false);
@@ -1607,7 +2175,7 @@ export class ProductPageComponent implements OnInit {
 
     console.log('productos', this.products);
 
-    this.showFilteredProducts = false;
+    this.showProductsFiltrados = false;
     this.deleteFilterFlag = false;
 
     let shouldContinue = true;
@@ -1898,7 +2466,7 @@ export class ProductPageComponent implements OnInit {
 
     this.filteredProducts = combinedResults;
     this.displayedProductCount = this.filteredProducts.length;
-    this.showFilteredProducts = true;
+    this.showProductsFiltrados = true;
     console.log(this.filteredProducts);
     this.updatePaginatedProductsFilter();
   }
@@ -1906,14 +2474,14 @@ export class ProductPageComponent implements OnInit {
   handleComponenteFilter(): void {
     this.filteredProducts = [...this.products];
     this.displayedProductCount = this.filteredProducts.length;
-    this.showFilteredProducts = true;
+    this.showProductsFiltrados = true;
     this.applyFilters();
   }
 
   handleODSFilter(): void {
     this.filteredProducts = [...this.products];
     this.displayedProductCount = this.filteredProducts.length;
-    this.showFilteredProducts = true;
+    this.showProductsFiltrados = true;
     this.applyFilters();
   }
 
@@ -1957,7 +2525,7 @@ export class ProductPageComponent implements OnInit {
     };
 
     this.selectedRadioValue = '';
-    this.showFilteredProducts = false;
+    this.showProductsFiltrados = false;
 
     //! FECHAS SELECT referencia
     this.allYears = [];
@@ -1977,7 +2545,7 @@ export class ProductPageComponent implements OnInit {
     this.pU_selectedYearHasta = null;
     this.banderaSearchByQuery = false;
 
-    this.boolFilter_ODS_o_MDEA = false;
+
 
     this.ngOnInit();
   }
@@ -2012,7 +2580,7 @@ export class ProductPageComponent implements OnInit {
     //     this.filteredProducts = result;
 
     //     this.displayedProductCount = this.filteredProducts.length;
-    //     this.showFilteredProducts = true;
+    //     this.showProductsFiltrados = true;
     //   });
   }
 

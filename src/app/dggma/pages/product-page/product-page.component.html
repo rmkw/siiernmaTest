@@ -567,20 +567,34 @@
 <!--? ***************************************************************************************** -->
           <!--! contador de recursos encontrados -->
           <div class="row align-items-center">
+            <div class="col d-flex align-items-center">
 
-            <div class="col d-flex ms-3">
+              <button type="button" class="btn btn-outline-dark btn-sm boton_recursos_encontrados"
+                (click)="changeFlagFilter()"><span>Filtrar</span></button>
 
-              <button type="button" class="btn btn-outline-dark btn-sm" (click)="changeFlagFilter()"
-                style=" --bs-btn-padding-y: .20rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem; margin-bottom: 0px; margin-top: 1rem;"><span>Filtrar</span></button>
+              <h5 class="card-title placeholder-glow mb-0 ms-2 flex-grow-1" [hidden]="!(products.length == 0)">
+                <span class="placeholder whit20"></span>
+              </h5>
 
-              <p *ngIf="!showFilteredProducts" style="color: #113250; margin-bottom: 0px; margin-top: 1rem; margin-left: 10px;">
-                <strong>{{displayedProductCountAll}}</strong> Recursos encontrados</p>
+              <h5 class="card-title placeholder-glow mb-0 ms-2 flex-grow-1" [hidden]="!_mdeaTOproducts || !(paginatedProductsFilter.length === 0)">
+                <span class="placeholder whit20"></span>
+              </h5>
 
-              <p *ngIf="showFilteredProducts" style="color: #113250; margin-bottom: 0px; margin-top: 1rem; margin-left: 10px;">
-                <strong>{{displayedProductCount}}</strong>
-                Recursos encontrados</p>
+              <p [hidden]="_mdeaTOproducts || showProductsFiltrados || paginatedProducts.length === 0"  class="texto_RecursoEncontrado">
+                <strong>{{displayedProductCountAll}}&nbsp;</strong> Recursos encontrados
+              </p>
 
+              <p [hidden]="!showProductsFiltrados"  class="texto_RecursoEncontrado">
+                <strong>{{displayedProductCount}}&nbsp;</strong>Recursos encontrados
+              </p>
             </div>
+
+
+
+
+
+
+
           </div>
 
 
@@ -588,8 +602,8 @@
 
 
 
-        <div style="min-height: 100vh;" *ngIf="showFilteredProducts">
-          <div *ngIf="showFilteredProducts">
+        <div style="min-height: 100vh;" [hidden]="paginatedProductsFilter.length === 0">
+
 
             <div *ngFor="let item of paginatedProductsFilter">
               <div class="card shadow-on-hover" style="margin: 1rem;">
@@ -627,9 +641,9 @@
                 </div>
               </div>
             </div>
-          </div>
+
         </div>
-        <div class="card flex justify-content-center" *ngIf="showFilteredProducts">
+        <div class="card flex justify-content-center m-3" [hidden]="paginatedProductsFilter.length === 0">
 
           <p-paginator (onPageChange)="onPageChangeFilter($event)" [first]="first" [rows]="rows" [totalRecords]="filteredProducts.length"
             [rowsPerPageOptions]="[10, 20, 30]"></p-paginator>
@@ -639,9 +653,10 @@
 
 
 
-        <div style="min-height: 100vh;" *ngIf="!showFilteredProducts && products.length > 1">
+        <div style="min-height: 100vh;" [hidden]="_mdeaTOproducts || showProductsFiltrados || paginatedProducts.length === 0">
 
-          <div *ngIf="!showFilteredProducts && products.length > 1">
+
+
             <div *ngFor="let item of paginatedProducts">
               <div class="card shadow-on-hover m1rem">
                 <div class="row card-body">
@@ -680,9 +695,9 @@
                 </div>
               </div>
             </div>
-          </div>
+
         </div>
-        <div class="card flex justify-content-center" *ngIf="!showFilteredProducts && products.length > 1">
+        <div class="card flex justify-content-center m-3" [hidden]="_mdeaTOproducts || showProductsFiltrados || paginatedProducts.length === 0">
 
           <p-paginator (onPageChange)="onPageChange($event)" [first]="first" [rows]="rows" [totalRecords]="products.length"
             [rowsPerPageOptions]="[10, 20, 30]"></p-paginator>
@@ -695,7 +710,34 @@
 
 
 
-      <div *ngIf="!showFilteredProducts && products.length == 0" style="margin-bottom: 100vh;">
+      <div  style="margin-bottom: 10vh;" [hidden]="_mdeaTOproducts || !(products.length == 0)">
+
+        <div *ngFor="let card of cardsData">
+          <div class="card shadow-on-hover m1rem" aria-hidden="true">
+            <div class="row card-body">
+              <div class="col-2">
+                <h5 class="card-title placeholder-glow">
+                  <span class="placeholder col-6"></span>
+                </h5>
+              </div>
+              <div class="col">
+                <h5 class="card-title placeholder-glow">
+                  <span class="placeholder whit100"></span>
+                </h5>
+
+              </div>
+              <div class="col-2  text-end d-flex align-items-center">
+                <div class="ms-auto">
+                  <button type="button btn-moreInfo" class="btn vermasinformacionhidden">Más Información</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-bottom: 10vh;" [hidden]="!_mdeaTOproducts || !(paginatedProductsFilter.length === 0)">
+
         <div *ngFor="let card of cardsData">
           <div class="card shadow-on-hover m1rem" aria-hidden="true">
             <div class="row card-body">

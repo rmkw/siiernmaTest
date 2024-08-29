@@ -5,6 +5,7 @@ import { FlagService } from '../../services/flagService.service';
 import { Router } from '@angular/router';
 import { Products } from '../../interfaces/product.interface';
 import { DGService } from '../../services/dg.service';
+import { OdsFilterService } from '../../services/odsfilters.service';
 
 @Component({
   selector: 'app-mdea-page',
@@ -28,7 +29,8 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
     private router: Router,
     private _flagService: FlagService,
     private _direServices: DGService,
-    private renderer: Renderer2
+    private renderer: Renderer2,
+    private _odsService: OdsFilterService
   ) {}
   ngOnInit(): void {
     // Suscribirse a los datos de 'productos', 'mdea' y 'topicoMDEA'
@@ -108,7 +110,8 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
           labels: labels,
           datasets: [
             {
-              label: ' Número de productos que tienen relación con este componente ',
+              label:
+                ' Número de productos que tienen relación con este componente ',
               data: data,
               backgroundColor: [
                 'rgba(54, 162, 235, 0.6)',
@@ -184,7 +187,22 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
               // Aquí puedes redireccionar a la página deseada según la barra clicada
               switch (index) {
                 case 0:
-                  window.location.href = 'http://localhost:4200/#/dg';
+                  this.filtroComponente1();
+                  break;
+                case 1:
+                  this.filtroComponente2();
+                  break;
+                case 2:
+                  this.filtroComponente3();
+                  break;
+                case 3:
+                  this.filtroComponente4();
+                  break;
+                case 4:
+                  this.filtroComponente5();
+                  break;
+                case 5:
+                  this.filtroComponente6();
                   break;
                 // Puedes añadir más casos para las demás barras si es necesario
               }
@@ -215,7 +233,8 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
           labels: labels,
           datasets: [
             {
-              label: ' Número de productos que tienen relación con este subcomponente ',
+              label:
+                ' Número de productos que tienen relación con este subcomponente ',
               data: data,
               backgroundColor: [
                 'rgba(54, 162, 235, 0.6)',
@@ -260,11 +279,30 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
             },
           },
           onHover: (event, elements) => {
-            const target = chartElement; 
+            const target = chartElement;
             if (elements.length > 0) {
-              target.style.cursor = 'pointer'; 
+              target.style.cursor = 'pointer';
             } else {
-              target.style.cursor = 'default'; 
+              target.style.cursor = 'default';
+            }
+          },
+          onClick: (event, elements) => {
+            if (elements && elements.length > 0) {
+              const index = elements[0].index;
+              // Aquí puedes redireccionar a la página deseada según la barra clicada
+              switch (index) {
+                case 0:
+                  this.filtroSubComponente1();
+                  break;
+                case 1:
+                  this.filtroSubComponente2();
+                  break;
+                case 2:
+                  this.filtroSubComponente3();
+                  break;
+
+                // Puedes añadir más casos para las demás barras si es necesario
+              }
             }
           },
         },
@@ -296,7 +334,8 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
           labels: labels,
           datasets: [
             {
-              label: ' Número de productos que tienen relación con este subcomponente',
+              label:
+                ' Número de productos que tienen relación con este subcomponente',
               data: data,
               backgroundColor: [
                 'rgba(255, 159, 64, 0.6)',
@@ -345,11 +384,36 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
             },
           },
           onHover: (event, elements) => {
-            const target = chartElement; 
+            const target = chartElement;
             if (elements.length > 0) {
-              target.style.cursor = 'pointer'; 
+              target.style.cursor = 'pointer';
             } else {
-              target.style.cursor = 'default'; 
+              target.style.cursor = 'default';
+            }
+          },
+          onClick: (event, elements) => {
+            if (elements && elements.length > 0) {
+              const index = elements[0].index;
+              // Aquí puedes redireccionar a la página deseada según la barra clicada
+              switch (index) {
+                case 0:
+                  this.filtroSubComponente4();
+                  break;
+                case 1:
+                  this.filtroSubComponente5();
+                  break;
+                case 2:
+                  this.filtroSubComponente6();
+                  break;
+                case 3:
+                  this.filtroSubComponente8();
+                  break;
+                case 4:
+                  this.filtroSubComponente9();
+                  break;
+
+                // Puedes añadir más casos para las demás barras si es necesario
+              }
             }
           },
         },
@@ -378,7 +442,8 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
           labels: labels,
           datasets: [
             {
-              label: ' Número de productos que tienen relación con este subcomponente',
+              label:
+                ' Número de productos que tienen relación con este subcomponente',
               data: data,
               backgroundColor: [
                 'rgba(255, 99, 132, 0.6)',
@@ -425,11 +490,33 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
             },
           },
           onHover: (event, elements) => {
-            const target = chartElement; 
+            const target = chartElement;
             if (elements.length > 0) {
-              target.style.cursor = 'pointer'; 
+              target.style.cursor = 'pointer';
             } else {
-              target.style.cursor = 'default'; 
+              target.style.cursor = 'default';
+            }
+          },
+          onClick: (event, elements) => {
+            if (elements && elements.length > 0) {
+              const index = elements[0].index;
+              // Aquí puedes redireccionar a la página deseada según la barra clicada
+              switch (index) {
+                case 0:
+                  this.filtroSubComponente10();
+                  break;
+                case 1:
+                  this.filtroSubComponente11();
+                  break;
+                case 2:
+                  this.filtroSubComponente12();
+                  break;
+                case 3:
+                  this.filtroSubComponente13();
+                  break;
+
+                // Puedes añadir más casos para las demás barras si es necesario
+              }
             }
           },
         },
@@ -456,7 +543,8 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
           labels: labels,
           datasets: [
             {
-              label: ' Número de productos que tienen relación con este subcomponente',
+              label:
+                ' Número de productos que tienen relación con este subcomponente',
               data: data,
               backgroundColor: [
                 'rgba(153, 102, 255, 0.6)',
@@ -496,11 +584,27 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
             },
           },
           onHover: (event, elements) => {
-            const target = chartElement; 
+            const target = chartElement;
             if (elements.length > 0) {
-              target.style.cursor = 'pointer'; 
+              target.style.cursor = 'pointer';
             } else {
-              target.style.cursor = 'default'; 
+              target.style.cursor = 'default';
+            }
+          },
+          onClick: (event, elements) => {
+            if (elements && elements.length > 0) {
+              const index = elements[0].index;
+              // Aquí puedes redireccionar a la página deseada según la barra clicada
+              switch (index) {
+                case 0:
+                  this.filtroSubComponente14();
+                  break;
+                case 1:
+                  this.filtroSubComponente15();
+                  break;
+
+                // Puedes añadir más casos para las demás barras si es necesario
+              }
             }
           },
         },
@@ -524,7 +628,8 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
           labels: labels,
           datasets: [
             {
-              label: ' Número de productos que tienen relación con este subcomponente',
+              label:
+                ' Número de productos que tienen relación con este subcomponente',
               data: data,
               backgroundColor: [
                 'rgba(75, 192, 192, 0.6)',
@@ -564,11 +669,27 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
             },
           },
           onHover: (event, elements) => {
-            const target = chartElement; 
+            const target = chartElement;
             if (elements.length > 0) {
-              target.style.cursor = 'pointer'; 
+              target.style.cursor = 'pointer';
             } else {
               target.style.cursor = 'default';
+            }
+          },
+          onClick: (event, elements) => {
+            if (elements && elements.length > 0) {
+              const index = elements[0].index;
+              // Aquí puedes redireccionar a la página deseada según la barra clicada
+              switch (index) {
+                case 0:
+                  this.filtroSubComponente16();
+                  break;
+                case 1:
+                  this.filtroSubComponente17();
+                  break;
+
+                // Puedes añadir más casos para las demás barras si es necesario
+              }
             }
           },
         },
@@ -597,7 +718,8 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
           labels: labels,
           datasets: [
             {
-              label: ' Número de productos que tienen relación con este subcomponente ',
+              label:
+                ' Número de productos que tienen relación con este subcomponente ',
               data: data,
               backgroundColor: [
                 'rgba(255, 205, 86, 0.6)',
@@ -644,11 +766,33 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
             },
           },
           onHover: (event, elements) => {
-            const target = chartElement; 
+            const target = chartElement;
             if (elements.length > 0) {
-              target.style.cursor = 'pointer'; 
+              target.style.cursor = 'pointer';
             } else {
-              target.style.cursor = 'default'; 
+              target.style.cursor = 'default';
+            }
+          },
+          onClick: (event, elements) => {
+            if (elements && elements.length > 0) {
+              const index = elements[0].index;
+              // Aquí puedes redireccionar a la página deseada según la barra clicada
+              switch (index) {
+                case 0:
+                  this.filtroSubComponente18();
+                  break;
+                case 1:
+                  this.filtroSubComponente19();
+                  break;
+                case 2:
+                  this.filtroSubComponente20();
+                  break;
+                case 3:
+                  this.filtroSubComponente21();
+                  break;
+
+                // Puedes añadir más casos para las demás barras si es necesario
+              }
             }
           },
         },
@@ -667,7 +811,7 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
       '1.1.3: Información geológica y geográfica',
       '1.1.4: Características del suelo',
     ];
-    const data = [23, 40, 70, 35];
+    const data = [23, 40, 70, 35, 90];
     const chartElement = document.getElementById(
       'topico1'
     ) as HTMLCanvasElement;
@@ -679,7 +823,8 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
           labels: labels,
           datasets: [
             {
-              label: ' Número de productos que tienen relación con este tópico ',
+              label:
+                ' Número de productos que tienen relación con este tópico ',
               data: data,
               backgroundColor: [
                 'rgba(54, 162, 235, 0.6)',
@@ -724,11 +869,33 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
             },
           },
           onHover: (event, elements) => {
-            const target = chartElement; 
+            const target = chartElement;
             if (elements.length > 0) {
-              target.style.cursor = 'pointer'; 
+              target.style.cursor = 'pointer';
             } else {
-              target.style.cursor = 'default'; 
+              target.style.cursor = 'default';
+            }
+          },
+          onClick: (event, elements) => {
+            if (elements && elements.length > 0) {
+              const index = elements[0].index;
+              // Aquí puedes redireccionar a la página deseada según la barra clicada
+              switch (index) {
+                case 0:
+                  this.filtroTopico1();
+                  break;
+                case 1:
+                  this.filtroTopico2();
+                  break;
+                case 2:
+                  this.filtroTopico3();
+                  break;
+                case 3:
+                  this.filtroTopico4();
+                  break;
+
+                // Puedes añadir más casos para las demás barras si es necesario
+              }
             }
           },
         },
@@ -756,7 +923,8 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
           labels: labels,
           datasets: [
             {
-              label: ' Número de productos que tienen relación con este tópico ',
+              label:
+                ' Número de productos que tienen relación con este tópico ',
               data: data,
               backgroundColor: [
                 'rgba(54, 162, 235, 0.6)',
@@ -801,11 +969,30 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
             },
           },
           onHover: (event, elements) => {
-            const target = chartElement; 
+            const target = chartElement;
             if (elements.length > 0) {
-              target.style.cursor = 'pointer'; 
+              target.style.cursor = 'pointer';
             } else {
-              target.style.cursor = 'default'; 
+              target.style.cursor = 'default';
+            }
+          },
+          onClick: (event, elements) => {
+            if (elements && elements.length > 0) {
+              const index = elements[0].index;
+              // Aquí puedes redireccionar a la página deseada según la barra clicada
+              switch (index) {
+                case 0:
+                  this.filtroTopico5();
+                  break;
+                case 1:
+                  this.filtroTopico6();
+                  break;
+                case 2:
+                  this.filtroTopico7();
+                  break;
+
+                // Puedes añadir más casos para las demás barras si es necesario
+              }
             }
           },
         },
@@ -820,7 +1007,7 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
       '1.3.4: Contaminación del suelo',
       '1.3.5: Ruido',
     ];
-    const data = [6, 5, 4];
+    const data = [6, 5, 4, 8];
     const chartElement = document.getElementById(
       'topico3'
     ) as HTMLCanvasElement;
@@ -832,7 +1019,8 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
           labels: labels,
           datasets: [
             {
-              label: ' Número de productos que tienen relación con este tópico ',
+              label:
+                ' Número de productos que tienen relación con este tópico ',
               data: data,
               backgroundColor: [
                 'rgba(54, 162, 235, 0.6)',
@@ -877,11 +1065,30 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
             },
           },
           onHover: (event, elements) => {
-            const target = chartElement; 
+            const target = chartElement;
             if (elements.length > 0) {
-              target.style.cursor = 'pointer'; 
+              target.style.cursor = 'pointer';
             } else {
-              target.style.cursor = 'default'; 
+              target.style.cursor = 'default';
+            }
+          },
+          onClick: (event, elements) => {
+            if (elements && elements.length > 0) {
+              const index = elements[0].index;
+              // Aquí puedes redireccionar a la página deseada según la barra clicada
+              switch (index) {
+                case 0:
+                  this.filtroTopico9();
+                  break;
+                case 1:
+                  this.filtroTopico11();
+                  break;
+                case 2:
+                  this.filtroTopico12();
+                  break;
+
+                // Puedes añadir más casos para las demás barras si es necesario
+              }
             }
           },
         },
@@ -908,7 +1115,8 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
           labels: labels,
           datasets: [
             {
-              label: ' Número de productos que tienen relación con este tópico ',
+              label:
+                ' Número de productos que tienen relación con este tópico ',
               data: data,
               backgroundColor: [
                 'rgba(255, 159, 64, 0.6)',
@@ -948,11 +1156,27 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
             },
           },
           onHover: (event, elements) => {
-            const target = chartElement; 
+            const target = chartElement;
             if (elements.length > 0) {
-              target.style.cursor = 'pointer'; 
+              target.style.cursor = 'pointer';
             } else {
-              target.style.cursor = 'default'; 
+              target.style.cursor = 'default';
+            }
+          },
+          onClick: (event, elements) => {
+            if (elements && elements.length > 0) {
+              const index = elements[0].index;
+              // Aquí puedes redireccionar a la página deseada según la barra clicada
+              switch (index) {
+                case 0:
+                  this.filtroTopico13();
+                  break;
+                case 1:
+                  this.filtroTopico14();
+                  break;
+
+                // Puedes añadir más casos para las demás barras si es necesario
+              }
             }
           },
         },
@@ -978,7 +1202,8 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
           labels: labels,
           datasets: [
             {
-              label: ' Número de productos que tienen relación con este tópico ',
+              label:
+                ' Número de productos que tienen relación con este tópico ',
               data: data,
               backgroundColor: [
                 'rgba(255, 159, 64, 0.6)',
@@ -1018,11 +1243,27 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
             },
           },
           onHover: (event, elements) => {
-            const target = chartElement; 
+            const target = chartElement;
             if (elements.length > 0) {
-              target.style.cursor = 'pointer'; 
+              target.style.cursor = 'pointer';
             } else {
-              target.style.cursor = 'default'; 
+              target.style.cursor = 'default';
+            }
+          },
+          onClick: (event, elements) => {
+            if (elements && elements.length > 0) {
+              const index = elements[0].index;
+              // Aquí puedes redireccionar a la página deseada según la barra clicada
+              switch (index) {
+                case 0:
+                  this.filtroTopico15();
+                  break;
+                case 1:
+                  this.filtroTopico16();
+                  break;
+
+                // Puedes añadir más casos para las demás barras si es necesario
+              }
             }
           },
         },
@@ -1048,7 +1289,8 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
           labels: labels,
           datasets: [
             {
-              label: ' Número de productos que tienen relación con este tópico ',
+              label:
+                ' Número de productos que tienen relación con este tópico ',
               data: data,
               backgroundColor: [
                 'rgba(255, 159, 64, 0.6)',
@@ -1088,11 +1330,27 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
             },
           },
           onHover: (event, elements) => {
-            const target = chartElement; 
+            const target = chartElement;
             if (elements.length > 0) {
               target.style.cursor = 'pointer';
             } else {
-              target.style.cursor = 'default'; 
+              target.style.cursor = 'default';
+            }
+          },
+          onClick: (event, elements) => {
+            if (elements && elements.length > 0) {
+              const index = elements[0].index;
+              // Aquí puedes redireccionar a la página deseada según la barra clicada
+              switch (index) {
+                case 0:
+                  this.filtroTopico17();
+                  break;
+                case 1:
+                  this.filtroTopico18();
+                  break;
+
+                // Puedes añadir más casos para las demás barras si es necesario
+              }
             }
           },
         },
@@ -1121,7 +1379,8 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
           labels: labels,
           datasets: [
             {
-              label: ' Número de productos que tienen relación con este tópico ',
+              label:
+                ' Número de productos que tienen relación con este tópico ',
               data: data,
               backgroundColor: [
                 'rgba(255, 159, 64, 0.6)',
@@ -1170,11 +1429,36 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
             },
           },
           onHover: (event, elements) => {
-            const target = chartElement; 
+            const target = chartElement;
             if (elements.length > 0) {
-              target.style.cursor = 'pointer'; 
+              target.style.cursor = 'pointer';
             } else {
               target.style.cursor = 'default';
+            }
+          },
+          onClick: (event, elements) => {
+            if (elements && elements.length > 0) {
+              const index = elements[0].index;
+              // Aquí puedes redireccionar a la página deseada según la barra clicada
+              switch (index) {
+                case 0:
+                  this.filtroTopico20();
+                  break;
+                case 1:
+                  this.filtroTopico21();
+                  break;
+                case 2:
+                  this.filtroTopico22();
+                  break;
+                case 3:
+                  this.filtroTopico23();
+                  break;
+                case 4:
+                  this.filtroTopico24();
+                  break;
+
+                // Puedes añadir más casos para las demás barras si es necesario
+              }
             }
           },
         },
@@ -1200,7 +1484,8 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
           labels: labels,
           datasets: [
             {
-              label: ' Número de productos que tienen relación con este tópico ',
+              label:
+                ' Número de productos que tienen relación con este tópico ',
               data: data,
               backgroundColor: [
                 'rgba(255, 159, 64, 0.6)',
@@ -1240,11 +1525,27 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
             },
           },
           onHover: (event, elements) => {
-            const target = chartElement; 
+            const target = chartElement;
             if (elements.length > 0) {
-              target.style.cursor = 'pointer'; 
+              target.style.cursor = 'pointer';
             } else {
               target.style.cursor = 'default';
+            }
+          },
+          onClick: (event, elements) => {
+            if (elements && elements.length > 0) {
+              const index = elements[0].index;
+              // Aquí puedes redireccionar a la página deseada según la barra clicada
+              switch (index) {
+                case 0:
+                  this.filtroTopico25();
+                  break;
+                case 1:
+                  this.filtroTopico26();
+                  break;
+
+                // Puedes añadir más casos para las demás barras si es necesario
+              }
             }
           },
         },
@@ -1259,7 +1560,7 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
       ['3.1.1: Emisiones de gases', 'efecto invernadero (GEI)'],
       ['3.1.2: Consumo de sustancias', 'agotadoras de la capa de ozono (SAO)'],
     ];
-    const data = [6, 5];
+    const data = [6, 5, 9];
     const chartElement = document.getElementById(
       'topico9'
     ) as HTMLCanvasElement;
@@ -1271,7 +1572,8 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
           labels: labels,
           datasets: [
             {
-              label: ' Número de productos que tienen relación con este tópico ',
+              label:
+                ' Número de productos que tienen relación con este tópico ',
               data: data,
               backgroundColor: [
                 'rgba(255, 99, 132, 0.6)',
@@ -1311,11 +1613,27 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
             },
           },
           onHover: (event, elements) => {
-            const target = chartElement; 
+            const target = chartElement;
             if (elements.length > 0) {
-              target.style.cursor = 'pointer'; 
+              target.style.cursor = 'pointer';
             } else {
-              target.style.cursor = 'default'; 
+              target.style.cursor = 'default';
+            }
+          },
+          onClick: (event, elements) => {
+            if (elements && elements.length > 0) {
+              const index = elements[0].index;
+              // Aquí puedes redireccionar a la página deseada según la barra clicada
+              switch (index) {
+                case 0:
+                  this.filtroTopico27();
+                  break;
+                case 1:
+                  this.filtroTopico28();
+                  break;
+
+                // Puedes añadir más casos para las demás barras si es necesario
+              }
             }
           },
         },
@@ -1330,7 +1648,7 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
       ['3.2.2: Recolección y tratamiento', 'de aguas residuales'],
       ['3.2.3: Descargas de aguas residuales', 'al ambiente'],
     ];
-    const data = [1, 20, 8];
+    const data = [1, 20, 8, 22];
     const chartElement = document.getElementById(
       'topico10'
     ) as HTMLCanvasElement;
@@ -1342,7 +1660,8 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
           labels: labels,
           datasets: [
             {
-              label: ' Número de productos que tienen relación con este tópico ',
+              label:
+                ' Número de productos que tienen relación con este tópico ',
               data: data,
               backgroundColor: [
                 'rgba(255, 99, 132, 0.6)',
@@ -1394,6 +1713,25 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
               target.style.cursor = 'default'; // Restaura el cursor predeterminado
             }
           },
+          onClick: (event, elements) => {
+            if (elements && elements.length > 0) {
+              const index = elements[0].index;
+              // Aquí puedes redireccionar a la página deseada según la barra clicada
+              switch (index) {
+                case 0:
+                  this.filtroTopico30();
+                  break;
+                case 1:
+                  this.filtroTopico31();
+                  break;
+                case 2:
+                  this.filtroTopico32();
+                  break;
+
+                // Puedes añadir más casos para las demás barras si es necesario
+              }
+            }
+          },
         },
       });
     } else {
@@ -1417,7 +1755,8 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
           labels: labels,
           datasets: [
             {
-              label: ' Número de productos que tienen relación con este tópico ',
+              label:
+                ' Número de productos que tienen relación con este tópico ',
               data: data,
               backgroundColor: [
                 'rgba(255, 99, 132, 0.6)',
@@ -1464,6 +1803,22 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
               target.style.cursor = 'default'; // Restaura el cursor predeterminado
             }
           },
+          onClick: (event, elements) => {
+            if (elements && elements.length > 0) {
+              const index = elements[0].index;
+              // Aquí puedes redireccionar a la página deseada según la barra clicada
+              switch (index) {
+                case 0:
+                  this.filtroTopico33();
+                  break;
+                case 1:
+                  this.filtroTopico34();
+                  break;
+
+                // Puedes añadir más casos para las demás barras si es necesario
+              }
+            }
+          },
         },
       });
     } else {
@@ -1472,7 +1827,7 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
   }
   createChart18(): void {
     const labels = [['3.4.1: Aplicación de químicos']];
-    const data = [12];
+    const data = [12, 15];
     const chartElement = document.getElementById(
       'topico12'
     ) as HTMLCanvasElement;
@@ -1484,7 +1839,8 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
           labels: labels,
           datasets: [
             {
-              label: ' Número de productos que tienen relación con este tópico ',
+              label:
+                ' Número de productos que tienen relación con este tópico ',
               data: data,
               backgroundColor: ['rgba(255, 99, 132, 0.6)'],
               borderColor: ['rgb(255, 99, 132)'],
@@ -1528,6 +1884,19 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
               target.style.cursor = 'default'; // Restaura el cursor predeterminado
             }
           },
+          onClick: (event, elements) => {
+            if (elements && elements.length > 0) {
+              const index = elements[0].index;
+              // Aquí puedes redireccionar a la página deseada según la barra clicada
+              switch (index) {
+                case 0:
+                  this.filtroTopico35();
+                  break;
+
+                // Puedes añadir más casos para las demás barras si es necesario
+              }
+            }
+          },
         },
       });
     } else {
@@ -1540,7 +1909,7 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
       '4.1.1: Ocurrencia de eventos naturales extremos y desastres',
       '4.1.2: Impacto de eventos naturales extremos y desastres',
     ];
-    const data = [18, 13];
+    const data = [18, 13, 20];
     const chartElement = document.getElementById(
       'topico13'
     ) as HTMLCanvasElement;
@@ -1597,6 +1966,22 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
               target.style.cursor = 'pointer'; // Cambia el cursor a mano (puntero)
             } else {
               target.style.cursor = 'default'; // Restaura el cursor predeterminado
+            }
+          },
+          onClick: (event, elements) => {
+            if (elements && elements.length > 0) {
+              const index = elements[0].index;
+              // Aquí puedes redireccionar a la página deseada según la barra clicada
+              switch (index) {
+                case 0:
+                  this.filtroTopico36();
+                  break;
+                case 1:
+                  this.filtroTopico37();
+                  break;
+
+                // Puedes añadir más casos para las demás barras si es necesario
+              }
             }
           },
         },
@@ -1664,6 +2049,19 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
               target.style.cursor = 'pointer'; // Cambia el cursor a mano (puntero)
             } else {
               target.style.cursor = 'default'; // Restaura el cursor predeterminado
+            }
+          },
+          onClick: (event, elements) => {
+            if (elements && elements.length > 0) {
+              const index = elements[0].index;
+              // Aquí puedes redireccionar a la página deseada según la barra clicada
+              switch (index) {
+                case 0:
+                  this.filtroTopico39();
+                  break;
+
+                // Puedes añadir más casos para las demás barras si es necesario
+              }
             }
           },
         },
@@ -1751,6 +2149,31 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
               target.style.cursor = 'pointer'; // Cambia el cursor a mano (puntero)
             } else {
               target.style.cursor = 'default'; // Restaura el cursor predeterminado
+            }
+          },
+          onClick: (event, elements) => {
+            if (elements && elements.length > 0) {
+              const index = elements[0].index;
+              // Aquí puedes redireccionar a la página deseada según la barra clicada
+              switch (index) {
+                case 0:
+                  this.filtroTopico40();
+                  break;
+                case 1:
+                  this.filtroTopico41();
+                  break;
+                case 2:
+                  this.filtroTopico42();
+                  break;
+                case 3:
+                  this.filtroTopico43();
+                  break;
+                case 4:
+                  this.filtroTopico44();
+                  break;
+
+                // Puedes añadir más casos para las demás barras si es necesario
+              }
             }
           },
         },
@@ -1845,6 +2268,31 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
               target.style.cursor = 'default'; // Restaura el cursor predeterminado
             }
           },
+          onClick: (event, elements) => {
+            if (elements && elements.length > 0) {
+              const index = elements[0].index;
+              // Aquí puedes redireccionar a la página deseada según la barra clicada
+              switch (index) {
+                case 0:
+                  this.filtroTopico45();
+                  break;
+                case 1:
+                  this.filtroTopico46();
+                  break;
+                case 2:
+                  this.filtroTopico47();
+                  break;
+                case 3:
+                  this.filtroTopico48();
+                  break;
+                case 4:
+                  this.filtroTopico49();
+                  break;
+
+                // Puedes añadir más casos para las demás barras si es necesario
+              }
+            }
+          },
         },
       });
     } else {
@@ -1855,10 +2303,12 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
   createChart23(): void {
     const labels = [
       [
-        '6.1.1: Gasto público en protección ambiental','y en gestión de recursos naturales',
+        '6.1.1: Gasto público en protección ambiental',
+        'y en gestión de recursos naturales',
       ],
       [
-        '6.1.2: Gasto de empresas privadas, de institución', 'ambiental y en gestión de recursos naturales',
+        '6.1.2: Gasto de empresas privadas, de institución',
+        'ambiental y en gestión de recursos naturales',
       ],
     ];
     const data = [57, 30];
@@ -1918,6 +2368,22 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
               target.style.cursor = 'pointer'; // Cambia el cursor a mano (puntero)
             } else {
               target.style.cursor = 'default'; // Restaura el cursor predeterminado
+            }
+          },
+          onClick: (event, elements) => {
+            if (elements && elements.length > 0) {
+              const index = elements[0].index;
+              // Aquí puedes redireccionar a la página deseada según la barra clicada
+              switch (index) {
+                case 0:
+                  this.filtroTopico50();
+                  break;
+                case 1:
+                  this.filtroTopico51();
+                  break;
+
+                // Puedes añadir más casos para las demás barras si es necesario
+              }
             }
           },
         },
@@ -1991,6 +2457,22 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
               target.style.cursor = 'default'; // Restaura el cursor predeterminado
             }
           },
+          onClick: (event, elements) => {
+            if (elements && elements.length > 0) {
+              const index = elements[0].index;
+              // Aquí puedes redireccionar a la página deseada según la barra clicada
+              switch (index) {
+                case 0:
+                  this.filtroTopico52();
+                  break;
+                case 1:
+                  this.filtroTopico53();
+                  break;
+
+                // Puedes añadir más casos para las demás barras si es necesario
+              }
+            }
+          },
         },
       });
     } else {
@@ -2061,6 +2543,22 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
               target.style.cursor = 'default'; // Restaura el cursor predeterminado
             }
           },
+          onClick: (event, elements) => {
+            if (elements && elements.length > 0) {
+              const index = elements[0].index;
+              // Aquí puedes redireccionar a la página deseada según la barra clicada
+              switch (index) {
+                case 0:
+                  this.filtroTopico55();
+                  break;
+                case 1:
+                  this.filtroTopico56();
+                  break;
+
+                // Puedes añadir más casos para las demás barras si es necesario
+              }
+            }
+          },
         },
       });
     } else {
@@ -2074,7 +2572,7 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
       ['6.4.3: Percepción', 'y conciencia ambiental'],
       ['6.4.4: Participación/acción', 'ambiental'],
     ];
-    const data = [4,15,53,30];
+    const data = [4, 15, 53, 30];
     const chartElement = document.getElementById(
       'topico20'
     ) as HTMLCanvasElement;
@@ -2138,6 +2636,28 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
               target.style.cursor = 'pointer'; // Cambia el cursor a mano (puntero)
             } else {
               target.style.cursor = 'default'; // Restaura el cursor predeterminado
+            }
+          },
+          onClick: (event, elements) => {
+            if (elements && elements.length > 0) {
+              const index = elements[0].index;
+              // Aquí puedes redireccionar a la página deseada según la barra clicada
+              switch (index) {
+                case 0:
+                  this.filtroTopico57();
+                  break;
+                case 1:
+                  this.filtroTopico58();
+                  break;
+                case 2:
+                  this.filtroTopico59();
+                  break;
+                case 3:
+                  this.filtroTopico60();
+                  break;
+
+                // Puedes añadir más casos para las demás barras si es necesario
+              }
             }
           },
         },
@@ -2206,6 +2726,581 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
       };
     });
     return counts;
+  }
+  //! links para filtrado
+  filtroComponente1(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagComp1(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroComponente2(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagComp2(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroComponente3(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagComp3(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroComponente4(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagComp4(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroComponente5(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagComp5(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroComponente6(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagComp6(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+
+  filtroSubComponente1(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagSubComp1(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+
+  filtroSubComponente2(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagSubComp2(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroSubComponente3(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagSubComp3(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroSubComponente4(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagSubComp4(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroSubComponente5(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagSubComp5(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroSubComponente6(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagSubComp6(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+
+  filtroSubComponente8(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagSubComp8(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroSubComponente9(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagSubComp9(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroSubComponente10(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagSubComp10(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroSubComponente11(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagSubComp11(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroSubComponente12(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagSubComp12(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroSubComponente13(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagSubComp13(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroSubComponente14(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagSubComp14(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroSubComponente15(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagSubComp15(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroSubComponente16(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagSubComp16(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroSubComponente17(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagSubComp17(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroSubComponente18(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagSubComp18(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroSubComponente19(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagSubComp19(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroSubComponente20(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagSubComp20(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroSubComponente21(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagSubComp21(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+
+  filtroTopico1(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagTopico1(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroTopico2(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagTopico2(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroTopico3(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagTopico3(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroTopico4(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagTopico4(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroTopico5(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagTopico5(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroTopico6(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagTopico6(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroTopico7(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagTopico7(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+
+  filtroTopico9(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagTopico9(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroTopico11(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagTopico11(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroTopico12(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagTopico12(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroTopico13(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagTopico13(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroTopico14(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagTopico14(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroTopico15(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagTopico15(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroTopico16(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagTopico16(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroTopico17(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagTopico17(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroTopico18(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagTopico18(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+
+  filtroTopico20(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagTopico20(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroTopico21(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagTopico21(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroTopico22(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagTopico22(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroTopico23(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagTopico23(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroTopico24(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagTopico24(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroTopico25(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagTopico25(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroTopico26(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagTopico26(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroTopico27(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagTopico27(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroTopico28(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagTopico28(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroTopico29(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagTopico29(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroTopico30(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagTopico30(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroTopico31(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagTopico31(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroTopico32(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagTopico32(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroTopico33(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagTopico33(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroTopico34(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagTopico34(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroTopico35(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagTopico35(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroTopico36(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagTopico36(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroTopico37(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagTopico37(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroTopico39(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagTopico39(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroTopico40(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagTopico40(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroTopico41(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagTopico41(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroTopico42(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagTopico42(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroTopico43(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagTopico43(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroTopico44(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagTopico44(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroTopico45(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagTopico45(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroTopico46(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagTopico46(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroTopico47(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagTopico47(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroTopico48(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagTopico48(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroTopico49(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagTopico49(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroTopico50(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagTopico50(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroTopico51(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagTopico51(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroTopico52(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagTopico52(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroTopico53(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagTopico53(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+
+  filtroTopico55(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagTopico55(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroTopico56(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagTopico56(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroTopico57(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagTopico57(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroTopico58(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagTopico58(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroTopico59(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagTopico59(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  filtroTopico60(): void {
+    this._odsService.setMasterFlag(true);
+    this._flagService.setFlagTopico60(true);
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
   }
 }
 
