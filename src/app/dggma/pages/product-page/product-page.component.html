@@ -748,14 +748,14 @@
     <div class="modal-dialog modal-xl">
       <div class="modal-content">
 
-        <div class="modal-header">
+        <div class="modal-header" style="background-color: #113250;">
           <!--! ICONOS DEL PRODUCTO -->
           <div class="d-flex align-items-center">
 
-            <i [ngClass]="getIconClass(elementoSeleccionado?.dg_prod)"></i>
+            <i style="color: white;" [ngClass]="getIconClass(elementoSeleccionado?.dg_prod)"></i>
 
             <div class="grid-container">
-              <label class="truncate titulodetarjeta" [ngbTooltip]="elementoSeleccionado?.nom_prod" tooltipClass="custom-tooltip" placement="top"
+              <label class="truncate titulodetarjeta1" [ngbTooltip]="elementoSeleccionado?.nom_prod" tooltipClass="custom-tooltip" placement="top"
                 [animation]="true" [openDelay]="200" [closeDelay]="500" autoClose="true">{{ elementoSeleccionado?.nom_prod }}</label>
             </div>
 

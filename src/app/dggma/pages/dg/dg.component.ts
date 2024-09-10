@@ -26,7 +26,7 @@ export class DgComponent implements OnInit {
       this.setSelection(option, false);
 
       option = option < 5 ? option + 1 : 1;
-    }, 5000);
+    }, 4000);
 
   }
   stopAutoSelection(): void {

@@ -207,6 +207,10 @@ margin-left: 1rem;
   font-size: 1.25rem;
   /* Tamaño del texto */
 }
+.titulodetarjeta1 {
+  color: white;
+  font-size: 1.25rem;
+}
 .titulodetarjeta {
   color: #113250;
   font-size: 1.25rem;
