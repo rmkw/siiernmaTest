@@ -2697,6 +2697,87 @@ export class ProductPageComponent implements OnInit {
         return '';
     }
   }
+  getTipoProd(tipo1: string | number, tipo2: string | number): string {
+    const numTipo1 = Number(tipo1);
+    const numTipo2 = Number(tipo2);
+
+    if (numTipo1 === 1 && numTipo2 === 0) {
+      return 'Geográfico';
+    } else if (numTipo1 === 0 && numTipo2 === 1) {
+      return 'Estadístico';
+    } else if (numTipo1 === 1 && numTipo2 === 1) {
+      return 'Geográfico y Estadístico';
+    } else {
+      return ''; // Retorna una cadena vacía si no se cumple ninguna condición
+    }
+  }
+  getCoberturas(item: any): string[] {
+    const coberturas = [];
+    if (item?.cobertura_geo__1 === 1) coberturas.push('Nacional');
+    if (item?.cobertura_geo__2 === 1) coberturas.push('Estatal');
+    if (item?.cobertura_geo__3 === 1) coberturas.push('Municipal');
+    if (item?.cobertura_geo__4 === 1) coberturas.push('Regional');
+    if (item?.cobertura_geo__5 === 1) {
+      coberturas.push(item.o_cobertura);
+    }
+    return coberturas;
+  }
+  truncateText(text: string, maxLength: number): string {
+    if (!text) return '';
+    return text.length > maxLength
+      ? text.substring(0, maxLength) + '...'
+      : text;
+  }
+  getFragmentacionText(item: any): string {
+    if (item?.fragmenta === 1) {
+      return 'Sí';
+    } else if (item?.fragmenta === 2) {
+      return 'No';
+    } else {
+      return '';
+    }
+  }
+  isFragmentado(item: any): boolean {
+    return item?.fragmenta === 1;
+  }
+  seActualiza(item: any): boolean {
+    return item?.actualizacion === 1;
+  }
+  getTituloActualizacion(item: any): string {
+    return item?.p_actualizacion === 7 ? item.o_periodo || '' : '';
+  }
+  getTruncatedTextoActualizacion(item: any, maxLength: number): string {
+    return this.truncateTextACTUALIZA(
+      this.getTextoActualizacion(item),
+      maxLength
+    );
+  }
+  truncateTextACTUALIZA(text: string, maxLength: number): string {
+    if (!text) return '';
+    return text.length > maxLength
+      ? text.substring(0, maxLength) + '...'
+      : text;
+  }
+  getTextoActualizacion(item: any): string {
+    switch (item?.p_actualizacion) {
+      case 1:
+        return 'Mensual';
+      case 2:
+        return 'Anual';
+      case 3:
+        return 'Bienal';
+      case 4:
+        return 'Cuatrienal';
+      case 5:
+        return 'Quinquenal';
+      case 6:
+        return 'Irregular';
+      case 7:
+        return item.o_periodo || ''; // Maneja el caso especial
+      default:
+        return '';
+    }
+  }
 }
 
 

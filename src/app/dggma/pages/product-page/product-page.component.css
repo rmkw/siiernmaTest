@@ -253,3 +253,21 @@ margin-left: 1rem;
   /* Cambia esto por el color del borde que prefieras */
 }
 
+.custom-badge {
+  background-color: #113250;
+  /* Cambia a tu color deseado */
+  color: #ffffff;
+  /* Cambia el color del texto si es necesario */
+  margin-right: 0.5rem;
+  font-weight: normal;
+}
+.marlef {
+  margin-left: 0.25rem;
+}
+.hover-animate {
+  transition: transform 0.3s ease-in-out;
+}
+
+.hover-animate:hover {
+  transform: scale(1.02) translateZ(-50px);
+}

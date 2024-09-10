@@ -600,7 +600,7 @@
 
 
             <div *ngFor="let item of paginatedProductsFilter">
-              <div class="card m1rem">
+              <div class="card m1rem hover-animate">
                 <div class="card-header">
                   <div class="d-flex align-items-center">
 
@@ -628,7 +628,7 @@
             </div>
 
         </div>
-        <div class="card flex justify-content-center m-3" [hidden]="!showProductsFiltrados || paginatedProductsFilter.length === 0">
+        <div class="card flex justify-content-center m-3 mt-0" [hidden]="!showProductsFiltrados || paginatedProductsFilter.length === 0">
 
           <p-paginator (onPageChange)="onPageChangeFilter($event)" [first]="first" [rows]="rows" [totalRecords]="filteredProducts.length"
             [rowsPerPageOptions]="[10, 20, 30]"></p-paginator>
@@ -641,7 +641,7 @@
         <div style="min-height: 100vh;" [hidden]="_mdeaTOproducts || showProductsFiltrados || paginatedProducts.length === 0">
             <div *ngFor="let item of paginatedProducts">
 
-              <div class="card m1rem">
+              <div class="card m1rem hover-animate">
                 <div class="card-header">
                   <div class="d-flex align-items-center">
 
@@ -669,7 +669,7 @@
             </div>
 
         </div>
-        <div class="card flex justify-content-center m-3" [hidden]="_mdeaTOproducts || showProductsFiltrados || paginatedProducts.length === 0">
+        <div class="card flex justify-content-center m-3 mt-0" [hidden]="_mdeaTOproducts || showProductsFiltrados || paginatedProducts.length === 0">
 
           <p-paginator (onPageChange)="onPageChange($event)" [first]="first" [rows]="rows" [totalRecords]="products.length"
             [rowsPerPageOptions]="[10, 20, 30]"></p-paginator>
@@ -755,7 +755,7 @@
             <i style="color: white;" [ngClass]="getIconClass(elementoSeleccionado?.dg_prod)"></i>
 
             <div class="grid-container">
-              <label class="truncate titulodetarjeta1" [ngbTooltip]="elementoSeleccionado?.nom_prod" tooltipClass="custom-tooltip" placement="top"
+              <label class="truncate titulodetarjeta1" [ngbTooltip]="elementoSeleccionado?.nom_prod" tooltipClass="custom-tooltip" placement="auto"
                 [animation]="true" [openDelay]="200" [closeDelay]="500" autoClose="true">{{ elementoSeleccionado?.nom_prod }}</label>
             </div>
 
@@ -767,320 +767,232 @@
 
         <!--! BODY MODAL -->
         <div class="modal-body custom-modal-body">
-          <div class="row mb-2">
-
-            <!--! TIPO DE PRODUCTO -->
-            <div class="col-md-4 col-12">
-              <span style="font-family: Helvetica, Sans-Serif;">Producto de tipo: </span>
-              <br>
-              <span class="badge" style="font-family: Helvetica, Sans-Serif;">
-                {{ elementoSeleccionado?.tipo_prod__1 == 0 ? '' : (
-                elementoSeleccionado?.tipo_prod__1 == 1 && elementoSeleccionado?.tipo_prod__2 == 0 ? 'Geográfico' :
-                '') }}
-                {{ elementoSeleccionado?.tipo_prod__2 == 0 ? '' : ( elementoSeleccionado?.tipo_prod__1 == 0 &&
-                elementoSeleccionado?.tipo_prod__2 == 1 ? 'Estadístico' :
-                '') }}
-                {{ elementoSeleccionado?.tipo_prod__2 == 0 ? '' : ( elementoSeleccionado?.tipo_prod__1 == 1 &&
-                elementoSeleccionado?.tipo_prod__2 == 1 ? 'Geográfico y Estadístico' : '')
-                }}
-              </span>
-            </div>
-
-            <!--! COBERTURA -->
-            <div class="col-md-4 col-12">
-              <span style="font-family: Helvetica, Sans-Serif;"> Cobertura del producto: </span>
-              <br>
-              <span class="badge me-1" *ngIf="elementoSeleccionado?.cobertura_geo__1 == 1">
-                {{ elementoSeleccionado?.cobertura_geo__1 == 1 ? 'Nacional' : '' }}
-
-              </span>
-              <span class="badge me-1" *ngIf="elementoSeleccionado?.cobertura_geo__2 == 1">
-
-                {{ elementoSeleccionado?.cobertura_geo__2 == 1 ? 'Estatal' : '' }}
-              </span>
-              <span class="badge me-1" *ngIf="elementoSeleccionado?.cobertura_geo__3 == 1">
-
-                {{ elementoSeleccionado?.cobertura_geo__3 == 1 ? 'Municipal' : '' }}
-              </span>
-              <span class="badge me-1" *ngIf="elementoSeleccionado?.cobertura_geo__4 == 1">
-
-                {{ elementoSeleccionado?.cobertura_geo__4 == 1 ? 'Regional' : '' }}
-              </span>
-
-              <span class="badge badgewrap" *ngIf="elementoSeleccionado?.cobertura_geo__5 == 1"
-                [title]="elementoSeleccionado?.cobertura_geo__5 == 1 ? 'Otra: '+elementoSeleccionado?.o_cobertura : ''">
-
-                {{ elementoSeleccionado?.cobertura_geo__5 == 1 ? 'Otra: '+elementoSeleccionado?.o_cobertura : '' }}
-              </span>
-
-            </div>
-
-            <div class="col-md-4 col-12">
-              <span style="font-family: Helvetica, Sans-Serif;">El producto se fragmenta:</span>
-              <br>
-
-              <span class="badge m-1">{{
-                elementoSeleccionado?.fragmenta == 1 ? 'Sí' : (
-                elementoSeleccionado?.fragmenta == 2 ? 'No' : '')
-                }}
-              </span>
-
-              <div *ngIf="elementoSeleccionado?.fragmenta == 1">
-
-
-                <div class="col-12">
-                  <span style="font-family: Helvetica, Sans-Serif;">
-                    Número de fragmentos:
-                  </span>
-                  <span class="badge m-1" style="font-family: Helvetica, Sans-Serif;">
-                    {{ elementoSeleccionado?.n_fragmenta }}
-                  </span>
-                </div>
-
+          <div class="row">
+            <div class="col">
+              <div>
+                <label>Tipo de producto:
+                  <label class="badge custom-badge">{{ getTipoProd(+elementoSeleccionado?.tipo_prod__1,
+                    +elementoSeleccionado?.tipo_prod__2) }}</label>
+                </label>
               </div>
 
             </div>
+            <div class="col">
+              <div>
+                <label>Año de publicación:
+                  <label class="badge custom-badge">{{ elementoSeleccionado?.a_publicacion}}
+                    {{elementoSeleccionado?.a_publicacion2 ? (
+                    ' - ' + elementoSeleccionado?.a_publicacion2): ''}}
+                  </label>
+                </label>
+              </div>
 
-
-
-
-
-            <div class="container">
-              <hr>
-            </div>
-
-
-
-          </div>
-
-          <div class="row mb-2">
-
-            <!--! AÑOS DE PUBLICACIÓN -->
-            <div class="col-md-4 col-12">
-              <span style="font-family: Helvetica, Sans-Serif;">Año de publicación: </span>
-              <br>
-              <span class="badge" style="font-family: Helvetica, Sans-Serif;">{{ elementoSeleccionado?.a_publicacion}}
-                {{elementoSeleccionado?.a_publicacion2 ? (
-                ' - ' + elementoSeleccionado?.a_publicacion2): ''}}
-              </span>
 
             </div>
-            <!--! AÑOS DE REFERENCIA -->
-            <div class="col-md-4 col-12">
-              <span style="font-family: Helvetica, Sans-Serif;">Año de referencia: </span>
-              <br>
-              <span class="badge" style="font-family: Helvetica, Sans-Serif;">{{
-                elementoSeleccionado?.a_referencia }}{{
-                elementoSeleccionado?.a_referencia2 ? (
-                ' - ' + elementoSeleccionado?.a_referencia2) : ''}}
-              </span>
+            <div class="col">
+              <div><label>Año de referencia:
+                  <label class="badge custom-badge">
+                    {{
+                    elementoSeleccionado?.a_referencia }}{{
+                    elementoSeleccionado?.a_referencia2 ? (
+                    ' - ' + elementoSeleccionado?.a_referencia2) : ''}}
+                  </label>
+                </label></div>
 
-            </div>
-
-            <div class="col-md-4 col-12">
-              <span *ngIf="elementoSeleccionado?.actualizacion == 1">
-                <span style="font-family: Helvetica, Sans-Serif;">Se actualiza: </span>
-                <br>
-                <span class="badge badgewrap"
-                  [title]="elementoSeleccionado?.p_actualizacion == 7 ? ''+ elementoSeleccionado?.o_periodo : ''">
-                  {{
-                  elementoSeleccionado?.p_actualizacion == 1 ? 'Mensual' : (
-                  elementoSeleccionado?.p_actualizacion == 2 ? 'Anual' : '') }}
-                  {{
-                  elementoSeleccionado?.p_actualizacion == 3 ? 'Bienal' : (
-                  elementoSeleccionado?.p_actualizacion == 4 ? 'Cuatrienal' : '') }}
-                  {{
-                  elementoSeleccionado?.p_actualizacion == 5 ? 'Quinquenal' : (
-                  elementoSeleccionado?.p_actualizacion == 6 ? 'Irregular' : '') }}
-                  {{
-                  elementoSeleccionado?.p_actualizacion == 7 ? ''+ elementoSeleccionado?.o_periodo : ''}}
-                </span>
-              </span>
-              <span *ngIf="elementoSeleccionado?.actualizacion == 2">
-                <span style="font-family: Helvetica, Sans-Serif;">Se actualiza: </span>
-                <br>
-                <span class="badge" style="font-family: Helvetica, Sans-Serif;">No</span>
-              </span>
-            </div>
-
-            <div class="container">
-              <hr>
-            </div>
-          </div>
-
-          <div class="row mb-2">
-            <div class="col-md-4 col-12">
-              <span *ngIf="elementoSeleccionado?.escala" style="font-family: Helvetica, Sans-Serif;">Escala geográfica:
-              </span>
-
-              <span *ngIf="elementoSeleccionado?.escala" style="font-family: Helvetica, Sans-Serif;">
-                <span class="badge">
-                  {{ elementoSeleccionado?.escala != 14 ? getEscalasText(elementoSeleccionado?.escala) :
-                  'Otra:'+elementoSeleccionado?.o_escala }}
-                </span>
-              </span>
-
-
-              <span *ngIf="!elementoSeleccionado?.escala">
-
-                <span style="font-family: Helvetica, Sans-Serif;"> Ninguna escala geográfica. </span>
-              </span>
-            </div>
-
-            <div class="col-md-4 col-12">
-              <span *ngIf="elementoSeleccionado?.liga">
-                <span style="font-family: Helvetica, Sans-Serif;">Ligas de acceso: </span>
-                <a (click)="$event.stopPropagation()" target="_blank" [href]="elementoSeleccionado?.liga">
-                  enlace.
-                </a>
-              </span>
-            </div>
-
-            <div class="col-md-4 col-12">
-              <span *ngIf="elementoSeleccionado?.metodologia == 1">
-                <span *ngIf="elementoSeleccionado?.metodologia == 1" style="font-family: Helvetica, Sans-Serif;">
-                  Cuenta con metodología:
-                </span>
-                <a (click)="$event.stopPropagation()" [href]="elementoSeleccionado?.liga_metodologia" target="_blank"
-                  style="font-family: Helvetica, Sans-Serif;">
-                  enlace.
-                </a>
-              </span>
-              <span *ngIf="elementoSeleccionado?.metodologia == 2">
-                <span style="font-family: Helvetica, Sans-Serif;">No cuenta con metodología</span>
-              </span>
             </div>
             <div class="container">
               <hr>
             </div>
-          </div>
 
-          <div class="row mb-2">
-            <div class="col-md-4 col-12">
-              <span>
-                Enlace de referencia:
-              </span>
-            </div>
           </div>
-
 
           <div class="row">
-            <div class="col-12">
-              <span style="font-family: Helvetica, Sans-Serif;">Tipo(s) de soporte del producto:</span>
-              <div class="row mt-2">
-                <div class="col" *ngIf="elementoSeleccionado?.tipo_soporte__1 == 1">
-                  <ul class="list-group list-group-flush">
-                    <li class="list-group-item" [style.background-color]="'#113250'" [style.color]="'#ffffff'">
-                      {{ elementoSeleccionado?.tipo_soporte__1 == 1
-                      ? 'Datos Geográficos' : ''}}
-                    </li>
-                    <li *ngIf="elementoSeleccionado?.tipo_soporte__1 == 1" class="list-group-item">
-                      <span style="font-family: Helvetica, Sans-Serif;"> En formato: </span>
-                      <span class="badge me-1" *ngIf="elementoSeleccionado?.formato_geo__1 == 1"
-                        style="font-family: Helvetica, Sans-Serif;">
-                        {{
-                        elementoSeleccionado?.formato_geo__1 == 1 ? 'Conjunto de datos vectoriales (SHP)' : ''
-                        }}
-                      </span>
-                      <span class="badge me-1" *ngIf="elementoSeleccionado?.formato_geo__2 == 1"
-                        style="font-family: Helvetica, Sans-Serif;">
-                        {{
-                        elementoSeleccionado?.formato_geo__2 == 1 ? 'Raster (TIIF, GIF, BIL, etc.)' : ''
-                        }}
-                      </span>
-                      <span class="badge me-1" *ngIf="elementoSeleccionado?.formato_geo__3 == 1"
-                        style="font-family: Helvetica, Sans-Serif;">
-                        {{
-                        elementoSeleccionado?.formato_geo__3 == 1 ? 'GeoPDF' : ''
-                        }}
-                      </span>
-                      <span class="badge me-1" *ngIf="elementoSeleccionado?.formato_geo__4 == 1"
-                        style="font-family: Helvetica, Sans-Serif;">
-                        {{
-                        elementoSeleccionado?.formato_geo__4 == 1 ? 'PDF' : ''
-                        }}
-                      </span>
-                      <span class="badge" *ngIf="elementoSeleccionado?.formato_geo__5 == 1"
-                        style="font-family: Helvetica, Sans-Serif;">
-                        {{
-                        elementoSeleccionado?.formato_geo__5 == 1 ? 'Otro: ' + elementoSeleccionado?.o_formato_geo : ''
-                        }}
-                      </span>
-                    </li>
-                  </ul>
-                </div>
-                <div class="col"
-                  *ngIf="(elementoSeleccionado?.tipo_soporte__1 == 1 || elementoSeleccionado?.tipo_soporte__1 == 0) && elementoSeleccionado?.tipo_soporte__2 == 1 ">
-                  <ul class="list-group list-group-flush">
-                    <li class="list-group-item" [style.background-color]="'#113250'" [style.color]="'#ffffff'">
-                      {{
-                      elementoSeleccionado?.tipo_soporte__2 == 1 ? 'Tabulado' : ''
-                      }}
-                    </li>
-                    <li class="list-group-item">
-                      <strong style="font-family: Helvetica, Sans-Serif;"> En formato: </strong>
-                      <span class="badge me-1" *ngIf="elementoSeleccionado?.formato_tab__1 == 1"
-                        style="font-family: Helvetica, Sans-Serif;">
-                        {{
-                        elementoSeleccionado?.formato_tab__1 == 1 ? '.dbf' : ''
-                        }}
-
-                      </span>
-                      <span class="badge me-1" *ngIf="elementoSeleccionado?.formato_tab__2 == 1"
-                        style="font-family: Helvetica, Sans-Serif;">
-                        {{
-                        elementoSeleccionado?.formato_tab__2 == 1 ? '.csv' : ''
-                        }}
-                      </span>
-                      <span class="badge me-1" *ngIf="elementoSeleccionado?.formato_tab__3 == 1"
-                        style="font-family: Helvetica, Sans-Serif;">
-                        {{
-                        elementoSeleccionado?.formato_tab__3 == 1 ? '.txt' : ''
-                        }}
-                      </span>
-                      <span class="badge me-1" *ngIf="elementoSeleccionado?.formato_tab__4 == 1"
-                        style="font-family: Helvetica, Sans-Serif;">
-                        {{
-                        elementoSeleccionado?.formato_tab__4 == 1 ? '.xlsx' : ''
-                        }}
-                      </span>
-                      <span class="badge" *ngIf="elementoSeleccionado?.formato_tab__5 == 1"
-                        style="font-family: Helvetica, Sans-Serif;">
-                        {{
-                        elementoSeleccionado?.formato_tab__5 == 1 ? 'Otro: ' + elementoSeleccionado?.o_formato_tab : ''
-                        }}
-                      </span>
-                    </li>
-                  </ul>
-                </div>
+            <div class="col">
+              <div>
+                <label>Cobertura:
+                  <ng-container *ngFor="let cobertura of getCoberturas(elementoSeleccionado)">
+                    <label class="badge custom-badge" [title]="cobertura" [ngbTooltip]="cobertura">
+                      {{ truncateText(cobertura, 25) }}
+                    </label>
+                  </ng-container>
+                </label>
               </div>
-              <div class="row">
-                <div class="col" *ngIf="elementoSeleccionado?.tipo_soporte__3">
-                  <ul class="list-group list-group-flush">
-                    <li class="list-group-item " [style.background-color]="'#113250'" [style.color]="'#ffffff'">
-                      {{
-                      elementoSeleccionado?.tipo_soporte__3 == 1 ? 'Publicaciones' : ''
-                      }}
-                    </li>
-                  </ul>
-                </div>
-                <div class="col" *ngIf="elementoSeleccionado?.tipo_soporte__4">
-                  <ul class="list-group list-group-flush">
-                    <li class="list-group-item " [style.background-color]="'#113250'" [style.color]="'#ffffff'">
-                      {{
-                      elementoSeleccionado?.tipo_soporte__4 == 1 ? 'Otro: ' + elementoSeleccionado?.o_soporte : ''
-                      }}
-                    </li>
-                  </ul>
-                </div>
+            </div>
+            <div class="col">
+              <div>
+
+                <label>Escala geográfica:&nbsp;</label>
+
+
+                <label class="badge custom-badge" *ngIf="elementoSeleccionado?.escala">
+                  {{ elementoSeleccionado?.escala != 14 ? getEscalasText(elementoSeleccionado?.escala) :
+                  elementoSeleccionado?.o_escala }}
+                </label>
+
+
+
+                <span *ngIf="!elementoSeleccionado?.escala">
+
+                  <label class="badge custom-badge">Ninguna</label>
+                </span>
+
               </div>
 
+
+            </div>
+
+            <div class="container">
+              <hr>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <!--! se actualiza -->
+              <div>
+                <label *ngIf="seActualiza(elementoSeleccionado)">
+                  Actualización:
+
+                  <label class="badge custom-badge" [title]="getTituloActualizacion(elementoSeleccionado)">
+                    {{ getTruncatedTextoActualizacion(elementoSeleccionado, 25) }}
+                  </label>
+
+                </label>
+
+                <label *ngIf="elementoSeleccionado?.actualizacion === 2">
+                  Se actualiza:
+
+                  <label class="badge custom-badge">No</label>
+                </label>
+              </div>
+
+
+            </div>
+            <div class="col">
+              <div>
+                <label>Enlaces de acceso:&nbsp;</label>
+
+                <a (click)="$event.stopPropagation()" target="_blank" [href]="elementoSeleccionado?.liga">
+                  Enlace.
+                </a>
+
+              </div>
+
+            </div>
+            <div class="col">
+              <div>
+
+                <label>Metodología incluida:&nbsp;</label>
+
+                <a *ngIf="elementoSeleccionado?.metodologia == 1" (click)="$event.stopPropagation()"
+                  [href]="elementoSeleccionado?.liga_metodologia" target="_blank">
+                  Enlace.
+                </a>
+
+
+
+
+                <label class="badge custom-badge" *ngIf="elementoSeleccionado?.metodologia == 2">No</label>
+
+              </div>
             </div>
             <div class="container">
               <hr>
             </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <div><label>Fragmentación del producto:
+                  <label class="badge custom-badge">{{ getFragmentacionText(elementoSeleccionado) }}</label>
+
+                  <div *ngIf="isFragmentado(elementoSeleccionado)">
+                    <div class="col-12">
+                      <label>Número de fragmentos: </label>
+                      <label class="badge custom-badge marlef">
+                        {{ elementoSeleccionado?.n_fragmenta }}
+                      </label>
+                    </div>
+                  </div>
+                </label>
+              </div>
+            </div>
+            <div class="col">
+              <div>
+                <label>Soporte del producto:&nbsp;</label>
+
+                <label *ngIf="elementoSeleccionado?.tipo_soporte__1 == 1" class="badge custom-badge">Datos Geográficos</label>
+
+                <label *ngIf="elementoSeleccionado?.tipo_soporte__2 == 1" class="badge custom-badge">Tabulado</label>
+
+                <label *ngIf="elementoSeleccionado?.tipo_soporte__3 == 1" class="badge custom-badge">Publicaciones</label>
+
+                <label *ngIf="elementoSeleccionado?.tipo_soporte__4 == 1"
+                  class="badge custom-badge">{{elementoSeleccionado?.o_soporte}}</label>
+
+              </div>
+            </div>
+
+            <div class="col">
+
+
+
+
+
+
+
+              <div
+                *ngIf="elementoSeleccionado?.formato_geo__1 == 1 || elementoSeleccionado?.formato_geo__2 == 1 || elementoSeleccionado?.formato_geo__3 == 1 || elementoSeleccionado?.formato_geo__4 == 1 || elementoSeleccionado?.formato_geo__5 == 1">
+                <label>Formato del datos geográfico:
+                  <label class="badge custom-badge">{{ elementoSeleccionado?.formato_geo__1 == 1 ? 'Shapefile' : '' }}</label>
+
+                  <label class="badge custom-badge">{{ elementoSeleccionado?.formato_geo__2 == 1 ? 'Raster (TIIF, GIF, BIL, etc.)' : ''
+                    }}</label>
+
+                  <label class="badge custom-badge">{{elementoSeleccionado?.formato_geo__3 == 1 ? 'GeoPDF' : ''}}</label>
+
+                  <label class="badge custom-badge">{{elementoSeleccionado?.formato_geo__4 == 1 ? 'PDF' : ''}}</label>
+
+                  <label class="badge custom-badge">{{elementoSeleccionado?.formato_geo__5 == 1 ? elementoSeleccionado?.o_formato_geo : ''}}</label>
+
+                </label>
+              </div>
+
+              <div
+                *ngIf="elementoSeleccionado?.formato_tab__1 == 1 || elementoSeleccionado?.formato_tab__2 == 1 || elementoSeleccionado?.formato_tab__3 == 1 || elementoSeleccionado?.formato_tab__4 == 1 || elementoSeleccionado?.formato_tab__5 == 1">
+                <label>Formato del tabulado:
+
+                  <label class="badge custom-badge">{{ elementoSeleccionado?.formato_tab__1 == 1 ? '.dbf' : '' }}</label>
+
+                  <label class="badge custom-badge">{{elementoSeleccionado?.formato_tab__2 == 1 ? '.csv' : ''}}</label>
+
+                  <label class="badge custom-badge">{{elementoSeleccionado?.formato_tab__3 == 1 ? '.txt' : ''}}</label>
+
+                  <label class="badge custom-badge">{{elementoSeleccionado?.formato_tab__4 == 1 ? '.xlsx' : ''}}</label>
+
+                  <label class="badge custom-badge">{{elementoSeleccionado?.formato_tab__5 == 1 ? elementoSeleccionado?.o_formato_tab : ''}}</label>
+
+                </label>
+              </div>
+
+            </div>
+
+
+            <div class="container">
+              <hr>
+            </div>
+
+
 
           </div>
+
+
+
+
+
+
+
+
+
 
           <div class="row">
             <div class="col-12">
