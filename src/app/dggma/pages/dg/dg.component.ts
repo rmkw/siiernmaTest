@@ -6,22 +6,42 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dg.component.css'],
 })
 export class DgComponent implements OnInit {
-
-
   public isINEGISelected: boolean = true;
   public isMDEASelected: boolean = true;
   public isODSSelected: boolean = true;
   public isINDSelected: boolean = true;
   public isGeoNodeSelected: boolean = true;
-
+  private intervalId: any;
+  private userClicked: boolean = false;
 
   constructor() {}
 
   ngOnInit(): void {
     this.isINEGISelected = false;
+    this.startAutoSelection();
+  }
+  startAutoSelection(): void {
+    let option = 1;
+    this.intervalId = setInterval(() => {
+      this.setSelection(option, false);
+
+      option = option < 5 ? option + 1 : 1;
+    }, 5000);
+
+  }
+  stopAutoSelection(): void {
+
+    if (this.intervalId) {
+      clearInterval(this.intervalId);
+    }
   }
 
-  setSelection(option: number): void {
+  setSelection(option: number, userClick: boolean = true): void {
+    if (userClick) {
+
+      this.userClicked = true;
+      this.stopAutoSelection(); // Stop automatic selection when user clicks
+    }
 
     switch (option) {
       case 1:
@@ -54,7 +74,7 @@ export class DgComponent implements OnInit {
         this.isODSSelected = true;
         this.isINDSelected = false;
         this.isGeoNodeSelected = true;
-        break
+        break;
 
       case 5:
         this.isINEGISelected = true;
@@ -64,13 +84,10 @@ export class DgComponent implements OnInit {
         this.isGeoNodeSelected = false;
         break;
 
-
       default:
         console.warn('Opción no válida');
         break;
     }
   }
-
-
 }
 
