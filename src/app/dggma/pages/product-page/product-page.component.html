@@ -818,6 +818,29 @@
                 </label>
               </div>
             </div>
+
+            <div class="col">
+              <!--! se actualiza -->
+              <div>
+                <label *ngIf="seActualiza(elementoSeleccionado)">
+                  Actualización:
+
+                  <label class="badge custom-badge" [title]="getTituloActualizacion(elementoSeleccionado)">
+                    {{ getTruncatedTextoActualizacion(elementoSeleccionado, 25) }}
+                  </label>
+
+                </label>
+
+                <label *ngIf="elementoSeleccionado?.actualizacion === 2">
+                  Se actualiza:
+
+                  <label class="badge custom-badge">No</label>
+                </label>
+              </div>
+
+
+            </div>
+
             <div class="col">
               <div>
 
@@ -846,27 +869,22 @@
             </div>
           </div>
           <div class="row">
+            
+            <!-- Enlace geografico -->
             <div class="col">
-              <!--! se actualiza -->
-              <div>
-                <label *ngIf="seActualiza(elementoSeleccionado)">
-                  Actualización:
-
-                  <label class="badge custom-badge" [title]="getTituloActualizacion(elementoSeleccionado)">
-                    {{ getTruncatedTextoActualizacion(elementoSeleccionado, 25) }}
-                  </label>
-
-                </label>
-
-                <label *ngIf="elementoSeleccionado?.actualizacion === 2">
-                  Se actualiza:
-
-                  <label class="badge custom-badge">No</label>
-                </label>
-              </div>
-
-
+              <ng-container *ngIf="esGeograficoOEstadistico(); else enlaceTemplate">
+              </ng-container>
+              <ng-template #enlaceTemplate>
+                <span>Enlace de referencia Geográfico:</span>
+                <a [href]="enlaceGeografico()">
+                  {{ elementoSeleccionado?.tipo_prod__1 == 1 && elementoSeleccionado?.tipo_prod__2 == 0 ? 'Enlace' : '' }}
+                  {{ elementoSeleccionado?.tipo_prod__1 == 0 && elementoSeleccionado?.tipo_prod__2 == 1 ? '' : '' }}
+                  {{ elementoSeleccionado?.tipo_prod__1 == 1 && elementoSeleccionado?.tipo_prod__2 == 1 ? '' : '' }}
+                </a>
+              </ng-template>
             </div>
+          
+
             <div class="col">
               <div>
                 <label>Enlaces de acceso:&nbsp;</label>
@@ -975,24 +993,9 @@
               </div>
 
             </div>
-
-
-            <div class="container">
-              <hr>
-            </div>
-
-
-
           </div>
 
-
-
-
-
-
-
-
-
+          <hr>
 
           <div class="row">
             <div class="col-12">

@@ -273,6 +273,25 @@ export class ProductPageComponent implements OnInit {
     });
   }
 
+  esGeograficoOEstadistico(): boolean {
+    const tipoProd1 = this.elementoSeleccionado?.tipo_prod__1;
+    const tipoProd2 = this.elementoSeleccionado?.tipo_prod__2;
+    return (tipoProd1 === 0 && tipoProd2 === 1) || (tipoProd1 === 1 && tipoProd2 === 1);
+  }
+
+  enlaceGeografico() {
+    const tipoProd1 = this.elementoSeleccionado?.tipo_prod__1;
+    const tipoProd2 = this.elementoSeleccionado?.tipo_prod__2;
+    const baseUrl = "http://10.200.31.73:9701/catalogue/#/dataset/";
+
+    if ((tipoProd1 === 0 && tipoProd2 === 1) || (tipoProd1 === 1 && tipoProd2 === 1)) {
+        // Suponiendo que cada producto tiene un ID único
+        const productId = this.elementoSeleccionado?.id;
+        return `${baseUrl}${productId}`;
+    }
+    return null;
+}
+
   //!Funcion que ayuda a transformar los arreglos de objetos de componentes, subcomponentes y topicos para que este pueda ser compatible con la estructura treenode
   transformDataToTreeNodeMdea(
     componentes: Componente[],
