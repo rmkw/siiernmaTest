@@ -39,6 +39,7 @@ export interface Products {
     p_actualizacion:   number | string;
     o_periodo:         string;
     liga:              string;
+    liga_geonode:      string;
     metodologia:       number | string;
     liga_metodologia:  string;
     comentario_cg:     number | string;
