@@ -150,7 +150,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
           datasets: [
             {
               label:
-                ' Productos del INEGI que cuentan con una relación con esta meta',
+                ' Número de productos que tienen relación con esta meta',
               data: data,
               backgroundColor: [
                 'rgba(229, 35, 61, 1)',
@@ -217,7 +217,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
           datasets: [
             {
               label:
-                ' Productos del INEGI que cuentan con una relación con esta meta',
+                ' Número de productos que tienen relación con esta meta',
               data: data,
               backgroundColor: [
                 'rgba(221, 167, 58, 1)',
@@ -318,7 +318,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
           datasets: [
             {
               label:
-                ' Productos del INEGI que cuentan con una relación con esta meta',
+                ' Número de productos que tienen relación con esta meta',
               data: data,
               backgroundColor: [
                 'rgba(76, 161, 70, 1)',
@@ -406,7 +406,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
           datasets: [
             {
               label:
-                ' Productos del INEGI que cuentan con una relación con esta meta',
+                ' Número de productos que tienen relación con esta meta',
               data: data,
               backgroundColor: [
                 'rgba(199, 33, 47, 1)',
@@ -496,7 +496,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
           datasets: [
             {
               label:
-                ' Productos del INEGI que cuentan con una relación con esta meta',
+                ' Número de productos que tienen relación con esta meta',
               data: data,
               backgroundColor: [
                 'rgba(239, 64, 45, 1)',
@@ -594,7 +594,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
           datasets: [
             {
               label:
-                ' Productos del INEGI que cuentan con una relación con esta meta',
+                ' Número de productos que tienen relación con esta meta',
               data: data,
               backgroundColor: [
                 'rgba(39, 191, 230, 1)',
@@ -691,7 +691,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
           datasets: [
             {
               label:
-                ' Productos del INEGI que cuentan con una relación con esta meta',
+                ' Número de productos que tienen relación con esta meta',
               data: data,
               backgroundColor: [
                 'rgba(251, 196, 18, 1)',
@@ -768,7 +768,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
           datasets: [
             {
               label:
-                ' Productos del INEGI que cuentan con una relación con esta meta',
+                ' Número de productos que tienen relación con esta meta',
               data: data,
               backgroundColor: [
                 'rgba(163, 28, 68, 1)',
@@ -873,7 +873,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
           datasets: [
             {
               label:
-                ' Productos del INEGI que cuentan con una relación con esta meta',
+                ' Número de productos que tienen relación con esta meta',
               data: data,
               backgroundColor: [
                 'rgba(242, 106, 46, 1)',
@@ -938,7 +938,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
           datasets: [
             {
               label:
-                ' Productos del INEGI que cuentan con una relación con esta meta',
+                ' Número de productos que tienen relación con esta meta',
               data: data,
               backgroundColor: [
                 'rgba(224, 20, 131, 1)',
@@ -1015,7 +1015,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
           datasets: [
             {
               label:
-                ' Productos del INEGI que cuentan con una relación con esta meta',
+                ' Número de productos que tienen relación con esta meta',
               data: data,
               backgroundColor: [
                 'rgba(248, 157, 42, 1)',
@@ -1113,7 +1113,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
           datasets: [
             {
               label:
-                ' Productos del INEGI que cuentan con una relación con esta meta',
+                ' Número de productos que tienen relación con esta meta',
               data: data,
               backgroundColor: [
                 'rgba(191, 141, 44, 1)',
@@ -1214,7 +1214,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
           datasets: [
             {
               label:
-                ' Productos del INEGI que cuentan con una relación con esta meta',
+                ' Número de productos que tienen relación con esta meta',
               data: data,
               backgroundColor: [
                 'rgba(64, 127, 70, 1)',
@@ -1305,7 +1305,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
           datasets: [
             {
               label:
-                ' Productos del INEGI que cuentan con una relación con esta meta',
+                ' Número de productos que tienen relación con esta meta',
               data: data,
               backgroundColor: [
                 'rgba(31, 151, 212, 1)',
@@ -1405,7 +1405,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
           datasets: [
             {
               label:
-                ' Productos del INEGI que cuentan con una relación con esta meta',
+                ' Número de productos que tienen relación con esta meta',
               data: data,
               backgroundColor: [
                 'rgba(89, 186, 71, 1)',
@@ -1516,7 +1516,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
           datasets: [
             {
               label:
-                ' Productos del INEGI que cuentan con una relación con esta meta',
+                ' Número de productos que tienen relación con esta meta',
               data: data,
               backgroundColor: [
                 'rgba(19, 106, 159, 1)',
@@ -1617,7 +1617,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
           datasets: [
             {
               label:
-                ' Productos del INEGI que cuentan con una relación con esta meta',
+                ' Número de productos que tienen relación con esta meta',
               data: data,
               backgroundColor: ['rgba(20, 73, 107, 1)', 'rgba(20, 73, 107, 1)'],
               borderColor: ['rgb(20, 73, 107)', 'rgb(20, 73, 107)'],
