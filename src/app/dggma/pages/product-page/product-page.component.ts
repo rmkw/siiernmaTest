@@ -340,7 +340,10 @@ export class ProductPageComponent implements OnInit {
 
   async thisFlags() {
     await new Promise((resolve) => setTimeout(resolve, 100));
-    this.applyFilters();
+    setTimeout(() => {
+      this.applyFilters();
+      this.loading = false;
+    }, 1000); // 1000 milisegundos = 1 segundo
   }
 
   updatePaginatedProducts() {
@@ -1038,14 +1041,202 @@ export class ProductPageComponent implements OnInit {
     }
   }
   filtros_ods_pageTopage(): void {
+    if (this._odsFlag.getObj1()) {
+      this._odsFlag.setObj1(false);
+      this.selectODSkey = 'objetivos_1';
+      this.filterStatesODS[this.selectODSkey] = true;
+
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
+
+
+    }
+    if (this._odsFlag.getObj2()) {
+      this._odsFlag.setObj2(false);
+      this.selectODSkey = 'objetivos_2';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+      setTimeout(() => {
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
+    }
+    if (this._odsFlag.getObj3()) {
+      this._odsFlag.setObj3(false);
+      this.selectODSkey = 'objetivos_3';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+      setTimeout(() => {
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
+    }
+    if (this._odsFlag.getObj4()) {
+      this._odsFlag.setObj4(false);
+      this.selectODSkey = 'objetivos_4';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+      setTimeout(() => {
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
+    }
+    if (this._odsFlag.getObj5()) {
+      this._odsFlag.setObj5(false);
+      this.selectODSkey = 'objetivos_5';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+      setTimeout(() => {
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
+    }
+    if (this._odsFlag.getObj6()) {
+      this._odsFlag.setObj6(false);
+      this.selectODSkey = 'objetivos_6';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
+    }
+    if (this._odsFlag.getObj7()) {
+      this._odsFlag.setObj7(false);
+      this.selectODSkey = 'objetivos_7';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
+    }
+    if (this._odsFlag.getObj8()) {
+      this._odsFlag.setObj8(false);
+      this.selectODSkey = 'objetivos_8';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
+    }
+    if (this._odsFlag.getObj9()) {
+      this._odsFlag.setObj9(false);
+      this.selectODSkey = 'objetivos_9';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
+    }
+    if (this._odsFlag.getObj10()) {
+      this._odsFlag.setObj10(false);
+      this.selectODSkey = 'objetivos_10';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
+    }
+    if (this._odsFlag.getObj11()) {
+      this._odsFlag.setObj11(false);
+      this.selectODSkey = 'objetivos_11';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
+    }
+    if (this._odsFlag.getObj12()) {
+      this._odsFlag.setObj12(false);
+      this.selectODSkey = 'objetivos_12';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
+    }
+    if (this._odsFlag.getObj13()) {
+      this._odsFlag.setObj13(false);
+      this.selectODSkey = 'objetivos_13';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
+    }
+    if (this._odsFlag.getObj14()) {
+      this._odsFlag.setObj14(false);
+      this.selectODSkey = 'objetivos_14';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
+    }
+    if (this._odsFlag.getObj15()) {
+      this._odsFlag.setObj15(false);
+      this.selectODSkey = 'objetivos_15';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
+    }
+    if (this._odsFlag.getObj16()) {
+      this._odsFlag.setObj16(false);
+      this.selectODSkey = 'objetivos_16';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
+    }
+    if (this._odsFlag.getObj17()) {
+      this._odsFlag.setObj17(false);
+      this.selectODSkey = 'objetivos_17';
+
+      this.filterStatesODS[this.selectODSkey] = true;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
+    }
     if (this._odsFlag.getMeta1_1()) {
       this._odsFlag.setMeta1_1(false);
       this.selectODSkey = 'metas_1';
 
       this.filterStatesODS[this.selectODSkey] = true;
 
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     if (this._odsFlag.getMeta1_3()) {
       this._odsFlag.setMeta1_3(false);
@@ -1053,8 +1244,11 @@ export class ProductPageComponent implements OnInit {
 
       this.filterStatesODS[this.selectODSkey] = true;
 
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     if (this._odsFlag.getMeta1_4()) {
       this._odsFlag.setMeta1_4(false);
@@ -1062,8 +1256,11 @@ export class ProductPageComponent implements OnInit {
 
       this.filterStatesODS[this.selectODSkey] = true;
 
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     if (this._odsFlag.getMeta1_5()) {
       this._odsFlag.setMeta1_5(false);
@@ -1071,8 +1268,11 @@ export class ProductPageComponent implements OnInit {
 
       this.filterStatesODS[this.selectODSkey] = true;
 
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     if (this._odsFlag.getMeta1_5()) {
       this._odsFlag.setMeta1_5(false);
@@ -1080,8 +1280,11 @@ export class ProductPageComponent implements OnInit {
 
       this.filterStatesODS[this.selectODSkey] = true;
 
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     if (this._odsFlag.getMeta2_1()) {
       this._odsFlag.setMeta2_1(false);
@@ -1089,8 +1292,11 @@ export class ProductPageComponent implements OnInit {
 
       this.filterStatesODS[this.selectODSkey] = true;
 
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     if (this._odsFlag.getMeta2_3()) {
       this._odsFlag.setMeta2_3(false);
@@ -1098,8 +1304,11 @@ export class ProductPageComponent implements OnInit {
 
       this.filterStatesODS[this.selectODSkey] = true;
 
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     if (this._odsFlag.getMeta2_4()) {
       this._odsFlag.setMeta2_4(false);
@@ -1107,8 +1316,11 @@ export class ProductPageComponent implements OnInit {
 
       this.filterStatesODS[this.selectODSkey] = true;
 
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     if (this._odsFlag.getMeta2_a()) {
       this._odsFlag.setMeta2_a(false);
@@ -1116,8 +1328,11 @@ export class ProductPageComponent implements OnInit {
 
       this.filterStatesODS[this.selectODSkey] = true;
 
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     if (this._odsFlag.getMeta2_c()) {
       this._odsFlag.setMeta2_c(false);
@@ -1125,8 +1340,11 @@ export class ProductPageComponent implements OnInit {
 
       this.filterStatesODS[this.selectODSkey] = true;
 
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     //! metas3
     if (this._odsFlag.getMeta3_4()) {
@@ -1135,8 +1353,11 @@ export class ProductPageComponent implements OnInit {
 
       this.filterStatesODS[this.selectODSkey] = true;
 
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     if (this._odsFlag.getMeta3_7()) {
       this._odsFlag.setMeta3_7(false);
@@ -1144,8 +1365,11 @@ export class ProductPageComponent implements OnInit {
 
       this.filterStatesODS[this.selectODSkey] = true;
 
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     if (this._odsFlag.getMeta3_8()) {
       this._odsFlag.setMeta3_8(false);
@@ -1153,8 +1377,11 @@ export class ProductPageComponent implements OnInit {
 
       this.filterStatesODS[this.selectODSkey] = true;
 
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     if (this._odsFlag.getMeta3_9()) {
       this._odsFlag.setMeta3_9(false);
@@ -1162,8 +1389,11 @@ export class ProductPageComponent implements OnInit {
 
       this.filterStatesODS[this.selectODSkey] = true;
 
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     //! metas4
     if (this._odsFlag.getMeta4_1()) {
@@ -1172,8 +1402,11 @@ export class ProductPageComponent implements OnInit {
 
       this.filterStatesODS[this.selectODSkey] = true;
 
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     if (this._odsFlag.getMeta4_2()) {
       this._odsFlag.setMeta4_2(false);
@@ -1181,8 +1414,11 @@ export class ProductPageComponent implements OnInit {
 
       this.filterStatesODS[this.selectODSkey] = true;
 
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     if (this._odsFlag.getMeta4_3()) {
       this._odsFlag.setMeta4_3(false);
@@ -1190,8 +1426,11 @@ export class ProductPageComponent implements OnInit {
 
       this.filterStatesODS[this.selectODSkey] = true;
 
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     if (this._odsFlag.getMeta4_5()) {
       this._odsFlag.setMeta4_5(false);
@@ -1199,8 +1438,11 @@ export class ProductPageComponent implements OnInit {
 
       this.filterStatesODS[this.selectODSkey] = true;
 
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     if (this._odsFlag.getMeta4_7()) {
       this._odsFlag.setMeta4_7(false);
@@ -1208,8 +1450,11 @@ export class ProductPageComponent implements OnInit {
 
       this.filterStatesODS[this.selectODSkey] = true;
 
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     //! metas5
     if (this._odsFlag.getMeta5_1()) {
@@ -1218,8 +1463,11 @@ export class ProductPageComponent implements OnInit {
 
       this.filterStatesODS[this.selectODSkey] = true;
 
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     if (this._odsFlag.getMeta5_2()) {
       this._odsFlag.setMeta5_2(false);
@@ -1227,8 +1475,11 @@ export class ProductPageComponent implements OnInit {
 
       this.filterStatesODS[this.selectODSkey] = true;
 
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     if (this._odsFlag.getMeta5_4()) {
       this._odsFlag.setMeta5_4(false);
@@ -1236,8 +1487,11 @@ export class ProductPageComponent implements OnInit {
 
       this.filterStatesODS[this.selectODSkey] = true;
 
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     if (this._odsFlag.getMeta5_5()) {
       this._odsFlag.setMeta5_5(false);
@@ -1245,8 +1499,11 @@ export class ProductPageComponent implements OnInit {
 
       this.filterStatesODS[this.selectODSkey] = true;
 
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     if (this._odsFlag.getMeta5_a()) {
       this._odsFlag.setMeta5_a(false);
@@ -1254,8 +1511,11 @@ export class ProductPageComponent implements OnInit {
 
       this.filterStatesODS[this.selectODSkey] = true;
 
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     //! metas6
     if (this._odsFlag.getMeta6_1()) {
@@ -1264,8 +1524,11 @@ export class ProductPageComponent implements OnInit {
 
       this.filterStatesODS[this.selectODSkey] = true;
 
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     if (this._odsFlag.getMeta6_2()) {
       this._odsFlag.setMeta6_2(false);
@@ -1273,8 +1536,11 @@ export class ProductPageComponent implements OnInit {
 
       this.filterStatesODS[this.selectODSkey] = true;
 
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     if (this._odsFlag.getMeta6_3()) {
       this._odsFlag.setMeta6_3(false);
@@ -1282,8 +1548,11 @@ export class ProductPageComponent implements OnInit {
 
       this.filterStatesODS[this.selectODSkey] = true;
 
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     if (this._odsFlag.getMeta6_4()) {
       this._odsFlag.setMeta6_4(false);
@@ -1291,8 +1560,11 @@ export class ProductPageComponent implements OnInit {
 
       this.filterStatesODS[this.selectODSkey] = true;
 
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     if (this._odsFlag.getMeta6_5()) {
       this._odsFlag.setMeta6_5(false);
@@ -1300,8 +1572,11 @@ export class ProductPageComponent implements OnInit {
 
       this.filterStatesODS[this.selectODSkey] = true;
 
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     if (this._odsFlag.getMeta6_6()) {
       this._odsFlag.setMeta6_6(false);
@@ -1309,8 +1584,11 @@ export class ProductPageComponent implements OnInit {
 
       this.filterStatesODS[this.selectODSkey] = true;
 
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     if (this._odsFlag.getMeta6_b()) {
       this._odsFlag.setMeta6_b(false);
@@ -1318,8 +1596,11 @@ export class ProductPageComponent implements OnInit {
 
       this.filterStatesODS[this.selectODSkey] = true;
 
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     //! metas7
     if (this._odsFlag.getMeta7_1()) {
@@ -1328,8 +1609,11 @@ export class ProductPageComponent implements OnInit {
 
       this.filterStatesODS[this.selectODSkey] = true;
 
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     if (this._odsFlag.getMeta7_2()) {
       this._odsFlag.setMeta7_2(false);
@@ -1337,8 +1621,11 @@ export class ProductPageComponent implements OnInit {
 
       this.filterStatesODS[this.selectODSkey] = true;
 
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     if (this._odsFlag.getMeta7_3()) {
       this._odsFlag.setMeta7_3(false);
@@ -1346,8 +1633,11 @@ export class ProductPageComponent implements OnInit {
 
       this.filterStatesODS[this.selectODSkey] = true;
 
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     //! metas8
     if (this._odsFlag.getMeta8_1()) {
@@ -1355,88 +1645,121 @@ export class ProductPageComponent implements OnInit {
       this.selectODSkey = 'metas_61';
 
       this.filterStatesODS[this.selectODSkey] = true;
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     if (this._odsFlag.getMeta8_2()) {
       this._odsFlag.setMeta8_2(false);
       this.selectODSkey = 'metas_62';
 
       this.filterStatesODS[this.selectODSkey] = true;
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     if (this._odsFlag.getMeta8_3()) {
       this._odsFlag.setMeta8_3(false);
       this.selectODSkey = 'metas_63';
 
       this.filterStatesODS[this.selectODSkey] = true;
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     if (this._odsFlag.getMeta8_4()) {
       this._odsFlag.setMeta8_4(false);
       this.selectODSkey = 'metas_64';
 
       this.filterStatesODS[this.selectODSkey] = true;
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     if (this._odsFlag.getMeta8_5()) {
       this._odsFlag.setMeta8_5(false);
       this.selectODSkey = 'metas_65';
 
       this.filterStatesODS[this.selectODSkey] = true;
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     if (this._odsFlag.getMeta8_6()) {
       this._odsFlag.setMeta8_6(false);
       this.selectODSkey = 'metas_66';
 
       this.filterStatesODS[this.selectODSkey] = true;
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     if (this._odsFlag.getMeta8_7()) {
       this._odsFlag.setMeta8_7(false);
       this.selectODSkey = 'metas_67';
 
       this.filterStatesODS[this.selectODSkey] = true;
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     if (this._odsFlag.getMeta8_8()) {
       this._odsFlag.setMeta8_8(false);
       this.selectODSkey = 'metas_68';
 
       this.filterStatesODS[this.selectODSkey] = true;
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     if (this._odsFlag.getMeta8_10()) {
       this._odsFlag.setMeta8_10(false);
       this.selectODSkey = 'metas_70';
 
       this.filterStatesODS[this.selectODSkey] = true;
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     if (this._odsFlag.getMeta8_a()) {
       this._odsFlag.setMeta8_a(false);
       this.selectODSkey = 'metas_71';
 
       this.filterStatesODS[this.selectODSkey] = true;
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     if (this._odsFlag.getMeta8_b()) {
       this._odsFlag.setMeta8_b(false);
       this.selectODSkey = 'metas_72';
 
       this.filterStatesODS[this.selectODSkey] = true;
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     //! metas9
     if (this._odsFlag.getMeta9_1()) {
@@ -1444,24 +1767,33 @@ export class ProductPageComponent implements OnInit {
       this.selectODSkey = 'metas_73';
 
       this.filterStatesODS[this.selectODSkey] = true;
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     if (this._odsFlag.getMeta9_3()) {
       this._odsFlag.setMeta9_3(false);
       this.selectODSkey = 'metas_75';
 
       this.filterStatesODS[this.selectODSkey] = true;
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     if (this._odsFlag.getMeta9_5()) {
       this._odsFlag.setMeta9_5(false);
       this.selectODSkey = 'metas_77';
 
       this.filterStatesODS[this.selectODSkey] = true;
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     //! metas10
     if (this._odsFlag.getMeta10_2()) {
@@ -1469,16 +1801,22 @@ export class ProductPageComponent implements OnInit {
       this.selectODSkey = 'metas_82';
 
       this.filterStatesODS[this.selectODSkey] = true;
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     if (this._odsFlag.getMeta10_4()) {
       this._odsFlag.setMeta10_4(false);
       this.selectODSkey = 'metas_84';
 
       this.filterStatesODS[this.selectODSkey] = true;
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     //! metas11
     if (this._odsFlag.getMeta11_1()) {
@@ -1486,72 +1824,99 @@ export class ProductPageComponent implements OnInit {
       this.selectODSkey = 'metas_91';
 
       this.filterStatesODS[this.selectODSkey] = true;
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     if (this._odsFlag.getMeta11_2()) {
       this._odsFlag.setMeta11_2(false);
       this.selectODSkey = 'metas_92';
 
       this.filterStatesODS[this.selectODSkey] = true;
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     if (this._odsFlag.getMeta11_3()) {
       this._odsFlag.setMeta11_3(false);
       this.selectODSkey = 'metas_93';
 
       this.filterStatesODS[this.selectODSkey] = true;
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     if (this._odsFlag.getMeta11_4()) {
       this._odsFlag.setMeta11_4(false);
       this.selectODSkey = 'metas_94';
 
       this.filterStatesODS[this.selectODSkey] = true;
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     if (this._odsFlag.getMeta11_5()) {
       this._odsFlag.setMeta11_5(false);
       this.selectODSkey = 'metas_95';
 
       this.filterStatesODS[this.selectODSkey] = true;
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     if (this._odsFlag.getMeta11_6()) {
       this._odsFlag.setMeta11_6(false);
       this.selectODSkey = 'metas_96';
 
       this.filterStatesODS[this.selectODSkey] = true;
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     if (this._odsFlag.getMeta11_7()) {
       this._odsFlag.setMeta11_7(false);
       this.selectODSkey = 'metas_97';
 
       this.filterStatesODS[this.selectODSkey] = true;
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     if (this._odsFlag.getMeta11_a()) {
       this._odsFlag.setMeta11_a(false);
       this.selectODSkey = 'metas_98';
 
       this.filterStatesODS[this.selectODSkey] = true;
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     if (this._odsFlag.getMeta11_b()) {
       this._odsFlag.setMeta11_b(false);
       this.selectODSkey = 'metas_99';
 
       this.filterStatesODS[this.selectODSkey] = true;
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     //! metas12
     if (this._odsFlag.getMeta12_2()) {
@@ -1559,48 +1924,66 @@ export class ProductPageComponent implements OnInit {
       this.selectODSkey = 'metas_102';
 
       this.filterStatesODS[this.selectODSkey] = true;
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     if (this._odsFlag.getMeta12_3()) {
       this._odsFlag.setMeta12_3(false);
       this.selectODSkey = 'metas_103';
 
       this.filterStatesODS[this.selectODSkey] = true;
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     if (this._odsFlag.getMeta12_4()) {
       this._odsFlag.setMeta12_4(false);
       this.selectODSkey = 'metas_104';
 
       this.filterStatesODS[this.selectODSkey] = true;
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     if (this._odsFlag.getMeta12_5()) {
       this._odsFlag.setMeta12_5(false);
       this.selectODSkey = 'metas_105';
 
       this.filterStatesODS[this.selectODSkey] = true;
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     if (this._odsFlag.getMeta12_6()) {
       this._odsFlag.setMeta12_6(false);
       this.selectODSkey = 'metas_106';
 
       this.filterStatesODS[this.selectODSkey] = true;
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     if (this._odsFlag.getMeta12_8()) {
       this._odsFlag.setMeta12_8(false);
       this.selectODSkey = 'metas_108';
 
       this.filterStatesODS[this.selectODSkey] = true;
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     //! metas13
     if (this._odsFlag.getMeta13_1()) {
@@ -1608,32 +1991,44 @@ export class ProductPageComponent implements OnInit {
       this.selectODSkey = 'metas_112';
 
       this.filterStatesODS[this.selectODSkey] = true;
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     if (this._odsFlag.getMeta13_2()) {
       this._odsFlag.setMeta13_2(false);
       this.selectODSkey = 'metas_113';
 
       this.filterStatesODS[this.selectODSkey] = true;
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     if (this._odsFlag.getMeta13_3()) {
       this._odsFlag.setMeta13_3(false);
       this.selectODSkey = 'metas_114';
 
       this.filterStatesODS[this.selectODSkey] = true;
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     if (this._odsFlag.getMeta13_b()) {
       this._odsFlag.setMeta13_b(false);
       this.selectODSkey = 'metas_116';
 
       this.filterStatesODS[this.selectODSkey] = true;
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     //! metas14
     if (this._odsFlag.getMeta14_1()) {
@@ -1641,32 +2036,44 @@ export class ProductPageComponent implements OnInit {
       this.selectODSkey = 'metas_117';
 
       this.filterStatesODS[this.selectODSkey] = true;
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     if (this._odsFlag.getMeta14_2()) {
       this._odsFlag.setMeta14_2(false);
       this.selectODSkey = 'metas_118';
 
       this.filterStatesODS[this.selectODSkey] = true;
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     if (this._odsFlag.getMeta14_4()) {
       this._odsFlag.setMeta14_4(false);
       this.selectODSkey = 'metas_120';
 
       this.filterStatesODS[this.selectODSkey] = true;
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     if (this._odsFlag.getMeta14_5()) {
       this._odsFlag.setMeta14_5(false);
       this.selectODSkey = 'metas_121';
 
       this.filterStatesODS[this.selectODSkey] = true;
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     //! metas15
     if (this._odsFlag.getMeta15_1()) {
@@ -1674,56 +2081,77 @@ export class ProductPageComponent implements OnInit {
       this.selectODSkey = 'metas_127';
 
       this.filterStatesODS[this.selectODSkey] = true;
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     if (this._odsFlag.getMeta15_2()) {
       this._odsFlag.setMeta15_2(false);
       this.selectODSkey = 'metas_128';
 
       this.filterStatesODS[this.selectODSkey] = true;
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     if (this._odsFlag.getMeta15_3()) {
       this._odsFlag.setMeta15_3(false);
       this.selectODSkey = 'metas_129';
 
       this.filterStatesODS[this.selectODSkey] = true;
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     if (this._odsFlag.getMeta15_4()) {
       this._odsFlag.setMeta15_4(false);
       this.selectODSkey = 'metas_130';
 
       this.filterStatesODS[this.selectODSkey] = true;
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     if (this._odsFlag.getMeta15_5()) {
       this._odsFlag.setMeta15_5(false);
       this.selectODSkey = 'metas_131';
 
       this.filterStatesODS[this.selectODSkey] = true;
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     if (this._odsFlag.getMeta15_7()) {
       this._odsFlag.setMeta15_7(false);
       this.selectODSkey = 'metas_133';
 
       this.filterStatesODS[this.selectODSkey] = true;
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     if (this._odsFlag.getMeta15_a()) {
       this._odsFlag.setMeta15_a(false);
       this.selectODSkey = 'metas_136';
 
       this.filterStatesODS[this.selectODSkey] = true;
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     //! metas16
     if (this._odsFlag.getMeta16_1()) {
@@ -1731,56 +2159,77 @@ export class ProductPageComponent implements OnInit {
       this.selectODSkey = 'metas_139';
 
       this.filterStatesODS[this.selectODSkey] = true;
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     if (this._odsFlag.getMeta16_2()) {
       this._odsFlag.setMeta16_2(false);
       this.selectODSkey = 'metas_140';
 
       this.filterStatesODS[this.selectODSkey] = true;
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     if (this._odsFlag.getMeta16_5()) {
       this._odsFlag.setMeta16_5(false);
       this.selectODSkey = 'metas_143';
 
       this.filterStatesODS[this.selectODSkey] = true;
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     if (this._odsFlag.getMeta16_7()) {
       this._odsFlag.setMeta16_7(false);
       this.selectODSkey = 'metas_145';
 
       this.filterStatesODS[this.selectODSkey] = true;
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     if (this._odsFlag.getMeta16_10()) {
       this._odsFlag.setMeta16_10(false);
       this.selectODSkey = 'metas_148';
 
       this.filterStatesODS[this.selectODSkey] = true;
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     if (this._odsFlag.getMeta16_a()) {
       this._odsFlag.setMeta16_a(false);
       this.selectODSkey = 'metas_149';
 
       this.filterStatesODS[this.selectODSkey] = true;
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     if (this._odsFlag.getMeta16_b()) {
       this._odsFlag.setMeta16_b(false);
       this.selectODSkey = 'metas_150';
 
       this.filterStatesODS[this.selectODSkey] = true;
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     //! metas17
     if (this._odsFlag.getMeta17_10()) {
@@ -1788,16 +2237,22 @@ export class ProductPageComponent implements OnInit {
       this.selectODSkey = 'metas_160';
 
       this.filterStatesODS[this.selectODSkey] = true;
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
     if (this._odsFlag.getMeta17_11()) {
       this._odsFlag.setMeta17_11(false);
       this.selectODSkey = 'metas_161';
 
       this.filterStatesODS[this.selectODSkey] = true;
-      this.applyFilters();
-      this.loading = false;
+      setTimeout(() => {
+
+        this.applyFilters();
+        this.loading = false;
+      }, 1000); // 1000 milisegundos = 1 segundo
     }
   }
   //! LLENAMOS SELECT de fechas hasta referencia

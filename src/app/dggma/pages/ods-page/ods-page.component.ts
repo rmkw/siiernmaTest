@@ -4,6 +4,9 @@ import { MessageService } from 'primeng/api';
 import { OdsFilterService } from '../../services/odsfilters.service';
 import { Router } from '@angular/router';
 
+
+
+declare var bootstrap: any;
 declare var $: any;
 
 @Component({
@@ -149,8 +152,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
           labels: labels,
           datasets: [
             {
-              label:
-                ' Número de productos que tienen relación con esta meta',
+              label: ' Número de productos que tienen relación con esta meta',
               data: data,
               backgroundColor: [
                 'rgba(229, 35, 61, 1)',
@@ -216,8 +218,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
           labels: labels,
           datasets: [
             {
-              label:
-                ' Número de productos que tienen relación con esta meta',
+              label: ' Número de productos que tienen relación con esta meta',
               data: data,
               backgroundColor: [
                 'rgba(221, 167, 58, 1)',
@@ -268,35 +269,35 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
           onHover: (event, elements, chart) => {
             const target = chart.canvas; // Obtén el canvas directamente desde el objeto chart
             if (elements.length > 0) {
-                const index = elements[0].index;
-                // Cambia el cursor a 'pointer' solo si el índice es uno de los especificados
-                if (index === 1 || index === 2 || index === 3 || index === 4) {
-                    target.style.cursor = 'pointer';
-                } else {
-                    target.style.cursor = 'default';
-                }
-            } else {
+              const index = elements[0].index;
+              // Cambia el cursor a 'pointer' solo si el índice es uno de los especificados
+              if (index === 1 || index === 2 || index === 3 || index === 4) {
+                target.style.cursor = 'pointer';
+              } else {
                 target.style.cursor = 'default';
+              }
+            } else {
+              target.style.cursor = 'default';
             }
-        },
-        onClick: (event, elements) => {
+          },
+          onClick: (event, elements) => {
             if (elements && elements.length > 0) {
-                const index = elements[0].index;
-                // Lógica de activación de la función según la barra clicada
-                if (index === 1) {
-                    this.filtroMeta2_3();
-                }
-                if (index === 2) {
-                    this.filtroMeta2_4();
-                }
-                if (index === 3) {
-                    this.filtroMeta2_a();
-                }
-                if (index === 4) {
-                    this.filtroMeta2_c();
-                }
+              const index = elements[0].index;
+              // Lógica de activación de la función según la barra clicada
+              if (index === 1) {
+                this.filtroMeta2_3();
+              }
+              if (index === 2) {
+                this.filtroMeta2_4();
+              }
+              if (index === 3) {
+                this.filtroMeta2_a();
+              }
+              if (index === 4) {
+                this.filtroMeta2_c();
+              }
             }
-        },        
+          },
         },
       });
     } else {
@@ -317,8 +318,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
           labels: labels,
           datasets: [
             {
-              label:
-                ' Número de productos que tienen relación con esta meta',
+              label: ' Número de productos que tienen relación con esta meta',
               data: data,
               backgroundColor: [
                 'rgba(76, 161, 70, 1)',
@@ -365,26 +365,26 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
             },
           },
           onHover: (event, elements, chart) => {
-            const target = chart.canvas; 
+            const target = chart.canvas;
             if (elements.length > 0) {
-                const index = elements[0].index;
-                if (index === 2) {
-                    target.style.cursor = 'pointer';
-                } else {
-                    target.style.cursor = 'default';
-                }
-            } else {
+              const index = elements[0].index;
+              if (index === 2) {
+                target.style.cursor = 'pointer';
+              } else {
                 target.style.cursor = 'default';
+              }
+            } else {
+              target.style.cursor = 'default';
             }
-        },
-        onClick: (event, elements) => {
+          },
+          onClick: (event, elements) => {
             if (elements && elements.length > 0) {
-                const index = elements[0].index;
-                if (index === 2) {
-                    this.filtroMeta3_8();
-                }
+              const index = elements[0].index;
+              if (index === 2) {
+                this.filtroMeta3_8();
+              }
             }
-        },        
+          },
         },
       });
     } else {
@@ -405,8 +405,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
           labels: labels,
           datasets: [
             {
-              label:
-                ' Número de productos que tienen relación con esta meta',
+              label: ' Número de productos que tienen relación con esta meta',
               data: data,
               backgroundColor: [
                 'rgba(199, 33, 47, 1)',
@@ -455,26 +454,26 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
             },
           },
           onHover: (event, elements, chart) => {
-            const target = chart.canvas; 
+            const target = chart.canvas;
             if (elements.length > 0) {
-                const index = elements[0].index;
-                if (index === 4) {
-                    target.style.cursor = 'pointer';
-                } else {
-                    target.style.cursor = 'default';
-                }
-            } else {
+              const index = elements[0].index;
+              if (index === 4) {
+                target.style.cursor = 'pointer';
+              } else {
                 target.style.cursor = 'default';
+              }
+            } else {
+              target.style.cursor = 'default';
             }
-        },
-        onClick: (event, elements) => {
+          },
+          onClick: (event, elements) => {
             if (elements && elements.length > 0) {
-                const index = elements[0].index;
-                if (index === 4) {
-                    this.filtroMeta4_7();
-                }
+              const index = elements[0].index;
+              if (index === 4) {
+                this.filtroMeta4_7();
+              }
             }
-        },        
+          },
         },
       });
     } else {
@@ -495,8 +494,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
           labels: labels,
           datasets: [
             {
-              label:
-                ' Número de productos que tienen relación con esta meta',
+              label: ' Número de productos que tienen relación con esta meta',
               data: data,
               backgroundColor: [
                 'rgba(239, 64, 45, 1)',
@@ -545,26 +543,26 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
             },
           },
           onHover: (event, elements, chart) => {
-            const target = chart.canvas; 
+            const target = chart.canvas;
             if (elements.length > 0) {
-                const index = elements[0].index;
-                if (index === 0) {
-                    target.style.cursor = 'pointer';
-                } else {
-                    target.style.cursor = 'default';
-                }
-            } else {
+              const index = elements[0].index;
+              if (index === 0) {
+                target.style.cursor = 'pointer';
+              } else {
                 target.style.cursor = 'default';
+              }
+            } else {
+              target.style.cursor = 'default';
             }
-        },
-        onClick: (event, elements) => {
+          },
+          onClick: (event, elements) => {
             if (elements && elements.length > 0) {
-                const index = elements[0].index;
-                if (index === 0) {
-                    this.filtroMeta5_1();
-                }
+              const index = elements[0].index;
+              if (index === 0) {
+                this.filtroMeta5_1();
+              }
             }
-        },        
+          },
         },
       });
     } else {
@@ -593,8 +591,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
           labels: labels,
           datasets: [
             {
-              label:
-                ' Número de productos que tienen relación con esta meta',
+              label: ' Número de productos que tienen relación con esta meta',
               data: data,
               backgroundColor: [
                 'rgba(39, 191, 230, 1)',
@@ -647,29 +644,29 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
             },
           },
           onHover: (event, elements, chart) => {
-            const target = chart.canvas; 
+            const target = chart.canvas;
             if (elements.length > 0) {
-                const index = elements[0].index;
-                if (index === 5 || index === 6) {
-                    target.style.cursor = 'pointer';
-                } else {
-                    target.style.cursor = 'default';
-                }
-            } else {
+              const index = elements[0].index;
+              if (index === 5 || index === 6) {
+                target.style.cursor = 'pointer';
+              } else {
                 target.style.cursor = 'default';
+              }
+            } else {
+              target.style.cursor = 'default';
             }
-        },
-        onClick: (event, elements) => {
+          },
+          onClick: (event, elements) => {
             if (elements && elements.length > 0) {
-                const index = elements[0].index;
-                if (index === 5) {
-                    this.filtroMeta6_6();
-                }
-                if (index === 6) {
-                    this.filtroMeta6_b();
-                }
+              const index = elements[0].index;
+              if (index === 5) {
+                this.filtroMeta6_6();
+              }
+              if (index === 6) {
+                this.filtroMeta6_b();
+              }
             }
-        },        
+          },
         },
       });
     } else {
@@ -690,8 +687,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
           labels: labels,
           datasets: [
             {
-              label:
-                ' Número de productos que tienen relación con esta meta',
+              label: ' Número de productos que tienen relación con esta meta',
               data: data,
               backgroundColor: [
                 'rgba(251, 196, 18, 1)',
@@ -767,8 +763,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
           labels: labels,
           datasets: [
             {
-              label:
-                ' Número de productos que tienen relación con esta meta',
+              label: ' Número de productos que tienen relación con esta meta',
               data: data,
               backgroundColor: [
                 'rgba(163, 28, 68, 1)',
@@ -829,29 +824,29 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
             },
           },
           onHover: (event, elements, chart) => {
-            const target = chart.canvas; 
+            const target = chart.canvas;
             if (elements.length > 0) {
-                const index = elements[0].index;
-                if (index === 9 || index === 10) {
-                    target.style.cursor = 'pointer';
-                } else {
-                    target.style.cursor = 'default';
-                }
-            } else {
+              const index = elements[0].index;
+              if (index === 9 || index === 10) {
+                target.style.cursor = 'pointer';
+              } else {
                 target.style.cursor = 'default';
+              }
+            } else {
+              target.style.cursor = 'default';
             }
-        },
-        onClick: (event, elements) => {
+          },
+          onClick: (event, elements) => {
             if (elements && elements.length > 0) {
-                const index = elements[0].index;
-                if (index === 9) {
-                    this.filtroMeta8_a();
-                }
-                if (index === 10) {
-                    this.filtroMeta8_b();
-                }
+              const index = elements[0].index;
+              if (index === 9) {
+                this.filtroMeta8_a();
+              }
+              if (index === 10) {
+                this.filtroMeta8_b();
+              }
             }
-        },        
+          },
         },
       });
     } else {
@@ -872,8 +867,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
           labels: labels,
           datasets: [
             {
-              label:
-                ' Número de productos que tienen relación con esta meta',
+              label: ' Número de productos que tienen relación con esta meta',
               data: data,
               backgroundColor: [
                 'rgba(242, 106, 46, 1)',
@@ -937,8 +931,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
           labels: labels,
           datasets: [
             {
-              label:
-                ' Número de productos que tienen relación con esta meta',
+              label: ' Número de productos que tienen relación con esta meta',
               data: data,
               backgroundColor: [
                 'rgba(224, 20, 131, 1)',
@@ -1014,8 +1007,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
           labels: labels,
           datasets: [
             {
-              label:
-                ' Número de productos que tienen relación con esta meta',
+              label: ' Número de productos que tienen relación con esta meta',
               data: data,
               backgroundColor: [
                 'rgba(248, 157, 42, 1)',
@@ -1062,29 +1054,29 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
             },
           },
           onHover: (event, elements, chart) => {
-            const target = chart.canvas; 
+            const target = chart.canvas;
             if (elements.length > 0) {
-                const index = elements[0].index;
-                if (index === 7 || index === 8) {
-                    target.style.cursor = 'pointer';
-                } else {
-                    target.style.cursor = 'default';
-                }
-            } else {
+              const index = elements[0].index;
+              if (index === 7 || index === 8) {
+                target.style.cursor = 'pointer';
+              } else {
                 target.style.cursor = 'default';
+              }
+            } else {
+              target.style.cursor = 'default';
             }
-        },
-        onClick: (event, elements) => {
+          },
+          onClick: (event, elements) => {
             if (elements && elements.length > 0) {
-                const index = elements[0].index;
-                if (index === 7) {
-                    this.filtroMeta11_a();
-                }
-                if (index === 8) {
-                    this.filtroMeta11_b();
-                }
+              const index = elements[0].index;
+              if (index === 7) {
+                this.filtroMeta11_a();
+              }
+              if (index === 8) {
+                this.filtroMeta11_b();
+              }
             }
-        },        
+          },
         },
       });
     } else {
@@ -1112,8 +1104,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
           labels: labels,
           datasets: [
             {
-              label:
-                ' Número de productos que tienen relación con esta meta',
+              label: ' Número de productos que tienen relación con esta meta',
               data: data,
               backgroundColor: [
                 'rgba(191, 141, 44, 1)',
@@ -1166,33 +1157,33 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
           onHover: (event, elements, chart) => {
             const target = chart.canvas;
             if (elements.length > 0) {
-                const index = elements[0].index;
-                if (index === 1 || index === 2 || index === 4 || index === 5) {
-                    target.style.cursor = 'pointer';
-                } else {
-                    target.style.cursor = 'default';
-                }
-            } else {
+              const index = elements[0].index;
+              if (index === 1 || index === 2 || index === 4 || index === 5) {
+                target.style.cursor = 'pointer';
+              } else {
                 target.style.cursor = 'default';
+              }
+            } else {
+              target.style.cursor = 'default';
             }
-        },
-        onClick: (event, elements) => {
+          },
+          onClick: (event, elements) => {
             if (elements && elements.length > 0) {
-                const index = elements[0].index;
-                if (index === 1) {
-                    this.filtroMeta12_3();
-                }
-                if (index === 2) {
-                    this.filtroMeta12_4();
-                }
-                if (index === 4) {
-                    this.filtroMeta12_6();
-                }
-                if (index === 5) {
-                    this.filtroMeta12_8();
-                }
+              const index = elements[0].index;
+              if (index === 1) {
+                this.filtroMeta12_3();
+              }
+              if (index === 2) {
+                this.filtroMeta12_4();
+              }
+              if (index === 4) {
+                this.filtroMeta12_6();
+              }
+              if (index === 5) {
+                this.filtroMeta12_8();
+              }
             }
-        },        
+          },
         },
       });
     } else {
@@ -1213,8 +1204,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
           labels: labels,
           datasets: [
             {
-              label:
-                ' Número de productos que tienen relación con esta meta',
+              label: ' Número de productos que tienen relación con esta meta',
               data: data,
               backgroundColor: [
                 'rgba(64, 127, 70, 1)',
@@ -1261,29 +1251,29 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
             },
           },
           onHover: (event, elements, chart) => {
-            const target = chart.canvas; 
+            const target = chart.canvas;
             if (elements.length > 0) {
-                const index = elements[0].index;
-                if (index === 1 || index === 3) {
-                    target.style.cursor = 'pointer';
-                } else {
-                    target.style.cursor = 'default';
-                }
-            } else {
+              const index = elements[0].index;
+              if (index === 1 || index === 3) {
+                target.style.cursor = 'pointer';
+              } else {
                 target.style.cursor = 'default';
+              }
+            } else {
+              target.style.cursor = 'default';
             }
-        },
-        onClick: (event, elements) => {
+          },
+          onClick: (event, elements) => {
             if (elements && elements.length > 0) {
-                const index = elements[0].index;
-                if (index === 1) {
-                    this.filtroMeta13_2();
-                }
-                if (index === 3) {
-                    this.filtroMeta13_b();
-                }
+              const index = elements[0].index;
+              if (index === 1) {
+                this.filtroMeta13_2();
+              }
+              if (index === 3) {
+                this.filtroMeta13_b();
+              }
             }
-        },        
+          },
         },
       });
     } else {
@@ -1304,8 +1294,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
           labels: labels,
           datasets: [
             {
-              label:
-                ' Número de productos que tienen relación con esta meta',
+              label: ' Número de productos que tienen relación con esta meta',
               data: data,
               backgroundColor: [
                 'rgba(31, 151, 212, 1)',
@@ -1352,30 +1341,29 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
             },
           },
           onHover: (event, elements, chart) => {
-            const target = chart.canvas; 
+            const target = chart.canvas;
             if (elements.length > 0) {
-                const index = elements[0].index;
-                if (index === 0 || index === 2) {
-                    target.style.cursor = 'pointer';
-                } else {
-                    target.style.cursor = 'default';
-                }
-            } else {
+              const index = elements[0].index;
+              if (index === 0 || index === 2) {
+                target.style.cursor = 'pointer';
+              } else {
                 target.style.cursor = 'default';
+              }
+            } else {
+              target.style.cursor = 'default';
             }
-        },
-        onClick: (event, elements) => {
+          },
+          onClick: (event, elements) => {
             if (elements && elements.length > 0) {
-                const index = elements[0].index;
-                if (index === 0) {
-                    this.filtroMeta14_1();
-                }
-                if (index === 2) {
-                    this.filtroMeta14_4();
-                }
+              const index = elements[0].index;
+              if (index === 0) {
+                this.filtroMeta14_1();
+              }
+              if (index === 2) {
+                this.filtroMeta14_4();
+              }
             }
-        },
-        
+          },
         },
       });
     } else {
@@ -1404,8 +1392,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
           labels: labels,
           datasets: [
             {
-              label:
-                ' Número de productos que tienen relación con esta meta',
+              label: ' Número de productos que tienen relación con esta meta',
               data: data,
               backgroundColor: [
                 'rgba(89, 186, 71, 1)',
@@ -1460,33 +1447,33 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
           onHover: (event, elements, chart) => {
             const target = chart.canvas;
             if (elements.length > 0) {
-                const index = elements[0].index;
-                if (index === 1 || index === 2 || index === 5 || index === 6) {
-                    target.style.cursor = 'pointer';
-                } else {
-                    target.style.cursor = 'default';
-                }
-            } else {
+              const index = elements[0].index;
+              if (index === 1 || index === 2 || index === 5 || index === 6) {
+                target.style.cursor = 'pointer';
+              } else {
                 target.style.cursor = 'default';
+              }
+            } else {
+              target.style.cursor = 'default';
             }
-        },
-        onClick: (event, elements) => {
+          },
+          onClick: (event, elements) => {
             if (elements && elements.length > 0) {
-                const index = elements[0].index;
-                if (index === 1) {
-                    this.filtroMeta15_2();
-                }
-                if (index === 2) {
-                    this.filtroMeta15_3();
-                }
-                if (index === 5) {
-                    this.filtroMeta15_7();
-                }
-                if (index === 6) {
-                    this.filtroMeta15_a();
-                }
+              const index = elements[0].index;
+              if (index === 1) {
+                this.filtroMeta15_2();
+              }
+              if (index === 2) {
+                this.filtroMeta15_3();
+              }
+              if (index === 5) {
+                this.filtroMeta15_7();
+              }
+              if (index === 6) {
+                this.filtroMeta15_a();
+              }
             }
-        },
+          },
         },
       });
     } else {
@@ -1515,8 +1502,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
           labels: labels,
           datasets: [
             {
-              label:
-                ' Número de productos que tienen relación con esta meta',
+              label: ' Número de productos que tienen relación con esta meta',
               data: data,
               backgroundColor: [
                 'rgba(19, 106, 159, 1)',
@@ -1571,37 +1557,37 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
           onHover: (event, elements, chart) => {
             const target = chart.canvas;
             if (elements.length > 0) {
-                const index = elements[0].index;
-                if (index === 1 || index === 4 || index === 5) {
-                    target.style.cursor = 'pointer';
-                } else {
-                    target.style.cursor = 'default';
-                }
-            } else {
+              const index = elements[0].index;
+              if (index === 1 || index === 4 || index === 5) {
+                target.style.cursor = 'pointer';
+              } else {
                 target.style.cursor = 'default';
+              }
+            } else {
+              target.style.cursor = 'default';
             }
-        },
-        onClick: (event, elements) => {
+          },
+          onClick: (event, elements) => {
             if (elements && elements.length > 0) {
-                const index = elements[0].index;
-                if (index === 1) {
-                    this.filtroMeta16_2();
-                }
-                if (index === 4) {
-                    this.filtroMeta16_10();
-                }
-                if (index === 5) {
-                    this.filtroMeta16_a();
-                }
+              const index = elements[0].index;
+              if (index === 1) {
+                this.filtroMeta16_2();
+              }
+              if (index === 4) {
+                this.filtroMeta16_10();
+              }
+              if (index === 5) {
+                this.filtroMeta16_a();
+              }
             }
-        },
+          },
         },
       });
     } else {
       console.error('Element with id "componente1" not found.');
     }
   }
-  
+
   createChart17(): void {
     const labels = ['Meta 17.10', 'Meta 17.11'];
     const data = [1, 1];
@@ -1616,8 +1602,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
           labels: labels,
           datasets: [
             {
-              label:
-                ' Número de productos que tienen relación con esta meta',
+              label: ' Número de productos que tienen relación con esta meta',
               data: data,
               backgroundColor: ['rgba(20, 73, 107, 1)', 'rgba(20, 73, 107, 1)'],
               borderColor: ['rgb(20, 73, 107)', 'rgb(20, 73, 107)'],
@@ -1654,11 +1639,11 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
             },
           },
           onHover: (event, elements) => {
-            const target = chartElement; 
+            const target = chartElement;
             if (elements.length > 0) {
-              target.style.cursor = 'pointer'; 
+              target.style.cursor = 'pointer';
             } else {
-              target.style.cursor = 'default'; 
+              target.style.cursor = 'default';
             }
           },
           onClick: (event, elements) => {
@@ -1672,7 +1657,6 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
               if (index === 1) {
                 this.filtroMeta17_11();
               }
-
             }
           },
         },
@@ -3707,7 +3691,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
   }
 
   filtroMeta1_1(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta1_1(true);
     $('#exampleModal').modal('hide'); // Cierra el modal
 
@@ -3717,7 +3701,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta1_3(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta1_3(true);
     $('#exampleModal3').modal('hide'); // Cierra el modal
 
@@ -3727,7 +3711,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta1_4(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta1_4(true);
     $('#exampleModal4').modal('hide'); // Cierra el modal
 
@@ -3737,7 +3721,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta1_5(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta1_5(true);
     $('#exampleModal5').modal('hide'); // Cierra el modal
 
@@ -3748,7 +3732,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
   }
   //! meta 2
   filtroMeta2_1(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta2_1(true);
     $('#exampleModal9').modal('hide'); // Cierra el modal
 
@@ -3758,7 +3742,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta2_3(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta2_3(true);
     // Cierra el modal
 
@@ -3768,7 +3752,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta2_4(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta2_4(true);
     // Cierra el modal
 
@@ -3778,7 +3762,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta2_a(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta2_a(true);
     // Cierra el modal
 
@@ -3788,7 +3772,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta2_c(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta2_c(true);
     // Cierra el modal
 
@@ -3799,7 +3783,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
   }
   //! metas 3
   filtroMeta3_4(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta3_4(true);
     $('#exampleModal15').modal('hide'); // Cierra el modal
 
@@ -3809,7 +3793,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta3_7(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta3_7(true);
     $('#exampleModal16').modal('hide'); // Cierra el modal
 
@@ -3819,7 +3803,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta3_8(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta3_8(true);
     // Cierra el modal
 
@@ -3829,7 +3813,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta3_9(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta3_9(true);
     $('#exampleModal17').modal('hide'); // Cierra el modal
 
@@ -3840,7 +3824,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
   }
   //! metas4
   filtroMeta4_1(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta4_1(true);
     $('#exampleModal20').modal('hide'); // Cierra el modal
 
@@ -3850,7 +3834,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta4_2(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta4_2(true);
     $('#exampleModal21').modal('hide'); // Cierra el modal
 
@@ -3860,7 +3844,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta4_3(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta4_3(true);
     $('#exampleModal22').modal('hide'); // Cierra el modal
 
@@ -3870,7 +3854,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta4_5(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta4_5(true);
     $('#exampleModal24').modal('hide'); // Cierra el modal
 
@@ -3880,7 +3864,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta4_7(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta4_7(true);
     // Cierra el modal
 
@@ -3891,7 +3875,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
   }
   //! metas5
   filtroMeta5_1(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta5_1(true);
     // Cierra el modal
 
@@ -3901,7 +3885,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta5_2(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta5_2(true);
     $('#exampleModal29').modal('hide'); // Cierra el modal
 
@@ -3911,7 +3895,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta5_4(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta5_4(true);
     $('#exampleModal31').modal('hide'); // Cierra el modal
 
@@ -3921,7 +3905,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta5_5(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta5_5(true);
     $('#exampleModal32').modal('hide'); // Cierra el modal
 
@@ -3931,7 +3915,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta5_a(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta5_a(true);
     $('#exampleModal34').modal('hide'); // Cierra el modal
 
@@ -3942,7 +3926,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
   }
   //! metas6
   filtroMeta6_1(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta6_1(true);
     $('#exampleModal37').modal('hide'); // Cierra el modal
 
@@ -3952,7 +3936,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta6_2(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta6_2(true);
     $('#exampleModal38').modal('hide'); // Cierra el modal
 
@@ -3962,7 +3946,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta6_3(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta6_3(true);
     $('#exampleModal39').modal('hide'); // Cierra el modal
 
@@ -3972,7 +3956,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta6_4(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta6_4(true);
     $('#exampleModal40').modal('hide'); // Cierra el modal
 
@@ -3982,7 +3966,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta6_5(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta6_5(true);
     $('#exampleModal41').modal('hide'); // Cierra el modal
 
@@ -3992,7 +3976,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta6_6(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta6_6(true);
     // Cierra el modal
 
@@ -4002,7 +3986,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta6_b(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta6_b(true);
     // Cierra el modal
 
@@ -4013,7 +3997,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
   }
   //! metas7
   filtroMeta7_1(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta7_1(true);
     $('#exampleModal44').modal('hide'); // Cierra el modal
 
@@ -4023,7 +4007,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta7_2(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta7_2(true);
     $('#exampleModal45').modal('hide'); // Cierra el modal
 
@@ -4033,7 +4017,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta7_3(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta7_3(true);
     $('#exampleModal46').modal('hide'); // Cierra el modal
 
@@ -4044,7 +4028,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
   }
   //! metas8
   filtroMeta8_1(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta8_1(true);
     $('#exampleModal48').modal('hide'); // Cierra el modal
 
@@ -4054,7 +4038,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta8_2(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta8_2(true);
     $('#exampleModal49').modal('hide'); // Cierra el modal
 
@@ -4064,7 +4048,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta8_3(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta8_3(true);
     $('#exampleModal50').modal('hide'); // Cierra el modal
 
@@ -4074,7 +4058,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta8_4(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta8_4(true);
     $('#exampleModal51').modal('hide'); // Cierra el modal
 
@@ -4084,7 +4068,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta8_5(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta8_5(true);
     $('#exampleModal52').modal('hide'); // Cierra el modal
 
@@ -4094,7 +4078,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta8_6(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta8_6(true);
     $('#exampleModal53').modal('hide'); // Cierra el modal
 
@@ -4104,7 +4088,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta8_7(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta8_7(true);
     $('#exampleModal54').modal('hide'); // Cierra el modal
 
@@ -4114,7 +4098,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta8_8(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta8_8(true);
     $('#exampleModal55').modal('hide'); // Cierra el modal
 
@@ -4124,7 +4108,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta8_10(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta8_10(true);
     $('#exampleModal57').modal('hide'); // Cierra el modal
 
@@ -4134,7 +4118,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta8_a(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta8_a(true);
     // Cierra el modal
 
@@ -4144,7 +4128,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta8_b(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta8_b(true);
     // Cierra el modal
 
@@ -4155,7 +4139,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
   }
   //! metas9
   filtroMeta9_1(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta9_1(true);
     $('#exampleModal59').modal('hide'); // Cierra el modal
 
@@ -4165,7 +4149,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta9_3(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta9_3(true);
     $('#exampleModal61').modal('hide'); // Cierra el modal
 
@@ -4175,7 +4159,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta9_5(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta9_5(true);
     $('#exampleModal63').modal('hide'); // Cierra el modal
 
@@ -4186,7 +4170,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
   }
   //! metas10
   filtroMeta10_2(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta10_2(true);
     $('#exampleModal68').modal('hide'); // Cierra el modal
 
@@ -4196,7 +4180,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta10_4(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta10_4(true);
     $('#exampleModal70').modal('hide'); // Cierra el modal
 
@@ -4207,7 +4191,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
   }
   //! metas11
   filtroMeta11_1(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta11_1(true);
     $('#exampleModal72').modal('hide'); // Cierra el modal
 
@@ -4217,7 +4201,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta11_2(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta11_2(true);
     $('#exampleModal73').modal('hide'); // Cierra el modal
 
@@ -4227,7 +4211,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta11_3(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta11_3(true);
     $('#exampleModal74').modal('hide'); // Cierra el modal
 
@@ -4237,7 +4221,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta11_4(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta11_4(true);
     $('#exampleModal75').modal('hide'); // Cierra el modal
 
@@ -4247,7 +4231,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta11_5(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta11_5(true);
     $('#exampleModal76').modal('hide'); // Cierra el modal
 
@@ -4257,7 +4241,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta11_6(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta11_6(true);
     $('#exampleModal77').modal('hide'); // Cierra el modal
 
@@ -4267,7 +4251,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta11_7(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta11_7(true);
     $('#exampleModal78').modal('hide'); // Cierra el modal
 
@@ -4277,7 +4261,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta11_a(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta11_a(true);
     // Cierra el modal
 
@@ -4287,7 +4271,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta11_b(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta11_b(true);
     // Cierra el modal
 
@@ -4298,7 +4282,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
   }
   //! metas12
   filtroMeta12_2(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta12_2(true);
     $('#exampleModal80').modal('hide'); // Cierra el modal
 
@@ -4308,7 +4292,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta12_3(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta12_3(true);
     // Cierra el modal
 
@@ -4318,7 +4302,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta12_4(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta12_4(true);
     // Cierra el modal
 
@@ -4328,7 +4312,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta12_5(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta12_5(true);
     $('#exampleModal81').modal('hide'); // Cierra el modal
 
@@ -4338,7 +4322,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta12_6(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta12_6(true);
     // Cierra el modal
 
@@ -4348,7 +4332,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta12_8(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta12_8(true);
     // Cierra el modal
 
@@ -4359,7 +4343,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
   }
   //! metas13
   filtroMeta13_1(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta13_1(true);
     $('#exampleModal84').modal('hide'); // Cierra el modal
 
@@ -4369,7 +4353,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta13_2(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta13_2(true);
     // Cierra el modal
 
@@ -4379,7 +4363,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta13_3(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta13_3(true);
     $('#exampleModal85').modal('hide'); // Cierra el modal
 
@@ -4389,7 +4373,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta13_b(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta13_b(true);
     // Cierra el modal
 
@@ -4400,7 +4384,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
   }
   //! metas14
   filtroMeta14_1(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta14_1(true);
     // Cierra el modal
 
@@ -4410,7 +4394,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta14_2(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta14_2(true);
     $('#exampleModal87').modal('hide'); // Cierra el modal
 
@@ -4420,7 +4404,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta14_4(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta14_4(true);
     // Cierra el modal
 
@@ -4430,7 +4414,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta14_5(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta14_5(true);
     $('#exampleModal88').modal('hide'); // Cierra el modal
 
@@ -4441,7 +4425,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
   }
   //! metas15
   filtroMeta15_1(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta15_1(true);
     $('#exampleModal90').modal('hide'); // Cierra el modal
 
@@ -4451,7 +4435,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta15_2(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta15_2(true);
     // Cierra el modal
 
@@ -4461,7 +4445,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta15_3(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta15_3(true);
     // Cierra el modal
 
@@ -4471,7 +4455,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta15_4(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta15_4(true);
     $('#exampleModal91').modal('hide'); // Cierra el modal
 
@@ -4481,7 +4465,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta15_5(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta15_5(true);
     $('#exampleModal92').modal('hide'); // Cierra el modal
 
@@ -4491,7 +4475,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta15_7(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta15_7(true);
     // Cierra el modal
 
@@ -4501,7 +4485,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta15_a(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta15_a(true);
     // Cierra el modal
 
@@ -4512,7 +4496,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
   }
   //! metas16
   filtroMeta16_1(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta16_1(true);
     $('#exampleModal94').modal('hide'); // Cierra el modal
 
@@ -4522,7 +4506,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta16_2(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta16_2(true);
     // Cierra el modal
 
@@ -4532,7 +4516,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta16_5(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta16_5(true);
     $('#exampleModal96').modal('hide'); // Cierra el modal
 
@@ -4542,7 +4526,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta16_7(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta16_7(true);
     $('#exampleModal98').modal('hide'); // Cierra el modal
 
@@ -4552,7 +4536,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta16_10(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta16_10(true);
     // Cierra el modal
 
@@ -4562,7 +4546,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta16_a(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta16_a(true);
     // Cierra el modal
 
@@ -4572,7 +4556,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta16_b(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta16_b(true);
     $('#exampleModal100').modal('hide'); // Cierra el modal
 
@@ -4583,7 +4567,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
   }
   //! metas17
   filtroMeta17_10(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta17_10(true);
     $('#exampleModal100').modal('hide'); // Cierra el modal
 
@@ -4593,7 +4577,7 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
   filtroMeta17_11(): void {
-    this._odsFlag.setMasterFlag(true)
+    this._odsFlag.setMasterFlag(true);
     this._odsFlag.setMeta17_11(true);
     $('#exampleModal100').modal('hide'); // Cierra el modal
 
@@ -4601,5 +4585,371 @@ export class OdsPageComponent implements OnInit, AfterViewInit {
     setTimeout(() => {
       this.router.navigate(['/dg/products']);
     }, 1000);
+  }
+  //!Objetivo1
+  filterObjetivo1(): void {
+    this._odsFlag.setObj1(true);
+    this._odsFlag.setMasterFlag(true);
+    $('#staticBackdrop').modal('hide');
+
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  //!Objetivo2
+  filterObjetivo2(): void {
+    this._odsFlag.setObj2(true);
+    this._odsFlag.setMasterFlag(true);
+    $('#staticBackdrop2').modal('hide');
+
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  //!Objetivo3
+  filterObjetivo3(): void {
+    this._odsFlag.setObj3(true);
+    this._odsFlag.setMasterFlag(true);
+    $('#staticBackdrop3').modal('hide');
+
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+
+  //!Objetivo4
+  filterObjetivo4(): void {
+    this._odsFlag.setObj4(true);
+    this._odsFlag.setMasterFlag(true);
+    $('#staticBackdrop4').modal('hide');
+
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+
+  //!Objetivo5
+  filterObjetivo5(): void {
+    this._odsFlag.setObj5(true);
+    this._odsFlag.setMasterFlag(true);
+    $('#staticBackdrop5').modal('hide');
+
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  //!Objetivo6
+  filterObjetivo6(): void {
+    this._odsFlag.setObj6(true);
+    this._odsFlag.setMasterFlag(true);
+    $('#staticBackdrop6').modal('hide');
+
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  //!Objetivo7
+  filterObjetivo7(): void {
+    this._odsFlag.setObj7(true);
+    this._odsFlag.setMasterFlag(true);
+    $('#staticBackdrop7').modal('hide');
+
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  //!Objetivo8
+  filterObjetivo8(): void {
+    this._odsFlag.setObj8(true);
+    this._odsFlag.setMasterFlag(true);
+    $('#staticBackdrop8').modal('hide');
+
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+
+  //!Objetivo9
+  filterObjetivo9(): void {
+    this._odsFlag.setObj9(true);
+    this._odsFlag.setMasterFlag(true);
+    $('#staticBackdrop9').modal('hide');
+
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+
+  //!Objetivo10
+  filterObjetivo10(): void {
+    this._odsFlag.setObj10(true);
+    this._odsFlag.setMasterFlag(true);
+    $('#staticBackdrop10').modal('hide');
+
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  //!Objetivo11
+  filterObjetivo11(): void {
+    this._odsFlag.setObj11(true);
+    this._odsFlag.setMasterFlag(true);
+    $('#staticBackdrop11').modal('hide');
+
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  //!Objetivo12
+  filterObjetivo12(): void {
+    this._odsFlag.setObj12(true);
+    this._odsFlag.setMasterFlag(true);
+    $('#staticBackdrop12').modal('hide');
+
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  //!Objetivo13
+  filterObjetivo13(): void {
+    this._odsFlag.setObj13(true);
+    this._odsFlag.setMasterFlag(true);
+    $('#staticBackdrop13').modal('hide');
+
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+
+  //!Objetivo14
+  filterObjetivo14(): void {
+    this._odsFlag.setObj14(true);
+    this._odsFlag.setMasterFlag(true);
+    $('#staticBackdrop14').modal('hide');
+
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+
+  //!Objetivo15
+  filterObjetivo15(): void {
+    this._odsFlag.setObj15(true);
+    this._odsFlag.setMasterFlag(true);
+    $('#staticBackdrop15').modal('hide');
+
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  //!Objetivo16
+  filterObjetivo16(): void {
+    this._odsFlag.setObj16(true);
+    this._odsFlag.setMasterFlag(true);
+    $('#staticBackdrop16').modal('hide');
+
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+
+  //!Objetivo17
+  filterObjetivo17(): void {
+    this._odsFlag.setObj17(true);
+    this._odsFlag.setMasterFlag(true);
+    $('#staticBackdrop17').modal('hide');
+
+    setTimeout(() => {
+      this.router.navigate(['/dg/products']);
+    }, 1000);
+  }
+  //! ALERTS
+
+  showAlert1() {
+    var modalElement = document.getElementById('staticBackdrop');
+
+    // Verificamos que modalElement no sea null antes de crear el modal
+    if (modalElement) {
+      var myModal = new bootstrap.Modal(modalElement);
+      myModal.show();
+    } else {
+      console.error('No se pudo encontrar el modal con el ID staticBackdrop.');
+    }
+  }
+  showAlert2() {
+    var modalElement = document.getElementById('staticBackdrop2');
+
+    // Verificamos que modalElement no sea null antes de crear el modal
+    if (modalElement) {
+      var myModal = new bootstrap.Modal(modalElement);
+      myModal.show();
+    } else {
+      console.error('No se pudo encontrar el modal con el ID staticBackdrop.');
+    }
+  }
+  showAlert3() {
+    var modalElement = document.getElementById('staticBackdrop3');
+
+    // Verificamos que modalElement no sea null antes de crear el modal
+    if (modalElement) {
+      var myModal = new bootstrap.Modal(modalElement);
+      myModal.show();
+    } else {
+      console.error('No se pudo encontrar el modal con el ID staticBackdrop.');
+    }
+  }
+  showAlert4() {
+    var modalElement = document.getElementById('staticBackdrop4');
+
+    // Verificamos que modalElement no sea null antes de crear el modal
+    if (modalElement) {
+      var myModal = new bootstrap.Modal(modalElement);
+      myModal.show();
+    } else {
+      console.error('No se pudo encontrar el modal con el ID staticBackdrop.');
+    }
+  }
+  showAlert5() {
+    var modalElement = document.getElementById('staticBackdrop5');
+
+    // Verificamos que modalElement no sea null antes de crear el modal
+    if (modalElement) {
+      var myModal = new bootstrap.Modal(modalElement);
+      myModal.show();
+    } else {
+      console.error('No se pudo encontrar el modal con el ID staticBackdrop.');
+    }
+  }
+  showAlert6() {
+    var modalElement = document.getElementById('staticBackdrop6');
+
+    // Verificamos que modalElement no sea null antes de crear el modal
+    if (modalElement) {
+      var myModal = new bootstrap.Modal(modalElement);
+      myModal.show();
+    } else {
+      console.error('No se pudo encontrar el modal con el ID staticBackdrop.');
+    }
+  }
+  showAlert7() {
+    var modalElement = document.getElementById('staticBackdrop7');
+
+    // Verificamos que modalElement no sea null antes de crear el modal
+    if (modalElement) {
+      var myModal = new bootstrap.Modal(modalElement);
+      myModal.show();
+    } else {
+      console.error('No se pudo encontrar el modal con el ID staticBackdrop.');
+    }
+  }
+  showAlert8() {
+    var modalElement = document.getElementById('staticBackdrop8');
+
+    // Verificamos que modalElement no sea null antes de crear el modal
+    if (modalElement) {
+      var myModal = new bootstrap.Modal(modalElement);
+      myModal.show();
+    } else {
+      console.error('No se pudo encontrar el modal con el ID staticBackdrop.');
+    }
+  }
+  showAlert9() {
+    var modalElement = document.getElementById('staticBackdrop9');
+
+    // Verificamos que modalElement no sea null antes de crear el modal
+    if (modalElement) {
+      var myModal = new bootstrap.Modal(modalElement);
+      myModal.show();
+    } else {
+      console.error('No se pudo encontrar el modal con el ID staticBackdrop.');
+    }
+  }
+  showAlert10() {
+    var modalElement = document.getElementById('staticBackdrop10');
+
+    // Verificamos que modalElement no sea null antes de crear el modal
+    if (modalElement) {
+      var myModal = new bootstrap.Modal(modalElement);
+      myModal.show();
+    } else {
+      console.error('No se pudo encontrar el modal con el ID staticBackdrop.');
+    }
+  }
+  showAlert11() {
+    var modalElement = document.getElementById('staticBackdrop11');
+
+    // Verificamos que modalElement no sea null antes de crear el modal
+    if (modalElement) {
+      var myModal = new bootstrap.Modal(modalElement);
+      myModal.show();
+    } else {
+      console.error('No se pudo encontrar el modal con el ID staticBackdrop.');
+    }
+  }
+  showAlert12() {
+    var modalElement = document.getElementById('staticBackdrop12');
+
+    // Verificamos que modalElement no sea null antes de crear el modal
+    if (modalElement) {
+      var myModal = new bootstrap.Modal(modalElement);
+      myModal.show();
+    } else {
+      console.error('No se pudo encontrar el modal con el ID staticBackdrop.');
+    }
+  }
+  showAlert13() {
+    var modalElement = document.getElementById('staticBackdrop13');
+
+    // Verificamos que modalElement no sea null antes de crear el modal
+    if (modalElement) {
+      var myModal = new bootstrap.Modal(modalElement);
+      myModal.show();
+    } else {
+      console.error('No se pudo encontrar el modal con el ID staticBackdrop.');
+    }
+  }
+  showAlert14() {
+    var modalElement = document.getElementById('staticBackdrop14');
+
+    // Verificamos que modalElement no sea null antes de crear el modal
+    if (modalElement) {
+      var myModal = new bootstrap.Modal(modalElement);
+      myModal.show();
+    } else {
+      console.error('No se pudo encontrar el modal con el ID staticBackdrop.');
+    }
+  }
+  showAlert15() {
+    var modalElement = document.getElementById('staticBackdrop15');
+
+    // Verificamos que modalElement no sea null antes de crear el modal
+    if (modalElement) {
+      var myModal = new bootstrap.Modal(modalElement);
+      myModal.show();
+    } else {
+      console.error('No se pudo encontrar el modal con el ID staticBackdrop.');
+    }
+  }
+  showAlert16() {
+    var modalElement = document.getElementById('staticBackdrop16');
+
+    // Verificamos que modalElement no sea null antes de crear el modal
+    if (modalElement) {
+      var myModal = new bootstrap.Modal(modalElement);
+      myModal.show();
+    } else {
+      console.error('No se pudo encontrar el modal con el ID staticBackdrop.');
+    }
+  }
+  showAlert17() {
+    var modalElement = document.getElementById('staticBackdrop17');
+
+    // Verificamos que modalElement no sea null antes de crear el modal
+    if (modalElement) {
+      var myModal = new bootstrap.Modal(modalElement);
+      myModal.show();
+    } else {
+      console.error('No se pudo encontrar el modal con el ID staticBackdrop.');
+    }
   }
 }

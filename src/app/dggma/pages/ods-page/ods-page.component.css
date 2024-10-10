@@ -285,3 +285,6 @@ button {
 }
 
 
+.hover-pointer {
+  cursor: pointer;
+}

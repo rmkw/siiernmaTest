@@ -6,6 +6,24 @@ import { Injectable } from '@angular/core';
 export class OdsFilterService {
   constructor() {}
 
+  bool_obj1: boolean = false;
+  bool_obj2: boolean = false;
+  bool_obj3: boolean = false;
+  bool_obj4: boolean = false;
+  bool_obj5: boolean = false;
+  bool_obj6: boolean = false;
+  bool_obj7: boolean = false;
+  bool_obj8: boolean = false;
+  bool_obj9: boolean = false;
+  bool_obj10: boolean = false;
+  bool_obj11: boolean = false;
+  bool_obj12: boolean = false;
+  bool_obj13: boolean = false;
+  bool_obj14: boolean = false;
+  bool_obj15: boolean = false;
+  bool_obj16: boolean = false;
+  bool_obj17: boolean = false;
+
   bool_meta1_1: boolean = false;
   bool_meta1_3: boolean = false;
   bool_meta1_4: boolean = false;
@@ -666,5 +684,126 @@ export class OdsFilterService {
   }
   getMeta17_11(): boolean {
     return this.bool_meta17_11;
+  }
+  //! objetivo1
+  setObj1(value: boolean): void {
+    this.bool_obj1 = value;
+  }
+  getObj1(): boolean {
+    return this.bool_obj1;
+  }
+  //! objetivo3
+  setObj3(value: boolean): void {
+    this.bool_obj3 = value;
+  }
+  getObj3(): boolean {
+    return this.bool_obj3;
+  }
+  //! objetivo4
+  setObj4(value: boolean): void {
+    this.bool_obj4 = value;
+  }
+  getObj4(): boolean {
+    return this.bool_obj4;
+  }
+  //! objetivo5
+  setObj5(value: boolean): void {
+    this.bool_obj5 = value;
+  }
+  getObj5(): boolean {
+    return this.bool_obj5;
+  }
+  //! objetivo6
+  setObj6(value: boolean): void {
+    this.bool_obj6 = value;
+  }
+  getObj6(): boolean {
+    return this.bool_obj6;
+  }
+  //! objetivo7
+  setObj7(value: boolean): void {
+    this.bool_obj7 = value;
+  }
+  getObj7(): boolean {
+    return this.bool_obj7;
+  }
+  //! objetivo8
+  setObj8(value: boolean): void {
+    this.bool_obj8 = value;
+  }
+  getObj8(): boolean {
+    return this.bool_obj8;
+  }
+  //! objetivo9
+  setObj9(value: boolean): void {
+    this.bool_obj9 = value;
+  }
+  getObj9(): boolean {
+    return this.bool_obj9;
+  }
+  //! objetivo10
+  setObj10(value: boolean): void {
+    this.bool_obj10 = value;
+  }
+  getObj10(): boolean {
+    return this.bool_obj10;
+  }
+  //! objetivo11
+  setObj11(value: boolean): void {
+    this.bool_obj11 = value;
+  }
+  getObj11(): boolean {
+    return this.bool_obj11;
+  }
+
+  //! objetivo12
+  setObj12(value: boolean): void {
+    this.bool_obj12 = value;
+  }
+  getObj12(): boolean {
+    return this.bool_obj12;
+  }
+  //! objetivo13
+  setObj13(value: boolean): void {
+    this.bool_obj13 = value;
+  }
+  getObj13(): boolean {
+    return this.bool_obj13;
+  }
+  //! objetivo14
+  setObj14(value: boolean): void {
+    this.bool_obj14 = value;
+  }
+  getObj14(): boolean {
+    return this.bool_obj14;
+  }
+  //! objetivo15
+  setObj15(value: boolean): void {
+    this.bool_obj15 = value;
+  }
+  getObj15(): boolean {
+    return this.bool_obj15;
+  }
+  //! objetivo16
+  setObj16(value: boolean): void {
+    this.bool_obj16 = value;
+  }
+  getObj16(): boolean {
+    return this.bool_obj16;
+  }
+
+  //! objetivo17
+  setObj17(value: boolean): void {
+    this.bool_obj17 = value;
+  }
+  getObj17(): boolean {
+    return this.bool_obj17;
+  }
+  //! objetivo2
+  setObj2(value: boolean): void {
+    this.bool_obj2 = value;
+  }
+  getObj2(): boolean {
+    return this.bool_obj2;
   }
 }

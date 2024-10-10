@@ -869,7 +869,7 @@
             </div>
           </div>
           <div class="row">
-            
+
             <div class="col">
               <div>
                 <label>Enlaces de acceso:&nbsp;</label>
@@ -896,14 +896,14 @@
               </div>
             </div>
 
-      <!-- Enlace geografico -->  
+      <!-- Enlace geografico -->
       <div class="col">
         <ng-container *ngIf="esGeograficoOEstadistico(); else enlaceTemplate">
         </ng-container>
         <ng-template #enlaceTemplate>
           <span>Enlace de referencia Geográfico: </span>
-          <a *ngIf="elementoSeleccionado?.liga_geonode !== 'Sin resultado'; else noDisponible" 
-             [href]="elementoSeleccionado?.liga_geonode" 
+          <a *ngIf="elementoSeleccionado?.liga_geonode !== 'Sin resultado'; else noDisponible"
+             [href]="elementoSeleccionado?.liga_geonode"
              target="_blank">
             {{ elementoSeleccionado?.tipo_prod__1 == 1 && elementoSeleccionado?.tipo_prod__2 == 0 ? 'Enlace.' : '' }}
             {{ elementoSeleccionado?.tipo_prod__1 == 0 && elementoSeleccionado?.tipo_prod__2 == 1 ? '' : '' }}
@@ -914,7 +914,7 @@
           </ng-template>
         </ng-template>
       </div>
-      
+
 
             <div class="container">
               <hr>
