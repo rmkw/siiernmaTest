@@ -9,7 +9,7 @@
 
 
 
-      <img src="./assets/INEGI_g.png" alt="Logo" [class]="getLogoClass()" [routerLink]="['/dg']" style="cursor: pointer; padding-right: 5px;"/>
+      <img src="./assets/INEGI_g.png" alt="Logo" class="responsive-image" [routerLink]="['/dg']" style="cursor: pointer; padding-right: 5px;"/>
 
 
 
@@ -17,13 +17,13 @@
 
       <ul class="navbar-nav">
         <li class="nav-item" >
-          <a class="nav-link active" aria-current="page" href="#" [routerLink]="['/dg']"
+          <a class="nav-link active palabras" aria-current="page" href="#" [routerLink]="['/dg']"
           [routerLinkActive]="'active-link'"
           [routerLinkActiveOptions]="{ exact: true }"
            style="font-family: Helvetica, Sans-Serif;">Inicio</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " style="font-family: Helvetica, Sans-Serif;" aria-current="page" href="#" [routerLink]="['/dg/products']"
+          <a class="nav-link palabras" style="font-family: Helvetica, Sans-Serif;" aria-current="page" href="#" [routerLink]="['/dg/products']"
           [routerLinkActive]="'active-link'"
           [routerLinkActiveOptions]="{ exact: true }"
           [ngbTooltip]="'Productos generados en las Direcciones Generales del INEGI que cuentan con algún dato de carácter ambiental'"
@@ -31,32 +31,32 @@
                 autoClose="true">Productos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" style="font-family: Helvetica, Sans-Serif;" aria-current="page" href="#" [routerLink]="['/dg/mdea']"
+          <a class="nav-link palabras" style="font-family: Helvetica, Sans-Serif;" aria-current="page" href="#" [routerLink]="['/dg/mdea']"
           [routerLinkActive]="'active-link'"
           [routerLinkActiveOptions]="{ exact: true }">MDEA</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" style="font-family: Helvetica, Sans-Serif;" aria-current="page" href="#" [routerLink]="['/dg/ods']"
+        <li class="nav-item ">
+          <a class="nav-link palabras" style="font-family: Helvetica, Sans-Serif;" aria-current="page" href="#" [routerLink]="['/dg/ods']"
           [routerLinkActive]="'active-link'"
           [routerLinkActiveOptions]="{ exact: true }">ODS</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " style="font-family: Helvetica, Sans-Serif;" aria-current="page" href="#" [routerLink]="['/dg/indicadores']"
+          <a class="nav-link palabras" style="font-family: Helvetica, Sans-Serif;" aria-current="page" href="#" [routerLink]="['/dg/indicadores']"
           [routerLinkActive]="'active-link'"
           [routerLinkActiveOptions]="{ exact: true }">Indicadores</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " style="font-family: Helvetica, Sans-Serif;" aria-current="page" href="http://10.200.31.73:9701/#/"
+          <a class="nav-link palabras" style="font-family: Helvetica, Sans-Serif;" aria-current="page" href="http://10.200.31.73:9701/#/"
           >Inventario geográfico del INEGI</a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link" style="font-family: Helvetica, Sans-Serif; color: #f8f9fa;" aria-current="page"
             [routerLink]="['/dg/by']">no me veo</a>
-        </li>
+        </li> -->
       </ul>
 
     </div>
-    <h5 class="mt-1" style="color: #113250; font-family: Helvetica, Sans-Serif;">Portal de Estadísticas Ambientales - INEGI</h5>
+    <a class="portal" style="color: #113250; font-family: Helvetica, Sans-Serif;">Portal de Estadísticas Ambientales - INEGI</a>
   </div>
 </nav>
 

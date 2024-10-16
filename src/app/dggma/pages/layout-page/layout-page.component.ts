@@ -8,9 +8,7 @@ import { Component } from '@angular/core';
 })
 export class LayoutPageComponent {
 
-  getLogoClass(): string {
-  return window.innerWidth <= 768 ? 'logo-mobile' : 'logo-desktop';
-}
+
 scrollToTop() {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
