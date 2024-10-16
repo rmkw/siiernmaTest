@@ -29,53 +29,14 @@
   /* Cambia el color si es necesario */
 }
 
-/* Estilo para 1024x768 */
-@media (min-width: 1024px) and (max-width: 1024px) and (min-height: 768px) and (max-height: 768px) {
-  .responsive-image {
-    width: 100px;
-    /* Ajusta el tamaño de la imagen para esta resolución */
-    height: auto;
-  }
-  .palabras {
-    font-size: 12px;
-    /* Tamaño del texto más pequeño */
-    padding: 5px 10px;
-    /* Reducir el relleno (padding) dentro del enlace */
-    margin: 5px;
-    /* Margen alrededor del enlace */
-}
-.portal {
-  font-size: 15px;
-  text-decoration: none;
-}
-}
 
-/* Estilo para 1366x768 */
-@media (min-width: 1366px) and (max-width: 1366px) and (min-height: 768px) and (max-height: 768px) {
-  .responsive-image {
-    width: 120px;
-    /* Ajusta el tamaño de la imagen para esta resolución */
-    height: auto;
-  }
-  .palabras{
-      font-size: 15px;
-      /* Tamaño del texto más pequeño */
-      padding: 5px 10px;
-      /* Reducir el relleno (padding) dentro del enlace */
-      margin: 5px;
-      /* Margen alrededor del enlace */
-  }
-    .portal {
-      font-size: 18px;
-      text-decoration: none;
-    }
 
-}
+
 
 /* Estilo para pantallas con ancho de 1920px (sin importar la altura) */
 @media (min-width: 1500px) and (max-width: 2000px) {
   .responsive-image {
-    width: 130px;
+    width: 140px !important;
     height: auto;
   }
 
@@ -93,17 +54,65 @@
  }
 }
 
+/* Estilo para 1366x768 */
+@media (min-width: 1366px) and (max-width: 1366px) and (min-height: 768px) and (max-height: 768px) {
+  .responsive-image {
+    width: 120px !important;
+    /* Ajusta el tamaño de la imagen para esta resolución */
+    height: auto;
+  }
+
+  .palabras {
+    font-size: 15px;
+    /* Tamaño del texto más pequeño */
+    padding: 5px 10px;
+    /* Reducir el relleno (padding) dentro del enlace */
+    margin: 5px;
+    /* Margen alrededor del enlace */
+  }
+
+  .portal {
+    font-size: 18px;
+    text-decoration: none;
+  }
+
+}
+
+/* Estilo para 1024x768 */
+@media (min-width: 1024px) and (max-width: 1024px) and (min-height: 768px) and (max-height: 768px) {
+  .responsive-image {
+    width: 100px !important;
+    /* Ajusta el tamaño de la imagen para esta resolución */
+    height: auto;
+  }
+
+  .palabras {
+    font-size: 12px;
+    /* Tamaño del texto más pequeño */
+    padding: 5px 10px;
+    /* Reducir el relleno (padding) dentro del enlace */
+    margin: 5px;
+    /* Margen alrededor del enlace */
+  }
+
+  .portal {
+    font-size: 15px;
+    text-decoration: none;
+  }
+}
+
 
 /* Estilo para la resolución 428x926 */
-@media (min-width: 428px) and (max-width: 428px) and (min-height: 926px) and (max-height: 926px) {
+@media (min-width: 390px) and (max-width: 430px) and (min-height: 600px) and (max-height: 930px) {
   .responsive-image {
-      width: 150px;
+      width: 120px !important;
       height: auto;
     }
   .portal{
-  font-size: 20px;
+  font-size: 18px;
   padding: 5px 10px;
   text-decoration: none;
  }
+
 
 }
