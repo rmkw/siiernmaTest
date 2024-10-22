@@ -102,7 +102,7 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
     const chartElement = document.getElementById(
       'acquisitions'
     ) as HTMLCanvasElement;
-
+  
     if (chartElement) {
       new Chart(chartElement, {
         type: 'bar',
@@ -119,7 +119,6 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
                 'rgba(255, 99, 132, 0.6)',
                 'rgba(153, 102, 255, 0.6)',
                 'rgba(75, 192, 192, 0.6)',
-
                 'rgba(255, 205, 86, 0.6)',
               ],
               borderColor: [
@@ -128,33 +127,38 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
                 'rgb(255, 99, 132)',
                 'rgb(153, 102, 255)',
                 'rgb(75, 192, 192)',
-
                 'rgb(255, 205, 86)',
               ],
               borderWidth: 1,
             },
           ],
         },
-
+  
         options: {
-          animation: {
-            delay: 1000,
-            // loop: true
-          },
           responsive: true,
           scales: {
             x: {
               ticks: {
                 maxRotation: 0,
                 autoSkip: false,
-                labelOffset: 0,
-
+                font: {
+                  // Cambia el tamaño de la fuente dependiendo del tamaño de la pantalla
+                  size: function (context) {
+                    const width = window.innerWidth;
+                    if (width <= 480) {
+                      return 6; // Tamaño de fuente pequeño para pantallas móviles
+                    } else if (width <= 1024) {
+                      return 10.5; // Tamaño de fuente mediano para tablets
+                    } else {
+                      return 13; // Tamaño de fuente estándar para pantallas grandes
+                    }
+                  },
+                },
                 padding: 0,
               },
             },
             y: {
               beginAtZero: true,
-
               title: {
                 display: true,
                 text: 'Productos',
@@ -164,7 +168,6 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
               },
             },
           },
-
           plugins: {
             legend: {
               display: false,
@@ -174,17 +177,16 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
             },
           },
           onHover: (event, elements) => {
-            const target = chartElement; // Se refiere directamente al elemento canvas
+            const target = chartElement;
             if (elements.length > 0) {
-              target.style.cursor = 'pointer'; // Cambia el cursor a mano (puntero)
+              target.style.cursor = 'pointer';
             } else {
-              target.style.cursor = 'default'; // Restaura el cursor predeterminado
+              target.style.cursor = 'default';
             }
           },
           onClick: (event, elements) => {
             if (elements && elements.length > 0) {
               const index = elements[0].index;
-              // Aquí puedes redireccionar a la página deseada según la barra clicada
               switch (index) {
                 case 0:
                   this.filtroComponente1();
@@ -204,7 +206,6 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
                 case 5:
                   this.filtroComponente6();
                   break;
-                // Puedes añadir más casos para las demás barras si es necesario
               }
             }
           },
@@ -214,12 +215,14 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
       console.error('Element with id "acquisitions" not found.');
     }
   }
+  
 
   createChart1(): void {
     const labels = [
-      '1.1: Condiciones físicas',
-      '1.2: Cobertura terrestre, ecosistemas y biodiversidad',
-      '1.3: Calidad ambiental',
+      ['1.1: Condiciones físicas',],
+      ['1.2: Cobertura terrestre, ecosistemas', 
+        'y biodiversidad',],
+      ['1.3: Calidad ambiental',],
     ];
     const data = [114, 97, 15];
     const chartElement = document.getElementById(
@@ -259,6 +262,19 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
                 labelOffset: 0,
 
                 padding: 0,
+                font: {
+                  // Cambia el tamaño de la fuente dependiendo del tamaño de la pantalla
+                  size: function (context) {
+                    const width = window.innerWidth;
+                    if (width <= 480) {
+                      return 6; // Tamaño de fuente pequeño para pantallas móviles
+                    } else if (width <= 1024) {
+                      return 10.5; // Tamaño de fuente mediano para tablets
+                    } else {
+                      return 13; // Tamaño de fuente estándar para pantallas grandes
+                    }
+                  },
+                },
               },
             },
             y: {
@@ -362,7 +378,19 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
                 maxRotation: 0,
                 autoSkip: false,
                 labelOffset: 0,
-
+                font: {
+                  // Cambia el tamaño de la fuente dependiendo del tamaño de la pantalla
+                  size: function (context) {
+                    const width = window.innerWidth;
+                    if (width <= 480) {
+                      return 6; // Tamaño de fuente pequeño para pantallas móviles
+                    } else if (width <= 1024) {
+                      return 10.5; // Tamaño de fuente mediano para tablets
+                    } else {
+                      return 13; // Tamaño de fuente estándar para pantallas grandes
+                    }
+                  },
+                },
                 padding: 0,
               },
             },
@@ -468,7 +496,19 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
                 maxRotation: 0,
                 autoSkip: false,
                 labelOffset: 0,
-
+                font: {
+                  // Cambia el tamaño de la fuente dependiendo del tamaño de la pantalla
+                  size: function (context) {
+                    const width = window.innerWidth;
+                    if (width <= 480) {
+                      return 6; // Tamaño de fuente pequeño para pantallas móviles
+                    } else if (width <= 1024) {
+                      return 10.5; // Tamaño de fuente mediano para tablets
+                    } else {
+                      return 13; // Tamaño de fuente estándar para pantallas grandes
+                    }
+                  },
+                },
                 padding: 0,
               },
             },
@@ -562,7 +602,19 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
                 maxRotation: 0,
                 autoSkip: false,
                 labelOffset: 0,
-
+                font: {
+                  // Cambia el tamaño de la fuente dependiendo del tamaño de la pantalla
+                  size: function (context) {
+                    const width = window.innerWidth;
+                    if (width <= 480) {
+                      return 6; // Tamaño de fuente pequeño para pantallas móviles
+                    } else if (width <= 1024) {
+                      return 10.5; // Tamaño de fuente mediano para tablets
+                    } else {
+                      return 13; // Tamaño de fuente estándar para pantallas grandes
+                    }
+                  },
+                },
                 padding: 0,
               },
             },
@@ -647,7 +699,19 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
                 maxRotation: 0,
                 autoSkip: false,
                 labelOffset: 0,
-
+                font: {
+                  // Cambia el tamaño de la fuente dependiendo del tamaño de la pantalla
+                  size: function (context) {
+                    const width = window.innerWidth;
+                    if (width <= 480) {
+                      return 6; // Tamaño de fuente pequeño para pantallas móviles
+                    } else if (width <= 1024) {
+                      return 10.5; // Tamaño de fuente mediano para tablets
+                    } else {
+                      return 13; // Tamaño de fuente estándar para pantallas grandes
+                    }
+                  },
+                },
                 padding: 0,
               },
             },
@@ -744,7 +808,19 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
                 maxRotation: 0,
                 autoSkip: false,
                 labelOffset: 0,
-
+                font: {
+                  // Cambia el tamaño de la fuente dependiendo del tamaño de la pantalla
+                  size: function (context) {
+                    const width = window.innerWidth;
+                    if (width <= 480) {
+                      return 6; // Tamaño de fuente pequeño para pantallas móviles
+                    } else if (width <= 1024) {
+                      return 10.5; // Tamaño de fuente mediano para tablets
+                    } else {
+                      return 13; // Tamaño de fuente estándar para pantallas grandes
+                    }
+                  },
+                },
                 padding: 0,
               },
             },
@@ -805,11 +881,12 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
   //! graficas de topicos
   createChart7(): void {
     const labels = [
-      ['1.1.1: Atmósfera, clima y condiciones', 'meteorológicas'],
-
-      '1.1.2: Características hidrográficas',
-      '1.1.3: Información geológica y geográfica',
-      '1.1.4: Características del suelo',
+      ['1.1.1: Atmósfera, clima',' y condiciones', 
+        'meteorológicas'],
+      ['1.1.2: Características hidrográficas'],
+      ['1.1.3: Información geológica ', 
+        'y geográfica'],
+      ['1.1.4: Características del suelo'],
     ];
     const data = [23, 40, 70, 35, 90];
     const chartElement = document.getElementById(
@@ -847,7 +924,19 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
                 maxRotation: 0,
                 autoSkip: false,
                 labelOffset: 0,
-
+                font: {
+                  // Cambia el tamaño de la fuente dependiendo del tamaño de la pantalla
+                  size: function (context) {
+                    const width = window.innerWidth;
+                    if (width <= 480) {
+                      return 6; // Tamaño de fuente pequeño para pantallas móviles
+                    } else if (width <= 1024) {
+                      return 10.5; // Tamaño de fuente mediano para tablets
+                    } else {
+                      return 13; // Tamaño de fuente estándar para pantallas grandes
+                    }
+                  },
+                },
                 padding: 0,
               },
             },
@@ -947,7 +1036,19 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
                 maxRotation: 0,
                 autoSkip: false,
                 labelOffset: 0,
-
+                font: {
+                  // Cambia el tamaño de la fuente dependiendo del tamaño de la pantalla
+                  size: function (context) {
+                    const width = window.innerWidth;
+                    if (width <= 480) {
+                      return 6; // Tamaño de fuente pequeño para pantallas móviles
+                    } else if (width <= 1024) {
+                      return 10.5; // Tamaño de fuente mediano para tablets
+                    } else {
+                      return 13; // Tamaño de fuente estándar para pantallas grandes
+                    }
+                  },
+                },
                 padding: 0,
               },
             },
@@ -1043,7 +1144,19 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
                 maxRotation: 0,
                 autoSkip: false,
                 labelOffset: 0,
-
+                font: {
+                  // Cambia el tamaño de la fuente dependiendo del tamaño de la pantalla
+                  size: function (context) {
+                    const width = window.innerWidth;
+                    if (width <= 480) {
+                      return 6; // Tamaño de fuente pequeño para pantallas móviles
+                    } else if (width <= 1024) {
+                      return 10.5; // Tamaño de fuente mediano para tablets
+                    } else {
+                      return 13; // Tamaño de fuente estándar para pantallas grandes
+                    }
+                  },
+                },
                 padding: 0,
               },
             },
@@ -1134,7 +1247,19 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
                 maxRotation: 0,
                 autoSkip: false,
                 labelOffset: 0,
-
+                font: {
+                  // Cambia el tamaño de la fuente dependiendo del tamaño de la pantalla
+                  size: function (context) {
+                    const width = window.innerWidth;
+                    if (width <= 480) {
+                      return 6; // Tamaño de fuente pequeño para pantallas móviles
+                    } else if (width <= 1024) {
+                      return 10.5; // Tamaño de fuente mediano para tablets
+                    } else {
+                      return 13; // Tamaño de fuente estándar para pantallas grandes
+                    }
+                  },
+                },
                 padding: 0,
               },
             },
@@ -1221,7 +1346,19 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
                 maxRotation: 0,
                 autoSkip: false,
                 labelOffset: 0,
-
+                font: {
+                  // Cambia el tamaño de la fuente dependiendo del tamaño de la pantalla
+                  size: function (context) {
+                    const width = window.innerWidth;
+                    if (width <= 480) {
+                      return 6; // Tamaño de fuente pequeño para pantallas móviles
+                    } else if (width <= 1024) {
+                      return 10.5; // Tamaño de fuente mediano para tablets
+                    } else {
+                      return 13; // Tamaño de fuente estándar para pantallas grandes
+                    }
+                  },
+                },
                 padding: 0,
               },
             },
@@ -1308,7 +1445,19 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
                 maxRotation: 0,
                 autoSkip: false,
                 labelOffset: 0,
-
+                font: {
+                  // Cambia el tamaño de la fuente dependiendo del tamaño de la pantalla
+                  size: function (context) {
+                    const width = window.innerWidth;
+                    if (width <= 480) {
+                      return 6; // Tamaño de fuente pequeño para pantallas móviles
+                    } else if (width <= 1024) {
+                      return 10.5; // Tamaño de fuente mediano para tablets
+                    } else {
+                      return 13; // Tamaño de fuente estándar para pantallas grandes
+                    }
+                  },
+                },
                 padding: 0,
               },
             },
@@ -1407,7 +1556,19 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
                 maxRotation: 0,
                 autoSkip: false,
                 labelOffset: 0,
-
+                font: {
+                  // Cambia el tamaño de la fuente dependiendo del tamaño de la pantalla
+                  size: function (context) {
+                    const width = window.innerWidth;
+                    if (width <= 480) {
+                      return 6; // Tamaño de fuente pequeño para pantallas móviles
+                    } else if (width <= 1024) {
+                      return 10.5; // Tamaño de fuente mediano para tablets
+                    } else {
+                      return 13; // Tamaño de fuente estándar para pantallas grandes
+                    }
+                  },
+                },
                 padding: 0,
               },
             },
@@ -1503,7 +1664,19 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
                 maxRotation: 0,
                 autoSkip: false,
                 labelOffset: 0,
-
+                font: {
+                  // Cambia el tamaño de la fuente dependiendo del tamaño de la pantalla
+                  size: function (context) {
+                    const width = window.innerWidth;
+                    if (width <= 480) {
+                      return 6; // Tamaño de fuente pequeño para pantallas móviles
+                    } else if (width <= 1024) {
+                      return 10.5; // Tamaño de fuente mediano para tablets
+                    } else {
+                      return 13; // Tamaño de fuente estándar para pantallas grandes
+                    }
+                  },
+                },
                 padding: 0,
               },
             },
@@ -1591,7 +1764,19 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
                 maxRotation: 0,
                 autoSkip: false,
                 labelOffset: 0,
-
+                font: {
+                  // Cambia el tamaño de la fuente dependiendo del tamaño de la pantalla
+                  size: function (context) {
+                    const width = window.innerWidth;
+                    if (width <= 480) {
+                      return 6; // Tamaño de fuente pequeño para pantallas móviles
+                    } else if (width <= 1024) {
+                      return 10.5; // Tamaño de fuente mediano para tablets
+                    } else {
+                      return 13; // Tamaño de fuente estándar para pantallas grandes
+                    }
+                  },
+                },
                 padding: 0,
               },
             },
@@ -1684,7 +1869,19 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
                 maxRotation: 0,
                 autoSkip: false,
                 labelOffset: 0,
-
+                font: {
+                  // Cambia el tamaño de la fuente dependiendo del tamaño de la pantalla
+                  size: function (context) {
+                    const width = window.innerWidth;
+                    if (width <= 480) {
+                      return 6; // Tamaño de fuente pequeño para pantallas móviles
+                    } else if (width <= 1024) {
+                      return 10.5; // Tamaño de fuente mediano para tablets
+                    } else {
+                      return 13; // Tamaño de fuente estándar para pantallas grandes
+                    }
+                  },
+                },
                 padding: 0,
               },
             },
@@ -1774,7 +1971,19 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
                 maxRotation: 0,
                 autoSkip: false,
                 labelOffset: 0,
-
+                font: {
+                  // Cambia el tamaño de la fuente dependiendo del tamaño de la pantalla
+                  size: function (context) {
+                    const width = window.innerWidth;
+                    if (width <= 480) {
+                      return 6; // Tamaño de fuente pequeño para pantallas móviles
+                    } else if (width <= 1024) {
+                      return 10.5; // Tamaño de fuente mediano para tablets
+                    } else {
+                      return 13; // Tamaño de fuente estándar para pantallas grandes
+                    }
+                  },
+                },
                 padding: 0,
               },
             },
@@ -1855,7 +2064,19 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
                 maxRotation: 0,
                 autoSkip: false,
                 labelOffset: 0,
-
+                font: {
+                  // Cambia el tamaño de la fuente dependiendo del tamaño de la pantalla
+                  size: function (context) {
+                    const width = window.innerWidth;
+                    if (width <= 480) {
+                      return 6; // Tamaño de fuente pequeño para pantallas móviles
+                    } else if (width <= 1024) {
+                      return 10.5; // Tamaño de fuente mediano para tablets
+                    } else {
+                      return 13; // Tamaño de fuente estándar para pantallas grandes
+                    }
+                  },
+                },
                 padding: 0,
               },
             },
@@ -1939,7 +2160,19 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
                 maxRotation: 0,
                 autoSkip: false,
                 labelOffset: 0,
-
+                font: {
+                  // Cambia el tamaño de la fuente dependiendo del tamaño de la pantalla
+                  size: function (context) {
+                    const width = window.innerWidth;
+                    if (width <= 480) {
+                      return 6; // Tamaño de fuente pequeño para pantallas móviles
+                    } else if (width <= 1024) {
+                      return 10.5; // Tamaño de fuente mediano para tablets
+                    } else {
+                      return 13; // Tamaño de fuente estándar para pantallas grandes
+                    }
+                  },
+                },
                 padding: 0,
               },
             },
@@ -2022,7 +2255,19 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
                 maxRotation: 0,
                 autoSkip: false,
                 labelOffset: 0,
-
+                font: {
+                  // Cambia el tamaño de la fuente dependiendo del tamaño de la pantalla
+                  size: function (context) {
+                    const width = window.innerWidth;
+                    if (width <= 480) {
+                      return 6; // Tamaño de fuente pequeño para pantallas móviles
+                    } else if (width <= 1024) {
+                      return 10.5; // Tamaño de fuente mediano para tablets
+                    } else {
+                      return 13; // Tamaño de fuente estándar para pantallas grandes
+                    }
+                  },
+                },
                 padding: 0,
               },
             },
@@ -2122,7 +2367,19 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
                 maxRotation: 0,
                 autoSkip: false,
                 labelOffset: 0,
-
+                font: {
+                  // Cambia el tamaño de la fuente dependiendo del tamaño de la pantalla
+                  size: function (context) {
+                    const width = window.innerWidth;
+                    if (width <= 480) {
+                      return 4; // Tamaño de fuente pequeño para pantallas móviles
+                    } else if (width <= 1024) {
+                      return 10.5; // Tamaño de fuente mediano para tablets
+                    } else {
+                      return 13; // Tamaño de fuente estándar para pantallas grandes
+                    }
+                  },
+                },
                 padding: 0,
               },
             },
@@ -2239,8 +2496,20 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
                 maxRotation: 0,
                 autoSkip: false,
                 labelOffset: 0,
-
-                padding: 0,
+                font: {
+                  // Cambia el tamaño de la fuente dependiendo del tamaño de la pantalla
+                  size: function (context) {
+                    const width = window.innerWidth;
+                    if (width <= 480) {
+                      return 4; // Tamaño de fuente pequeño para pantallas móviles
+                    } else if (width <= 1024) {
+                      return 10.5; // Tamaño de fuente mediano para tablets
+                    } else {
+                      return 12; // Tamaño de fuente estándar para pantallas grandes
+                    }
+                  },
+                },
+                padding: -1,
               },
             },
             y: {
@@ -2341,7 +2610,19 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
                 maxRotation: 0,
                 autoSkip: false,
                 labelOffset: 0,
-
+                font: {
+                  // Cambia el tamaño de la fuente dependiendo del tamaño de la pantalla
+                  size: function (context) {
+                    const width = window.innerWidth;
+                    if (width <= 480) {
+                      return 6; // Tamaño de fuente pequeño para pantallas móviles
+                    } else if (width <= 1024) {
+                      return 10.5; // Tamaño de fuente mediano para tablets
+                    } else {
+                      return 13; // Tamaño de fuente estándar para pantallas grandes
+                    }
+                  },
+                },
                 padding: 0,
               },
             },
@@ -2428,7 +2709,19 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
                 maxRotation: 0,
                 autoSkip: false,
                 labelOffset: 0,
-
+                font: {
+                  // Cambia el tamaño de la fuente dependiendo del tamaño de la pantalla
+                  size: function (context) {
+                    const width = window.innerWidth;
+                    if (width <= 480) {
+                      return 6; // Tamaño de fuente pequeño para pantallas móviles
+                    } else if (width <= 1024) {
+                      return 10.5; // Tamaño de fuente mediano para tablets
+                    } else {
+                      return 13; // Tamaño de fuente estándar para pantallas grandes
+                    }
+                  },
+                },
                 padding: 0,
               },
             },
@@ -2514,7 +2807,19 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
                 maxRotation: 0,
                 autoSkip: false,
                 labelOffset: 0,
-
+                font: {
+                  // Cambia el tamaño de la fuente dependiendo del tamaño de la pantalla
+                  size: function (context) {
+                    const width = window.innerWidth;
+                    if (width <= 480) {
+                      return 6; // Tamaño de fuente pequeño para pantallas móviles
+                    } else if (width <= 1024) {
+                      return 10.5; // Tamaño de fuente mediano para tablets
+                    } else {
+                      return 13; // Tamaño de fuente estándar para pantallas grandes
+                    }
+                  },
+                },
                 padding: 0,
               },
             },
@@ -2609,7 +2914,19 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
                 maxRotation: 0,
                 autoSkip: false,
                 labelOffset: 0,
-
+                font: {
+                  // Cambia el tamaño de la fuente dependiendo del tamaño de la pantalla
+                  size: function (context) {
+                    const width = window.innerWidth;
+                    if (width <= 480) {
+                      return 6; // Tamaño de fuente pequeño para pantallas móviles
+                    } else if (width <= 1024) {
+                      return 10.5; // Tamaño de fuente mediano para tablets
+                    } else {
+                      return 13; // Tamaño de fuente estándar para pantallas grandes
+                    }
+                  },
+                },
                 padding: 0,
               },
             },
