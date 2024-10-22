@@ -23,9 +23,9 @@
         <div class="container">
           <div class="carousel-caption text-end">
 
-            <img focusable="false" src="./assets/inegilogowhite.png" alt="Mi SVG"
+            <img class="imagenCarouselINEGI" focusable="false" src="./assets/inegilogowhite.png" alt="Mi SVG"
               style="max-width: 350px; height: auto;  margin: 0 auto;">
-            <h1 style="color: white; font-family: Helvetica, Sans-Serif;">Productos detectados en las direcciones generales.</h1>
+            <h2 style="color: white; font-family: Helvetica, Sans-Serif;">Productos detectados en las direcciones generales.</h2>
             <p style="color: white; font-family: Helvetica, Sans-Serif;">Descubre los productos detectados y catalogados por direcciones generales.
             </p>
             <button class="btn btn-lg custom-btn-colorWhite" [routerLink]="['/dg/products']" href="#">Ver más</button>
@@ -63,7 +63,7 @@
 
         <div class="carousel-caption">
 
-          <img style="margin-top: -21rem; margin-right: -22rem;"
+          <img class="imagenCarouselODS" style="margin-top: -21rem; margin-right: -28rem;"
             src="https://www.un.org/sustainabledevelopment/wp-content/uploads/sites/3/2020/05/SDG_website_banner_S_100px.png"
             srcset="https://www.un.org/sustainabledevelopment/wp-content/uploads/sites/3/2020/05/SDG_website_banner_S_100px.png 1x, https://www.un.org/sustainabledevelopment/wp-content/uploads/sites/3/2020/05/SDG_website_banner_S.png 2x"
             alt="Desarrollo Sostenible Logo"
@@ -71,8 +71,8 @@
         </div>
 
         <div class="carousel-caption text-end" >
-          <h1 style="color: #009edb; font-family: Helvetica, Sans-Serif;">Relación con los Objetivos de Desarrollo Sostenible.
-          </h1>
+          <h2 style="color: #009edb; font-family: Helvetica, Sans-Serif;">Relación con los Objetivos de Desarrollo Sostenible.
+          </h2>
           <p style="color: #009edb; font-family: Helvetica, Sans-Serif;">Explora para saber más.</p>
           <button class="btn btn-lg custom-btn-color2" [routerLink]="['/dg/ods']" href="#">Ver más</button>
         </div>
@@ -90,9 +90,9 @@
 
         <div class="container">
           <div class="carousel-caption text-end">
-            <img focusable="false" src="./assets/snieg2.png" alt="Mi SVG"
+            <img class="imagenCarouselSNIEG" focusable="false" src="./assets/snieg2.png" alt="Mi SVG"
               style="max-width: 500px; height: auto;  margin: 0 auto;">
-            <h1 style="color: #ffffff; font-family: Helvetica, Sans-Serif;">Indicadores ambientales detectados en el Catálogo Nacional de Indicadores.</h1>
+            <h2 style="color: #ffffff; font-family: Helvetica, Sans-Serif;">Indicadores ambientales detectados en el Catálogo Nacional de Indicadores.</h2>
             <p style="color: #ffffff; font-family: Helvetica, Sans-Serif; ">Descubre más sobre indicadores ambientales producidos en el INEGI.</p>
             <button class="btn btn-lg custom-btn-colorGris" [routerLink]="['/dg/indicadores']" href="#">Ver más</button>
           </div>
@@ -102,14 +102,15 @@
       <div class="carousel-item" style="background-color: #e1e3e6;" data-duration="6000">
 
         <video loop muted autoplay oncanplay="this.play()" onloadedmetadata="this.muted = true"
-          style="width: 100%; height: 100%; object-fit: cover;">
+          style="width: 110%; height: 100%; object-fit: cover;">
           <source src="./assets/geo_video.mp4" type="video/mp4">
         </video>
 
         <div class="container">
           <div class="carousel-caption text-end">
-
-            <h1 style="color: #ffffff; font-family: Helvetica, Sans-Serif;">Inventario geográfico.</h1>
+            <img class="imagenCarouselGeonode" focusable="false" src="./assets/inegixgeonode2.png" alt="Mi SVG"
+            style="max-width: 200px; height: auto; filter: invert(100%) contrast(150%);">
+            <h2 style="color: #ffffff; font-family: Helvetica, Sans-Serif;">Inventario geográfico.</h2>
             <p style="color: #ffffff; font-family: Helvetica, Sans-Serif;">Explora y despliega las capas de tipo geográfico del INEGI.</p>
             <button class="btn btn-lg custom-btn-colorWhite" onclick="window.location.href='http://10.200.31.73:9701/#/'">Ver más</button>
 
@@ -129,12 +130,6 @@
   </div>
 
 
-
-
-    <!--TODO: LAS DIRECCIONES CON ICONOS-->
-
-
-
     <!--! START THE FEATURETTES -->
 
   <div class="container marketing">
@@ -143,7 +138,7 @@
 
     <div class="row">
       <div class="col">
-        <h1 class="display-6" style="margin-bottom: 2rem; font-family: Helvetica, Sans-Serif;">Temas de actualidad</h1>
+        <h1 class="display-6 TituloTemas">Temas de actualidad</h1>
       </div>
     </div>
     <div class="row" style=" margin-bottom: 10rem; background-color: #eef5f8; ">
@@ -153,32 +148,32 @@
         <div class="row">
           <div class="col-12" [ngClass]="{'selected': !isINEGISelected}" (click)="setSelection(1)"
             style="cursor: pointer; border-bottom: solid 3px; border-color: #ffffff; padding-top: 1.5rem; padding-bottom: 1.5rem;">
-            <h4  style="font-family: Helvetica, Sans-Serif;">
+            <h4 class="TituloApartado" style="font-family: Helvetica, Sans-Serif;">
               Productos detectados en las direcciones generales.
             </h4>
           </div>
           <div class="col-12" [ngClass]="{'selected': !isMDEASelected}" (click)="setSelection(2)"
             style="cursor: pointer; border-bottom: solid 3px; border-color: #ffffff; padding-top: 1.5rem; padding-bottom: 1.5rem;">
-            <h4  style="font-family: Helvetica, Sans-Serif;">
+            <h4 class="TituloApartado"  style="font-family: Helvetica, Sans-Serif;">
               Marco para el Desarrollo de las Estadísticas Ambientales.
             </h4>
           </div>
           <div class="col-12" [ngClass]="{'selected': !isODSSelected}" (click)="setSelection(3)"
             style="cursor: pointer; border-bottom: solid 3px; border-color: #ffffff; padding-top: 1.5rem; padding-bottom: 1.5rem;">
-            <h4  style="font-family: Helvetica, Sans-Serif;">
+            <h4 class="TituloApartado"  style="font-family: Helvetica, Sans-Serif;">
               Objetivos de Desarrollo Sostenible.
             </h4>
           </div>
           <div class="col-12" [ngClass]="{'selected': !isINDSelected}" (click)="setSelection(4)"
             style="cursor: pointer; border-bottom: solid 3px; border-color: #ffffff; padding-top: 1.5rem; padding-bottom: 1.5rem;">
-            <h4 style="font-family: Helvetica, Sans-Serif;">
+            <h4 class="TituloApartado"  style="font-family: Helvetica, Sans-Serif;">
               Indicadores.
             </h4>
           </div>
 
           <div class="col-12" [ngClass]="{'selected': !isGeoNodeSelected}" (click)="setSelection(5)"
             style="cursor: pointer; border-bottom: solid 3px; border-color: #ffffff; padding-top: 1.5rem; padding-bottom: 1.5rem;">
-            <h4 style="font-family: Helvetica, Sans-Serif;">
+            <h4 class="TituloApartado" style="font-family: Helvetica, Sans-Serif;">
               Inventario geográfico del INEGI.
             </h4>
           </div>
@@ -190,15 +185,14 @@
       <div class="col-8" >
 
         <div [hidden]="isINEGISelected" class="row" >
-          <div class="col-12 p-0 m-0" style=" background-color: #113250;">
-            <img focusable="false" src="./assets/inegilogowhite.png" alt="Mi SVG"
-              style=" max-height: 500px; max-width: 500px; height: auto; display: block; margin: 0 auto; margin-top: 5rem; margin-bottom: 5rem; background-color: #113250;">
+          <div class="col-12 p-0 m-0 recuadroInegi" style=" background-color: #113250;">
+            <img class="imgInegi" focusable="false" src="./assets/inegilogowhite.png" alt="Mi SVG">
           </div>
           <div class="col-12">
 
 
             <div style="margin: 2rem; margin-bottom: 5rem;">
-              <h2 style="color: #036baa; font-family: Helvetica, Sans-Serif;">Productos detectados en las direcciones generales.</h2>
+              <h2 class="SubtituloParrafo" style="color: #036baa; font-family: Helvetica, Sans-Serif;">Productos detectados en las direcciones generales.</h2>
               <p class="lead customParrafo">
                 En el presente portal, se ha logrado un hito importante al detectar y asignar la mayoría de los productos publicados por
                 el INEGI, llevando a cabo una integración profunda, vinculando cada uno de estos productos con actividades estadísticas
@@ -225,12 +219,11 @@
         <!--! MDEA  -->
         <div [hidden]="isMDEASelected" class="row" >
           <div class="col-12 " style=" background-color: #e6e6e6; margin-left: 0px;">
-            <img focusable="false" src="./assets/mdea.png" alt="Mi SVG"
-              style=" max-height: 25rem; max-width: 500px; height: auto; display: block; margin: 0 auto;   ">
+            <img class="imgMdea" focusable="false" src="./assets/mdea.png" alt="Mi SVG">
           </div>
           <div class="col-12 mt-2">
             <div style="margin: 2rem; margin-bottom: 5rem;">
-              <h2 style="color: #036baa; font-family: Helvetica, Sans-Serif;">Marco para el Desarrollo de las Estadísticas Ambientales.</h2>
+              <h2 class="SubtituloParrafo" style="color: #036baa; font-family: Helvetica, Sans-Serif;">Marco para el Desarrollo de las Estadísticas Ambientales.</h2>
               <p class="lead customParrafo">
                 El MDEA organiza las estadísticas ambientales en seis componentes, cada uno desagregado en subcomponentes y en tópicos
                 estadísticos.
@@ -251,12 +244,11 @@
         <!--! ODS -->
         <div [hidden]="isODSSelected" class="row" >
           <div class="col-12" style=" background-color: #113250;">
-            <img focusable="false" src="./assets/logoODS_es.png" alt="Mi SVG"
-              style=" max-height: 500px; max-width: 500px; height: auto; display: block; margin: 0 auto; margin-top: 5rem; margin-bottom: 5rem; background-color: #113250;">
+            <img class="imgOds" focusable="false" src="./assets/logoODS_es.png" alt="Mi SVG">
           </div>
           <div class="col-12 m-2">
             <div style="margin: 2rem; margin-bottom: 5rem;">
-              <h2 style="color: #036baa; font-family: Helvetica, Sans-Serif;">Objetivos de Desarrollo Sostenible.</h2>
+              <h2 class="SubtituloParrafo" style="color: #036baa; font-family: Helvetica, Sans-Serif;">Objetivos de Desarrollo Sostenible.</h2>
               <p class="lead customParrafo">
                 Los Objetivos de Desarrollo Sostenible (ODS), fueron adoptados por las Naciones Unidas en 2015 como un llamado global
                 para velar y garantizar que para el 2030 toda la población disfrute de un futuro fundamentado en la sostenibilidad. Para
@@ -272,13 +264,12 @@
          <!--! indicadores -->
          <div [hidden]="isINDSelected"  class="row" >
           <div class="col-12" style="  background-color: #ffffff;">
-            <img focusable="false" src="./assets/snieg.png" alt="Mi SVG"
-              style=" max-height: 500px; max-width: 500px; height: auto; display: block; margin: 0 auto; margin-top: 5rem; margin-bottom: 5rem; background-color: #ffffff;">
+            <img class="imgSnieg" focusable="false" src="./assets/snieg.png" alt="Mi SVG">
           </div>
 
           <div class="col-12 m-2">
             <div style="margin: 2rem; margin-bottom: 5rem;">
-              <h2 style="color: #036baa; font-family: Helvetica, Sans-Serif;">Indicadores generados en INEGI.</h2>
+              <h2 class="SubtituloParrafo" style="color: #036baa; font-family: Helvetica, Sans-Serif;">Indicadores generados en INEGI.</h2>
               <p class="lead customParrafo">
                 Los indicadores ambientales son una forma de estadística derivada, que en el INEGI, se rige por el mandato legal
                 descrito en el artículo 27 de la Ley del SNIEG, el cual señala que el Subsistema Nacional de Información Geográfica,
@@ -296,15 +287,17 @@
             </div>
           </div>
         </div>
+
+        <!-- GeoNode -->
+
         <div [hidden]="isGeoNodeSelected" class="row">
           <div class="col-12" style="  background-color: #113250;">
-            <img focusable="false" src="./assets/inegixgeonode.png" alt="Mi SVG"
-              style=" max-height: 600px; max-width: 600px; height: auto; display: block; margin: 0 auto; margin-top: 3rem; margin-bottom: 3rem; background-color: #113250;">
+            <img class="imgGeonode" focusable="false" src="./assets/inegixgeonode.png" alt="Mi SVG">
           </div>
 
           <div class="col-12 m-2">
             <div style="margin: 2rem; margin-bottom: 5rem;">
-              <h2 style="color: #036baa; font-family: Helvetica, Sans-Serif;" >Inventario geográfico del INEGI.</h2>
+              <h2 class="SubtituloParrafo" style="color: #036baa; font-family: Helvetica, Sans-Serif;" >Inventario geográfico del INEGI.</h2>
               <p class="lead customParrafo">
                 Existen diversas opciones en cuanto a plataformas para implementar una IDE; sin embargo, se considera que GeoNode
                 es una

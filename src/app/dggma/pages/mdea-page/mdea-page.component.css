@@ -7,8 +7,16 @@
   transition: transform 0.2s;
 }
 
+
 #mdeaimg:hover {
   -webkit-transform:scale(1.1);transform:scale(1.1);
+}
+
+@media only screen and (min-width: 1920px) {
+  .col-right { /* Columna derecha (texto) */
+    padding-right: 20px; /* Ajusta el valor según lo que necesites */
+  }
+  
 }
 
 .modal-header{
@@ -19,57 +27,6 @@
   background-color: #113250;
 }
 
-#container-pie-componentes{
-  max-width: 1000px;
-  min-width: 768px;
-  margin: 0 auto;
-  height: 600px;
-}
-@media (max-width: 500px) {
-  #container-pie-componentes {
-    position: relative;
-    max-width: 10%; /* Reducir el ancho máximo */
-    height: auto; /* Cambiar la altura automática para que se ajuste según el contenido */
-    margin: 0 auto; /* Centrar horizontalmente */
-    left: 50%; /* Mover hacia la derecha */
-    transform: translateX(-50%); /* Alinear al centro horizontalmente */
-  }
-}
-
-
-#container-pie-subcomponentes{
-  max-width: 1000px;
-  min-width: 768px;
-  margin: 0 auto;
-  height: 600px;
-}
-@media (max-width: 500px) {
-  #container-pie-subcomponentes {
-    position: relative;
-    max-width: 10%; /* Reducir el ancho máximo */
-    height: auto; /* Cambiar la altura automática para que se ajuste según el contenido */
-    margin: 0 auto; /* Centrar horizontalmente */
-    left: 50%; /* Mover hacia la derecha */
-    transform: translateX(-50%); /* Alinear al centro horizontalmente */
-  }
-}
-
-@media (max-width: 500px) {
-#treegraph-container{
-  position: relative;
-  max-width: 10%; /* Reducir el ancho máximo */
-  height: auto; /* Cambiar la altura automática para que se ajuste según el contenido */
-  margin: 0 auto; /* Centrar horizontalmente */
-  left: 50%; /* Mover hacia la derecha */
-  transform: translateX(-50%);
-}
-}
-
-::-webkit-scrollbar {
-  display: none;
-}
-
-
 .titulos_graficos{
 color: #113250;
 text-align: center;
@@ -77,4 +34,179 @@ margin-top: 2rem;
 }
 .home{
   background-color: #eef5f8;
+}
+
+
+/* Modificación para Proyectores y laptops. */
+
+@media only screen and (max-width: 1024px){
+  .TituloMDEA{
+    font-size: 2rem;
+    margin: 5px auto;  
+    padding: 5px;
+    text-align: justify;
+    max-width: 850px;
+  }
+}
+
+@media only screen and (max-width: 1024px){
+  .SubtituloMdea{
+    margin: 7px auto;  
+    padding: 7px;
+    padding-right: 30px;
+    text-align: justify;
+    max-width: 850px;
+  }
+}
+
+
+@media only screen and (max-width: 1024px){
+  .fragmentoMdea{
+    margin: auto;  
+    padding-left: 46px;
+    padding-bottom: 5px;
+    max-width: 850px;
+    
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  #mdeaimg {
+   margin-top: 10px;
+   max-height: 300px; 
+   max-width: 300px;
+ }
+ }
+
+@media only screen and (max-width: 1024px){
+  .parrafoMdea{
+    margin: auto;  
+    padding-right: 49px;
+    max-width: 850px;
+    
+  }
+}
+
+@media only screen and (max-width: 1024px){
+  .fragmentoMdea2{
+    margin: auto;  
+    padding-right: 49px;
+    max-width: 850px;
+    
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .titulos_graficos{
+    color: #113250;
+    text-align: center;
+    margin: 5px auto;  
+    padding: 5px;
+    text-align: justify;
+    max-width: 850px;
+    }
+}
+
+@media  only screen and (max-width: 1024px){
+  .introGraficos{
+    margin: 5px auto;  
+    padding: 5px;
+    
+    text-align: justify;
+    max-width: 850px;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .graficosMdea{
+    max-width: 850px;
+    padding-left: 50px;
+  }
+}
+
+@media only screen and (max-width: 1024px){
+  .navGrafico{
+    max-width: 850px;
+    margin-left: 45px;
+  }
+}
+
+/* Modificación para dispositvos moviles  */
+
+@media only screen and (max-width: 480px){
+  .TituloMDEA{
+    font-size: 1.5rem;
+    text-align: start;
+  }
+}
+
+@media only screen and (max-width: 480px){
+  .SubtituloMdea{
+    font-size: small;
+  }
+}
+
+ @media only screen and (max-width: 480px){
+  .fragmentoMdea{
+    font-size: small;
+    margin: auto;  
+    padding-left: 5px;
+    padding-bottom: 5px;
+    max-width: 850px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  #mdeaimg {
+   max-height: 150px; 
+   max-width: 150px;
+   padding-right: 5px;
+ }
+ }
+
+ @media only screen and (max-width: 480px) {
+  .col-left { /* Columna izquierda (imagen) */
+    flex: 0 0 40%; /* La columna izquierda ocupará el 40% del ancho */
+    max-width: 40%; /* Máximo 40% del ancho */
+  }
+
+  .col-right { /* Columna derecha (texto) */
+    flex: 0 0 60%; /* La columna derecha ocupará el 60% del ancho */
+    max-width: 60%; /* Máximo 60% del ancho */
+    padding-left: 10px; /* Espacio adicional a la izquierda */
+  }
+
+  .parrafoMdea {
+    font-size: small;
+    padding-right: 15px;  /* Ajuste del padding derecho */
+    text-align: justify;  /* Mantiene el texto justificado */
+  }
+}
+
+@media only screen and (max-width: 480px){
+  .titulos_graficos{
+    color: #113250;
+    text-align: start;
+    margin-top: 1rem;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .introGraficos {
+    font-size: small;
+    padding-right: 20px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .graficosMdea{
+    max-width: 450px;
+    padding-right: 50px;
+  }
+}
+
+@media only screen and (max-width: 480px){
+  .navGrafico{
+    max-width: 300px;
+  }
 }

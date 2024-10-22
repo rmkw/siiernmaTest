@@ -4,32 +4,32 @@
     <div class="container">
       <div class="row">
         <div class="col">
-          <h1 class="mt-4" style="color: #113250; ">
+          <h1 class="mt-4 TituloMDEA" style="color: #113250; ">
             Marco para el Desarrollo de las Estadísticas Ambientales (MDEA).
           </h1>
 
-          <p style="text-align: justify;">
+          <p class="SubtituloMdea" style="text-align: justify;">
             El MDEA 2013 organiza las estadísticas ambientales en seis componentes, cada uno de los cuales se desagrega en
             subcomponentes y a su vez en tópicos estadísticos.
           </p>
 
           <div class="row">
-            <div class="col-6">
-              <p>Los seis componentes incluyen:</p>
+            <div class="col-6 col-left">
+              <p class="fragmentoMdea">Los seis componentes incluyen:</p>
               <div style="text-align: center;" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 <img id="mdeaimg" src="./assets/mdeacomp.png" type="button">
               </div>
 
 
             </div>
-            <div class="col-6">
-              <p style="text-align: justify; ">
+            <div class="col-6 col-right">
+              <p class="parrafoMdea" style="text-align: justify; ">
                 Los temas estadísticos representan los aspectos cuantificables de los componentes y están agrupados en
                 subcomponentes,
                 tomando en cuenta los tipos y fuentes de las estadísticas necesarias para describirlos.
               </p>
 
-              <p style="text-align: justify; ">El uso del MDEA 2013 en los sistemas estadísticos nacionales promoverá el
+              <p class="parrafoMdea" style="text-align: justify; ">El uso del MDEA 2013 en los sistemas estadísticos nacionales promoverá el
                 desarrollo en este campo de las
                 estadísticas,
                 ya que es una herramienta flexible y multipropósito que puede ser adaptada para abordar intereses y
@@ -39,7 +39,7 @@
                 estadístico.
               </p>
 
-              <p>Conoce a detalle la estructura del MDEA:&nbsp;
+              <p class="fragmentoMdea2">Conoce a detalle la estructura del MDEA:&nbsp;
                 <a href="https://www.cepal.org/es/publicaciones/46644-marco-desarrollo-estadisticas-ambientales-mdea-2013"
                   target="_blank">Ver sitio.</a> &nbsp;
                 <a href="https://repositorio.cepal.org/server/api/core/bitstreams/778fbad3-77fa-4b4b-9d8c-dc4b3e1b71b7/content"
@@ -67,14 +67,14 @@
             de las Estadísticas Ambientales (MDEA).
           </h2>
 
-          <p class="">
+          <p class="introGraficos">
             Dentro de este sistema de inventario de productos, se extraen datos de la Base de datos del SIIERNMA. Se
             lleva a cabo un análisis de la relación de estos productos con la estructura del MDEA.
             Este análisis proporciona la información necesaria para realizar un conteo estadístico de los productos
             asociados a cada uno de los niveles más importantes que maneja el Marco para el Desarrollo de las
             Estadísticas Ambientales, a nivel de Componente y Subcomponente.
           </p>
-          <p>En la siguiente representación gráfica, se puede observar estadisticamente la cantidad y total de productos del
+          <p class="introGraficos">En la siguiente representación gráfica, se puede observar estadisticamente la cantidad y total de productos del
             INEGI que se apegan a determinados Componentes del MDEA:</p>
         </div>
       </div>
@@ -85,7 +85,7 @@
 
           <div style="display: flex; justify-content: center;">
             <div style="width: 1100px; margin-bottom: 2rem;">
-              <canvas id="acquisitions"></canvas>
+              <canvas class="graficosMdea" id="acquisitions"></canvas>
             </div>
           </div>
 
@@ -96,7 +96,7 @@
         <div class="col">
           <!--! navs de componentes -->
           <nav>
-            <div class="nav nav-tabs justify-content-center" id="nav-tab" role="tablist">
+            <div class="nav nav-tabs justify-content-center navGrafico" id="nav-tab" role="tablist">
 
               <button class="nav-link active text-dark" id="nav-compo1-tab" data-bs-toggle="tab"
                 data-bs-target="#nav-compo1" type="button" role="tab" aria-controls="nav-compo1"
@@ -127,13 +127,13 @@
 
               <div style="display: flex; justify-content: center;">
                 <div style="width: 900px; margin: 2rem;">
-                  <canvas id="componente1"></canvas>
+                  <canvas class="graficosMdea" id="componente1"></canvas>
                 </div>
               </div>
 
               <!--! nav subcompo -->
               <nav>
-                <div class="nav nav-tabs justify-content-center" id="nav-tab" role="tablist">
+                <div class="nav nav-tabs justify-content-center navGrafico" id="nav-tab" role="tablist">
 
                   <button class="nav-link active text-dark" id="nav-Subcompo1-tab" data-bs-toggle="tab"
                     data-bs-target="#nav-Subcompo1" type="button" role="tab" aria-controls="nav-Subcompo1"
@@ -160,7 +160,7 @@
                   <div style="display: flex; justify-content: center;">
                     <div  style="width: 900px; margin: 2rem;">
                       <!--! aqui va el id del grafico -->
-                      <canvas id="topico1"></canvas>
+                      <canvas class="graficosMdea" id="topico1"></canvas>
                     </div>
                   </div>
 
@@ -174,7 +174,7 @@
                   <div style="display: flex; justify-content: center;">
                     <div style="width: 800px; margin: 2rem;">
                       <!--! aqui va el id del grafico -->
-                      <canvas id="topico2"></canvas>
+                      <canvas class="graficosMdea"  id="topico2"></canvas>
                     </div>
                   </div>
 
@@ -188,7 +188,7 @@
                   <div style="display: flex; justify-content: center;">
                     <div style="width: 800px; margin: 2rem;">
                       <!--! aqui va el id del grafico -->
-                      <canvas id="topico3"></canvas>
+                      <canvas class="graficosMdea"  id="topico3"></canvas>
                     </div>
                   </div>
                 </div>
@@ -203,13 +203,13 @@
             <div class="tab-pane fade" id="nav-compo2" role="tabpanel" aria-labelledby="nav-compo2-tab" tabindex="0">
 
               <div style="display: flex; justify-content: center;">
-                <div style="width: 800px; margin: 2rem;">
-                  <canvas id="componente2"></canvas>
+                <div style="width: 900px; margin: 2rem;">
+                  <canvas class="graficosMdea"  id="componente2"></canvas>
                 </div>
               </div>
 
               <nav>
-                <div class="nav nav-tabs justify-content-center" id="nav-tab" role="tablist">
+                <div class="nav nav-tabs justify-content-center navGrafico" id="nav-tab" role="tablist">
 
                   <button class="nav-link active text-dark" id="nav-Sub2compo1-tab" data-bs-toggle="tab"
                     data-bs-target="#nav-Sub2compo1" type="button" role="tab" aria-controls="nav-Sub2compo1"
@@ -244,7 +244,7 @@
 
                   <div style="display: flex; justify-content: center;">
                     <div style="width: 900px; margin: 2rem;">
-                      <canvas id="topico4"></canvas>
+                      <canvas class="graficosMdea"  id="topico4"></canvas>
                     </div>
                   </div>
 
@@ -257,7 +257,7 @@
 
                   <div style="display: flex; justify-content: center;">
                     <div style="width: 800px; margin: 2rem;">
-                      <canvas id="topico5"></canvas>
+                      <canvas class="graficosMdea"  id="topico5"></canvas>
                     </div>
                   </div>
 
@@ -270,7 +270,7 @@
 
                   <div style="display: flex; justify-content: center;">
                     <div style="width: 800px; margin: 2rem;">
-                      <canvas id="topico6"></canvas>
+                      <canvas class="graficosMdea"  id="topico6"></canvas>
                     </div>
                   </div>
                 </div>
@@ -282,7 +282,7 @@
 
                   <div style="display: flex; justify-content: center;">
                     <div style="width: 800px; margin: 2rem;">
-                      <canvas id="topico7"></canvas>
+                      <canvas class="graficosMdea"  id="topico7"></canvas>
                     </div>
                   </div>
                 </div>
@@ -294,7 +294,7 @@
 
                   <div style="display: flex; justify-content: center;">
                     <div style="width: 800px; margin: 2rem;">
-                      <canvas id="topico8"></canvas>
+                      <canvas class="graficosMdea"  id="topico8"></canvas>
                     </div>
                   </div>
                 </div>
@@ -309,13 +309,13 @@
 
 
               <div style="display: flex; justify-content: center;">
-                <div style="width: 800px; margin: 2rem;">
-                  <canvas id="componente3"></canvas>
+                <div style="width: 900px; margin: 2rem;">
+                  <canvas class="graficosMdea"  id="componente3"></canvas>
                 </div>
               </div>
 
               <nav>
-                <div class="nav nav-tabs justify-content-center" id="nav-tab" role="tablist">
+                <div class="nav nav-tabs justify-content-center navGrafico" id="nav-tab" role="tablist">
 
                   <button class="nav-link active text-dark" id="nav-Sub3compo1-tab" data-bs-toggle="tab"
                     data-bs-target="#nav-Sub3compo1" type="button" role="tab" aria-controls="nav-Sub3compo1"
@@ -350,7 +350,7 @@
 
                   <div style="display: flex; justify-content: center;">
                     <div style="width: 900px; margin: 2rem;">
-                      <canvas id="topico9"></canvas>
+                      <canvas class="graficosMdea"  id="topico9"></canvas>
                     </div>
                   </div>
 
@@ -362,7 +362,7 @@
 
                   <div style="display: flex; justify-content: center;">
                     <div style="width: 800px; margin: 2rem;">
-                      <canvas id="topico10"></canvas>
+                      <canvas class="graficosMdea"  id="topico10"></canvas>
                     </div>
                   </div>
 
@@ -375,7 +375,7 @@
 
                   <div style="display: flex; justify-content: center;">
                     <div style="width: 800px; margin: 2rem;">
-                      <canvas id="topico11"></canvas>
+                      <canvas class="graficosMdea"  id="topico11"></canvas>
                     </div>
                   </div>
                 </div>
@@ -387,7 +387,7 @@
 
                   <div style="display: flex; justify-content: center;">
                     <div style="width: 800px; margin: 2rem;">
-                      <canvas id="topico12"></canvas>
+                      <canvas class="graficosMdea"  id="topico12"></canvas>
                     </div>
                   </div>
                 </div>
@@ -405,13 +405,13 @@
 
 
               <div style="display: flex; justify-content: center;">
-                <div style="width: 800px; margin: 2rem;">
-                  <canvas id="componente4" ></canvas>
+                <div style="width: 900px; margin: 2rem;">
+                  <canvas class="graficosMdea"  id="componente4" ></canvas>
                 </div>
               </div>
 
               <nav>
-                <div class="nav nav-tabs justify-content-center" id="nav-tab" role="tablist">
+                <div class="nav nav-tabs justify-content-center navGrafico" id="nav-tab" role="tablist">
 
                   <button class="nav-link active text-dark" id="nav-Sub4compo1-tab" data-bs-toggle="tab"
                     data-bs-target="#nav-Sub4compo1" type="button" role="tab" aria-controls="nav-Sub4compo1"
@@ -435,7 +435,7 @@
 
                   <div style="display: flex; justify-content: center;">
                     <div style="width: 900px; margin: 2rem;">
-                      <canvas id="topico13"></canvas>
+                      <canvas class="graficosMdea"  id="topico13"></canvas>
                     </div>
                   </div>
 
@@ -447,7 +447,7 @@
 
                   <div style="display: flex; justify-content: center;">
                     <div style="width: 800px; margin: 2rem;">
-                      <canvas id="topico14"></canvas>
+                      <canvas class="graficosMdea"  id="topico14"></canvas>
                     </div>
                   </div>
 
@@ -464,13 +464,13 @@
 
 
               <div style="display: flex; justify-content: center;">
-                <div style="width: 800px; margin: 2rem;">
-                  <canvas id="componente5"></canvas>
+                <div style="width: 900px; margin: 2rem;">
+                  <canvas class="graficosMdea"  id="componente5"></canvas>
                 </div>
               </div>
 
               <nav>
-                <div class="nav nav-tabs justify-content-center" id="nav-tab" role="tablist">
+                <div class="nav nav-tabs justify-content-center navGrafico" id="nav-tab" role="tablist">
 
                   <button class="nav-link active text-dark" id="nav-Sub5compo1-tab" data-bs-toggle="tab"
                     data-bs-target="#nav-Sub5compo1" type="button" role="tab" aria-controls="nav-Sub5compo1"
@@ -495,7 +495,7 @@
                   <div style="display: flex; justify-content: center;">
                     <div style="width: 900px; margin: 2rem;">
 
-                      <canvas id="topico15"></canvas>
+                      <canvas class="graficosMdea"  id="topico15"></canvas>
                     </div>
                   </div>
 
@@ -508,7 +508,7 @@
                   <div style="display: flex; justify-content: center;">
                     <div style="width: 800px; margin: 2rem;">
 
-                      <canvas id="topico16"></canvas>
+                      <canvas class="graficosMdea"  id="topico16"></canvas>
                     </div>
                   </div>
 
@@ -524,12 +524,12 @@
             <div class="tab-pane fade" id="nav-compo6" role="tabpanel" aria-labelledby="nav-compo6-tab" tabindex="0">
 
               <div style="display: flex; justify-content: center;">
-                <div style="width: 800px; margin: 2rem;">
-                  <canvas id="componente6"></canvas>
+                <div style="width: 900px; margin: 2rem;">
+                  <canvas class="graficosMdea"  id="componente6"></canvas>
                 </div>
               </div>
               <nav>
-                <div class="nav nav-tabs justify-content-center" id="nav-tab" role="tablist">
+                <div class="nav nav-tabs justify-content-center navGrafico" id="nav-tab" role="tablist">
 
                   <button class="nav-link active text-dark" id="nav-Sub6compo1-tab" data-bs-toggle="tab"
                     data-bs-target="#nav-Sub6compo1" type="button" role="tab" aria-controls="nav-Sub6compo1"
@@ -560,7 +560,7 @@
 
                   <div style="display: flex; justify-content: center;">
                     <div style="width: 900px; margin: 2rem;">
-                      <canvas id="topico17"></canvas>
+                      <canvas class="graficosMdea"  id="topico17"></canvas>
                     </div>
                   </div>
 
@@ -572,7 +572,7 @@
 
                   <div style="display: flex; justify-content: center;">
                     <div style="width: 800px; margin: 2rem;">
-                      <canvas id="topico18"></canvas>
+                      <canvas class="graficosMdea"  id="topico18"></canvas>
                     </div>
                   </div>
 
@@ -585,7 +585,7 @@
 
                   <div style="display: flex; justify-content: center;">
                     <div style="width: 800px; margin: 2rem;">
-                      <canvas id="topico19"></canvas>
+                      <canvas class="graficosMdea"  id="topico19"></canvas>
                     </div>
                   </div>
                 </div>
@@ -597,7 +597,7 @@
 
                   <div style="display: flex; justify-content: center;">
                     <div style="width: 800px; margin: 2rem;">
-                      <canvas id="topico20"></canvas>
+                      <canvas class="graficosMdea"  id="topico20"></canvas>
                     </div>
                   </div>
                 </div>
