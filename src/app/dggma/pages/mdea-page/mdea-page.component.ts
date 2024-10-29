@@ -148,7 +148,7 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
                     if (width <= 480) {
                       return 6; // Tamaño de fuente pequeño para pantallas móviles
                     } else if (width <= 1024) {
-                      return 10.5; // Tamaño de fuente mediano para tablets
+                      return 10;
                     } else {
                       return 13; // Tamaño de fuente estándar para pantallas grandes
                     }
@@ -2376,7 +2376,7 @@ export class MdeaPageComponent implements OnInit, AfterViewInit {
                     } else if (width <= 1024) {
                       return 10.5; // Tamaño de fuente mediano para tablets
                     } else {
-                      return 13; // Tamaño de fuente estándar para pantallas grandes
+                      return 12; // Tamaño de fuente estándar para pantallas grandes
                     }
                   },
                 },
