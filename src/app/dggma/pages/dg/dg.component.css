@@ -93,7 +93,7 @@ p {
 
 @media only screen and (max-width: 1366px) {
   .imagenCarouselINEGI{
-    width: 35%;   
+    width: 35%;
     height: 35px;
     padding-bottom: 15px;
   }
@@ -101,7 +101,7 @@ p {
 
 @media only screen and (max-width: 1024px) {
   .imagenCarouselINEGI{
-    width: 30%;   
+    width: 30%;
     height: 30px;
     padding-bottom: 15px;
   }
@@ -111,212 +111,212 @@ p {
   @media only screen and (max-width: 480px) {
     .imagenCarouselINEGI{
       margin-right: auto;
-      width: 12rem;  
-      height: 50px; 
+      width: 12rem;
+      height: 50px;
     }
   }
 
   @media only screen and (max-width: 1366px) {
     .imagenCarouselODS{
       padding-right: 180px;
-      width: 90%;   
+      width: 90%;
       height: 75px;
     }
     }
-    
+
 
   /* Laptop y proyectores */
 @media only screen and (max-width: 1024px) {
   .imagenCarouselODS{
     padding-right: 200px;
-    width: 95%;   
+    width: 95%;
     height: 80px;
     padding-bottom: 20px;
   }
   }
-  
+
   /* Dispositivos moviles */
   @media only screen and (max-width: 480px) {
     .imagenCarouselODS{
       padding-right: 400px;
       padding-bottom: 35px;
-        width: 40rem;   
-        height: 65px; 
+        width: 40rem;
+        height: 65px;
     }
   }
 
   /* Laptop y proyectores */
   @media only screen and (max-width: 1024px) {
       .imagenCarouselSNIEG{
-      width: 70%;   
+      width: 70%;
       height: 70px;
       padding-bottom: 15px;
     }
     }
-  
+
     /* Dispositivos moviles */
     @media only screen and (max-width: 480px) {
         .imagenCarouselSNIEG{
         margin-right: auto;
-        width: 18rem;   
-        height: 60px; 
+        width: 18rem;
+        height: 60px;
       }
     }
-  
+
     @media only screen and (max-width: 1366px) {
       .imagenCarouselGeonode{
       margin-right: auto;
-      width: 10rem;   
-      height: 40px; 
+      width: 10rem;
+      height: 40px;
     }
    }
 
     @media only screen and (max-width: 1024px) {
       .imagenCarouselGeonode{
       margin-right: auto;
-      width: 8rem;   
-      height: 40px; 
+      width: 8rem;
+      height: 40px;
     }
    }
 
     @media only screen and (max-width: 480px) {
       .imagenCarouselGeonode{
       margin-right: auto;
-      width: 6rem;   
-      height: 30px; 
+      width: 6rem;
+      height: 30px;
     }
    }
     /* Botones para resolución de proyector */
 
-    
+
     @media only screen and (max-width: 1024px)  {
       .custom-btn-colorWhite {
-        font-size: 1rem;     
-        padding: 6px 12px;    
+        font-size: 1rem;
+        padding: 6px 12px;
       }
     }
 
     @media only screen and (max-width: 1024px)  {
       .custom-btn-color {
-        font-size: 1rem;    
-        padding: 6px 12px;  
+        font-size: 1rem;
+        padding: 6px 12px;
       }
     }
 
     @media only screen and (max-width: 1024px) {
       .custom-btn-color2 {
-        font-size: 1rem;     
-        padding: 6px 12px;   
+        font-size: 1rem;
+        padding: 6px 12px;
       }
     }
 
     @media only screen and (max-width: 1024px) {
       .custom-btn-colorGris {
-        font-size: 1rem;     
-        padding: 6px 12px;   
+        font-size: 1rem;
+        padding: 6px 12px;
       }
     }
 
     /* Botones para dispositivos moviles.  */
     @media only screen and (max-width: 480px) {
       .custom-btn-colorWhite {
-        font-size: 1rem;     
-        padding: 6px 12px;   
+        font-size: 1rem;
+        padding: 6px 12px;
       }
     }
 
     @media only screen and (max-width: 480px) {
       .custom-btn-color {
-        font-size: 1rem;     
-        padding: 6px 12px;   
+        font-size: 1rem;
+        padding: 6px 12px;
       }
     }
 
     @media only screen and (max-width: 480px) {
       .custom-btn-color2 {
-        font-size: 1rem;     
-        padding: 6px 12px;   
+        font-size: 1rem;
+        padding: 6px 12px;
       }
     }
 
     @media only screen and (max-width: 480px) {
       .custom-btn-colorGris {
-        font-size: 1rem;    
-        padding: 6px 12px;  
+        font-size: 1rem;
+        padding: 6px 12px;
       }
     }
 
 
 /* Resolución para componente Temas de actualidad */
-   
+
 .imgInegi{
-      max-height: 500px; 
-      max-width: 500px; 
-      display: block; 
-      margin: 0 auto; 
-      margin-top: 5rem; 
-      margin-bottom: 5rem; 
+      max-height: 500px;
+      max-width: 500px;
+      display: block;
+      margin: 0 auto;
+      margin-top: 5rem;
+      margin-bottom: 5rem;
       background-color: #113250;
     }
-   
+
     @media only screen and (max-width: 1024px),(max-height: 768) and (max-width: 1280px),(max-height: 720px) {
       .imgInegi{
-        max-height: 300px; 
+        max-height: 300px;
         max-width: 300px;
       }
     }
 
     @media only screen and (max-width: 480px){
       .imgInegi{
-        max-height: 200px; 
+        max-height: 200px;
         max-width: 200px;
       }
     }
-    
 
-    
+
+
     .imgMdea{
-      max-height: 25rem; 
-      max-width: 500px; 
-      height: auto; 
-      display: block; 
-      margin: 0 auto; 
+      max-height: 25rem;
+      max-width: 500px;
+      height: auto;
+      display: block;
+      margin: 0 auto;
     }
 
     @media only screen and (max-width: 1024px),(max-height: 768) {
       .imgMdea{
-        max-height: 20rem; 
+        max-height: 20rem;
         max-width: 300px;
       }
     }
 
     @media only screen and (max-width: 480px) {
     .imgMdea{
-     max-height: 200px; 
+     max-height: 200px;
      max-width: 200px;
       }
     }
 
     .imgOds {
-      max-height: 500px; 
-      max-width: 500px; 
-      height: auto; 
-      display: block; 
-      margin: 0 auto; 
-      margin-top: 5rem; 
-      margin-bottom: 5rem; 
+      max-height: 500px;
+      max-width: 500px;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      margin-top: 5rem;
+      margin-bottom: 5rem;
       background-color: #113250;
     }
     @media only screen and (max-width: 1280px),(min-width: 1024px) and (max-height: 768),(min-height: 720px) {
       .imgOds{
-        max-height: 15rem; 
+        max-height: 15rem;
         max-width: 200px;
       }
     }
 
     @media only screen and (max-width: 480px) {
     .imgOds{
-     max-height: 150px; 
+     max-height: 150px;
      max-width: 150px;
       }
     }
@@ -333,56 +333,57 @@ p {
     }
     @media only screen and (max-width: 1280px),(min-width: 1024px) and (max-height: 768),(min-height: 720px) {
       .imgSnieg{
-        max-height: 300px; 
+        max-height: 300px;
         max-width: 300px;
       }
     }
     @media only screen and (max-width: 480px) {
     .imgSnieg{
-     max-height: 200px; 
+     max-height: 200px;
      max-width: 200px;
       }
     }
-    
+
     .imgGeonode {
-      max-height: 500px; 
-      max-width: 500px; 
-      height: auto; 
-      display: block; 
+      max-height: 500px;
+      max-width: 500px;
+      height: auto;
+      display: block;
       margin: 0 auto;
       margin-top: 3rem;
-      margin-bottom: 3rem; 
+      margin-bottom: 3rem;
       background-color: #113250;
     }
     @media only screen and (max-width: 1024px) {
       .imgGeonode{
-        max-height: 350px; 
+        max-height: 350px;
         max-width: 350px;
       }
     }
     @media only screen and (max-width: 480px) {
     .imgGeonode{
-     max-height: 200px; 
+     max-height: 200px;
      max-width: 200px;
       }
     }
-  
+
     /* Cambio en resolución para titulo temas de atualidad */
 
     .TituloTemas{
-      margin-bottom: 2rem; 
+      margin-top: 0.75rem;
+      margin-bottom: 1rem;
       font-family: Helvetica, Sans-Serif;
     }
     @media only screen and (max-width: 1280px),(min-width: 1024px) and (max-height: 768),(min-height: 720px) {
      .TituloTemas{
-      margin-bottom: 2rem; 
+      margin-bottom: 1rem;
       font-family: Helvetica, Sans-Serif;
       font-size: 2rem;
      }
     }
     @media only screen and (max-width: 480px) {
       .TituloTemas{
-        margin-bottom: 2rem; 
+        margin-bottom: 1rem;
         font-family: Helvetica, Sans-Serif;
         font-size: 1.5rem;
       }
@@ -406,10 +407,30 @@ p {
         font-family: Helvetica, Sans-Serif;
       }
     }
-  
+
     @media only screen and (max-width: 480px){
       .SubtituloParrafo{
         font-size: larger;
       }
     }
-    
+.espacio{
+  margin-top: 1rem;
+  margin-left: 5rem;
+  margin-right: 5rem;
+  color: white;
+
+
+}
+.justificado{
+  text-align: justify;
+  margin-left: 5rem;
+  margin-right: 5rem;
+  margin-bottom: 3rem;
+  font-size: 0.90rem;
+}
+.tMision{
+  margin-left: 5rem;
+}
+.space{
+  margin-right: 0.5rem;
+}
