@@ -24,3 +24,60 @@
   margin: 5px;
   /* Margen */
 }
+
+.ancho{
+  margin-right: 0.25rem;
+}
+.btn-agua {
+  background-color: #007BFF;
+  /* Azul claro */
+  color: white;
+}
+
+.btn-atmosfera {
+  background-color: #6C757D;
+  /* Gris para el aire */
+  color: white;
+}
+
+.btn-residuos {
+  background-color: #28A745;
+  /* Verde para el reciclaje */
+  color: white;
+}
+
+.btn-suelos {
+  background-color: #DC3545;
+  /* Rojo para la tierra */
+  color: white;
+}
+
+.btn-energia {
+  background-color: #FFC107;
+  /* Amarillo para energía */
+  color: black;
+}
+
+.btn-biodiversidad-marina {
+  background-color: #17A2B8;
+  /* Cyan para el océano */
+  color: white;
+}
+
+.btn-biodiversidad-terrestre {
+  background-color: #28A745;
+  /* Verde para tierra */
+  color: white;
+}
+
+.btn-forestal {
+  background-color: #5A5B3D;
+  /* Verde oscuro para bosques */
+  color: white;
+}
+
+.btn-proteccion-ambiental {
+  background-color: #6F42C1;
+  /* Morado para protección ambiental */
+  color: white;
+}

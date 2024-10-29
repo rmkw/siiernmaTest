@@ -17,6 +17,27 @@
     </div>
   </div>
 
+  <div class="row">
+    <div class="col-12">
+      <h5>Filtros por temática</h5>
+    </div>
+    <div class="col">
+      <button type="button" class="btn btn-agua ancho" (click)="filterByTema('Agua')">Agua</button>
+      <button type="button" class="btn btn-atmosfera ancho" (click)="filterByTema('Atmosfera')">Atmósfera</button>
+      <button type="button" class="btn btn-residuos ancho" (click)="filterByTema('Residuos')">Residuos</button>
+      <button type="button" class="btn btn-suelos ancho" (click)="filterByTema('Suelos')">Suelos</button>
+      <button type="button" class="btn btn-energia ancho" (click)="filterByTema('Energia')">Energía</button>
+      <button type="button" class="btn btn-biodiversidad-marina ancho"
+        (click)="filterByTema('Biodiversidad marina')">Biodiversidad marina</button>
+      <button type="button" class="btn btn-biodiversidad-terrestre ancho"
+        (click)="filterByTema('Biodiversidad terrestre')">Biodiversidad terrestre</button>
+      <button type="button" class="btn btn-forestal ancho" (click)="filterByTema('Forestal')">Forestal</button>
+      <button type="button" class="btn btn-proteccion-ambiental ancho"
+        (click)="filterByTema('Protección Ambiental')">Protección Ambiental</button>
+    </div>
+
+  </div>
+
   <div class="row mt-5">
     <div class="col">
       <div class="table-responsive">
@@ -24,55 +45,29 @@
           <thead class="table-light">
             <tr>
               <th class="col" scope="col">Nombre</th>
-              <th class="col-4" scope="col">Dependencia</th>
-              <th scope="col">Temática</th>
-              <th scope="col">Tipo Indicador</th>
-              <th scope="col">Tabla de Datos</th>
-              <th scope="col">Hoja Metodológica</th>
+              <th class="col text-center" scope="col">Dependencia</th>
+              <th class="col text-center" scope="col">Temática</th>
+              <th class="col-2 text-center"scope="col">Más información</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td class="text-center">Nombre del indicador</td>
-              <td class="text-center">ECOSISTEMAS E INFORMACIÓN AMBIENTAL - Grupo Suelos y Tierras</td>
-              <td class="text-center">ECOSISTEMAS</td>
-              <td class="text-center">INDICADOR</td>
-              <td class="text-center">
-                <i tooltipClass="custom-tooltip" placement="top" [animation]="true" [openDelay]="200" [closeDelay]="500"
-                  autoClose="true"
-                  [ngbTooltip]="'Variación de la superficie de los ecosistemas naturales continentales (VSENC)'"
-                  class="bi bi-table">
-                </i>
-              </td>
-              <td class="text-center"><i class="bi bi-globe2"></i></td>
-            </tr>
-            <tr>
-              <td class="text-center">Nombre del indicador</td>
-              <td class="text-center">HIDROLOGÍA</td>
-              <td class="text-center">AGUA</td>
-              <td class="text-center">INDICADOR</td>
-              <td class="text-center">
-                <i tooltipClass="custom-tooltip" placement="top" [animation]="true" [openDelay]="200" [closeDelay]="500"
-                  autoClose="true" [ngbTooltip]="'Índice de calidad del agua en corrientes superficiales -ICA'"
-                  class="bi bi-table">
-                </i>
-              </td>
-
-              <td class="text-center"><i class="bi bi-globe2"></i></td>
-            </tr>
-            <tr>
-              <td class="text-center">Nombre del indicador</td>
-              <td class="text-center">METEOROLOGÍA</td>
-              <td class="text-center">CLIMA</td>
-              <td class="text-center">VARIABLE</td>
-              <td class="text-center">
-                <i tooltipClass="custom-tooltip" placement="top" [animation]="true" [openDelay]="200" [closeDelay]="500"
-                  autoClose="true" [ngbTooltip]="'Precipitación total'" class="bi bi-table">
-                </i>
-              </td>
+            <tr *ngFor="let indicador of filteredIndicadores.length > 0 ? filteredIndicadores : indicadores">
+              <td class="">{{ indicador.nombre }}</td>
+              <td class="text-center">{{ indicador.dependencia }}</td>
+              <td class="text-center">{{ indicador.tema === 'Atmosfera' ? 'Atmósfera' : indicador.tema === 'Energia' ? 'Energía' : indicador.tema }}</td>
 
               <td class="text-center">
-                <i class="bi bi-globe2"></i>
+                <ng-container *ngIf="indicador.link !== 'N/A'; else noLink">
+                  <a [href]="indicador.link" target="_blank" rel="noopener noreferrer">
+                    <i class="bi bi-globe2"></i>
+                  </a>
+                </ng-container>
+                <ng-template #noLink>
+                  <i class="bi bi-emoji-frown" style="color: brown;"
+                  [ngbTooltip]="'Sin Información'"
+                      tooltipClass="custom-tooltip" placement="top" [animation]="true" [openDelay]="200" [closeDelay]="500"
+                      autoClose="true"></i>
+                </ng-template>
               </td>
             </tr>
           </tbody>
