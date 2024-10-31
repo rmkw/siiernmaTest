@@ -518,14 +518,14 @@ p {
   #Mision {
     text-align: justify;  
     padding: 1rem;     
-    padding-left: 15rem;
+    padding-left: 5rem;
     font-size: 1rem;   
   }
 
   #Vision {
     text-align: justify;  
     padding: 1rem;      
-    padding-right: 16rem;
+    padding-right: 5rem;
     font-size: 1rem;    
   }
 }
