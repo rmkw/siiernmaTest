@@ -107,7 +107,6 @@ p {
   }
   }
 
-  /* Dispositivos moviles */
   @media only screen and (max-width: 480px) {
     .imagenCarouselINEGI{
       margin-right: auto;
@@ -115,6 +114,16 @@ p {
       height: 50px;
     }
   }
+
+  @media only screen and (min-width: 2560px) and (max-width: 3440px) {
+    .imagenCarouselODS{
+    
+      padding-left: 25rem;
+      width: 75%;
+      height: 100px;
+    }
+  }
+
 
   @media only screen and (max-width: 1366px) {
     .imagenCarouselODS{
@@ -488,9 +497,8 @@ p {
   margin-left: 5rem;
   margin-right: 5rem;
   color: white;
-
-
 }
+
 .justificado{
   text-align: justify;
   margin-left: 5rem;
@@ -506,6 +514,22 @@ p {
 }
 
 
+@media only screen and (min-width: 2560px) and (max-width: 3440px) {
+  #Mision {
+    text-align: justify;  
+    padding: 1rem;     
+    padding-left: 15rem;
+    font-size: 1rem;   
+  }
+
+  #Vision {
+    text-align: justify;  
+    padding: 1rem;      
+    padding-right: 16rem;
+    font-size: 1rem;    
+  }
+}
+
 
 @media only screen and (max-width: 1366px) {
   .justificado{
@@ -517,7 +541,6 @@ p {
     font-size: 1rem;
   }
 }
-
 @media only screen and (max-width: 1024px) {
   .justificado{
     text-align: justify;
@@ -538,6 +561,7 @@ p {
     font-size: 0.8rem;
   }
 }
+
 
 @media only screen and (max-width: 480px) {
   .TituloINEGICarousel{
