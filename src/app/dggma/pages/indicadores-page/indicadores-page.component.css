@@ -81,3 +81,15 @@
   /* Morado para protección ambiental */
   color: white;
 }
+
+@media only screen and (max-width: 1024px) {
+  .btn {
+    font-size: smaller;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .btn {
+    font-size: smaller;
+  }
+}
