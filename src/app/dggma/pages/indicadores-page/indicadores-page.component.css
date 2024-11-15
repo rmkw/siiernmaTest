@@ -82,14 +82,38 @@
   color: white;
 }
 
+@media only screen and (max-width: 1366px) {
+  .btn {
+    font-size: .70rem;
+    font-weight: bold;
+    width: 6rem;
+    height: 3.3rem;
+  }
+}
+
 @media only screen and (max-width: 1024px) {
   .btn {
-    font-size: smaller;
+    font-size: .70rem;
+    width: 5.6rem;
+    height: 3rem;
+    text-align: left;
   }
 }
 
 @media only screen and (max-width: 480px) {
   .btn {
-    font-size: smaller;
+    font-size: .5rem;
+    width: 4.8rem;
+    height: 5rem;
+  }
+  .table {
+    font-size: 0.85rem; /* Reducir el tamaño de la fuente */
+  }
+  .text-truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 }
+
+
