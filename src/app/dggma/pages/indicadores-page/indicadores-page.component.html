@@ -53,9 +53,9 @@
             </tr>
           </thead>
           <tbody>
-            <!-- Cargando -->
-            <tr *ngIf="indicadores.length === 0">
-              <td colspan="4">
+            <!-- Estado de carga: Spinners dentro de la tabla -->
+            <tr *ngIf="isLoading">
+              <td colspan="4" class="text-center">
                 <div class="d-flex justify-content-center my-3">
                   <div class="spinner-grow text-secondary me-3" role="status"></div>
                   <div class="spinner-grow text-secondary me-3" role="status"></div>
@@ -63,8 +63,14 @@
                 </div>
               </td>
             </tr>
-            <!-- Tabla -->
-            <tr *ngFor="let indicador of filteredIndicadores.length > 0 ? filteredIndicadores : indicadores">
+      
+            <!-- Fila vacía cuando no hay datos -->
+            <tr *ngIf="!isLoading && paginatedData.length === 0">
+              <td colspan="4" class="text-center">No hay datos disponibles</td>
+            </tr>
+      
+            <!-- Datos de la tabla -->
+            <tr *ngFor="let indicador of paginatedData">
               <td>{{ indicador.nombre }}</td>
               <td class="text-center">{{ indicador.dependencia }}</td>
               <td class="text-center">
@@ -86,8 +92,19 @@
           </tbody>
         </table>
       </div>
+
+      
+      <p-paginator 
+      (onPageChange)="onPageChange($event)" 
+      [first]="first" 
+      [rows]="rows" 
+      [totalRecords]="filteredIndicadores.length" 
+      [rowsPerPageOptions]="[15, 30]" 
+      *ngIf="!isLoading">
+    </p-paginator>
     </div>
   </div>
+  
   
 
 

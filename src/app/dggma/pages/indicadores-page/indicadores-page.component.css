@@ -24,6 +24,16 @@
   margin: 5px;
   /* Margen */
 }
+::ng-deep .p-paginator .p-paginator-pages .p-paginator-page.p-highlight,
+::ng-deep .p-paginator .p-paginator-pages {
+  background-color: #113250;
+  /* Cambia esto por el color que prefieras */
+  color: white;
+  /* Cambia esto por el color del texto que prefieras */
+  /* border-color: #113250; */
+  /* Cambia esto por el color del borde que prefieras */
+}
+
 
 .ancho{
   margin-right: 0.25rem;
