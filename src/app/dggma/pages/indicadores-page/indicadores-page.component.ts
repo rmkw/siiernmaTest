@@ -11,9 +11,9 @@ import { IndicadorTable } from '../../interfaces/indicador.interface';
 export class IndicadoresPageComponent implements OnInit {
   indicadores: IndicadorTable[] = [];
   paginatedData: any[] = []; // Datos mostrados en la tabla
-  isLoading: boolean = true; // Estado de carga
+  isLoading: boolean = true;
   first: number = 0; // Índice del primer registro visible
-  rows: number = 20; // Número de registros por página
+  rows: number = 10; // Número de registros por página
 
   constructor(public indi_table: DGService) {
     this.indi_table.indicadoresCollectionTable().subscribe(
@@ -69,9 +69,7 @@ export class IndicadoresPageComponent implements OnInit {
     } else {
       this.filteredIndicadores = [...this.indicadores];
     }
-  
-    // Reiniciar paginación y actualizar datos paginados
-    this.first = 0; // Reinicia la página al inicio
+    this.first = 0; 
     this.updatePaginatedData();
   }
   
