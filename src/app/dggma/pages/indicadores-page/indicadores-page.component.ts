@@ -13,7 +13,7 @@ export class IndicadoresPageComponent implements OnInit {
   paginatedData: any[] = []; // Datos mostrados en la tabla
   isLoading: boolean = true; // Estado de carga
   first: number = 0; // Índice del primer registro visible
-  rows: number = 15; // Número de registros por página
+  rows: number = 20; // Número de registros por página
 
   constructor(public indi_table: DGService) {
     this.indi_table.indicadoresCollectionTable().subscribe(
@@ -61,14 +61,19 @@ export class IndicadoresPageComponent implements OnInit {
 
   filteredIndicadores: IndicadorTable[] = [];
 
-  filterByTema(tema: string) {
+  filterByTema(tema: string): void {
     if (tema) {
       this.filteredIndicadores = this.indicadores.filter(
         (indicador) => indicador.tema === tema
       );
     } else {
-      this.filteredIndicadores = [...this.indicadores]; 
+      this.filteredIndicadores = [...this.indicadores];
     }
+  
+    // Reiniciar paginación y actualizar datos paginados
+    this.first = 0; // Reinicia la página al inicio
+    this.updatePaginatedData();
   }
+  
 }
 

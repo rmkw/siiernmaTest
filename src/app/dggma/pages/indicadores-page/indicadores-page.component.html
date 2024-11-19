@@ -93,19 +93,15 @@
         </table>
       </div>
 
-      
+
       <p-paginator 
       (onPageChange)="onPageChange($event)" 
       [first]="first" 
       [rows]="rows" 
-      [totalRecords]="filteredIndicadores.length" 
-      [rowsPerPageOptions]="[15, 30]" 
-      *ngIf="!isLoading">
+      [totalRecords]="filteredIndicadores.length">
     </p-paginator>
+
     </div>
   </div>
   
-  
-
-
 </div>
