@@ -312,6 +312,8 @@ export class ProductPageComponent implements OnInit {
     });
   }
 
+  
+
   //! funcion para ods la misma que arriba
   transformDataToTreeNodeOds(
     objetivoOds: Ods[],
@@ -369,11 +371,30 @@ export class ProductPageComponent implements OnInit {
     this.rows = event.rows;
     this.updatePaginatedProductsFilter();
   }
+
+  resetPagination() {
+    this.first = 0;
+    this.rows = 10; // Or your default page size
+    this.updatePaginatedProducts();
+    this.updatePaginatedProductsFilter();
+  }
+
+  isFirstPage(): boolean {
+    return this.first === 0;
+  }
+
+  // Método para determinar si es la última página
+  isLastPage(totalRecords: number): boolean {
+    return this.first + this.rows >= totalRecords;
+  }
+
   ngOnInit(): void {
     if (this._odsFlag.getMasterFlag()) {
       this.boolFilter_ODS_o_MDEA = true;
       this._mdeaTOproducts = true;
       this._odsFlag.setMasterFlag(false);
+      console.log("showProductsFiltrados");
+      console.log("filteredProducts");
     }
 
     //! Funcion que manda a llamar el servicio y los datos de este para que se pueda combinar con la transformaciión de datos a la estructura de treenode
@@ -462,6 +483,9 @@ export class ProductPageComponent implements OnInit {
     });
 
     //! ODS FILTER DESDE LEJOS
+
+    // Llenado de fechas
+    
   }
 
   filtros_MDEA_pageTopage(): void {
@@ -1039,6 +1063,7 @@ export class ProductPageComponent implements OnInit {
       this.filterStates[string] = true;
       this.thisFlags();
     }
+    
   }
   filtros_ods_pageTopage(): void {
     if (this._odsFlag.getObj1()) {
@@ -2309,6 +2334,8 @@ export class ProductPageComponent implements OnInit {
     this.pU_uniqueYearsHasta = [...this.pU_allYearsHasta];
   }
 
+  
+  
   //!bandera para filtros para que mostrar
   changeFlagFilter() {
     this.flagHidden = false;
@@ -2661,21 +2688,24 @@ export class ProductPageComponent implements OnInit {
         );
       });
     }
-
-    const radioOption = this.selectedRadioValue;
-    if (radioOption) {
-      console.log('\x1b[30m%s\x1b[0m', 'filtro de radio Button');
-      combinedResults = combinedResults.filter((product) => {
-        if (radioOption === 'option1') {
-          return product.tipo_prod__1 === 1 && product.tipo_prod__2 === 0;
-        } else if (radioOption === 'option2') {
-          return product.tipo_prod__1 === 0 && product.tipo_prod__2 === 1;
-        } else if (radioOption === 'option3') {
-          return product.tipo_prod__1 === 1 && product.tipo_prod__2 === 1;
-        }
-        return true;
-      });
-    }
+ 
+       const radioOption = this.selectedRadioValue;
+   if (radioOption) {
+     console.log('\x1b[30m%s\x1b[0m', 'filtro de radio Button');
+     combinedResults = combinedResults.filter((product) => {
+       if (radioOption === 'option1') {
+         return product.tipo_prod__1 === 1 && product.tipo_prod__2 === 0;
+       } else if (radioOption === 'option2') {
+         return product.tipo_prod__1 === 0 && product.tipo_prod__2 === 1;
+       } else if (radioOption === 'option3') {
+         return product.tipo_prod__1 === 1 && product.tipo_prod__2 === 1;
+       }
+       return true;
+     });
+   
+     // Llamar a la función resetPagination después de filtrar los resultados
+     
+   }
 
     if (
       this.checkboxesCobe['cobeNacional'] ||
@@ -2766,6 +2796,7 @@ export class ProductPageComponent implements OnInit {
         );
         return !isNaN(productYear) && productYear <= this.pU_selectedYearHasta!;
       });
+
     }
     //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
@@ -2920,6 +2951,7 @@ export class ProductPageComponent implements OnInit {
     this.showProductsFiltrados = true;
     console.log(this.filteredProducts);
     this.updatePaginatedProductsFilter();
+    this.resetPagination();
   }
 
   handleComponenteFilter(): void {
@@ -2994,7 +3026,10 @@ export class ProductPageComponent implements OnInit {
     //* Filtro fechas publicación
     this.pU_selectedYear = null;
     this.pU_selectedYearHasta = null;
+    
     this.banderaSearchByQuery = false;
+
+    this.resetPagination();
 
     this.ngOnInit();
   }

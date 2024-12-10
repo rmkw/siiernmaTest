@@ -9,7 +9,9 @@ import { IndicadorTable } from '../../interfaces/indicador.interface';
   styleUrls: ['./indicadores-page.component.css'],
 })
 export class IndicadoresPageComponent implements OnInit {
+  
   indicadores: IndicadorTable[] = [];
+  filteredIndicadores: IndicadorTable[] = [];
   paginatedData: any[] = []; // Datos mostrados en la tabla
   isLoading: boolean = true;
   first: number = 0; // Índice del primer registro visible
@@ -57,9 +59,6 @@ export class IndicadoresPageComponent implements OnInit {
     this.rows = event.rows;
     this.updatePaginatedData();
   }
-
-
-  filteredIndicadores: IndicadorTable[] = [];
 
   filterByTema(tema: string): void {
     if (tema) {

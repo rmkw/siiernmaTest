@@ -1,4 +1,7 @@
-
+.imagenCarouselSNIEG {
+  -webkit-filter: drop-shadow(1px 1px 0 #ffffff) drop-shadow(-1px -1px 0 #ffffff); /* Contorno blanco */
+  filter: drop-shadow(.5px .5px 0 #ffffff) drop-shadow(-.5px -.5px 0 #ffffff) contrast(120%);;
+}
 
 .carousel-caption {
   bottom: 5rem;

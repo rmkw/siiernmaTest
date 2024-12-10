@@ -630,12 +630,16 @@
         </div>
         <div class="card flex justify-content-center m-3 mt-0" [hidden]="!showProductsFiltrados || paginatedProductsFilter.length === 0">
 
-          <p-paginator (onPageChange)="onPageChangeFilter($event)" [first]="first" [rows]="rows" [totalRecords]="filteredProducts.length"
-            [rowsPerPageOptions]="[10, 20, 30]"></p-paginator>
+        <p-paginator 
+          (onPageChange)="onPageChangeFilter($event)" 
+          [first]="first" 
+          [rows]="rows" 
+          [totalRecords]="filteredProducts.length"
+          [rowsPerPageOptions]="[10, 20, 30]"
+          [showFirstLastIcon]="!isFirstPage() && !isLastPage(filteredProducts.length)"
+          >
+          </p-paginator>
         </div>
-
-
-
 
         <!--! TODOS los productos -->
         <div style="min-height: 100vh;" [hidden]="_mdeaTOproducts || showProductsFiltrados || paginatedProducts.length === 0">
@@ -671,8 +675,14 @@
         </div>
         <div class="card flex justify-content-center m-3 mt-0" [hidden]="_mdeaTOproducts || showProductsFiltrados || paginatedProducts.length === 0">
 
-          <p-paginator (onPageChange)="onPageChange($event)" [first]="first" [rows]="rows" [totalRecords]="products.length"
-            [rowsPerPageOptions]="[10, 20, 30]"></p-paginator>
+          <p-paginator 
+          (onPageChange)="onPageChange($event)" 
+          [first]="first" [rows]="rows" 
+          [totalRecords]="products.length"
+          [rowsPerPageOptions]="[10, 20, 30]"
+          [showFirstLastIcon]="!isFirstPage() && !isLastPage(products.length)"
+            >
+          </p-paginator>
         </div>
 
 
@@ -762,7 +772,7 @@
 
           </div>
 
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
 
         <!--! BODY MODAL -->
@@ -897,24 +907,24 @@
             </div>
 
       <!-- Enlace geografico -->
-      <!-- <div class="col">
-        <ng-container *ngIf="esGeograficoOEstadistico(); else enlaceTemplate">
-        </ng-container>
-        <ng-template #enlaceTemplate>
-          <span>Enlace de referencia Geográfico: </span>
-          <a *ngIf="elementoSeleccionado?.liga_geonode !== 'Sin resultado'; else noDisponible"
-             [href]="elementoSeleccionado?.liga_geonode"
-             target="_blank">
-            {{ elementoSeleccionado?.tipo_prod__1 == 1 && elementoSeleccionado?.tipo_prod__2 == 0 ? 'Enlace.' : '' }}
-            {{ elementoSeleccionado?.tipo_prod__1 == 0 && elementoSeleccionado?.tipo_prod__2 == 1 ? '' : '' }}
-            {{ elementoSeleccionado?.tipo_prod__1 == 1 && elementoSeleccionado?.tipo_prod__2 == 1 ? '' : '' }}
-          </a>
-          <ng-template #noDisponible>
-            <label class="badge custom-badge">No disponible</label>
-          </ng-template>
-        </ng-template>
-      </div> -->
-
+            <div class="col"> 
+                <ng-container *ngIf="esGeograficoOEstadistico(); else enlaceTemplate">
+                </ng-container>
+                <ng-template #enlaceTemplate>
+                  <span>Enlace de referencia Geográfico: </span>
+                  <a *ngIf="elementoSeleccionado?.liga_geonode !== 'Sin resultado'; else noDisponible"
+                     [href]="elementoSeleccionado?.liga_geonode"
+                     target="_blank">
+                    {{ elementoSeleccionado?.tipo_prod__1 == 1 && elementoSeleccionado?.tipo_prod__2 == 0 ? 'Enlace.' : '' }}
+                    {{ elementoSeleccionado?.tipo_prod__1 == 0 && elementoSeleccionado?.tipo_prod__2 == 1 ? '' : '' }}
+                    {{ elementoSeleccionado?.tipo_prod__1 == 1 && elementoSeleccionado?.tipo_prod__2 == 1 ? '' : '' }}
+                  </a>
+                  <ng-template #noDisponible>
+                    <label class="badge custom-badge">No disponible</label>
+                  </ng-template>
+                </ng-template>
+              </div> 
+        
 
             <div class="container">
               <hr>
