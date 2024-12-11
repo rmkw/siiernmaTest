@@ -60,6 +60,15 @@ export class IndicadoresPageComponent implements OnInit {
     this.updatePaginatedData();
   }
 
+  isFirstPage(): boolean {
+    return this.first === 0;
+  }
+
+  // Método para determinar si es la última página
+  isLastPage(totalRecords: number): boolean {
+    return this.first + this.rows >= totalRecords;
+  }
+
   filterByTema(tema: string): void {
     if (tema) {
       this.filteredIndicadores = this.indicadores.filter(

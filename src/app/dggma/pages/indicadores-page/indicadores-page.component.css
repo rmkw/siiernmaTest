@@ -27,11 +27,13 @@
 ::ng-deep .p-paginator .p-paginator-pages .p-paginator-page.p-highlight,
 ::ng-deep .p-paginator .p-paginator-pages {
   background-color: #113250;
-  /* Cambia esto por el color que prefieras */
   color: white;
-  /* Cambia esto por el color del texto que prefieras */
-  /* border-color: #113250; */
-  /* Cambia esto por el color del borde que prefieras */
+}
+::ng-deep .p-paginator .p-paginator-next.p-disabled,
+::ng-deep .p-paginator .p-paginator-prev.p-disabled {
+  color: #9e9e9e; /* Color para cuando las flechas están deshabilitadas (última página) */
+  pointer-events: none; /* Opcional: evita clics en los íconos deshabilitados */
+  visibility: hidden;
 }
 
 

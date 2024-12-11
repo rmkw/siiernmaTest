@@ -99,7 +99,9 @@
       [first]="first" 
       [rows]="rows" 
       [totalRecords]="filteredIndicadores.length" 
-      [rowsPerPageOptions]="[10, 20]">
+      [rowsPerPageOptions]="[10, 20]"
+      [showFirstLastIcon]="!isFirstPage() && !isLastPage(filteredIndicadores.length)"
+      >
     </p-paginator>
 
     </div>
