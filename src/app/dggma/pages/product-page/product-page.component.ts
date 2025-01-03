@@ -15,6 +15,7 @@ import { TreeNode } from 'primeng/api';
 import { Tree } from 'primeng/tree';
 import { FlagService } from '../../services/flagService.service';
 import { OdsFilterService } from '../../services/odsfilters.service';
+import { event } from 'jquery';
 
 
 //! Interface de los checkbox
@@ -482,9 +483,11 @@ export class ProductPageComponent implements OnInit {
       this.componentes = data;
     });
 
-    //! ODS FILTER DESDE LEJOS
-
     // Llenado de fechas
+    this.extractAndSortYears()
+    this.extractAndSortYearsHasta()
+    this.pU_extractAndSortYears()
+    this.pU_extractAndSortYearsHasta()
     
   }
 
@@ -2969,23 +2972,24 @@ export class ProductPageComponent implements OnInit {
   }
 
   async deleteFilter() {
+    // Reset de filtros y variables
     this.selectedNodesMdea = [];
     this.filterStates = {};
     this.treeDataMdea = [];
-
+  
     this.selectComponentekey = '';
     this.combinedResultsMdea = [];
     this.unSelectComponentekey = '';
-
+  
     this.selectedNodesOds = [];
     this.filterStatesODS = {};
     this.treeDataOds = [];
-
+  
     this.cdr.detectChanges();
-
+  
     this.deleteFilterFlag = true;
     this.terminoBusqueda = '';
-
+  
     this.checkboxesState = {
       direGeogrAmbiente: false,
       direEstaSocio: false,
@@ -2993,43 +2997,59 @@ export class ProductPageComponent implements OnInit {
       direEstaGobSegPubJus: false,
       direInteAnaInv: false,
     };
-
+  
     this.checkboxesCobe = {
       cobeNacional: false,
       cobeEstatal: false,
       cobeMunicipal: false,
       cobRegional: false,
     };
-
+  
     this.checkboxesType = {
       typeDatoGeo: false,
       typeTabulado: false,
       typePublicacion: false,
     };
-
+  
     this.selectedRadioValue = '';
     this.showProductsFiltrados = false;
-
-    //! FECHAS SELECT referencia
+  
+    // Reset de selectores de fechas referencia
     this.allYears = [];
     this.uniqueYears = [];
     this.allYearsHasta = [];
     this.uniqueYearsHasta = [];
-    //* Filtro fechas
     this.selectedYear = null;
     this.selectedYearHasta = null;
-    //! FECHAS SELECT publicación
+  
+    // Reset de selectores de fechas publicación
     this.pU_allYears = [];
     this.pU_uniqueYears = [];
     this.pU_allYearsHasta = [];
     this.pU_uniqueYearsHasta = [];
-    //* Filtro fechas publicación
     this.pU_selectedYear = null;
     this.pU_selectedYearHasta = null;
-    
+  
     this.banderaSearchByQuery = false;
 
+    // Restablecer los selectores a su valor predeterminado
+    const desdePubli = document.getElementById('desdePubli') as HTMLSelectElement;
+    const hastaPubli = document.getElementById('hastaPubli') as HTMLSelectElement;
+    const desdeRefe = document.getElementById('desdeRefe') as HTMLSelectElement;
+    const hastaRefe = document.getElementById('hastaRefe') as HTMLSelectElement;
+    
+    if (desdePubli) desdePubli.selectedIndex = 0;
+    if (hastaPubli) hastaPubli.selectedIndex = 0;
+    if (desdeRefe) desdeRefe.selectedIndex = 0;
+    if (hastaRefe) hastaRefe.selectedIndex = 0;
+
     this.resetPagination();
+  
+    // Llenar los selectores de fechas nuevamente
+    this.extractAndSortYears();
+    this.extractAndSortYearsHasta();
+    this.pU_extractAndSortYears();
+    this.pU_extractAndSortYearsHasta();
 
     this.ngOnInit();
   }
